@@ -5,7 +5,11 @@
 """Incendium Database module."""
 
 __all__ = [
-    'execute_sp'
+    'check',
+    'execute_non_query',
+    'get_data',
+    'get_output_params',
+    'get_return_value'
 ]
 
 import system.db
@@ -35,9 +39,9 @@ class Result(object):
         self.update_count = update_count
 
 
-def execute_sp(stored_procedure, database='', transaction=None, skip_audit=False, in_params=None,
-               out_params=None, return_type_code=None, get_output_params=False,
-               get_result_set=False, get_return_value=False, get_update_count=False):
+def _execute_sp(stored_procedure, database='', transaction=None, skip_audit=False, in_params=None,
+                out_params=None, return_type_code=None, get_output_params=False,
+                get_result_set=False, get_return_value=False, get_update_count=False):
     """Executes a database stored procedure.
 
     Args:
@@ -107,3 +111,104 @@ def execute_sp(stored_procedure, database='', transaction=None, skip_audit=False
         _result.update_count = call.getUpdateCount()
 
     return _result
+
+
+def check(stored_procedure, params=None):
+    """Executes a stored procedure that returns a flag set to TRUE or FALSE.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure
+        params (dict): A Dictionary containing all parameters. Optional.
+
+    Returns:
+        bool: The flag.
+    """
+    output = {'flag': system.db.BIT}
+    output_params = get_output_params(stored_procedure,
+                                      output=output,
+                                      params=params)
+
+    return output_params['flag']
+
+
+def execute_non_query(stored_procedure, params=None, transaction=None):
+    """Executes a stored procedure against the connection and returns the number of rows affected.
+
+    Used for UPDATE, INSERT, and DELETE statements.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to execute.
+        params (dict): A Dictionary containing all parameters. Optional.
+        transaction (str): A transaction identifier. If omitted, the call will be executed in its
+            own transaction. Optional.
+
+    Returns:
+        int: The number of rows modified by the stored procedure, or -1 if not applicable.
+    """
+    result = _execute_sp(stored_procedure,
+                         transaction=transaction,
+                         in_params=params,
+                         get_update_count=True)
+
+    return result.update_count
+
+
+def get_data(stored_procedure, params=None):
+    """Returns data by executing a stored procedure.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to call.
+        params (dict): A Dictionary containing all parameters. Optional.
+
+    Returns:
+        Dataset: A Dataset that is the resulting data of the stored procedure call, if any.
+    """
+    result = _execute_sp(stored_procedure,
+                         in_params=params,
+                         get_result_set=True)
+
+    return result.result_set
+
+
+def get_output_params(stored_procedure, output, params=None, transaction=None):
+    """Gets the Output parameters from the Stored Procedure.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to execute.
+        output (dict): A Dictionary containing all output parameters.
+        params (dict): A Dictionary containing all parameters. Optional.
+        transaction (str): A transaction identifier. If omitted, the call will be executed in its
+            own transaction. Optional.
+
+    Returns:
+        dict: Result's output_params.
+    """
+    result = _execute_sp(stored_procedure,
+                         transaction=transaction,
+                         in_params=params,
+                         out_params=output,
+                         get_output_params=True)
+
+    return result.output_params
+
+
+def get_return_value(stored_procedure, return_type_code, params=None, transaction=None):
+    """Gets the Return Value from the Stored Procedure.
+
+    Args:
+        stored_procedure (str): The name of the stored procedure to execute.
+        return_type_code (int): The Type Code of the Return Value.
+        params (dict): A Dictionary containing all parameters. Optional.
+        transaction (str): A transaction identifier. If omitted, the call will be executed in its
+            own transaction. Optional.
+
+    Returns:
+        int: The return value.
+    """
+    result = _execute_sp(stored_procedure,
+                         transaction=transaction,
+                         in_params=params,
+                         return_type_code=return_type_code,
+                         get_return_value=True)
+
+    return result.return_value
