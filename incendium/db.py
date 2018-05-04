@@ -45,7 +45,7 @@ def execute_sp(stored_procedure, database='', transaction=None, skip_audit=False
         database (str): The name of the database connection to execute against. If
             omitted or "", the project's default database connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the call will be executed
-            in its own transaction.
+            in its own transaction. Optional.
         skip_audit (bool): A flag which, if set to true, will cause the procedure call to
             skip the audit system. Useful for some queries that have fields which won't fit into
             the audit log. Optional.
