@@ -8,6 +8,7 @@ __all__ = [
     'dataset',
     'date',
     'db',
+    'exceptions',
     'net',
     'user',
     'util'

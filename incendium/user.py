@@ -5,9 +5,8 @@
 """Incendium User module."""
 
 __all__ = [
-    'get_sso_user',
-    'get_user_first_name',
-    'get_user_full_name'
+    'get_emails',
+    'get_user'
 ]
 
 import system.security
@@ -53,6 +52,39 @@ class _User(object):
         return self._locale
 
 
+def get_emails(user_source='', filter_role=''):
+    """Gets a list of email addresses.
+
+    Args:
+        user_source (str): The name of the User Source. If not provided, the default User Source
+            will be consulted. Optional.
+        filter_role (str): The name of the role. If provided, a list of email addresses for users
+            that are assigned to a matching role will be retrieved, otherwise all email addresses
+            will be retrieved. Optional.
+
+    Returns:
+        list[str]: A list of email addresses.
+    """
+    # Initialize variables.
+    emails = []
+
+    # Retrieve users from the User Source.
+    users = system.user.getUsers(user_source)
+
+    for user in users:
+        _emails = [ci.value for ci in user.getContactInfo() if ci.contactType == 'email']
+        for email in _emails:
+            if filter_role:
+                for role in user.getRoles():
+                    if filter_role.upper() in role.upper() and email not in emails:
+                        emails.append(email)
+            else:
+                if email not in emails:
+                    emails.append(email)
+
+    return emails
+
+
 def get_user(user_source, failover=None):
     """Looks up the logged-in User in a User Source.
 
@@ -67,10 +99,10 @@ def get_user(user_source, failover=None):
     user = None
     user_obj = None
 
-    # 1 Try User Source
-    if sso:
+    # Try User Source.
+    if user_source:
         user = system.user.getUser(user_source, system.security.getUsername())
-    # 2 Try Failover
+    # Try Failover.
     if not user and failover:
         user = system.user.getUser(failover, system.security.getUsername())
 
