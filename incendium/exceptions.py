@@ -9,6 +9,9 @@ __all__ = [
     'TagError'
 ]
 
+UNEXPECTED_ERROR = 'An unexpected error occurred in %s. \n%s'
+UNEXPECTED_ERROR_CAUSED_BY = 'An unexpected error occurred in %s. \n%s\nCaused by: %s'
+
 
 class ApplicationError(Exception):
     """Application Error class."""
