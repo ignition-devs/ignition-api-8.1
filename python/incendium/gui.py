@@ -37,9 +37,7 @@ def error(message, title):
             selected Locale.
         title (str): A title for the message box. This will be translated to the selected Locale.
     """
-    if message:
-        system.gui.errorBox(system.util.translate(message),
-                            system.util.translate(title))
+    system.gui.errorBox(system.util.translate(message), system.util.translate(title))
 
 
 def info(message, title, detail=None):
