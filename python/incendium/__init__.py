@@ -9,6 +9,7 @@ __all__ = [
     'date',
     'db',
     'exceptions',
+    'gui',
     'net',
     'user',
     'util'
