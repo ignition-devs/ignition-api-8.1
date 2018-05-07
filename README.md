@@ -1,9 +1,9 @@
 # Description
-This repository consists of the following folders:
+This repository consists of the following projects:
 * python
 
 ## python
-The python folders consists of the following packages:
+The python project consists of the following packages:
 * incendium
 * system
 
@@ -12,7 +12,7 @@ Is a package that extends and wraps some functions from Ignition's scripting mod
 the [Wiki](https://github.com/thecesrom/Ignition/wiki/incendium)
 
 ### system (a.k.a. Ignition mock scripts)
-Is a library of Inductive Automation Ignition's mock scripting functions meant to be included as a dependency on your
+Is a library of Inductive Automation Ignition's API (mock) scripting functions meant to be included as a dependency on your
 own projects when developing on a Python/Jython IDE. This allows you to get code completion (a.k.a. IntelliSense).
 
 For more information, please refer to
