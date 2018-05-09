@@ -10,9 +10,7 @@ __all__ = [
 ]
 
 import system.net
-
-SMTP = 'mail.mycompany.com:25'
-SENDER = 'no-reply@mycompany.com'
+from incendium import constants
 
 
 def _send_email(subject, body, html, to, priority):
@@ -27,8 +25,8 @@ def _send_email(subject, body, html, to, priority):
         priority (str): Priority for the message.
     """
     try:
-        system.net.sendEmail(smtp=SMTP, fromAddr=SENDER, subject=subject, body=body, html=html,
-                             to=to, priority=priority)
+        system.net.sendEmail(smtp=constants.SMTP, fromAddr=constants.SENDER, subject=subject,
+                             body=body, html=html, to=to, priority=priority)
     finally:
         pass
 

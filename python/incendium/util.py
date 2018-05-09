@@ -13,12 +13,7 @@ __all__ = [
 import traceback
 
 import system.util
-
-# Global variables.
-DEFAULT_LANGUAGE = 'en_US'
-EMPTY_STRING = ''
-NEW_LINE = '\n'
-NEW_TABBED_LINE = '\n    - '
+from incendium import constants
 
 
 def get_function_name():
@@ -37,7 +32,7 @@ def set_locale(user):
     Args:
         user (_User): The User.
     """
-    locale = DEFAULT_LANGUAGE
+    locale = constants.DEFAULT_LANGUAGE
 
     if user and user.get_locale():
         locale = user.get_locale()
@@ -62,22 +57,22 @@ def validate_form(strings=None, numbers=None, collections=None):
     """
     # Initialize variables.
     is_valid = True
-    error_message = EMPTY_STRING
+    error_message = constants.EMPTY_STRING
 
     if strings:
         for key, value in strings.iteritems():
             if not value:
-                error_message += NEW_TABBED_LINE + key
+                error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
     if numbers:
         for key, value in numbers.iteritems():
             if not value or value <= 0:
-                error_message += NEW_TABBED_LINE + key
+                error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
     if collections:
         for key, value in collections.iteritems():
             if not value or value <= 0:
-                error_message += NEW_TABBED_LINE + key
+                error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
 
     return is_valid, error_message
