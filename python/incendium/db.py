@@ -15,7 +15,7 @@ __all__ = [
 import system.db
 
 
-class Result(object):
+class _Result(object):
     """Result class."""
 
     def __init__(self,
@@ -66,11 +66,11 @@ def _execute_sp(stored_procedure, database='', transaction=None, skip_audit=Fals
             rows modified by the stored procedure, or -1 if not applicable. Optional.
 
     Returns:
-        Result: Result object.
+        _Result: Result object.
     """
     # Initialize variables.
     _out_params = {}
-    _result = Result()
+    _result = _Result()
 
     call = system.db.createSProcCall(procedureName=stored_procedure,
                                      database=database,
