@@ -14,19 +14,22 @@ import system.gui
 import system.util
 
 
-def confirm(message, title):
+def confirm(message, title, show_cancel=False):
     """Displays a confirmation dialog box to the user with "Yes" and "No" options, and a custom
     message.
 
     Args:
         message (str): The message to display. This will be translated to the selected Locale.
         title (str): A title for the message box. This will be translated to the selected Locale.
+        show_cancel (bool): Show a cancel button in the dialog. Optional.
 
     Returns:
         bool: True if the user selected "Yes", False if the user selected "No", None if the user
             selected "Cancel".
     """
-    return system.gui.confirm(system.util.translate(message), system.util.translate(title))
+    return system.gui.confirm(system.util.translate(message),
+                              system.util.translate(title),
+                              show_cancel)
 
 
 def error(message, title):
