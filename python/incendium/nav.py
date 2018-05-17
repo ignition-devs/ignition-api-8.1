@@ -1,5 +1,5 @@
 # Copyright (C) 2018
-# Author: Cesar Roman
+# Authors: Cesar Roman, Kyle Chase.
 # Contact: thecesrom@gmail.com
 
 """Incendium Navigation module."""
