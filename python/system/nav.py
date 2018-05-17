@@ -7,8 +7,19 @@
 The following functions allow you to open and close windows in the client."""
 
 __all__ = [
+    'getCurrentWindow',
     'swapWindow'
 ]
+
+
+def getCurrentWindow():
+    """Returns the path of the current "main screen" window, which is defined as the maximized
+    window. With the Typical Navigation Strategy, there is only ever one maximized window at a time.
+
+    Eeturns:
+        str: The path of the current "main screen" window - the maximized window.
+    """
+    return 'Path/To/Maximized Window'
 
 
 def swapWindow(swapFromPath, swapToPath, params=None):

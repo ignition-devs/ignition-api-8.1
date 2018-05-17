@@ -5,28 +5,73 @@
 """Incendium Navigation module."""
 
 __all__ = [
+    'swap_to',
     'swap_windows'
 ]
 
 import system.nav
-from incendium import (constants, gui)
+
+# Constants.
+CURRENT_DIRECTORY = '.'
+PARENT_DIRECTORY = '..'
+PATH_SEPARATOR = '/'
 
 
-def swap_windows(from_path, to_path, input_windows, params=None):
-    """Performs a window swap after asking the user to save their changes on all input windows.
+def _get_full_path(from_path, to_path):
+    """Returns the full path of the window to swap to relative to the path of the window to swap
+    from.
 
     Args:
-        from_path (str): The path of the window to swap from. Must be a currently open window, or
-            this will act like an openWindow.
-        to_path (str): The name of the window to swap to.
-        input_windows (list[str]):  A list of paths that includes all input windows.
+        from_path: The full path of the window to swap from.
+        to_path: The full path or relative path of the window to swap to.
+
+    Returns:
+        str: The full path of the window to swap to.
+    """
+    _from = from_path.split(PATH_SEPARATOR)
+    _to = to_path.split(PATH_SEPARATOR)
+    path_parts = []
+    if _to[0] not in (PARENT_DIRECTORY, CURRENT_DIRECTORY):
+        path_parts = _to
+    elif _to[0] == PARENT_DIRECTORY:
+        path_parts = _from[:-2] + _to[1:]
+    elif _to[0] == CURRENT_DIRECTORY:
+        path_parts = _from[:-1] + _to[1:]
+
+    full_path = []
+    for path_part in path_parts:
+        if path_part == PARENT_DIRECTORY and len(full_path):
+            full_path = full_path[:-1]
+        elif path_part == CURRENT_DIRECTORY:
+            pass
+        else:
+            full_path.append(path_part)
+
+    return '/'.join(full_path)
+
+
+def swap_to(path, params=None):
+    """Performs a window swap from the current main screen window to the window specified.
+
+    Args:
+        path (str): The full path or relative path of the window to swap to.
         params (dict): A dictionary of parameters to pass into the window. The keys in the
             dictionary must match dynamic property names on the target window's root container.
             The values for each key will be used to set those properties. Optional.
     """
-    if to_path != from_path:
-        if from_path in input_windows:
-            if gui.confirm(constants.PROCEED_WITHOUT_SAVING_CHANGES, constants.CONFIRM):
-                system.nav.swapWindow(from_path, to_path, params)
-        else:
-            system.nav.swapWindow(from_path, to_path, params)
+    swap_windows(system.nav.getCurrentWindow(), path, params)
+
+
+def swap_windows(from_path, to_path, params=None):
+    """Performs a window swap.
+
+    Args:
+        from_path (str): The full path of the window to swap from.
+        to_path (str): The full path or relative path of the window to swap to.
+        params (dict): A dictionary of parameters to pass into the window. The keys in the
+            dictionary must match dynamic property names on the target window's root container.
+            The values for each key will be used to set those properties. Optional.
+    """
+    _to_path = _get_full_path(from_path, to_path)
+    if _to_path != from_path:
+        system.nav.swapWindow(from_path, _to_path, params)
