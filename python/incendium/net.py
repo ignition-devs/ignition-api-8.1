@@ -24,11 +24,8 @@ def _send_email(subject, body, html, to, priority):
         to (list[str]): A list of email addresses to send to.
         priority (str): Priority for the message.
     """
-    try:
-        system.net.sendEmail(smtp=constants.SMTP, fromAddr=constants.SENDER, subject=subject,
-                             body=body, html=html, to=to, priority=priority)
-    finally:
-        pass
+    system.net.sendEmail(smtp=constants.SMTP, fromAddr=constants.SENDER, subject=subject,
+                         body=body, html=html, to=to, priority=priority)
 
 
 def send_high_priority_email(subject, body, to):
