@@ -20,7 +20,8 @@ def compare(start_date=system.date.now(), end_date=system.date.now()):
 
     Returns:
         int: 0 if start_date and end_date are equal, -1. If end_date is
-            greater than start_date, 1. If start_date is greater than end_date.
+            greater than start_date, 1. If start_date is greater than
+            end_date.
     """
     ret_val = 1
 

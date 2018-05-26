@@ -26,8 +26,8 @@ def get_function_name():
 
 
 def set_locale(user):
-    """Sets the Locale to the user's default Language. If none is configured,
-    the default will be English (US).
+    """Sets the Locale to the user's default Language. If none is
+    configured, the default will be English (US).
 
     Args:
         user (_User): The User.
@@ -44,19 +44,19 @@ def validate_form(strings=None, numbers=None, collections=None):
     """Performs a form validation.
 
     Args:
-        strings (dict): A dictionary containing all strings which must not be
-            empty. Optional.
-        numbers (dict): A dictionary containing all numbers which must be
-            greater than zero. Optional.
-        collections (dict): A dictionary containing all collections which
-            must at least contain an element. Optional.
+        strings (dict): A dictionary containing all strings which must
+            not be empty. Optional.
+        numbers (dict): A dictionary containing all numbers which must
+            be greater than zero. Optional.
+        collections (dict): A dictionary containing all collections
+            which must at least contain an element. Optional.
 
     Returns:
         tuple: A tuple containing:
             is_valid (bool): True if all validation tests have passed,
-            False otherwise.
-            error_message (str): Error message in case any validation test
-                has failed.
+                False otherwise.
+            error_message (str): Error message in case any validation
+                test has failed.
     """
     # Initialize variables.
     is_valid = True

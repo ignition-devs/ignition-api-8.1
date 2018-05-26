@@ -24,16 +24,17 @@ COORD_DESIGNER = 1
 
 
 def confirm(message, title=None, allowCancel=False):
-    """Displays a confirmation dialog box to the user with "Yes" and "No"
-    options, and a custom message.
+    """Displays a confirmation dialog box to the user with "Yes", "No"
+    and "Cancel" options, and a custom message.
 
     Args:
         message (str): The message to show in the confirmation dialog.
         title (str): The title for the confirmation dialog. Optional.
-        allowCancel (bool): Show a cancel button in the dialog. Optional.
+        allowCancel (bool): Show a cancel button in the dialog.
+            Optional.
 
     Returns:
-        bool: True (1) if the user selected "Yes", false (0) if the user
+        bool: True (1) if the user selected "Yes", False (0) if the user
             selected "No", None if the user selected "Cancel".
     """
     print(message, title, allowCancel)

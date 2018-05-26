@@ -58,10 +58,10 @@ def get_emails(user_source='', filter_role=''):
     Args:
         user_source (str): The name of the User Source. If not provided,
             the default User Source will be consulted. Optional.
-        filter_role (str): The name of the role. If provided, a list of email
-            addresses for users that are assigned to a matching role will be
-            retrieved, otherwise all email addresses will be retrieved.
-            Optional.
+        filter_role (str): The name of the role. If provided, a list of
+            email addresses for users that are assigned to a matching
+            role will be retrieved, otherwise all email addresses will
+            be retrieved. Optional.
 
     Returns:
         list[str]: A list of email addresses.

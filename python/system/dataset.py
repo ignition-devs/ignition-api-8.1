@@ -4,7 +4,8 @@
 # pylint: disable=C0103
 
 """Dataset Functions
-The following functions give you access to view and interact with datasets."""
+The following functions give you access to view and interact with
+datasets."""
 
 __all__ = [
     'getColumnHeaders',
@@ -27,9 +28,11 @@ def getColumnHeaders(dataset):
 
 
 def toDataSet(*args):
-    """This function is used to 1) convert PyDataSets to DataSets, and 2)
-    create new datasets from raw Python lists. When creating a new dataset,
-    headers should have unique names.
+    """This function is used to
+    1) convert PyDataSets to DataSets, and
+    2) create new datasets from raw Python lists.
+
+    When creating a new dataset, headers should have unique names.
 
     1) system.dataset.toDataSet(dataset)
     2) system.dataset.toDataSet(headers, data)
@@ -45,8 +48,9 @@ def toDataSet(*args):
 
 
 def toPyDataSet(dataset):
-    """This function converts from a normal DataSet to a PyDataSet, which is
-    a wrapper class which makes working with datasets more Python-esque.
+    """This function converts from a normal DataSet to a PyDataSet,
+    which is a wrapper class which makes working with datasets more
+    Python-esque.
 
     Args:
         dataset (Dataset): A DataSet object to convert into a PyDataSet.
