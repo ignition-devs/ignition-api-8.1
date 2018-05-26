@@ -4,7 +4,8 @@
 # pylint: disable=C0103,C0111,R0201
 
 """User Functions
-The following functions give you access to view and edit users in the Gateway."""
+The following functions give you access to view and edit users in the
+Gateway."""
 
 __all__ = [
     'User',
@@ -43,8 +44,9 @@ class User(object):
         return prop
 
     def getContactInfo(self):
-        """Returns a sequence of ContactInfo objects. Each of these objects will have a contactType
-        and valueproperty representing the contact information, both strings.
+        """Returns a sequence of ContactInfo objects. Each of these objects
+        will have a contactType and valueproperty representing the contact
+        information, both strings.
 
         Returns:
             list[ContactInfo]: A sequence of ContactInfo objects.
@@ -55,12 +57,12 @@ class User(object):
         return [ci_email, ci_phone, ci_sms]
 
     def getId(self):
-        """Returns the internal identifier object that the backing user source needs to identify
-        this user.
+        """Returns the internal identifier object that the backing user
+        source needs to identify this user.
 
         Returns:
-            str: The internal identifier object that the backing user source needs to identify this
-                user.
+            str: The internal identifier object that the backing user source
+                needs to identify this user.
         """
         return 1
 
@@ -76,17 +78,20 @@ class User(object):
         return prop
 
     def getRoles(self):
-        """Returns a sequence of strings representing the roles that this user belongs to
+        """Returns a sequence of strings representing the roles that this
+        user belongs to.
 
         Returns:
-             list[str]: Sequence of strings representing the roles that this user belongs to.
+             list[str]: Sequence of strings representing the roles that this
+                user belongs to.
         """
         return User.Roles
 
 
 def getUsers(userSource):
-    """Retrieves the list of users in a specific user source. The `User` objects that are returned
-    contain all of the information about that user, except for the user's password.
+    """Retrieves the list of users in a specific user source. The `User`
+    objects that are returned contain all of the information about that
+    user, except for the user's password.
 
     Args:
         userSource (str): The name of the user source to find the users in.
@@ -100,11 +105,12 @@ def getUsers(userSource):
 
 
 def getUser(userSource, username):
-    """Looks up a specific user in a user source, by username. The full `User` object is returned
-    except for the user's password.
+    """Looks up a specific user in a user source, by username. The full
+    `User` object is returned except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to search for the user in.
+        userSource (str): The name of the user source to search for the user
+            in.
         username (str): The username of the user to search for.
 
     Returns:

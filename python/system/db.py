@@ -4,7 +4,8 @@
 # pylint: disable=C0103,C0111,R0201
 
 """Database Functions
-The following functions give you access to view and modify data in the database."""
+The following functions give you access to view and modify data in the
+database."""
 
 __all__ = [
     'beginTransaction',
@@ -45,8 +46,8 @@ NCHAR = -15
 NVARCHAR = -9
 LONGNVARCHAR = -16
 BOOLEAN = 16
-# The following type code constants are available for other uses, but are not supported by
-# createSProcCall:
+# The following type code constants are available for other uses, but are not
+# supported by createSProcCall:
 ORACLE_CURSOR = -10
 DISTINCT = 2001
 STRUCT = 2002
@@ -57,24 +58,34 @@ ARRAY = 2003
 DATALINK = 70
 OTHER = 1111
 
+# Isolation levels.
+READ_COMMITTED = 2
+READ_UNCOMMITTED = 1
+REPEATABLE_READ = 4
+SERIALIZABLE = 8
+
 
 class SProcCall(object):
     def __init__(self):
         pass
 
     def getResultSet(self):
-        """Returns a dataset that is the resulting data of the stored procedure, if any.
+        """Returns a dataset that is the resulting data of the stored
+        procedure, if any.
 
         Returns:
-            Dataset: The dataset that is the resulting data of the stored procedure, if any.
+            Dataset: The dataset that is the resulting data of the stored
+                procedure, if any.
         """
         pass
 
     def getUpdateCount(self):
-        """Returns the number of rows modified by the stored procedure, or -1 if not applicable.
+        """Returns the number of rows modified by the stored procedure,
+        or -1 if not applicable.
 
         Returns:
-             int: The number of rows modified by the stored procedure, or -1 if not applicable.
+             int: The number of rows modified by the stored procedure,
+                or -1 if not applicable.
         """
         return 1
 
@@ -90,7 +101,8 @@ class SProcCall(object):
         """Returns the value of the previously registered out-parameter.
 
         Args:
-            param: Index (int) or name (str) of the previously registered out-parameter.
+            param (object): Index (int) or name (str) of the previously
+                registered out-parameter.
 
         Returns:
             object: The value of the previously registered out-parameter.
@@ -127,42 +139,50 @@ class SProcCall(object):
 
 
 def beginTransaction(database=None, isolationLevel=None, timeout=None):
-    """Begins a new database transaction. Database transactions are used to execute multiple queries
-    in an atomic fashion. After executing queries, you must either commit the transaction to have
-    your changes take effect, or rollback the transaction which will make all operations since the
-    last commit not take place. The transaction is given a new unique string code, which is then
-    returned. You can then use this code  as the tx argument for other system.db.* function calls to
-    execute various types of queries using this transaction.
+    """Begins a new database transaction. Database transactions are used to
+    execute multiple queries in an atomic fashion. After executing queries,
+    you must either commit the transaction to have your changes take effect,
+    or rollback the transaction which will make all operations since the
+    last commit not take place. The transaction is given a new unique string
+    code, which is then returned. You can then use this code  as the tx
+    argument for other system.db.* function calls to execute various types
+    of queries using this transaction.
 
-    An open transaction consumes one database connection until it is closed. Because leaving
-    connections open indefinitely would exhaust the connection pool, each transaction is given a
-    timeout. Each time the transaction is used, the timeout timer is reset. For example, if you make
-    a transaction with a timeout of one minute, you must use that transaction at least once a
-    minute. If a transaction is detected to have timed out, it will be automatically closed and its
-    transaction id will no longer be valid.
+    An open transaction consumes one database connection until it is closed.
+    Because leaving connections open indefinitely would exhaust the
+    connection pool, each transaction is given a timeout. Each time the
+    transaction is used, the timeout timer is reset. For example, if you make
+    a transaction with a timeout of one minute, you must use that transaction
+    at least once a minute. If a transaction is detected to have timed out,
+    it will be automatically closed and its transaction id will no longer be
+    valid.
 
     Args:
-        database (str): The name of the database connection to create a transaction in.
-            Use "" for the project's default connection. Optional.
-        isolationLevel (int): The transaction isolation level to use. Use one of the four
-            constants: system.db.READ_COMMITTED, system.db.READ_UNCOMMITTED,
-            system.db.REPEATABLE_READ, or system.db.SERIALIZABLE. Optional.
-        timeout (long): The amount of time, in milliseconds, that this connection is
-            allowed to remain open without being used. Timeout counter is reset any time a query or
-            call is executed against the transaction, or when committed or rolled-back. Optional.
+        database (str): The name of the database connection to create a
+            transaction in. Use "" for the project's default connection.
+            Optional.
+        isolationLevel (int): The transaction isolation level to use. Use one
+            of the four constants: system.db.READ_COMMITTED,
+            system.db.READ_UNCOMMITTED, system.db.REPEATABLE_READ,
+            or system.db.SERIALIZABLE. Optional.
+        timeout (long): The amount of time, in milliseconds, that this
+            connection is allowed to remain open without being used. Timeout
+            counter is reset any time a query or call is executed against the
+            transaction, or when committed or rolled-back. Optional.
 
     Returns:
-        str: The new transaction ID. You'll use this ID as the "tx" argument for all other calls to
-            have them execute against this transaction.
+        str: The new transaction ID. You'll use this ID as the "tx" argument
+            for all other calls to have them execute against this transaction.
     """
     print(database, isolationLevel, timeout)
     return 'transaction_id'
 
 
 def closeTransaction(tx):
-    """Closes the transaction with the given ID. Note that you must commit or rollback the
-    transaction before you close it. Closing the transaction will return its database connection to
-    the pool. The transaction ID will no longer be valid.
+    """Closes the transaction with the given ID. Note that you must commit or
+    rollback the transaction before you close it. Closing the transaction
+    will return its database connection to the pool. The transaction ID will
+    no longer be valid.
 
     Args:
         tx (str): The transaction ID.
@@ -171,11 +191,12 @@ def closeTransaction(tx):
 
 
 def commitTransaction(tx):
-    """Performs a commit for the given transaction. This will make all statements executed against
-    the transaction since its beginning or since the last commit or rollback take effect in the
-    database. Until you commit a transaction, any changes that the transaction makes will not be
-    visible to other connections. Note that if you are done with the transaction, you must close it
-    after you commit it.
+    """Performs a commit for the given transaction. This will make all
+    statements executed against the transaction since its beginning or since
+    the last commit or rollback take effect in the database. Until you commit
+    a transaction, any changes that the transaction makes will not be visible
+    to other connections. Note that if you are done with the transaction,
+    you must close it after you commit it.
 
     Args:
         tx (str): The transaction ID.
@@ -188,39 +209,41 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
 
     Args:
         procedureName (str): The named of the stored procedure to call.
-        database (str): The name of the database connection to execute against. If omitted or "",
-            the project's default database connection will be used. Optional.
-        tx (str): A transaction identifier. If omitted, the call will be executed in its own
-            transaction. Optional.
-        skipAudit (bool): A flag which, if set to true, will cause the procedure call to skip the
-            audit system. Useful for some queries that have fields which won't fit into the audit
-            log. Optional.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        tx (str): A transaction identifier. If omitted, the call will be
+            executed in its own transaction. Optional.
+        skipAudit (bool): A flag which, if set to true, will cause the
+            procedure call to skip the audit system. Useful for some queries
+            that have fields which won't fit into the audit log. Optional.
 
     Returns:
-        SProcCall: A stored procedure call context, which can be configured and then used as the
-            argument to system.db.execSProcCall.
+        SProcCall: A stored procedure call context, which can be configured
+            and then used as the argument to system.db.execSProcCall.
     """
     print(procedureName, database, tx, skipAudit)
     return SProcCall()
 
 
 def execSProcCall(callContext):
-    """Executes a stored procedure call. The one parameter to this function is an SProcCall - a
-    stored procedure call context. See the description of system.db.createSProcCall for more
-    information and examples.
+    """Executes a stored procedure call. The one parameter to this function
+    is an SProcCall - a stored procedure call context. See the description of
+    system.db.createSProcCall for more information and examples.
 
     Args:
-        callContext (SProcCall): A stored procedure call context, with any input, output, and/or
-            return value parameters correctly configured. Use system.db.createSProcCall to create a
-            call context.
+        callContext (SProcCall): A stored procedure call context, with any
+            input, output, and/or return value parameters correctly
+            configured. Use system.db.createSProcCall to create a call context.
     """
     print callContext
 
 
 def rollbackTransaction(tx):
-    """Performs a rollback on the given connection. This will make all statements executed against
-    this transaction since its beginning or since the last commit  or rollback undone. Note that
-    if you are done with the transaction, you must also close it after you do a rollback on it.
+    """Performs a rollback on the given connection. This will make all
+    statements executed against this transaction since its beginning or since
+    the last commit  or rollback undone. Note that if you are done with the
+    transaction, you must also close it after you do a rollback on it.
 
     Args:
         tx (str): The transaction ID.

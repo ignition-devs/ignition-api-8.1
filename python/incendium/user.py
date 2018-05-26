@@ -56,33 +56,33 @@ def get_emails(user_source='', filter_role=''):
     """Gets a list of email addresses.
 
     Args:
-        user_source (str): The name of the User Source. If not provided, the default User Source
-            will be consulted. Optional.
-        filter_role (str): The name of the role. If provided, a list of email addresses for users
-            that are assigned to a matching role will be retrieved, otherwise all email addresses
-            will be retrieved. Optional.
+        user_source (str): The name of the User Source. If not provided,
+            the default User Source will be consulted. Optional.
+        filter_role (str): The name of the role. If provided, a list of email
+            addresses for users that are assigned to a matching role will be
+            retrieved, otherwise all email addresses will be retrieved.
+            Optional.
 
     Returns:
         list[str]: A list of email addresses.
     """
     # Initialize variables.
-    emails = []
+    emails = set()
 
     # Retrieve users from the User Source.
     users = system.user.getUsers(user_source)
 
     for user in users:
-        _emails = [ci.value for ci in user.getContactInfo() if ci.contactType == 'email']
+        _emails = [ci.value for ci in user.getContactInfo()
+                   if ci.contactType == 'email']
         for email in _emails:
             if filter_role:
-                for role in user.getRoles():
-                    if filter_role.upper() in role.upper() and email not in emails:
-                        emails.append(email)
+                if filter_role in user.getRoles():
+                    emails.add(email)
             else:
-                if email not in emails:
-                    emails.append(email)
+                emails.add(email)
 
-    return emails
+    return sorted(list(emails))
 
 
 def get_user(user_source, failover=None):
@@ -98,13 +98,14 @@ def get_user(user_source, failover=None):
     # Initialize variables
     user = None
     user_obj = None
+    _username = system.security.getUsername()
 
     # Try User Source.
     if user_source:
-        user = system.user.getUser(user_source, system.security.getUsername())
+        user = system.user.getUser(user_source, _username)
     # Try Failover.
     if not user and failover:
-        user = system.user.getUser(failover, system.security.getUsername())
+        user = system.user.getUser(failover, _username)
 
     if user:
         user_obj = _User(user)

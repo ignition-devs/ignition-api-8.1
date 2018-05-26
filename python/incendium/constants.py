@@ -24,10 +24,13 @@ FORM_ERROR = 'Please provide information in the following fields:'
 INFO_WINDOW_TITLE = 'Information'
 NEW_LINE = '\n'
 NEW_TABBED_LINE = '\n    - '
-PROCEED_WITH_ROW_DELETION = 'Are you sure you would like to delete the selected row?'
+PROCEED_WITH_ROW_DELETION = ('Are you sure you would like to delete the '
+                             'selected row?')
 PROCEED_WITH_ROWS_DELETION = 'Are you sure you would like to delete all rows?'
 PROCEED_WITH_SAVING_CHANGES = 'Are you sure you would like to proceed?'
-PROCEED_WITHOUT_SAVING_CHANGES = 'Would you like to proceed without saving your changes?'
+PROCEED_WITHOUT_SAVING_CHANGES = ('Would you like to proceed without saving '
+                                  'your changes?')
 SUCCESS_WINDOW_TITLE = 'Success'
 UNEXPECTED_ERROR = 'An unexpected error occurred in %s. \n%s'
-UNEXPECTED_ERROR_CAUSED_BY = 'An unexpected error occurred in %s. \n%s\nCaused by: %s'
+UNEXPECTED_ERROR_CAUSED_BY = ('An unexpected error occurred in %s. '
+                              '\n%s\nCaused by: %s')

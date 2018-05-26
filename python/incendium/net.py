@@ -19,13 +19,14 @@ def _send_email(subject, body, html, to, priority):
     Args:
         subject (str): The subject line for the email.
         body (str): The body text of the email.
-        html (bool): A flag indicating whether or not to send the email as an HTML email. Will
-            auto-detect if omitted.
+        html (bool): A flag indicating whether or not to send the email as an
+            HTML email. Will auto-detect if omitted.
         to (list[str]): A list of email addresses to send to.
         priority (str): Priority for the message.
     """
-    system.net.sendEmail(smtp=constants.SMTP, fromAddr=constants.SENDER, subject=subject,
-                         body=body, html=html, to=to, priority=priority)
+    system.net.sendEmail(smtp=constants.SMTP, fromAddr=constants.SENDER,
+                         subject=subject, body=body, html=html, to=to,
+                         priority=priority)
 
 
 def send_high_priority_email(subject, body, to):
@@ -46,7 +47,8 @@ def send_html_email(subject, body, to, priority='3'):
         subject (str): The subject line for the email.
         body (str): The body text of the email in HTML format.
         to (list[str]): A List of email addresses to send to.
-        priority (str): Priority of the message, from "1" to "5", with "1" being highest
-            priority. Defaults to "3" (normal) priority. Optional.
+        priority (str): Priority of the message, from "1" to "5", with "1"
+            being highest priority. Defaults to "3" (normal) priority.
+            Optional.
     """
     _send_email(subject, body, True, to, priority)

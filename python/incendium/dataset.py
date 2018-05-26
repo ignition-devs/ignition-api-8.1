@@ -16,8 +16,10 @@ def to_xml(dataset, root='root', element='row'):
 
     Args:
         dataset (Dataset): The input dataset.
-        root (str): The value of the root. If not provided, it defaults to "root".
-        element (str): The value of the row. If not provided, it defaults to "row".
+        root (str): The value of the root. If not provided, it defaults
+            to "root".
+        element (str): The value of the row. If not provided, it defaults
+            to "row".
 
     Returns:
         str: The string XML representation of the dataset.
@@ -31,7 +33,8 @@ def to_xml(dataset, root='root', element='row'):
     for row in data:
         ret_str += '%s<%s>%s' % (tab, element, new_line)
         for header in headers:
-            ret_str += '%s<%s>%s</%s>%s' % (tab * 2, header, row[header], header, new_line)
+            ret_str += '%s<%s>%s</%s>%s' % (tab * 2, header, row[header],
+                                            header, new_line)
         ret_str += '%s</%s>%s' % (tab, element, new_line)
     ret_str += '</%s>' % root
 

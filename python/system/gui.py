@@ -4,7 +4,8 @@
 # pylint: disable=C0103
 
 """GUI Functions
-The following functions allow you to control windows and create popup interfaces."""
+The following functions allow you to control windows and create popup
+interfaces."""
 
 __all__ = [
     'confirm',
@@ -23,8 +24,8 @@ COORD_DESIGNER = 1
 
 
 def confirm(message, title=None, allowCancel=False):
-    """Displays a confirmation dialog box to the user with "Yes" and "No" options, and a custom
-    message.
+    """Displays a confirmation dialog box to the user with "Yes" and "No"
+    options, and a custom message.
 
     Args:
         message (str): The message to show in the confirmation dialog.
@@ -32,8 +33,8 @@ def confirm(message, title=None, allowCancel=False):
         allowCancel (bool): Show a cancel button in the dialog. Optional.
 
     Returns:
-        bool: True (1) if the user selected "Yes", false (0) if the user selected "No", None if the
-            user selected "Cancel".
+        bool: True (1) if the user selected "Yes", false (0) if the user
+            selected "No", None if the user selected "Cancel".
     """
     print(message, title, allowCancel)
     return True

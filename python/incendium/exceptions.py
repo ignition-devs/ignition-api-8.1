@@ -22,7 +22,7 @@ class ApplicationError(Exception):
         Args:
             message (str): The error message.
             inner_exception (object): The inner Exception.
-            cause (str): The cause of the Exception. Optional. Defaults to None.
+            cause (str): The cause of the Exception. Optional.
         """
         super(ApplicationError, self).__init__(message)
         self.inner_exception = inner_exception

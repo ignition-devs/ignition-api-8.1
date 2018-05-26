@@ -12,8 +12,8 @@ import datetime
 
 
 def now():
-    """Returns a java.util.Date object that represents the current time according to the local
-    system clock.
+    """Returns a java.util.Date object that represents the current time
+    according to the local system clock.
 
     Returns:
         Date: A new date, set to the current date and time.
