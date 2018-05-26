@@ -18,7 +18,7 @@ def getCurrentWindow():
     defined as the maximized window. With the Typical Navigation
     Strategy, there is only ever one maximized window at a time.
 
-    Eeturns:
+    Returns:
         str: The path of the current "main screen" window - the
             maximized window.
     """
