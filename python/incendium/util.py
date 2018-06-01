@@ -69,12 +69,12 @@ def validate_form(strings=None, numbers=None, collections=None):
                 is_valid = False
     if numbers:
         for key, value in numbers.iteritems():
-            if not value or value <= 0:
+            if value is None or value <= 0:
                 error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
     if collections:
         for key, value in collections.iteritems():
-            if not value or value <= 0:
+            if value is None or value <= 0:
                 error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
 
