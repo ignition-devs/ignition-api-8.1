@@ -11,6 +11,7 @@ __all__ = [
     'beep',
     'getGatewayAddress',
     'getProjectName',
+    'getProperty',
     'jsonDecode',
     'jsonEncode',
     'setLocale',
