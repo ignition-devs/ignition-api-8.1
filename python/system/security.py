@@ -32,7 +32,8 @@ def getUsername():
     Returns:
         str: The current username.
     """
-    return 'johdoe'
+    import getpass
+    return getpass.getuser()
 
 
 def getUserRoles(username, password, authProfile='', timeout=60000):

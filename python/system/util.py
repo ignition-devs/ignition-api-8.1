@@ -65,6 +65,52 @@ def getProjectName():
     return 'MyProject'
 
 
+def getProperty(propertyName):
+    """Retrieves the value of a named system property. Some of the
+    available properties are:
+
+        file.separator. The system file separator character. (for
+            example, "/" (unix) or "\" (windows))
+        line.separator. The system line separator string. (for example,
+            "\r\n" (carriage return, newline))
+        os.arch. Operating system architecture. (for example, "x86")
+        os.name. Operating system name. (for example, "Windows XP")
+        os.version. Operating system version. (for example, "5.1")
+        user.home. User's home directory.
+        user.name. User's account name.
+
+    Args:
+        propertyName (str): The name of the system property to get.
+
+    Returns:
+        str: The value for the named property.
+    """
+    # Initialize variables.
+    ret = None
+
+    # Imports.
+    import getpass
+    import os
+    import platform
+
+    if propertyName == 'file.separator':
+        ret = os.sep
+    elif propertyName == 'line.separator':
+        ret = os.linesep
+    elif propertyName == 'os.arch':
+        ret = platform.machine()
+    elif propertyName == 'os.name':
+        ret = platform.system()
+    elif propertyName == 'os.version':
+        ret = platform.release()
+    elif propertyName == 'user.home':
+        ret = os.path.expanduser('~')
+    elif propertyName == 'user.name':
+        ret = getpass.getuser()
+
+    return ret
+
+
 def jsonDecode(jsonString):
     """Takes a json String and converts it into a Python object such as
     a list or a dict. If the input is not valid json, a string is
