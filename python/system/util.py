@@ -21,7 +21,9 @@ __all__ = [
 
 def beep():
     """Tells the computer to make a "beep" sound."""
+    import os
     import sys
+
     platforms = {
         'linux1': 'Linux',
         'linux2': 'Linux',
@@ -37,11 +39,10 @@ def beep():
             except ImportError:
                 print('Beep!')
         elif platforms[sys.platform] == 'OS X':
-            import os
+            # os.system("echo -ne '\007'")
             os.system('say "beep"')
         elif platforms[sys.platform] == 'Linux':
-            # TODO: Make Linux speak.
-            print('Beep!')
+            os.system('beep')
     else:
         print('Beep!')
 
