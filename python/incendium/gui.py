@@ -12,6 +12,7 @@ __all__ = [
 
 import system.gui
 import system.util
+from javax.swing import JOptionPane
 
 
 def confirm(message, title, show_cancel=False):
@@ -44,8 +45,10 @@ def error(message, title):
         title (str): A title for the message box. This will be
             translated to the selected Locale.
     """
-    system.gui.errorBox(system.util.translate(message),
-                        system.util.translate(title))
+    JOptionPane.showMessageDialog(None,
+                                  system.util.translate(message),
+                                  system.util.translate(title),
+                                  JOptionPane.ERROR_MESSAGE)
 
 
 def info(message, title, detail=None):
@@ -66,3 +69,18 @@ def info(message, title, detail=None):
         msg = '%s %s' % (system.util.translate(message),
                          system.util.translate(detail))
         system.gui.messageBox(msg, system.util.translate(title))
+
+
+def warning(message, title):
+    """Displays a message to the user in a warning style pop-up dialog.
+
+    Args:
+        message (str): The message to display in an warning box. This
+            will be translated to the selected Locale.
+        title (str): A title for the warning box. This will be translated
+            to the selected Locale.
+    """
+    JOptionPane.showMessageDialog(None,
+                                  system.util.translate(message),
+                                  system.util.translate(title),
+                                  JOptionPane.WARNING_MESSAGE)
