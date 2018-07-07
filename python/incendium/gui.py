@@ -7,7 +7,8 @@
 __all__ = [
     'confirm',
     'error',
-    'info'
+    'info',
+    'warning'
 ]
 
 import system.gui
@@ -40,9 +41,9 @@ def error(message, title):
     """Displays an error-style message box to the user.
 
     Args:
-        message (str): The message to display in an error box. This will
-            be translated to the selected Locale.
-        title (str): A title for the message box. This will be
+        message (str): The message to display in an error box. This
+            will be translated to the selected Locale.
+        title (str): A title for the error box. This will be
             translated to the selected Locale.
     """
     JOptionPane.showMessageDialog(None,
