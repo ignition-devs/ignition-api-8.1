@@ -15,12 +15,6 @@ class JOptionPane(object):
     prompts users for a value or informs them of something. For
     information about using JOptionPane, see How to Make Dialogs, a
     section in The Java Tutorial.
-
-    While the JOptionPane class may appear complex because of the large
-    number of methods, almost all uses of this class are one-line calls
-    to one of the static showXxxDialog methods shown below:
-
-
     """
     # messageType.
     ERROR_MESSAGE = 0
@@ -66,7 +60,8 @@ class JOptionPane(object):
         Returns:
             int: An integer indicating the option selected by the user.
         """
-        pass
+        print(parentComponent, message, title, optionType, messageType, icon)
+        return JOptionPane.YES_OPTION
 
     @staticmethod
     def showInputDialog(parentComponent, message, title=None,
@@ -92,7 +87,9 @@ class JOptionPane(object):
             object: An integer indicating the option selected by the
                 user.
         """
-        pass
+        print(parentComponent, message, title, messageType, icon,
+              selectionValues, initialSelectionValue)
+        return 'Input'
 
     @staticmethod
     def showMessageDialog(parentComponent, message, title=None,
@@ -110,7 +107,7 @@ class JOptionPane(object):
                 QUESTION_MESSAGE, or PLAIN_MESSAGE. Optional.
             icon (Icon): The icon to display in the dialog. Optional.
         """
-        pass
+        print(parentComponent, message, title, messageType, icon)
 
     @staticmethod
     def showOptionDialog(parentComponent, message, title=None,
@@ -146,4 +143,6 @@ class JOptionPane(object):
             int: An integer indicating the option chosen by the user,
                 or CLOSED_OPTION if the user closed the dialog.
         """
-        pass
+        print(parentComponent, message, title, optionType, messageType,
+              icon, options, initialValue)
+        return JOptionPane.YES_OPTION
