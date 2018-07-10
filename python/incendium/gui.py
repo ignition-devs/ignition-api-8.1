@@ -14,6 +14,7 @@ __all__ = [
 import system.gui
 import system.util
 from javax.swing import JOptionPane
+from incendium import constants
 
 
 def confirm(message, title, show_cancel=False):
@@ -30,11 +31,31 @@ def confirm(message, title, show_cancel=False):
 
     Returns:
         bool: True if the user selected "Yes", False if the user
-            selected "No", None if the user selected "Cancel".
+            selected "No", None if the user selected "Cancel" or
+            closes the dialog.
     """
-    return system.gui.confirm(system.util.translate(message),
-                              system.util.translate(title),
-                              show_cancel)
+    options = [
+        system.util.translate(constants.YES_TEXT),
+        system.util.translate(constants.NO_TEXT)
+    ]
+
+    if show_cancel:
+        options.append(system.util.translate(constants.CANCEL_TEXT))
+
+    choice = JOptionPane.showOptionDialog(None,
+                                          system.util.translate(message),
+                                          system.util.translate(title),
+                                          JOptionPane.YES_NO_CANCEL_OPTION,
+                                          JOptionPane.QUESTION_MESSAGE,
+                                          None,
+                                          options,
+                                          options[0])
+
+    return (
+        not bool(choice)
+        if choice == JOptionPane.YES_OPTION or choice == JOptionPane.NO_OPTION
+        else None
+    )
 
 
 def error(message, title):

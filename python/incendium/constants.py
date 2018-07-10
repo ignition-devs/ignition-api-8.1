@@ -11,6 +11,12 @@ SENDER = 'no-reply@mycompany.com'
 # Language settings.
 DEFAULT_LANGUAGE = 'en_US'
 
+# Button's text property.
+CANCEL_TEXT = 'Cancel'
+NO_TEXT = 'No'
+OK_TEXT = 'OK'
+YES_TEXT = 'Yes'
+
 # Strings.
 CANNOT_DELETE_ELEMENT = 'This item cannot be deleted.'
 CANNOT_EDIT_ELEMENT = 'This item cannot be edited.'
