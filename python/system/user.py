@@ -1,7 +1,6 @@
 # Copyright (C) 2017
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103,C0111,R0201
 
 """User Functions
 The following functions give you access to view and edit users in the
@@ -57,8 +56,8 @@ class User(object):
         return [ci_email, ci_phone, ci_sms]
 
     def getId(self):
-        """Returns the internal identifier object that the backing user
-        source needs to identify this user.
+        """Returns the internal identifier object that the backing
+        user source needs to identify this user.
 
         Returns:
             str: The internal identifier object that the backing user
@@ -67,7 +66,8 @@ class User(object):
         return 1
 
     def getOrDefault(self, prop):
-        """Returns a default value if the requested item is not present.
+        """Returns a default value if the requested item is not
+        present.
 
         Args:
             prop (User property): The user property to retrieve.
@@ -82,20 +82,20 @@ class User(object):
         this user belongs to.
 
         Returns:
-             list[str]: Sequence of strings representing the roles that
-                this user belongs to.
+             list[str]: Sequence of strings representing the roles
+                thatthis user belongs to.
         """
         return User.Roles
 
 
 def getUsers(userSource):
     """Retrieves the list of users in a specific user source. The User
-    objects that are returned contain all of the information about that
-    user, except for the user's password.
+    objects that are returned contain all of the information about
+    that user, except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to find the users
-            in.
+        userSource (str): The name of the user source to find the
+            users in.
 
     Returns:
         list[User]: A list of User objects.
@@ -106,12 +106,12 @@ def getUsers(userSource):
 
 
 def getUser(userSource, username):
-    """Looks up a specific user in a user source, by username. The full
-    `User` object is returned except for the user's password.
+    """Looks up a specific user in a user source, by username. The
+    full User object is returned except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to search for the
-            user in.
+        userSource (str): The name of the user source to search for
+            the user in.
         username (str): The username of the user to search for.
 
     Returns:

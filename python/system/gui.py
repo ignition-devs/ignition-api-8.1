@@ -1,7 +1,6 @@
 # Copyright (C) 2017
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103
 
 """GUI Functions
 The following functions allow you to control windows and create popup
@@ -34,8 +33,8 @@ def confirm(message, title=None, allowCancel=False):
             Optional.
 
     Returns:
-        bool: True (1) if the user selected "Yes", False (0) if the user
-            selected "No", None if the user selected "Cancel".
+        bool: True (1) if the user selected "Yes", False (0) if the
+            user selected "No", None if the user selected "Cancel".
     """
     print(message, title, allowCancel)
     return True

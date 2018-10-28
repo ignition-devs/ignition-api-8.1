@@ -5,5 +5,6 @@
 """Java package."""
 
 __all__ = [
-    'lang'
+    'lang',
+    'util'
 ]

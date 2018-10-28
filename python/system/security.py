@@ -1,7 +1,6 @@
 # Copyright (C) 2017
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103
 
 """Security Functions
 The following functions give you access to interact with the users and
@@ -45,15 +44,15 @@ def getUserRoles(username, password, authProfile='', timeout=60000):
     Args:
         username (str): The username to fetch roles for.
         password (str): The password for the user.
-        authProfile (str): The name of the authentication profile to run
-            against. Optional. Leaving this out will use the project's
-            default profile.
+        authProfile (str): The name of the authentication profile to
+            run against. Optional. Leaving this out will use the
+            project's default profile.
         timeout (int): Timeout for client-to-gateway communication.
         Optional. (default: 60,000ms)
 
     Returns:
-        tuple[str]: A list of the roles that this user has, if the user
-            authenticates successfully. Otherwise, returns None.
+        tuple[str]: A list of the roles that this user has, if the
+            user authenticates successfully. Otherwise, returns None.
     """
     print(username, password, authProfile, timeout)
     return 'Administrator', 'Developer'
@@ -61,17 +60,17 @@ def getUserRoles(username, password, authProfile='', timeout=60000):
 
 def validateUser(username, password, authProfile='', timeout=60000):
     """Tests credentials (username and password) against an
-    authentication profile. Returns a boolean based upon whether or not
-    the authentication profile accepts the  credentials. If the
+    authentication profile. Returns a boolean based upon whether or
+    not the authentication profile accepts the  credentials. If the
     authentication profile name is omitted, then the current project's
     default authentication profile is used.
 
     Args:
         username (str): The username to validate.
         password (str): The password for the user.
-        authProfile (str): The name of the authentication profile to run
-            against. Optional. Leaving this out will use the project's
-            default profile.
+        authProfile (str): The name of the authentication profile to
+            run against. Optional. Leaving this out will use the
+            project's default profile.
         timeout (int): Timeout for client-to-gateway communication.
             Optional. (default: 60,000ms)
     Returns:

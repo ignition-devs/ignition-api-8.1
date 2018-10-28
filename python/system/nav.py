@@ -18,7 +18,7 @@ def getCurrentWindow():
     defined as the maximized window. With the Typical Navigation
     Strategy, there is only ever one maximized window at a time.
 
-    Returns:
+    Eeturns:
         str: The path of the current "main screen" window - the
             maximized window.
     """
@@ -26,14 +26,14 @@ def getCurrentWindow():
 
 
 def swapWindow(swapFromPath, swapToPath, params=None):
-    """Performs a window swap. This means that one window is closed, and
-    another is opened and takes its place - assuming its size, floating
-    state, and maximization state. This gives a seamless transition -
-    one window seems to simply turn into another.
+    """Performs a window swap. This means that one window is closed,
+    and another is opened and takes its place - assuming its size,
+    floating state, and maximization state. This gives a seamless
+    transition - one window seems to simply turn into another.
 
     Args:
-        swapFromPath (str): The path of the window to swap from. Must be
-            a currently open window, or this will act like an
+        swapFromPath (str): The path of the window to swap from. Must
+            be a currently open window, or this will act like an
             openWindow.
         swapToPath (str): The name of the window to swap to.
         params (dict): A dictionary of parameters to pass into the

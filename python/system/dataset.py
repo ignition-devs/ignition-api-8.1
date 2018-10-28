@@ -1,7 +1,6 @@
 # Copyright (C) 2017
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103
 
 """Dataset Functions
 The following functions give you access to view and interact with
@@ -53,7 +52,8 @@ def toPyDataSet(dataset):
     Python-esque.
 
     Args:
-        dataset (Dataset): A DataSet object to convert into a PyDataSet.
+        dataset (Dataset): A DataSet object to convert into a
+        PyDataSet.
 
     Returns:
         PyDataSet: The newly created PyDataSet.

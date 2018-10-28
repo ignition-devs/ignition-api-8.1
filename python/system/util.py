@@ -1,7 +1,6 @@
 # Copyright (C) 2017
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103
 
 """Utility Functions
 The following functions give you access to view various Gateway and
@@ -21,9 +20,7 @@ __all__ = [
 
 def beep():
     """Tells the computer to make a "beep" sound."""
-    import os
     import sys
-
     platforms = {
         'linux1': 'Linux',
         'linux2': 'Linux',
@@ -39,10 +36,11 @@ def beep():
             except ImportError:
                 print('Beep!')
         elif platforms[sys.platform] == 'OS X':
-            # os.system("echo -ne '\007'")
+            import os
             os.system('say "beep"')
         elif platforms[sys.platform] == 'Linux':
-            os.system('beep')
+            # TODO: Make Linux speak.
+            print('Beep!')
     else:
         print('Beep!')
 
@@ -52,8 +50,8 @@ def getGatewayAddress():
     communicating with.
 
     Returns:
-        str: The address of the Gateway that the client is communicating
-            with.
+        str: The address of the Gateway that the client is
+            communicating with.
     """
     return 'http://localhost:8088/main'
 
@@ -73,8 +71,8 @@ def getProperty(propertyName):
 
         file.separator. The system file separator character. (for
             example, "/" (unix) or "\" (windows))
-        line.separator. The system line separator string. (for example,
-            "\r\n" (carriage return, newline))
+        line.separator. The system line separator string. (for
+            example, "\r\n" (carriage return, newline))
         os.arch. Operating system architecture. (for example, "x86")
         os.name. Operating system name. (for example, "Windows XP")
         os.version. Operating system version. (for example, "5.1")
@@ -114,8 +112,8 @@ def getProperty(propertyName):
 
 
 def jsonDecode(jsonString):
-    """Takes a json String and converts it into a Python object such as
-    a list or a dict. If the input is not valid json, a string is
+    """Takes a json String and converts it into a Python object such
+    as  a list or a dict. If the input is not valid json, a string is
     returned.
 
     Args:
@@ -130,14 +128,14 @@ def jsonDecode(jsonString):
 
 
 def jsonEncode(pyObj, indentFactor=4):
-    """Takes a Python object such as a list or dict and converts into a
-    json string.
+    """Takes a Python object such as a list or dict and converts into
+    a json string.
 
     Args:
-        pyObj (object): The Python object to encode into JSON such as a
-            Python list or dictionary.
-        indentFactor (int): The number of spaces to add to each level of
-            indentation for prettyprinting. Optional.
+        pyObj (object): The Python object to encode into JSON such as
+            a Python list or dictionary.
+        indentFactor (int): The number of spaces to add to each level
+            of indentation for prettyprinting. Optional.
 
     Returns:
         str: The encoded JSON string.
@@ -159,8 +157,8 @@ def setLocale(locale):
 
 
 def translate(term):
-    """This function allows you to retrieve the global translation of a
-    term from the translation database using the current locale.
+    """This function allows you to retrieve the global translation of
+    a term from the translation database using the current locale.
 
     Args:
         term (str): The term to look up.
