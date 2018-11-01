@@ -6,8 +6,12 @@
 
 __all__ = [
     'daysBetween',
+    'format',
     'fromMillis',
     'getDayOfYear',
+    'getDayOfMonth',
+    'getMonth',
+    'getYear',
     'hoursBetween',
     'millisBetween',
     'minutesBetween',
@@ -39,6 +43,21 @@ def daysBetween(date_1, date_2):
     return (date_2 - date_1).days
 
 
+def format(date, format):
+    """Returns the given date as a string, formatted according to a
+    pattern.
+
+    Args:
+        date (datetime): The date to format.
+        format (str): A format string such as "yyyy-MM-dd HH:mm:ss".
+
+    Returns:
+        str: A string representing the formatted datetime
+    """
+    print date, format
+    return str(date)
+
+
 def fromMillis(millis):
     """Creates a date object given a millisecond value.
 
@@ -63,6 +82,43 @@ def getDayOfYear(date):
         int: An integer that is representative of the extracted value.
     """
     return date.timetuple().tm_yday
+
+
+def getDayOfMonth(date):
+    """Extracts the day of the month from a date. The first day of the
+    month is day 1.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.day
+
+
+def getMonth(date):
+    """Extracts the month from a date, where January is month 0.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.month - 1
+
+
+def getYear(date):
+    """Extracts the year from a date.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.year
 
 
 def hoursBetween(date_1, date_2):
@@ -142,7 +198,7 @@ def now():
     time according to the local system clock.
 
     Returns:
-        Date: A new date, set to the current date and time.
+        datetime: A new date, set to the current date and time.
     """
     return datetime.now()
 
