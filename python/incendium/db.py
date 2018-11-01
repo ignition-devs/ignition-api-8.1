@@ -27,10 +27,10 @@ class _Result(object):
 
         Args:
             output_params (dict): All registered output parameters.
-            result_set (Dataset): The dataset that is the resulting data
-                of the stored procedure, if any.
-            return_value (int): The return value, if registerReturnParam
-                had been called.
+            result_set (Dataset): The dataset that is the resulting
+                data of the stored procedure, if any.
+            return_value (int): The return value, if
+                registerReturnParam had been called.
             update_count (int): The number of rows modified by the
                 stored procedure, or -1 if not applicable.
         """
@@ -41,9 +41,8 @@ class _Result(object):
 
 
 def _execute_sp(stored_procedure, database='', transaction=None,
-                skip_audit=False, in_params=None,
-                out_params=None, get_out_params=False, get_result_set=False,
-                get_ret_val=False,
+                skip_audit=False, in_params=None, out_params=None,
+                get_out_params=False, get_result_set=False, get_ret_val=False,
                 return_type_code=None, get_update_count=False):
     """Executes a database stored procedure.
 
@@ -55,10 +54,10 @@ def _execute_sp(stored_procedure, database='', transaction=None,
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        skip_audit (bool): A flag which, if set to true, will cause the
-            procedure call to skip the audit system. Useful for some
-            queries that have fields which won't fit into the audit log.
-            Optional.
+        skip_audit (bool): A flag which, if set to true, will cause
+            the procedure call to skip the audit system. Useful for
+            some queries that have fields which won't fit into the
+            audit log. Optional.
         in_params (dict): A Dictionary containing INPUT parameters.
             Optional.
         out_params (dict): A Dictionary containing OUTPUT parameters.
@@ -72,8 +71,8 @@ def _execute_sp(stored_procedure, database='', transaction=None,
             the return value of the stored procedure Call. Optional.
         return_type_code (int): The return value Type Code. Optional.
         get_update_count (bool): A flag indicating whether or not to
-            return the number of rows modified by the stored procedure,
-            or -1 if not applicable. Optional.
+            return the number of rows modified by the stored
+            procedure, or -1 if not applicable. Optional.
 
     Returns:
         _Result: Result object.
@@ -87,27 +86,26 @@ def _execute_sp(stored_procedure, database='', transaction=None,
                                      tx=transaction,
                                      skipAudit=skip_audit)
 
-    # Register INPUT Parameters
-    if in_params:
-        for in_param in in_params:
-            call.registerInParam(in_param, in_params[in_param][0],
-                                 in_params[in_param][1])
+    # Register INPUT Parameters.
+    if in_params is not None:
+        for k, v in in_params.iteritems():
+            call.registerInParam(k, v[0], v[1])
 
-    # Register OUTPUT Parameters
-    if out_params:
-        for out_param in out_params:
-            call.registerOutParam(out_param, out_params[out_param])
+    # Register OUTPUT Parameters.
+    if out_params is not None:
+        for k, v in out_params.iteritems():
+            call.registerOutParam(k, v[0])
 
-    # Register RETURN Parameter
+    # Register RETURN Parameter.
     if get_ret_val:
         call.registerReturnParam(return_type_code)
 
-    # Execute the call
+    # Execute the call.
     system.db.execSProcCall(call)
 
-    if out_params:
-        for out_param in out_params:
-            _out_params[out_param] = call.getOutParamValue(out_param)
+    if out_params is not None:
+        for k in out_params.iterkeys():
+            _out_params[k] = call.getOutParamValue(k)
 
     if get_out_params:
         _result.output_params = _out_params
@@ -131,7 +129,8 @@ def check(stored_procedure, params=None):
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         bool: The flag.
@@ -153,13 +152,14 @@ def execute_non_query(stored_procedure, params=None, transaction=None):
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
 
     Returns:
-        int: The number of rows modified by the stored procedure, or -1
-            if not applicable.
+        int: The number of rows modified by the stored procedure, or
+            -1 if not applicable.
     """
     result = _execute_sp(stored_procedure,
                          transaction=transaction,
@@ -175,7 +175,8 @@ def get_data(stored_procedure, params=None):
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         Dataset: A Dataset that is the resulting data of the stored
@@ -195,7 +196,8 @@ def get_output_params(stored_procedure, output, params=None, transaction=None):
         stored_procedure (str): The name of the stored procedure to
             execute.
         output (dict): A Dictionary containing all output parameters.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
 
@@ -219,7 +221,8 @@ def get_return_value(stored_procedure, return_type_code, params=None,
         stored_procedure (str): The name of the stored procedure to
             execute.
         return_type_code (int): The Type Code of the Return Value.
-        params (dict): A Dictionary containing all parameters. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
 

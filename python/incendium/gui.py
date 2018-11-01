@@ -13,8 +13,24 @@ __all__ = [
 
 import system.gui
 import system.util
-from javax.swing import JOptionPane
 from incendium import constants
+from javax.swing import JOptionPane
+
+# Cursor codes.
+CURSOR_DEFAULT = 0
+CURSOR_CROSSHAIR = 1
+CURSOR_TEXT = 2
+CURSOR_WAIT = 3
+CURSOR_HAND = 4
+CURSOR_MOVE = 5
+CURSOR_SW_RESIZE = 6
+CURSOR_SE_RESIZE = 7
+CURSOR_NW_RESIZE = 8
+CURSOR_NE_RESIZE = 9
+CURSOR_N_RESIZE = 10
+CURSOR_S_RESIZE = 11
+CURSOR_W_RESIZE = 12
+CURSOR_E_RESIZE = 13
 
 
 def confirm(message, title, show_cancel=False):
