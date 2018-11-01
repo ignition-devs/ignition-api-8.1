@@ -94,7 +94,7 @@ def _execute_sp(stored_procedure, database='', transaction=None,
     # Register OUTPUT Parameters.
     if out_params is not None:
         for k, v in out_params.iteritems():
-            call.registerOutParam(k, v[0])
+            call.registerOutParam(k, v)
 
     # Register RETURN Parameter.
     if get_ret_val:
