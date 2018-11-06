@@ -5,20 +5,45 @@
 """Ignition date module."""
 
 __all__ = [
+    'addDays',
+    'addHours',
+    'addMillis',
+    'addMinutes',
+    'addMonths',
+    'addSeconds',
+    'addWeeks',
+    'addYears',
     'daysBetween',
     'format',
     'fromMillis',
-    'getDayOfYear',
+    'getAMorPM',
+    'getDate',
     'getDayOfMonth',
+    'getDayOfWeek',
+    'getDayOfYear',
+    'getHour12',
+    'getHour24',
+    'getMillis',
+    'getMinute',
     'getMonth',
+    'getQuarter',
+    'getSecond',
+    'getTimezone',
+    'getTimezoneOffset',
+    'getTimezoneRawOffset',
     'getYear',
     'hoursBetween',
+    'isAfter',
+    'isBefore',
+    'midnight',
     'millisBetween',
     'minutesBetween',
     'monthsBetween',
     'now',
     'parse',
     'secondsBetween',
+    'setTime',
+    'toMillis',
     'weeksBetween',
     'yearsBetween'
 ]
@@ -26,6 +51,138 @@ __all__ = [
 from datetime import datetime, timedelta
 
 from java.util import Locale
+
+
+def addDays(date, value):
+    """Add or subtract an amount of days to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(days=value)
+
+
+def addHours(date, value):
+    """Add or subtract an amount of hours to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(hours=value)
+
+
+def addMillis(date, value):
+    """Add or subtract an amount of milliseconds to a given date and
+    time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(milliseconds=value)
+
+
+def addMinutes(date, value):
+    """Add or subtract an amount of minutes to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(minutes=value)
+
+
+def addMonths(date, value):
+    """Add or subtract an amount of months to a given date and time.
+    This function is unique since each month can have a variable
+    number of days. For example, if the date passed in is March 31st,
+    and we add one month, April does not have a 31st day, so the
+    returned date will be the proper number of months rounded down to
+    the closest available day, in this case April 30th.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    import calendar
+    m = (date.month + value) % 12
+    y = date.year + (date.month + value - 1) // 12
+    if not m:
+        m = 12
+    d = min(date.day, calendar.monthrange(y, m)[1])
+    return date.replace(day=d, month=m, year=y)
+
+
+def addSeconds(date, value):
+    """Add or subtract an amount of seconds to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(seconds=value)
+
+
+def addWeeks(date, value):
+    """Add or subtract an amount of weeks to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date + timedelta(weeks=value)
+
+
+def addYears(date, value):
+    """Add or subtract an amount of years to a given date and time.
+
+    Args:
+        date (datetime): The starting date.
+        value (int): The number of units to add, or subtract if the
+            value is negative.
+
+    Returns:
+        datetime: A new date object offset by the integer passed to
+            the function.
+    """
+    return date.replace(year=date.year + value)
 
 
 def daysBetween(date_1, date_2):
@@ -68,12 +225,15 @@ def fromMillis(millis):
     Returns:
         Date: A new date object.
     """
-    return datetime.utcfromtimestamp(float(millis))
+    s = millis // 1000
+    micro = (millis % 1000) * 1000
+    d = datetime.fromtimestamp(s)
+    return datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, micro)
 
 
-def getDayOfYear(date):
-    """Extracts the day of the year from a date. The first day of the
-    year is day 1.
+def getAMorPM(date):
+    """Returns a 0 if the time is before noon, and a 1 if the time is
+    after noon.
 
     Args:
         date (datetime): The date to use.
@@ -81,7 +241,24 @@ def getDayOfYear(date):
     Returns:
         int: An integer that is representative of the extracted value.
     """
-    return date.timetuple().tm_yday
+    return 1 if date.hour >= 12 else 0
+
+
+def getDate(year, month, day):
+    """Creates a new Date object given a year, month and a day. The
+    time will be set to midnight of that day.
+
+    Args:
+        year (int): The year for the new date.
+        month (int): The month of the new date. January is month 0.
+        day (int): The day of the month for the new date. The first
+            day of the month is day 1.
+
+    Returns:
+        datetime: A new date, set to midnight of that day.
+    """
+    _jan = datetime(year, 1, day)
+    return addMonths(_jan, month)
 
 
 def getDayOfMonth(date):
@@ -97,6 +274,83 @@ def getDayOfMonth(date):
     return date.day
 
 
+def getDayOfWeek(date):
+    """Extracts the day of the week from a date. Sunday is day 1,
+    Saturday is day 7.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    _dow = [2, 3, 4, 5, 6, 7, 1]
+    return _dow[date.weekday()]
+
+
+def getDayOfYear(date):
+    """Extracts the day of the year from a date. The first day of the
+    year is day 1.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.timetuple().tm_yday
+
+
+def getHour12(date):
+    """Extracts the hour from a date. Uses a 12 hour clock, so noon
+    and midnight are returned as 0.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.hour - 12 if date.hour >= 12 else date.hour
+
+
+def getHour24(date):
+    """Extracts the hour from a date. Uses a 24 hour clock, so
+    midnight is zero.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.hour
+
+
+def getMillis(date):
+    """Extracts the milliseconds from a date, ranging from 0-999.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.microsecond // 1000
+
+
+def getMinute(date):
+    """Extracts the minutes from a date, ranging from 0-59.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.minute
+
+
 def getMonth(date):
     """Extracts the month from a date, where January is month 0.
 
@@ -107,6 +361,65 @@ def getMonth(date):
         int: An integer that is representative of the extracted value.
     """
     return date.month - 1
+
+
+def getQuarter(date):
+    """Extracts the quarter from a date, ranging from 1-4.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    print ((date.month - 1) // 3) + 1
+
+
+def getSecond(date):
+    """Extracts the seconds from a date, ranging from 0-59.
+
+    Args:
+        date (datetime): The date to use.
+
+    Returns:
+        int: An integer that is representative of the extracted value.
+    """
+    return date.second
+
+
+def getTimezone():
+    """Returns the ID of the current timezone.
+
+    Returns:
+        str: A representation of the current timezone.
+    """
+    # TODO: Implemet function.
+    pass
+
+
+def getTimezoneOffset(date=None):
+    """Returns the current timezone's offset versus UTC for a given
+    instant, taking Daylight Savings Time into account.
+
+    Args:
+        date (datetime): The instant in time for which to calculate
+            the offset. Uses now() if omitted. Optional.
+
+    Returns:
+        float: The timezone offset compared to UTC, in hours.
+    """
+    # TODO: Implement.
+    print date
+
+
+def getTimezoneRawOffset():
+    """Returns the current timezone offset versus UTC, not taking
+    daylight savings into account.
+
+    Returns:
+         float: The timezone offset.
+    """
+    return float(hoursBetween(datetime.utcnow(), now()))
 
 
 def getYear(date):
@@ -135,6 +448,46 @@ def hoursBetween(date_1, date_2):
     diff = date_2 - date_1
     d, s, micro = diff.days, diff.seconds, diff.microseconds
     return d * 24 + s // 3600
+
+
+def isAfter(date_1, date_2):
+    """Compares two dates to see if date_1 is after date_2.
+
+    Args:
+        date_1 (datetime): The first date.
+        date_2 (datetime): The second date.
+
+    Returns:
+        bool: True (1) if date_1 is after date_2, false (0) otherwise.
+    """
+    return date_1 > date_2
+
+
+def isBefore(date_1, date_2):
+    """Compares to dates to see if date_1 is before date_2.
+
+    Args:
+        date_1 (datetime): The first date.
+        date_2 (datetime): The second date.
+
+    Returns:
+        bool: True (1) if date_1 is before date_2, false (0)
+            otherwise.
+    """
+    return date_1 < date_2
+
+
+def midnight(date):
+    """Returns a copy of a date with the hour, minute, second, and
+    millisecond fields set to zero.
+
+    Args:
+        date (datetime): The starting date.
+
+    Returns:
+        datetime: A new date, set to midnight of the day provided.
+    """
+    return date.replace(hour=0, minute=0, second=0, microsecond=0)
 
 
 def millisBetween(date_1, date_2):
@@ -216,7 +569,7 @@ def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss', locale=Locale.English)
             name such as 'fr', or the Java Locale such as
             'Locale.French'. Default is 'Locale.English'. Optional.
 
-    Retuns:
+    Returns:
         Date: The parsed date.
     """
     print dateString, formatString, locale
@@ -237,6 +590,38 @@ def secondsBetween(date_1, date_2):
     diff = date_2 - date_1
     d, s, micro = diff.days, diff.seconds, diff.microseconds
     return d * 86400 + s
+
+
+def setTime(date, hour, minute, second):
+    """Takes in a date, and returns a copy of it with the time fields
+    set as specified.
+
+    Args:
+        date (datetime): The starting date.
+        hour (int): The hours (0-23) to set.
+        minute(int): The minutes (0-59) to set.
+        second (int): The seconds (0-59) to set.
+
+    Returns:
+        datetime: A new date, set to the appropriate time.
+    """
+    return date.replace(hour=hour, minute=minute, second=second, microsecond=0)
+
+
+def toMillis(date):
+    """Converts a Date object to its millisecond value elapsed since
+    January 1, 1970, 00:00:00 UTC (GMT).
+
+    Args:
+        date (datetime): The date object to convert.
+
+    Returns:
+        long: 8-byte integer representing the number of millisecond
+            elapsed since January 1, 1970, 00:00:00 UTC (GMT).
+    """
+    from time import mktime
+    millis = mktime(date.timetuple()) * 1000 + date.microsecond // 1000
+    return long(millis)
 
 
 def weeksBetween(date_1, date_2):
