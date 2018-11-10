@@ -3,8 +3,3 @@
 # Contact: thecesrom@gmail.com
 
 """Java package."""
-
-__all__ = [
-    'lang',
-    'util'
-]
