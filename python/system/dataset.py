@@ -53,7 +53,7 @@ def toPyDataSet(dataset):
 
     Args:
         dataset (Dataset): A DataSet object to convert into a
-        PyDataSet.
+            PyDataSet.
 
     Returns:
         PyDataSet: The newly created PyDataSet.

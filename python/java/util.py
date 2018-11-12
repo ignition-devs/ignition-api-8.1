@@ -8,8 +8,42 @@ miscellaneous utility classes (a string tokenizer, a random-number
 generator, and a bit array)."""
 
 __all__ = [
+    'Date',
     'Locale'
 ]
+
+
+class Date(object):
+    """The class Date represents a specific instant in time, with
+    millisecond precision.
+    """
+
+    def __new__(cls, date=None):
+        """Allocates a Date object and initializes it...
+
+        1) so that it represents the time at which it was allocated,
+        measured to the nearest millisecond.
+
+        2) to represent the specified number of milliseconds since the
+        standard base time known as "the epoch", namely January 1,
+        1970, 00:00:00 GMT.
+
+        1) java.util.Date()
+        2) java.util.Date(date)
+
+        Args:
+            date (long): The milliseconds since January 1, 1970,
+                00:00:00 GMT. Optional.
+
+        Returns:
+            datetime: A new Date instance.
+        """
+        import system.date
+        if date is None:
+            self = system.date.now()
+        else:
+            self = system.date.fromMillis(date)
+        return self
 
 
 class Locale(object):
