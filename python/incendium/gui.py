@@ -120,13 +120,14 @@ def info(message, title, detail=None):
 
 
 def warning(message, title, detail=None):
-    """Displays a message to the user in a warning style pop-up dialog.
+    """Displays a message to the user in a warning style pop-up
+    dialog.
 
     Args:
         message (str): The message to display in an warning box. This
             will be translated to the selected Locale.
-        title (str): A title for the warning box. This will be translated
-            to the selected Locale.
+        title (str): A title for the warning box. This will be
+            translated to the selected Locale.
         detail (str): Additional text to display. This will be
             translated to the selected Locale. Optional.
     """

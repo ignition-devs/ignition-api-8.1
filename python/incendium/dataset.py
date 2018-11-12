@@ -16,8 +16,8 @@ def to_xml(dataset, root='root', element='row'):
 
     Args:
         dataset (Dataset): The input dataset.
-        root (str): The value of the root. If not provided, it defaults
-            to "root".
+        root (str): The value of the root. If not provided, it
+            defaults to "root".
         element (str): The value of the row. If not provided, it
             defaults to "row".
 
