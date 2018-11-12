@@ -58,14 +58,16 @@ def confirm(message, title, show_cancel=False):
     if show_cancel:
         options.append(system.util.translate(constants.CANCEL_TEXT))
 
-    choice = JOptionPane.showOptionDialog(None,
-                                          system.util.translate(message),
-                                          system.util.translate(title),
-                                          JOptionPane.YES_NO_CANCEL_OPTION,
-                                          JOptionPane.QUESTION_MESSAGE,
-                                          None,
-                                          options,
-                                          options[0])
+    choice = JOptionPane.showOptionDialog(
+        None,
+        system.util.translate(message),
+        system.util.translate(title),
+        JOptionPane.YES_NO_CANCEL_OPTION,
+        JOptionPane.QUESTION_MESSAGE,
+        None,
+        options,
+        options[0]
+    )
 
     return (
         not bool(choice)
@@ -74,7 +76,7 @@ def confirm(message, title, show_cancel=False):
     )
 
 
-def error(message, title):
+def error(message, title, detail=None):
     """Displays an error-style message box to the user.
 
     Args:
@@ -82,11 +84,20 @@ def error(message, title):
             will be translated to the selected Locale.
         title (str): A title for the error box. This will be
             translated to the selected Locale.
+        detail (str): Additional text to display. This will be
+            translated to the selected Locale. Optional.
     """
-    JOptionPane.showMessageDialog(None,
-                                  system.util.translate(message),
-                                  system.util.translate(title),
-                                  JOptionPane.ERROR_MESSAGE)
+    if detail is None:
+        msg = system.util.translate(message)
+    else:
+        msg = '\n'.join([system.util.translate(message),
+                         system.util.translate(detail)])
+    JOptionPane.showMessageDialog(
+        None,
+        msg,
+        system.util.translate(title),
+        JOptionPane.ERROR_MESSAGE
+    )
 
 
 def info(message, title, detail=None):
@@ -101,15 +112,14 @@ def info(message, title, detail=None):
             translated to the selected Locale. Optional.
     """
     if detail is None:
-        system.gui.messageBox(system.util.translate(message),
-                              system.util.translate(title))
+        msg = system.util.translate(message)
     else:
-        msg = '%s %s' % (system.util.translate(message),
-                         system.util.translate(detail))
-        system.gui.messageBox(msg, system.util.translate(title))
+        msg = '\n'.join([system.util.translate(message),
+                         system.util.translate(detail)])
+    system.gui.messageBox(msg, system.util.translate(title))
 
 
-def warning(message, title):
+def warning(message, title, detail=None):
     """Displays a message to the user in a warning style pop-up dialog.
 
     Args:
@@ -117,8 +127,17 @@ def warning(message, title):
             will be translated to the selected Locale.
         title (str): A title for the warning box. This will be translated
             to the selected Locale.
+        detail (str): Additional text to display. This will be
+            translated to the selected Locale. Optional.
     """
-    JOptionPane.showMessageDialog(None,
-                                  system.util.translate(message),
-                                  system.util.translate(title),
-                                  JOptionPane.WARNING_MESSAGE)
+    if detail is None:
+        msg = system.util.translate(message)
+    else:
+        msg = '\n'.join([system.util.translate(message),
+                         system.util.translate(detail)])
+    JOptionPane.showMessageDialog(
+        None,
+        msg,
+        system.util.translate(title),
+        JOptionPane.WARNING_MESSAGE
+    )

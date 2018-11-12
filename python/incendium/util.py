@@ -63,19 +63,19 @@ def validate_form(strings=None, numbers=None, collections=None):
     error_message = constants.EMPTY_STRING
 
     if strings:
-        for key, value in strings.iteritems():
-            if not value:
-                error_message += constants.NEW_TABBED_LINE + key
+        for k, v in strings.iteritems():
+            if not v:
+                error_message += constants.NEW_TABBED_LINE + k
                 is_valid = False
     if numbers:
-        for key, value in numbers.iteritems():
-            if value is None or value <= 0:
-                error_message += constants.NEW_TABBED_LINE + key
+        for k, v in numbers.iteritems():
+            if v is None or v <= 0:
+                error_message += constants.NEW_TABBED_LINE + k
                 is_valid = False
     if collections:
-        for key, value in collections.iteritems():
-            if value is None or value <= 0:
-                error_message += constants.NEW_TABBED_LINE + key
+        for k, v in collections.iteritems():
+            if v is None or v <= 0:
+                error_message += constants.NEW_TABBED_LINE + k
                 is_valid = False
 
     return is_valid, error_message
