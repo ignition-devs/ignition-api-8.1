@@ -8,26 +8,24 @@ __all__ = [
     'compare'
 ]
 
-import system.date
 
-
-def compare(start_date=system.date.now(), end_date=system.date.now()):
-    """Compares two Dates; Date a and Date b.
+def compare(date_1, date_2):
+    """Compares two dates.
 
     Args:
-        start_date (Date): The first date.
-        end_date (Date): The second date.
+        date_1 (Date): The first date.
+        date_2 (Date): The second date.
 
     Returns:
-        int: 0 if start_date and end_date are equal, -1. If end_date is
-            greater than start_date, 1. If start_date is greater than
-            end_date.
+        int: 0 if date_1 and date_2 are equal, -1. If date_2
+            is greater than date_1, 1. If date_1 is greater
+            than date_2.
     """
     ret_val = 1
 
-    if start_date == end_date:
+    if date_1 == date_2:
         ret_val = 0
-    elif start_date < end_date:
+    elif date_1 < date_2:
         ret_val = -1
 
     return ret_val
