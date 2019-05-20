@@ -204,6 +204,10 @@ def format(date, format):
     """Returns the given date as a string, formatted according to a
     pattern.
 
+    Note:
+        Not all symbols from system.date.format() have a counterpart
+        directive on strftime().
+
     Args:
         date (datetime): The date to format.
         format (str): A format string such as "yyyy-MM-dd HH:mm:ss".
@@ -211,8 +215,23 @@ def format(date, format):
     Returns:
         str: A string representing the formatted datetime
     """
-    print date, format
-    return str(date)
+    _format = format.replace('yyyy', '%Y')
+    _format = _format.replace('yy', '%y')
+    _format = _format.replace('MMMM', '%B')
+    _format = _format.replace('MMM', '%b')
+    _format = _format.replace('MM', '%m')
+    _format = _format.replace('dd', '%d')
+    _format = _format.replace('HH', '%H')
+    _format = _format.replace('hh', '%I')
+    _format = _format.replace('mm', '%M')
+    _format = _format.replace('S', '%f')
+    _format = _format.replace('ss', '%S')
+    _format = _format.replace('z', '%Z')
+    _format = _format.replace('Z', '%z')
+    _format = _format.replace('a', '%p')
+    _format = _format.replace('w', '%U')
+    _format = _format.replace('D', '%j')
+    return date.strftime(_format)
 
 
 def fromMillis(millis):
