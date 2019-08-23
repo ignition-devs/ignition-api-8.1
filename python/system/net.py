@@ -7,9 +7,24 @@
 The following functions give you access to interact with http services."""
 
 __all__ = [
+    'getHostName',
     'httpGet',
     'sendEmail'
 ]
+
+
+def getHostName():
+    """Returns the host name of the computer that the script was ran
+    on. When run in the Gateway scope, returns the Gateway hostname.
+    When run in the Client scope, returns the Client hostname. On
+    Windows, this is typically the "computer name". For example,
+    might return EAST_WING_WORKSTATION or bobs-laptop.
+
+    Returns:
+        str: The hostname of the local machine.
+    """
+    import socket
+    return socket.gethostname()
 
 
 def httpGet(url, connectTimeout=10000, readTimeout=60000, username=None,
