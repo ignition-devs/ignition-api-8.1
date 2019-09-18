@@ -1,7 +1,6 @@
-# Copyright (C) 2017
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103
 
 """Navigation Functions
 The following functions allow you to open and close windows in the

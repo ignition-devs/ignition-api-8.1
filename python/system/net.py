@@ -1,10 +1,10 @@
-# Copyright (C) 2017
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-# pylint: disable=C0103,R0913
 
 """Net Functions
-The following functions give you access to interact with http services."""
+The following functions give you access to interact with http
+services."""
 
 __all__ = [
     'getHostName',
