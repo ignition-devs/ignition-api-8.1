@@ -1,8 +1,8 @@
-# Copyright (C) 2018
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Database module."""
+"""Database module."""
 
 __all__ = [
     'check',
@@ -122,13 +122,16 @@ def _execute_sp(stored_procedure, database='', transaction=None,
     return _result
 
 
-def check(stored_procedure, params=None):
+def check(stored_procedure, database='', params=None):
     """Executes a stored procedure that returns a flag set to TRUE or
     FALSE.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
         params (dict): A Dictionary containing all parameters.
             Optional.
 
@@ -138,12 +141,14 @@ def check(stored_procedure, params=None):
     output = {'flag': system.db.BIT}
     output_params = get_output_params(stored_procedure,
                                       output=output,
+                                      database=database,
                                       params=params)
 
     return output_params['flag']
 
 
-def execute_non_query(stored_procedure, params=None, transaction=None):
+def execute_non_query(stored_procedure, database='', transaction=None,
+                      params=None):
     """Executes a stored procedure against the connection and returns
     the number of rows affected.
 
@@ -152,16 +157,20 @@ def execute_non_query(stored_procedure, params=None, transaction=None):
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
-        params (dict): A Dictionary containing all parameters.
-            Optional.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         int: The number of rows modified by the stored procedure, or
             -1 if not applicable.
     """
     result = _execute_sp(stored_procedure,
+                         database=database,
                          transaction=transaction,
                          in_params=params,
                          get_update_count=True)
@@ -169,12 +178,15 @@ def execute_non_query(stored_procedure, params=None, transaction=None):
     return result.update_count
 
 
-def get_data(stored_procedure, params=None):
+def get_data(stored_procedure, database='', params=None):
     """Returns data by executing a stored procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
         params (dict): A Dictionary containing all parameters.
             Optional.
 
@@ -183,28 +195,34 @@ def get_data(stored_procedure, params=None):
             procedure call, if any.
     """
     result = _execute_sp(stored_procedure,
+                         database=database,
                          in_params=params,
                          get_result_set=True)
 
     return result.result_set
 
 
-def get_output_params(stored_procedure, output, params=None, transaction=None):
+def get_output_params(stored_procedure, output, database='', transaction=None,
+                      params=None):
     """Gets the Output parameters from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
         output (dict): A Dictionary containing all output parameters.
-        params (dict): A Dictionary containing all parameters.
-            Optional.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         dict: Result's output_params.
     """
     result = _execute_sp(stored_procedure,
+                         database=database,
                          transaction=transaction,
                          in_params=params,
                          out_params=output,
@@ -213,23 +231,27 @@ def get_output_params(stored_procedure, output, params=None, transaction=None):
     return result.output_params
 
 
-def get_return_value(stored_procedure, return_type_code, params=None,
-                     transaction=None):
+def get_return_value(stored_procedure, return_type_code, database='',
+                     transaction=None, params=None):
     """Gets the Return Value from the Stored Procedure.
 
     Args:
         stored_procedure (str): The name of the stored procedure to
             execute.
         return_type_code (int): The Type Code of the Return Value.
-        params (dict): A Dictionary containing all parameters.
-            Optional.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
+        params (dict): A Dictionary containing all parameters.
+            Optional.
 
     Returns:
         int: The return value.
     """
     result = _execute_sp(stored_procedure,
+                         database=database,
                          transaction=transaction,
                          in_params=params,
                          return_type_code=return_type_code,

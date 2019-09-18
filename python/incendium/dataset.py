@@ -1,8 +1,8 @@
-# Copyright (C) 2018
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Dataset module."""
+"""Dataset module."""
 
 __all__ = [
     'to_xml'

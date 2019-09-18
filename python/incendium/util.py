@@ -1,4 +1,4 @@
-# Copyright (C) 2018
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
@@ -87,21 +87,36 @@ def validate_form(strings=None, numbers=None, collections=None):
     # Initialize variables.
     is_valid = True
     error_message = constants.EMPTY_STRING
+    counter = 0
 
     if strings:
-        for k, v in strings.iteritems():
-            if not v:
-                error_message += constants.NEW_TABBED_LINE + k
+        for key, value in strings.iteritems():
+            if not value:
+                counter += 1
+                if counter == 1:
+                    error_message += constants.TABBED_LINE + key
+                else:
+                    error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
     if numbers:
-        for k, v in numbers.iteritems():
-            if v is None or v <= 0:
-                error_message += constants.NEW_TABBED_LINE + k
+        for key, value in numbers.iteritems():
+            if value is None or value <= 0:
+                counter += 1
+                if counter == 1:
+                    error_message += constants.TABBED_LINE + key
+                else:
+                    error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
     if collections:
-        for k, v in collections.iteritems():
-            if v is None or v <= 0:
-                error_message += constants.NEW_TABBED_LINE + k
+        for key, value in collections.iteritems():
+            if value is None or value <= 0:
+                counter += 1
+                error_message += (constants.TABBED_LINE + key if counter == 1
+                                  else constants.NEW_TABBED_LINE + key)
+                if counter == 1:
+                    error_message += constants.TABBED_LINE + key
+                else:
+                    error_message += constants.NEW_TABBED_LINE + key
                 is_valid = False
 
     return is_valid, error_message

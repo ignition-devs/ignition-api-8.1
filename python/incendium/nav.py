@@ -1,8 +1,8 @@
-# Copyright (C) 2018
+# Copyright (C) 2019
 # Authors: Cesar Roman, Kyle Chase.
 # Contact: thecesrom@gmail.com
 
-"""Incendium Navigation module."""
+"""Navigation module."""
 
 __all__ = [
     'swap_to',

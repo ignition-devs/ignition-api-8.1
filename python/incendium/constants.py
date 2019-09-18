@@ -1,12 +1,27 @@
-# Copyright (C) 2018
+# Copyright (C) 2019
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Incendium Constants module."""
+"""Constants module."""
 
 # Email settings.
 SMTP = 'mail.mycompany.com:25'
 SENDER = 'no-reply@mycompany.com'
+
+# Email templates.
+ERROR_REPORT = """<html>
+    <body>
+        <font face='verdana'>
+            <b>Error Report.</b><br /><br />
+            <b>Error Message</b><br />
+            <p>%s</p><br /><br />
+            <b>Error Details</b>
+            <p>%s</p><br /><br />
+            <b>System Details</b><br /><br />
+            *** Please do not reply to this email address.
+        </font>
+    </body>
+</html>"""
 
 # Language settings.
 DEFAULT_LANGUAGE = 'en_US'
@@ -37,6 +52,7 @@ PROCEED_WITH_SAVING_CHANGES = 'Are you sure you would like to proceed?'
 PROCEED_WITHOUT_SAVING_CHANGES = ('Would you like to proceed without saving '
                                   'your changes?')
 SUCCESS_WINDOW_TITLE = 'Success'
+TABBED_LINE = '    - '
 UNEXPECTED_ERROR = 'An unexpected error occurred in %s. \n%s'
 UNEXPECTED_ERROR_CAUSED_BY = ('An unexpected error occurred in %s. '
                               '\n%s\nCaused by: %s')
