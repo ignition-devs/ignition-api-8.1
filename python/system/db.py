@@ -12,7 +12,9 @@ __all__ = [
     'commitTransaction',
     'createSProcCall',
     'execSProcCall',
-    'rollbackTransaction'
+    'getConnectionInfo',
+    'rollbackTransaction',
+    'setDatasourceEnabled'
 ]
 
 # Type codes
@@ -256,6 +258,23 @@ def execSProcCall(callContext):
     print callContext
 
 
+def getConnectionInfo(name):
+    """Returns a dataset of information about a single database
+    connection, as specified by the name argument.
+
+    Args:
+        name (str): The name of the database connection to find
+            information about.
+
+    Returns:
+        Dataset: A dataset containing information about the named
+            database connection, or an empty dataset if the connection
+            wasn't found.
+    """
+    print name
+    return None
+
+
 def rollbackTransaction(tx):
     """Performs a rollback on the given connection. This will make all
     statements executed against this transaction since its beginning
@@ -267,3 +286,14 @@ def rollbackTransaction(tx):
         tx (str): The transaction ID.
     """
     print tx
+
+
+def setDatasourceEnabled(name, enabled):
+    """Enables/disables a given database connection.
+
+    Args:
+        name (str): The name of the database connection in Ignition.
+        enabled (bool): True if the connection should be enabled,
+            False otherwise.
+    """
+    print name, enabled
