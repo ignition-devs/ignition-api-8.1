@@ -116,7 +116,12 @@ def info(message, title, detail=None):
     else:
         msg = '\n'.join([system.util.translate(message),
                          system.util.translate(detail)])
-    system.gui.messageBox(msg, system.util.translate(title))
+    JOptionPane.showMessageDialog(
+        None,
+        msg,
+        system.util.translate(title),
+        JOptionPane.INFORMATION_MESSAGE
+    )
 
 
 def warning(message, title, detail=None):
