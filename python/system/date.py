@@ -35,6 +35,8 @@ __all__ = [
     'hoursBetween',
     'isAfter',
     'isBefore',
+    'isBetween',
+    'isDaylightTime',
     'midnight',
     'millisBetween',
     'minutesBetween',
@@ -50,7 +52,7 @@ __all__ = [
 
 from datetime import datetime, timedelta
 
-from java.util import Locale
+from java.util import Locale, TimeZone
 
 
 def addDays(date, value):
@@ -187,7 +189,7 @@ def addYears(date, value):
 
 def daysBetween(date_1, date_2):
     """Calculates the number of whole days between two dates.
-    Daylight savings changes are taken into account.
+    Daylight Saving Time changes are taken into account.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -412,13 +414,12 @@ def getTimezone():
     Returns:
         str: A representation of the current timezone.
     """
-    # TODO: Implemet function.
-    pass
+    return TimeZone.getDefault().getID()
 
 
-def getTimezoneOffset(date=None):
+def getTimezoneOffset(date=datetime.now()):
     """Returns the current timezone's offset versus UTC for a given
-    instant, taking Daylight Savings Time into account.
+    instant, taking Daylight Saving Time into account.
 
     Args:
         date (datetime): The instant in time for which to calculate
@@ -427,18 +428,20 @@ def getTimezoneOffset(date=None):
     Returns:
         float: The timezone offset compared to UTC, in hours.
     """
-    # TODO: Implement.
+    # TODO: Implement function.
     print date
+    pass
 
 
 def getTimezoneRawOffset():
     """Returns the current timezone offset versus UTC, not taking
-    daylight savings into account.
+    Daylight Saving Time into account.
 
     Returns:
          float: The timezone offset.
     """
-    return float(hoursBetween(datetime.utcnow(), now()))
+    offset = -1.0 if isDaylightTime(now()) else 0.0
+    return float(hoursBetween(datetime.utcnow(), datetime.now())) + offset
 
 
 def getYear(date):
@@ -496,6 +499,44 @@ def isBefore(date_1, date_2):
     return date_1 < date_2
 
 
+def isBetween(target_date, start_date, end_date):
+    """Compares two dates to see if a target date is between two other
+    dates.
+
+    Args:
+        target_date (datetime): The date to compare.
+        start_date (datetime): The start of a date range.
+        end_date (datetime): The end of a date range. This date must
+            be after the start date.
+
+    Returns:
+        bool: True (1) if target_date is >= start_date and
+            target_date <= end_date, false (0) otherwise.
+    """
+    return start_date <= target_date <= end_date
+
+
+def isDaylightTime(date=datetime.now()):
+    """Checks to see if the current timezone is using Daylight Saving
+    Time during the date specified.
+
+    Args:
+        date (datetime): The date you want to check if the current
+            timezone is observing Daylight Saving Time. Uses now() if
+            omitted. Optional.
+
+    Returns:
+        bool: True (1) if date is observing Daylight Saving Time in
+            the current timezone, false (0) otherwise.
+    """
+    import time
+    tt = (date.year, date.month, date.day, date.hour, date.minute,
+          date.second, date.weekday(), 0, 0)
+    stamp = time.mktime(tt)
+    tt = time.localtime(stamp)
+    return tt.tm_isdst > 0
+
+
 def midnight(date):
     """Returns a copy of a date with the hour, minute, second, and
     millisecond fields set to zero.
@@ -543,7 +584,7 @@ def minutesBetween(date_1, date_2):
 
 def monthsBetween(date_1, date_2):
     """Calculates the number of whole months between two dates.
-    Daylight savings changes are taken into account.
+    Daylight Saving Time changes are taken into account.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -575,7 +616,7 @@ def now():
     return datetime.now()
 
 
-def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss', locale=Locale.English):
+def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss', locale=Locale.ENGLISH):
     """Attempts to parse a string and create a Date. Causes
     ParseException if the date dateString parameter is in an
     unrecognized format.
@@ -660,7 +701,7 @@ def weeksBetween(date_1, date_2):
 
 def yearsBetween(date_1, date_2):
     """Calculates the number of whole years between two dates.
-    Daylight savings changes are taken into account.
+    Daylight Saving Time changes are taken into account.
 
     Args:
         date_1 (datetime): The first date to use.

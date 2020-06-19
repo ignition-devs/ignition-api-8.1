@@ -8,6 +8,7 @@ __all__ = [
     'confirm',
     'error',
     'info',
+    'input',
     'warning'
 ]
 
@@ -121,6 +122,33 @@ def info(message, title, detail=None):
         msg,
         system.util.translate(title),
         JOptionPane.INFORMATION_MESSAGE
+    )
+
+
+def input(message, title=None):
+    """Opens up a popup input dialog box. This dialog box will show a
+    prompt message, and allow the user to type in a string. When the
+    user is done, they can press "OK" or "Cancel". If OK is pressed,
+    this function will return with the value that they typed in. If
+    Cancel is pressed, this function will return the value None.
+
+    Args:
+        message (str): The message to display. This will be translated
+            to the selected Locale. Will accept html formatting.
+        title (str): A title for the message box. This will be
+            translated to the selected Locale.
+
+    Returns:
+        str: The string value that was entered in the input box.
+    """
+    return JOptionPane.showInputDialog(
+        None,
+        system.util.translate(message),
+        system.util.translate(title),
+        JOptionPane.PLAIN_MESSAGE,
+        None,
+        None,
+        ''
     )
 
 

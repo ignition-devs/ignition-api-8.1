@@ -6,7 +6,8 @@
 
 __all__ = [
     'send_high_priority_email',
-    'send_html_email'
+    'send_html_email',
+    'send_plain_text_email'
 ]
 
 import system.net
@@ -89,3 +90,17 @@ def send_html_email(subject, body, to, priority='3'):
             priority. Optional.
     """
     _send_email(subject, body, True, to, priority)
+
+
+def send_plain_text_email(subject, body, to, priority='3'):
+    """Sends an email in plain text format.
+
+    Args:
+        subject (str): The subject line for the email.
+        body (str): The body text of the email in HTML format.
+        to (list[str]): A list of email addresses to send to.
+        priority (str): Priority of the message, from "1" to "5",
+            with "1" being highest priority. Defaults to "3" (normal)
+            priority. Optional.
+    """
+    _send_email(subject, body, False, to, priority)

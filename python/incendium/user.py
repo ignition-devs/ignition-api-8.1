@@ -6,7 +6,9 @@
 
 __all__ = [
     'get_emails',
-    'get_user'
+    'get_user',
+    'get_user_first_name',
+    'get_user_full_name'
 ]
 
 import system.security
@@ -112,3 +114,35 @@ def get_user(user_source, failover=None):
         user_obj = _User(user)
 
     return user_obj
+
+
+def get_user_first_name(user_source, failover=None):
+    """Returns the User's First Name.
+
+    Args:
+        user_source (str): The name of the Single-Sign-On profile.
+        failover (str): The name of the Fallback profile. Optional.
+
+    Returns:
+        str: The User's First Name.
+    """
+    user = get_user(user_source, failover)
+
+    # return value
+    return user.get_first_name()
+
+
+def get_user_full_name(user_source, failover=None):
+    """Returns the User's Full Name.
+
+    Args:
+        user_source (str): The name of the Single-Sign-On profile.
+        failover (str): The name of the Fallback profile. Optional.
+
+    Returns:
+        str: The User's Full Name.
+    """
+    user = get_user(user_source, failover)
+
+    # return value
+    return user.get_full_name()
