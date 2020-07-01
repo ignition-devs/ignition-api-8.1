@@ -43,9 +43,7 @@ def _get_full_path(from_path, to_path):
     for path_part in path_parts:
         if path_part == PARENT_DIRECTORY and len(full_path):
             full_path = full_path[:-1]
-        elif path_part == CURRENT_DIRECTORY:
-            pass
-        else:
+        elif path_part != CURRENT_DIRECTORY:
             full_path.append(path_part)
 
     return '/'.join(full_path)

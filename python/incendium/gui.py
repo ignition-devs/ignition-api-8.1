@@ -72,7 +72,7 @@ def confirm(message, title, show_cancel=False):
 
     return (
         not bool(choice)
-        if choice == JOptionPane.YES_OPTION or choice == JOptionPane.NO_OPTION
+        if choice in [JOptionPane.YES_OPTION, JOptionPane.NO_OPTION]
         else None
     )
 

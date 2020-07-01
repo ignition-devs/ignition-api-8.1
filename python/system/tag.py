@@ -376,7 +376,6 @@ def queryTagCalculations(paths, calculations,
     print (paths, calculations, startDate, endDate, rangeHours,
            rangeMinutes, aliases, includeBoundingValues,
            validatesSCExec, noInterpolation, ignoreBadQuality)
-    pass
 
 
 def read(tagPath):
