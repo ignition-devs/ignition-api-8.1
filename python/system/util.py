@@ -32,9 +32,9 @@ def beep():
         if platforms[sys.platform] == 'Windows':
             try:
                 import winsound
-                winsound.MessageBeep()
+                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
             except ImportError:
-                print('Beep!')
+                print 'Beep!'
         elif platforms[sys.platform] == 'OS X':
             import os
             os.system('say "beep"')
