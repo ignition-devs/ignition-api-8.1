@@ -25,7 +25,50 @@ import system.date
 from java.lang import Object
 
 
-# noinspection PyMethodMayBeStatic
+class Results(object):
+    """The results of a browse operation. May only represent a partial
+    result set, which can be determined by comparing the Total
+    Available Size to the Returned Size. If there is a mismatch, the
+    continuation point should be non-null and can be used in
+    constructing the subsequent BrowseFilter to continue the browse."""
+
+    def error(self, result):
+        pass
+
+    def getContinuationPoint(self):
+        pass
+
+    def getResultQuality(self):
+        pass
+
+    def getResults(self):
+        pass
+
+    def getReturnedSize(self):
+        pass
+
+    def getTotalAvailableSize(self):
+        pass
+
+    def of(self, arg):
+        pass
+
+    def setContinuationPoint(self, continuationPoint):
+        pass
+
+    def setResultQuality(self, value):
+        pass
+
+    def setResults(self, results):
+        pass
+
+    def setTotalAvailableResults(self, totalAvailableResults):
+        pass
+
+    def toString(self):
+        pass
+
+
 class BrowseTag(object):
     """BrowseTag class."""
 
@@ -97,7 +140,6 @@ class QualifiedValue(object):
         pass
 
 
-# noinspection PyMethodMayBeStatic
 class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string."""
@@ -160,50 +202,6 @@ class QualityCode(Object):
 
     @staticmethod
     def worstOfAll(*args):
-        pass
-
-
-class Results(object):
-    """The results of a browse operation. May only represent a partial
-    result set, which can be determined by comparing the Total
-    Available Size to the Returned Size. If there is a mismatch, the
-    continuation point should be non-null and can be used in
-    constructing the subsequent BrowseFilter to continue the browse."""
-
-    def error(self, result):
-        pass
-
-    def getContinuationPoint(self):
-        pass
-
-    def getResultQuality(self):
-        pass
-
-    def getResults(self):
-        pass
-
-    def getReturnedSize(self):
-        pass
-
-    def getTotalAvailableSize(self):
-        pass
-
-    def of(self, arg):
-        pass
-
-    def setContinuationPoint(self, continuationPoint):
-        pass
-
-    def setResultQuality(self, value):
-        pass
-
-    def setResults(self, results):
-        pass
-
-    def setTotalAvailableResults(self, totalAvailableResults):
-        pass
-
-    def toString(self):
         pass
 
 
@@ -376,6 +374,7 @@ def queryTagCalculations(paths, calculations,
     print (paths, calculations, startDate, endDate, rangeHours,
            rangeMinutes, aliases, includeBoundingValues,
            validatesSCExec, noInterpolation, ignoreBadQuality)
+    return None
 
 
 def read(tagPath):
@@ -448,7 +447,7 @@ def readAsync(tagPaths, callback):
             quality, and timestamp.
     """
     print tagPaths, callback
-    pass
+    return None
 
 
 def readBlocking(tagPaths, timeout=45000):
@@ -545,9 +544,8 @@ def writeAsync(tagPaths, values, callback):
 
 
 def writeBlocking(tagPaths, values, timeout=45000):
-    """Asynchronously writes values to Tags a the given paths. You
-    must provide a Python callback function that can process the write
-    results.
+    """Writes values to Tags at the given paths. This function will
+    block until the write operation is complete or times out.
 
     Args:
         tagPaths (list[str]): A List of Tag paths to write to. If no
