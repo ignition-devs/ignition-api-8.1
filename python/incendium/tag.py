@@ -35,8 +35,11 @@ def read(tag_path):
 
 
 def write(tag_path, value):
-    """Writes a value to a tag. Note that this function writes
-    asynchronously. This means that the function does not wait for the
+    """Writes a value to a tag. Note that this function wraps
+    `system.tag.writeBlocking`. Unlike `system.tag.write` from version
+     7.9, this function blocks
+    not
+    wait for the
     write to occur before returning - the write occurs sometime later
     on a different thread.
 
