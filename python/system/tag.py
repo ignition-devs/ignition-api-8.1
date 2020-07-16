@@ -25,7 +25,6 @@ import system.date
 from java.lang import Object
 
 
-# noinspection PyMethodMayBeStatic
 class BrowseTag(object):
     """BrowseTag class."""
 
@@ -48,24 +47,31 @@ class BrowseTag(object):
         self.dataType = dataType
 
     def isDB(self):
+        print self
         return True
 
     def isExpression(self):
+        print self
         return True
 
     def isFolder(self):
+        print self
         return True
 
     def isMemory(self):
+        print self
         return True
 
     def isOPC(self):
+        print self
         return True
 
     def isQuery(self):
+        print self
         return True
 
     def isUDT(self):
+        print self
         return True
 
 
@@ -97,7 +103,6 @@ class QualifiedValue(object):
         pass
 
 
-# noinspection PyMethodMayBeStatic
 class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string."""
@@ -124,24 +129,31 @@ class QualityCode(Object):
         pass
 
     def isBad(self):
+        print self
         return False
 
     def isBadOrError(self):
+        print self
         return False
 
     def isError(self):
+        print self
         return False
 
     def isGood(self):
+        print self
         return True
 
     def isNot(self, arg):
+        print self, arg
         return True
 
     def isNotGood(self):
+        print self
         return False
 
     def isUncertain(self):
+        print self
         return False
 
     def toString(self):
@@ -307,7 +319,7 @@ def browseTagsSimple(parentPath, sort):
         "browseTagsSimple is deprecated, use browse instead.",
         DeprecationWarning
     )
-    print(parentPath, sort)
+    print parentPath, sort
     return [BrowseTag()]
 
 
