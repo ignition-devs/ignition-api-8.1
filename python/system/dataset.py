@@ -12,6 +12,18 @@ __all__ = [
     'toPyDataSet'
 ]
 
+from collections import Iterable
+
+
+class Dataset(Iterable):
+    def __iter__(self):
+        pass
+
+
+class PyDataSet(Iterable):
+    def __iter__(self):
+        pass
+
 
 def getColumnHeaders(dataset):
     """Takes in a dataset and returns the headers as a python list.
@@ -44,6 +56,7 @@ def toDataSet(*args):
     """
     for arg in args:
         print arg
+    return Dataset()
 
 
 def toPyDataSet(dataset):
@@ -59,3 +72,4 @@ def toPyDataSet(dataset):
         PyDataSet: The newly created PyDataSet.
     """
     print dataset
+    return PyDataSet()

@@ -106,7 +106,7 @@ def info(message, title, detail=None):
 
     Args:
         message (str): The message to display. This will be translated
-            to the selected Locale.
+            to the selected Locale. Will accept html formatting.
         title (str): A title for the message box. This will be
             translated to the selected Locale.
         detail (str): Additional text to display. This will be

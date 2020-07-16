@@ -56,11 +56,11 @@ def set_locale(user):
     configured, the default will be English (US).
 
     Args:
-        user (_User): The User.
+        user (User): The User.
     """
     locale = constants.DEFAULT_LANGUAGE
 
-    if user and user.get_locale():
+    if user is not None and user.get_locale() is not None:
         locale = user.get_locale()
 
     system.util.setLocale(locale)

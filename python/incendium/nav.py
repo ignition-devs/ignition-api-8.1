@@ -46,7 +46,7 @@ def _get_full_path(from_path, to_path):
         elif path_part != CURRENT_DIRECTORY:
             full_path.append(path_part)
 
-    return '/'.join(full_path)
+    return PATH_SEPARATOR.join(full_path)
 
 
 def swap_to(path, params=None):

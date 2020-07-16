@@ -93,27 +93,27 @@ def get_user(user_source, failover=None):
 
     Args:
         user_source (str): The name of the User Source.
-        failover (str): The name of the Failover profile. Optional.
+        failover (str): The name of the Failover Source. Optional.
 
     Returns:
         _User: A User object.
     """
     # Initialize variables
     user = None
-    user_obj = None
+    user_object = None
     _username = system.security.getUsername()
 
-    # Try User Source.
+    # 1 Try SSO
     if user_source:
         user = system.user.getUser(user_source, _username)
-    # Try Failover.
+    # 2 Try Fallback
     if not user and failover:
         user = system.user.getUser(failover, _username)
 
     if user:
-        user_obj = _User(user)
+        user_object = _User(user)
 
-    return user_obj
+    return user_object
 
 
 def get_user_first_name(user_source, failover=None):

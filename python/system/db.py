@@ -14,6 +14,7 @@ __all__ = [
     'execSProcCall',
     'getConnectionInfo',
     'rollbackTransaction',
+    'runPrepQuery',
     'setDatasourceEnabled'
 ]
 
@@ -78,7 +79,7 @@ class SProcCall(object):
             Dataset: The dataset that is the resulting data of the
                 stored procedure, if any.
         """
-        pass
+        print self
 
     def getUpdateCount(self):
         """Returns the number of rows modified by the stored
@@ -88,6 +89,7 @@ class SProcCall(object):
              int: The number of rows modified by the stored procedure,
                 or -1 if not applicable.
         """
+        print self
         return 1
 
     def getReturnValue(self):
@@ -98,6 +100,7 @@ class SProcCall(object):
              int: The return value, if registerReturnParam had been
                 called.
         """
+        print self
         return 0
 
     def getOutParamValue(self, param):
@@ -112,7 +115,7 @@ class SProcCall(object):
             object: The value of the previously registered
                 out-parameter.
         """
-        print param
+        print self, param
         return 0
 
     def registerInParam(self, param, typeCode, value):
@@ -124,7 +127,7 @@ class SProcCall(object):
             typeCode (int): Type code constant.
             value (object): Value of type typeCode.
         """
-        print(param, typeCode, value)
+        print self, param, typeCode, value
 
     def registerOutParam(self, param, typeCode):
         """Registers an out parameter for the stored procedure.
@@ -134,7 +137,7 @@ class SProcCall(object):
                 or name (str).
             typeCode (int): Type code constant.
         """
-        print(param, typeCode)
+        print self, param, typeCode
 
     def registerReturnParam(self, typeCode):
         """Use this function to specify the datatype of the returned
@@ -143,7 +146,7 @@ class SProcCall(object):
         Args:
             typeCode (int): Type code constant.
         """
-        print typeCode
+        print self, typeCode
 
 
 def beginTransaction(database=None, isolationLevel=None, timeout=None):
@@ -186,7 +189,7 @@ def beginTransaction(database=None, isolationLevel=None, timeout=None):
             argument for all other calls to have them execute against
             this transaction.
     """
-    print(database, isolationLevel, timeout)
+    print database, isolationLevel, timeout
     return 'transaction_id'
 
 
@@ -239,7 +242,7 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
             configured and then used as the argument to
             system.db.execSProcCall.
     """
-    print(procedureName, database, tx, skipAudit)
+    print procedureName, database, tx, skipAudit
     return SProcCall()
 
 
@@ -286,6 +289,43 @@ def rollbackTransaction(tx):
         tx (str): The transaction ID.
     """
     print tx
+
+
+def runPrepQuery(query, args, database='', tx=None):
+    """Runs a  prepared statement  against the database, returning the
+    results in a PyDataSet. Prepared statements differ from regular
+    queries in that they can use a special placeholder, the
+    question-mark character ( ? ) in the query where any dynamic
+    arguments would go, and then use an array of values to provide
+    real information for those arguments. Make sure that the length of
+    your argument array matches the number of question-mark
+    placeholders in your query.
+
+    This call should be used for SELECT queries. This is a useful
+    alternative to system.db.runQuery because it allows values in the
+    WHERE clause, JOIN clause, and other clauses to be specified
+    without having to turn those values into strings. This is safer
+    because it protects against a problem known as a SQL injection
+    attack, where a user can input data that affects the query's
+    semantics.
+
+    Args:
+        query (str): A query (typically a SELECT) to run as a prepared
+            statement with placeholders (?) denoting where the
+            arguments go.
+        args (list[object]): A list of arguments. Will be used in
+            order to match each placeholder (?) found in the query.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used.
+        tx (str): A transaction identifier. If omitted, the query will
+            be executed in its own transaction.
+
+    Returns:
+        PyDataSet: The results of the query as a PyDataSet.
+    """
+    print query, args, database, tx
+    return None
 
 
 def setDatasourceEnabled(name, enabled):

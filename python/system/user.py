@@ -40,16 +40,18 @@ class User(object):
         Returns:
             str: The value of the requested property.
         """
+        print self
         return prop
 
     def getContactInfo(self):
         """Returns a sequence of ContactInfo objects. Each of these
-        objects will have a contactType and valueproperty representing
-        the contact information, both strings.
+        objects will have a contactType and value property
+        representing the contact information, both strings.
 
         Returns:
             list[ContactInfo]: A sequence of ContactInfo objects.
         """
+        print self
         ci_email = ContactInfo('email', 'johdoe@mycompany.com')
         ci_phone = ContactInfo('phone', '+1 5551324567')
         ci_sms = ContactInfo('sms', '+1 5557654321')
@@ -63,6 +65,7 @@ class User(object):
             str: The internal identifier object that the backing user
                 source needs to identify this user.
         """
+        print self
         return 1
 
     def getOrDefault(self, prop):
@@ -75,6 +78,7 @@ class User(object):
         Returns:
             str: The value of the requested property.
         """
+        print self
         return prop
 
     def getRoles(self):
@@ -83,8 +87,9 @@ class User(object):
 
         Returns:
              list[str]: Sequence of strings representing the roles
-                thatthis user belongs to.
+                that this user belongs to.
         """
+        print self
         return User.Roles
 
 

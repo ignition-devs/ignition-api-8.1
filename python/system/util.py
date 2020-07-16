@@ -40,9 +40,9 @@ def beep():
             os.system('say "beep"')
         elif platforms[sys.platform] == 'Linux':
             # TODO: Make Linux speak.
-            print('Beep!')
+            print 'Beep!'
     else:
-        print('Beep!')
+        print 'Beep!'
 
 
 def getGatewayAddress():

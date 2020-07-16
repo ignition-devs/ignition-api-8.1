@@ -52,7 +52,7 @@ __all__ = [
 
 from datetime import datetime, timedelta
 
-from java.util import Locale, TimeZone
+from java.util import Locale
 
 
 def addDays(date, value):
@@ -414,7 +414,8 @@ def getTimezone():
     Returns:
         str: A representation of the current timezone.
     """
-    return TimeZone.getDefault().getID()
+    # TODO: Implement function.
+    pass
 
 
 def getTimezoneOffset(date=datetime.now()):
@@ -468,7 +469,7 @@ def hoursBetween(date_1, date_2):
             between two dates.
     """
     diff = date_2 - date_1
-    d, s, micro = diff.days, diff.seconds, diff.microseconds
+    d, s, _ = diff.days, diff.seconds, diff.microseconds
     return d * 24 + s // 3600
 
 
@@ -578,7 +579,7 @@ def minutesBetween(date_1, date_2):
             between two dates.
     """
     diff = date_2 - date_1
-    d, s, micro = diff.days, diff.seconds, diff.microseconds
+    d, s, _ = diff.days, diff.seconds, diff.microseconds
     return d * 1440 + s // 60
 
 
@@ -616,7 +617,8 @@ def now():
     return datetime.now()
 
 
-def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss', locale=Locale.ENGLISH):
+def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss',
+          locale=Locale.ENGLISH):
     """Attempts to parse a string and create a Date. Causes
     ParseException if the date dateString parameter is in an
     unrecognized format.
@@ -648,7 +650,7 @@ def secondsBetween(date_1, date_2):
             between two dates.
     """
     diff = date_2 - date_1
-    d, s, micro = diff.days, diff.seconds, diff.microseconds
+    d, s, _ = diff.days, diff.seconds, diff.microseconds
     return d * 86400 + s
 
 

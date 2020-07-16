@@ -25,7 +25,6 @@ import system.date
 from java.lang import Object
 
 
-# noinspection PyMethodMayBeStatic
 class BrowseTag(object):
     """BrowseTag class."""
 
@@ -48,24 +47,31 @@ class BrowseTag(object):
         self.dataType = dataType
 
     def isDB(self):
+        print self
         return True
 
     def isExpression(self):
+        print self
         return True
 
     def isFolder(self):
+        print self
         return True
 
     def isMemory(self):
+        print self
         return True
 
     def isOPC(self):
+        print self
         return True
 
     def isQuery(self):
+        print self
         return True
 
     def isUDT(self):
+        print self
         return True
 
 
@@ -97,7 +103,6 @@ class QualifiedValue(object):
         pass
 
 
-# noinspection PyMethodMayBeStatic
 class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string."""
@@ -124,28 +129,32 @@ class QualityCode(Object):
         pass
 
     def isBad(self):
+        print self
         return False
 
     def isBadOrError(self):
+        print self
         return False
 
     def isError(self):
+        print self
         return False
 
     def isGood(self):
+        print self
         return True
 
     def isNot(self, arg):
+        print self
         return True
 
     def isNotGood(self):
+        print self
         return False
 
     def isUncertain(self):
+        print self
         return False
-
-    def toString(self):
-        return ''
 
     def toValue(self):
         pass
@@ -307,7 +316,7 @@ def browseTagsSimple(parentPath, sort):
         "browseTagsSimple is deprecated, use browse instead.",
         DeprecationWarning
     )
-    print(parentPath, sort)
+    print parentPath, sort
     return [BrowseTag()]
 
 
@@ -376,6 +385,7 @@ def queryTagCalculations(paths, calculations,
     print (paths, calculations, startDate, endDate, rangeHours,
            rangeMinutes, aliases, includeBoundingValues,
            validatesSCExec, noInterpolation, ignoreBadQuality)
+    return None
 
 
 def read(tagPath):
@@ -426,7 +436,7 @@ def readAll(tagPaths):
     )
     print tagPaths
     items = []
-    for i in range(len(tagPaths)):
+    for _ in range(len(tagPaths)):
         items.append(QualifiedValue())
     return items
 
@@ -448,7 +458,6 @@ def readAsync(tagPaths, callback):
             quality, and timestamp.
     """
     print tagPaths, callback
-    pass
 
 
 def readBlocking(tagPaths, timeout=45000):
@@ -470,7 +479,7 @@ def readBlocking(tagPaths, timeout=45000):
     """
     print tagPaths, timeout
     items = []
-    for i in range(len(tagPaths)):
+    for _ in range(len(tagPaths)):
         items.append(QualifiedValue())
     return items
 
@@ -541,13 +550,11 @@ def writeAsync(tagPaths, values, callback):
             will hold the result of the write operation for that Tag.
     """
     print tagPaths, values, callback
-    pass
 
 
 def writeBlocking(tagPaths, values, timeout=45000):
-    """Asynchronously writes values to Tags a the given paths. You
-    must provide a Python callback function that can process the write
-    results.
+    """Writes values to Tags at the given paths. This function will
+    block until the write operation is complete or times out.
 
     Args:
         tagPaths (list[str]): A List of Tag paths to write to. If no
@@ -565,4 +572,4 @@ def writeBlocking(tagPaths, values, timeout=45000):
             operation for that Tag.
     """
     print tagPaths, values, timeout
-    pass
+    return [QualityCode()]

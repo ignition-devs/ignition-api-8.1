@@ -15,13 +15,13 @@ class ApplicationError(Exception):
 
     def __init__(self,
                  message,
-                 inner_exception,
+                 inner_exception=None,
                  cause=None):
         """Application Error initializer.
 
         Args:
             message (str): The error message.
-            inner_exception (object): The inner Exception.
+            inner_exception (object): The inner Exception. Optional.
             cause (str): The cause of the Exception. Optional.
         """
         super(ApplicationError, self).__init__(message)

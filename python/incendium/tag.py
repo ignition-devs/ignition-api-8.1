@@ -13,14 +13,8 @@ import system.tag
 
 
 def read(tag_path):
-    """Reads the value of the tag at the given tag path. Returns a
-    qualified value object. You can read the value, quality, and
-    timestamp  from this object. If the tag path does not specify a
-    tag property, then the Value property is assumed.
-
-    You can also read the value of tag attributes by appending the
-    attribute to the tagPath parameter. See the Tag Attributes page
-    for a list of available attributes.
+    """Reads the value of the Tags at the given paths. Will block
+    until the read operation is complete or times out.
 
     Args:
         tag_path (str): Reads from the given tag path. If no property
@@ -35,13 +29,8 @@ def read(tag_path):
 
 
 def write(tag_path, value):
-    """Writes a value to a tag. Note that this function wraps
-    `system.tag.writeBlocking`. Unlike `system.tag.write` from version
-     7.9, this function blocks
-    not
-    wait for the
-    write to occur before returning - the write occurs sometime later
-    on a different thread.
+    """Writes a value to a tag. Note that this function will
+    block until the write operation is complete or times out.
 
     Args:
         tag_path (str): The path of the tag to write to.
