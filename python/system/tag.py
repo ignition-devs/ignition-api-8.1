@@ -16,7 +16,9 @@ __all__ = [
     'readAsync',
     'readBlocking',
     'write',
-    'writeAll'
+    'writeAll',
+    'writeAsync',
+    'writeBlocking'
 ]
 
 import warnings
