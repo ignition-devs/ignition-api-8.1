@@ -20,4 +20,4 @@ For more information, please refer to:
 * [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions).
 
 # Ignition Release History (version 8.0)
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSp4_O4zIgc1XH-cJ-smKsC1IaTEP66q7fVLoTqrOYhFrOer13klGduTVoZmj3WR7Q50Tr9U7q-7T0k/pubchart?oid=1217054176&amp;format=interactive" width="100%"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSp4_O4zIgc1XH-cJ-smKsC1IaTEP66q7fVLoTqrOYhFrOer13klGduTVoZmj3WR7Q50Tr9U7q-7T0k/pubchart?oid=1217054176&amp;format=interactive" width="100%" height="500"></iframe>
