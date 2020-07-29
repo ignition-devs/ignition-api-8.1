@@ -1,6 +1,6 @@
-# Copyright (C) 2019 Pyrotek, Inc.
+# Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: cesrom@pyrotek.com
+# Contact: thecesrom@gmail.com
 
 """Provides classes that are fundamental to the design of the Java
 programming language."""

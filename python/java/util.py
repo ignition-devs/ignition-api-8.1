@@ -1,6 +1,6 @@
-# Copyright (C) 2020 Pyrotek, Inc.
+# Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: cesrom@pyrotek.com
+# Contact: thecesrom@gmail.com
 
 """Contains the collections framework, legacy collection classes,
 event model, date and time facilities, internationalization, and
