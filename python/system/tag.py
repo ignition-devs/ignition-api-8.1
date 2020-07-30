@@ -147,7 +147,7 @@ class QualityCode(Object):
         return True
 
     def isNot(self, arg):
-        print self, arg
+        print(self, arg)
         return True
 
     def isNotGood(self):
@@ -244,7 +244,7 @@ def browse(path, filter=None):
             of items in results. Refer to the list of tagBrowse
             objects.
     """
-    print path, filter
+    print(path, filter)
     return Results()
 
 
@@ -321,7 +321,7 @@ def browseTagsSimple(parentPath, sort):
         "browseTagsSimple is deprecated, use browse instead.",
         DeprecationWarning
     )
-    print parentPath, sort
+    print(parentPath, sort)
     return [BrowseTag()]
 
 
@@ -461,8 +461,7 @@ def readAsync(tagPaths, callback):
             qualified values will have three sub members: value,
             quality, and timestamp.
     """
-    print tagPaths, callback
-    pass
+    print(tagPaths, callback)
 
 
 def readBlocking(tagPaths, timeout=45000):
@@ -482,11 +481,8 @@ def readBlocking(tagPaths, timeout=45000):
             corresponding to the Tag paths. Each qualified value will
             have three sub members: value, quality, and timestamp.
     """
-    print tagPaths, timeout
-    items = []
-    for i in range(len(tagPaths)):
-        items.append(QualifiedValue())
-    return items
+    print(tagPaths, timeout)
+    return [QualifiedValue() for _ in tagPaths]
 
 
 def write(tagPath, value, suppressErrors=False):
@@ -509,7 +505,7 @@ def write(tagPath, value, suppressErrors=False):
         "write is deprecated, use writeAsync or writeBlocking instead.",
         DeprecationWarning
     )
-    print tagPath, value, suppressErrors
+    print(tagPath, value, suppressErrors)
     return 1
 
 
@@ -533,7 +529,7 @@ def writeAll(tagPaths, values):
         "writeAll is deprecated, use writeAsync or writeBlocking instead.",
         DeprecationWarning
     )
-    print tagPaths, values
+    print(tagPaths, values)
     return [1] * len(tagPaths)
 
 
@@ -554,8 +550,7 @@ def writeAsync(tagPaths, values, callback):
             when the callback function is invoked. The quality codes
             will hold the result of the write operation for that Tag.
     """
-    print tagPaths, values, callback
-    pass
+    print(tagPaths, values, callback)
 
 
 def writeBlocking(tagPaths, values, timeout=45000):
@@ -578,5 +573,5 @@ def writeBlocking(tagPaths, values, timeout=45000):
             Tag path. Each quality code holds the result of the write
             operation for that Tag.
     """
-    print tagPaths, values, timeout
-    pass
+    print(tagPaths, values, timeout)
+    return [QualityCode()]

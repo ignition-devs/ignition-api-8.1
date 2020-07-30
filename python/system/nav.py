@@ -44,4 +44,4 @@ def swapWindow(swapFromPath, swapToPath, params=None):
     Returns:
         object: A reference to the swapped-to window.
     """
-    print swapFromPath, swapToPath, params
+    print(swapFromPath, swapToPath, params)

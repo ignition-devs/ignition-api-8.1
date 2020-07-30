@@ -84,7 +84,7 @@ class Object(object):
             bool: true if this object is the same as the obj argument;
                 false otherwise.
         """
-        print self, obj
+        print(self, obj)
         return True
 
     def getClass(self):

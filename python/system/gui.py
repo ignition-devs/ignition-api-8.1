@@ -41,7 +41,7 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
     Returns:
         Color: The new color chosen by the user.
     """
-    print initialColor, dialogTitle
+    print(initialColor, dialogTitle)
     return Color()
 
 
@@ -107,7 +107,7 @@ def convertPointToScreen(x, y, event):
     Returns:
         tuple: A tuple of (x,y) in screen coordinates.
     """
-    print x, y, event
+    print(x, y, event)
     return tuple([x, y])
 
 

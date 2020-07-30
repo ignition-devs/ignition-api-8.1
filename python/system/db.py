@@ -115,7 +115,7 @@ class SProcCall(object):
             object: The value of the previously registered
                 out-parameter.
         """
-        print self, param
+        print(self, param)
         return 0
 
     def registerInParam(self, param, typeCode, value):
@@ -127,7 +127,7 @@ class SProcCall(object):
             typeCode (int): Type code constant.
             value (object): Value of type typeCode.
         """
-        print self, param, typeCode, value
+        print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
         """Registers an out parameter for the stored procedure.
@@ -137,7 +137,7 @@ class SProcCall(object):
                 or name (str).
             typeCode (int): Type code constant.
         """
-        print self, param, typeCode
+        print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
         """Use this function to specify the datatype of the returned
@@ -146,7 +146,7 @@ class SProcCall(object):
         Args:
             typeCode (int): Type code constant.
         """
-        print self, typeCode
+        print(self, typeCode)
 
 
 def beginTransaction(database=None, isolationLevel=None, timeout=None):
@@ -189,7 +189,7 @@ def beginTransaction(database=None, isolationLevel=None, timeout=None):
             argument for all other calls to have them execute against
             this transaction.
     """
-    print database, isolationLevel, timeout
+    print(database, isolationLevel, timeout)
     return 'transaction_id'
 
 
@@ -242,7 +242,7 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
             configured and then used as the argument to
             system.db.execSProcCall.
     """
-    print procedureName, database, tx, skipAudit
+    print(procedureName, database, tx, skipAudit)
     return SProcCall()
 
 
@@ -324,7 +324,7 @@ def runPrepQuery(query, args, database='', tx=None):
     Returns:
         PyDataSet: The results of the query as a PyDataSet.
     """
-    print query, args, database, tx
+    print(query, args, database, tx)
     return None
 
 
@@ -336,4 +336,4 @@ def setDatasourceEnabled(name, enabled):
         enabled (bool): True if the connection should be enabled,
             False otherwise.
     """
-    print name, enabled
+    print(name, enabled)

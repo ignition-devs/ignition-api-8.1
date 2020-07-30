@@ -634,7 +634,7 @@ def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss',
     Returns:
         Date: The parsed date.
     """
-    print dateString, formatString, locale
+    print(dateString, formatString, locale)
     return now()
 
 
