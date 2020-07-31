@@ -21,5 +21,4 @@ Is a library of Inductive Automation Ignition's API (mock) scripting functions m
 own projects when developing on a Python/Jython IDE. This allows you to get code completion (a.k.a. IntelliSense).
 
 For more information, please refer to:
-* [Igntion 7.9 Scripting Functions](https://docs.inductiveautomation.com/display/DOC79/Scripting+Functions).
 * [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC80/Scripting+Functions).
