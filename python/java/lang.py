@@ -7,42 +7,31 @@ programming language."""
 
 __all__ = [
     'Exception',
+    'IllegalArgumentException',
     'Object',
-    'Thread'
+    'RuntimeException',
+    'Thread',
+    'Throwable'
 ]
-
-
-class Exception(object):
-    """The class Exception and its subclasses are a form of Throwable
-    that indicates conditions that a reasonable application might want
-    to catch.
-
-    The class Exception and any subclasses that are not also
-    subclasses of RuntimeException are checked exceptions. Checked
-    exceptions need to be declared in a method or constructor's throws
-    clause if they can be thrown by the execution of the method or
-    constructor and propagate outside the method or constructor
-    boundary."""
-
-    # Static elements
-    cause = ''
-
-    def getCause(self):
-        """Returns the cause of this throwable or null if the cause is
-        nonexistent or unknown. (The cause is the throwable that
-        caused this throwable to get thrown.)
-
-        Returns:
-            str: The cause of this throwable or null if the cause is
-                nonexistent or unknown.
-        """
-        return self.cause
 
 
 class Object(object):
     """Class Object is the root of the class hierarchy. Every class
     has Object as a superclass. All objects, including arrays,
     implement the methods of this class."""
+
+    def __init__(self):
+        """public Object()"""
+        pass
+
+    def clone(self):
+        """Creates and returns a copy of this object.
+
+        Returns:
+            object: A copy of this object.
+        """
+        import copy
+        return copy.deepcopy(self)
 
     def equals(self, obj):
         """Indicates whether some other object is "equal to" this one.
@@ -87,6 +76,9 @@ class Object(object):
         print(self, obj)
         return True
 
+    def finalize(self):
+        pass
+
     def getClass(self):
         pass
 
@@ -113,6 +105,66 @@ class Object(object):
 
     def wait(self, *args):
         pass
+
+
+class Throwable(Object):
+    """The Throwable class is the superclass of all errors and
+    exceptions in the Java language."""
+
+    def __init__(self, *args):
+        super(Throwable, self).__init__()
+
+
+class Exception(Throwable):
+    """The class Exception and its subclasses are a form of Throwable
+    that indicates conditions that a reasonable application might want
+    to catch.
+
+    The class Exception and any subclasses that are not also
+    subclasses of RuntimeException are checked exceptions. Checked
+    exceptions need to be declared in a method or constructor's throws
+    clause if they can be thrown by the execution of the method or
+    constructor and propagate outside the method or constructor
+    boundary."""
+
+    # Static elements
+    cause = ''
+
+    def __init__(self, *args):
+        super(Exception, self).__init__(*args)
+
+    def getCause(self):
+        """Returns the cause of this throwable or null if the cause is
+        nonexistent or unknown. (The cause is the throwable that
+        caused this throwable to get thrown.)
+
+        Returns:
+            str: The cause of this throwable or null if the cause is
+                nonexistent or unknown.
+        """
+        return self.cause
+
+
+class RuntimeException(Exception):
+    """RuntimeException is the superclass of those exceptions that can
+    be thrown during the normal operation of the Java Virtual Machine.
+
+    RuntimeException and its subclasses are unchecked exceptions.
+    Unchecked exceptions do not need to be declared in a method or
+    constructor's throws clause if they can be thrown by the execution
+    of the method or constructor and propagate outside the method or
+    constructor boundary."""
+
+    def __init__(self, *args):
+        super(RuntimeException, self).__init__(*args)
+
+
+class IllegalArgumentException(RuntimeException):
+    """Thrown to indicate that a method has been passed an illegal or
+    inappropriate argument."""
+
+    def __init__(self, *args):
+        super(IllegalArgumentException, self).__init__(*args)
 
 
 class Thread(object):

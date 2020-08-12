@@ -1,4 +1,4 @@
-# Copyright (C) 2019
+# Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
@@ -12,11 +12,39 @@ __all__ = [
     'color',
     'confirm',
     'convertPointToScreen',
+    'createPopupMenu',
+    'desktop',
     'errorBox',
+    'findWindow',
+    'getCurrentDesktop',
+    'getDesktopHandles',
+    'getOpenedWindowNames',
+    'getOpenedWindows',
+    'getParentWindow',
+    'getQuality',
+    'getScreenIndex',
+    'getScreens',
+    'getSibling',
+    'getWindow',
+    'getWindowNames',
+    'inputBox',
+    'isTouchscreenModeEnabled',
     'messageBox',
+    'openDesktop',
+    'openDiagnostics',
+    'passwordBox',
+    'setScreenIndex',
+    'setTouchscreenModeEnabled',
+    'showNumericKeypad',
+    'showTouchscreenKeyboard',
+    'transform',
+    'warningBox'
 ]
 
 from java.awt import Color
+from java.lang import Object
+from javax.swing import JComponent, JFrame, JPopupMenu
+from . import EventObject, FPMIWindow
 
 # Constants
 ACCL_NONE = 0
@@ -26,6 +54,15 @@ ACCL_SLOW_TO_FAST = 3
 ACCL_EASE = 4
 COORD_SCREEN = 0
 COORD_DESIGNER = 1
+
+
+class WindowUtilities(Object):
+    """WindowUtilities object."""
+    pass
+
+
+def _dummy(message, title):
+    print(message, title)
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
@@ -102,17 +139,63 @@ def convertPointToScreen(x, y, event):
             fired the event.
         y (int): The Y-coordinate, relative to the component that
             fired the event.
-        event (object): An event object for a component event.
+        event (EventObject): An event object for a component event.
 
     Returns:
         tuple: A tuple of (x,y) in screen coordinates.
     """
     print(x, y, event)
-    return tuple([x, y])
+    return x, y
 
 
-def _dummy(message, title):
-    print(message, title)
+def createPopupMenu(itemNames, itemFunctions):
+    """Creates a new popup menu, which can then be shown over a
+    component on a mouse event. To use this function, first create a
+    Python sequence whose entries are strings, and another sequence
+    whose entries are function objects. The strings will be the items
+    that are displayed in your popup menu, and when an item is
+    clicked, its corresponding function will be run. Passing in a
+    function of None will cause a separator line to appear in the
+    popup menu, and the corresponding string will not be displayed.
+    Your functions must accept an event object as an argument. See
+    also: Functions. It is best to have the menu object created only
+    once via an application specific library function. Then, call the
+    show(event) function on both the mousePressed and
+    mouseReleasedevents on your component. The reason for this is that
+    different operating systems (Windows, Linux, MacOS) differ in when
+    they like to show the popup menu. The show(event) function detects
+    when the right time is to show itself, either on mouse press or
+    release. See the examples for more.
+
+    Args:
+        itemNames (list[str]): A list of names to create popup menu
+            items with.
+        itemFunctions (list[object]): A list of functions to match up
+            with the names.
+
+    Returns:
+        JPopupMenu: The javax.swing.JPopupMenu that was created.
+    """
+    print(itemNames, itemFunctions)
+    return JPopupMenu()
+
+
+def desktop(handle='primary'):
+    """Allows for invoking system.gui functions on a specific desktop.
+
+    Args:
+        handle (str): The handle for the desktop to use. The screen
+            index cast as a string may be used instead of the handle.
+            If omitted, this will default to the Primary Desktop.
+            Alternatively, the handle "primary" can be used to refer
+            to the Primary Desktop.
+
+    Returns:
+        WindowUtilites: A copy of system.gui that will be relative to
+            the desktop named by the given handle.
+    """
+    print handle
+    return WindowUtilities()
 
 
 def errorBox(message, title=None):
@@ -125,11 +208,392 @@ def errorBox(message, title=None):
     _dummy(message, title)
 
 
+def findWindow(path):
+    """Finds and returns a list of windows with the given path. If the
+    window is not open, an empty list will be returned. Useful for
+    finding all instances of an open window that were opened with
+    system.gui.openWindowInstance.
+
+    Args:
+        path (str): The path of the window to search for.
+
+    Returns:
+        list[object]: A list of window objects. May be empty if window
+            is not open, or have more than one entry if multiple
+            windows are open.
+    """
+    print path
+    return []
+
+
+def getCurrentDesktop():
+    """Returns the handle of the desktop this function was called
+    from. Commonly used with the system.gui.desktop and
+    system.nav.desktop functions.
+
+    Returns:
+        str: The handle of the current desktop.
+    """
+    return 'primary'
+
+
+def getDesktopHandles():
+    """Gets a list of all secondary handles of the open desktops
+    associated with the current client. In this case, secondary means
+    any desktop frame opened by the original client frame.
+
+    Example:
+        If the original client opened 2 new frames ('left client' and
+        'right client'), then this function would return
+        ['left client', 'right client'].
+
+    Returns:
+        list[str]: A list of window handles of all secondary Desktop
+            frames.
+    """
+    return ['left client', 'right client']
+
+
+def getOpenedWindowNames():
+    """Finds all of the currently open windows, returning a tuple of
+    their paths.
+
+    Returns:
+        tuple: A tuple of strings, representing the path of each
+            window that is open.
+    """
+    return 'window_1', 'window_2', 'window_n'
+
+
+def getOpenedWindows():
+    """Finds all of the currently open windows, returning a tuple of
+    references to them.
+
+    Returns:
+         tuple: A tuple of the opened windows. Not their names, but
+            the actual window objects themselves.
+    """
+    return [FPMIWindow()]
+
+
+def getParentWindow(event):
+    """Finds the parent (enclosing) window for the component that
+    fired an event, returning a reference to it.
+
+    Args:
+        event (EventObject): A component event object.
+
+    Returns:
+        object: The window that contains the component that fired the
+            event.
+    """
+    print event
+    return object
+
+
+def getQuality(component, propertyName):
+    """Returns the data quality for the property of the given
+    component as an integer. This function can be used to check the
+    quality of a Tag binding on a component in the middle of the
+    script so that alternative actions can be taken in the event of
+    device disconnections.
+
+    Args:
+        component (JComponent): The component whose property is being
+            checked.
+        propertyName (str): The name of the property as a string
+            value.
+
+    Returns:
+        int: The data quality of the given property as an integer.
+    """
+    print(component, propertyName)
+    return 192
+
+
+def getScreenIndex():
+    """Returns the returns an integer value representing the current
+    screen index based on the screen this function was called from.
+
+    Returns:
+        int: The screen that the function was called from.
+    """
+    return 0
+
+
+def getScreens():
+    """Get a list of all the monitors on the computer this client is
+    open on. Use with system.gui.setScreenIndex() to move the client.
+
+    Returns:
+        list[tuple]: A sequence of tuples of the form (index, width,
+            height) for each screen device (monitor) available.
+    """
+    return None
+
+
+def getSibling(event, name):
+    """Given a component event object, looks up a sibling component.
+    Shortcut for event.source.parent.getComponent("siblingName"). If
+    no such sibling is found, the special value None is returned.
+
+    Args:
+        event (EventObject): A component event object.
+        name (str): The name of the sibling component.
+
+    Returns:
+        object: The sibling component itself.
+    """
+    print(event, name)
+    return FPMIWindow()
+
+
+def getWindow(name):
+    """Finds a reference to an open window with the given name. Throws
+    a ValueError if the named window is not open or not found.
+
+    Args:
+        name (str): The path to the window to field.
+
+    Returns:
+        FPMIWindow: A reference to the window, if it was open. Use
+            .getRootContainer() to grab the root container of the
+            window.
+    """
+    print name
+    return FPMIWindow()
+
+
+def getWindowNames():
+    """Returns a list of the paths of all windows in the current
+    project, sorted alphabetically.
+
+    Returns:
+        tuple[str]: A tuple of strings, representing the path of each
+            window defined in the current project.
+    """
+    return 'Main Window', 'Main Window 1', 'Main Window 2'
+
+
+def inputBox(message, defaultText):
+    """Opens up a popup input dialog box. This dialog box will show a
+    prompt message, and allow the user to type in a string. When the
+    user is done, they can press "OK" or "Cancel". If OK is pressed,
+    this function will return with the value that they typed in. If
+    Cancel is pressed, this function will return the value None.
+
+    Args:
+        message (str): The message to display for the input box. Will
+            accept html formatting.
+        defaultText (str): The default text to initialize the input
+            box with.
+
+    Returns:
+        str: The string value that was entered in the input box.
+    """
+    print(message, defaultText)
+    return None
+
+
+def isTouchscreenModeEnabled():
+    """Checks whether or not the running client's touchscreen mode is
+    currently enabled.
+
+    Returns:
+         bool: True(1) if the client currently has touchscreen mode
+            activated.
+    """
+    return False
+
+
 def messageBox(message, title=None):
     """Displays an informational-style message popup box to the user.
 
     Args:
-        message (str): The message to display in an error box.
-        title (str): The title for the error box. Optional.
+        message (str): The message to display. Will accept html
+            formatting.
+        title (str): The title for the message box. Optional.
+    """
+    _dummy(message, title)
+
+
+def openDesktop(screen=0, handle=None, title=None, width=None, height=None,
+                x=0, y=0, windows=None):
+    """Creates an additional Desktop in a new frame. For more details,
+    see the Multi-Monitor Clients page.
+
+    Args:
+        screen (int): The screen index of which screen to place the
+            new frame on. If omitted, screen 0 will be used.
+        handle (str): A name for the desktop. If omitted, the screen
+            index will be used.
+        title (str): The title for the new frame. If omitted, the
+            index handle will be used. If the handle and title are
+            omitted, the screen index will be used.
+        width (int): The width for the new Desktop's frame. If
+            omitted, frame will become maximized on the specified
+            monitor.
+        height (int): The width for the new desktop's frame. If
+            omitted, frame will become maximized on the specified
+            monitor.
+        x (int): The X coordinate for the new desktop's frame. Only
+            used if both width and height are specified. If omitted,
+            defaults to 0.
+        y (int): The Y coordinate for the new desktop's frame. Only
+            used if both width and height are specified. If omitted,
+            defaults to 0.
+        windows (list[str]): A list of window paths to open in the new
+            Desktop frame.
+
+    Returns:
+        JFrame: A reference to the new Desktop frame.
+    """
+    print(screen, handle, title, width, height, x, y, windows)
+    return JFrame()
+
+
+def openDiagnostics():
+    """Opens the client runtime diagnostics window, which provides
+    information regarding performance, logging, active threads,
+    connection status, and the console. This provides an opportunity
+    to open the diagnostics window in situations where the menu bar in
+    the client is hidden, and the keyboard shortcut can not be used.
+    """
+    pass
+
+
+def passwordBox(message, title='', echoChar='*'):
+    """Pops up a special input box that uses a password field, so the
+    text isn't echoed back in clear-text to the user. Returns the text
+    they entered, or None if they canceled the dialog box.
+
+    Args:
+        message (str): The message for the password prompt. Will
+            accept html formatting.
+        title (str): A title for the password prompt. Optional.
+        echoChar (str): A custom echo character. Defaults to: *.
+            Optional.
+
+    Returns:
+        str: The password that was entered, or None if the prompt was
+            canceled.
+    """
+    print(message, title, echoChar)
+    return 'password'
+
+
+def setScreenIndex(index):
+    """Moves an open client to a specific monitor. Use with
+    system.gui.getScreens() to identify monitors before moving.
+
+    Args:
+        index (int): The new monitor index for this client to move to.
+            0 based.
+    """
+    print index
+
+
+def setTouchscreenModeEnabled(enabled):
+    """Alters a running client's touchscreen mode on the fly.
+
+    Args:
+        enabled (bool): The new value for touchscreen mode being
+            enabled.
+    """
+    print enabled
+
+
+def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
+    """Displays a modal on-screen numeric keypad, allowing for
+    arbitrary numeric entry using the mouse, or a finger on a
+    touchscreen monitor. Returns the number that the user entered.
+
+    Args:
+        initialValue (object): The value to start the on-screen keypad
+            with.
+        fontSize (int): The font size to display in the keypad.
+            Optional.
+        usePasswordMode (bool): If True, display a * for each digit.
+            Optional.
+
+    Returns:
+        object: The value that was entered in the keypad.
+    """
+    print(initialValue, fontSize, usePasswordMode)
+    return 43
+
+
+def showTouchscreenKeyboard(initialText=None, fontSize=None,
+                            passwordMode=False):
+    """
+
+    Args:
+        initialText: The text to start the on-screen keyboard with.
+        fontSize (int): The font size to display in the keypad.
+            Optional.
+        passwordMode (bool): True (1) to activate password mode, where
+            the text entered isn't echoed back clear-text. Optional.
+
+    Returns:
+        str: The text that was "typed" in the on-screen keyboard.s
+    """
+    print(initialText, fontSize, passwordMode)
+    return ''
+
+
+def transform(component, newX=None, newY=None, newWidth=None, newHeight=None,
+              duration=0, callback=None, framesPerSecond=60,
+              acceleration=None, coordSpace=None):
+    """Sets a component's position and size at runtime.  Additional
+    arguments for the duration, framesPerSecond, and acceleration of
+    the operation exist for animation.  An optional callback argument
+    will be executed when the transformation is complete. Note: The
+    transformation is performed in Designer coordinate space on
+    components which are  centered or have more than 2 anchors.
+
+    Args:
+        component (JComponent): The component to move or resize.
+        newX (int): An optional x-coordinate to move to, relative to
+            the upper-left corner of the component's parent container.
+        newY (int): An optional y-coordinate to move to, relative to
+            the upper-left corner of the component's parent container.
+        newWidth (int): An optional width for the component.
+        newHeight (int):An optional height for the component.
+        duration (int): An optional duration over which the
+            transformation will take place. If omitted or 0, the
+            transform will take place immediately.
+        callback (object): An optional function to be called when the
+            transformation is complete.
+        framesPerSecond (int): An optional frame rate argument which
+            dictates how often the transformation updates over the
+            given duration. The default is 60 frames per second.
+        acceleration (int): An optional modifier to the acceleration
+            of the transformation over the given duration. See
+            system.gui constants for valid arguments.
+        coordSpace (int): The coordinate space to use. When the
+            default Screen Coordinates are used, the given size and
+            position are absolute, as they appear in the client at
+            runtime. When Designer Coordinates are used, the given
+            size and position are pre-runtime adjusted values, as they
+            would appear in the Designer. See system.gui constants for
+            valid arguments.
+
+    Returns:
+        object: An animation object that the script can use to
+            pause(), resume(), or cancel() the transformation.
+    """
+    print(component, newX, newY, newWidth, newHeight, duration, callback,
+          framesPerSecond, acceleration, coordSpace)
+    return None
+
+
+def warningBox(message, title=None):
+    """Displays a message to the user in a warning style pop-up
+    dialog.
+
+    Args:
+        message (str): The message to display in the warning box. Will
+            accept html formatting.
+        title (str): The title for the warning box. Optional.
     """
     _dummy(message, title)

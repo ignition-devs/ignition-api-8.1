@@ -1,4 +1,4 @@
-# Copyright (C) 2019
+# Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
@@ -10,6 +10,11 @@ __all__ = [
     'getRoles',
     'getUsername',
     'getUserRoles',
+    'isScreenLocked',
+    'lockScreen',
+    'logout',
+    'switchUser',
+    'unlockScreen',
     'validateUser'
 ]
 
@@ -56,6 +61,68 @@ def getUserRoles(username, password, authProfile='', timeout=60000):
     """
     print(username, password, authProfile, timeout)
     return 'Administrator', 'Developer'
+
+
+def isScreenLocked():
+    """Returns whether or not the screen is currently locked.
+
+    Returns:
+        bool: A flag indication whether or not the screen is currently
+            locked.
+    """
+    return False
+
+
+def lockScreen(obscure=False):
+    """Used to put a running client in lock-screen mode. The screen
+    can be unlocked by the user with the proper credentials, or by
+    scripting via thesystem.security.unlockScreen() function.
+
+    Args:
+        obscure (bool): If true(1), the locked screen will be opaque,
+            otherwise it will be partially visible. Optional.
+    """
+    print obscure
+
+
+def logout():
+    """Logs out of the client for the current user and brings the
+    client to the login screen."""
+    pass
+
+
+def switchUser(username, password, event, hideError=False):
+    """Attempts to switch the current user on the fly. If the given
+    username and password fail, this function will return false. If
+    it succeeds, then all currently opened windows are closed, the
+    user is switched, and windows are then re-opened in the states
+    that they were in.
+
+    If an event object is passed to this function, the parent window
+    of the event object will not be re-opened after a successful user
+    switch. This is to support the common case of having a switch-user
+    screen that you want to disappear after the switch takes place.
+
+    Args:
+        username (str): The username to try and switch to.
+        password (str): The password to authenticate with.
+        event (object): If specified, the enclosing window for this
+            event's component will be closed in the switch user
+            process.
+        hideError (bool): If true (1), no error will be shown if the
+            switch user function fails. (default: 0)
+
+    Returns:
+        bool: false(0) if the switch user operation failed, true (1)
+            otherwise.
+    """
+    print(username, password, event, hideError)
+    return True
+
+
+def unlockScreen():
+    """Unlocks the client, if it is currently in lock-screen mode."""
+    pass
 
 
 def validateUser(username, password, authProfile='', timeout=60000):

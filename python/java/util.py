@@ -67,6 +67,7 @@ class Locale(Object):
             country (str): Country code.
             variant (str): Variant code.
         """
+        super(Locale, self).__init__()
         self.language = language
         self.country = country
         self.variant = variant

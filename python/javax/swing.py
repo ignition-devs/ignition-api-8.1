@@ -6,16 +6,71 @@
 that, to the maximum degree possible, work the same on all platforms."""
 
 __all__ = [
-    'JOptionPane'
+    'JComponent',
+    'JFrame',
+    'JInternalFrame',
+    'JOptionPane',
+    'JPopupMenu'
 ]
 
+from java.awt import Container, Frame
 
-class JOptionPane(object):
+
+class JComponent(Container):
+    """The base class for all Swing components except top-level
+    containers."""
+
+    def __init__(self):
+        """Default JComponent constructor."""
+        super(JComponent, self).__init__()
+
+
+class JFrame(Frame):
+    """An extended version of java.awt.Frame that adds support for the
+    JFC/Swing component architecture."""
+
+    def __init__(self):
+        super(JFrame, self).__init__()
+
+
+class JInternalFrame(JComponent):
+    """A lightweight object that provides many of the features of a
+    native frame, including dragging, closing, becoming an icon,
+    resizing, title display, and support for a menu bar."""
+
+    def __init__(self,
+                 title=None,
+                 resizable=None,
+                 closable=None,
+                 maximizable=None,
+                 iconifiable=None):
+        """Creates a JInternalFrame with the specified title,
+        resizability, closability, maximizability, and iconifiability.
+
+        Args:
+            title (str): The String to display in the title bar.
+            resizable (bool): If true, the internal frame can be
+                resized.
+            closable (bool): If true, the internal frame can be
+                closed.
+            maximizable (bool): If true, the internal frame can be
+                maximized.
+            iconifiable (bool): If true, the internal frame can be
+                iconified.
+        """
+        super(JInternalFrame, self).__init__()
+        self.title = title
+        self.resizable = resizable
+        self.closable = closable
+        self.maximizable = maximizable
+        self.iconifiable = iconifiable
+
+
+class JOptionPane(JComponent):
     """JOptionPane makes it easy to pop up a standard dialog box that
     prompts users for a value or informs them of something. For
     information about using JOptionPane, see How to Make Dialogs, a
-    section in The Java Tutorial.
-    """
+    section in The Java Tutorial."""
     # messageType.
     PLAIN_MESSAGE = -1
     ERROR_MESSAGE = 0
@@ -147,3 +202,24 @@ class JOptionPane(object):
         print(parentComponent, message, title, optionType, messageType,
               icon, options, initialValue)
         return JOptionPane.YES_OPTION
+
+
+class JPopupMenu(JComponent):
+    """An implementation of a popup menu -- a small window that pops
+    up and displays a series of choices. A JPopupMenu is used for the
+    menu that appears when the user selects an item on the menu bar.
+    It is also used for "pull-right" menu that appears when the
+    selects a menu item that activates it. Finally, a JPopupMenu can
+    also be used anywhere else you want a menu to appear. For example,
+    when the user right-clicks in a specified area."""
+
+    def __init__(self, label=None):
+        """Constructs a JPopupMenu without an "invoker" or with the
+        specified title.
+
+        Args:
+            label (str): The string that a UI may use to display as a
+                title for the popup menu. Optional.
+        """
+        super(JPopupMenu, self).__init__()
+        self.label = label

@@ -1,8 +1,9 @@
-# Copyright (C) 2019
+# Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
 
-"""Ignition date module."""
+"""Date Functions
+The following functions give you access to test and modify dates."""
 
 __all__ = [
     'addDays',
@@ -52,7 +53,7 @@ __all__ = [
 
 from datetime import datetime, timedelta
 
-from java.util import Locale
+from java.util import Date, Locale
 
 
 def addDays(date, value):
@@ -202,7 +203,7 @@ def daysBetween(date_1, date_2):
     return (date_2 - date_1).days
 
 
-def format(date, format):
+def format(date, format='yyyy-MM-dd HH:mm:ss'):
     """Returns the given date as a string, formatted according to a
     pattern.
 
