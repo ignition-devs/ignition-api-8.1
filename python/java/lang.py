@@ -107,12 +107,13 @@ class Object(object):
         pass
 
 
-class Throwable(Object):
+class Throwable(Object, BaseException):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language."""
 
     def __init__(self, *args):
-        super(Throwable, self).__init__()
+        Object.__init__(self)
+        BaseException.__init__(self)
 
 
 class Exception(Throwable):

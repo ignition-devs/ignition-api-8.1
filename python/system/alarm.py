@@ -31,6 +31,9 @@ class AlarmQueryResults(ABCMeta):
     also provides additional helper functions for getting the event
     and associated data as a dataset."""
 
+    def __new__(mcs, *args, **kwargs):
+        pass
+
     @abstractmethod
     def getAssociatedDate(cls, uuid):
         pass

@@ -807,7 +807,7 @@ def readAll(tagPaths):
     )
     print tagPaths
     items = []
-    for i in range(len(tagPaths)):
+    for _ in range(len(tagPaths)):
         items.append(QualifiedValue())
     return items
 
