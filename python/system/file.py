@@ -56,7 +56,7 @@ def openFile(extension=None, defaultLocation=None):
     Args:
         extension (str): A file extension, like "pdf", to try to open.
             Optional.
-        defaultLocation (str): A folder location, like "C:\MyFiles",
+        defaultLocation (str): A folder location, like "C:\\MyFiles",
             to use as the starting location for the file chooser.
             Optional.
 
@@ -77,7 +77,7 @@ def openFiles(extension=None, defaultLocation=None):
     Args:
         extension (str): A file extension, like "pdf", to try to open.
             Optional.
-        defaultLocation (str): A folder location, like "C:\MyFiles",
+        defaultLocation (str): A folder location, like "C:\\MyFiles",
             to use as the starting location for the file chooser.
             Optional.
 
