@@ -9,7 +9,26 @@ Perspective session from a Python script. """
 from __future__ import print_function
 
 __all__ = [
-    'getSessionInfo'
+    'alterLogging',
+    'closeDock',
+    'closePage',
+    'closePopup',
+    'closeSession',
+    'download',
+    'getSessionInfo',
+    'isAuthorized',
+    'login',
+    'logout',
+    'navigate',
+    'openDock',
+    'openPopup',
+    'print',
+    'refresh',
+    'sendMessage',
+    'setTheme',
+    'toggleDock',
+    'togglePopup',
+    'vibrateDevice'
 ]
 
 from java.lang import Object

@@ -17,6 +17,7 @@ __all__ = [
     'editHoliday',
     'editRole',
     'editSchedule',
+    'editUser',
     'getHoliday',
     'getHolidayNames',
     'getHolidays',
