@@ -9,6 +9,7 @@ generator, and a bit array)."""
 
 __all__ = [
     'Date',
+    'EventObject',
     'Locale'
 ]
 
@@ -46,6 +47,21 @@ class Date(Object):
                 else system.date.fromMillis(date))
 
 
+class EventObject(Object):
+    """The root class from which all event state objects shall be
+    derived.
+
+    All Events are constructed with a reference to the object, the
+    "source", that is logically deemed to be the object upon which the
+    Event in question initially occurred upon."""
+
+    def __init__(self, source):
+        self.source = source
+
+    def getSource(self):
+        return self.source
+
+
 class Locale(Object):
     """A Locale object represents a specific geographical, political,
     or cultural region. An operation that requires a Locale to perform
@@ -67,7 +83,6 @@ class Locale(Object):
             country (str): Country code.
             variant (str): Variant code.
         """
-        super(Locale, self).__init__()
         self.language = language
         self.country = country
         self.variant = variant

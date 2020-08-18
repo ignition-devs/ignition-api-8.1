@@ -52,6 +52,14 @@ class ShelvedPath(Object):
     "shelved", such as when it was shelved, and by whom, and the
     actual path."""
 
+    def __init__(self,
+                 path=None,
+                 user=None,
+                 expiration=None):
+        self.path = path
+        self.user = user
+        self.expiration = expiration
+
     def getExpiration(self):
         pass
 

@@ -3,3 +3,7 @@
 # Contact: thecesrom@gmail.com
 
 """javax package."""
+
+__all__ = [
+    'swing'
+]

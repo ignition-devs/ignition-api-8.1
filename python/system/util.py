@@ -133,7 +133,6 @@ class Version(Object):
             beta (int): Beta number.
             rc (int): Release Candidate number.
         """
-        super(Version, self).__init__()
         self.major = major
         self.minor = minor
         self.rev = rev

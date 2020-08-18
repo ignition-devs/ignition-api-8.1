@@ -21,7 +21,94 @@ __all__ = [
     'swapWindow'
 ]
 
-from . import EventObject, FPMIWindow, INavUtilities
+from abc import ABCMeta, abstractmethod
+
+from java.util import EventObject
+from javax.swing import JInternalFrame
+
+
+class FPMIWindow(JInternalFrame):
+    """FPMIWindow object."""
+    # Fields.
+    CACHE_ALWAYS = 2
+    CACHE_AUTO = 0
+    CACHE_NEVER = 1
+    DOCK_EAST = 2
+    DOCK_FLOAT = 0
+    DOCK_NORTH = 2
+    DOCK_SOUTH = 4
+    DOCK_WEST = 3
+    PARENT_WINDOW_NAME = '_parent'
+    SHOW_ALWAYS = 0
+    SHOW_NEVER = 1
+    SHOW_MAXIMIZED = 2
+
+    def __init__(self, name):
+        super(FPMIWindow, self).__init__()
+        self.name = name
+
+    def getPath(self):
+        print self
+        return 'Path/To/Window'
+
+    def getRootContainer(self):
+        print self
+
+
+class INavUtilities(ABCMeta):
+    """Parent interface to coordinate the functions between
+    NavUtilities and NavUtilitiesDispatcher."""
+
+    def __new__(mcs, *args, **kwargs):
+        pass
+
+    @abstractmethod
+    def centerWindow(cls, arg):
+        pass
+
+    @abstractmethod
+    def closeParentWindow(cls, event):
+        pass
+
+    @abstractmethod
+    def closeWindow(cls, arg):
+        pass
+
+    @abstractmethod
+    def getCurrentWindow(cls):
+        pass
+
+    @abstractmethod
+    def goBack(cls):
+        pass
+
+    @abstractmethod
+    def goForward(cls):
+        pass
+
+    @abstractmethod
+    def goHome(cls):
+        pass
+
+    @abstractmethod
+    def openWindow(cls, *args):
+        pass
+
+    @abstractmethod
+    def openWindowImpl(cls, path, params, openAdditional):
+        pass
+
+    @abstractmethod
+    def openWindowInstance(cls, *args):
+        pass
+
+    @abstractmethod
+    def swapTo(cls, *args):
+        pass
+
+    @abstractmethod
+    def swapWindow(cls, *args):
+        pass
 
 
 def centerWindow(windowPath):
@@ -36,7 +123,7 @@ def centerWindow(windowPath):
         FPMIWindow: A reference to the window to center.
     """
     print windowPath
-    return FPMIWindow()
+    return FPMIWindow('Centered Window')
 
 
 def closeParentWindow(event):
@@ -99,7 +186,7 @@ def goBack():
     Returns:
         FPMIWindow: The window that was returned to.
     """
-    return FPMIWindow()
+    return FPMIWindow('Back')
 
 
 def goForward():
@@ -110,7 +197,7 @@ def goForward():
     Returns:
         FPMIWindow: The window that was returned to.
     """
-    return FPMIWindow()
+    return FPMIWindow('Forward')
 
 
 def goHome():
@@ -121,7 +208,7 @@ def goHome():
     Returns:
         FPMIWindow: The window that was returned to.
     """
-    return FPMIWindow()
+    return FPMIWindow('Home')
 
 
 def openWindow(path, params=None):
@@ -142,7 +229,7 @@ def openWindow(path, params=None):
         FPMIWindow: A reference to the opened window.
     """
     print(path, params)
-    return FPMIWindow()
+    return FPMIWindow('Opened Window')
 
 
 def openWindowInstance(path, params=None):
@@ -163,7 +250,7 @@ def openWindowInstance(path, params=None):
         FPMIWindow: A reference to the opened window.
     """
     print(path, params)
-    return FPMIWindow()
+    return FPMIWindow('Window Instance')
 
 
 def swapTo(path, params=None):
@@ -187,7 +274,7 @@ def swapTo(path, params=None):
         FPMIWindow: A reference to the swapped-to window.
     """
     print(path, params)
-    return FPMIWindow()
+    return FPMIWindow('Swapped To')
 
 
 def swapWindow(swapFromPath, swapToPath, params=None):
@@ -211,4 +298,4 @@ def swapWindow(swapFromPath, swapToPath, params=None):
         FPMIWindow: A reference to the swapped-to window.
     """
     print(swapFromPath, swapToPath, params)
-    return FPMIWindow()
+    return FPMIWindow('Swapped To')

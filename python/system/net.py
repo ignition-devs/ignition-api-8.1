@@ -28,9 +28,6 @@ class JythonHttpClient(Object):
     in Java 11+. Mostly, through convenience functions that make
     things easier to use from Jython."""
 
-    def __init__(self):
-        super(JythonHttpClient, self).__init__()
-
     def delete(self, *args, **kwargs):
         pass
 

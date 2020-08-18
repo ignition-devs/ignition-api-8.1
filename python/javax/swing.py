@@ -19,18 +19,13 @@ from java.awt import Container, Frame
 class JComponent(Container):
     """The base class for all Swing components except top-level
     containers."""
-
-    def __init__(self):
-        """Default JComponent constructor."""
-        super(JComponent, self).__init__()
+    pass
 
 
 class JFrame(Frame):
     """An extended version of java.awt.Frame that adds support for the
     JFC/Swing component architecture."""
-
-    def __init__(self):
-        super(JFrame, self).__init__()
+    pass
 
 
 class JInternalFrame(JComponent):
@@ -58,7 +53,6 @@ class JInternalFrame(JComponent):
             iconifiable (bool): If true, the internal frame can be
                 iconified.
         """
-        super(JInternalFrame, self).__init__()
         self.title = title
         self.resizable = resizable
         self.closable = closable
@@ -221,5 +215,4 @@ class JPopupMenu(JComponent):
             label (str): The string that a UI may use to display as a
                 title for the popup menu. Optional.
         """
-        super(JPopupMenu, self).__init__()
         self.label = label

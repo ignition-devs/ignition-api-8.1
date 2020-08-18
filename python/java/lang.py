@@ -20,10 +20,6 @@ class Object(object):
     has Object as a superclass. All objects, including arrays,
     implement the methods of this class."""
 
-    def __init__(self):
-        """public Object()"""
-        pass
-
     def clone(self):
         """Creates and returns a copy of this object.
 
@@ -112,7 +108,6 @@ class Throwable(Object, BaseException):
     exceptions in the Java language."""
 
     def __init__(self, *args):
-        Object.__init__(self)
         BaseException.__init__(self)
 
 
@@ -168,7 +163,7 @@ class IllegalArgumentException(RuntimeException):
         super(IllegalArgumentException, self).__init__(*args)
 
 
-class Thread(object):
+class Thread(Object):
     """A thread is a thread of execution in a program. The Java
     Virtual Machine allows an application to have multiple threads of
     execution running concurrently.

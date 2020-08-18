@@ -43,8 +43,8 @@ __all__ = [
 
 from java.awt import Color
 from java.lang import Object
-from javax.swing import JComponent, JFrame, JPopupMenu
-from . import EventObject, FPMIWindow
+from java.util import EventObject
+from javax.swing import JComponent, JFrame, JInternalFrame, JPopupMenu
 
 # Constants
 ACCL_NONE = 0
@@ -54,6 +54,34 @@ ACCL_SLOW_TO_FAST = 3
 ACCL_EASE = 4
 COORD_SCREEN = 0
 COORD_DESIGNER = 1
+
+
+class FPMIWindow(JInternalFrame):
+    """FPMIWindow object."""
+    # Fields.
+    CACHE_ALWAYS = 2
+    CACHE_AUTO = 0
+    CACHE_NEVER = 1
+    DOCK_EAST = 2
+    DOCK_FLOAT = 0
+    DOCK_NORTH = 2
+    DOCK_SOUTH = 4
+    DOCK_WEST = 3
+    PARENT_WINDOW_NAME = '_parent'
+    SHOW_ALWAYS = 0
+    SHOW_NEVER = 1
+    SHOW_MAXIMIZED = 2
+
+    def __init__(self, name):
+        super(FPMIWindow, self).__init__()
+        self.name = name
+
+    def getPath(self):
+        print self
+        return 'Path/To/Window'
+
+    def getRootContainer(self):
+        print self
 
 
 class WindowUtilities(Object):
@@ -273,7 +301,7 @@ def getOpenedWindows():
          tuple: A tuple of the opened windows. Not their names, but
             the actual window objects themselves.
     """
-    return [FPMIWindow()]
+    return [FPMIWindow('Main Window')]
 
 
 def getParentWindow(event):
@@ -345,7 +373,7 @@ def getSibling(event, name):
         object: The sibling component itself.
     """
     print(event, name)
-    return FPMIWindow()
+    return FPMIWindow('Sibling')
 
 
 def getWindow(name):
@@ -361,7 +389,7 @@ def getWindow(name):
             window.
     """
     print name
-    return FPMIWindow()
+    return FPMIWindow('Main Window')
 
 
 def getWindowNames():

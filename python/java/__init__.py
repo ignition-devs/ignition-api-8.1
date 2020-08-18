@@ -3,3 +3,9 @@
 # Contact: thecesrom@gmail.com
 
 """java package."""
+
+__all__ = [
+    'awt',
+    'lang',
+    'util',
+]

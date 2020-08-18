@@ -36,7 +36,6 @@ from java.lang import Object
 
 class PyJsonObjectAdapter(Object):
     def __init__(self, obj):
-        super(PyJsonObjectAdapter, self).__init__()
         from __builtin__ import print
         print(self, obj)
 

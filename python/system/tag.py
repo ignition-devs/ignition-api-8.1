@@ -40,19 +40,37 @@ import warnings
 
 import system.date
 from java.lang import Object
-from . import BrowseResults, QualifiedValue
 
 
-class AlarmProperty(object):
-    """AlarmProperty class."""
+class BrowseResults(Object):
+    """BrowseResults class."""
 
-    def __init__(self,
-                 property=None,
-                 value=None,
-                 type=None):
-        self.property = property
-        self.type = type
-        self.value = value
+    def getContinuationPoint(self):
+        pass
+
+    def getResultQuality(self):
+        pass
+
+    def getResults(self):
+        pass
+
+    def getReturnedSize(self):
+        pass
+
+    def getTotalAvailableSize(self):
+        pass
+
+    def setContinuationPoint(self, continuationPoint):
+        pass
+
+    def setResultQuality(self, value):
+        pass
+
+    def setResults(self, results):
+        pass
+
+    def setTotalAvailableResults(self, totalAvailableResults):
+        pass
 
 
 class BrowseTag(Object):
@@ -65,7 +83,6 @@ class BrowseTag(Object):
                  type=None,
                  valueSource=None,
                  dataType=None):
-        super(BrowseTag, self).__init__()
         self.name = name
         self.path = path
         self.fullPath = fullPath
@@ -116,7 +133,32 @@ class BrowseTag(Object):
         print self
         return True
 
-    def toString(self):
+
+class QualifiedValue(object):
+    """Represents a value with a DataQuality & timestamp attached to
+    it."""
+
+    def __init__(self,
+                 value=None,
+                 quality=None,
+                 timestamp=None):
+        self.value = value
+        self.quality = quality
+        self.timestamp = timestamp
+
+    def derive(self, diagnosticMessage):
+        pass
+
+    def equals(self, value, includeTimestamp):
+        pass
+
+    def getQuality(self):
+        pass
+
+    def getTimestamp(self):
+        pass
+
+    def getValue(self):
         pass
 
 
@@ -173,9 +215,6 @@ class QualityCode(Object):
         print self
         return False
 
-    def toString(self):
-        return ''
-
     def toValue(self):
         pass
 
@@ -192,7 +231,7 @@ class QualityCode(Object):
         pass
 
 
-class Results(object):
+class Results(Object):
     """The results of a browse operation. May only represent a partial
     result set, which can be determined by comparing the Total
     Available Size to the Returned Size. If there is a mismatch, the
@@ -232,9 +271,6 @@ class Results(object):
     def setTotalAvailableResults(self, totalAvailableResults):
         pass
 
-    def toString(self):
-        pass
-
 
 def browse(path, filter=None):
     """Returns a list of tags found at the specified tag path. The
@@ -263,8 +299,7 @@ def browse(path, filter=None):
     return Results()
 
 
-def browseHistoricalTags(path, nameFilters=None, maxSize=None,
-                         continuationPoint=None):
+def browseHistoricalTags(path, nameFilters, maxSize, continuationPoint):
     """Will browse for any historical Tags at the provided historical
     path. It will only browse for Tags at the path, and will not go
     down through any children. Will return with a BrowseResults
@@ -275,13 +310,12 @@ def browseHistoricalTags(path, nameFilters=None, maxSize=None,
             Export page for a description of how to construct a
             historical Tag Path.
         nameFilters (list[str]): A list of name filters to be applied
-            to the result set. Optional.
-        maxSize (int): The maximum size of the result set. Optional.
+            to the result set.
+        maxSize (int): The maximum size of the result set.
         continuationPoint (object): Sets the continuation point in
             order to continue a browse that was previously started and
             then limited. Use .getContinuationPoint() on the
             BrowseResults object to get the continuation point.
-            Optional.
 
     Returns:
         BrowseResults: An object that contains the results as
@@ -552,7 +586,7 @@ def isOverlaysEnabled():
     return False
 
 
-def move(tags, destination, collisionPolicy='o'):
+def move(tags, destination, collisionPolicy):
     """Moves Tags or Folders to a new destination. The new destination
     can be a separate tag provider. If interested in copying the tags
     to a new destination, instead of moving them, please see the
@@ -596,48 +630,46 @@ def queryTagCalculations(paths, calculations,
     using system.tag.queryTagHistory
 
     Args:
-        paths (list[str]): An array of tag paths (strings) to query
-            calculations for. The resulting dataset will have a row
-            for each tag, and a column for each calculation.
-        calculations (list[str]): An array of calculations
-            (aggregation functions) to execute for each tag. Valid
-            values are: "Average" (time-weighted), "MinMax",
-            "LastValue", "SimpleAverage", "Sum", "Minimum", "Maximum",
-            "DurationOn", "DurationOff", "CountOn", "CountOff",
-            "Count", "Range", "Variance", "StdDev", "PctGood", and
-            "PctBad".
-        startDate (Date): The starting point for the calculation
-            window. If omitted, and range is not used, 8 hours before
-            the current time is used. Optional.
-        endDate (Date): The end of the calculation window. If omitted,
-            and range is not used, uses the current time.
-        rangeHours (int): Allows you to specify the query range in
-            hours, instead of using start and end date. Can be
-            positive or negative, and can be used in conjunction with
-            startDate or endDate. Optional.
-        rangeMinutes (int): Same as rangeHours, but in minutes. Optional.
-        aliases (list[str]): Aliases that will be used to override the
-            tag path names in the result dataset. Must be 1-to-1 with
-            the tag paths. If not specified, the tag paths themselves
-            will be used. Optional.
-        includeBoundingValues (bool): A boolean flag indicating that
-            the system should attempt to load values before and after
-            the query bounds for the purpose of interpolation. The
-            effect depends on the aggregates used. The default is
-            "true". Optional.
-        validatesSCExec (bool): A boolean flag indicating whether or
-            not data should be validated against the scan class
-            execution records. If false, calculations may include data
-            that is assumed to be good, even though the system may not
-            have been running. Default is "true". Optional.
-        noInterpolation (bool): A boolean flag indicating that the
-            system should not attempt to interpolate values in
-            situations where it normally would, such as for analog
-            tags. Default is "false". Optional.
-        ignoreBadQuality (bool): A boolean flag indicating that bad
-            quality values should not be used in the query process. If
-            set, any value with a "bad" quality will be completely
-            ignored in calculations. Default is "false". Optional.
+        paths: An array of tag paths (strings) to query calculations
+            for. The resulting dataset will have a row for each tag,
+            and a column for each calculation.
+        calculations: An array of calculations (aggregation functions)
+            to execute for each tag. Valid values are: "Average"
+            (time-weighted), "MinMax", "LastValue", "SimpleAverage",
+            "Sum", "Minimum", "Maximum", "DurationOn", "DurationOff",
+            "CountOn", "CountOff", "Count", "Range", "Variance",
+            "StdDev", "PctGood", and "PctBad".
+        startDate: The starting point for the calculation window. If
+            omitted, and range is not used, 8 hours before the current
+            time is used.
+        endDate: The end of the calculation window. If omitted, and
+            range is not used, uses the current time.
+        rangeHours: Allows you to specify the query range in hours,
+            instead of using start and end date. Can be positive or
+            negative, and can be used in conjunction with startDate or
+            endDate.
+        rangeMinutes: Same as rangeHours, but in minutes.
+        aliases: Aliases that will be used to override the tag path
+            names in the result dataset. Must be 1-to-1 with the tag
+            paths. If not specified, the tag paths themselves will be
+            used.
+        includeBoundingValues: A boolean flag indicating that the
+            system should attempt to load values before and after the
+            query bounds for the purpose of interpolation. The effect
+            depends on the aggregates used. The default is "true".
+        validatesSCExec: A boolean flag indicating whether or not data
+            should be validated against the scan class execution
+            records. If false, calculations may include data that is
+            assumed to be good, even though the system may not have
+            been running. Default is "true".
+        noInterpolation: A boolean flag indicating that the system
+            should not attempt to interpolate values in situations
+            where it normally would, such as for analog tags. Default
+            is "false".
+        ignoreBadQuality: A boolean flag indicating that bad quality
+            values should not be used in the query process. If set,
+            any value with a "bad" quality will be completely ignored
+            in calculations. Default is "false".
 
     Returns:
         Dataset: A dataset representing the calculations over the
@@ -694,61 +726,59 @@ def queryTagHistory(paths,
         paths (list[str]): An array of tag paths (strings) to query. Each
             tag path specified will be a column in the result dataset.
         startDate (Date): The earliest value to retrieve. If omitted,
-            8 hours before current time is used. Optional.
+            8 hours before current time is used.
         endDate (Date): The latest value to retrieve. If omitted,
-            current time is used. Optional.
+            current time is used.
         returnSize (int): The number of samples to return. -1 will
             return values as they changed, and 0 will return the
             "natural" number of values based on the logging rates of
-            the scan class(es) involved. -1 is the default. Optional.
+            the scan class(es) involved. -1 is the default.
         aggregationMode (str): The mode to use when aggregating
             multiple samples into one time slice. Valid values are:
             "Average" (time-weighted), "MinMax", "LastValue",
             "SimpleAverage", "Sum", "Minimum", "Maximum",
             "DurationOn", "DurationOff", "CountOn", "CountOff",
             "Count", "Range", "Variance", "StdDev", "PctGood", and
-            "PctBad". Optional.
+            "PctBad".
         returnFormat (str): Use "Wide" to have a column per tag
             queried, or "Tall" to have a fixed-column format. Default
-            is "Wide". Optional.
+            is "Wide".
         columnNames (list[str]): Aliases that will be used to override the
             column names in the result dataset. Must be 1-to-1 with
             the tag paths. If not specified, the tag paths themselves
-            will be used as column titles. Optional.
+            will be used as column titles.
         intervalHours (int): Allows you to specify the window interval
             in terms of hours, as opposed to using a specific return
-            size. Optional.
+            size.
         intervalMinutes (int): Same as intervalHours, but in minutes.
             Can be used on its own, or in conjunction with
-            intervalHours. Optional.
+            intervalHours.
         rangeHours (int): Allows you to specify the query range in
             hours, instead of using start and end date. Can be
             positive or negative, and can be used in conjunction with
-            startDate or endDate. Optional.
+            startDate or endDate.
         rangeMinutes (int): Same as rangeHours, but in minutes.
-            Optional.
         aggregationModes (list[str]): A one-to-one list with paths
-            specifying an aggregation mode per column. Optional.
+            specifying an aggregation mode per column.
         includeBoundingValues (bool): A boolean flag indicating that
             the system should attempt to include values for the query
             bound times if possible. The default for this property
             depends on the query mode, so unless a specific behavior
             is desired, it is best to not include this parameter.
-            Optional.
         validateSCExec (bool): A boolean flag indicating whether or
             not data should be validated against the scan class
             execution records. If false, data will appear flat (but
             good quality) for periods of time in which the system
             wasn't running. If true, the same data would be bad
-            quality during downtime periods. Optional.
+            quality during downtime periods.
         noInterpolation (bool): A boolean flag indicating that the
             system should not attempt to interpolate values in
             situations where it normally would. This will also prevent
-            the return of rows that are purely interpolated. Optional.
+            the return of rows that are purely interpolated.
         ignoreBadQuality (bool): A boolean flag indicating that bad
             quality values should not be used in the query process. If
             set, any value with a "bad" quality will be completely
-            ignored in calculations and in the result set. Optional.
+            ignored in calculations and in the result set.
         timeout (int): Timeout in milliseconds for Client Scope. This
             property is ignored in the Gateway Scope. Optional.
 
@@ -914,7 +944,7 @@ def storeTagHistory(historyprovider, tagprovider, paths, values,
         qualities (list[int]): A list of integer quality codes
             corresponding to the values. Quality codes can be found on
             the Tag Quality and Overlays page. If omitted, GOOD
-            quality will be used. Optional.
+            quality will be used.
         timestamps (list[Date]): A list of Date timestamps
             corresponding to the values. If omitted, the current time
             will be used. A java.util.date object may be passed, so
@@ -1004,7 +1034,7 @@ def writeBlocking(tagPaths, values, timeout=45000):
             paths.
         timeout  (int): How long to wait in milliseconds before the
             write operation times out. This parameter is optional, and
-            defaults to 45000 milliseconds if not specified. Optional.
+            defaults to 45000 milliseconds if not specified.
 
     Returns:
         list[QualityCode]: A List of QualityCode objects, one for each
