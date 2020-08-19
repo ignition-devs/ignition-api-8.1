@@ -15,6 +15,7 @@ __all__ = [
 
 import system.date
 from java.lang import Object
+from java.util import Locale
 from system.dataset import Dataset
 
 
@@ -128,4 +129,4 @@ def runTask(taskname):
             warnings.
     """
     print taskname
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)

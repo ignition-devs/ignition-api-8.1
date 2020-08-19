@@ -40,7 +40,7 @@ from abc import ABCMeta, abstractmethod
 
 import system.date
 from java.lang import Object
-from java.util import Date
+from java.util import Date, Locale
 
 
 class ContactInfo(Object):
@@ -343,7 +343,7 @@ def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
             errors, and info about the success or failure of the add.
     """
     print(name, scheduleOne, scheduleTwo, description)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def addHoliday(holiday):
@@ -358,7 +358,7 @@ def addHoliday(holiday):
             errors, and info about the success or failure of the add.
     """
     print holiday
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def addRole(userSource, role):
@@ -377,7 +377,7 @@ def addRole(userSource, role):
             errors, and info about the success or failure of the add.
     """
     print(userSource, role)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def addSchedule(schedule):
@@ -393,7 +393,7 @@ def addSchedule(schedule):
             errors, and info about the success or failure of the add.
     """
     print schedule
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def addUser(userSource, user):
@@ -411,7 +411,7 @@ def addUser(userSource, user):
             attempt.
     """
     print(userSource, user)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def createScheduleAdjustment(startDate, endDate, isAvailable, note):
@@ -446,7 +446,7 @@ def editHoliday(holidayName, holiday):
             about the success or failure of the edit.
     """
     print(holidayName, holiday)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def editRole(userSource, oldName, newName):
@@ -466,7 +466,7 @@ def editRole(userSource, oldName, newName):
             about the success or failure of the edit.
     """
     print(userSource, oldName, newName)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def editSchedule(scheduleName, schedule):
@@ -484,7 +484,7 @@ def editSchedule(scheduleName, schedule):
             about the success or failure of the edit.
     """
     print(scheduleName, schedule)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def editUser(userSource, user):
@@ -502,7 +502,7 @@ def editUser(userSource, user):
             errors, and information returned after the edit attempt.
     """
     print(userSource, user)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def getHoliday(holidayName):
@@ -703,7 +703,7 @@ def removeHoliday(holidayName):
             about the success or failure of the deletion.
     """
     print holidayName
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def removeRole(userSource, role):
@@ -721,7 +721,7 @@ def removeRole(userSource, role):
             about the success or failure of the deletion.
     """
     print(userSource, role)
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def removeSchedule(scheduleName):
@@ -738,7 +738,7 @@ def removeSchedule(scheduleName):
             about the success or failure of the deletion.
     """
     print scheduleName
-    return UIResponse('en')
+    return UIResponse(Locale.ENGLISH)
 
 
 def removeUser(userSource, username):

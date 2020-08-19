@@ -630,46 +630,50 @@ def queryTagCalculations(paths, calculations,
     using system.tag.queryTagHistory
 
     Args:
-        paths: An array of tag paths (strings) to query calculations
-            for. The resulting dataset will have a row for each tag,
-            and a column for each calculation.
-        calculations: An array of calculations (aggregation functions)
-            to execute for each tag. Valid values are: "Average"
-            (time-weighted), "MinMax", "LastValue", "SimpleAverage",
-            "Sum", "Minimum", "Maximum", "DurationOn", "DurationOff",
-            "CountOn", "CountOff", "Count", "Range", "Variance",
-            "StdDev", "PctGood", and "PctBad".
-        startDate: The starting point for the calculation window. If
-            omitted, and range is not used, 8 hours before the current
-            time is used.
-        endDate: The end of the calculation window. If omitted, and
-            range is not used, uses the current time.
-        rangeHours: Allows you to specify the query range in hours,
-            instead of using start and end date. Can be positive or
-            negative, and can be used in conjunction with startDate or
-            endDate.
-        rangeMinutes: Same as rangeHours, but in minutes.
-        aliases: Aliases that will be used to override the tag path
-            names in the result dataset. Must be 1-to-1 with the tag
-            paths. If not specified, the tag paths themselves will be
-            used.
-        includeBoundingValues: A boolean flag indicating that the
-            system should attempt to load values before and after the
-            query bounds for the purpose of interpolation. The effect
-            depends on the aggregates used. The default is "true".
-        validatesSCExec: A boolean flag indicating whether or not data
-            should be validated against the scan class execution
-            records. If false, calculations may include data that is
-            assumed to be good, even though the system may not have
-            been running. Default is "true".
-        noInterpolation: A boolean flag indicating that the system
-            should not attempt to interpolate values in situations
-            where it normally would, such as for analog tags. Default
-            is "false".
-        ignoreBadQuality: A boolean flag indicating that bad quality
-            values should not be used in the query process. If set,
-            any value with a "bad" quality will be completely ignored
-            in calculations. Default is "false".
+        paths (list[str]): An array of tag paths (strings) to query
+            calculations for. The resulting dataset will have a row
+            for each tag, and a column for each calculation.
+        calculations (list[str]): An array of calculations
+            (aggregation functions) to execute for each tag. Valid
+            values are: "Average" (time-weighted), "MinMax",
+            "LastValue", "SimpleAverage", "Sum", "Minimum", "Maximum",
+            "DurationOn", "DurationOff", "CountOn", "CountOff",
+            "Count", "Range", "Variance", "StdDev", "PctGood", and
+            "PctBad".
+        startDate (Date): The starting point for the calculation
+            window. If omitted, and range is not used, 8 hours before
+            the current time is used. Optional.
+        endDate (Date): The end of the calculation window. If
+            omitted, and range is not used, uses the current time.
+            Optional.
+        rangeHours (int): Allows you to specify the query range in
+            hours, instead of using start and end date. Can be
+            positive or negative, and can be used in conjunction with
+            startDate or endDate. Optional.
+        rangeMinutes (int): Same as rangeHours, but in minutes.
+            Optional.
+        aliases (list[str]): Aliases that will be used to override the
+            tag path names in the result dataset. Must be 1-to-1 with
+            the tag paths. If not specified, the tag paths themselves
+            will be used. Optional.
+        includeBoundingValues (booL): A boolean flag indicating that
+            the system should attempt to load values before and after
+            the query bounds for the purpose of interpolation. The
+            effect depends on the aggregates used. The default is
+            "true". Optional.
+        validatesSCExec (bool: A boolean flag indicating whether or
+            not data should be validated against the scan class
+            execution records. If false, calculations may include data
+            that is assumed to be good, even though the system may not
+            have been running. Default is "true". Optional.
+        noInterpolation (bool): A boolean flag indicating that the
+            system should not attempt to interpolate values in
+            situations where it normally would, such as for analog
+            tags. Default is "false". Optional.
+        ignoreBadQuality (bool): A boolean flag indicating that bad
+            quality values should not be used in the query process. If
+            set, any value with a "bad" quality will be completely
+            ignored in calculations. Default is "false". Optional.
 
     Returns:
         Dataset: A dataset representing the calculations over the
@@ -723,62 +727,63 @@ def queryTagHistory(paths,
     coherent, tabular result set.
 
     Args:
-        paths (list[str]): An array of tag paths (strings) to query. Each
-            tag path specified will be a column in the result dataset.
-        startDate (Date): The earliest value to retrieve. If omitted,
-            8 hours before current time is used.
+        paths (list[str]): An array of tag paths (strings) to query.
+            Each tag path specified will be a column in the result
+            dataset.
+        startDate (Date): The earliest value to retrieve. If
+            omitted, 8 hours before current time is used. Optional.
         endDate (Date): The latest value to retrieve. If omitted,
-            current time is used.
+            current time is used. Optional.
         returnSize (int): The number of samples to return. -1 will
             return values as they changed, and 0 will return the
             "natural" number of values based on the logging rates of
-            the scan class(es) involved. -1 is the default.
+            the scan class(es) involved. -1 is the default. Optional.
         aggregationMode (str): The mode to use when aggregating
             multiple samples into one time slice. Valid values are:
             "Average" (time-weighted), "MinMax", "LastValue",
             "SimpleAverage", "Sum", "Minimum", "Maximum",
             "DurationOn", "DurationOff", "CountOn", "CountOff",
             "Count", "Range", "Variance", "StdDev", "PctGood", and
-            "PctBad".
+            "PctBad". Optional.
         returnFormat (str): Use "Wide" to have a column per tag
             queried, or "Tall" to have a fixed-column format. Default
-            is "Wide".
+            is "Wide". Optional.
         columnNames (list[str]): Aliases that will be used to override the
             column names in the result dataset. Must be 1-to-1 with
             the tag paths. If not specified, the tag paths themselves
-            will be used as column titles.
+            will be used as column titles. Optional.
         intervalHours (int): Allows you to specify the window interval
             in terms of hours, as opposed to using a specific return
-            size.
+            size. Optional.
         intervalMinutes (int): Same as intervalHours, but in minutes.
             Can be used on its own, or in conjunction with
-            intervalHours.
+            intervalHours. Optional.
         rangeHours (int): Allows you to specify the query range in
             hours, instead of using start and end date. Can be
             positive or negative, and can be used in conjunction with
-            startDate or endDate.
-        rangeMinutes (int): Same as rangeHours, but in minutes.
+            startDate or endDate. Optional.
+        rangeMinutes (int): Same as rangeHours, but in minutes. Optional.
         aggregationModes (list[str]): A one-to-one list with paths
-            specifying an aggregation mode per column.
+            specifying an aggregation mode per column. Optional.
         includeBoundingValues (bool): A boolean flag indicating that
             the system should attempt to include values for the query
             bound times if possible. The default for this property
             depends on the query mode, so unless a specific behavior
-            is desired, it is best to not include this parameter.
+            is desired, it is best to not include this parameter. Optional.
         validateSCExec (bool): A boolean flag indicating whether or
             not data should be validated against the scan class
             execution records. If false, data will appear flat (but
             good quality) for periods of time in which the system
             wasn't running. If true, the same data would be bad
-            quality during downtime periods.
+            quality during downtime periods. Optional.
         noInterpolation (bool): A boolean flag indicating that the
             system should not attempt to interpolate values in
             situations where it normally would. This will also prevent
-            the return of rows that are purely interpolated.
+            the return of rows that are purely interpolated. Optional.
         ignoreBadQuality (bool): A boolean flag indicating that bad
             quality values should not be used in the query process. If
             set, any value with a "bad" quality will be completely
-            ignored in calculations and in the result set.
+            ignored in calculations and in the result set. Optional.
         timeout (int): Timeout in milliseconds for Client Scope. This
             property is ignored in the Gateway Scope. Optional.
 

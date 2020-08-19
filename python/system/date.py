@@ -53,7 +53,7 @@ __all__ = [
 
 from datetime import datetime, timedelta
 
-from java.util import Date, Locale
+from java.util import Locale
 
 
 def addDays(date, value):
@@ -245,7 +245,7 @@ def fromMillis(millis):
         January 1, 1970, 00:00:00 UTC (GMT).
 
     Returns:
-        Date: A new date object.
+        datetime: A new date object.
     """
     s = millis // 1000
     micro = (millis % 1000) * 1000
@@ -633,7 +633,7 @@ def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss',
             'Locale.French'. Default is 'Locale.English'. Optional.
 
     Returns:
-        Date: The parsed date.
+        datetime: The parsed date.
     """
     print(dateString, formatString, locale)
     return now()
