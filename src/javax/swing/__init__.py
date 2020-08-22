@@ -32,32 +32,7 @@ class JInternalFrame(JComponent):
     """A lightweight object that provides many of the features of a
     native frame, including dragging, closing, becoming an icon,
     resizing, title display, and support for a menu bar."""
-
-    def __init__(self,
-                 title=None,
-                 resizable=None,
-                 closable=None,
-                 maximizable=None,
-                 iconifiable=None):
-        """Creates a JInternalFrame with the specified title,
-        resizability, closability, maximizability, and iconifiability.
-
-        Args:
-            title (str): The String to display in the title bar.
-            resizable (bool): If true, the internal frame can be
-                resized.
-            closable (bool): If true, the internal frame can be
-                closed.
-            maximizable (bool): If true, the internal frame can be
-                maximized.
-            iconifiable (bool): If true, the internal frame can be
-                iconified.
-        """
-        self.title = title
-        self.resizable = resizable
-        self.closable = closable
-        self.maximizable = maximizable
-        self.iconifiable = iconifiable
+    pass
 
 
 class JOptionPane(JComponent):
@@ -206,13 +181,4 @@ class JPopupMenu(JComponent):
     selects a menu item that activates it. Finally, a JPopupMenu can
     also be used anywhere else you want a menu to appear. For example,
     when the user right-clicks in a specified area."""
-
-    def __init__(self, label=None):
-        """Constructs a JPopupMenu without an "invoker" or with the
-        specified title.
-
-        Args:
-            label (str): The string that a UI may use to display as a
-                title for the popup menu. Optional.
-        """
-        self.label = label
+    pass

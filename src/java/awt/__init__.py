@@ -7,7 +7,6 @@
 painting graphics and images."""
 
 __all__ = [
-    'BufferedImage',
     'Color',
     'Component',
     'Container',
@@ -17,28 +16,6 @@ __all__ = [
 ]
 
 from java.lang import Object
-
-
-class Image(Object):
-    """The abstract class Image is the superclass of all classes that
-    represent graphical images. The image must be obtained in a
-    platform-specific manner."""
-    pass
-
-
-class BufferedImage(Image):
-    """The BufferedImage subclass describes an Image with an
-    accessible buffer of image data. A BufferedImage is comprised of a
-    ColorModel and a Raster of image data. The number and types of
-    bands in the SampleModel of the Raster must match the number and
-    types required by the ColorModel to represent its color and alpha
-    components. All BufferedImage objects have an upper left corner
-    coordinate of (0, 0). Any Raster used to construct a BufferedImage
-    must therefore have minX=0 and minY=0.
-
-    This class relies on the data fetching and setting methods of
-    Raster, and on the color characterization methods of ColorModel."""
-    pass
 
 
 class Color(Object):
@@ -84,4 +61,11 @@ class Window(Container):
 
 class Frame(Window):
     """A Frame is a top-level window with a title and a border."""
+    pass
+
+
+class Image(Object):
+    """The abstract class Image is the superclass of all classes that
+    represent graphical images. The image must be obtained in a
+    platform-specific manner."""
     pass

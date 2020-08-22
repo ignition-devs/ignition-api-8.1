@@ -13,7 +13,8 @@ __all__ = [
     'printToImage'
 ]
 
-from java.awt import BufferedImage, Component
+from java.awt import Component
+from java.awt.image import BufferedImage
 from java.lang import Object
 
 

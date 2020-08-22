@@ -92,6 +92,9 @@ SERIALIZABLE = 8
 
 class SProcCall(Object):
 
+    def __init__(self):
+        pass
+
     def getResultSet(self):
         """Returns a dataset that is the resulting data of the stored
         procedure, if any.

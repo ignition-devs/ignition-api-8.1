@@ -72,13 +72,13 @@ class FPMIWindow(JInternalFrame):
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
+    _path = 'Path/To/Window'
+
     def __init__(self, name):
-        super(FPMIWindow, self).__init__()
         self.name = name
 
     def getPath(self):
-        print self
-        return 'Path/To/Window'
+        return self._path
 
     def getRootContainer(self):
         print self
@@ -189,11 +189,11 @@ def createPopupMenu(itemNames, itemFunctions):
     also: Functions. It is best to have the menu object created only
     once via an application specific library function. Then, call the
     show(event) function on both the mousePressed and
-    mouseReleasedevents on your component. The reason for this is that
-    different operating systems (Windows, Linux, MacOS) differ in when
-    they like to show the popup menu. The show(event) function detects
-    when the right time is to show itself, either on mouse press or
-    release. See the examples for more.
+    mouseReleased events on your component. The reason for this is
+    that different operating systems (Windows, Linux, MacOS) differ in
+    when they like to show the popup menu. The show(event) function
+    detects when the right time is to show itself, either on mouse
+    press or release. See the examples for more.
 
     Args:
         itemNames (list[str]): A list of names to create popup menu
@@ -219,7 +219,7 @@ def desktop(handle='primary'):
             to the Primary Desktop.
 
     Returns:
-        WindowUtilites: A copy of system.gui that will be relative to
+        WindowUtilities: A copy of system.gui that will be relative to
             the desktop named by the given handle.
     """
     print handle

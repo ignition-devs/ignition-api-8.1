@@ -76,7 +76,7 @@ def isScreenLocked():
 def lockScreen(obscure=False):
     """Used to put a running client in lock-screen mode. The screen
     can be unlocked by the user with the proper credentials, or by
-    scripting via thesystem.security.unlockScreen() function.
+    scripting via the system.security.unlockScreen() function.
 
     Args:
         obscure (bool): If true(1), the locked screen will be opaque,
