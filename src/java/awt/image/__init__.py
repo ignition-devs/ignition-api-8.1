@@ -30,4 +30,6 @@ class BufferedImage(Image):
 
     This class relies on the data fetching and setting methods of
     Raster, and on the color characterization methods of ColorModel."""
-    pass
+
+    def __init__(self, *args):
+        print args

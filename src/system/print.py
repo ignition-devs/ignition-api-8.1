@@ -105,7 +105,8 @@ def createImage(component):
             component.
     """
     print(component)
-    return BufferedImage()
+    width = height = imageType = 1
+    return BufferedImage(width, height, imageType)
 
 
 def createPrintJob(component):
