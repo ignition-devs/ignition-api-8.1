@@ -14,6 +14,8 @@ __all__ = [
     'Throwable'
 ]
 
+from __builtin__ import Exception as PyException
+
 
 class Object(object):
     """Class Object is the root of the class hierarchy. Every class
@@ -103,12 +105,60 @@ class Object(object):
         pass
 
 
-class Throwable(Object, BaseException):
+class Throwable(Object, PyException):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language."""
 
-    def __init__(self, *args):
-        BaseException.__init__(self)
+    def __init__(self, message=None, cause=None):
+        """Constructs a new throwable.
+
+        Args:
+            message (str): The detail message (which is saved for
+                later retrieval by the getMessage() method).
+            cause (Throwable): The cause (which is saved for later
+                retrieval by the getCause() method). (A null value is
+                permitted, and indicated that the cause is nonexistent
+                or unknown.).
+        """
+        PyException.__init__(self, message)
+        self._cause = cause
+
+    @property
+    def cause(self):
+        return self._cause
+
+    def addSuppressed(self, exception):
+        pass
+
+    def fillInStackTrace(self):
+        pass
+
+    def getCause(self):
+        return self.cause
+
+    def getLocalizedMessage(self):
+        return self.message
+
+    def getMessage(self):
+        return self.message
+
+    def getStackTrace(self):
+        pass
+
+    def getSuppressed(self):
+        pass
+
+    def initCause(self):
+        pass
+
+    def printStackTrace(self):
+        pass
+
+    def setStackTrace(self):
+        pass
+
+    def toString(self):
+        return 'A short description of this throwable.'
 
 
 class Exception(Throwable):

@@ -1,9 +1,5 @@
 # Description
-This repository consists of the following projects:
-* python
-
-## python
-The python project consists of the following packages:
+This repository consists of the following packages:
 * incendium
 * java
 * javax

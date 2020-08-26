@@ -50,7 +50,9 @@ class Component(Object):
 class Container(Component):
     """A generic Abstract Window Toolkit(AWT) container object is a
     component that can contain other AWT components."""
-    pass
+
+    def add(self, *args):
+        print(self, args)
 
 
 class Window(Container):

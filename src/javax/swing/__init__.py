@@ -9,11 +9,15 @@ __all__ = [
     'JComponent',
     'JFrame',
     'JInternalFrame',
+    'JLabel',
     'JOptionPane',
-    'JPopupMenu'
+    'JPanel',
+    'JPopupMenu',
+    'JTextField'
 ]
 
 from java.awt import Container, Frame
+from javax.swing.text import JTextComponent
 
 
 class JComponent(Container):
@@ -33,6 +37,13 @@ class JInternalFrame(JComponent):
     native frame, including dragging, closing, becoming an icon,
     resizing, title display, and support for a menu bar."""
     pass
+
+
+class JLabel(JComponent):
+    """A display area for a short text string or an image, or both."""
+
+    def __init__(self, *args):
+        print args
 
 
 class JOptionPane(JComponent):
@@ -173,6 +184,11 @@ class JOptionPane(JComponent):
         return JOptionPane.YES_OPTION
 
 
+class JPanel(JComponent):
+    """JPanel is a generic lightweight container."""
+    pass
+
+
 class JPopupMenu(JComponent):
     """An implementation of a popup menu -- a small window that pops
     up and displays a series of choices. A JPopupMenu is used for the
@@ -182,3 +198,11 @@ class JPopupMenu(JComponent):
     also be used anywhere else you want a menu to appear. For example,
     when the user right-clicks in a specified area."""
     pass
+
+
+class JTextField(JTextComponent):
+    """JTextField is a lightweight component that allows the editing
+    of a single line of text."""
+
+    def __init__(self, *args):
+        print(self, args)

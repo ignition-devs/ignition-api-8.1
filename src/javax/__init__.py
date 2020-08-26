@@ -4,6 +4,3 @@
 
 """javax package."""
 
-__all__ = [
-    'swing'
-]

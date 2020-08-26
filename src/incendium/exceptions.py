@@ -9,6 +9,8 @@ __all__ = [
     'TagError'
 ]
 
+from java.lang import Throwable
+
 
 class ApplicationError(Exception):
     """Application Error class."""
@@ -22,7 +24,7 @@ class ApplicationError(Exception):
         Args:
             message (str): The error message.
             inner_exception (object): The inner Exception. Optional.
-            cause (str): The cause of the Exception. Optional.
+            cause (Throwable): The cause of the Exception. Optional.
         """
         super(ApplicationError, self).__init__(message)
         self.inner_exception = inner_exception

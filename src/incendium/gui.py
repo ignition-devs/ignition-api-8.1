@@ -15,7 +15,7 @@ __all__ = [
 import system.gui
 import system.util
 from incendium import constants
-from javax.swing import JOptionPane
+from javax.swing import JLabel, JOptionPane, JPanel, JTextField
 
 # Cursor codes.
 CURSOR_DEFAULT = 0
@@ -141,15 +141,31 @@ def input(message, title=None):
     Returns:
         str: The string value that was entered in the input box.
     """
-    return JOptionPane.showInputDialog(
+    options = [
+        system.util.translate(constants.OK_TEXT),
+        system.util.translate(constants.CANCEL_TEXT)
+    ]
+
+    panel = JPanel()
+    label = JLabel('{}: '.format(system.util.translate(message)))
+    panel.add(label)
+    text_field = JTextField(25)
+    panel.add(text_field)
+
+    choice = JOptionPane.showOptionDialog(
         None,
-        system.util.translate(message),
+        panel,
         system.util.translate(title),
+        JOptionPane.OK_CANCEL_OPTION,
         JOptionPane.PLAIN_MESSAGE,
         None,
-        None,
-        ''
+        options,
+        options[0]
     )
+
+    return (text_field.getText()
+            if choice == JOptionPane.OK_OPTION
+            else None)
 
 
 def warning(message, title, detail=None):
