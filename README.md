@@ -56,7 +56,7 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 
 Thanks to the everyone who has contributed to this project.
 
-Up-to-date list of contributors: https://github.com/thecesrom/Ignition/graphs/contributors
+Up-to-date list of contributors can be found [here](https://github.com/thecesrom/Ignition/graphs/contributors).
 
 ## License
 
