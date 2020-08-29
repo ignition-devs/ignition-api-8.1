@@ -43,7 +43,7 @@ class JLabel(JComponent):
     """A display area for a short text string or an image, or both."""
 
     def __init__(self, *args):
-        print args
+        pass
 
 
 class JOptionPane(JComponent):
@@ -205,4 +205,4 @@ class JTextField(JTextComponent):
     of a single line of text."""
 
     def __init__(self, *args):
-        print(self, args)
+        pass

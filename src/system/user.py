@@ -40,7 +40,7 @@ from abc import ABCMeta, abstractmethod
 
 import system.date
 from java.lang import Object
-from java.util import Date, Locale
+from java.util import Locale
 
 
 class ContactInfo(Object):
@@ -62,7 +62,7 @@ class HolidayModel(Object):
 
         Args:
             name (str): The name.
-            date (Date): The date.
+            date (datetime): The date.
             repeatAnnually (bool): Repeat annually.
         """
         self.name = name
@@ -221,13 +221,13 @@ class PyUser(User):
         adjustment easily.
 
         Args:
-            start (Date): Date to start the schedule adjustment. Not
-                null.
-            end (Date): Date to end start the schedule adjustment. Not
-                null.
+            start (datetime): Date to start the schedule adjustment.
+                Not null.
+            end (datetime): Date to end start the schedule adjustment.
+                Not null.
             available (bool): True if the employee is available during
-                this period.
-            note (str): May be null or empty.
+                this period. Optional.
+            note (str): May be null or empty. Optional.
         """
         print(cls, start, end, available, note)
 
@@ -418,9 +418,10 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
     """Creates a schedule adjustment.
 
     Args:
-        startDate (Date): The starting date of the schedule
+        startDate (datetime): The starting date of the schedule
             adjustment.
-        endDate (Date): The ending date of the schedule adjustment.
+        endDate (datetime): The ending date of the schedule
+            adjustment.
         isAvailable (bool): True if the user is available during this
             schedule adjustment.
         note (str): A note about the schedule adjustment.
@@ -593,14 +594,14 @@ def getSchedule(scheduleName):
     return None
 
 
-def getScheduledUsers(userSource, date=None):
+def getScheduledUsers(userSource, date=system.date.now()):
     """Returns a list of users that are scheduled on. If no users are
     scheduled, it will return an empty list.
 
     Args:
         userSource (str): The name of the user source to check for
             scheduled users.
-        date (Date): The date to check schedules for. May be a Java
+        date (object): The date to check schedules for. May be a Java
             Date or Unix Time in ms.. If omitted, the current date and
             time will be used. Optional.
 

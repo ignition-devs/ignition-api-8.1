@@ -389,5 +389,5 @@ def sendEmail(smtp, fromAddr, subject, body, html, to, attachmentNames=None,
             address. Optional.
     """
     print(smtp, fromAddr, subject, body, html, to, attachmentNames,
-          attachmentData, timeout, username, password, priority,
-          smtpProfile, cc, bcc, retries, replyTo)
+          attachmentData, timeout, username, password, priority, smtpProfile,
+          cc, bcc, retries, replyTo)

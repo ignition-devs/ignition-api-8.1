@@ -415,8 +415,7 @@ def getTimezone():
     Returns:
         str: A representation of the current timezone.
     """
-    # TODO: Implement function.
-    pass
+    return 'America/Tijuana'
 
 
 def getTimezoneOffset(date=datetime.now()):
@@ -430,9 +429,7 @@ def getTimezoneOffset(date=datetime.now()):
     Returns:
         float: The timezone offset compared to UTC, in hours.
     """
-    # TODO: Implement function.
-    print date
-    pass
+    return -7.0 if isDaylightTime(date) else -8.0
 
 
 def getTimezoneRawOffset():

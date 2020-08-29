@@ -54,8 +54,8 @@ def executeReport(path, project='project', parameters=None, fileType='pdf'):
         path (str): The path to the existing report.
         project (str): The name of the project where the report is
             located. Optional in client scope.
-        parameters (dict): An optional dictionary of parameter overrides,
-            in the form name:value. Optional.
+        parameters (dict): An optional dictionary of parameter
+            overrides, in the form name:value. Optional.
         fileType (str): The file type the resulting byte array should
             represent. Defaults to "pdf". Not case-sensitive.
             Optional.

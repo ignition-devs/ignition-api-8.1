@@ -152,8 +152,8 @@ def getShelvedPaths():
 
     Returns:
         list[ShelvedPath]: A list of ShelvedPath objects. ShelvedPath
-        objects can be examined with getExpiration, getHitCount,
-        getPath, getShelveTime, getUser, and isExpired.
+            objects can be examined with getExpiration, getHitCount,
+            getPath, getShelveTime, getUser, and isExpired.
     """
     return [ShelvedPath()]
 
@@ -189,11 +189,11 @@ def queryJournal(startDate=system.date.addHours(system.date.now(), -8),
     EventTime, EventState, Priority, IsSystemEvent.
 
     Args:
-        startDate (Date): The start of the time range to query.
+        startDate (datetime): The start of the time range to query.
             Defaults to 8 hours previous to now if omitted. Time range
             is inclusive.
-        endDate (Date): The end of the time range to query. Defaults
-            to "now" if omitted.
+        endDate (datetime): The end of the time range to query.
+            Defaults to "now" if omitted.
         journalName (str): The journal name to query.
         priority (list[str]): A list of possible priorities to match.
             Priorities can be specified by name or number, with the

@@ -140,6 +140,7 @@ def browseServer(opcServer, nodeId):
         object: A list of OPCBrowseElement/PyOPCTag objects.
     """
     print(opcServer, nodeId)
+    return []
 
 
 def browseSimple(opcServer, device, folderPath, opcItemPath):

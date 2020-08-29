@@ -104,6 +104,7 @@ class SProcCall(Object):
                 stored procedure, if any.
         """
         print self
+        return Dataset()
 
     def getUpdateCount(self):
         """Returns the number of rows modified by the stored

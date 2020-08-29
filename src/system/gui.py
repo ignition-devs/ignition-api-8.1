@@ -553,7 +553,9 @@ def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
 
 def showTouchscreenKeyboard(initialText=None, fontSize=None,
                             passwordMode=False):
-    """
+    """Displays a modal on-screen keyboard, allowing for arbitrary
+    text entry using the mouse, or a finger on a touchscreen monitor.
+    Returns the text that the user "typed".
 
     Args:
         initialText: The text to start the on-screen keyboard with.

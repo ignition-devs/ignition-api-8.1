@@ -117,7 +117,7 @@ class Throwable(Object, PyException):
                 later retrieval by the getMessage() method).
             cause (Throwable): The cause (which is saved for later
                 retrieval by the getCause() method). (A null value is
-                permitted, and indicated that the cause is nonexistent
+                permitted, and indicates that the cause is nonexistent
                 or unknown.).
         """
         PyException.__init__(self, message)
@@ -128,7 +128,22 @@ class Throwable(Object, PyException):
         return self._cause
 
     def addSuppressed(self, exception):
-        pass
+        """Appends the specified exception to the exceptions that were
+        suppressed in order to deliver this exception.
+
+        Args:
+            exception (Throwable): The exception to be added to the
+                list of suppressed exceptions
+
+        Raises:
+            IllegalArgumentException: If exception is this throwable;
+                a throwable cannot suppress itself.
+            NullPointerException: If exception is null.
+        """
+        if self == exception:
+            raise IllegalArgumentException()
+        elif exception is None:
+            raise NullPointerException()
 
     def fillInStackTrace(self):
         pass
@@ -148,13 +163,13 @@ class Throwable(Object, PyException):
     def getSuppressed(self):
         pass
 
-    def initCause(self):
+    def initCause(self, cause):
         pass
 
-    def printStackTrace(self):
+    def printStackTrace(self, *args):
         pass
 
-    def setStackTrace(self):
+    def setStackTrace(self, stackTrace):
         pass
 
     def toString(self):
@@ -173,22 +188,8 @@ class Exception(Throwable):
     constructor and propagate outside the method or constructor
     boundary."""
 
-    # Static elements
-    cause = ''
-
-    def __init__(self, *args):
-        super(Exception, self).__init__(*args)
-
-    def getCause(self):
-        """Returns the cause of this throwable or null if the cause is
-        nonexistent or unknown. (The cause is the throwable that
-        caused this throwable to get thrown.)
-
-        Returns:
-            str: The cause of this throwable or null if the cause is
-                nonexistent or unknown.
-        """
-        return self.cause
+    def __init__(self, message=None, cause=None):
+        super(Exception, self).__init__(message, cause)
 
 
 class RuntimeException(Exception):
@@ -201,16 +202,24 @@ class RuntimeException(Exception):
     of the method or constructor and propagate outside the method or
     constructor boundary."""
 
-    def __init__(self, *args):
-        super(RuntimeException, self).__init__(*args)
+    def __init__(self, message=None, cause=None):
+        super(RuntimeException, self).__init__(message, cause)
 
 
 class IllegalArgumentException(RuntimeException):
     """Thrown to indicate that a method has been passed an illegal or
     inappropriate argument."""
 
-    def __init__(self, *args):
-        super(IllegalArgumentException, self).__init__(*args)
+    def __init__(self, message=None, cause=None):
+        super(IllegalArgumentException, self).__init__(message, cause)
+
+
+class NullPointerException(RuntimeException):
+    """Thrown when an application attempts to use null in a case where
+    an object is required."""
+
+    def __init__(self, message=None, cause=None):
+        super(NullPointerException, self).__init__(message, cause)
 
 
 class Thread(Object):

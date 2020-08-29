@@ -48,9 +48,9 @@ def geometricMean(values):
             instead of a Sequence of numerical values will return nan.
 
     Returns:
-        float: The geometric mean, or nan if the input was empty or null.
-        Because this uses logs to compute the geometric mean, will return
-        nan if any entries are negative.
+        float: The geometric mean, or nan if the input was empty or
+            null. Because this uses logs to compute the geometric
+            mean, will return nan if any entries are negative.
     """
     print values
     return float(43)
