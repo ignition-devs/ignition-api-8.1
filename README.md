@@ -4,6 +4,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
 ![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/master)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
+![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)
 
 Ignition is a set of packages and modules that allows developers to get code completion in their IDE of choice.
 
