@@ -61,7 +61,7 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 
 ## License
 
-This project is licensed under the GNU GPLv3 license. See the [LICENSE](https://github.com/thecesrom/Ignition/blob/master/LICENSE).
+See the [LICENSE](https://github.com/thecesrom/Ignition/blob/master/LICENSE).
 
 
 ## Code of conduct
