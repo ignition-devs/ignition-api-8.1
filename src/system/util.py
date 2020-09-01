@@ -988,14 +988,27 @@ def threadDump():
     return 'Ignition version: 8.0.x...'
 
 
-def translate(term):
+def translate(term, locale=None, strict=False):
     """This function allows you to retrieve the global translation of
     a term from the translation database using the current locale.
 
     Args:
         term (str): The term to look up.
+        locale (str): Which locale to translate against. Useful when
+            there are multiple locales defined for a single term. If
+            omitted, the function attempts to use the current locale
+            (as defined by the client, session, or Designer).
+            Optional.
+        strict (bool): If false, the function will return the passed
+            term (param 1) if it could not find a defined translation
+            for the locale: meaning, if you pass a term that hasn't
+            been configured, the function will just send the term back
+            to you. If true, then the function will return a None when
+            it fails to find a defined translation. Default is false.
+            Optional.
 
     Returns:
         str: The translated term.
     """
+    print(term, locale, strict)
     return term
