@@ -204,8 +204,8 @@ def isServerAvailable(serverName):
         serverName (str): The name of the OPC-HDA server to check.
 
     Returns:
-        bool: Will be true if the server is available and can be
-            queried, false if not.
+        bool: Will be True if the server is available and can be
+            queried, False if not.
     """
     print serverName
     return True

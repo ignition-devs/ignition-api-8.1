@@ -54,7 +54,7 @@ def _execute_sp(stored_procedure, database='', transaction=None,
             connection will be used. Optional.
         transaction (str): A transaction identifier. If omitted, the
             call will be executed in its own transaction. Optional.
-        skip_audit (bool): A flag which, if set to true, will cause
+        skip_audit (bool): A flag which, if set to True, will cause
             the procedure call to skip the audit system. Useful for
             some queries that have fields which won't fit into the
             audit log. Optional.

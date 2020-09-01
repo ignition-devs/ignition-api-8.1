@@ -332,7 +332,7 @@ def openURL(url, useApplet=False):
 
     Args:
         url (str): The URL to open in a web browser.
-        useApplet (bool): If set to true (1), and the client is
+        useApplet (bool): If set to True (1), and the client is
             running as an Applet, then the browser instance that
             launched the applet will be used to open the URL.
             Optional.

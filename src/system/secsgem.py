@@ -40,7 +40,7 @@ def copyEquipment(equipmentSource, newEquipmentName, enabled,
             source equipment connection name.
         newEquipmentName (str): The name of the new equipment
             connection.
-        enabled (bool): If set to false, the new equipment connection
+        enabled (bool): If set to False, the new equipment connection
             will be disabled after it is created.
         activeAddress (str): IP Address of new equipment. Must be
             specified if the SECS/GEM module is used in Active mode.

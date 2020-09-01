@@ -224,7 +224,7 @@ def queryJournal(startDate=system.date.addHours(system.date.now(), -8),
         defined (list[str]): A list of string property names, all of
             which must be present on an event for it to pass.
         includeData (bool): Whether or not event data should be
-            included in the return. If this parameter is false, and if
+            included in the return. If this parameter is False, and if
             there are no conditions specified on associated data, the
             properties table will not be queried.
         includeSystem (bool): Specifies whether system events are
@@ -288,7 +288,7 @@ def queryStatus(priority, state, path, source, displaypath, all_properties,
             which must be present on an event for it to pass.
         includeShelved (bool): A flag indicating whether shelved
             events should be included in the results. Defaults to
-            "false".
+            "False".
 
     Returns:
         AlarmQueryResults: The AlarmQueryResults object is

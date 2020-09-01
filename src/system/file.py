@@ -24,7 +24,7 @@ def fileExists(filepath):
         filepath (str): The path of the file or folder to check.
 
     Returns:
-        bool: True (1) if the file/folder exists, false (0) otherwise.
+        bool: True (1) if the file/folder exists, False (0) otherwise.
     """
     import os.path
     return os.path.isfile(filepath)
@@ -165,9 +165,9 @@ def writeFile(filepath, data, append=False, encoding='UTF-8'):
         filepath (str): The path of the file to write to.
         data (object): The character or binary content to write to the
             file.
-        append (bool): If true(1), the file will be appended to if it
-            already exists. If false(0), the file will be overwritten
-            if it exists. The default is false(0). Optional.
+        append (bool): If True(1), the file will be appended to if it
+            already exists. If False(0), the file will be overwritten
+            if it exists. The default is False(0). Optional.
         encoding (str): The character encoding of the file to write.
             Will throw an exception if the string does not represent a
             supported encoding. Common encodings are "UTF-8",

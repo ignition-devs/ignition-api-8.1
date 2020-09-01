@@ -207,7 +207,7 @@ def isServerEnabled(serverName):
         serverName (str): The name of an OPC server connection.
 
     Returns:
-        bool: True if the connection is enabled, false if the
+        bool: True if the connection is enabled, False if the
             connection is disabled.
     """
     print serverName
@@ -269,7 +269,7 @@ def setServerEnabled(serverName, enabled):
     Args:
         serverName (str): The name of an OPC server connection.
         enabled (bool): The new state the connection should be set to:
-            true to enable the connection, false to disable.
+            True to enable the connection, False to disable.
     """
     print(serverName, enabled)
 

@@ -259,7 +259,7 @@ def isAuthorized(isAllOf, securityLevels):
 
     Returns:
         bool: True if the user in the current session is authorized,
-            false otherwise.
+            False otherwise.
     """
     from __builtin__ import print
     print(isAllOf, securityLevels)
@@ -284,8 +284,8 @@ def login(sessionId='current_session', pageId='current_page', forceAuth=False):
         forceAuth (bool): Determines if Ignition should ask the
             Identity Provider to re-authenticate the user, even if the
             user is already signed into the Identity Provider. If set
-            to true, then the Identity Provider will ask the user to
-            re-enter their credentials. If set to false, then the
+            to True, then the Identity Provider will ask the user to
+            re-enter their credentials. If set to False, then the
             Gateway will request that the Identity Provider use the
             last provided credentials for the session, potentially
             allowing re-authentication without requiring the user to

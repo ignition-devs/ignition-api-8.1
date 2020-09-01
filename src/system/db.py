@@ -354,7 +354,7 @@ def createSProcCall(procedureName, database=None, tx=None, skipAudit=None):
             connection will be used. Optional.
         tx (str): A transaction identifier. If omitted, the call will
             be executed in its own transaction. Optional.
-        skipAudit (bool): A flag which, if set to true, will cause the
+        skipAudit (bool): A flag which, if set to True, will cause the
             procedure call to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit
             log. Optional.
@@ -563,7 +563,7 @@ def runPrepUpdate(query, args, database='', tx=None, getKey=False,
             newly generated key value that was created as a result of
             the update (getKey=1). Not all databases support automatic
             retrieval of generated keys. Optional.
-        skipAudit (bool): A flag which, if set to true, will cause the
+        skipAudit (bool): A flag which, if set to True, will cause the
             prep update to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit
             log. Optional.
@@ -665,7 +665,7 @@ def runSFNamedQuery(*args):
         *args : Variable length argument list.
 
     Returns:
-        bool: Returns true if successfully sent to the Store and
+        bool: Returns True if successfully sent to the Store and
             Forward system.
     """
     print args
@@ -693,7 +693,7 @@ def runSFPrepUpdate(query, args, datasources):
             through.
 
     Returns:
-        bool: Returns true if successfully sent to store-and-forward
+        bool: Returns True if successfully sent to store-and-forward
             system.
     """
     print(query, args, datasources)
@@ -711,7 +711,7 @@ def runSFUpdateQuery(query, datasources):
             through.
 
     Returns:
-        bool: Returns true if successful and false if not.
+        bool: Returns True if successful and False if not.
     """
     print(query, datasources)
     return True
@@ -742,7 +742,7 @@ def runUpdateQuery(query, database='', tx=None, getKey=False, skipAudit=True):
             newly generated key value that was created as a result of
             the update (getKey=1). Not all databases support automatic
             retrieval of generated keys.
-        skipAudit (bool): A flag which, if set to true, will cause the
+        skipAudit (bool): A flag which, if set to True, will cause the
             update query to skip the audit system. Useful for some
             queries that have fields which won't fit into the audit
             log.

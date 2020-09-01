@@ -280,14 +280,14 @@ def readUntil(port, delimiter, includeDelimiter, timeout=5000):
     Args:
         port (str): The previously configured serial port to use.
         delimiter (str): The delimiter to read until.
-        includeDelimiter (bool): If true, the delimiter will be
+        includeDelimiter (bool): If True, the delimiter will be
             included in the return value.
         timeout (int): Optional timeout in milliseconds. Default is
             5000.
     Returns:
         str: Returns a String containing all 8-bit ASCII characters
             read until the delimiter was reached, and including the
-            delimiter if the "includeDelimiter" parameter was true.
+            delimiter if the "includeDelimiter" parameter was True.
     """
     print(port, delimiter, includeDelimiter, timeout)
     return ''

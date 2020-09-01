@@ -38,26 +38,26 @@ class Object(object):
         non-null object references:
 
             - It is reflexive: for any non-null reference value x,
-            x.equals(x) should return true.
+            x.equals(x) should return True.
             - It is symmetric: for any non-null reference values x and
-            y, x.equals(y) should return true if and only if
-            y.equals(x) returns true.
+            y, x.equals(y) should return True if and only if
+            y.equals(x) returns True.
             - It is transitive: for any non-null reference values x,
-            y, and z, if x.equals(y) returns true and y.equals(z)
-            returns true, then x.equals(z) should return true.
+            y, and z, if x.equals(y) returns True and y.equals(z)
+            returns True, then x.equals(z) should return True.
             - It is consistent: for any non-null reference values x
             and y, multiple invocations of x.equals(y) consistently
-            return true or consistently return false, provided no
+            return True or consistently return False, provided no
             information used in equals comparisons on the objects is
             modified.
             - For any non-null reference value x, x.equals(null)
-            should return false.
+            should return False.
 
         The equals method for class Object implements the most
         discriminating possible equivalence relation on objects; that
         is, for any non-null  reference values x and y, this method
-        returns true if and only if x and y refer to the same object
-        (x == y has the value true).
+        returns True if and only if x and y refer to the same object
+        (x == y has the value True).
 
         Note that it is generally necessary to override the hashCode
         method whenever this method is overridden, so as to maintain
@@ -68,8 +68,8 @@ class Object(object):
             obj (object): The reference object with which to compare.
 
         Returns:
-            bool: true if this object is the same as the obj argument;
-                false otherwise.
+            bool: True if this object is the same as the obj argument;
+                False otherwise.
         """
         print(self, obj)
         return True

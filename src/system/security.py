@@ -79,7 +79,7 @@ def lockScreen(obscure=False):
     scripting via the system.security.unlockScreen() function.
 
     Args:
-        obscure (bool): If true(1), the locked screen will be opaque,
+        obscure (bool): If True(1), the locked screen will be opaque,
             otherwise it will be partially visible. Optional.
     """
     print obscure
@@ -93,7 +93,7 @@ def logout():
 
 def switchUser(username, password, event, hideError=False):
     """Attempts to switch the current user on the fly. If the given
-    username and password fail, this function will return false. If
+    username and password fail, this function will return False. If
     it succeeds, then all currently opened windows are closed, the
     user is switched, and windows are then re-opened in the states
     that they were in.
@@ -109,11 +109,11 @@ def switchUser(username, password, event, hideError=False):
         event (object): If specified, the enclosing window for this
             event's component will be closed in the switch user
             process.
-        hideError (bool): If true (1), no error will be shown if the
+        hideError (bool): If True (1), no error will be shown if the
             switch user function fails. (default: 0)
 
     Returns:
-        bool: false(0) if the switch user operation failed, true (1)
+        bool: False(0) if the switch user operation failed, True (1)
             otherwise.
     """
     print(username, password, event, hideError)

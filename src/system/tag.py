@@ -358,7 +358,7 @@ def browseTags(parentPath, tagPath=None, tagType=None, dataType=None,
         udtParentType (str): The name of the parent UDT.
         recursive (bool): Recursively search for tags inside of
             folders. Note: It is highly recommended that recursive is
-            set to false, as server timeouts are more likely to occur.
+            set to False, as server timeouts are more likely to occur.
             Optional.
         sort (str): Sets the sort order, possible values are ASC and
             DESC. Sorting is done on the full path of the tag.
@@ -504,7 +504,7 @@ def exists(tagPath):
         tagPath (str): The path of the tag to look up.
 
     Returns:
-        bool: True if a tag exists for the given path, false
+        bool: True if a tag exists for the given path, False
             otherwise.
     """
     print tagPath
@@ -540,9 +540,9 @@ def getConfiguration(basePath, recursive=False):
     Args:
         basePath (str): The starting point where the Tags will be
             retrieved. This can be a folder containing, and if
-            recursive is true, then the function will attempt to
+            recursive is True, then the function will attempt to
             retrieve all of the tags in the folder.
-        recursive (bool): If true, the entire Tag Tree under the
+        recursive (bool): If True, the entire Tag Tree under the
             specified path will be retrieved. Note that this will only
             check one level under the base path. True recursion would
             require multiple uses of this function at different paths.
@@ -664,20 +664,20 @@ def queryTagCalculations(paths, calculations,
             the system should attempt to load values before and after
             the query bounds for the purpose of interpolation. The
             effect depends on the aggregates used. The default is
-            "true". Optional.
+            "True". Optional.
         validatesSCExec (bool: A boolean flag indicating whether or
             not data should be validated against the scan class
-            execution records. If false, calculations may include data
+            execution records. If False, calculations may include data
             that is assumed to be good, even though the system may not
-            have been running. Default is "true". Optional.
+            have been running. Default is "True". Optional.
         noInterpolation (bool): A boolean flag indicating that the
             system should not attempt to interpolate values in
             situations where it normally would, such as for analog
-            tags. Default is "false". Optional.
+            tags. Default is "False". Optional.
         ignoreBadQuality (bool): A boolean flag indicating that bad
             quality values should not be used in the query process. If
             set, any value with a "bad" quality will be completely
-            ignored in calculations. Default is "false". Optional.
+            ignored in calculations. Default is "False". Optional.
 
     Returns:
         Dataset: A dataset representing the calculations over the
@@ -778,9 +778,9 @@ def queryTagHistory(paths,
             Optional.
         validateSCExec (bool): A boolean flag indicating whether or
             not data should be validated against the scan class
-            execution records. If false, data will appear flat (but
+            execution records. If False, data will appear flat (but
             good quality) for periods of time in which the system
-            wasn't running. If true, the same data would be bad
+            wasn't running. If True, the same data would be bad
             quality during downtime periods. Optional.
         noInterpolation (bool): A boolean flag indicating that the
             system should not attempt to interpolate values in
@@ -914,7 +914,7 @@ def setOverlaysEnabled(enabled):
     """Enables or disables the component quality overlay system.
 
     Args:
-        enabled (bool): True (1) to turn on tag overlays, false (0) to
+        enabled (bool): True (1) to turn on tag overlays, False (0) to
             turn them off.
     """
     print enabled

@@ -280,7 +280,7 @@ def dataSetToHTML(showHeaders, dataset, title):
     table page.
 
     Args:
-        showHeaders (bool): If true(1), the HTML table will include a
+        showHeaders (bool): If True(1), the HTML table will include a
             header row.
         dataset (Dataset): The dataset to export.
         title (str): The title for the HTML page.
@@ -356,7 +356,7 @@ def exportCSV(filename, showHeaders, dataset):
 
     Args:
         filename (str): A suggested filename to save as.
-        showHeaders (bool): If true (1), the CSV file will include a
+        showHeaders (bool): If True (1), the CSV file will include a
             header row.
         dataset (Dataset): The dataset to export.
 
@@ -376,7 +376,7 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
 
     Args:
         filename (str): A suggested filename to save as.
-        showHeaders (bool): If true (1), the spreadsheet will include
+        showHeaders (bool): If True (1), the spreadsheet will include
             a header row.
         dataset (list[Dataset]): A sequence of datasets, one for each
             sheet in the resulting workbook.
@@ -400,7 +400,7 @@ def exportHTML(filename, showHeaders, dataset, title):
 
     Args:
         filename (str): A suggested filename to save as.
-        showHeaders (bool): If true (1), the HTML table will include a
+        showHeaders (bool): If True (1), the HTML table will include a
             header row.
         dataset (Dataset): The dataset to export.
         title (str): The title for the HTML page.
@@ -535,15 +535,15 @@ def toCSV(dataset, showHeaders=True, forExport=False, localized=False):
 
     Args:
         dataset (Dataset): The dataset to export to CSV.
-        showHeaders (bool): If set to true(1), a header row will be
-            present in the CSV. Default is true(1). Optional.
-        forExport (bool): If set to true(1), extra header information
+        showHeaders (bool): If set to True(1), a header row will be
+            present in the CSV. Default is True(1). Optional.
+        forExport (bool): If set to True(1), extra header information
             will be present in the CSV data which is necessary for the
             CSV to be compatible with the fromCSV method. Overrides
-            showHeaders. Default is false(0). Optional.
-        localized (bool): If set to true(1), the string
+            showHeaders. Default is False(0). Optional.
+        localized (bool): If set to True(1), the string
             representations of the values in the CSV data will be
-            localized. Default is false(0). Optional.
+            localized. Default is False(0). Optional.
 
     Returns:
         str: The CSV data as a string.
