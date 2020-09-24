@@ -3,8 +3,9 @@
 # Contact: thecesrom@gmail.com
 
 """SFC Functions
-The following functions give you access to interact with the SFCs in
-the Gateway."""
+The following functions give you access to interact with the SFCs in the
+Gateway.
+"""
 
 __all__ = [
     'cancelChart',
@@ -23,10 +24,11 @@ from system.dataset import Dataset
 
 class PyChartScope(object):
     """This class represents any "scope" in the SFC system, and is
-    fundamentally just an observable dictionary. Despite its name, it
-    is not limited to chart scope. This class notifies listeners when
+    fundamentally just an observable dictionary. Despite its name, it is
+    not limited to chart scope. This class notifies listeners when
     values are changed, and wraps any dictionaries assigned to it as
-    PyChartScopes as well."""
+    PyChartScopes as well.
+    """
     pass
 
 
@@ -51,6 +53,7 @@ def getRunningCharts(charPath=None):
             "folder/chartName". If specified, only charts at the path
             will be included in the returned dataset. If omitted, the
             function will return data for all active charts.
+
     Returns:
         Dataset: A dataset with information on the active chart.
     """
@@ -87,9 +90,9 @@ def pauseChart(id):
 
 def redundantCheckpoint(instanceId):
     """Synchronizes chart and step variables of the specified chart
-    instance across a redundant cluster, allowing the chart instance
-    to continue where it left off if a redundant failover occurs.
-    Check out redundancy sync for more information.
+    instance across a redundant cluster, allowing the chart instance to
+    continue where it left off if a redundant failover occurs. Check out
+    redundancy sync for more information.
 
     Args:
         instanceId (str): The instance identifier of the chart.
@@ -119,8 +122,7 @@ def setVariable(instanceId, stepId, variableName, variableValue):
         stepId (str): The id for a step inside of a chart. If omitted
             the function will target a chart scoped variable.
         variableName (str): The name of the variable to set.
-        variableValue (object): The value for the variable to be set
-            to.
+        variableValue (object): The value for the variable to be set to.
     """
     print(instanceId, stepId, variableName, variableValue)
 
@@ -132,8 +134,8 @@ def setVariables(instanceId, stepId, variableMap):
         instanceId (str): The instance identifier of the chart.
         stepId (str): The id for a step inside of a chart. If omitted
             the function will target a chart scoped variable.
-        variableMap (dict): A dictionary containing the name:value
-            pairs of the variables to set.
+        variableMap (dict): A dictionary containing the name:value pairs
+            of the variables to set.
     """
     print(instanceId, stepId, variableMap)
 
@@ -145,9 +147,9 @@ def startChart(path, arguments):
     Args:
         path (str): The path to the chart, for example:
             "ChartFolder/ChartName".
-        arguments (dict): A dictionary of arguments. Each key-value
-            pair in the dictionary becomes a variable in the chart
-            scope and will override any default.
+        arguments (dict): A dictionary of arguments. Each key-value pair
+            in the dictionary becomes a variable in the chart scope and
+            will override any default.
 
     Returns:
         str: The unique ID of this chart.

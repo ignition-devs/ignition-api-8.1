@@ -4,7 +4,8 @@
 
 """OPC Functions
 The following functions allow you to read, write and browser OPC
-servers."""
+servers.
+"""
 
 __all__ = [
     'browse',
@@ -62,8 +63,8 @@ class OPCBrowseTag(Object):
 
 
 class QualifiedValue(ABCMeta):
-    """Represents a value with a DataQuality & timestamp attached to
-    it."""
+    """Represents a value with a DataQuality & timestamp attached to it.
+    """
 
     def __new__(mcs, *args, **kwargs):
         pass
@@ -110,9 +111,8 @@ def browse(opcServer, device, folderPath, opcItemPath):
     Args:
         opcServer (str): The name of the OPC server to browse.
         device (str): The name of the device to browse.
-        folderPath (str): Filters on a folder path. Use * as a
-            wildcard for any number of characters and a ? for a single
-            character.
+        folderPath (str): Filters on a folder path. Use * as a wildcard
+            for any number of characters and a ? for a single character.
         opcItemPath (str): Filters on a OPC item path. Use * as a
             wildcard for any number of characters and a ? for a single
             character.
@@ -144,16 +144,15 @@ def browseServer(opcServer, nodeId):
 
 
 def browseSimple(opcServer, device, folderPath, opcItemPath):
-    """Allows browsing of OPC servers in the runtime returning a list
-    of tags. browseSimple() takes mandatory parameters, which can be
-    null, while browse() uses keyword-style arguments.
+    """Allows browsing of OPC servers in the runtime returning a list of
+    tags. browseSimple() takes mandatory parameters, which can be null,
+    while browse() uses keyword-style arguments.
 
     Args:
         opcServer (str): The name of the OPC server to browse.
         device (str): The name of the device to browse.
-        folderPath (str): Filters on a folder path. Use * as a
-            wildcard for any number of characters and a ? for a single
-            character.
+        folderPath (str): Filters on a folder path. Use * as a wildcard
+            for any number of characters and a ? for a single character.
         opcItemPath (str): Filters on a OPC item path. Use * as a
             wildcard for any number of characters and a ? for a single
             character.
@@ -193,8 +192,8 @@ def getServerState(opcServer):
         opcServer (str): The name of an OPC server connection.
 
     Returns:
-        str: A string representing the current state of the
-            connection, or None if the connection doesn't exist.
+        str: A string representing the current state of the connection,
+            or None if the connection doesn't exist.
     """
     print opcServer
     return 'CONNECTED'
@@ -207,33 +206,33 @@ def isServerEnabled(serverName):
         serverName (str): The name of an OPC server connection.
 
     Returns:
-        bool: True if the connection is enabled, False if the
-            connection is disabled.
+        bool: True if the connection is enabled, False if the connection
+            is disabled.
     """
     print serverName
     return True
 
 
 def readValue(opcServer, itemPath):
-    """Reads a single value directly from an OPC server connection.
-    The address is specified as a string, for example,
-    [MyDevice]N11/N11:0. The object returned from this function has
-    three attributes: value, quality, and timestamp. The value
-    attribute represents the current value for the address specified.
+    """Reads a single value directly from an OPC server connection. The
+    address is specified as a string, for example, [MyDevice]N11/N11:0.
+    The object returned from this function has three attributes: value,
+    quality, and timestamp. The value attribute represents the current
+    value for the address specified.
 
-    The quality attribute is an OPC-UA status code. You can easily
-    check a good quality vs a bad quality by calling the isGood()
-    function on the quality object. The timestamp attribute is Date
-    object that represents the time that the value was retrieved at.
+    The quality attribute is an OPC-UA status code. You can easily check
+    a good quality vs a bad quality by calling the isGood() function on
+    the quality object. The timestamp attribute is Date object that
+    represents the time that the value was retrieved at.
 
     Args:
-        opcServer (str): The name of the OPC server connection in
-            which the item resides.
+        opcServer (str): The name of the OPC server connection in which
+            the item resides.
         itemPath (str): The item path, or address, to read from.
 
     Returns:
-        QualifiedValue: An object that contains the value, quality,
-            and timestamp returned from the OPC server for the address
+        QualifiedValue: An object that contains the value, quality, and
+            timestamp returned from the OPC server for the address
             specified.
     """
     print(opcServer, itemPath)
@@ -241,15 +240,15 @@ def readValue(opcServer, itemPath):
 
 
 def readValues(opcServer, itemPaths):
-    """This function is equivalent to the system.opc.readValue
-    function, except that it can operate in bulk. You can specify a
-    list of multiple addresses to read from, and you will receive a
-    list of the same length, where each entry is the qualified value
-    object for the corresponding address.
+    """This function is equivalent to the system.opc.readValue function,
+    except that it can operate in bulk. You can specify a list of
+    multiple addresses to read from, and you will receive a list of the
+    same length, where each entry is the qualified value object for the
+    corresponding address.
 
     Args:
-        opcServer (str): The name of the OPC server connection in
-            which the items reside.
+        opcServer (str): The name of the OPC server connection in which
+            the items reside.
         itemPaths (list[str]): A list of strings, each representing an
             item path, or address to read from.
 
@@ -281,8 +280,8 @@ def writeValue(opcServer, itemPath, value):
     return value from this function.
 
     Args:
-        opcServer (str): The name of the OPC server connection in
-            which the item resides.
+        opcServer (str): The name of the OPC server connection in which
+            the item resides.
         itemPath (str): The item path, or address, to write to.
         value (object): The value to write to the OPC item.
 
@@ -298,17 +297,17 @@ def writeValues(opcServer, itemPaths, values):
     """This function is a bulk version of system.opc.writeValue. It
     takes a list of addresses and a list of objects, which must be the
     same length. It will write the corresponding object to the
-    corresponding address in bulk. It will return a list of status
-    codes representing the individual write success or failure for
-    each corresponding address.
+    corresponding address in bulk. It will return a list of status codes
+    representing the individual write success or failure for each
+    corresponding address.
 
     Args:
-        opcServer (str): The name of the OPC server connection in
-            which the items reside.
+        opcServer (str): The name of the OPC server connection in which
+            the items reside.
         itemPaths (list[str]): A list of item paths, or addresses, to
             write to.
-        values (list[object]): A list of values to write to each
-            address specified.
+        values (list[object]): A list of values to write to each address
+            specified.
 
     Returns:
         list[Quality]: An array of Quality objects, each entry

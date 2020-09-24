@@ -66,7 +66,8 @@ class Results(Object):
     result set, which can be determined by comparing the Total
     Available Size to the Returned Size. If there is a mismatch, the
     continuation point should be non-null and can be used in
-    constructing the subsequent BrowseFilter to continue the browse."""
+    constructing the subsequent BrowseFilter to continue the browse.
+    """
 
     def error(self, result):
         pass
@@ -274,7 +275,8 @@ def readProcessed(serverName, itemIds, startDate, endDate, resampleIntervalMS,
     return [ReadResult()]
 
 
-def readRaw(serverName, itemIds, startDate, endDate, maxValues, boundingValues):
+def readRaw(serverName, itemIds, startDate, endDate, maxValues,
+            boundingValues):
     """Reads raw values from the OPC-HDA server.
 
     Args:

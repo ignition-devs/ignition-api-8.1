@@ -5,7 +5,8 @@
 """Contains the collections framework, legacy collection classes,
 event model, date and time facilities, internationalization, and
 miscellaneous utility classes (a string tokenizer, a random-number
-generator, and a bit array)."""
+generator, and a bit array).
+"""
 
 __all__ = [
     'Date',
@@ -28,8 +29,8 @@ class Date(Object):
         measured to the nearest millisecond.
 
         2) to represent the specified number of milliseconds since the
-        standard base time known as "the epoch", namely January 1,
-        1970, 00:00:00 GMT.
+        standard base time known as "the epoch", namely January 1, 1970,
+        00:00:00 GMT.
 
         1) java.util.Date()
         2) java.util.Date(date)
@@ -53,7 +54,8 @@ class EventObject(Object):
 
     All Events are constructed with a reference to the object, the
     "source", that is logically deemed to be the object upon which the
-    Event in question initially occurred upon."""
+    Event in question initially occurred upon.
+    """
 
     def __init__(self, source):
         self.source = source
@@ -63,13 +65,13 @@ class EventObject(Object):
 
 
 class Locale(Object):
-    """A Locale object represents a specific geographical, political,
-    or cultural region. An operation that requires a Locale to perform
-    its task is called locale-sensitive and uses the Locale to tailor
+    """A Locale object represents a specific geographical, political, or
+    cultural region. An operation that requires a Locale to perform its
+    task is called locale-sensitive and uses the Locale to tailor
     information for the user. For example, displaying a number is a
-    locale-sensitive operation; the number should be formatted
-    according to the customs and conventions of the user's native
-    country, region, or culture.
+    locale-sensitive operation; the number should be formatted according
+    to the customs and conventions of the user's native country, region,
+    or culture.
     """
 
     def __init__(self,

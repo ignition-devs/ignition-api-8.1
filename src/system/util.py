@@ -4,7 +4,8 @@
 
 """Utility Functions
 The following functions give you access to view various Gateway and
-Client data, as well as interact with other various systems."""
+Client data, as well as interact with other various systems.
+"""
 
 __all__ = [
     'audit',
@@ -56,9 +57,10 @@ from system.dataset import Dataset, PyDataSet
 
 
 class LoggerEx(Object):
-    """This class is a wrapper around a logger which provides
-    additional useful tools. To create one, use the newBuilder()
-    function and configure the builder."""
+    """This class is a wrapper around a logger which provides additional
+    useful tools. To create one, use the newBuilder() function and
+    configure the builder.
+    """
     pass
 
 
@@ -149,9 +151,9 @@ class Version(Object):
                     self.rev == other.rev)
 
     def compareTo(self, that):
-        """Compares two Versions. Note that this comparison is
-        stricter than we want for Gateway restores or project
-        imports. For those, isFutureVersion().
+        """Compares two Versions. Note that this comparison is stricter
+        than we want for Gateway restores or project imports. For those,
+        isFutureVersion().
 
         Args:
             that (Version): The version to compare.
@@ -235,8 +237,8 @@ def audit(action=None, actionValue=None, auditProfile='',
 
     Args:
         action (str): What happened. Default is null. Optional.
-        actionValue (str): What the action happened to. Default is
-            null. Optional.
+        actionValue (str): What the action happened to. Default is null.
+            Optional.
         auditProfile (str): Where the audit record should be stored.
             Defaults to the project's audit profile (if specified), or
             the gateway audit profile if calling in the gateway or
@@ -248,11 +250,11 @@ def audit(action=None, actionValue=None, auditProfile='',
             be populated automatically if omitted.
         originatingSystem (object): An even-length list providing
             additional context to the audit event. Optional.
-        eventTimestamp (datetime): When the event happened. Will be
-            set to the current time if omitted. Optional.
-        originatingContext (int): What scope the event originated
-            from: 1 means Gateway, 2 means Designer, 4 means Client.
-            Will be set automatically if omitted. Optional.
+        eventTimestamp (datetime): When the event happened. Will be set
+            to the current time if omitted. Optional.
+        originatingContext (int): What scope the event originated from:
+            1 means Gateway, 2 means Designer, 4 means Client. Will be
+            set automatically if omitted. Optional.
         statusCode (int): A quality code to attach to the object.
             Defaults to 0, indicating no special meaning. Optional.
     """
@@ -289,14 +291,13 @@ def beep():
 
 def execute(commands):
     """Executes the given commands via the operating system, in a
-    separate process. The commands argument is an array of strings.
-    The first string is the program to execute, with subsequent
-    strings being the arguments to that command.
+    separate process. The commands argument is an array of strings. The
+    first string is the program to execute, with subsequent strings
+    being the arguments to that command.
 
     Args:
-        commands (list[str]): A list containing the command
-            (1st entry) and associated arguments (remaining entries)
-            to execute.
+        commands (list[str]): A list containing the command (1st entry)
+            and associated arguments (remaining entries) to execute.
     """
     print commands
 
@@ -304,20 +305,20 @@ def execute(commands):
 def exit(force=False):
     """Exits the running client, as long as the shutdown intercept
     script doesn't cancel the shutdown event. Set force to True to not
-    give the shutdown intercept script a chance to cancel the exit.
-    Note that this will quit the Client completely. you can use
+    give the shutdown intercept script a chance to cancel the exit. Note
+    that this will quit the Client completely. you can use
     system.security.logout() to return to the login screen.
 
     Args:
-        force (bool): f True (1), the shutdown-intercept script will
-            be skipped. Default is False (0). Optional.
+        force (bool): If True (1), the shutdown-intercept script will be
+            skipped. Default is False (0). Optional.
     """
     print force
 
 
 def getAvailableLocales():
-    """Returns a collection of strings representing the Locales added
-    to the Translation Manager, such as 'en' for English.
+    """Returns a collection of strings representing the Locales added to
+    the Translation Manager, such as 'en' for English.
 
     Returns:
         list[str]: A collection of strings representing the Locales
@@ -331,8 +332,8 @@ def getAvailableTerms():
     translation system.
 
     Returns:
-         list[str]: A collection of all of the terms available from
-            the Translation Manager.
+         list[str]: A collection of all of the terms available from the
+            Translation Manager.
     """
     return ['term1', 'term2']
 
@@ -361,8 +362,8 @@ def getConnectionMode():
 
 def getConnectTimeout():
     """Returns the connect timeout in milliseconds for all
-    client-to-gateway communication. This is the maximum amount of
-    time that communication operations to the Gateway will be given to
+    client-to-gateway communication. This is the maximum amount of time
+    that communication operations to the Gateway will be given to
     connect. The default is 10,000ms (10 seconds).
 
     Returns:
@@ -388,8 +389,8 @@ def getGatewayAddress():
     communicating with.
 
     Returns:
-        str: The address of the Gateway that the client is
-            communicating with.
+        str: The address of the Gateway that the client is communicating
+            with.
     """
     return 'http://localhost:8088/'
 
@@ -397,22 +398,22 @@ def getGatewayAddress():
 def getGatewayStatus(gatewayAddress, connectTimeoutMillis=None,
                      socketTimeoutMillis=None):
     """Returns a string that indicates the status of the Gateway. A
-    status of RUNNING means that the Gateway is fully functional.
-    Thrown exceptions return "ERROR" with the error message appended
-    to the string.
+    status of RUNNING means that the Gateway is fully functional. Thrown
+    exceptions return "ERROR" with the error message appended to the
+    string.
 
     Args:
         gatewayAddress (str): The gateway address to ping, in the form
             of ADDR:PORT/main.
-        connectTimeoutMillis (int): The maximum time in milliseconds
-            to attempt to initially contact a Gateway. Optional.
+        connectTimeoutMillis (int): The maximum time in milliseconds to
+            attempt to initially contact a Gateway. Optional.
         socketTimeoutMillis (int): The maximum time in milliseconds to
-            wait for a response from a Gateway after initial
-            connection has been established. Optional.
+            wait for a response from a Gateway after initial connection
+            has been established. Optional.
 
     Returns:
-        str: A string that indicates the status of the Gateway. A
-        status of RUNNING means that the Gateway is fully functional.
+        str: A string that indicates the status of the Gateway. A status
+            of RUNNING means that the Gateway is fully functional.
     """
     print(gatewayAddress, connectTimeoutMillis, socketTimeoutMillis)
     return 'RUNNING'
@@ -423,10 +424,10 @@ def getGlobals():
     legacy global namespace. As of version 7.7.0, most new scripts use
     the modern style of scoping, which makes the 'global' keyword act
     very differently. Most importantly, the modern scoping rules mean
-    that variables declared as 'global' are only global within that
-    one module. The system.util.getGlobals() method can be used to
-    interact with older scripts that used the old meaning of the
-    'global' keyword.
+    that variables declared as 'global' are only global within that one
+    module. The system.util.getGlobals() method can be used to interact
+    with older scripts that used the old meaning of the 'global'
+    keyword.
 
     Returns:
         dict: The global namespace, as a dictionary.
@@ -485,8 +486,8 @@ def getProperty(propertyName):
 
         file.separator. The system file separator character. (for
             example, "/" (unix) or "\" (windows))
-        line.separator. The system line separator string. (for
-            example, "\r\n" (carriage return, newline))
+        line.separator. The system line separator string. (for example,
+            "\r\n" (carriage return, newline))
         os.arch. Operating system architecture. (for example, "x86")
         os.name. Operating system name. (for example, "Windows XP")
         os.version. Operating system version. (for example, "5.1")
@@ -527,9 +528,9 @@ def getProperty(propertyName):
 
 def getReadTimeout():
     """Returns the read timeout in milliseconds for all
-    client-to-gateway communication. This is the maximum amount of
-    time allowed for a communication operation to complete. The
-    default is 60,000ms (1 minute).
+    client-to-gateway communication. This is the maximum amount of time
+    allowed for a communication operation to complete. The default is
+    60,000ms (1 minute).
 
     Returns:
          int: The current read timeout, in milliseconds. Default is
@@ -539,16 +540,16 @@ def getReadTimeout():
 
 
 def getSessionInfo(usernameFilter=None, projectFilter=None):
-    """Returns a PyDataSet holding information about all of the
-    sessions (logged-in users) on the Gateway. Optional
-    regular-expression based filters can be provided to filter the
-    username or the username and the project returned.
+    """Returns a PyDataSet holding information about all of the sessions
+    (logged-in users) on the Gateway. Optional regular-expression based
+    filters can be provided to filter the username or the username and
+    the project returned.
 
     Args:
         usernameFilter (str): A regular-expression based filter string
             to restrict the list by username. Optional.
-        projectFilter (str): A regular-expression based filter string
-            to restrict the list by project. Optional.
+        projectFilter (str): A regular-expression based filter string to
+            restrict the list by project. Optional.
 
     Returns:
         PyDataSet: A dataset representing the Gateway's current
@@ -560,24 +561,23 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
 
 def getSystemFlags():
     """Returns an integer that represents a bit field containing
-    information about the currently running system. Each bit
-    corresponds to a specific flag as defined in the bitmask below.
-    The integer return will be a total of all of the bits that are
-    currently active. See the example for tips on how to extract the
-    information in this bit field.
+    information about the currently running system. Each bit corresponds
+    to a specific flag as defined in the bitmask below. The integer
+    return will be a total of all of the bits that are currently active.
+    See the example for tips on how to extract the information in this
+    bit field.
 
     Returns:
         int: A total of all the bits that are currently active. A full
-            screen client launched from the gateway webpage with no
-            SSL will have a value of 44 (Fullscreen flag + Webstart
-            Flag + Client Flag).
+            screen client launched from the gateway webpage with no SSL
+            will have a value of 44 (Fullscreen flag + Webstart Flag +
+            Client Flag).
     """
     return 1
 
 
 def getVersion():
-    """Returns the Ignition version number that is currently being
-    run.
+    """Returns the Ignition version number that is currently being run.
 
     Returns:
         Version: The currently running Ignition version number. as a
@@ -590,27 +590,26 @@ def invokeAsynchronous(function, args=None, kwargs=None, description=None):
     """This is an advanced scripting function . Invokes (calls) the
     given Python function on a different thread. This means that calls
     to invokeAsynchronous will return immediately, and then the given
-    function will start executing asynchronously on a different
-    thread. This is useful for long-running data intensive functions,
-    where running them synchronously (in the GUI thread) would make
-    the GUI non-responsive for an unacceptable amount of time.
+    function will start executing asynchronously on a different thread.
+    This is useful for long-running data intensive functions, where
+    running them synchronously (in the GUI thread) would make the GUI
+    non-responsive for an unacceptable amount of time.
 
     Args:
         function (object): A Python function object that will get
             invoked with no arguments in a separate thread.
-        args: A list or tuple of Python objects that will be provided
-            to the called function as arguments. Equivalent to the *
+        args: A list or tuple of Python objects that will be provided to
+            the called function as arguments. Equivalent to the *
             operator. Optional.
-        kwargs: A dictionary of keyword argument names to Python
-            object values that will be provided to the called function
-            as keyword arguments. Equivalent to the ** operator.
-            Optional.
+        kwargs: A dictionary of keyword argument names to Python object
+            values that will be provided to the called function as
+            keyword arguments. Equivalent to the ** operator. Optional.
         description (str): A description to use for the asynchronous
-            thread. Will be displayed on the current scope's
-            diagnostic view for scripts. For Vision and the Designer,
-            this would be the "Scripts" tab of the Diagnostics popup.
-            For Perspective and the Gateway scope, this would be the
-            Gateway's Running Scripts status page. Optional.
+            thread. Will be displayed on the current scope's diagnostic
+            view for scripts. For Vision and the Designer, this would be
+            the "Scripts" tab of the Diagnostics popup. For Perspective
+            and the Gateway scope, this would be the Gateway's Running
+            Scripts status page. Optional.
 
     Returns:
         Thread: The executing thread.
@@ -620,33 +619,32 @@ def invokeAsynchronous(function, args=None, kwargs=None, description=None):
 
 
 def invokeLater(function, delay=0):
-    """This is an advanced scripting function. Invokes (calls) the
-    given Python function object after all of the currently processing
-    and pending events are done being processed, or after a specified
-    delay. The function will be executed on the GUI, or event
-    dispatch, thread. This is useful for events like propertyChange
-    events, where the script is called before any bindings are
-    evaluated.
+    """This is an advanced scripting function. Invokes (calls) the given
+    Python function object after all of the currently processing and
+    pending events are done being processed, or after a specified delay.
+    The function will be executed on the GUI, or event dispatch, thread.
+    This is useful for events like propertyChange events, where the
+    script is called before any bindings are evaluated.
 
     If you specify an optional time argument (number of milliseconds),
     the function will be invoked after all currently processing and
     pending events are processed plus the duration of that time.
 
     Args:
-        function (object): A Python function object that will be
-            invoked later, on the GUI, or event-dispatch, thread with
-            no arguments.
+        function (object): A Python function object that will be invoked
+            later, on the GUI, or event-dispatch, thread with no
+            arguments.
         delay (int): A delay, in milliseconds, to wait before the
             function is invoked. The default is 0, which means it will
-            be invoked after all currently pending events are
-            processed. Optional.
+            be invoked after all currently pending events are processed.
+            Optional.
     """
     print(function, delay)
 
 
 def jsonDecode(jsonString):
-    """Takes a json String and converts it into a Python object such
-    as  a list or a dict. If the input is not valid json, a string is
+    """Takes a json String and converts it into a Python object such as
+    a list or a dict. If the input is not valid json, a string is
     returned.
 
     Args:
@@ -661,14 +659,14 @@ def jsonDecode(jsonString):
 
 
 def jsonEncode(pyObj, indentFactor=4):
-    """Takes a Python object such as a list or dict and converts into
-    a json string.
+    """Takes a Python object such as a list or dict and converts into a
+    json string.
 
     Args:
-        pyObj (object): The Python object to encode into JSON such as
-            a Python list or dictionary.
-        indentFactor (int): The number of spaces to add to each level
-            of indentation for prettyprinting. Optional.
+        pyObj (object): The Python object to encode into JSON such as a
+            Python list or dictionary.
+        indentFactor (int): The number of spaces to add to each level of
+            indentation for prettyprinting. Optional.
 
     Returns:
         str: The encoded JSON string.
@@ -684,20 +682,20 @@ def modifyTranslation(term, translation, locale='en'):
         term (str): The key term to translate.
         translation (str): The translated value to store.
         locale (str): If specified, the locale code (such as "es")
-            identifying the language of the translation. Otherwise,
-            the currently set language is used. Optional.
+            identifying the language of the translation. Otherwise, the
+            currently set language is used. Optional.
     """
     print(term, translation, locale)
 
 
 def playSoundClip(wav, volume, wait):
-    """Plays a sound clip from a wav file to the system's default
-    audio device. The wav file can be specified as a filepath, a URL,
-    or directly as a raw byte[].
+    """Plays a sound clip from a wav file to the system's default audio
+    device. The wav file can be specified as a filepath, a URL, or
+    directly as a raw byte[].
 
     Args:
-        wav (object): A byte list of a wav file or filepath or URL
-            that represents a wav file.
+        wav (object): A byte list of a wav file or filepath or URL that
+            represents a wav file.
         volume (float): The clip's volume, represented as a floating
             point number between 0.0 and 1.0. Optional.
         wait (bool): A boolean flag indicating whether or not the call
@@ -719,23 +717,22 @@ def queryAuditLog(auditProfileName,
         auditProfileName (str): The name of the audit profile to pull
             the history from.
         startDate (datetime): The earliest audit event to return. If
-            omitted, the current time - 8 hours will be used.
-            Optional.
+            omitted, the current time - 8 hours will be used. Optional.
         endDate (datetime): The latest audit event to return. If
             omitted, the current time will be used. Optional.
-        actorFilter (str): A filter string used to restrict the
-            results by actor. Optional.
-        actionFilter (str): A filter string used to restrict the
-            results by action. Optional.
-        targetFilter (str): A filter string used to restrict the
-            results by target. Optional.
-        valueFilter (str): A filter string used to restrict the
-            results by value. Optional.
-        systemFilter (str): A filter string used to restrict the
-            results by system. Optional.
-        contextFilter (int): A bitmask used to restrict the results
-            by context. 0x01 = Gateway, 0x02 = Designer,
-            0x04 = Client. Optional.
+        actorFilter (str): A filter string used to restrict the results
+            by actor. Optional.
+        actionFilter (str): A filter string used to restrict the results
+            by action. Optional.
+        targetFilter (str): A filter string used to restrict the results
+            by target. Optional.
+        valueFilter (str): A filter string used to restrict the results
+            by value. Optional.
+        systemFilter (str): A filter string used to restrict the results
+            by system. Optional.
+        contextFilter (int): A bitmask used to restrict the results by
+            context. 0x01 = Gateway, 0x02 = Designer, 0x04 = Client.
+            Optional.
 
     Returns:
         Dataset: A dataset with the audit events from the specified
@@ -748,42 +745,41 @@ def queryAuditLog(auditProfileName,
 
 def retarget(project, addresses=None, params=None, windows=None):
     """This function allows you to programmatically 'retarget' the
-    Client to a different project and/or different Gateway. You can
-    have it switch to another project on the same Gateway, or another
-    gateway entirely, even across a WAN. This feature makes the vision
-    of a seamless, enterprise-wide SCADA application a reality.
+    Client to a different project and/or different Gateway. You can have
+    it switch to another project on the same Gateway, or another gateway
+    entirely, even across a WAN. This feature makes the vision of a
+    seamless, enterprise-wide SCADA application a reality.
 
     The retarget feature will attempt to transfer the current user
     credentials over to the new project / Gateway. If the credentials
-    fail on that project, the user will be prompted for a valid
-    username and password. Once valid authentication has been
-    achieved, the currently running project is shut down, and the new
-    project is loaded.
+    fail on that project, the user will be prompted for a valid username
+    and password. Once valid authentication has been achieved, the
+    currently running project is shut down, and the new project is
+    loaded.
 
     You can pass any information to the other project through the
-    parameters dictionary. All entries in this dictionary will be set
-    in the global scripting namespace in the other project. Even if
-    you don't specify any parameters, the system will set the variable
+    parameters dictionary. All entries in this dictionary will be set in
+    the global scripting namespace in the other project. Even if you
+    don't specify any parameters, the system will set the variable
     _RETARGET_FROM_PROJECT to the name of the current project and
     _RETARGET_FROM_GATEWAY to the address of the current Gateway.
 
     Args:
         project (str): The name of the project to retarget to.
-        addresses (object): The address of the Gateway that the
-            project resides on. If omitted, the current Gateway will
-            be used. Format is: host:port. Optional.
+        addresses (object): The address of the Gateway that the project
+            resides on. If omitted, the current Gateway will be used.
+            Format is: host:port. Optional.
             As of 8.0.8 this can be a list of strings. When using a
             list, the function will try each address in order, waiting
             for the timeout period between each address attempt.
-        params (dict): A dictionary of parameters that will be passed
-            to the new project. They will be set as global variables
-            in the new project's Python scripting environment.
-            Optional.
-        windows (list[str]): A list of window paths to use as
-            the startup windows. If omitted, the project's normal
-            startup windows will be opened. If specified, the
-            project's normal startup windows will be ignored, and this
-            list will be used instead. Optional.
+        params (dict): A dictionary of parameters that will be passed to
+            the new project. They will be set as global variables in the
+            new project's Python scripting environment. Optional.
+        windows (list[str]): A list of window paths to use as the
+            startup windows. If omitted, the project's normal startup
+            windows will be opened. If specified, the project's normal
+            startup windows will be ignored, and this list will be used
+            instead. Optional.
     """
     print(project, addresses, params, windows)
 
@@ -802,16 +798,16 @@ def sendMessage(project, messageHandler, payload=None, scope=None,
     Args:
         project (str): The name of the project containing the message
             handler.
-        messageHandler (str): The name of the message handler that
-            will fire upon receiving a message.
+        messageHandler (str): The name of the message handler that will
+            fire upon receiving a message.
         payload (dict): A PyDictionary which will get passed to the
             message handler. Use "payload" in the message handler to
             access dictionary variables. Optional.
         scope (str): Limits the scope of the message delivery to "C"
             (clients), "G" (Gateway), or "CG" for clients and the
-            Gateway. Defaults to "C" if the user name, role or host
-            name parameters are set, and to "CG" if none of these
-            parameters are set. Optional.
+            Gateway. Defaults to "C" if the user name, role or host name
+            parameters are set, and to "CG" if none of these parameters
+            are set. Optional.
         clientSessionId (str): Limits the message delivery to a client
             with the specified session ID. Optional.
         user (str): Limits the message delivery to clients where the
@@ -821,15 +817,15 @@ def sendMessage(project, messageHandler, payload=None, scope=None,
         hostName (str): Limits the message delivery to the client that
             has the specified network host name. Optional.
         remoteServers (list[str]): A list of Strings representing
-            Gateway Server names. The message will be delivered to
-            each server in the list. Upon delivery, the message is
+            Gateway Server names. The message will be delivered to each
+            server in the list. Upon delivery, the message is
             distributed to the local Gateway and clients as per the
             other parameters. Optional.
 
     Returns:
-         list[str]: A List of Strings containing information about each
-         system that was selected for delivery, where each List item is
-         comma-delimited.
+        list[str]: A List of Strings containing information about each
+            system that was selected for delivery, where each List item
+            is comma-delimited.
     """
     print(project, messageHandler, payload, scope, clientSessionId, user,
           hasRole, hostName, remoteServers)
@@ -840,29 +836,29 @@ def sendRequest(project, messageHandler, payload=None, hostName=None,
                 remoteServer=None, timeoutSec=None):
     """This function sends a message to the Gateway, working in a
     similar manner to the sendMessage function, except sendRequest
-    expects a response to the message. To handle received messages,
-    you must set up Gateway Event Script message handlers within a
-    project. These message handlers run Jython code when a message is
-    received. You can then place a return at the end of the code to
-    return something to where the sendRequest was originally called
-    from. You can add message handlers under the "Message" section of
-    the Gateway Event Script configuration dialog.
+    expects a response to the message. To handle received messages, you
+    must set up Gateway Event Script message handlers within a project.
+    These message handlers run Jython code when a message is received.
+    You can then place a return at the end of the code to return
+    something to where the sendRequest was originally called from. You
+    can add message handlers under the "Message" section of the Gateway
+    Event Script configuration dialog.
 
     Args:
         project (str): The name of the project containing the message
             handler.
-        messageHandler (str): The name of the message handler that
-            will fire upon receiving a message.
+        messageHandler (str): The name of the message handler that will
+            fire upon receiving a message.
         payload (dict): A PyDictionary which will get passed to the
             message handler. Use "payload" in the message handler to
             access dictionary variables. Optional.
-        hostName (str): Limits the message delivery to the client
-            that has the specified network host name. Optional.
+        hostName (str): Limits the message delivery to the client that
+            has the specified network host name. Optional.
         remoteServer (str): A string representing a target Gateway
             Server name. The message will be delivered to the remote
-            Gateway over the Gateway Network. Upon delivery, the
-            message is distributed to the local Gateway and clients as
-            per the other parameters. Optional.
+            Gateway over the Gateway Network. Upon delivery, the message
+            is distributed to the local Gateway and clients as per the
+            other parameters. Optional.
         timeoutSec (str): The number of seconds before the sendRequest
             call times out. Optional.
 
@@ -884,8 +880,8 @@ def sendRequestAsync(project, messageHandler, payload=None, hostName=None,
     Args:
         project (str): The name of the project containing the message
             handler.
-        messageHandler (str): The name of the message handler that
-            will fire upon receiving a message.
+        messageHandler (str): The name of the message handler that will
+            fire upon receiving a message.
         payload (dict): A PyDictionary which will get passed to the
             message handler. Use "payload" in the message handler to
             access dictionary variables. Optional.
@@ -893,14 +889,14 @@ def sendRequestAsync(project, messageHandler, payload=None, hostName=None,
             has the specified network host name. Optional.
         remoteServer (str): A string representing the target Gateway
             Server name. The message will be delivered to the remote
-            Gateway over the Gateway Network. Upon delivery, the
-            message is distributed to the local Gateway and clients as
-            per the other parameters. Optional.
+            Gateway over the Gateway Network. Upon delivery, the message
+            is distributed to the local Gateway and clients as per the
+            other parameters. Optional.
         timeoutSec (int): The number of seconds before the sendRequest
             call times out. Optional.
-        onSuccess (object): Should take one argument, which will be
-            the result from the message handler. Callback functions
-            will be executed on the GUI thread, similar to
+        onSuccess (object): Should take one argument, which will be the
+            result from the message handler. Callback functions will be
+            executed on the GUI thread, similar to
             system.util.invokeLater. Optional.
         onError (object): Should take one argument, which will be the
             exception encountered. Callback functions will be executed
@@ -920,10 +916,10 @@ def setConnectionMode(mode):
     """Sets the connection mode for the client session. Normally a
     client runs in mode 3, which is read-write. You may wish to change
     this to mode 2, which is read-only, which will only allow reading
-    and subscribing to tags, and running SELECT queries. Tag writes
-    and INSERT / UPDATE / DELETE queries will not function. You can
-    also set the connection mode to mode 1, which is disconnected, all
-    tag and query features will not work.
+    and subscribing to tags, and running SELECT queries. Tag writes and
+    INSERT / UPDATE / DELETE queries will not function. You can also set
+    the connection mode to mode 1, which is disconnected, all tag and
+    query features will not work.
 
     Args:
         mode (int): The new connection mode. 1 = Disconnected,
@@ -956,8 +952,8 @@ def setLocale(locale):
 
 
 def setLoggingLevel(loggerName, loggerLevel):
-    """Sets the logging level on the given logger. This can be a
-    logger you create, or a logger already defined in the system.
+    """Sets the logging level on the given logger. This can be a logger
+    you create, or a logger already defined in the system.
 
     Args:
         loggerName (str): The unique name of the logger to change the
@@ -989,22 +985,21 @@ def threadDump():
 
 
 def translate(term, locale=None, strict=False):
-    """This function allows you to retrieve the global translation of
-    a term from the translation database using the current locale.
+    """This function allows you to retrieve the global translation of a
+    term from the translation database using the current locale.
 
     Args:
         term (str): The term to look up.
         locale (str): Which locale to translate against. Useful when
             there are multiple locales defined for a single term. If
-            omitted, the function attempts to use the current locale
-            (as defined by the client, session, or Designer).
-            Optional.
+            omitted, the function attempts to use the current locale (as
+            defined by the client, session, or Designer). Optional.
         strict (bool): If False, the function will return the passed
             term (param 1) if it could not find a defined translation
-            for the locale: meaning, if you pass a term that hasn't
-            been configured, the function will just send the term back
-            to you. If True, then the function will return a None when
-            it fails to find a defined translation. Default is False.
+            for the locale: meaning, if you pass a term that hasn't been
+            configured, the function will just send the term back to
+            you. If True, then the function will return a None when it
+            fails to find a defined translation. Default is False.
             Optional.
 
     Returns:

@@ -3,8 +3,9 @@
 # Contact: thecesrom@gmail.com
 
 """Roster Functions
-Functions that provide roster manipulation, including adding and
-remove users from a roster."""
+Functions that provide roster manipulation, including adding and remove
+users from a roster.
+"""
 
 __all__ = [
     'addUsers',
@@ -22,11 +23,10 @@ def addUsers(rosterName, users):
 
     Args:
         rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of User objects that will be
-            added to the end of the roster. User objects can be
-            created with the system.user.getUser and
-            system.user.addUser functions. These users must exist
-            before being added to the roster.
+        users (list[PyUser]): A list of User objects that will be added
+            to the end of the roster. User objects can be created with
+            the system.user.getUser and system.user.addUser functions.
+            These users must exist before being added to the roster.
     """
     print rosterName
     for user in users:
@@ -34,32 +34,32 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    """Creates a roster with the given name and description, if it
-    does not already exist.
+    """Creates a roster with the given name and description, if it does
+    not already exist.
 
-    This function was designed to run in the Gateway and in
-    Perspective sessions. If creating rosters from Vision clients, use
+    This function was designed to run in the Gateway and in Perspective
+    sessions. If creating rosters from Vision clients, use
     system.alarm.createRoster instead.
 
     Args:
         name (str): The name of the roster to create.
-        description (str): The description for the roster. May be
-            None, but the parameter is mandatory.
+        description (str): The description for the roster. May be None,
+            but the parameter is mandatory.
     """
     print(name, description)
 
 
 def getRosters():
-    """Returns a dictionary of rosters, where the key is the name of
-    the roster, and the value is an array list of string user names.
+    """Returns a dictionary of rosters, where the key is the name of the
+    roster, and the value is an array list of string user names.
 
-    This function was designed to run in the Gateway and in
-    Perspective sessions. If creating rosters from Vision clients, use
+    This function was designed to run in the Gateway and in Perspective
+    sessions. If creating rosters from Vision clients, use
     system.alarm.getRosters instead.
 
     Returns:
-        dict: A python dictionary of rosters. Refer to the list of
-            User objects.
+        dict: A python dictionary of rosters. Refer to the list of User
+            objects.
     """
     return None
 
@@ -69,10 +69,9 @@ def removeUsers(rosterName, users):
 
     Args:
         rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of user objects that will be
-            added to the end of the roster. User objects can be
-            created with the system.user.getUser and
-            system.user.addUser functions.
+        users (list[PyUser]): A list of user objects that will be added
+            to  the end of the roster. User objects can be created with
+            the system.user.getUser and system.user.addUser functions.
     """
     print rosterName
     for user in users:

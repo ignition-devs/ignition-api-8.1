@@ -4,7 +4,8 @@
 
 """User Functions
 The following functions give you access to view and edit users in the
-Gateway."""
+Gateway.
+"""
 
 __all__ = [
     'PyUser',
@@ -177,8 +178,9 @@ class User(ABCMeta):
 
 
 class PyUser(User):
-    """A User implementation that delegates to another user object,
-    but has some methods that are more scripting friendly."""
+    """A User implementation that delegates to another user object, but
+    has some methods that are more scripting friendly.
+    """
     Badge = 'badge'
     DEFAULT_SCHEDULE_NAME = 'Always'
     FirstName = 'John'
@@ -221,8 +223,8 @@ class PyUser(User):
         adjustment easily.
 
         Args:
-            start (datetime): Date to start the schedule adjustment.
-                Not null.
+            start (datetime): Date to start the schedule adjustment. Not
+                null.
             end (datetime): Date to end start the schedule adjustment.
                 Not null.
             available (bool): True if the employee is available during
@@ -248,8 +250,8 @@ class PyUser(User):
 
     def getContactInfo(cls):
         """Returns a sequence of ContactInfo objects. Each of these
-        objects will have a contactType and value property
-        representing the contact information, both strings.
+        objects will have a contactType and value property representing
+        the contact information, both strings.
 
         Returns:
             list[ContactInfo]: A sequence of ContactInfo objects.
@@ -339,8 +341,8 @@ def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
             Optional.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and info about the success or failure of the add.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and info about the success or failure of the add.
     """
     print(name, scheduleOne, scheduleTwo, description)
     return UIResponse(Locale.ENGLISH)
@@ -354,8 +356,8 @@ def addHoliday(holiday):
             object.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and info about the success or failure of the add.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and info about the success or failure of the add.
     """
     print holiday
     return UIResponse(Locale.ENGLISH)
@@ -369,12 +371,12 @@ def addRole(userSource, role):
     Args:
         userSource (str): The user source to add a role to. Blank will
             use the default user source.
-        role (str): The role to add. Role must not be blank and must
-            not already exist.
+        role (str): The role to add. Role must not be blank and must not
+            already exist.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and info about the success or failure of the add.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and info about the success or failure of the add.
     """
     print(userSource, role)
     return UIResponse(Locale.ENGLISH)
@@ -385,12 +387,12 @@ def addSchedule(schedule):
 
     Args:
         schedule (ScheduleModel): The schedule to add. Can be a
-            BasicScheduleModel or CompositeScheduleModel object (or
-            any other class that extends AbstractScheduleModel).
+            BasicScheduleModel or CompositeScheduleModel object (or any
+            other class that extends AbstractScheduleModel).
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and info about the success or failure of the add.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and info about the success or failure of the add.
     """
     print schedule
     return UIResponse(Locale.ENGLISH)
@@ -402,13 +404,12 @@ def addUser(userSource, user):
 
     Args:
         userSource (str):
-        user (PyUser): The user to add, as a User object. Refer also
-            to the PyUser class.
+        user (PyUser): The user to add, as a User object. Refer also to
+            the PyUser class.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and info about the success or failure of the add
-            attempt.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and info about the success or failure of the add attempt.
     """
     print(userSource, user)
     return UIResponse(Locale.ENGLISH)
@@ -420,8 +421,7 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
     Args:
         startDate (datetime): The starting date of the schedule
             adjustment.
-        endDate (datetime): The ending date of the schedule
-            adjustment.
+        endDate (datetime): The ending date of the schedule adjustment.
         isAvailable (bool): True if the user is available during this
             schedule adjustment.
         note (str): A note about the schedule adjustment.
@@ -458,8 +458,8 @@ def editRole(userSource, oldName, newName):
     Args:
         userSource (str): The user source in which the role is found.
             Blank will use the default user source.
-        oldName (str): The role to edit. Role must not be blank and
-            must exist.
+        oldName (str): The role to edit. Role must not be blank and must
+            exist.
         newName (str): The new name for the role. Must not be blank.
 
     Returns:
@@ -477,8 +477,8 @@ def editSchedule(scheduleName, schedule):
         scheduleName (str): The name of the schedule to edit. Name is
             case-sensitive.
         schedule (ScheduleModel): The schedule to add. Can be a
-            BasicScheduleModel or CompositeScheduleModel object (or
-            any other class that extends AbstractScheduleModel).
+            BasicScheduleModel or CompositeScheduleModel object (or any
+            other class that extends AbstractScheduleModel).
 
     Returns:
         UIResponse: An object with lists of warnings, errors, and info
@@ -495,12 +495,12 @@ def editUser(userSource, user):
     Args:
         userSource (str): The user source in which the user is found.
             Blank will use the default user source.
-        user (PyUser): The user to update, as a User object. Refer
-            also to the PyUser class.
+        user (PyUser): The user to update, as a User object. Refer also
+            to the PyUser class.
 
     Returns:
-        UIResponse: A UIResponse object with lists of warnings,
-            errors, and information returned after the edit attempt.
+        UIResponse: A UIResponse object with lists of warnings, errors,
+            and information returned after the edit attempt.
     """
     print(userSource, user)
     return UIResponse(Locale.ENGLISH)
@@ -514,8 +514,8 @@ def getHoliday(holidayName):
             Case-sensitive.
 
     Returns:
-        HolidayModel: The holiday, as a HolidayModel object, or None
-            if not found.
+        HolidayModel: The holiday, as a HolidayModel object, or None if
+            not found.
     """
     print holidayName
     return None
@@ -535,25 +535,24 @@ def getHolidays():
     """Returns a sequence of all of the holidays available.
 
     Returns:
-        list[HolidayModel]: A list of holidays, as HolidayModel
-            objects.
+        list[HolidayModel]: A list of holidays, as HolidayModel objects.
     """
     return None
 
 
 def getNewUser(userSource, username):
-    """Creates a new user object. The user will not be added to the
-    user source until addUser is called.
+    """Creates a new user object. The user will not be added to the user
+    source until addUser is called.
 
     Args:
-        userSource (str): The name of the user source in which to
-            create a user.
-        username (str): The username for the new user. Does not check
-            if username already exists or is valid.
+        userSource (str): The name of the user source in which to create
+            a user.
+        username (str): The username for the new user. Does not check if
+            username already exists or is valid.
 
     Returns:
-        PyUser: The new user, as a User object. Refer also to the
-            PyUser class.
+        PyUser: The new user, as a User object. Refer also to the PyUser
+            class.
     """
     print(userSource, username)
     return PyUser()
@@ -582,13 +581,13 @@ def getSchedule(scheduleName):
             Case-sensitive.
 
     Returns:
-         ScheduleModel: The schedule, which can be a
-            BasicScheduleModel object, CompositeScheduleModel object,
-            or another type registered by a module. If a schedule was
-            not found, the function will return None if called from a
-            Vision Client or the Designer. if called in from a
-            Perspective Session or anywhere else in the Gateway scope,
-            will throw an IllegalArgumentException.
+         ScheduleModel: The schedule, which can be a BasicScheduleModel
+            object, CompositeScheduleModel object, or another type
+            registered by a module. If a schedule was not found, the
+            function will return None if called from a Vision Client or
+            the Designer. if called in from a Perspective Session or
+            anywhere else in the Gateway scope, will throw an
+            IllegalArgumentException.
     """
     print scheduleName
     return None
@@ -607,8 +606,8 @@ def getScheduledUsers(userSource, date=system.date.now()):
 
     Returns:
         list[PyUser]: List of all Users scheduled for the given date,
-            taking schedule adjustments into account. Refer also to
-            the PyUser class.
+            taking schedule adjustments into account. Refer also to the
+            PyUser class.
     """
     print(userSource, date)
     return None
@@ -626,26 +625,26 @@ def getScheduleNames():
 
 
 def getSchedules():
-    """Returns a sequence of all available schedule models, which can
-    be used to return configuration information on the schedule, such
-    as time for each day of the week.
+    """Returns a sequence of all available schedule models, which can be
+    used to return configuration information on the schedule, such as
+    time for each day of the week.
 
     Returns:
-        list[ScheduleModel]: A list of schedules. Each schedule can be
-            a BasicScheduleModel object, CompositeScheduleModel
-            object, or another type registered by a module.
+        list[ScheduleModel]: A list of schedules. Each schedule can be a
+            BasicScheduleModel object, CompositeScheduleModel object, or
+            another type registered by a module.
     """
     return [ScheduleModel()]
 
 
 def getUser(userSource, username):
-    """Looks up a specific user in a user source, by username. The
-    full User object is returned except for the user's password.
+    """Looks up a specific user in a user source, by username. The full
+    User object is returned except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to search for
-            the user in. Can be a blank string to use the Vision
-            Client's default user source.
+        userSource (str): The name of the user source to search for the
+            user in. Can be a blank string to use the Vision Client's
+            default user source.
         username (str): The username of the user to search for.
 
     Returns:
@@ -658,12 +657,12 @@ def getUser(userSource, username):
 
 def getUsers(userSource):
     """Retrieves the list of users in a specific user source. The User
-    objects that are returned contain all of the information about
-    that user, except for the user's password.
+    objects that are returned contain all of the information about that
+    user, except for the user's password.
 
     Args:
-        userSource (str): The name of the user source to find the
-            users in.
+        userSource (str): The name of the user source to find the users
+            in.
 
     Returns:
         list[PyUser]: A list of User objects. Refer also to the PyUser
@@ -708,9 +707,9 @@ def removeHoliday(holidayName):
 
 
 def removeRole(userSource, role):
-    """Removes a role from the specified user source. When altering
-    the Gateway System User Source, the Allow User Admin setting must
-    be enabled.
+    """Removes a role from the specified user source. When altering the
+    Gateway System User Source, the Allow User Admin setting must be
+    enabled.
 
     Args:
         userSource (str): The user source in which the role is found.
@@ -731,8 +730,8 @@ def removeSchedule(scheduleName):
     removed from the Composite Schedule.
 
     Args:
-        scheduleName (str): The name of the schedule to delete. Name
-            is case-sensitive.
+        scheduleName (str): The name of the schedule to delete. Name is
+            case-sensitive.
 
     Returns:
         UIResponse: An object with lists of warnings, errors, and info
@@ -743,9 +742,9 @@ def removeSchedule(scheduleName):
 
 
 def removeUser(userSource, username):
-    """Removes a specific user from the a user source based on
-    username. When altering the Gateway System User Source, the Allow
-    User Admin setting must be enabled.
+    """Removes a specific user from the a user source based on username.
+    When altering the Gateway System User Source, the Allow User Admin
+    setting must be enabled.
 
     Args:
         userSource (str): The user source in which the user is found.
@@ -753,8 +752,7 @@ def removeUser(userSource, username):
         username (str): The username of the user to remove.
 
     Returns:
-        UIResponse: An UIResponse object with lists of warnings,
-            errors, and information returned after the removal
-            attempt.
+        UIResponse: An UIResponse object with lists of warnings, errors,
+            and information returned after the removal attempt.
     """
     print(userSource, username)

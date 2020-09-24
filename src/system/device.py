@@ -4,7 +4,8 @@
 
 """Device Functions
 The following functions give you access to view and edit device
-connections in the Gateway."""
+connections in the Gateway.
+"""
 
 __all__ = [
     'addDevice',
@@ -19,22 +20,22 @@ from system.dataset import Dataset
 
 
 def addDevice(deviceType, deviceName, deviceProps):
-    """Adds a new device connection in Ignition. Accepts a dictionary
-    of parameters to configure the connection. Acceptable parameters
-    differ by device type: i.e., a Modbus/TCP connection requires a
-    hostname and port, but a simulator doesn't require any parameters.
+    """Adds a new device connection in Ignition. Accepts a dictionary of
+    parameters to configure the connection. Acceptable parameters differ
+    by device type: i.e., a Modbus/TCP connection requires a hostname
+    and port, but a simulator doesn't require any parameters.
 
     Args:
         deviceType (str): The device driver type. Possible values are
             listed in the Device Types table below.
         deviceName (str): The name that will be given to the the new
             device connection.
-        deviceProps (dict): A dictionary of device connection
-            properties and values. Each deviceType has different
-            properties, but most require at least a hostname. Keys in
-            the dictionary are case-insensitive, spaces are omitted,
-            and the names of the properties that appear when manually
-            creating a device connection.
+        deviceProps (dict): A dictionary of device connection properties
+            and values. Each deviceType has different properties, but
+            most require at least a hostname. Keys in the dictionary are
+            case-insensitive, spaces are omitted, and the names of the
+            properties that appear when manually creating a device
+            connection.
     """
     print(deviceType, deviceName, deviceProps)
 
@@ -44,8 +45,8 @@ def listDevices():
     Each row represents a single device.
 
     Returns:
-        Dataset: A dataset, where each row represents a device.
-            Contains 4 columns Name, Enabled, State, and Driver.
+        Dataset: A dataset, where each row represents a device. Contains
+            4 columns Name, Enabled, State, and Driver.
     """
     return Dataset()
 

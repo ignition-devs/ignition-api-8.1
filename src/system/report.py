@@ -4,7 +4,8 @@
 
 """Report Functions
 The following functions give you access to report details and the
-ability to run reports."""
+ability to run reports.
+"""
 
 __all__ = [
     'executeAndDistribute',
@@ -19,10 +20,10 @@ from system.dataset import Dataset
 
 def executeAndDistribute(path, project='project', parameters=None, action=None,
                          actionSettings=None):
-    """Executes and distributes a report. Similar to scheduling a
-    report to execute, except a schedule in not required to utilize
-    this function. This is a great way to distribute the report on
-    demand from a client.
+    """Executes and distributes a report. Similar to scheduling a report
+    to execute, except a schedule in not required to utilize this
+    function. This is a great way to distribute the report on demand
+    from a client.
 
     Args:
         path (str): The path to the existing report.
@@ -57,8 +58,7 @@ def executeReport(path, project='project', parameters=None, fileType='pdf'):
         parameters (dict): An optional dictionary of parameter
             overrides, in the form name:value. Optional.
         fileType (str): The file type the resulting byte array should
-            represent. Defaults to "pdf". Not case-sensitive.
-            Optional.
+            represent. Defaults to "pdf". Not case-sensitive. Optional.
 
     Returns:
         object: A byte array of the resulting report.
@@ -98,8 +98,8 @@ def getReportNamesAsDataset(project='project'):
 
     Raises:
         IllegalArgumentException: Thrown when any of the following
-            occurs: If the project name is omitted in the Gateway
-            scope, project does not exist.
+            occurs: If the project name is omitted in the Gateway scope,
+            project does not exist.
     """
     if project is None:
         raise IllegalArgumentException()
@@ -120,8 +120,8 @@ def getReportNamesAsList(project='project'):
 
     Raises:
         IllegalArgumentException: Thrown when any of the following
-            occurs: If the project name is omitted in the Gateway
-            scope, project does not exist.
+            occurs: If the project name is omitted in the Gateway scope,
+            project does not exist.
     """
     if project is None:
         raise IllegalArgumentException()

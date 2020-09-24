@@ -4,7 +4,8 @@
 
 """DNP3 Functions
 The following functions give you access to interact with the DNP3
-devices."""
+devices.
+"""
 
 __all__ = [
     'directOperateAnalog',
@@ -28,15 +29,15 @@ TRIP = 2
 
 
 def directOperateAnalog(deviceName, index, value, variation=None):
-    """Issues a Select-And-Operate command to set an analog value in
-    an analog output point.
+    """Issues a Select-And-Operate command to set an analog value in an
+    analog output point.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
         index (int): The index of the object to be modified in the
             outstation.
-        value (object): The analog value that is requested (of type
-            int, short, float, or double).
+        value (object): The analog value that is requested (of type int,
+            short, float, or double).
         variation (int): The DNP3 object variation to use in the
             request. Optional.
 
@@ -49,8 +50,8 @@ def directOperateAnalog(deviceName, index, value, variation=None):
 
 def directOperateBinary(deviceName, indexes, opType, tcCode=None, count=None,
                         onTime=None, offTime=None):
-    """Issues a Direct-Operate command for digital control operations
-    at binary output points (CROB).
+    """Issues a Direct-Operate command for digital control operations at
+    binary output points (CROB).
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
@@ -58,8 +59,8 @@ def directOperateBinary(deviceName, indexes, opType, tcCode=None, count=None,
             modified in the outstation.
         opType (int): The type of the operation. 0=NUL, 1=PULSE_ON,
             2=PULSE_OFF, 3=LATCH_ON, 4=LATCH_OFF.
-        tcCode (int): The Trip-Close code, used in conjunction with
-            the opType. 0=NUL, 1=CLOSE, 2=TRIP. Optional.
+        tcCode (int): The Trip-Close code, used in conjunction with the
+            opType. 0=NUL, 1=CLOSE, 2=TRIP. Optional.
         count (int): The number of times the outstation shall execute
             the operation. Optional.
         onTime (long): The duration that the output drive remains
@@ -79,8 +80,8 @@ def freezeAnalogs(deviceName, indexes=None):
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
-        indexes (list[object]): An optional list of specific indexes
-            on which to issue the freeze command.
+        indexes (list[object]): An optional list of specific indexes on
+            which to issue the freeze command.
     """
     print(deviceName, indexes)
 
@@ -94,8 +95,8 @@ def freezeAnalogsAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
             millis.
         intervalTime (int): The interval at which to periodically
             freeze, in millis.
-        indexes (list[object]): An optional list of specific indexes
-            on which to issue the freeze command.
+        indexes (list[object]): An optional list of specific indexes on
+            which to issue the freeze command.
     """
     print(deviceName, absoluteTime, intervalTime, indexes)
 
@@ -105,8 +106,8 @@ def freezeCounters(deviceName, indexes=None):
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
-        indexes (list[object]): An optional list of specific indexes
-            on which to issue the freeze command. Optional.
+        indexes (list[object]): An optional list of specific indexes on
+            which to issue the freeze command. Optional.
     """
     print(deviceName, indexes)
 
@@ -121,22 +122,22 @@ def freezeCountersAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
             millis.
         intervalTime (int): The interval at which to periodically
             freeze, in millis.
-        indexes (list[object]): An optional list of specific indexes
-            on which to issue the freeze command. Optional.
+        indexes (list[object]): An optional list of specific indexes on
+            which to issue the freeze command. Optional.
     """
     print(deviceName, absoluteTime, intervalTime, indexes)
 
 
 def selectOperateAnalog(deviceName, index, value, variation=None):
-    """Issues a Select-And-Operate command to set an analog value in
-    an analog output point.
+    """Issues a Select-And-Operate command to set an analog value in an
+    analog output point.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
         index (int): The index of the object to be modified in the
             outstation.
-        value (object): The analog value that is requested (of type
-            int, short, float, or double).
+        value (object): The analog value that is requested (of type int,
+            short, float, or double).
         variation (int): The DNP3 object variation to use in the
             request. Optional.
 
@@ -157,12 +158,12 @@ def selectOperateBinary(deviceName, indexes, opType, tcCode=None, count=None,
             modified in the outstation.
         opType (int): The type of operation. 0=NUL, 1=PULSE_ON,
             2=PULSE_OFF, 3=LATCH_ON, 4=LATCH_OFF
-        tcCode (int): The Trip-Close code, used in conjunction with
-            the opType. 0=NUL, 1=CLOSE, 2=TRIP. Optional.
+        tcCode (int): The Trip-Close code, used in conjunction with the
+            opType. 0=NUL, 1=CLOSE, 2=TRIP. Optional.
         count (int): The number of times the outstation shall execute
             the operation. Optional.
-        onTime (int): The duration that the output drive remains
-            active, in millis. Optional.
+        onTime (int): The duration that the output drive remains active,
+            in millis. Optional.
         offTime (int): The duration that the output drive remains
             non-active, in millis. Optional.
 

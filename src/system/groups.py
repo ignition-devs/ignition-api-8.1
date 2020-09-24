@@ -4,7 +4,8 @@
 
 """Transaction Group Functions
 The following functions give you access to import and remove
-Transaction Groups."""
+Transaction Groups.
+"""
 
 __all__ = [
     'loadFromFile',
@@ -18,12 +19,11 @@ def loadFromFile(filePath, projectName, mode):
     The mode parameter dictates how overwrites occur.
 
     Args:
-        filePath (str): The path to a valid transaction group xml or
-            csv file.
+        filePath (str): The path to a valid transaction group xml or csv
+            file.
         projectName (str): The name of the project to load into.
         mode (int): How duplicates will be handled. 0 = Overwrite,
-            1 = Ignore, 2 = Replace the existing project with this
-            one.
+            1 = Ignore, 2 = Replace the existing project with this one.
     """
     print(filePath, projectName, mode)
 

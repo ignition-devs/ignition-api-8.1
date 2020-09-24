@@ -5,7 +5,8 @@
 
 """Project Functions
 The following functions allow you to list projects on the Gateway
-through scripting."""
+through scripting.
+"""
 
 __all__ = [
     'getProjectName',
@@ -39,11 +40,11 @@ def getProjectNames():
     exist, returns an empty list.
 
     This function only ever returns project names, ignoring project
-    titles. The function also ignores the "enabled" property,
-    including disabled projects in the results.
+    titles. The function also ignores the "enabled" property, including
+    disabled projects in the results.
 
     Returns:
-         list[str]: A list containing string representations of
-            project names on the Gateway.
+         list[str]: A list containing string representations of project
+            names on the Gateway.
     """
     return ['MyProject', 'DisabledProject']

@@ -4,7 +4,8 @@
 
 """OPC - UA Functions
 The following functions allow you to interact directly with an OPC-UA
-server"""
+server.
+"""
 
 __all__ = [
     'callMethod'
@@ -30,7 +31,7 @@ def callMethod(connectionName, objectId, methodId, inputs):
             0: Resulting StatusCode for the call
             1: A list of StatusCode objects corresponding to each
                 input argument
-            2: A list of output values.
+            2: A list of output values
 
     """
     print(connectionName, objectId, methodId, inputs)
