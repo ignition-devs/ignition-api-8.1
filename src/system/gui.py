@@ -140,7 +140,7 @@ def color(*args):
     print args
 
 
-def confirm(message, title=None, allowCancel=False):
+def confirm(message, title='Confirm', allowCancel=False):
     """Displays a confirmation dialog box to the user with "Yes", "No"
     and "Cancel" options, and a custom message.
 
@@ -226,7 +226,7 @@ def desktop(handle='primary'):
     return WindowUtilities()
 
 
-def errorBox(message, title=None):
+def errorBox(message, title='Error'):
     """Displays an error-style message box to the user.
 
     Args:
@@ -402,7 +402,7 @@ def getWindowNames():
     return 'Main Window', 'Main Window 1', 'Main Window 2'
 
 
-def inputBox(message, defaultText):
+def inputBox(message, defaultText=None):
     """Opens up a popup input dialog box. This dialog box will show a
     prompt message, and allow the user to type in a string. When the
     user is done, they can press "OK" or "Cancel". If OK is pressed,
@@ -433,7 +433,7 @@ def isTouchscreenModeEnabled():
     return False
 
 
-def messageBox(message, title=None):
+def messageBox(message, title='Information'):
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -487,7 +487,7 @@ def openDiagnostics():
     pass
 
 
-def passwordBox(message, title='', echoChar='*'):
+def passwordBox(message, title='Password', echoChar='*'):
     """Pops up a special input box that uses a password field, so the
     text isn't echoed back in clear-text to the user. Returns the text
     they entered, or None if they canceled the dialog box.
@@ -613,7 +613,7 @@ def transform(component, newX=None, newY=None, newWidth=None, newHeight=None,
     return None
 
 
-def warningBox(message, title=None):
+def warningBox(message, title='Warning'):
     """Displays a message to the user in a warning style pop-up dialog.
 
     Args:
