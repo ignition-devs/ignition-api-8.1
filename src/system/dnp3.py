@@ -1,21 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """DNP3 Functions
 The following functions give you access to interact with the DNP3
 devices.
 """
 
 __all__ = [
-    'directOperateAnalog',
-    'directOperateBinary',
-    'freezeAnalogs',
-    'freezeAnalogsAtTime',
-    'freezeCounters',
-    'freezeCountersAtTime',
-    'selectOperateAnalog',
-    'selectOperateBinary'
+    'directOperateAnalog', 'directOperateBinary', 'freezeAnalogs',
+    'freezeAnalogsAtTime', 'freezeCounters', 'freezeCountersAtTime',
+    'selectOperateAnalog', 'selectOperateBinary'
 ]
 
 # Constants
@@ -48,8 +42,13 @@ def directOperateAnalog(deviceName, index, value, variation=None):
     return 0
 
 
-def directOperateBinary(deviceName, indexes, opType, tcCode=None, count=None,
-                        onTime=None, offTime=None):
+def directOperateBinary(deviceName,
+                        indexes,
+                        opType,
+                        tcCode=None,
+                        count=None,
+                        onTime=None,
+                        offTime=None):
     """Issues a Direct-Operate command for digital control operations at
     binary output points (CROB).
 
@@ -147,8 +146,13 @@ def selectOperateAnalog(deviceName, index, value, variation=None):
     print(deviceName, index, value, variation)
 
 
-def selectOperateBinary(deviceName, indexes, opType, tcCode=None, count=None,
-                        onTime=None, offTime=None):
+def selectOperateBinary(deviceName,
+                        indexes,
+                        opType,
+                        tcCode=None,
+                        count=None,
+                        onTime=None,
+                        offTime=None):
     """Issues a Select-And-Operate command for digital control
     operations at binary output points (CROB).
 

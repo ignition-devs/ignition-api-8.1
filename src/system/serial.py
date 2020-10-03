@@ -1,24 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Serial Functions
 The following functions give you access to read and write through serial
 ports.
 """
 
 __all__ = [
-    'closeSerialPort',
-    'configureSerialPort',
-    'openSerialPort',
-    'port',
-    'readBytes',
-    'readBytesAsString',
-    'readLine',
-    'readUntil',
-    'sendBreak',
-    'write',
-    'writeBytes'
+    'closeSerialPort', 'configureSerialPort', 'openSerialPort', 'port',
+    'readBytes', 'readBytesAsString', 'readLine', 'readUntil', 'sendBreak',
+    'write', 'writeBytes'
 ]
 
 # Bit rate constants.
@@ -149,8 +140,12 @@ def openSerialPort(port):
     print port
 
 
-def port(port, bitRate=None, dataBits=None, handshake=None,
-         hardwareFlowControl=None, parity=None,
+def port(port,
+         bitRate=None,
+         dataBits=None,
+         handshake=None,
+         hardwareFlowControl=None,
+         parity=None,
          stopBits=None):
     """Returns a context manager wrapping a serial port, allowing the
     rest of the system to interact with that port. This function

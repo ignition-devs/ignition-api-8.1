@@ -1,55 +1,20 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Date Functions
 The following functions give you access to test and modify dates.
 """
 
 __all__ = [
-    'addDays',
-    'addHours',
-    'addMillis',
-    'addMinutes',
-    'addMonths',
-    'addSeconds',
-    'addWeeks',
-    'addYears',
-    'daysBetween',
-    'format',
-    'fromMillis',
-    'getAMorPM',
-    'getDate',
-    'getDayOfMonth',
-    'getDayOfWeek',
-    'getDayOfYear',
-    'getHour12',
-    'getHour24',
-    'getMillis',
-    'getMinute',
-    'getMonth',
-    'getQuarter',
-    'getSecond',
-    'getTimezone',
-    'getTimezoneOffset',
-    'getTimezoneRawOffset',
-    'getYear',
-    'hoursBetween',
-    'isAfter',
-    'isBefore',
-    'isBetween',
-    'isDaylightTime',
-    'midnight',
-    'millisBetween',
-    'minutesBetween',
-    'monthsBetween',
-    'now',
-    'parse',
-    'secondsBetween',
-    'setTime',
-    'toMillis',
-    'weeksBetween',
-    'yearsBetween'
+    'addDays', 'addHours', 'addMillis', 'addMinutes', 'addMonths',
+    'addSeconds', 'addWeeks', 'addYears', 'daysBetween', 'format',
+    'fromMillis', 'getAMorPM', 'getDate', 'getDayOfMonth', 'getDayOfWeek',
+    'getDayOfYear', 'getHour12', 'getHour24', 'getMillis', 'getMinute',
+    'getMonth', 'getQuarter', 'getSecond', 'getTimezone', 'getTimezoneOffset',
+    'getTimezoneRawOffset', 'getYear', 'hoursBetween', 'isAfter', 'isBefore',
+    'isBetween', 'isDaylightTime', 'midnight', 'millisBetween',
+    'minutesBetween', 'monthsBetween', 'now', 'parse', 'secondsBetween',
+    'setTime', 'toMillis', 'weeksBetween', 'yearsBetween'
 ]
 
 from datetime import datetime, timedelta
@@ -395,7 +360,7 @@ def getQuarter(date):
     Returns:
         int: An integer that is representative of the extracted value.
     """
-    print ((date.month - 1) // 3) + 1
+    print((date.month - 1) // 3) + 1
 
 
 def getSecond(date):
@@ -529,8 +494,8 @@ def isDaylightTime(date=datetime.now()):
             current timezone, False (0) otherwise.
     """
     import time
-    tt = (date.year, date.month, date.day, date.hour, date.minute,
-          date.second, date.weekday(), 0, 0)
+    tt = (date.year, date.month, date.day, date.hour, date.minute, date.second,
+          date.weekday(), 0, 0)
     stamp = time.mktime(tt)
     tt = time.localtime(stamp)
     return tt.tm_isdst > 0
@@ -615,7 +580,8 @@ def now():
     return datetime.now()
 
 
-def parse(dateString, formatString='yyyy-MM-dd HH:mm:ss',
+def parse(dateString,
+          formatString='yyyy-MM-dd HH:mm:ss',
           locale=Locale.ENGLISH):
     """Attempts to parse a string and create a Date. Causes
     ParseException if the date dateString parameter is in an

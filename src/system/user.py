@@ -1,39 +1,18 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """User Functions
 The following functions give you access to view and edit users in the
 Gateway.
 """
 
 __all__ = [
-    'PyUser',
-    'addCompositeSchedule',
-    'addHoliday',
-    'addRole',
-    'addSchedule',
-    'addUser',
-    'createScheduleAdjustment',
-    'editHoliday',
-    'editRole',
-    'editSchedule',
-    'editUser',
-    'getHoliday',
-    'getHolidayNames',
-    'getHolidays',
-    'getNewUser',
-    'getRoles',
-    'getSchedule',
-    'getScheduledUsers',
-    'getScheduleNames',
-    'getSchedules',
-    'getUser',
-    'getUsers',
-    'isUserScheduled',
-    'removeHoliday',
-    'removeRole',
-    'removeSchedule',
+    'PyUser', 'addCompositeSchedule', 'addHoliday', 'addRole', 'addSchedule',
+    'addUser', 'createScheduleAdjustment', 'editHoliday', 'editRole',
+    'editSchedule', 'editUser', 'getHoliday', 'getHolidayNames', 'getHolidays',
+    'getNewUser', 'getRoles', 'getSchedule', 'getScheduledUsers',
+    'getScheduleNames', 'getSchedules', 'getUser', 'getUsers',
+    'isUserScheduled', 'removeHoliday', 'removeRole', 'removeSchedule',
     'removeUser'
 ]
 
@@ -45,20 +24,14 @@ from java.util import Locale
 
 
 class ContactInfo(Object):
-    def __init__(self,
-                 contactType=None,
-                 value=None):
+    def __init__(self, contactType=None, value=None):
         self.contactType = contactType
         self.value = value
 
 
 class HolidayModel(Object):
     """HolidayModel object."""
-
-    def __init__(self,
-                 name,
-                 date,
-                 repeatAnnually):
+    def __init__(self, name, date, repeatAnnually):
         """HolidayModel instance.
 
         Args:
@@ -114,7 +87,6 @@ class ScheduleModel(Object):
 
 
 class UIResponse(Object):
-
     def __init__(self, locale):
         self.locale = locale
 
@@ -148,7 +120,6 @@ class UIResponse(Object):
 
 class User(ABCMeta):
     """User Interface."""
-
     def __new__(mcs, *args, **kwargs):
         pass
 

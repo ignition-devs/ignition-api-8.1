@@ -1,23 +1,14 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """OPC HDA Functions
 The following functions give you access to interact with the HDA
 types of OPC servers."""
 
 __all__ = [
-    'browse',
-    'getAggregates',
-    'getAttributes',
-    'getServers',
-    'insert',
-    'insertReplace',
-    'isServerAvailable',
-    'readAttributes',
-    'readProcessed',
-    'readRaw',
-    'replace'
+    'browse', 'getAggregates', 'getAttributes', 'getServers', 'insert',
+    'insertReplace', 'isServerAvailable', 'readAttributes', 'readProcessed',
+    'readRaw', 'replace'
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -40,7 +31,6 @@ class Aggregate(ABCMeta):
     introduction of history providers as an extension point, new
     providers could define any aggregation function.
     """
-
     def __new__(mcs, *args, **kwargs):
         pass
 
@@ -68,7 +58,6 @@ class Results(Object):
     continuation point should be non-null and can be used in
     constructing the subsequent BrowseFilter to continue the browse.
     """
-
     def error(self, result):
         pass
 

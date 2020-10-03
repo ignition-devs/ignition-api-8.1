@@ -1,20 +1,13 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Provides a set of "lightweight" (all-Java language) components that,
 to the maximum degree possible, work the same on all platforms.
 """
 
 __all__ = [
-    'JComponent',
-    'JFrame',
-    'JInternalFrame',
-    'JLabel',
-    'JOptionPane',
-    'JPanel',
-    'JPopupMenu',
-    'JTextField'
+    'JComponent', 'JFrame', 'JInternalFrame', 'JLabel', 'JOptionPane',
+    'JPanel', 'JPopupMenu', 'JTextField'
 ]
 
 from java.awt import Container, Frame
@@ -45,7 +38,6 @@ class JInternalFrame(JComponent):
 
 class JLabel(JComponent):
     """A display area for a short text string or an image, or both."""
-
     def __init__(self, *args):
         pass
 
@@ -79,8 +71,12 @@ class JOptionPane(JComponent):
     CANCEL_OPTION = 2
 
     @staticmethod
-    def showConfirmDialog(parentComponent, message, title=None,
-                          optionType=None, messageType=None, icon=None):
+    def showConfirmDialog(parentComponent,
+                          message,
+                          title=None,
+                          optionType=None,
+                          messageType=None,
+                          icon=None):
         """Asks a confirming question, like yes/no/cancel.
 
         Args:
@@ -105,8 +101,12 @@ class JOptionPane(JComponent):
         return JOptionPane.YES_OPTION
 
     @staticmethod
-    def showInputDialog(parentComponent, message, title=None,
-                        messageType=None, icon=None, selectionValues=None,
+    def showInputDialog(parentComponent,
+                        message,
+                        title=None,
+                        messageType=None,
+                        icon=None,
+                        selectionValues=None,
                         initialSelectionValue=None):
         """Prompt for some input.
 
@@ -133,8 +133,11 @@ class JOptionPane(JComponent):
         return 'Input'
 
     @staticmethod
-    def showMessageDialog(parentComponent, message, title=None,
-                          messageType=None, icon=None):
+    def showMessageDialog(parentComponent,
+                          message,
+                          title=None,
+                          messageType=None,
+                          icon=None):
         """Tell the user about something that has happened.
 
         Args:
@@ -151,9 +154,14 @@ class JOptionPane(JComponent):
         print(parentComponent, message, title, messageType, icon)
 
     @staticmethod
-    def showOptionDialog(parentComponent, message, title=None,
-                         optionType=None, messageType=None, icon=None,
-                         options=None, initialValue=None):
+    def showOptionDialog(parentComponent,
+                         message,
+                         title=None,
+                         optionType=None,
+                         messageType=None,
+                         icon=None,
+                         options=None,
+                         initialValue=None):
         """The Grand Unification of the above three.
 
         Args:
@@ -184,8 +192,8 @@ class JOptionPane(JComponent):
             int: An integer indicating the option chosen by the user, or
                 CLOSED_OPTION if the user closed the dialog.
         """
-        print(parentComponent, message, title, optionType, messageType,
-              icon, options, initialValue)
+        print(parentComponent, message, title, optionType, messageType, icon,
+              options, initialValue)
         return JOptionPane.YES_OPTION
 
 
@@ -210,6 +218,5 @@ class JTextField(JTextComponent):
     """JTextField is a lightweight component that allows the editing of
     a single line of text.
     """
-
     def __init__(self, *args):
         pass

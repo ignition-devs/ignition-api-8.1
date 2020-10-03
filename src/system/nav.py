@@ -1,25 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Navigation Functions
 The following functions allow you to open and close windows in the
 client.
 """
 
 __all__ = [
-    'centerWindow',
-    'closeParentWindow',
-    'closeWindow',
-    'desktop',
-    'getCurrentWindow',
-    'goBack',
-    'goForward',
-    'goHome',
-    'openWindow',
-    'openWindowInstance',
-    'swapTo',
-    'swapWindow'
+    'centerWindow', 'closeParentWindow', 'closeWindow', 'desktop',
+    'getCurrentWindow', 'goBack', 'goForward', 'goHome', 'openWindow',
+    'openWindowInstance', 'swapTo', 'swapWindow'
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -60,7 +50,6 @@ class INavUtilities(ABCMeta):
     """Parent interface to coordinate the functions between NavUtilities
     and NavUtilitiesDispatcher.
     """
-
     def __new__(mcs, *args, **kwargs):
         pass
 

@@ -1,22 +1,14 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Security Functions
 The following functions give you access to interact with the users and
 roles in the Gateway.
 """
 
 __all__ = [
-    'getRoles',
-    'getUsername',
-    'getUserRoles',
-    'isScreenLocked',
-    'lockScreen',
-    'logout',
-    'switchUser',
-    'unlockScreen',
-    'validateUser'
+    'getRoles', 'getUsername', 'getUserRoles', 'isScreenLocked', 'lockScreen',
+    'logout', 'switchUser', 'unlockScreen', 'validateUser'
 ]
 
 

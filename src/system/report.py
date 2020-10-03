@@ -1,16 +1,13 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Report Functions
 The following functions give you access to report details and the
 ability to run reports.
 """
 
 __all__ = [
-    'executeAndDistribute',
-    'executeReport',
-    'getReportNamesAsDataset',
+    'executeAndDistribute', 'executeReport', 'getReportNamesAsDataset',
     'getReportNamesAsList'
 ]
 
@@ -18,7 +15,10 @@ from java.lang import IllegalArgumentException
 from system.dataset import Dataset
 
 
-def executeAndDistribute(path, project='project', parameters=None, action=None,
+def executeAndDistribute(path,
+                         project='project',
+                         parameters=None,
+                         action=None,
                          actionSettings=None):
     """Executes and distributes a report. Similar to scheduling a report
     to execute, except a schedule in not required to utilize this
@@ -68,15 +68,7 @@ def executeReport(path, project='project', parameters=None, fileType='pdf'):
             occurs: If the file type is not recognized, path does not
             exist, project does not exist.
     """
-    _fileTypes = [
-        'pdf',
-        'html',
-        'csv',
-        'rtf',
-        'jpeg',
-        'png',
-        'xml'
-    ]
+    _fileTypes = ['pdf', 'html', 'csv', 'rtf', 'jpeg', 'png', 'xml']
     if path is None or project is None or fileType not in _fileTypes:
         raise IllegalArgumentException()
     else:

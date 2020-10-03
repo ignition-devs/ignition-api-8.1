@@ -1,19 +1,14 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Device Functions
 The following functions give you access to view and edit device
 connections in the Gateway.
 """
 
 __all__ = [
-    'addDevice',
-    'listDevices',
-    'refreshBrowse',
-    'removeDevice',
-    'setDeviceEnabled',
-    'setDeviceHostname'
+    'addDevice', 'listDevices', 'refreshBrowse', 'removeDevice',
+    'setDeviceEnabled', 'setDeviceHostname'
 ]
 
 from system.dataset import Dataset

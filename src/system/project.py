@@ -1,17 +1,12 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
-
 """Project Functions
 The following functions allow you to list projects on the Gateway
 through scripting.
 """
 
-__all__ = [
-    'getProjectName',
-    'getProjectNames'
-]
+__all__ = ['getProjectName', 'getProjectNames']
 
 
 def getProjectName():

@@ -1,7 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Twilio Functions
 The following functions give you access to read info and send SMS
 through Twilio. This requires the Twilio Module, which is not included
@@ -9,11 +8,8 @@ in a typical install.
 """
 
 __all__ = [
-    'getAccounts',
-    'getAccountsDataset',
-    'getPhoneNumbers',
-    'getPhoneNumbersDataset',
-    'sendSms'
+    'getAccounts', 'getAccountsDataset', 'getPhoneNumbers',
+    'getPhoneNumbersDataset', 'sendSms'
 ]
 
 from system.dataset import Dataset

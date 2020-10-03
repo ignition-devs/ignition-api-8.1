@@ -1,38 +1,17 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Tag Functions
 The following functions give you access to interact with Ignition Tags.
 """
 
 __all__ = [
-    'browse',
-    'browseHistoricalTags',
-    'browseTags',
-    'browseTagsSimple',
-    'configure',
-    'copy',
-    'deleteTags',
-    'exists',
-    'exportTags',
-    'getConfiguration',
-    'importTags',
-    'isOverlaysEnabled',
-    'move',
-    'queryTagCalculations',
-    'queryTagDensity',
-    'queryTagHistory',
-    'read',
-    'readAll',
-    'readAsync',
-    'readBlocking',
-    'requestGroupExecution',
-    'setOverlaysEnabled',
-    'storeTagHistory',
-    'write',
-    'writeAll',
-    'writeAsync',
+    'browse', 'browseHistoricalTags', 'browseTags', 'browseTagsSimple',
+    'configure', 'copy', 'deleteTags', 'exists', 'exportTags',
+    'getConfiguration', 'importTags', 'isOverlaysEnabled', 'move',
+    'queryTagCalculations', 'queryTagDensity', 'queryTagHistory', 'read',
+    'readAll', 'readAsync', 'readBlocking', 'requestGroupExecution',
+    'setOverlaysEnabled', 'storeTagHistory', 'write', 'writeAll', 'writeAsync',
     'writeBlocking'
 ]
 
@@ -44,7 +23,6 @@ from java.lang import Object
 
 class BrowseResults(Object):
     """BrowseResults class."""
-
     def getContinuationPoint(self):
         pass
 
@@ -75,7 +53,6 @@ class BrowseResults(Object):
 
 class BrowseTag(Object):
     """BrowseTag class."""
-
     def __init__(self,
                  name=None,
                  path=None,
@@ -136,11 +113,7 @@ class BrowseTag(Object):
 
 class QualifiedValue(object):
     """Represents a value with a DataQuality & timestamp attached to it."""
-
-    def __init__(self,
-                 value=None,
-                 quality=None,
-                 timestamp=None):
+    def __init__(self, value=None, quality=None, timestamp=None):
         self._value = value
         self._quality = quality
         self._timestamp = timestamp
@@ -169,7 +142,6 @@ class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string.
     """
-
     def getCode(self):
         pass
 
@@ -242,7 +214,6 @@ class Results(Object):
     point should be non-null and can be used in constructing the
     subsequent BrowseFilter to continue the browse.
     """
-
     def error(self, result):
         pass
 
@@ -329,8 +300,13 @@ def browseHistoricalTags(path, nameFilters, maxSize, continuationPoint):
     return BrowseResults()
 
 
-def browseTags(parentPath, tagPath=None, tagType=None, dataType=None,
-               udtParentType=None, recursive=False, sort='ASC'):
+def browseTags(parentPath,
+               tagPath=None,
+               tagType=None,
+               dataType=None,
+               udtParentType=None,
+               recursive=False,
+               sort='ASC'):
     """Returns an array of tags from a specific folder. The function
     supports filtering and recursion. Leave filters blank to return all
     tags.
@@ -367,12 +343,10 @@ def browseTags(parentPath, tagPath=None, tagType=None, dataType=None,
             and the following functions: isFolder(), isUDT(), isOPC(),
             isMemory(), isExpression(), isQuery().
     """
-    warnings.warn(
-        "browseTags is deprecated, use browse instead.",
-        DeprecationWarning
-    )
-    print(parentPath, tagPath, tagType, dataType,
-          udtParentType, recursive, sort)
+    warnings.warn("browseTags is deprecated, use browse instead.",
+                  DeprecationWarning)
+    print(parentPath, tagPath, tagType, dataType, udtParentType, recursive,
+          sort)
     return [BrowseTag()]
 
 
@@ -395,10 +369,8 @@ def browseTagsSimple(parentPath, sort):
             and the following functions: isFolder(), isUDT(), isOPC(),
             isMemory(), isExpression(), isQuery().
     """
-    warnings.warn(
-        "browseTagsSimple is deprecated, use browse instead.",
-        DeprecationWarning
-    )
+    warnings.warn("browseTagsSimple is deprecated, use browse instead.",
+                  DeprecationWarning)
     print(parentPath, sort)
     return [BrowseTag()]
 
@@ -608,12 +580,17 @@ def move(tags, destination, collisionPolicy):
     return [QualityCode()]
 
 
-def queryTagCalculations(paths, calculations,
+def queryTagCalculations(paths,
+                         calculations,
                          startDate=system.date.addHours(system.date.now(), -8),
-                         endDate=system.date.now(), rangeHours=None,
-                         rangeMinutes=None, aliases=None,
-                         includeBoundingValues=True, validatesSCExec=True,
-                         noInterpolation=False, ignoreBadQuality=False):
+                         endDate=system.date.now(),
+                         rangeHours=None,
+                         rangeMinutes=None,
+                         aliases=None,
+                         includeBoundingValues=True,
+                         validatesSCExec=True,
+                         noInterpolation=False,
+                         ignoreBadQuality=False):
     """Queries various calculations (aggregations) for a set of tags
     over a specified range. Returns a dataset with a row per tag, and a
     column per calculation.
@@ -673,9 +650,9 @@ def queryTagCalculations(paths, calculations,
         Dataset: A dataset representing the calculations over the
             specified range.
     """
-    print (paths, calculations, startDate, endDate, rangeHours,
-           rangeMinutes, aliases, includeBoundingValues,
-           validatesSCExec, noInterpolation, ignoreBadQuality)
+    print(paths, calculations, startDate, endDate, rangeHours, rangeMinutes,
+          aliases, includeBoundingValues, validatesSCExec, noInterpolation,
+          ignoreBadQuality)
 
 
 def queryTagDensity(paths, startDate, endDate):
@@ -707,13 +684,21 @@ def queryTagDensity(paths, startDate, endDate):
 
 def queryTagHistory(paths,
                     startDate=system.date.addHours(system.date.now(), -8),
-                    endDate=system.date.now(), returnSize=-1,
-                    aggregationMode='Average', returnFormat='Wide',
-                    columnNames=None, intervalHours=None,
-                    intervalMinutes=None, rangeHours=None, rangeMinutes=None,
-                    aggregationModes=None, includeBoundingValues=None,
-                    validateSCExec=None, noInterpolation=None,
-                    ignoreBadQuality=None, timeout=None):
+                    endDate=system.date.now(),
+                    returnSize=-1,
+                    aggregationMode='Average',
+                    returnFormat='Wide',
+                    columnNames=None,
+                    intervalHours=None,
+                    intervalMinutes=None,
+                    rangeHours=None,
+                    rangeMinutes=None,
+                    aggregationModes=None,
+                    includeBoundingValues=None,
+                    validateSCExec=None,
+                    noInterpolation=None,
+                    ignoreBadQuality=None,
+                    timeout=None):
     """Issues a query to the Tag Historian. Querying tag history
     involves specifying the tags and the date range, as well as a few
     optional parameters. The Tag historian will find the relevant
@@ -786,11 +771,10 @@ def queryTagHistory(paths,
             specified tag paths. The first column will be the timestamp,
             and each column after that represents a tag.
     """
-    print(paths, startDate, endDate, returnSize, aggregationMode,
-          returnFormat, columnNames, intervalHours,
-          intervalMinutes, rangeHours, rangeMinutes,
-          aggregationModes, includeBoundingValues, validateSCExec,
-          noInterpolation, ignoreBadQuality, timeout)
+    print(paths, startDate, endDate, returnSize, aggregationMode, returnFormat,
+          columnNames, intervalHours, intervalMinutes, rangeHours,
+          rangeMinutes, aggregationModes, includeBoundingValues,
+          validateSCExec, noInterpolation, ignoreBadQuality, timeout)
     return None
 
 
@@ -812,10 +796,8 @@ def read(tagPath):
         QualifiedValue: A qualified value. This object has three
             sub-members: value, quality, and timestamp.
     """
-    warnings.warn(
-        "read is deprecated, use readAsync or readBlocking instead.",
-        DeprecationWarning
-    )
+    warnings.warn("read is deprecated, use readAsync or readBlocking instead.",
+                  DeprecationWarning)
     print tagPath
     return QualifiedValue()
 
@@ -837,8 +819,7 @@ def readAll(tagPaths):
     """
     warnings.warn(
         "readAll is deprecated, use readAsync or readBlocking instead.",
-        DeprecationWarning
-    )
+        DeprecationWarning)
     print tagPaths
     items = []
     for _ in range(len(tagPaths)):
@@ -906,8 +887,12 @@ def setOverlaysEnabled(enabled):
     print enabled
 
 
-def storeTagHistory(historyprovider, tagprovider, paths, values,
-                    qualities=None, timestamps=system.date.now()):
+def storeTagHistory(historyprovider,
+                    tagprovider,
+                    paths,
+                    values,
+                    qualities=None,
+                    timestamps=system.date.now()):
     """Inserts data into the tag history system, allowing Tag history to
     be recorded via scripting.
 
@@ -967,8 +952,7 @@ def write(tagPath, value, suppressErrors=False):
     """
     warnings.warn(
         "write is deprecated, use writeAsync or writeBlocking instead.",
-        DeprecationWarning
-    )
+        DeprecationWarning)
     print(tagPath, value, suppressErrors)
     return 1
 
@@ -991,8 +975,7 @@ def writeAll(tagPaths, values):
     """
     warnings.warn(
         "writeAll is deprecated, use writeAsync or writeBlocking instead.",
-        DeprecationWarning
-    )
+        DeprecationWarning)
     print(tagPaths, values)
     return [1] * len(tagPaths)
 

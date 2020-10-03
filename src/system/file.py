@@ -1,20 +1,13 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """File Functions
 The following functions give you access to read and write to files.
 """
 
 __all__ = [
-    'fileExists',
-    'getTempFile',
-    'openFile',
-    'openFiles',
-    'readFileAsBytes',
-    'readFileAsString',
-    'saveFile',
-    'writeFile'
+    'fileExists', 'getTempFile', 'openFile', 'openFiles', 'readFileAsBytes',
+    'readFileAsString', 'saveFile', 'writeFile'
 ]
 
 

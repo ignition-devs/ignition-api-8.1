@@ -1,21 +1,14 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """SFC Functions
 The following functions give you access to interact with the SFCs in the
 Gateway.
 """
 
 __all__ = [
-    'cancelChart',
-    'getRunningCharts',
-    'getVariables',
-    'pauseChart',
-    'redundantCheckpoint',
-    'resumeChart',
-    'setVariable',
-    'setVariables',
+    'cancelChart', 'getRunningCharts', 'getVariables', 'pauseChart',
+    'redundantCheckpoint', 'resumeChart', 'setVariable', 'setVariables',
     'startChart'
 ]
 

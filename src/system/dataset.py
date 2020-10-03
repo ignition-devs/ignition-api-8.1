@@ -1,37 +1,17 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Dataset Functions
 The following functions give you access to view and interact with
 datasets.
 """
 
 __all__ = [
-    'Dataset',
-    'PyDataSet',
-    'addColumn',
-    'addRow',
-    'addRows',
-    'appendDataset',
-    'clearDataset',
-    'dataSetToHTML',
-    'deleteRow',
-    'deleteRows',
-    'exportCSV',
-    'exportExcel',
-    'exportHTML',
-    'filterColumns',
-    'formatDates',
-    'fromCSV',
-    'getColumnHeaders',
-    'setValue',
-    'sort',
-    'toCSV',
-    'toDataSet',
-    'toExcel',
-    'toPyDataSet',
-    'updateRow'
+    'Dataset', 'PyDataSet', 'addColumn', 'addRow', 'addRows', 'appendDataset',
+    'clearDataset', 'dataSetToHTML', 'deleteRow', 'deleteRows', 'exportCSV',
+    'exportExcel', 'exportHTML', 'filterColumns', 'formatDates', 'fromCSV',
+    'getColumnHeaders', 'setValue', 'sort', 'toCSV', 'toDataSet', 'toExcel',
+    'toPyDataSet', 'updateRow'
 ]
 
 from collections import Iterable
@@ -46,7 +26,6 @@ class Dataset(Iterable):
     dataset are usually accessed by specifying one index for each
     dimension of data (row and column for tables).
     """
-
     def __iter__(self):
         pass
 
@@ -145,7 +124,6 @@ class PyDataSet(Iterable):
     """PyDatasets are special, in that they can be handled similarly to
     other Python sequences.
     """
-
     def __iter__(self):
         pass
 

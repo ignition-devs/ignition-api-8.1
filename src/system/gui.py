@@ -1,45 +1,20 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """GUI Functions
 The following functions allow you to control windows and create popup
 interfaces.
 """
 
 __all__ = [
-    'chooseColor',
-    'closeDesktop',
-    'color',
-    'confirm',
-    'convertPointToScreen',
-    'createPopupMenu',
-    'desktop',
-    'errorBox',
-    'findWindow',
-    'getCurrentDesktop',
-    'getDesktopHandles',
-    'getOpenedWindowNames',
-    'getOpenedWindows',
-    'getParentWindow',
-    'getQuality',
-    'getScreenIndex',
-    'getScreens',
-    'getSibling',
-    'getWindow',
-    'getWindowNames',
-    'inputBox',
-    'isTouchscreenModeEnabled',
-    'messageBox',
-    'openDesktop',
-    'openDiagnostics',
-    'passwordBox',
-    'setScreenIndex',
-    'setTouchscreenModeEnabled',
-    'showNumericKeypad',
-    'showTouchscreenKeyboard',
-    'transform',
-    'warningBox'
+    'chooseColor', 'closeDesktop', 'color', 'confirm', 'convertPointToScreen',
+    'createPopupMenu', 'desktop', 'errorBox', 'findWindow',
+    'getCurrentDesktop', 'getDesktopHandles', 'getOpenedWindowNames',
+    'getOpenedWindows', 'getParentWindow', 'getQuality', 'getScreenIndex',
+    'getScreens', 'getSibling', 'getWindow', 'getWindowNames', 'inputBox',
+    'isTouchscreenModeEnabled', 'messageBox', 'openDesktop', 'openDiagnostics',
+    'passwordBox', 'setScreenIndex', 'setTouchscreenModeEnabled',
+    'showNumericKeypad', 'showTouchscreenKeyboard', 'transform', 'warningBox'
 ]
 
 from java.awt import Color
@@ -444,8 +419,14 @@ def messageBox(message, title='Information'):
     _dummy(message, title)
 
 
-def openDesktop(screen=0, handle=None, title=None, width=None, height=None,
-                x=0, y=0, windows=None):
+def openDesktop(screen=0,
+                handle=None,
+                title=None,
+                width=None,
+                height=None,
+                x=0,
+                y=0,
+                windows=None):
     """Creates an additional Desktop in a new frame. For more details,
     see the Multi-Monitor Clients page.
 
@@ -548,7 +529,8 @@ def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
     return 43
 
 
-def showTouchscreenKeyboard(initialText=None, fontSize=None,
+def showTouchscreenKeyboard(initialText=None,
+                            fontSize=None,
                             passwordMode=False):
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor. Returns
@@ -568,9 +550,16 @@ def showTouchscreenKeyboard(initialText=None, fontSize=None,
     return ''
 
 
-def transform(component, newX=None, newY=None, newWidth=None, newHeight=None,
-              duration=0, callback=None, framesPerSecond=60,
-              acceleration=None, coordSpace=None):
+def transform(component,
+              newX=None,
+              newY=None,
+              newWidth=None,
+              newHeight=None,
+              duration=0,
+              callback=None,
+              framesPerSecond=60,
+              acceleration=None,
+              coordSpace=None):
     """Sets a component's position and size at runtime.  Additional
     arguments for the duration, framesPerSecond, and acceleration of the
     operation exist for animation.  An optional callback argument will

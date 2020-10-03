@@ -1,16 +1,12 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Transaction Group Functions
 The following functions give you access to import and remove
 Transaction Groups.
 """
 
-__all__ = [
-    'loadFromFile',
-    'removeGroups'
-]
+__all__ = ['loadFromFile', 'removeGroups']
 
 
 def loadFromFile(filePath, projectName, mode):

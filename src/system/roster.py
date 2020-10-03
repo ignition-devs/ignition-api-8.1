@@ -1,18 +1,12 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Roster Functions
 Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
 
-__all__ = [
-    'addUsers',
-    'createRoster',
-    'getRosters',
-    'removeUsers'
-]
+__all__ = ['addUsers', 'createRoster', 'getRosters', 'removeUsers']
 
 from system.user import PyUser
 

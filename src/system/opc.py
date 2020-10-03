@@ -1,24 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """OPC Functions
 The following functions allow you to read, write and browser OPC
 servers.
 """
 
 __all__ = [
-    'browse',
-    'browseServer',
-    'browseSimple',
-    'getServers',
-    'getServerState',
-    'isServerEnabled',
-    'readValue',
-    'readValues',
-    'setServerEnabled',
-    'writeValue',
-    'writeValues'
+    'browse', 'browseServer', 'browseSimple', 'getServers', 'getServerState',
+    'isServerEnabled', 'readValue', 'readValues', 'setServerEnabled',
+    'writeValue', 'writeValues'
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -28,7 +19,6 @@ from java.lang import Object
 
 class OPCBrowseTag(Object):
     """BrowseTag class."""
-
     def __init__(self,
                  opcServer=None,
                  type=None,
@@ -65,7 +55,6 @@ class OPCBrowseTag(Object):
 class QualifiedValue(ABCMeta):
     """Represents a value with a DataQuality & timestamp attached to it.
     """
-
     def __new__(mcs, *args, **kwargs):
         pass
 

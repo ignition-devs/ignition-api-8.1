@@ -1,18 +1,13 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Provides classes that are fundamental to the design of the Java
 programming language.
 """
 
 __all__ = [
-    'Exception',
-    'IllegalArgumentException',
-    'Object',
-    'RuntimeException',
-    'Thread',
-    'Throwable'
+    'Exception', 'IllegalArgumentException', 'Object', 'RuntimeException',
+    'Thread', 'Throwable'
 ]
 
 from __builtin__ import Exception as PyException
@@ -23,7 +18,6 @@ class Object(object):
     Object as a superclass. All objects, including arrays, implement the
     methods of this class.
     """
-
     def clone(self):
         """Creates and returns a copy of this object.
 
@@ -120,7 +114,6 @@ class Throwable(Object, PyException):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language.
     """
-
     def __init__(self, message=None, cause=None):
         """Constructs a new throwable.
 
@@ -199,7 +192,6 @@ class Exception(Throwable):
     can be thrown by the execution of the method or constructor and
     propagate outside the method or constructor boundary.
     """
-
     def __init__(self, message=None, cause=None):
         super(Exception, self).__init__(message, cause)
 
@@ -214,7 +206,6 @@ class RuntimeException(Exception):
     of the method or constructor and propagate outside the method or
     constructor boundary.
     """
-
     def __init__(self, message=None, cause=None):
         super(RuntimeException, self).__init__(message, cause)
 
@@ -223,7 +214,6 @@ class IllegalArgumentException(RuntimeException):
     """Thrown to indicate that a method has been passed an illegal or
     inappropriate argument.
     """
-
     def __init__(self, message=None, cause=None):
         super(IllegalArgumentException, self).__init__(message, cause)
 
@@ -232,7 +222,6 @@ class NullPointerException(RuntimeException):
     """Thrown when an application attempts to use null in a case where
     an object is required.
     """
-
     def __init__(self, message=None, cause=None):
         super(NullPointerException, self).__init__(message, cause)
 
@@ -249,7 +238,6 @@ class Thread(Object):
     Unless otherwise noted, passing a null argument to a constructor or
     method in this class will cause a NullPointerException to be thrown.
     """
-
     @staticmethod
     def sleep(millis):
         """Causes the currently executing thread to sleep (temporarily

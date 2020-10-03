@@ -1,18 +1,12 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """EAM Functions
 The following functions give you access to view EAM information from
 the Gateway.
 """
 
-__all__ = [
-    'getGroups',
-    'queryAgentHistory',
-    'queryAgentStatus',
-    'runTask'
-]
+__all__ = ['getGroups', 'queryAgentHistory', 'queryAgentStatus', 'runTask']
 
 import system.date
 from java.lang import Object
@@ -21,7 +15,6 @@ from system.dataset import Dataset
 
 
 class UIResponse(Object):
-
     def __init__(self, locale):
         self.locale = locale
 
@@ -63,9 +56,11 @@ def getGroups():
     return ['']
 
 
-def queryAgentHistory(groupIds=None, agentIds=None,
+def queryAgentHistory(groupIds=None,
+                      agentIds=None,
                       startDate=system.date.addHours(system.date.now(), -8),
-                      endDate=system.date.now(), limit=100):
+                      endDate=system.date.now(),
+                      limit=100):
     """Returns a list of the most recent agent events.
 
     Args:

@@ -1,18 +1,13 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Contains the collections framework, legacy collection classes,
 event model, date and time facilities, internationalization, and
 miscellaneous utility classes (a string tokenizer, a random-number
 generator, and a bit array).
 """
 
-__all__ = [
-    'Date',
-    'EventObject',
-    'Locale'
-]
+__all__ = ['Date', 'EventObject', 'Locale']
 
 from java.lang import Object
 
@@ -21,7 +16,6 @@ class Date(Object):
     """The class Date represents a specific instant in time, with
     millisecond precision.
     """
-
     def __new__(cls, date=None):
         """Allocates a Date object and initializes it...
 
@@ -44,8 +38,7 @@ class Date(Object):
         """
         import system.date
         return (system.date.now()
-                if date is None
-                else system.date.fromMillis(date))
+                if date is None else system.date.fromMillis(date))
 
 
 class EventObject(Object):
@@ -56,7 +49,6 @@ class EventObject(Object):
     "source", that is logically deemed to be the object upon which the
     Event in question initially occurred upon.
     """
-
     def __init__(self, source):
         self.source = source
 
@@ -73,11 +65,7 @@ class Locale(Object):
     to the customs and conventions of the user's native country, region,
     or culture.
     """
-
-    def __init__(self,
-                 language,
-                 country=None,
-                 variant=None):
+    def __init__(self, language, country=None, variant=None):
         """Locale initializer.
 
         Args:

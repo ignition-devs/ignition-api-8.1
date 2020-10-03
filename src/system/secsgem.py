@@ -1,8 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
-
 """SECS/GEM Functions
 The following functions allow you to interact with equipment defined by
 the SECS/GEM module. Note that the SECS/GEM module must be installed
@@ -10,25 +8,24 @@ before these functions will be accessible.
 """
 
 __all__ = [
-    'copyEquipment',
-    'deleteToolProgram',
-    'enableDisableEquipment',
-    'getResponse',
-    'getToolProgram',
-    'getToolProgramDataset',
-    'sendRequest',
-    'startSimEventRun',
-    'toDataSet',
-    'toTreeDataSet',
-    'sendResponse'
+    'copyEquipment', 'deleteToolProgram', 'enableDisableEquipment',
+    'getResponse', 'getToolProgram', 'getToolProgramDataset', 'sendRequest',
+    'startSimEventRun', 'toDataSet', 'toTreeDataSet', 'sendResponse'
 ]
 
 from system.dataset import Dataset
 
 
-def copyEquipment(equipmentSource, newEquipmentName, enabled,
-                  activeAddress, activePort, passiveAddress, passivePort,
-                  deviceId, dbTablePrefix=None, description=None):
+def copyEquipment(equipmentSource,
+                  newEquipmentName,
+                  enabled,
+                  activeAddress,
+                  activePort,
+                  passiveAddress,
+                  passivePort,
+                  deviceId,
+                  dbTablePrefix=None,
+                  description=None):
     """Creates a copy of an equipment connection. Common settings can be
     overridden for the new connection.
 
@@ -146,8 +143,11 @@ def getToolProgram(ppid):
     """
     import system.date
     print ppid
-    return {'editDate': system.date.now(), 'ppBody': 'program',
-            'bodyFormat': 'A'}
+    return {
+        'editDate': system.date.now(),
+        'ppBody': 'program',
+        'bodyFormat': 'A'
+    }
 
 
 def getToolProgramDataset():

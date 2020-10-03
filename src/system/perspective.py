@@ -1,7 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Perspective Functions
 The following functions offer various ways to interact with a
 Perspective session from a Python script.
@@ -10,26 +9,10 @@ Perspective session from a Python script.
 from __future__ import print_function
 
 __all__ = [
-    'alterLogging',
-    'closeDock',
-    'closePage',
-    'closePopup',
-    'closeSession',
-    'download',
-    'getSessionInfo',
-    'isAuthorized',
-    'login',
-    'logout',
-    'navigate',
-    'openDock',
-    'openPopup',
-    'print',
-    'refresh',
-    'sendMessage',
-    'setTheme',
-    'toggleDock',
-    'togglePopup',
-    'vibrateDevice'
+    'alterLogging', 'closeDock', 'closePage', 'closePopup', 'closeSession',
+    'download', 'getSessionInfo', 'isAuthorized', 'login', 'logout',
+    'navigate', 'openDock', 'openPopup', 'print', 'refresh', 'sendMessage',
+    'setTheme', 'toggleDock', 'togglePopup', 'vibrateDevice'
 ]
 
 from java.lang import Object
@@ -98,8 +81,10 @@ class PyJsonObjectAdapter(Object):
         pass
 
 
-def alterLogging(remoteLoggingEnabled=False, level='info',
-                 remoteLoggingLevel='warn', sessionId='current_session',
+def alterLogging(remoteLoggingEnabled=False,
+                 level='info',
+                 remoteLoggingLevel='warn',
+                 sessionId='current_session',
                  pageId='current_page'):
     """Changes Perspective Session logging attributes and levels. All
     parameters are optional, with the caveat that at least one of them
@@ -145,7 +130,8 @@ def closeDock(id, sessionId=None, pageId=None):
     print(id, sessionId, pageId)
 
 
-def closePage(message=None, sessionId='current_session',
+def closePage(message=None,
+              sessionId='current_session',
               pageID='current_page'):
     """Closes the page with the given page id or the current page if no
     page id is provided. If a message is provided, it is displayed on
@@ -202,7 +188,10 @@ def closeSession(message=None, sessionId='current_session'):
     print(message, sessionId)
 
 
-def download(filename, data, contentType, sessionId='current_session',
+def download(filename,
+             data,
+             contentType,
+             sessionId='current_session',
              pageId='current_page'):
     """Downloads data from the gateway to a device running a session.
 
@@ -318,8 +307,12 @@ def logout(sessionId='current_session', pageId='current_page'):
     print(sessionId, pageId)
 
 
-def navigate(page, url=None, view=None, params=None,
-             sessionId='current_session', pageId='current_page'):
+def navigate(page,
+             url=None,
+             view=None,
+             params=None,
+             sessionId='current_session',
+             pageId='current_page'):
     """Navigate the session to a specified view or mounted page.
 
     The function can be used in three different ways, depending on which
@@ -358,7 +351,9 @@ def navigate(page, url=None, view=None, params=None,
     print(page, url, view, params, sessionId, pageId)
 
 
-def openDock(id, sessionId='current_session', pageId='current_page',
+def openDock(id,
+             sessionId='current_session',
+             pageId='current_page',
              params=None):
     """Opens a docked View. Requires the preconfigured dock ID for the
     view.
@@ -380,9 +375,17 @@ def openDock(id, sessionId='current_session', pageId='current_page',
     print(id, sessionId, pageId, params)
 
 
-def openPopup(id, view, params=None, title='', position=None,
-              showCloseIcon=True, draggable=True, resizable=False,
-              modal=False, overlayDismiss=False, sessionId='current_session',
+def openPopup(id,
+              view,
+              params=None,
+              title='',
+              position=None,
+              showCloseIcon=True,
+              draggable=True,
+              resizable=False,
+              modal=False,
+              overlayDismiss=False,
+              sessionId='current_session',
               pageId='current_page'):
     """Open a popup view over the given page.
 
@@ -423,7 +426,9 @@ def openPopup(id, view, params=None, title='', position=None,
           resizable, modal, overlayDismiss, sessionId, pageId)
 
 
-def print(message, sessionId='current_session', pageId='current_page',
+def print(message,
+          sessionId='current_session',
+          pageId='current_page',
           destination='client'):
     """Sends print statements to the scripting console when in the
     Designer. When in a Session, sends print statements to the output
@@ -461,8 +466,11 @@ def refresh(sessionId='current_session', pageId='current_page'):
     print(sessionId, pageId)
 
 
-def sendMessage(messageType, payload, scope='page',
-                sessionId='current_session', pageId='current_page'):
+def sendMessage(messageType,
+                payload,
+                scope='page',
+                sessionId='current_session',
+                pageId='current_page'):
     """Send a message to a message handler within the same session.
 
     Args:
@@ -506,7 +514,9 @@ def setTheme(name, sessionId='current_session', pageId='current_page'):
     print(name, sessionId, pageId)
 
 
-def toggleDock(id, sessionId='current_session', pageId='current_page',
+def toggleDock(id,
+               sessionId='current_session',
+               pageId='current_page',
                params=None):
     """Toggles a docked View.
 
@@ -527,9 +537,17 @@ def toggleDock(id, sessionId='current_session', pageId='current_page',
     print(id, sessionId, pageId, params)
 
 
-def togglePopup(id, view, params, title='', position=None, showCloseIcon=True,
-                draggable=True, resizable=False, modal=False,
-                overlayDismiss=False, sessionId='current_session',
+def togglePopup(id,
+                view,
+                params,
+                title='',
+                position=None,
+                showCloseIcon=True,
+                draggable=True,
+                resizable=False,
+                modal=False,
+                overlayDismiss=False,
+                sessionId='current_session',
                 pageId='current_page'):
     """Toggles a popup. Will open up the popup if it has not been opened
     yet. Otherwise, it will close the currently opened popup.

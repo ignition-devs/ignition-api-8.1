@@ -1,53 +1,22 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Utility Functions
 The following functions give you access to view various Gateway and
 Client data, as well as interact with other various systems.
 """
 
 __all__ = [
-    'audit',
-    'beep',
-    'execute',
-    'exit',
-    'getAvailableLocales',
-    'getAvailableTerms',
-    'getClientId',
-    'getConnectionMode',
-    'getConnectTimeout',
-    'getEdition',
-    'getGatewayAddress',
-    'getGatewayStatus',
-    'getGlobals',
-    'getInactivitySeconds',
-    'getLocale',
-    'getLogger',
-    'getProjectName',
-    'getProperty',
-    'getReadTimeout',
-    'getSessionInfo',
-    'getSystemFlags',
-    'getVersion',
-    'invokeAsynchronous',
-    'invokeLater',
-    'jsonDecode',
-    'jsonEncode',
-    'modifyTranslation',
-    'playSoundClip',
-    'queryAuditLog',
-    'retarget',
-    'sendMessage',
-    'sendRequest',
-    'sendRequestAsync',
-    'setConnectionMode',
-    'setConnectTimeout',
-    'setLocale',
-    'setLoggingLevel',
-    'setReadTimeout',
-    'threadDump',
-    'translate'
+    'audit', 'beep', 'execute', 'exit', 'getAvailableLocales',
+    'getAvailableTerms', 'getClientId', 'getConnectionMode',
+    'getConnectTimeout', 'getEdition', 'getGatewayAddress', 'getGatewayStatus',
+    'getGlobals', 'getInactivitySeconds', 'getLocale', 'getLogger',
+    'getProjectName', 'getProperty', 'getReadTimeout', 'getSessionInfo',
+    'getSystemFlags', 'getVersion', 'invokeAsynchronous', 'invokeLater',
+    'jsonDecode', 'jsonEncode', 'modifyTranslation', 'playSoundClip',
+    'queryAuditLog', 'retarget', 'sendMessage', 'sendRequest',
+    'sendRequestAsync', 'setConnectionMode', 'setConnectTimeout', 'setLocale',
+    'setLoggingLevel', 'setReadTimeout', 'threadDump', 'translate'
 ]
 
 import system.date
@@ -143,12 +112,12 @@ class Version(Object):
 
     def __eq__(self, other, strict=False):
         if strict:
-            return (self.major == other.major and self.minor == other.minor and
-                    self.rev == other.rev and self.build == other.build and
-                    self.beta == other.beta and self.rc == other.rc)
+            return (self.major == other.major and self.minor == other.minor
+                    and self.rev == other.rev and self.build == other.build
+                    and self.beta == other.beta and self.rc == other.rc)
         else:
-            return (self.major == other.major and self.minor == other.minor and
-                    self.rev == other.rev)
+            return (self.major == other.major and self.minor == other.minor
+                    and self.rev == other.rev)
 
     def compareTo(self, that):
         """Compares two Versions. Note that this comparison is stricter
@@ -229,10 +198,15 @@ class Version(Object):
                                            self.build)
 
 
-def audit(action=None, actionValue=None, auditProfile='',
-          actor=system.security.getUsername(), actorHost='localhost',
-          originatingSystem=None, eventTimestamp=system.date.now(),
-          originatingContext=4, statusCode=0):
+def audit(action=None,
+          actionValue=None,
+          auditProfile='',
+          actor=system.security.getUsername(),
+          actorHost='localhost',
+          originatingSystem=None,
+          eventTimestamp=system.date.now(),
+          originatingContext=4,
+          statusCode=0):
     """Inserts a record into an audit profile.
 
     Args:
@@ -395,7 +369,8 @@ def getGatewayAddress():
     return 'http://localhost:8088/'
 
 
-def getGatewayStatus(gatewayAddress, connectTimeoutMillis=None,
+def getGatewayStatus(gatewayAddress,
+                     connectTimeoutMillis=None,
                      socketTimeoutMillis=None):
     """Returns a string that indicates the status of the Gateway. A
     status of RUNNING means that the Gateway is fully functional. Thrown
@@ -707,9 +682,13 @@ def playSoundClip(wav, volume, wait):
 
 def queryAuditLog(auditProfileName,
                   startDate=system.date.addHours(system.date.now(), -8),
-                  endDate=system.date.now(), actorFilter=None,
-                  actionFilter=None, targetFilter=None, valueFilter=None,
-                  systemFilter=None, contextFilter=None):
+                  endDate=system.date.now(),
+                  actorFilter=None,
+                  actionFilter=None,
+                  targetFilter=None,
+                  valueFilter=None,
+                  systemFilter=None,
+                  contextFilter=None):
     """Queries an audit profile for audit history. Returns the results
     as a dataset.
 
@@ -784,8 +763,14 @@ def retarget(project, addresses=None, params=None, windows=None):
     print(project, addresses, params, windows)
 
 
-def sendMessage(project, messageHandler, payload=None, scope=None,
-                clientSessionId=None, user=None, hasRole=None, hostName=None,
+def sendMessage(project,
+                messageHandler,
+                payload=None,
+                scope=None,
+                clientSessionId=None,
+                user=None,
+                hasRole=None,
+                hostName=None,
                 remoteServers=None):
     """This function sends a message to clients running under the
     Gateway, or to a project within the Gateway itself. To handle
@@ -832,8 +817,12 @@ def sendMessage(project, messageHandler, payload=None, scope=None,
     return None
 
 
-def sendRequest(project, messageHandler, payload=None, hostName=None,
-                remoteServer=None, timeoutSec=None):
+def sendRequest(project,
+                messageHandler,
+                payload=None,
+                hostName=None,
+                remoteServer=None,
+                timeoutSec=None):
     """This function sends a message to the Gateway, working in a
     similar manner to the sendMessage function, except sendRequest
     expects a response to the message. To handle received messages, you
@@ -869,8 +858,13 @@ def sendRequest(project, messageHandler, payload=None, hostName=None,
     return None
 
 
-def sendRequestAsync(project, messageHandler, payload=None, hostName=None,
-                     remoteServer=None, timeoutSec=None, onSuccess=None,
+def sendRequestAsync(project,
+                     messageHandler,
+                     payload=None,
+                     hostName=None,
+                     remoteServer=None,
+                     timeoutSec=None,
+                     onSuccess=None,
                      onError=None):
     """This function sends a message to the Gateway and expects a
     response. Works in a similar manner to the sendRequest function,

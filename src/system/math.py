@@ -1,31 +1,15 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
 """Math Functions
 The following functions assist with running statistical analysis.
 """
 
 __all__ = [
-    'geometricMean',
-    'kurtosis',
-    'max',
-    'mean',
-    'meanDifference',
-    'median',
-    'min',
-    'mode',
-    'normalize',
-    'percentile',
-    'populationVariance',
-    'product',
-    'skewness',
-    'standardDeviation',
-    'sum',
-    'sumDifference',
-    'sumLog',
-    'sumSquares',
-    'variance'
+    'geometricMean', 'kurtosis', 'max', 'mean', 'meanDifference', 'median',
+    'min', 'mode', 'normalize', 'percentile', 'populationVariance', 'product',
+    'skewness', 'standardDeviation', 'sum', 'sumDifference', 'sumLog',
+    'sumSquares', 'variance'
 ]
 
 from java.lang import Exception as JException
@@ -439,7 +423,7 @@ def sumSquares(values):
             if the input was empty or null.
     """
     from __builtin__ import sum
-    return sum(value ** 2 for value in values)
+    return sum(value**2 for value in values)
 
 
 def variance(values):

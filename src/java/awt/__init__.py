@@ -1,20 +1,11 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
 # Contact: thecesrom@gmail.com
-
-
 """Contains all of the classes for creating user interfaces and for
 painting graphics and images.
 """
 
-__all__ = [
-    'Color',
-    'Component',
-    'Container',
-    'Frame',
-    'Image',
-    'Window'
-]
+__all__ = ['Color', 'Component', 'Container', 'Frame', 'Image', 'Window']
 
 from java.lang import Object
 
@@ -36,7 +27,6 @@ class Color(Object):
     standard RGB color space. For further information on sRGB, see
     http://www.w3.org/pub/WWW/Graphics/Color/sRGB.html.
     """
-
     def __init__(self, *args):
         """Creates a color.
 
@@ -57,7 +47,6 @@ class Container(Component):
     """A generic Abstract Window Toolkit(AWT) container object is a
     component that can contain other AWT components.
     """
-
     def add(self, *args):
         """Adds the specified component.
 
