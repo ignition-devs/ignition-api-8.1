@@ -126,11 +126,11 @@ class Locale(Object):
 
     @property
     def JAPAN(self):
-        return self.__init__('jp', 'JP')
+        return self.__init__('ja', 'JP')
 
     @property
     def JAPANESE(self):
-        return self.__init__('jp')
+        return self.__init__('ja')
 
     @property
     def KOREA(self):
