@@ -104,7 +104,7 @@ def resumeChart(id):
         KeyError: If the ID does not match any running chart instance.
     """
     if not id:
-        raise KeyError('Invalid UUID string: %s' % id)
+        raise KeyError('Invalid UUID string: {}'.format(id))
 
 
 def setVariable(instanceId, stepId, variableName, variableValue):
