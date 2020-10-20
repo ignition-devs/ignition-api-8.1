@@ -53,8 +53,7 @@ class OPCBrowseTag(Object):
 
 
 class QualifiedValue(ABCMeta):
-    """Represents a value with a DataQuality & timestamp attached to it.
-    """
+    """Represents a value with a DataQuality & timestamp attached to it."""
     def __new__(mcs, *args, **kwargs):
         pass
 
