@@ -582,8 +582,8 @@ def move(tags, destination, collisionPolicy):
 
 def queryTagCalculations(paths,
                          calculations,
-                         startDate=system.date.addHours(system.date.now(), -8),
-                         endDate=system.date.now(),
+                         startDate=None,
+                         endDate=None,
                          rangeHours=None,
                          rangeMinutes=None,
                          aliases=None,
@@ -650,6 +650,9 @@ def queryTagCalculations(paths,
         Dataset: A dataset representing the calculations over the
             specified range.
     """
+    endDate = system.date.now() if endDate is None else endDate
+    startDate = (system.date.addHours(endDate, -8)
+                 if startDate is None else startDate)
     print(paths, calculations, startDate, endDate, rangeHours, rangeMinutes,
           aliases, includeBoundingValues, validatesSCExec, noInterpolation,
           ignoreBadQuality)
@@ -683,8 +686,8 @@ def queryTagDensity(paths, startDate, endDate):
 
 
 def queryTagHistory(paths,
-                    startDate=system.date.addHours(system.date.now(), -8),
-                    endDate=system.date.now(),
+                    startDate=None,
+                    endDate=None,
                     returnSize=-1,
                     aggregationMode='Average',
                     returnFormat='Wide',
@@ -771,6 +774,9 @@ def queryTagHistory(paths,
             specified tag paths. The first column will be the timestamp,
             and each column after that represents a tag.
     """
+    endDate = system.date.now() if endDate is None else endDate
+    startDate = (system.date.addHours(endDate, -8)
+                 if startDate is None else startDate)
     print(paths, startDate, endDate, returnSize, aggregationMode, returnFormat,
           columnNames, intervalHours, intervalMinutes, rangeHours,
           rangeMinutes, aggregationModes, includeBoundingValues,
@@ -892,7 +898,7 @@ def storeTagHistory(historyprovider,
                     paths,
                     values,
                     qualities=None,
-                    timestamps=system.date.now()):
+                    timestamps=None):
     """Inserts data into the tag history system, allowing Tag history to
     be recorded via scripting.
 

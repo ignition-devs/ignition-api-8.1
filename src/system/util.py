@@ -201,10 +201,10 @@ class Version(Object):
 def audit(action=None,
           actionValue=None,
           auditProfile='',
-          actor=system.security.getUsername(),
+          actor=None,
           actorHost='localhost',
           originatingSystem=None,
-          eventTimestamp=system.date.now(),
+          eventTimestamp=None,
           originatingContext=4,
           statusCode=0):
     """Inserts a record into an audit profile.
@@ -232,6 +232,9 @@ def audit(action=None,
         statusCode (int): A quality code to attach to the object.
             Defaults to 0, indicating no special meaning. Optional.
     """
+    actor = system.security.getUsername() if actor is None else actor
+    eventTimestamp = (system.date.now()
+                      if eventTimestamp is None else eventTimestamp)
     print(action, actionValue, auditProfile, actor, actorHost,
           originatingSystem, eventTimestamp, originatingContext, statusCode)
 
@@ -681,8 +684,8 @@ def playSoundClip(wav, volume, wait):
 
 
 def queryAuditLog(auditProfileName,
-                  startDate=system.date.addHours(system.date.now(), -8),
-                  endDate=system.date.now(),
+                  startDate=None,
+                  endDate=None,
                   actorFilter=None,
                   actionFilter=None,
                   targetFilter=None,
@@ -717,6 +720,9 @@ def queryAuditLog(auditProfileName,
         Dataset: A dataset with the audit events from the specified
             profile that match the filter arguments.
     """
+    endDate = system.date.now() if endDate is None else endDate
+    startDate = (system.date.addHours(endDate, -8)
+                 if startDate is None else startDate)
     print(auditProfileName, startDate, endDate, actorFilter, actionFilter,
           targetFilter, valueFilter, systemFilter, contextFilter)
     return Dataset()

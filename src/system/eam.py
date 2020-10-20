@@ -58,8 +58,8 @@ def getGroups():
 
 def queryAgentHistory(groupIds=None,
                       agentIds=None,
-                      startDate=system.date.addHours(system.date.now(), -8),
-                      endDate=system.date.now(),
+                      startDate=None,
+                      endDate=None,
                       limit=100):
     """Returns a list of the most recent agent events.
 
@@ -82,6 +82,9 @@ def queryAgentHistory(groupIds=None,
             event_level, event_level_int, and message, where each row is
             a new agent event.
     """
+    endDate = system.date.now() if endDate is None else endDate
+    startDate = (system.date.addHours(endDate, -8)
+                 if startDate is None else startDate)
     print(groupIds, agentIds, startDate, endDate, limit)
     return Dataset()
 

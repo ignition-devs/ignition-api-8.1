@@ -564,7 +564,7 @@ def getSchedule(scheduleName):
     return None
 
 
-def getScheduledUsers(userSource, date=system.date.now()):
+def getScheduledUsers(userSource, date=None):
     """Returns a list of users that are scheduled on. If no users are
     scheduled, it will return an empty list.
 
@@ -580,6 +580,7 @@ def getScheduledUsers(userSource, date=system.date.now()):
             taking schedule adjustments into account. Refer also to the
             PyUser class.
     """
+    date = system.date.now() if date is None else date
     print(userSource, date)
     return None
 
@@ -644,7 +645,7 @@ def getUsers(userSource):
     return [PyUser()]
 
 
-def isUserScheduled(user, date=system.date.now()):
+def isUserScheduled(user, date=None):
     """Will check if a specified User is scheduled currently or on a
     specified date/time.
 
@@ -658,6 +659,7 @@ def isUserScheduled(user, date=system.date.now()):
         bool: True if the user is scheduled for the specified date,
             False if not.
     """
+    date = system.date.now() if date is None else date
     print(user, date)
     return True
 
