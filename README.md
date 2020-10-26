@@ -1,6 +1,6 @@
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/master)
+![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
 ![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)
 
