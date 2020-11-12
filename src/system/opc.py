@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """OPC Functions
 The following functions allow you to read, write and browser OPC
 servers.

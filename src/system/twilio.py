@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """Twilio Functions
 The following functions give you access to read info and send SMS
 through Twilio. This requires the Twilio Module, which is not included

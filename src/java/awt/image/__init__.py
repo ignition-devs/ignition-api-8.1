@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """Provides classes for creating and modifying images. Images are
 processed using a streaming framework that involves an image producer,
 optional image filters, and an image consumer. This framework makes it

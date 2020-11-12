@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """OPC - UA Functions
 The following functions allow you to interact directly with an OPC-UA
 server.

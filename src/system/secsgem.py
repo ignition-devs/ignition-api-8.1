@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """SECS/GEM Functions
 The following functions allow you to interact with equipment defined by
 the SECS/GEM module. Note that the SECS/GEM module must be installed

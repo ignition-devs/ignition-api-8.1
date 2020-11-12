@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """The Ignition scripting API, which is available under the module name
 "system", is full of functions that are useful when designing projects
 in Ignition. From running database queries, manipulating components, to

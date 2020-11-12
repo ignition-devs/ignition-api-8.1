@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """Perspective Functions
 The following functions offer various ways to interact with a
 Perspective session from a Python script.

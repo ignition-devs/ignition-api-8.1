@@ -1,6 +1,6 @@
 # Copyright (C) 2020
 # Author: Cesar Roman
-# Contact: thecesrom@gmail.com
+# Contact: cesar@thecesrom.dev
 """OPC HDA Functions
 The following functions give you access to interact with the HDA
 types of OPC servers."""
