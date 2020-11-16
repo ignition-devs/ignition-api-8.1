@@ -1,21 +1,36 @@
 <!--- Badges --->
 ![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
-![GitHub last commit (master)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
+![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
 ![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
 
 # Ignition
 
 Ignition is a set of packages and modules that allows developers to get code completion in their IDE of choice.
 
+## Branches
+
+This repository consists of the following branches:
+
+* [main](https://github.com/thecesrom/Ignition/tree/main)
+    * This branch will contain all Scripting Functions from the latest Ignition Release requiring only Python
+* [7.9](https://github.com/thecesrom/Ignition/tree/7.9)
+    * This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version requiring only Python
+* [8.0](https://github.com/thecesrom/Ignition/tree/8.0)
+    * This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
+* [jython](https://github.com/thecesrom/Ignition/tree/jython)
+    * This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
+
+Clone or download the one that suits your needs.
+
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
-* You are familiar with [Ignition 8 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 
 ## Using Ignition
 
-To use Ignition, add it as a dependency to your scripting project.
+To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
 ## Packages
 
