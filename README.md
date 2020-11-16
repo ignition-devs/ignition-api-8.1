@@ -11,16 +11,17 @@ Ignition is a set of packages and modules that allows developers to get code com
 
 This repository consists of the following branches:
 
-* [main](https://github.com/thecesrom/Ignition/tree/main)
-    * This branch will contain all Scripting Functions from the latest Ignition Release requiring only Python
-* [7.9](https://github.com/thecesrom/Ignition/tree/7.9)
-    * This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version requiring only Python
-* [8.0](https://github.com/thecesrom/Ignition/tree/8.0)
-    * This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
-* [jython](https://github.com/thecesrom/Ignition/tree/jython)
-    * This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
+### [main](https://github.com/thecesrom/Ignition/tree/main)
+This branch will contain all Scripting Functions from the latest Ignition Release requiring only Python
 
-Clone or download the one that suits your needs.
+### [7.9](https://github.com/thecesrom/Ignition/tree/7.9)
+This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version requiring only Python
+
+### [8.0](https://github.com/thecesrom/Ignition/tree/8.0)
+This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
+
+### [jython](https://github.com/thecesrom/Ignition/tree/jython)
+This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
 
 ## Prerequisites
 
