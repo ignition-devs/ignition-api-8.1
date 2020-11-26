@@ -71,9 +71,8 @@ def executeReport(path, project='project', parameters=None, fileType='pdf'):
     _fileTypes = ['pdf', 'html', 'csv', 'rtf', 'jpeg', 'png', 'xml']
     if path is None or project is None or fileType not in _fileTypes:
         raise IllegalArgumentException()
-    else:
-        print(path, project, parameters, fileType)
-        return None
+    print(path, project, parameters, fileType)
+    return None
 
 
 def getReportNamesAsDataset(project='project'):
