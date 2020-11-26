@@ -547,7 +547,7 @@ def toDataSet(*args):
     return Dataset()
 
 
-def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=False):
+def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
     """Formats the contents of one or more datasets as an excel
     spreadsheet, returning the results as a string. Each dataset
     specified will be added as a worksheet in the Excel workbook. This
@@ -562,9 +562,12 @@ def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=False):
         nullsEmpty (bool): If True (1), the spreadsheet will leave cells
             with NULL values empty, instead of allowing Excel to provide
             a default value like 0. Defaults to False. Optional.
-        sheetNames (bool): If True, the spreadsheet will leave cells
-            with NULL values empty, instead of allowing Excel to provide
-            a default value like 0. Defaults to False. Optional.
+        sheetNames (list[str]): Expects a list of strings, where each
+            string is a name for one of the datasets. When used, there
+            must be an equal number of string names in sheetName as
+            there are datasets in the dataset parameter. Names provided
+            in this parameter may be sanitized into acceptable Excel
+            sheet names. Optional.
 
     Returns:
         str: An Excel-compatible XML-based workbook, with one worksheet
