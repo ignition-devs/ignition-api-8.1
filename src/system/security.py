@@ -7,8 +7,15 @@ roles in the Gateway.
 """
 
 __all__ = [
-    'getRoles', 'getUsername', 'getUserRoles', 'isScreenLocked', 'lockScreen',
-    'logout', 'switchUser', 'unlockScreen', 'validateUser'
+    "getRoles",
+    "getUsername",
+    "getUserRoles",
+    "isScreenLocked",
+    "lockScreen",
+    "logout",
+    "switchUser",
+    "unlockScreen",
+    "validateUser",
 ]
 
 
@@ -20,7 +27,7 @@ def getRoles():
         tuple[str]: A list of the roles (strings) that are assigned to
             the current user.
     """
-    return 'Administrator', 'Developer'
+    return "Administrator", "Developer"
 
 
 def getUsername():
@@ -30,10 +37,11 @@ def getUsername():
         str: The current username.
     """
     import getpass
+
     return getpass.getuser()
 
 
-def getUserRoles(username, password, authProfile='', timeout=60000):
+def getUserRoles(username, password, authProfile="", timeout=60000):
     """Fetches the roles for a user from the Gateway. This may not be
     the currently logged in user. Requires the password for that user.
     If the authentication profile name  is omitted, then the current
@@ -52,8 +60,8 @@ def getUserRoles(username, password, authProfile='', timeout=60000):
         tuple[str]: A list of the roles that this user has, if the user
             authenticates successfully. Otherwise, returns None.
     """
-    print(username, password, authProfile, timeout)
-    return 'Administrator', 'Developer'
+    print (username, password, authProfile, timeout)
+    return "Administrator", "Developer"
 
 
 def isScreenLocked():
@@ -109,7 +117,7 @@ def switchUser(username, password, event, hideError=False):
         bool: False(0) if the switch user operation failed, True (1)
             otherwise.
     """
-    print(username, password, event, hideError)
+    print (username, password, event, hideError)
     return True
 
 
@@ -118,7 +126,7 @@ def unlockScreen():
     pass
 
 
-def validateUser(username, password, authProfile='', timeout=60000):
+def validateUser(username, password, authProfile="", timeout=60000):
     """Tests credentials (username and password) against an
     authentication profile. Returns a boolean based upon whether or not
     the authentication profile accepts the  credentials. If the
@@ -137,5 +145,5 @@ def validateUser(username, password, authProfile='', timeout=60000):
         bool: False(0) if the user failed to authenticate, True(1) if
             the username/password was a valid combination.
     """
-    print(username, password, authProfile, timeout)
+    print (username, password, authProfile, timeout)
     return True

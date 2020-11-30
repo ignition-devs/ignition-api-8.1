@@ -6,7 +6,7 @@ The following functions give you access to import and remove
 Transaction Groups.
 """
 
-__all__ = ['loadFromFile', 'removeGroups']
+__all__ = ["loadFromFile", "removeGroups"]
 
 
 def loadFromFile(filePath, projectName, mode):

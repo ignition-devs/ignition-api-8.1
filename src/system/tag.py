@@ -6,13 +6,33 @@ The following functions give you access to interact with Ignition Tags.
 """
 
 __all__ = [
-    'browse', 'browseHistoricalTags', 'browseTags', 'browseTagsSimple',
-    'configure', 'copy', 'deleteTags', 'exists', 'exportTags',
-    'getConfiguration', 'importTags', 'isOverlaysEnabled', 'move',
-    'queryTagCalculations', 'queryTagDensity', 'queryTagHistory', 'read',
-    'readAll', 'readAsync', 'readBlocking', 'requestGroupExecution',
-    'setOverlaysEnabled', 'storeTagHistory', 'write', 'writeAll', 'writeAsync',
-    'writeBlocking'
+    "browse",
+    "browseHistoricalTags",
+    "browseTags",
+    "browseTagsSimple",
+    "configure",
+    "copy",
+    "deleteTags",
+    "exists",
+    "exportTags",
+    "getConfiguration",
+    "importTags",
+    "isOverlaysEnabled",
+    "move",
+    "queryTagCalculations",
+    "queryTagDensity",
+    "queryTagHistory",
+    "read",
+    "readAll",
+    "readAsync",
+    "readBlocking",
+    "requestGroupExecution",
+    "setOverlaysEnabled",
+    "storeTagHistory",
+    "write",
+    "writeAll",
+    "writeAsync",
+    "writeBlocking",
 ]
 
 import warnings
@@ -23,6 +43,7 @@ from java.lang import Object
 
 class BrowseResults(Object):
     """BrowseResults class."""
+
     def getContinuationPoint(self):
         pass
 
@@ -53,13 +74,16 @@ class BrowseResults(Object):
 
 class BrowseTag(Object):
     """BrowseTag class."""
-    def __init__(self,
-                 name=None,
-                 path=None,
-                 fullPath=None,
-                 type=None,
-                 valueSource=None,
-                 dataType=None):
+
+    def __init__(
+        self,
+        name=None,
+        path=None,
+        fullPath=None,
+        type=None,
+        valueSource=None,
+        dataType=None,
+    ):
         self.name = name
         self.path = path
         self.fullPath = fullPath
@@ -113,6 +137,7 @@ class BrowseTag(Object):
 
 class QualifiedValue(object):
     """Represents a value with a DataQuality & timestamp attached to it."""
+
     def __init__(self, value=None, quality=None, timestamp=None):
         self._value = value
         self._quality = quality
@@ -142,6 +167,7 @@ class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string.
     """
+
     def getCode(self):
         pass
 
@@ -180,7 +206,7 @@ class QualityCode(Object):
         return True
 
     def isNot(self, arg):
-        print(self, arg)
+        print (self, arg)
         return True
 
     def isNotGood(self):
@@ -214,6 +240,7 @@ class Results(Object):
     point should be non-null and can be used in constructing the
     subsequent BrowseFilter to continue the browse.
     """
+
     def error(self, result):
         pass
 
@@ -270,7 +297,7 @@ def browse(path, filter=None):
             dictionaries, or .getReturnedSize() to the the number of
             items in results. Refer to the list of tagBrowse objects.
     """
-    print(path, filter)
+    print (path, filter)
     return Results()
 
 
@@ -296,17 +323,19 @@ def browseHistoricalTags(path, nameFilters, maxSize, continuationPoint):
             the Continuation Point. Get the results by calling
             .getResults() on the BrowseResults object.
     """
-    print(path, nameFilters, maxSize, continuationPoint)
+    print (path, nameFilters, maxSize, continuationPoint)
     return BrowseResults()
 
 
-def browseTags(parentPath,
-               tagPath=None,
-               tagType=None,
-               dataType=None,
-               udtParentType=None,
-               recursive=False,
-               sort='ASC'):
+def browseTags(
+    parentPath,
+    tagPath=None,
+    tagType=None,
+    dataType=None,
+    udtParentType=None,
+    recursive=False,
+    sort="ASC",
+):
     """Returns an array of tags from a specific folder. The function
     supports filtering and recursion. Leave filters blank to return all
     tags.
@@ -343,10 +372,18 @@ def browseTags(parentPath,
             and the following functions: isFolder(), isUDT(), isOPC(),
             isMemory(), isExpression(), isQuery().
     """
-    warnings.warn("browseTags is deprecated, use browse instead.",
-                  DeprecationWarning)
-    print(parentPath, tagPath, tagType, dataType, udtParentType, recursive,
-          sort)
+    warnings.warn(
+        "browseTags is deprecated, use browse instead.", DeprecationWarning
+    )
+    print (
+        parentPath,
+        tagPath,
+        tagType,
+        dataType,
+        udtParentType,
+        recursive,
+        sort,
+    )
     return [BrowseTag()]
 
 
@@ -369,13 +406,15 @@ def browseTagsSimple(parentPath, sort):
             and the following functions: isFolder(), isUDT(), isOPC(),
             isMemory(), isExpression(), isQuery().
     """
-    warnings.warn("browseTagsSimple is deprecated, use browse instead.",
-                  DeprecationWarning)
-    print(parentPath, sort)
+    warnings.warn(
+        "browseTagsSimple is deprecated, use browse instead.",
+        DeprecationWarning,
+    )
+    print (parentPath, sort)
     return [BrowseTag()]
 
 
-def configure(basePath, tags, collisionPolicy='o'):
+def configure(basePath, tags, collisionPolicy="o"):
     """Creates Tags from a given list of Python dictionaries or from a
     JSON source string. Can be used to overwrite a current Tag's
     configuration.
@@ -416,11 +455,11 @@ def configure(basePath, tags, collisionPolicy='o'):
             tag in the list, that is representative of the result of the
             operation.
     """
-    print(basePath, tags, collisionPolicy)
+    print (basePath, tags, collisionPolicy)
     return [QualityCode()]
 
 
-def copy(tags, destination, collisionPolicy='o'):
+def copy(tags, destination, collisionPolicy="o"):
     """Copies tags from one folder to another. Multiple tag and folder
     paths may be passed to a single call of this function. The new
     destination can be a separate tag provider.
@@ -441,7 +480,7 @@ def copy(tags, destination, collisionPolicy='o'):
             tag in the list, that is representative of the result of the
             operation.
     """
-    print(tags, destination, collisionPolicy)
+    print (tags, destination, collisionPolicy)
     return [QualityCode()]
 
 
@@ -476,7 +515,7 @@ def exists(tagPath):
     return True
 
 
-def exportTags(filePath, tagPaths, recursive=True, exportType='json'):
+def exportTags(filePath, tagPaths, recursive=True, exportType="json"):
     """Exports Tags to a file on a local file system.
 
     The term "local file system" refers to the scope in which the script
@@ -495,7 +534,7 @@ def exportTags(filePath, tagPaths, recursive=True, exportType='json'):
         exportType (str): The type of file that will be exported. Set to
             "json" or "xml". Defaults to "json". Optional.
     """
-    print(filePath, tagPaths, recursive, exportType)
+    print (filePath, tagPaths, recursive, exportType)
 
 
 def getConfiguration(basePath, recursive=False):
@@ -517,11 +556,11 @@ def getConfiguration(basePath, recursive=False):
          dict: A List of Tag dictionaries. Nested Tags are placed in a
             list marked as "tags" in the dictionary.
     """
-    print(basePath, recursive)
+    print (basePath, recursive)
     return None
 
 
-def importTags(filePath, basePath, collisionPolicy='o'):
+def importTags(filePath, basePath, collisionPolicy="o"):
     """Imports a JSON tag file at the provided path. Also supports XML
     and CSV Tag file exports from legacy systems.
 
@@ -540,7 +579,7 @@ def importTags(filePath, basePath, collisionPolicy='o'):
             tag in the list, that is representative of the result of the
             operation.
     """
-    print(filePath, basePath, collisionPolicy)
+    print (filePath, basePath, collisionPolicy)
     return [QualityCode()]
 
 
@@ -576,21 +615,23 @@ def move(tags, destination, collisionPolicy):
             tag in the list, that is representative of the result of the
             operation.
     """
-    print(tags, destination, collisionPolicy)
+    print (tags, destination, collisionPolicy)
     return [QualityCode()]
 
 
-def queryTagCalculations(paths,
-                         calculations,
-                         startDate=None,
-                         endDate=None,
-                         rangeHours=None,
-                         rangeMinutes=None,
-                         aliases=None,
-                         includeBoundingValues=True,
-                         validatesSCExec=True,
-                         noInterpolation=False,
-                         ignoreBadQuality=False):
+def queryTagCalculations(
+    paths,
+    calculations,
+    startDate=None,
+    endDate=None,
+    rangeHours=None,
+    rangeMinutes=None,
+    aliases=None,
+    includeBoundingValues=True,
+    validatesSCExec=True,
+    noInterpolation=False,
+    ignoreBadQuality=False,
+):
     """Queries various calculations (aggregations) for a set of tags
     over a specified range. Returns a dataset with a row per tag, and a
     column per calculation.
@@ -651,11 +692,22 @@ def queryTagCalculations(paths,
             specified range.
     """
     endDate = system.date.now() if endDate is None else endDate
-    startDate = (system.date.addHours(endDate, -8)
-                 if startDate is None else startDate)
-    print(paths, calculations, startDate, endDate, rangeHours, rangeMinutes,
-          aliases, includeBoundingValues, validatesSCExec, noInterpolation,
-          ignoreBadQuality)
+    startDate = (
+        system.date.addHours(endDate, -8) if startDate is None else startDate
+    )
+    print (
+        paths,
+        calculations,
+        startDate,
+        endDate,
+        rangeHours,
+        rangeMinutes,
+        aliases,
+        includeBoundingValues,
+        validatesSCExec,
+        noInterpolation,
+        ignoreBadQuality,
+    )
 
 
 def queryTagDensity(paths, startDate, endDate):
@@ -681,27 +733,29 @@ def queryTagDensity(paths, startDate, endDate):
         Dataset: A 2-column dataset consisting of a timestamp and a
             weight. Each row is valid until the next row.
     """
-    print(paths, startDate, endDate)
+    print (paths, startDate, endDate)
     return [0, 0]
 
 
-def queryTagHistory(paths,
-                    startDate=None,
-                    endDate=None,
-                    returnSize=-1,
-                    aggregationMode='Average',
-                    returnFormat='Wide',
-                    columnNames=None,
-                    intervalHours=None,
-                    intervalMinutes=None,
-                    rangeHours=None,
-                    rangeMinutes=None,
-                    aggregationModes=None,
-                    includeBoundingValues=None,
-                    validateSCExec=None,
-                    noInterpolation=None,
-                    ignoreBadQuality=None,
-                    timeout=None):
+def queryTagHistory(
+    paths,
+    startDate=None,
+    endDate=None,
+    returnSize=-1,
+    aggregationMode="Average",
+    returnFormat="Wide",
+    columnNames=None,
+    intervalHours=None,
+    intervalMinutes=None,
+    rangeHours=None,
+    rangeMinutes=None,
+    aggregationModes=None,
+    includeBoundingValues=None,
+    validateSCExec=None,
+    noInterpolation=None,
+    ignoreBadQuality=None,
+    timeout=None,
+):
     """Issues a query to the Tag Historian. Querying tag history
     involves specifying the tags and the date range, as well as a few
     optional parameters. The Tag historian will find the relevant
@@ -775,12 +829,28 @@ def queryTagHistory(paths,
             and each column after that represents a tag.
     """
     endDate = system.date.now() if endDate is None else endDate
-    startDate = (system.date.addHours(endDate, -8)
-                 if startDate is None else startDate)
-    print(paths, startDate, endDate, returnSize, aggregationMode, returnFormat,
-          columnNames, intervalHours, intervalMinutes, rangeHours,
-          rangeMinutes, aggregationModes, includeBoundingValues,
-          validateSCExec, noInterpolation, ignoreBadQuality, timeout)
+    startDate = (
+        system.date.addHours(endDate, -8) if startDate is None else startDate
+    )
+    print (
+        paths,
+        startDate,
+        endDate,
+        returnSize,
+        aggregationMode,
+        returnFormat,
+        columnNames,
+        intervalHours,
+        intervalMinutes,
+        rangeHours,
+        rangeMinutes,
+        aggregationModes,
+        includeBoundingValues,
+        validateSCExec,
+        noInterpolation,
+        ignoreBadQuality,
+        timeout,
+    )
     return None
 
 
@@ -802,8 +872,10 @@ def read(tagPath):
         QualifiedValue: A qualified value. This object has three
             sub-members: value, quality, and timestamp.
     """
-    warnings.warn("read is deprecated, use readAsync or readBlocking instead.",
-                  DeprecationWarning)
+    warnings.warn(
+        "read is deprecated, use readAsync or readBlocking instead.",
+        DeprecationWarning,
+    )
     print tagPath
     return QualifiedValue()
 
@@ -825,7 +897,8 @@ def readAll(tagPaths):
     """
     warnings.warn(
         "readAll is deprecated, use readAsync or readBlocking instead.",
-        DeprecationWarning)
+        DeprecationWarning,
+    )
     print tagPaths
     items = []
     for _ in range(len(tagPaths)):
@@ -848,7 +921,7 @@ def readAsync(tagPaths, callback):
             the callback function is invoked. The qualified values will
             have three sub members: value, quality, and timestamp.
     """
-    print(tagPaths, callback)
+    print (tagPaths, callback)
 
 
 def readBlocking(tagPaths, timeout=45000):
@@ -868,7 +941,7 @@ def readBlocking(tagPaths, timeout=45000):
             corresponding to the Tag paths. Each qualified value will
             have three sub members: value, quality, and timestamp.
     """
-    print(tagPaths, timeout)
+    print (tagPaths, timeout)
     return [QualifiedValue() for _ in tagPaths]
 
 
@@ -880,7 +953,7 @@ def requestGroupExecution(provider, tagGroup):
             in.
         tagGroup (str): The name of the Tag Group to execute.
     """
-    print(provider, tagGroup)
+    print (provider, tagGroup)
 
 
 def setOverlaysEnabled(enabled):
@@ -893,12 +966,14 @@ def setOverlaysEnabled(enabled):
     print enabled
 
 
-def storeTagHistory(historyprovider,
-                    tagprovider,
-                    paths,
-                    values,
-                    qualities=None,
-                    timestamps=None):
+def storeTagHistory(
+    historyprovider,
+    tagprovider,
+    paths,
+    values,
+    qualities=None,
+    timestamps=None,
+):
     """Inserts data into the tag history system, allowing Tag history to
     be recorded via scripting.
 
@@ -937,7 +1012,7 @@ def storeTagHistory(historyprovider,
             java.util.date object may be passed, so the system.date
             functions can be used to return a timestamp.
     """
-    print(historyprovider, tagprovider, paths, values, qualities, timestamps)
+    print (historyprovider, tagprovider, paths, values, qualities, timestamps)
 
 
 def write(tagPath, value, suppressErrors=False):
@@ -958,8 +1033,9 @@ def write(tagPath, value, suppressErrors=False):
     """
     warnings.warn(
         "write is deprecated, use writeAsync or writeBlocking instead.",
-        DeprecationWarning)
-    print(tagPath, value, suppressErrors)
+        DeprecationWarning,
+    )
+    print (tagPath, value, suppressErrors)
     return 1
 
 
@@ -981,8 +1057,9 @@ def writeAll(tagPaths, values):
     """
     warnings.warn(
         "writeAll is deprecated, use writeAsync or writeBlocking instead.",
-        DeprecationWarning)
-    print(tagPaths, values)
+        DeprecationWarning,
+    )
+    print (tagPaths, values)
     return [1] * len(tagPaths)
 
 
@@ -1003,7 +1080,7 @@ def writeAsync(tagPaths, values, callback):
             when the callback function is invoked. The quality codes
             will hold the result of the write operation for that Tag.
     """
-    print(tagPaths, values, callback)
+    print (tagPaths, values, callback)
 
 
 def writeBlocking(tagPaths, values, timeout=45000):
@@ -1026,5 +1103,5 @@ def writeBlocking(tagPaths, values, timeout=45000):
             Tag path. Each quality code holds the result of the write
             operation for that Tag.
     """
-    print(tagPaths, values, timeout)
+    print (tagPaths, values, timeout)
     return [QualityCode()]

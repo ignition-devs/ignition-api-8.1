@@ -6,7 +6,7 @@ The following functions allow you to list projects on the Gateway
 through scripting.
 """
 
-__all__ = ['getProjectName', 'getProjectNames']
+__all__ = ["getProjectName", "getProjectNames"]
 
 
 def getProjectName():
@@ -26,7 +26,7 @@ def getProjectName():
     Returns:
          str: The name of the currently running project.
     """
-    return 'MyProject'
+    return "MyProject"
 
 
 def getProjectNames():
@@ -42,4 +42,4 @@ def getProjectNames():
          list[str]: A list containing string representations of project
             names on the Gateway.
     """
-    return ['MyProject', 'DisabledProject']
+    return ["MyProject", "DisabledProject"]

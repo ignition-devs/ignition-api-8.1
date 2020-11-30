@@ -7,19 +7,19 @@ ability to run reports.
 """
 
 __all__ = [
-    'executeAndDistribute', 'executeReport', 'getReportNamesAsDataset',
-    'getReportNamesAsList'
+    "executeAndDistribute",
+    "executeReport",
+    "getReportNamesAsDataset",
+    "getReportNamesAsList",
 ]
 
 from java.lang import IllegalArgumentException
 from system.dataset import Dataset
 
 
-def executeAndDistribute(path,
-                         project='project',
-                         parameters=None,
-                         action=None,
-                         actionSettings=None):
+def executeAndDistribute(
+    path, project="project", parameters=None, action=None, actionSettings=None
+):
     """Executes and distributes a report. Similar to scheduling a report
     to execute, except a schedule in not required to utilize this
     function. This is a great way to distribute the report on demand
@@ -47,7 +47,7 @@ def executeAndDistribute(path,
         print(path, project, parameters, action, actionSettings)
 
 
-def executeReport(path, project='project', parameters=None, fileType='pdf'):
+def executeReport(path, project="project", parameters=None, fileType="pdf"):
     """Immediately executes an existing report and returns a byte[] of
     the output.
 
@@ -68,14 +68,14 @@ def executeReport(path, project='project', parameters=None, fileType='pdf'):
             occurs: If the file type is not recognized, path does not
             exist, project does not exist.
     """
-    _fileTypes = ['pdf', 'html', 'csv', 'rtf', 'jpeg', 'png', 'xml']
+    _fileTypes = ["pdf", "html", "csv", "rtf", "jpeg", "png", "xml"]
     if path is None or project is None or fileType not in _fileTypes:
         raise IllegalArgumentException()
     print(path, project, parameters, fileType)
     return None
 
 
-def getReportNamesAsDataset(project='project'):
+def getReportNamesAsDataset(project="project"):
     """Gets a data of all reports for a project. This dataset is
     particularly suited for display in a Tree View component.
 
@@ -98,7 +98,7 @@ def getReportNamesAsDataset(project='project'):
         return Dataset()
 
 
-def getReportNamesAsList(project='project'):
+def getReportNamesAsList(project="project"):
     """Gets a list of all reports for a project.
 
     Args:

@@ -6,10 +6,25 @@ The following functions assist with running statistical analysis.
 """
 
 __all__ = [
-    'geometricMean', 'kurtosis', 'max', 'mean', 'meanDifference', 'median',
-    'min', 'mode', 'normalize', 'percentile', 'populationVariance', 'product',
-    'skewness', 'standardDeviation', 'sum', 'sumDifference', 'sumLog',
-    'sumSquares', 'variance'
+    "geometricMean",
+    "kurtosis",
+    "max",
+    "mean",
+    "meanDifference",
+    "median",
+    "min",
+    "mode",
+    "normalize",
+    "percentile",
+    "populationVariance",
+    "product",
+    "skewness",
+    "standardDeviation",
+    "sum",
+    "sumDifference",
+    "sumLog",
+    "sumSquares",
+    "variance",
 ]
 
 from java.lang import Exception as JException
@@ -84,6 +99,7 @@ def max(values):
             nan if the input was empty or null.
     """
     from __builtin__ import max
+
     return max(values)
 
 
@@ -174,6 +190,7 @@ def min(values):
             parameter, or nan if the input was empty or null.
     """
     from __builtin__ import min
+
     return min(values)
 
 
@@ -246,7 +263,7 @@ def percentile(values, percentile):
         float: An estimate of the requested percentile of the input, or
             nan if the input was empty or null.
     """
-    print(values, percentile)
+    print (values, percentile)
     return None
 
 
@@ -353,6 +370,7 @@ def sum(values):
             if values was empty or null.
     """
     from __builtin__ import sum
+
     return sum(values)
 
 
@@ -423,7 +441,8 @@ def sumSquares(values):
             if the input was empty or null.
     """
     from __builtin__ import sum
-    return sum(value**2 for value in values)
+
+    return sum(value ** 2 for value in values)
 
 
 def variance(values):

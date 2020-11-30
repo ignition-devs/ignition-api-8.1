@@ -8,8 +8,11 @@ in a typical install.
 """
 
 __all__ = [
-    'getAccounts', 'getAccountsDataset', 'getPhoneNumbers',
-    'getPhoneNumbersDataset', 'sendSms'
+    "getAccounts",
+    "getAccountsDataset",
+    "getPhoneNumbers",
+    "getPhoneNumbersDataset",
+    "sendSms",
 ]
 
 from system.dataset import Dataset
@@ -22,7 +25,7 @@ def getAccounts():
     Returns:
         list[str]: A list of configured Twilio accounts.
     """
-    return ['twilio_account1', 'twilio_account2']
+    return ["twilio_account1", "twilio_account2"]
 
 
 def getAccountsDataset():
@@ -49,8 +52,8 @@ def getPhoneNumbers(accountName):
         list[str]: A list of phone numbers for the given Twilio account.
     """
     phoneNumbers = []
-    if accountName == 'Jenny':
-        phoneNumbers.append('+12058675309')
+    if accountName == "Jenny":
+        phoneNumbers.append("+12058675309")
     return phoneNumbers
 
 
@@ -81,4 +84,4 @@ def sendSms(accountName, fromNumber, toNumber, message):
         toNumber (str): The phone number of the recipient.
         message (str): The body of the SMS.
     """
-    print(accountName, fromNumber, toNumber, message)
+    print (accountName, fromNumber, toNumber, message)

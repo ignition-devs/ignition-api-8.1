@@ -7,7 +7,7 @@ miscellaneous utility classes (a string tokenizer, a random-number
 generator, and a bit array).
 """
 
-__all__ = ['Date', 'EventObject', 'Locale']
+__all__ = ["Date", "EventObject", "Locale"]
 
 from java.lang import Object
 
@@ -16,6 +16,7 @@ class Date(Object):
     """The class Date represents a specific instant in time, with
     millisecond precision.
     """
+
     def __new__(cls, date=None):
         """Allocates a Date object and initializes it...
 
@@ -37,8 +38,10 @@ class Date(Object):
             datetime: A new Date instance.
         """
         import system.date
-        return (system.date.now()
-                if date is None else system.date.fromMillis(date))
+
+        return (
+            system.date.now() if date is None else system.date.fromMillis(date)
+        )
 
 
 class EventObject(Object):
@@ -49,6 +52,7 @@ class EventObject(Object):
     "source", that is logically deemed to be the object upon which the
     Event in question initially occurred upon.
     """
+
     def __init__(self, source):
         self.source = source
 
@@ -65,6 +69,7 @@ class Locale(Object):
     to the customs and conventions of the user's native country, region,
     or culture.
     """
+
     def __init__(self, language, country=None, variant=None):
         """Locale initializer.
 
@@ -82,63 +87,63 @@ class Locale(Object):
 
     @property
     def CANADA(self):
-        return self.__init__('en', 'CA')
+        return self.__init__("en", "CA")
 
     @property
     def CANADA_FRENCH(self):
-        return self.__init__('fr', 'CA')
+        return self.__init__("fr", "CA")
 
     @property
     def CHINA(self):
-        return self.__init__('zh', 'CN')
+        return self.__init__("zh", "CN")
 
     @property
     def CHINESE(self):
-        return self.__init__('zh')
+        return self.__init__("zh")
 
     @property
     def ENGLISH(self):
-        return self.__init__('en')
+        return self.__init__("en")
 
     @property
     def FRANCE(self):
-        return self.__init__('fr', 'FR')
+        return self.__init__("fr", "FR")
 
     @property
     def FRENCH(self):
-        return self.__init__('fr')
+        return self.__init__("fr")
 
     @property
     def GERMAN(self):
-        return self.__init__('de')
+        return self.__init__("de")
 
     @property
     def GERMANY(self):
-        return self.__init__('de', 'DE')
+        return self.__init__("de", "DE")
 
     @property
     def ITALIAN(self):
-        return self.__init__('it')
+        return self.__init__("it")
 
     @property
     def ITALY(self):
-        return self.__init__('it', 'IT')
+        return self.__init__("it", "IT")
 
     @property
     def JAPAN(self):
-        return self.__init__('ja', 'JP')
+        return self.__init__("ja", "JP")
 
     @property
     def JAPANESE(self):
-        return self.__init__('ja')
+        return self.__init__("ja")
 
     @property
     def KOREA(self):
-        return self.__init__('ko', 'KR')
+        return self.__init__("ko", "KR")
 
     @property
     def KOREAN(self):
-        return self.__init__('ko')
+        return self.__init__("ko")
 
     @property
     def PRC(self):
@@ -150,16 +155,16 @@ class Locale(Object):
 
     @property
     def TAIWAN(self):
-        return self.__init__('zh', 'TW')
+        return self.__init__("zh", "TW")
 
     @property
     def TRADITIONAL_CHINESE(self):
-        return self.__init__('zh', 'TW')
+        return self.__init__("zh", "TW")
 
     @property
     def UK(self):
-        return self.__init__('en', 'GB')
+        return self.__init__("en", "GB")
 
     @property
     def US(self):
-        return self.__init__('en', 'US')
+        return self.__init__("en", "US")

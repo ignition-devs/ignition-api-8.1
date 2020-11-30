@@ -7,14 +7,38 @@ interfaces.
 """
 
 __all__ = [
-    'chooseColor', 'closeDesktop', 'color', 'confirm', 'convertPointToScreen',
-    'createPopupMenu', 'desktop', 'errorBox', 'findWindow',
-    'getCurrentDesktop', 'getDesktopHandles', 'getOpenedWindowNames',
-    'getOpenedWindows', 'getParentWindow', 'getQuality', 'getScreenIndex',
-    'getScreens', 'getSibling', 'getWindow', 'getWindowNames', 'inputBox',
-    'isTouchscreenModeEnabled', 'messageBox', 'openDesktop', 'openDiagnostics',
-    'passwordBox', 'setScreenIndex', 'setTouchscreenModeEnabled',
-    'showNumericKeypad', 'showTouchscreenKeyboard', 'transform', 'warningBox'
+    "chooseColor",
+    "closeDesktop",
+    "color",
+    "confirm",
+    "convertPointToScreen",
+    "createPopupMenu",
+    "desktop",
+    "errorBox",
+    "findWindow",
+    "getCurrentDesktop",
+    "getDesktopHandles",
+    "getOpenedWindowNames",
+    "getOpenedWindows",
+    "getParentWindow",
+    "getQuality",
+    "getScreenIndex",
+    "getScreens",
+    "getSibling",
+    "getWindow",
+    "getWindowNames",
+    "inputBox",
+    "isTouchscreenModeEnabled",
+    "messageBox",
+    "openDesktop",
+    "openDiagnostics",
+    "passwordBox",
+    "setScreenIndex",
+    "setTouchscreenModeEnabled",
+    "showNumericKeypad",
+    "showTouchscreenKeyboard",
+    "transform",
+    "warningBox",
 ]
 
 from java.awt import Color
@@ -34,6 +58,7 @@ COORD_DESIGNER = 1
 
 class FPMIWindow(JInternalFrame):
     """FPMIWindow object."""
+
     # Fields.
     CACHE_ALWAYS = 2
     CACHE_AUTO = 0
@@ -43,12 +68,12 @@ class FPMIWindow(JInternalFrame):
     DOCK_NORTH = 2
     DOCK_SOUTH = 4
     DOCK_WEST = 3
-    PARENT_WINDOW_NAME = '_parent'
+    PARENT_WINDOW_NAME = "_parent"
     SHOW_ALWAYS = 0
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
-    _path = 'Path/To/Window'
+    _path = "Path/To/Window"
 
     def __init__(self, name):
         self.name = name
@@ -62,11 +87,12 @@ class FPMIWindow(JInternalFrame):
 
 class WindowUtilities(Object):
     """WindowUtilities object."""
+
     pass
 
 
 def _dummy(message, title):
-    print(message, title)
+    print (message, title)
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
@@ -82,11 +108,11 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
     Returns:
         Color: The new color chosen by the user.
     """
-    print(initialColor, dialogTitle)
+    print (initialColor, dialogTitle)
     return Color()
 
 
-def closeDesktop(handle='primary'):
+def closeDesktop(handle="primary"):
     """Allows you to close any of the open desktops associated with the
     current client. See the Multi-Monitor Clients page for more details
     about using multiple monitors.
@@ -115,7 +141,7 @@ def color(*args):
     print args
 
 
-def confirm(message, title='Confirm', allowCancel=False):
+def confirm(message, title="Confirm", allowCancel=False):
     """Displays a confirmation dialog box to the user with "Yes", "No"
     and "Cancel" options, and a custom message.
 
@@ -129,7 +155,7 @@ def confirm(message, title='Confirm', allowCancel=False):
         bool: True (1) if the user selected "Yes", False (0) if the user
             selected "No", None if the user selected "Cancel".
     """
-    print(message, title, allowCancel)
+    print (message, title, allowCancel)
     return True
 
 
@@ -148,7 +174,7 @@ def convertPointToScreen(x, y, event):
     Returns:
         tuple: A tuple of (x,y) in screen coordinates.
     """
-    print(x, y, event)
+    print (x, y, event)
     return x, y
 
 
@@ -179,11 +205,11 @@ def createPopupMenu(itemNames, itemFunctions):
     Returns:
         JPopupMenu: The javax.swing.JPopupMenu that was created.
     """
-    print(itemNames, itemFunctions)
+    print (itemNames, itemFunctions)
     return JPopupMenu()
 
 
-def desktop(handle='primary'):
+def desktop(handle="primary"):
     """Allows for invoking system.gui functions on a specific desktop.
 
     Args:
@@ -201,7 +227,7 @@ def desktop(handle='primary'):
     return WindowUtilities()
 
 
-def errorBox(message, title='Error'):
+def errorBox(message, title="Error"):
     """Displays an error-style message box to the user.
 
     Args:
@@ -237,7 +263,7 @@ def getCurrentDesktop():
     Returns:
         str: The handle of the current desktop.
     """
-    return 'primary'
+    return "primary"
 
 
 def getDesktopHandles():
@@ -254,7 +280,7 @@ def getDesktopHandles():
         list[str]: A list of window handles of all secondary Desktop
             frames.
     """
-    return ['left client', 'right client']
+    return ["left client", "right client"]
 
 
 def getOpenedWindowNames():
@@ -265,7 +291,7 @@ def getOpenedWindowNames():
         tuple: A tuple of strings, representing the path of each window
             that is open.
     """
-    return 'window_1', 'window_2', 'window_n'
+    return "window_1", "window_2", "window_n"
 
 
 def getOpenedWindows():
@@ -276,7 +302,7 @@ def getOpenedWindows():
          tuple: A tuple of the opened windows. Not their names, but the
             actual window objects themselves.
     """
-    return [FPMIWindow('Main Window')]
+    return [FPMIWindow("Main Window")]
 
 
 def getParentWindow(event):
@@ -309,7 +335,7 @@ def getQuality(component, propertyName):
     Returns:
         int: The data quality of the given property as an integer.
     """
-    print(component, propertyName)
+    print (component, propertyName)
     return 192
 
 
@@ -346,8 +372,8 @@ def getSibling(event, name):
     Returns:
         object: The sibling component itself.
     """
-    print(event, name)
-    return FPMIWindow('Sibling')
+    print (event, name)
+    return FPMIWindow("Sibling")
 
 
 def getWindow(name):
@@ -363,7 +389,7 @@ def getWindow(name):
             window.
     """
     print name
-    return FPMIWindow('Main Window')
+    return FPMIWindow("Main Window")
 
 
 def getWindowNames():
@@ -374,7 +400,7 @@ def getWindowNames():
         tuple[str]: A tuple of strings, representing the path of each
             window defined in the current project.
     """
-    return 'Main Window', 'Main Window 1', 'Main Window 2'
+    return "Main Window", "Main Window 1", "Main Window 2"
 
 
 def inputBox(message, defaultText=None):
@@ -393,7 +419,7 @@ def inputBox(message, defaultText=None):
     Returns:
         str: The string value that was entered in the input box.
     """
-    print(message, defaultText)
+    print (message, defaultText)
     return None
 
 
@@ -408,7 +434,7 @@ def isTouchscreenModeEnabled():
     return False
 
 
-def messageBox(message, title='Information'):
+def messageBox(message, title="Information"):
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -419,14 +445,16 @@ def messageBox(message, title='Information'):
     _dummy(message, title)
 
 
-def openDesktop(screen=0,
-                handle=None,
-                title=None,
-                width=None,
-                height=None,
-                x=0,
-                y=0,
-                windows=None):
+def openDesktop(
+    screen=0,
+    handle=None,
+    title=None,
+    width=None,
+    height=None,
+    x=0,
+    y=0,
+    windows=None,
+):
     """Creates an additional Desktop in a new frame. For more details,
     see the Multi-Monitor Clients page.
 
@@ -454,7 +482,7 @@ def openDesktop(screen=0,
     Returns:
         JFrame: A reference to the new Desktop frame.
     """
-    print(screen, handle, title, width, height, x, y, windows)
+    print (screen, handle, title, width, height, x, y, windows)
     return JFrame()
 
 
@@ -468,7 +496,7 @@ def openDiagnostics():
     pass
 
 
-def passwordBox(message, title='Password', echoChar='*'):
+def passwordBox(message, title="Password", echoChar="*"):
     """Pops up a special input box that uses a password field, so the
     text isn't echoed back in clear-text to the user. Returns the text
     they entered, or None if they canceled the dialog box.
@@ -484,8 +512,8 @@ def passwordBox(message, title='Password', echoChar='*'):
         str: The password that was entered, or None if the prompt was
             canceled.
     """
-    print(message, title, echoChar)
-    return 'password'
+    print (message, title, echoChar)
+    return "password"
 
 
 def setScreenIndex(index):
@@ -525,13 +553,13 @@ def showNumericKeypad(initialValue=None, fontSize=None, usePasswordMode=False):
     Returns:
         object: The value that was entered in the keypad.
     """
-    print(initialValue, fontSize, usePasswordMode)
+    print (initialValue, fontSize, usePasswordMode)
     return 43
 
 
-def showTouchscreenKeyboard(initialText=None,
-                            fontSize=None,
-                            passwordMode=False):
+def showTouchscreenKeyboard(
+    initialText=None, fontSize=None, passwordMode=False
+):
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor. Returns
     the text that the user "typed".
@@ -546,20 +574,22 @@ def showTouchscreenKeyboard(initialText=None,
     Returns:
         str: The text that was "typed" in the on-screen keyboard.
     """
-    print(initialText, fontSize, passwordMode)
-    return ''
+    print (initialText, fontSize, passwordMode)
+    return ""
 
 
-def transform(component,
-              newX=None,
-              newY=None,
-              newWidth=None,
-              newHeight=None,
-              duration=0,
-              callback=None,
-              framesPerSecond=60,
-              acceleration=None,
-              coordSpace=None):
+def transform(
+    component,
+    newX=None,
+    newY=None,
+    newWidth=None,
+    newHeight=None,
+    duration=0,
+    callback=None,
+    framesPerSecond=60,
+    acceleration=None,
+    coordSpace=None,
+):
     """Sets a component's position and size at runtime.  Additional
     arguments for the duration, framesPerSecond, and acceleration of the
     operation exist for animation.  An optional callback argument will
@@ -597,12 +627,22 @@ def transform(component,
         object: An animation object that the script can use to pause(),
             resume(), or cancel() the transformation.
     """
-    print(component, newX, newY, newWidth, newHeight, duration, callback,
-          framesPerSecond, acceleration, coordSpace)
+    print (
+        component,
+        newX,
+        newY,
+        newWidth,
+        newHeight,
+        duration,
+        callback,
+        framesPerSecond,
+        acceleration,
+        coordSpace,
+    )
     return None
 
 
-def warningBox(message, title='Warning'):
+def warningBox(message, title="Warning"):
     """Displays a message to the user in a warning style pop-up dialog.
 
     Args:

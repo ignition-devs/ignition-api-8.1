@@ -7,9 +7,17 @@ ports.
 """
 
 __all__ = [
-    'closeSerialPort', 'configureSerialPort', 'openSerialPort', 'port',
-    'readBytes', 'readBytesAsString', 'readLine', 'readUntil', 'sendBreak',
-    'write', 'writeBytes'
+    "closeSerialPort",
+    "configureSerialPort",
+    "openSerialPort",
+    "port",
+    "readBytes",
+    "readBytesAsString",
+    "readLine",
+    "readUntil",
+    "sendBreak",
+    "write",
+    "writeBytes",
 ]
 
 # Bit rate constants.
@@ -64,10 +72,10 @@ class PortManager(object):
         pass
 
     def __enter__(self):
-        print 'Enter'
+        print "Enter"
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print 'Exit'
+        print "Exit"
 
 
 class SerialConfigurator(object):
@@ -86,8 +94,9 @@ def closeSerialPort(port):
     print port
 
 
-def configureSerialPort(port, bitRate, dataBits, handshake,
-                        hardwareFlowControl, parity, stopBits):
+def configureSerialPort(
+    port, bitRate, dataBits, handshake, hardwareFlowControl, parity, stopBits
+):
     """Configure a serial port for use in a later call. This only needs
     to be done once unless the configuration has changed after the
     initial call. All access to constants must be prefixed by
@@ -124,8 +133,15 @@ def configureSerialPort(port, bitRate, dataBits, handshake,
             configure the serial port instead of or in addition to the
             given keyword arguments.
     """
-    print(port, bitRate, dataBits, handshake, hardwareFlowControl, parity,
-          stopBits)
+    print (
+        port,
+        bitRate,
+        dataBits,
+        handshake,
+        hardwareFlowControl,
+        parity,
+        stopBits,
+    )
     return SerialConfigurator()
 
 
@@ -140,13 +156,15 @@ def openSerialPort(port):
     print port
 
 
-def port(port,
-         bitRate=None,
-         dataBits=None,
-         handshake=None,
-         hardwareFlowControl=None,
-         parity=None,
-         stopBits=None):
+def port(
+    port,
+    bitRate=None,
+    dataBits=None,
+    handshake=None,
+    hardwareFlowControl=None,
+    parity=None,
+    stopBits=None,
+):
     """Returns a context manager wrapping a serial port, allowing the
     rest of the system to interact with that port. This function
     effectively combines the system.serial.configureSerialPort,
@@ -195,8 +213,15 @@ def port(port,
             entered by using a 'with' statement. The port will
             automatically close on exiting the 'with' statement scope.
     """
-    print(port, bitRate, dataBits, handshake, hardwareFlowControl, parity,
-          stopBits)
+    print (
+        port,
+        bitRate,
+        dataBits,
+        handshake,
+        hardwareFlowControl,
+        parity,
+        stopBits,
+    )
     return PortManager()
 
 
@@ -212,11 +237,11 @@ def readBytes(port, numberOfBytes, timeout=5000):
     Returns:
         object: A byte[] containing bytes read from the serial port.
     """
-    print(port, numberOfBytes, timeout)
+    print (port, numberOfBytes, timeout)
     return None
 
 
-def readBytesAsString(port, numberOfBytes, timeout=5000, encoding='utf-8'):
+def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
     """Read numberOfBytes bytes from a serial port and convert them to a
     String. If a specific encoding is needed to match the source of the
     data, use system.serial.readBytes and use the desired encoding to
@@ -233,11 +258,11 @@ def readBytesAsString(port, numberOfBytes, timeout=5000, encoding='utf-8'):
     Returns:
         str: A String created from the bytes read.
     """
-    print(port, numberOfBytes, timeout, encoding)
-    return ''
+    print (port, numberOfBytes, timeout, encoding)
+    return ""
 
 
-def readLine(port, timeout=5000, encoding='utf-8'):
+def readLine(port, timeout=5000, encoding="utf-8"):
     """Attempts to read a line from a serial port. A "line" is
     considered to be terminated by either a line feed ('\n'), a carriage
     return ('\r'), or a carriage return followed immediately by a line
@@ -257,8 +282,8 @@ def readLine(port, timeout=5000, encoding='utf-8'):
     Returns:
         str: A line of text.
     """
-    print(port, timeout, encoding)
-    return ''
+    print (port, timeout, encoding)
+    return ""
 
 
 def readUntil(port, delimiter, includeDelimiter, timeout=5000):
@@ -281,8 +306,8 @@ def readUntil(port, delimiter, includeDelimiter, timeout=5000):
             until the delimiter was reached, and including the delimiter
             if the "includeDelimiter" parameter was True.
     """
-    print(port, delimiter, includeDelimiter, timeout)
-    return ''
+    print (port, delimiter, includeDelimiter, timeout)
+    return ""
 
 
 def sendBreak(port, millis):
@@ -294,10 +319,10 @@ def sendBreak(port, millis):
         millis (int): Approximate length of break signal, in
             milliseconds.
     """
-    print(port, millis)
+    print (port, millis)
 
 
-def write(port, toWrite, encoding='utf-8'):
+def write(port, toWrite, encoding="utf-8"):
     """Write a String to a serial port using the platforms default
     character encoding.
 
@@ -307,7 +332,7 @@ def write(port, toWrite, encoding='utf-8'):
         encoding (str): Encoding to use when constructing the string.
             Defaults to the platform's default character set. Optional.
     """
-    print(port, toWrite, encoding)
+    print (port, toWrite, encoding)
 
 
 def writeBytes(port, toWrite):
@@ -317,4 +342,4 @@ def writeBytes(port, toWrite):
         port (str): The previously configured serial port to use.
         toWrite (object): The byte[] to write.
     """
-    print(port, toWrite)
+    print (port, toWrite)

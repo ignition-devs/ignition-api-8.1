@@ -7,8 +7,16 @@ Alarm system in Ignition.
 """
 
 __all__ = [
-    'acknowledge', 'cancel', 'createRoster', 'getRosters', 'getShelvedPaths',
-    'listPipelines', 'queryJournal', 'queryStatus', 'shelve', 'unshelve'
+    "acknowledge",
+    "cancel",
+    "createRoster",
+    "getRosters",
+    "getShelvedPaths",
+    "listPipelines",
+    "queryJournal",
+    "queryStatus",
+    "shelve",
+    "unshelve",
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -23,6 +31,7 @@ class AlarmQueryResults(ABCMeta):
     provides additional helper functions for getting the event and
     associated data as a dataset.
     """
+
     def __new__(mcs, *args, **kwargs):
         pass
 
@@ -44,6 +53,7 @@ class ShelvedPath(Object):
     "shelved", such as when it was shelved, and by whom, and the actual
     path.
     """
+
     def __init__(self, path=None, user=None, expiration=None):
         self.path = path
         self.user = user
@@ -92,7 +102,7 @@ def acknowledge(alarmIds, notes=None, username=None):
             scoped script. This parameter should be omitted from any
             client-based scripts. Optional.
     """
-    print(alarmIds, notes, username)
+    print (alarmIds, notes, username)
 
 
 def cancel(alarmIds):
@@ -117,7 +127,7 @@ def createRoster(name, description):
         description (str): An description for the new roster. Required,
             but can be blank.
     """
-    print(name, description)
+    print (name, description)
 
 
 def getRosters():
@@ -145,7 +155,7 @@ def getShelvedPaths():
     return [ShelvedPath()]
 
 
-def listPipelines(projectName='alarm-pipelines'):
+def listPipelines(projectName="alarm-pipelines"):
     """Will return a list of the available Alarm Notification Pipelines.
 
     Args:
@@ -161,20 +171,22 @@ def listPipelines(projectName='alarm-pipelines'):
     return None
 
 
-def queryJournal(startDate=None,
-                 endDate=None,
-                 journalName=None,
-                 priority=None,
-                 state=None,
-                 path=None,
-                 source=None,
-                 displaypath=None,
-                 all_properties=None,
-                 any_properties=None,
-                 defined=None,
-                 includeData=None,
-                 includeSystem=None,
-                 isSystem=None):
+def queryJournal(
+    startDate=None,
+    endDate=None,
+    journalName=None,
+    priority=None,
+    state=None,
+    path=None,
+    source=None,
+    displaypath=None,
+    all_properties=None,
+    any_properties=None,
+    defined=None,
+    includeData=None,
+    includeSystem=None,
+    isSystem=None,
+):
     """Queries the specified journal for historical alarm events. The
     result is a list of alarm events, which can be queried for
     individual properties. The result object also has a getDataset()
@@ -235,23 +247,39 @@ def queryJournal(startDate=None,
             integer), and Priority (as an integer).
     """
     endDate = system.date.now() if endDate is None else endDate
-    startDate = (system.date.addHours(endDate, -8)
-                 if startDate is None else startDate)
-    print(startDate, endDate, journalName, priority, state, path, source,
-          displaypath, all_properties, any_properties, defined, includeData,
-          includeSystem, isSystem)
+    startDate = (
+        system.date.addHours(endDate, -8) if startDate is None else startDate
+    )
+    print (
+        startDate,
+        endDate,
+        journalName,
+        priority,
+        state,
+        path,
+        source,
+        displaypath,
+        all_properties,
+        any_properties,
+        defined,
+        includeData,
+        includeSystem,
+        isSystem,
+    )
     return AlarmQueryResults()
 
 
-def queryStatus(priority,
-                state,
-                path,
-                source,
-                displaypath,
-                all_properties,
-                any_properties,
-                defined,
-                includeShelved=False):
+def queryStatus(
+    priority,
+    state,
+    path,
+    source,
+    displaypath,
+    all_properties,
+    any_properties,
+    defined,
+    includeShelved=False,
+):
     """Queries the current state of alarms. The result is a list of
     alarm events, which can be queried for individual properties. The
     result object also has a getDataset() function that can be used to
@@ -300,8 +328,17 @@ def queryStatus(priority,
             alarm), Source Path, Display Path, Event Time, State (as an
             integer), and Priority (as an integer).
     """
-    print(priority, state, path, source, displaypath, all_properties,
-          any_properties, defined, includeShelved)
+    print (
+        priority,
+        state,
+        path,
+        source,
+        displaypath,
+        all_properties,
+        any_properties,
+        defined,
+        includeShelved,
+    )
     return AlarmQueryResults()
 
 
@@ -324,7 +361,7 @@ def shelve(path, timeoutSeconds, timeoutMinutes):
             alarms for, specified in minutes. 0 indicates that matching
             alarm events should now be allowed to pass.
     """
-    print(path, timeoutSeconds, timeoutMinutes)
+    print (path, timeoutSeconds, timeoutMinutes)
 
 
 def unshelve(path):

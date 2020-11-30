@@ -6,9 +6,17 @@ The following functions give you access to interact with the HDA
 types of OPC servers."""
 
 __all__ = [
-    'browse', 'getAggregates', 'getAttributes', 'getServers', 'insert',
-    'insertReplace', 'isServerAvailable', 'readAttributes', 'readProcessed',
-    'readRaw', 'replace'
+    "browse",
+    "getAggregates",
+    "getAttributes",
+    "getServers",
+    "insert",
+    "insertReplace",
+    "isServerAvailable",
+    "readAttributes",
+    "readProcessed",
+    "readRaw",
+    "replace",
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -31,6 +39,7 @@ class Aggregate(ABCMeta):
     introduction of history providers as an extension point, new
     providers could define any aggregation function.
     """
+
     def __new__(mcs, *args, **kwargs):
         pass
 
@@ -58,6 +67,7 @@ class Results(Object):
     continuation point should be non-null and can be used in
     constructing the subsequent BrowseFilter to continue the browse.
     """
+
     def error(self, result):
         pass
 
@@ -164,7 +174,7 @@ def insert(serverName, itemId, value, date, quality):
     Returns:
         int: The items quality form the operation.
     """
-    print(serverName, itemId, value, date, quality)
+    print (serverName, itemId, value, date, quality)
     return 192
 
 
@@ -182,7 +192,7 @@ def insertReplace(serverName, itemId, value, date, quality):
     Returns:
         int: The items quality form the operation.
     """
-    print(serverName, itemId, value, date, quality)
+    print (serverName, itemId, value, date, quality)
     return 192
 
 
@@ -226,12 +236,13 @@ def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
             the call was successful, and is itself a list of
             QualifiedValues.
     """
-    print(serverName, itemId, attributeIds, startDate, endDate)
+    print (serverName, itemId, attributeIds, startDate, endDate)
     return [ReadResult()]
 
 
-def readProcessed(serverName, itemIds, startDate, endDate, resampleIntervalMS,
-                  aggregates):
+def readProcessed(
+    serverName, itemIds, startDate, endDate, resampleIntervalMS, aggregates
+):
     """Reads processed values from the OPC-HDA server. Processed
     values are calculated values, based on the aggregate function
     requested for each item. The list of aggregates can be obtained by
@@ -259,13 +270,20 @@ def readProcessed(serverName, itemIds, startDate, endDate, resampleIntervalMS,
             the call was successful, and is itself a list of
             QualifiedValues.
     """
-    print(serverName, itemIds, startDate, endDate, resampleIntervalMS,
-          aggregates)
+    print (
+        serverName,
+        itemIds,
+        startDate,
+        endDate,
+        resampleIntervalMS,
+        aggregates,
+    )
     return [ReadResult()]
 
 
-def readRaw(serverName, itemIds, startDate, endDate, maxValues,
-            boundingValues):
+def readRaw(
+    serverName, itemIds, startDate, endDate, maxValues, boundingValues
+):
     """Reads raw values from the OPC-HDA server.
 
     Args:
@@ -288,7 +306,7 @@ def readRaw(serverName, itemIds, startDate, endDate, maxValues,
             the call was successful, and is itself a list of
             QualifiedValues.
     """
-    print(serverName, itemIds, startDate, endDate, maxValues, boundingValues)
+    print (serverName, itemIds, startDate, endDate, maxValues, boundingValues)
     return [ReadResult()]
 
 
@@ -306,5 +324,5 @@ def replace(serverName, itemId, value, date, quality):
     Returns:
         int: The item's quality resulting from the operation.
     """
-    print(serverName, itemId, value, date, quality)
+    print (serverName, itemId, value, date, quality)
     return 192

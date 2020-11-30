@@ -7,13 +7,33 @@ Gateway.
 """
 
 __all__ = [
-    'PyUser', 'addCompositeSchedule', 'addHoliday', 'addRole', 'addSchedule',
-    'addUser', 'createScheduleAdjustment', 'editHoliday', 'editRole',
-    'editSchedule', 'editUser', 'getHoliday', 'getHolidayNames', 'getHolidays',
-    'getNewUser', 'getRoles', 'getSchedule', 'getScheduledUsers',
-    'getScheduleNames', 'getSchedules', 'getUser', 'getUsers',
-    'isUserScheduled', 'removeHoliday', 'removeRole', 'removeSchedule',
-    'removeUser'
+    "PyUser",
+    "addCompositeSchedule",
+    "addHoliday",
+    "addRole",
+    "addSchedule",
+    "addUser",
+    "createScheduleAdjustment",
+    "editHoliday",
+    "editRole",
+    "editSchedule",
+    "editUser",
+    "getHoliday",
+    "getHolidayNames",
+    "getHolidays",
+    "getNewUser",
+    "getRoles",
+    "getSchedule",
+    "getScheduledUsers",
+    "getScheduleNames",
+    "getSchedules",
+    "getUser",
+    "getUsers",
+    "isUserScheduled",
+    "removeHoliday",
+    "removeRole",
+    "removeSchedule",
+    "removeUser",
 ]
 
 from abc import ABCMeta, abstractmethod
@@ -31,6 +51,7 @@ class ContactInfo(Object):
 
 class HolidayModel(Object):
     """HolidayModel object."""
+
     def __init__(self, name, date, repeatAnnually):
         """HolidayModel instance.
 
@@ -120,6 +141,7 @@ class UIResponse(Object):
 
 class User(ABCMeta):
     """User Interface."""
+
     def __new__(mcs, *args, **kwargs):
         pass
 
@@ -152,16 +174,17 @@ class PyUser(User):
     """A User implementation that delegates to another user object, but
     has some methods that are more scripting friendly.
     """
-    Badge = 'badge'
-    DEFAULT_SCHEDULE_NAME = 'Always'
-    FirstName = 'John'
-    Language = 'en_US'
-    LastName = 'Doe'
-    Notes = 'These are some notes.'
-    Password = 'password'
-    Schedule = 'Always'
-    Username = 'johdoe'
-    USERNAME_PATTERN = r'[\p{Alnum}][ @\w.\s\-]{1, 49}'
+
+    Badge = "badge"
+    DEFAULT_SCHEDULE_NAME = "Always"
+    FirstName = "John"
+    Language = "en_US"
+    LastName = "Doe"
+    Notes = "These are some notes."
+    Password = "password"
+    Schedule = "Always"
+    Username = "johdoe"
+    USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
 
     def addContactInfo(cls, *args):
         """Convenience method for scripting to add a new contactInfo
@@ -174,7 +197,7 @@ class PyUser(User):
         Args:
             args: Variable length argument list.
         """
-        print(cls, args)
+        print (cls, args)
 
     def addRole(cls, role):
         """Convenience method for scripting to add a new role easily.
@@ -184,10 +207,10 @@ class PyUser(User):
             role (str): A new role to add. If empty or null, no
                 effect.
         """
-        print(cls, role)
+        print (cls, role)
 
     def addRoles(cls, roles):
-        print(cls, roles)
+        print (cls, roles)
 
     def addScheduleAdjustment(cls, start, end, available=True, note=None):
         """Convenience method for scripting to add a new schedule
@@ -202,7 +225,7 @@ class PyUser(User):
                 this period. Optional.
             note (str): May be null or empty. Optional.
         """
-        print(cls, start, end, available, note)
+        print (cls, start, end, available, note)
 
     def addScheduleAdjustments(cls, scheduleAdjustments):
         """Add Schedule Adjustments.
@@ -211,7 +234,7 @@ class PyUser(User):
             scheduleAdjustments (ScheduleAdjustment):
                 ScheduleAdjustment object.
         """
-        print(cls, scheduleAdjustments)
+        print (cls, scheduleAdjustments)
 
     def contains(cls, prop):
         pass
@@ -227,9 +250,9 @@ class PyUser(User):
         Returns:
             list[ContactInfo]: A sequence of ContactInfo objects.
         """
-        ci_email = ContactInfo('email', 'johdoe@mycompany.com')
-        ci_phone = ContactInfo('phone', '+1 5551324567')
-        ci_sms = ContactInfo('sms', '+1 5557654321')
+        ci_email = ContactInfo("email", "johdoe@mycompany.com")
+        ci_phone = ContactInfo("phone", "+1 5551324567")
+        ci_sms = ContactInfo("sms", "+1 5557654321")
         return [ci_email, ci_phone, ci_sms]
 
     def getCount(cls):
@@ -256,7 +279,7 @@ class PyUser(User):
 
     def getRoles(cls):
         print cls
-        return ['Administrator', 'Developer']
+        return ["Administrator", "Developer"]
 
     def getScheduleAdjustments(cls):
         pass
@@ -315,7 +338,7 @@ def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):
         UIResponse: A UIResponse object with lists of warnings, errors,
             and info about the success or failure of the add.
     """
-    print(name, scheduleOne, scheduleTwo, description)
+    print (name, scheduleOne, scheduleTwo, description)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -349,7 +372,7 @@ def addRole(userSource, role):
         UIResponse: A UIResponse object with lists of warnings, errors,
             and info about the success or failure of the add.
     """
-    print(userSource, role)
+    print (userSource, role)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -382,7 +405,7 @@ def addUser(userSource, user):
         UIResponse: A UIResponse object with lists of warnings, errors,
             and info about the success or failure of the add attempt.
     """
-    print(userSource, user)
+    print (userSource, user)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -401,7 +424,7 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
         ScheduleAdjustment: A ScheduleAdjustment object that can be
             added to a user.
     """
-    print(startDate, endDate, isAvailable, note)
+    print (startDate, endDate, isAvailable, note)
 
 
 def editHoliday(holidayName, holiday):
@@ -417,7 +440,7 @@ def editHoliday(holidayName, holiday):
         UIResponse: An object with lists of warnings, errors, and info
             about the success or failure of the edit.
     """
-    print(holidayName, holiday)
+    print (holidayName, holiday)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -437,7 +460,7 @@ def editRole(userSource, oldName, newName):
         UIResponse: An object with lists of warnings, errors, and info
             about the success or failure of the edit.
     """
-    print(userSource, oldName, newName)
+    print (userSource, oldName, newName)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -455,7 +478,7 @@ def editSchedule(scheduleName, schedule):
         UIResponse: An object with lists of warnings, errors, and info
             about the success or failure of the edit.
     """
-    print(scheduleName, schedule)
+    print (scheduleName, schedule)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -473,7 +496,7 @@ def editUser(userSource, user):
         UIResponse: A UIResponse object with lists of warnings, errors,
             and information returned after the edit attempt.
     """
-    print(userSource, user)
+    print (userSource, user)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -499,7 +522,7 @@ def getHolidayNames():
         list[str]: A list of all holiday names, or an empty list if no
             holidays are defined.
     """
-    return ['Labor Day', 'Groundhog Day']
+    return ["Labor Day", "Groundhog Day"]
 
 
 def getHolidays():
@@ -525,7 +548,7 @@ def getNewUser(userSource, username):
         PyUser: The new user, as a User object. Refer also to the PyUser
             class.
     """
-    print(userSource, username)
+    print (userSource, username)
     return PyUser()
 
 
@@ -581,7 +604,7 @@ def getScheduledUsers(userSource, date=None):
             PyUser class.
     """
     date = system.date.now() if date is None else date
-    print(userSource, date)
+    print (userSource, date)
     return None
 
 
@@ -593,7 +616,7 @@ def getScheduleNames():
         list[str]: A List of Strings that holds the names of all the
             available schedules.
     """
-    return ['A', 'Always', 'B', 'C', 'Example', 'MyComposite', 'MySchedule']
+    return ["A", "Always", "B", "C", "Example", "MyComposite", "MySchedule"]
 
 
 def getSchedules():
@@ -623,7 +646,7 @@ def getUser(userSource, username):
         PyUser: The user, as a User object. Refer also to the PyUser
             class.
     """
-    print(userSource, username)
+    print (userSource, username)
     return PyUser()
 
 
@@ -660,7 +683,7 @@ def isUserScheduled(user, date=None):
             False if not.
     """
     date = system.date.now() if date is None else date
-    print(user, date)
+    print (user, date)
     return True
 
 
@@ -693,7 +716,7 @@ def removeRole(userSource, role):
         UIResponse: An object with lists of warnings, errors, and info
             about the success or failure of the deletion.
     """
-    print(userSource, role)
+    print (userSource, role)
     return UIResponse(Locale.ENGLISH)
 
 
@@ -728,4 +751,4 @@ def removeUser(userSource, username):
         UIResponse: An UIResponse object with lists of warnings, errors,
             and information returned after the removal attempt.
     """
-    print(userSource, username)
+    print (userSource, username)

@@ -6,15 +6,49 @@ The following functions give you access to test and modify dates.
 """
 
 __all__ = [
-    'addDays', 'addHours', 'addMillis', 'addMinutes', 'addMonths',
-    'addSeconds', 'addWeeks', 'addYears', 'daysBetween', 'format',
-    'fromMillis', 'getAMorPM', 'getDate', 'getDayOfMonth', 'getDayOfWeek',
-    'getDayOfYear', 'getHour12', 'getHour24', 'getMillis', 'getMinute',
-    'getMonth', 'getQuarter', 'getSecond', 'getTimezone', 'getTimezoneOffset',
-    'getTimezoneRawOffset', 'getYear', 'hoursBetween', 'isAfter', 'isBefore',
-    'isBetween', 'isDaylightTime', 'midnight', 'millisBetween',
-    'minutesBetween', 'monthsBetween', 'now', 'parse', 'secondsBetween',
-    'setTime', 'toMillis', 'weeksBetween', 'yearsBetween'
+    "addDays",
+    "addHours",
+    "addMillis",
+    "addMinutes",
+    "addMonths",
+    "addSeconds",
+    "addWeeks",
+    "addYears",
+    "daysBetween",
+    "format",
+    "fromMillis",
+    "getAMorPM",
+    "getDate",
+    "getDayOfMonth",
+    "getDayOfWeek",
+    "getDayOfYear",
+    "getHour12",
+    "getHour24",
+    "getMillis",
+    "getMinute",
+    "getMonth",
+    "getQuarter",
+    "getSecond",
+    "getTimezone",
+    "getTimezoneOffset",
+    "getTimezoneRawOffset",
+    "getYear",
+    "hoursBetween",
+    "isAfter",
+    "isBefore",
+    "isBetween",
+    "isDaylightTime",
+    "midnight",
+    "millisBetween",
+    "minutesBetween",
+    "monthsBetween",
+    "now",
+    "parse",
+    "secondsBetween",
+    "setTime",
+    "toMillis",
+    "weeksBetween",
+    "yearsBetween",
 ]
 
 from datetime import datetime, timedelta
@@ -101,6 +135,7 @@ def addMonths(date, value):
             function.
     """
     import calendar
+
     m = (date.month + value) % 12
     y = date.year + (date.month + value - 1) // 12
     if not m:
@@ -169,7 +204,7 @@ def daysBetween(date_1, date_2):
     return (date_2 - date_1).days
 
 
-def format(date, format='yyyy-MM-dd HH:mm:ss'):
+def format(date, format="yyyy-MM-dd HH:mm:ss"):
     """Returns the given date as a string, formatted according to a
     pattern.
 
@@ -184,22 +219,22 @@ def format(date, format='yyyy-MM-dd HH:mm:ss'):
     Returns:
         str: A string representing the formatted datetime
     """
-    _format = format.replace('yyyy', '%Y')
-    _format = _format.replace('yy', '%y')
-    _format = _format.replace('MMMM', '%B')
-    _format = _format.replace('MMM', '%b')
-    _format = _format.replace('MM', '%m')
-    _format = _format.replace('dd', '%d')
-    _format = _format.replace('HH', '%H')
-    _format = _format.replace('hh', '%I')
-    _format = _format.replace('mm', '%M')
-    _format = _format.replace('S', '%f')
-    _format = _format.replace('ss', '%S')
-    _format = _format.replace('z', '%Z')
-    _format = _format.replace('Z', '%z')
-    _format = _format.replace('a', '%p')
-    _format = _format.replace('w', '%U')
-    _format = _format.replace('D', '%j')
+    _format = format.replace("yyyy", "%Y")
+    _format = _format.replace("yy", "%y")
+    _format = _format.replace("MMMM", "%B")
+    _format = _format.replace("MMM", "%b")
+    _format = _format.replace("MM", "%m")
+    _format = _format.replace("dd", "%d")
+    _format = _format.replace("HH", "%H")
+    _format = _format.replace("hh", "%I")
+    _format = _format.replace("mm", "%M")
+    _format = _format.replace("S", "%f")
+    _format = _format.replace("ss", "%S")
+    _format = _format.replace("z", "%Z")
+    _format = _format.replace("Z", "%z")
+    _format = _format.replace("a", "%p")
+    _format = _format.replace("w", "%U")
+    _format = _format.replace("D", "%j")
     return date.strftime(_format)
 
 
@@ -381,7 +416,7 @@ def getTimezone():
     Returns:
         str: A representation of the current timezone.
     """
-    return 'America/Tijuana'
+    return "America/Tijuana"
 
 
 def getTimezoneOffset(date=datetime.now()):
@@ -494,8 +529,18 @@ def isDaylightTime(date=datetime.now()):
             current timezone, False (0) otherwise.
     """
     import time
-    tt = (date.year, date.month, date.day, date.hour, date.minute, date.second,
-          date.weekday(), 0, 0)
+
+    tt = (
+        date.year,
+        date.month,
+        date.day,
+        date.hour,
+        date.minute,
+        date.second,
+        date.weekday(),
+        0,
+        0,
+    )
     stamp = time.mktime(tt)
     tt = time.localtime(stamp)
     return tt.tm_isdst > 0
@@ -559,6 +604,7 @@ def monthsBetween(date_1, date_2):
             two dates.
     """
     from calendar import monthrange
+
     delta = 0
     while True:
         mdays = monthrange(date_1.year, date_2.month)[1]
@@ -580,9 +626,9 @@ def now():
     return datetime.now()
 
 
-def parse(dateString,
-          formatString='yyyy-MM-dd HH:mm:ss',
-          locale=Locale.ENGLISH):
+def parse(
+    dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH
+):
     """Attempts to parse a string and create a Date. Causes
     ParseException if the date dateString parameter is in an
     unrecognized format.
@@ -646,6 +692,7 @@ def toMillis(date):
             elapsed since January 1, 1970, 00:00:00 UTC (GMT).
     """
     from time import mktime
+
     millis = mktime(date.timetuple()) * 1000 + date.microsecond // 1000
     return long(millis)
 

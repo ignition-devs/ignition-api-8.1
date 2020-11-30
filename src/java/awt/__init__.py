@@ -5,7 +5,7 @@
 painting graphics and images.
 """
 
-__all__ = ['Color', 'Component', 'Container', 'Frame', 'Image', 'Window']
+__all__ = ["Color", "Component", "Container", "Frame", "Image", "Window"]
 
 from java.lang import Object
 
@@ -27,6 +27,7 @@ class Color(Object):
     standard RGB color space. For further information on sRGB, see
     http://www.w3.org/pub/WWW/Graphics/Color/sRGB.html.
     """
+
     def __init__(self, *args):
         """Creates a color.
 
@@ -40,6 +41,7 @@ class Component(Object):
     """A component is an object having a graphical representation that
     can be displayed on the screen and that can interact with the user.
     """
+
     pass
 
 
@@ -47,24 +49,27 @@ class Container(Component):
     """A generic Abstract Window Toolkit(AWT) container object is a
     component that can contain other AWT components.
     """
+
     def add(self, *args):
         """Adds the specified component.
 
         Args:
             *args: Variable length argument list.
         """
-        print(self, args)
+        print (self, args)
 
 
 class Window(Container):
     """A Window object is a top-level window with no borders and no
     menubar.
     """
+
     pass
 
 
 class Frame(Window):
     """A Frame is a top-level window with a title and a border."""
+
     pass
 
 
@@ -73,4 +78,5 @@ class Image(Object):
     represent graphical images. The image must be obtained in a
     platform-specific manner.
     """
+
     pass

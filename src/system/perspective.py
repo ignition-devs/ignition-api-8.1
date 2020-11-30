@@ -9,10 +9,26 @@ Perspective session from a Python script.
 from __future__ import print_function
 
 __all__ = [
-    'alterLogging', 'closeDock', 'closePage', 'closePopup', 'closeSession',
-    'download', 'getSessionInfo', 'isAuthorized', 'login', 'logout',
-    'navigate', 'openDock', 'openPopup', 'print', 'refresh', 'sendMessage',
-    'setTheme', 'toggleDock', 'togglePopup', 'vibrateDevice'
+    "alterLogging",
+    "closeDock",
+    "closePage",
+    "closePopup",
+    "closeSession",
+    "download",
+    "getSessionInfo",
+    "isAuthorized",
+    "login",
+    "logout",
+    "navigate",
+    "openDock",
+    "openPopup",
+    "print",
+    "refresh",
+    "sendMessage",
+    "setTheme",
+    "toggleDock",
+    "togglePopup",
+    "vibrateDevice",
 ]
 
 from java.lang import Object
@@ -21,6 +37,7 @@ from java.lang import Object
 class PyJsonObjectAdapter(Object):
     def __init__(self, obj):
         from __builtin__ import print
+
         print(self, obj)
 
     def __delitem__(self, key):
@@ -81,11 +98,13 @@ class PyJsonObjectAdapter(Object):
         pass
 
 
-def alterLogging(remoteLoggingEnabled=False,
-                 level='info',
-                 remoteLoggingLevel='warn',
-                 sessionId='current_session',
-                 pageId='current_page'):
+def alterLogging(
+    remoteLoggingEnabled=False,
+    level="info",
+    remoteLoggingLevel="warn",
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Changes Perspective Session logging attributes and levels. All
     parameters are optional, with the caveat that at least one of them
     needs to be used.
@@ -109,6 +128,7 @@ def alterLogging(remoteLoggingEnabled=False,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId)
 
 
@@ -127,12 +147,13 @@ def closeDock(id, sessionId=None, pageId=None):
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(id, sessionId, pageId)
 
 
-def closePage(message=None,
-              sessionId='current_session',
-              pageID='current_page'):
+def closePage(
+    message=None, sessionId="current_session", pageID="current_page"
+):
     """Closes the page with the given page id or the current page if no
     page id is provided. If a message is provided, it is displayed on
     the page when the page closes. Otherwise the default message (set in
@@ -150,10 +171,11 @@ def closePage(message=None,
             the current pageId is used. Optional.
     """
     from __builtin__ import print
+
     print(message, sessionId, pageID)
 
 
-def closePopup(id, sessionId='current_session', pageId='current_page'):
+def closePopup(id, sessionId="current_session", pageId="current_page"):
     """Closes a popup View.
 
     Args:
@@ -168,10 +190,11 @@ def closePopup(id, sessionId='current_session', pageId='current_page'):
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(id, sessionId, pageId)
 
 
-def closeSession(message=None, sessionId='current_session'):
+def closeSession(message=None, sessionId="current_session"):
     """Closes the Perspective Session with the given session ID or the
     current session if no ID is provided. If a message is provided, it
     is displayed on the page when the session closes. Otherwise the
@@ -185,14 +208,17 @@ def closeSession(message=None, sessionId='current_session'):
             omitted, the current sessionId is used. Optional.
     """
     from __builtin__ import print
+
     print(message, sessionId)
 
 
-def download(filename,
-             data,
-             contentType,
-             sessionId='current_session',
-             pageId='current_page'):
+def download(
+    filename,
+    data,
+    contentType,
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Downloads data from the gateway to a device running a session.
 
     Args:
@@ -210,6 +236,7 @@ def download(filename,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(filename, data, contentType, sessionId, pageId)
 
 
@@ -230,6 +257,7 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
             (PyJsonObjectAdapter).
     """
     from __builtin__ import print
+
     print(usernameFilter, projectFilter)
     return [PyJsonObjectAdapter(None)]
 
@@ -253,11 +281,12 @@ def isAuthorized(isAllOf, securityLevels):
             False otherwise.
     """
     from __builtin__ import print
+
     print(isAllOf, securityLevels)
     return True
 
 
-def login(sessionId='current_session', pageId='current_page', forceAuth=False):
+def login(sessionId="current_session", pageId="current_page", forceAuth=False):
     """Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP). For this function to
     work, an Identity Provider must be set in Perspective project
@@ -287,10 +316,11 @@ def login(sessionId='current_session', pageId='current_page', forceAuth=False):
             under Project Properties. Optional.
     """
     from __builtin__ import print
+
     print(sessionId, pageId, forceAuth)
 
 
-def logout(sessionId='current_session', pageId='current_page'):
+def logout(sessionId="current_session", pageId="current_page"):
     """Triggers a logout event, which will log the user out. For this
     function to work, an Identity Provider must be set in the
     Perspective project properties.
@@ -304,15 +334,18 @@ def logout(sessionId='current_session', pageId='current_page'):
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(sessionId, pageId)
 
 
-def navigate(page,
-             url=None,
-             view=None,
-             params=None,
-             sessionId='current_session',
-             pageId='current_page'):
+def navigate(
+    page,
+    url=None,
+    view=None,
+    params=None,
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Navigate the session to a specified view or mounted page.
 
     The function can be used in three different ways, depending on which
@@ -348,13 +381,13 @@ def navigate(page,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(page, url, view, params, sessionId, pageId)
 
 
-def openDock(id,
-             sessionId='current_session',
-             pageId='current_page',
-             params=None):
+def openDock(
+    id, sessionId="current_session", pageId="current_page", params=None
+):
     """Opens a docked View. Requires the preconfigured dock ID for the
     view.
 
@@ -372,21 +405,24 @@ def openDock(id,
             view. Must match the docked views View Parameters. Optional.
     """
     from __builtin__ import print
+
     print(id, sessionId, pageId, params)
 
 
-def openPopup(id,
-              view,
-              params=None,
-              title='',
-              position=None,
-              showCloseIcon=True,
-              draggable=True,
-              resizable=False,
-              modal=False,
-              overlayDismiss=False,
-              sessionId='current_session',
-              pageId='current_page'):
+def openPopup(
+    id,
+    view,
+    params=None,
+    title="",
+    position=None,
+    showCloseIcon=True,
+    draggable=True,
+    resizable=False,
+    modal=False,
+    overlayDismiss=False,
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Open a popup view over the given page.
 
     Args:
@@ -422,14 +458,29 @@ def openPopup(id,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
-    print(id, view, params, title, position, showCloseIcon, draggable,
-          resizable, modal, overlayDismiss, sessionId, pageId)
+
+    print(
+        id,
+        view,
+        params,
+        title,
+        position,
+        showCloseIcon,
+        draggable,
+        resizable,
+        modal,
+        overlayDismiss,
+        sessionId,
+        pageId,
+    )
 
 
-def print(message,
-          sessionId='current_session',
-          pageId='current_page',
-          destination='client'):
+def print(
+    message,
+    sessionId="current_session",
+    pageId="current_page",
+    destination="client",
+):
     """Sends print statements to the scripting console when in the
     Designer. When in a Session, sends print statements to the output
     console. This function makes scripting diagnostics easier.
@@ -448,10 +499,11 @@ def print(message,
             "client". Optional.
     """
     from __builtin__ import print
+
     print(message, sessionId, pageId, destination)
 
 
-def refresh(sessionId='current_session', pageId='current_page'):
+def refresh(sessionId="current_session", pageId="current_page"):
     """Triggers a refresh of the page.
 
     Args:
@@ -463,14 +515,17 @@ def refresh(sessionId='current_session', pageId='current_page'):
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(sessionId, pageId)
 
 
-def sendMessage(messageType,
-                payload,
-                scope='page',
-                sessionId='current_session',
-                pageId='current_page'):
+def sendMessage(
+    messageType,
+    payload,
+    scope="page",
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Send a message to a message handler within the same session.
 
     Args:
@@ -490,10 +545,11 @@ def sendMessage(messageType,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(messageType, payload, scope, sessionId, pageId)
 
 
-def setTheme(name, sessionId='current_session', pageId='current_page'):
+def setTheme(name, sessionId="current_session", pageId="current_page"):
     """Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
@@ -511,13 +567,13 @@ def setTheme(name, sessionId='current_session', pageId='current_page'):
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
+
     print(name, sessionId, pageId)
 
 
-def toggleDock(id,
-               sessionId='current_session',
-               pageId='current_page',
-               params=None):
+def toggleDock(
+    id, sessionId="current_session", pageId="current_page", params=None
+):
     """Toggles a docked View.
 
     Args:
@@ -534,21 +590,24 @@ def toggleDock(id,
             view. Must match the docked views View Parameters. Optional.
     """
     from __builtin__ import print
+
     print(id, sessionId, pageId, params)
 
 
-def togglePopup(id,
-                view,
-                params,
-                title='',
-                position=None,
-                showCloseIcon=True,
-                draggable=True,
-                resizable=False,
-                modal=False,
-                overlayDismiss=False,
-                sessionId='current_session',
-                pageId='current_page'):
+def togglePopup(
+    id,
+    view,
+    params,
+    title="",
+    position=None,
+    showCloseIcon=True,
+    draggable=True,
+    resizable=False,
+    modal=False,
+    overlayDismiss=False,
+    sessionId="current_session",
+    pageId="current_page",
+):
     """Toggles a popup. Will open up the popup if it has not been opened
     yet. Otherwise, it will close the currently opened popup.
 
@@ -585,11 +644,24 @@ def togglePopup(id,
             current Page will be used automatically. Optional.
     """
     from __builtin__ import print
-    print(id, view, params, title, position, showCloseIcon, draggable,
-          resizable, modal, overlayDismiss, sessionId, pageId)
+
+    print(
+        id,
+        view,
+        params,
+        title,
+        position,
+        showCloseIcon,
+        draggable,
+        resizable,
+        modal,
+        overlayDismiss,
+        sessionId,
+        pageId,
+    )
 
 
-def vibrateDevice(duration, sessionId='current_session'):
+def vibrateDevice(duration, sessionId="current_session"):
     """When called from the Perspective mobile app, will cause the
     device to vibrate for the specified number of milliseconds.
 
@@ -602,4 +674,5 @@ def vibrateDevice(duration, sessionId='current_session'):
             must be included in the call. Optional.
     """
     from __builtin__ import print
+
     print(duration, sessionId)

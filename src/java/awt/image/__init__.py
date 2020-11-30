@@ -11,7 +11,7 @@ provides a number of image producers, consumers, and filters that you
 can configure for your image processing needs.
 """
 
-__all__ = ['BufferedImage']
+__all__ = ["BufferedImage"]
 
 from java.awt import Image
 
@@ -29,6 +29,7 @@ class BufferedImage(Image):
     This class relies on the data fetching and setting methods of
     Raster, and on the color characterization methods of ColorModel.
     """
+
     def __init__(self, *args):
         """Constructs a BufferedImage.
 

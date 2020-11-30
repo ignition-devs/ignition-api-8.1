@@ -6,9 +6,17 @@ The following functions give you access to interact with http services.
 """
 
 __all__ = [
-    'getExternalIpAddress', 'getHostName', 'getIpAddress', 'getRemoteServers',
-    'httpClient', 'httpDelete', 'httpGet', 'httpPost', 'httpPut', 'openURL',
-    'sendEmail'
+    "getExternalIpAddress",
+    "getHostName",
+    "getIpAddress",
+    "getRemoteServers",
+    "httpClient",
+    "httpDelete",
+    "httpGet",
+    "httpPost",
+    "httpPut",
+    "openURL",
+    "sendEmail",
 ]
 
 from java.lang import Object
@@ -19,6 +27,7 @@ class JythonHttpClient(Object):
     in Java 11+. Mostly, through convenience functions that make things
     easier to use from Jython.
     """
+
     def delete(self, *args, **kwargs):
         pass
 
@@ -99,7 +108,7 @@ def getExternalIpAddress():
         str: A text representation of the client's IP address, as
             detected by the Gateway.
     """
-    return '52.52.32.221'
+    return "52.52.32.221"
 
 
 def getHostName():
@@ -113,6 +122,7 @@ def getHostName():
         str: The hostname of the local machine.
     """
     import socket
+
     return socket.gethostname()
 
 
@@ -124,7 +134,7 @@ def getIpAddress():
     Returns:
         str: Returns the IP address of the local machine, as it sees it.
     """
-    return '127.0.0.1'
+    return "127.0.0.1"
 
 
 def getRemoteServers(runningOnly=True):
@@ -145,14 +155,16 @@ def getRemoteServers(runningOnly=True):
     return []
 
 
-def httpClient(timeout=60000,
-               bypass_cert_validation=True,
-               username=None,
-               password=None,
-               proxy=None,
-               cookie_policy='ACCEPT_ORIGINAL_SERVER',
-               redirect_policy='NORMAL',
-               customizer=None):
+def httpClient(
+    timeout=60000,
+    bypass_cert_validation=True,
+    username=None,
+    password=None,
+    proxy=None,
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",
+    redirect_policy="NORMAL",
+    customizer=None,
+):
     """Provides a general use object that can be used to send and
     receive HTTP requests. The object created by this function is a
     wrapper around Java's HttpClient class. Usage requires creating a
@@ -198,19 +210,29 @@ def httpClient(timeout=60000,
             HttpClient class. The httpClient object has methods that can
             be called to execute HTTP requests against a server.
     """
-    print(timeout, bypass_cert_validation, username, password, proxy,
-          cookie_policy, redirect_policy, customizer)
+    print (
+        timeout,
+        bypass_cert_validation,
+        username,
+        password,
+        proxy,
+        cookie_policy,
+        redirect_policy,
+        customizer,
+    )
     return JythonHttpClient()
 
 
-def httpDelete(url,
-               contentType=None,
-               connectTimeout=10000,
-               readTimeout=60000,
-               username=None,
-               password=None,
-               headerValues=None,
-               bypassCertValidation=True):
+def httpDelete(
+    url,
+    contentType=None,
+    connectTimeout=10000,
+    readTimeout=60000,
+    username=None,
+    password=None,
+    headerValues=None,
+    bypassCertValidation=True,
+):
     """Performs an HTTP DELETE to the given URL.
 
     Args:
@@ -236,20 +258,30 @@ def httpDelete(url,
     Returns:
         object: The content returned for the DELETE operation.
     """
-    print(url, contentType, connectTimeout, readTimeout, username, password,
-          headerValues, bypassCertValidation)
+    print (
+        url,
+        contentType,
+        connectTimeout,
+        readTimeout,
+        username,
+        password,
+        headerValues,
+        bypassCertValidation,
+    )
     return object
 
 
-def httpGet(url,
-            connectTimeout=10000,
-            readTimeout=60000,
-            username=None,
-            password=None,
-            headerValues=None,
-            bypassCertValidation=None,
-            useCaches=True,
-            throwOnError=True):
+def httpGet(
+    url,
+    connectTimeout=10000,
+    readTimeout=60000,
+    username=None,
+    password=None,
+    headerValues=None,
+    bypassCertValidation=None,
+    useCaches=True,
+    throwOnError=True,
+):
     """Retrieves the document at the given URL using the HTTP GET
     protocol. The document is returned as a string. For example, if you
     use the URL of a website, you'll get the same thing you'd get by
@@ -285,9 +317,18 @@ def httpGet(url,
     Returns:
         str: The content found at the given URL.
     """
-    print(url, connectTimeout, readTimeout, username, password, headerValues,
-          bypassCertValidation, useCaches, throwOnError)
-    return ''
+    print (
+        url,
+        connectTimeout,
+        readTimeout,
+        username,
+        password,
+        headerValues,
+        bypassCertValidation,
+        useCaches,
+        throwOnError,
+    )
+    return ""
 
 
 def httpPost(url, *args):
@@ -305,8 +346,8 @@ def httpPost(url, *args):
     Returns:
         str: The content returned for the POST operation.
     """
-    print(url, args)
-    return ''
+    print (url, args)
+    return ""
 
 
 def httpPut(url, *args, **kwargs):
@@ -322,8 +363,8 @@ def httpPut(url, *args, **kwargs):
     Returns:
         str: The content returned by the PUT operation.
     """
-    print(url, args, kwargs)
-    return ''
+    print (url, args, kwargs)
+    return ""
 
 
 def openURL(url, useApplet=False):
@@ -337,26 +378,28 @@ def openURL(url, useApplet=False):
             as an Applet, then the browser instance that launched the
             applet will be used to open the URL. Optional.
     """
-    print(url, useApplet)
+    print (url, useApplet)
 
 
-def sendEmail(smtp,
-              fromAddr,
-              subject,
-              body,
-              html,
-              to,
-              attachmentNames=None,
-              attachmentData=None,
-              timeout=300000,
-              username=None,
-              password=None,
-              priority='3',
-              smtpProfile=None,
-              cc=None,
-              bcc=None,
-              retries=0,
-              replyTo=None):
+def sendEmail(
+    smtp,
+    fromAddr,
+    subject,
+    body,
+    html,
+    to,
+    attachmentNames=None,
+    attachmentData=None,
+    timeout=300000,
+    username=None,
+    password=None,
+    priority="3",
+    smtpProfile=None,
+    cc=None,
+    bcc=None,
+    retries=0,
+    replyTo=None,
+):
     """Sends an email through the given SMTP server. Note that this
     email is relayed first through the Gateway - the client host machine
     doesn't need network access to the SMTP server.
@@ -401,6 +444,22 @@ def sendEmail(smtp,
             recipients reply to. If omitted, this defaults to the from
             address. Optional.
     """
-    print(smtp, fromAddr, subject, body, html, to, attachmentNames,
-          attachmentData, timeout, username, password, priority, smtpProfile,
-          cc, bcc, retries, replyTo)
+    print (
+        smtp,
+        fromAddr,
+        subject,
+        body,
+        html,
+        to,
+        attachmentNames,
+        attachmentData,
+        timeout,
+        username,
+        password,
+        priority,
+        smtpProfile,
+        cc,
+        bcc,
+        retries,
+        replyTo,
+    )

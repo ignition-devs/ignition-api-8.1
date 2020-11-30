@@ -6,7 +6,7 @@ The following functions give you access to view EAM information from
 the Gateway.
 """
 
-__all__ = ['getGroups', 'queryAgentHistory', 'queryAgentStatus', 'runTask']
+__all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
 import system.date
 from java.lang import Object
@@ -53,14 +53,12 @@ def getGroups():
     Returns:
         list[str]: A string list of group names.
     """
-    return ['']
+    return [""]
 
 
-def queryAgentHistory(groupIds=None,
-                      agentIds=None,
-                      startDate=None,
-                      endDate=None,
-                      limit=100):
+def queryAgentHistory(
+    groupIds=None, agentIds=None, startDate=None, endDate=None, limit=100
+):
     """Returns a list of the most recent agent events.
 
     Args:
@@ -83,9 +81,10 @@ def queryAgentHistory(groupIds=None,
             a new agent event.
     """
     endDate = system.date.now() if endDate is None else endDate
-    startDate = (system.date.addHours(endDate, -8)
-                 if startDate is None else startDate)
-    print(groupIds, agentIds, startDate, endDate, limit)
+    startDate = (
+        system.date.addHours(endDate, -8) if startDate is None else startDate
+    )
+    print (groupIds, agentIds, startDate, endDate, limit)
     return Dataset()
 
 
@@ -108,7 +107,7 @@ def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
             RunningStateInt, LicenseKey, and Version, where each row is
             a new agent.
     """
-    print(groupIds, agentIds, isConnected)
+    print (groupIds, agentIds, isConnected)
     return Dataset()
 
 

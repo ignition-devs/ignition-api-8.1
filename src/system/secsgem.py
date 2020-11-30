@@ -8,24 +8,34 @@ before these functions will be accessible.
 """
 
 __all__ = [
-    'copyEquipment', 'deleteToolProgram', 'enableDisableEquipment',
-    'getResponse', 'getToolProgram', 'getToolProgramDataset', 'sendRequest',
-    'startSimEventRun', 'toDataSet', 'toTreeDataSet', 'sendResponse'
+    "copyEquipment",
+    "deleteToolProgram",
+    "enableDisableEquipment",
+    "getResponse",
+    "getToolProgram",
+    "getToolProgramDataset",
+    "sendRequest",
+    "startSimEventRun",
+    "toDataSet",
+    "toTreeDataSet",
+    "sendResponse",
 ]
 
 from system.dataset import Dataset
 
 
-def copyEquipment(equipmentSource,
-                  newEquipmentName,
-                  enabled,
-                  activeAddress,
-                  activePort,
-                  passiveAddress,
-                  passivePort,
-                  deviceId,
-                  dbTablePrefix=None,
-                  description=None):
+def copyEquipment(
+    equipmentSource,
+    newEquipmentName,
+    enabled,
+    activeAddress,
+    activePort,
+    passiveAddress,
+    passivePort,
+    deviceId,
+    dbTablePrefix=None,
+    description=None,
+):
     """Creates a copy of an equipment connection. Common settings can be
     overridden for the new connection.
 
@@ -62,9 +72,18 @@ def copyEquipment(equipmentSource,
             connection. If no description is specified, the description
             of the source equipment will be used. Optional.
     """
-    print(equipmentSource, newEquipmentName, enabled, activeAddress,
-          activePort, passiveAddress, passivePort, deviceId, dbTablePrefix,
-          description)
+    print (
+        equipmentSource,
+        newEquipmentName,
+        enabled,
+        activeAddress,
+        activePort,
+        passiveAddress,
+        passivePort,
+        deviceId,
+        dbTablePrefix,
+        description,
+    )
 
 
 def deleteToolProgram(ppid):
@@ -99,7 +118,7 @@ def enableDisableEquipment(enable, names):
     print enable
     for name in names:
         print name
-    return ['']
+    return [""]
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
@@ -125,7 +144,7 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
             result is a JSON string that's decoded into a python object,
             as shown on the mapping on the system.util.jsonDecode page.
     """
-    print(transactionID, equipment, timeout, poll)
+    print (transactionID, equipment, timeout, poll)
     return None
 
 
@@ -142,11 +161,12 @@ def getToolProgram(ppid):
             [editDate, ppbody, bodyFormat].
     """
     import system.date
+
     print ppid
     return {
-        'editDate': system.date.now(),
-        'ppBody': 'program',
-        'bodyFormat': 'A'
+        "editDate": system.date.now(),
+        "ppBody": "program",
+        "bodyFormat": "A",
     }
 
 
@@ -181,7 +201,7 @@ def sendRequest(streamFunction, reply, body, equipment):
     Returns:
         int: The transactionID of the SECS message response.
     """
-    print(streamFunction, reply, body, equipment)
+    print (streamFunction, reply, body, equipment)
     return 0
 
 
@@ -200,7 +220,7 @@ def startSimEventRun(simulatorName, eventRunName):
         eventRunName (str): The event run to start. Will throw an
             exception if the specified simulator can't be found.
     """
-    print(simulatorName, eventRunName)
+    print (simulatorName, eventRunName)
 
 
 def toDataSet(secsObject):
@@ -260,4 +280,4 @@ def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
             system.util.jsonDecode function.
         equipment (str): Name of the equipment connection to use.
     """
-    print(transactionID, systemBytes, streamFunction, body, equipment)
+    print (transactionID, systemBytes, streamFunction, body, equipment)

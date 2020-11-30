@@ -7,8 +7,12 @@ connections in the Gateway.
 """
 
 __all__ = [
-    'addDevice', 'listDevices', 'refreshBrowse', 'removeDevice',
-    'setDeviceEnabled', 'setDeviceHostname'
+    "addDevice",
+    "listDevices",
+    "refreshBrowse",
+    "removeDevice",
+    "setDeviceEnabled",
+    "setDeviceHostname",
 ]
 
 from system.dataset import Dataset
@@ -32,7 +36,7 @@ def addDevice(deviceType, deviceName, deviceProps):
             properties that appear when manually creating a device
             connection.
     """
-    print(deviceType, deviceName, deviceProps)
+    print (deviceType, deviceName, deviceProps)
 
 
 def listDevices():
@@ -72,7 +76,7 @@ def setDeviceEnabled(deviceName, enabled):
         deviceName (str): The name of the device in Ignition.
         enabled (bool): The enabled status of the device.
     """
-    print(deviceName, enabled)
+    print (deviceName, enabled)
 
 
 def setDeviceHostname(deviceName, hostname):
@@ -83,4 +87,4 @@ def setDeviceHostname(deviceName, hostname):
         deviceName (str): The name of the device in Ignition.
         hostname (str): The new IP address or hostname.
     """
-    print(deviceName, hostname)
+    print (deviceName, hostname)

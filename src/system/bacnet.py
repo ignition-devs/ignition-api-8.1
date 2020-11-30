@@ -6,7 +6,7 @@ The following functions are used with the BACnet driver and a BACnet/IP
 device.
 """
 
-__all__ = ['synchronizeTime', 'synchronizeTimeUtc', 'writeWithPriority']
+__all__ = ["synchronizeTime", "synchronizeTimeUtc", "writeWithPriority"]
 
 
 def synchronizeTime(deviceName):
@@ -47,4 +47,4 @@ def writeWithPriority(deviceName, objectType, objectId, value, priority):
         priority (int): The priority level to write the value at. Must
             be in the range [1...16].
     """
-    print(deviceName, objectType, objectId, value, priority)
+    print (deviceName, objectType, objectId, value, priority)

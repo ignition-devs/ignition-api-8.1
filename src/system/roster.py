@@ -6,7 +6,7 @@ Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
 
-__all__ = ['addUsers', 'createRoster', 'getRosters', 'removeUsers']
+__all__ = ["addUsers", "createRoster", "getRosters", "removeUsers"]
 
 from system.user import PyUser
 
@@ -40,7 +40,7 @@ def createRoster(name, description):
         description (str): The description for the roster. May be None,
             but the parameter is mandatory.
     """
-    print(name, description)
+    print (name, description)
 
 
 def getRosters():
