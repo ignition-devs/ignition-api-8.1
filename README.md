@@ -8,7 +8,7 @@
 
 # Ignition
 
-Ignition is a set of packages and modules that allows developers to get code completion in their IDE of choice.
+Ignition is a set of packages and modules that allow developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
 ## Branches
 
