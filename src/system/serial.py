@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """Serial Functions
@@ -262,7 +262,7 @@ def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
     return ""
 
 
-def readLine(port, timeout=5000, encoding="utf-8"):
+def readLine(port, timeout=5000, encoding="utf-8", crlfRequired=False):
     """Attempts to read a line from a serial port. A "line" is
     considered to be terminated by either a line feed ('\n'), a carriage
     return ('\r'), or a carriage return followed immediately by a line
@@ -278,11 +278,13 @@ def readLine(port, timeout=5000, encoding="utf-8"):
             before returning. Default is 5000. Optional.
         encoding (str): The String encoding to use. Default is UTF8.
             Optional.
+        crlfRequired (bool): True if both CR and LF are required to
+            delimit a line. Optional.
 
     Returns:
         str: A line of text.
     """
-    print (port, timeout, encoding)
+    print (port, timeout, encoding, crlfRequired)
     return ""
 
 
@@ -335,11 +337,13 @@ def write(port, toWrite, encoding="utf-8"):
     print (port, toWrite, encoding)
 
 
-def writeBytes(port, toWrite):
+def writeBytes(port, toWrite, timeout=5000):
     """Write a byte[] to a serial port.
 
     Args:
         port (str): The previously configured serial port to use.
         toWrite (object): The byte[] to write.
+        timeout (int): Optional timeout in milliseconds. Default is
+            5000.
     """
-    print (port, toWrite)
+    print (port, toWrite, timeout)

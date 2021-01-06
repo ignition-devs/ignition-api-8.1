@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """Tag Functions
@@ -12,6 +12,7 @@ __all__ = [
     "browseTagsSimple",
     "configure",
     "copy",
+    "deleteAnnotations",
     "deleteTags",
     "exists",
     "exportTags",
@@ -19,6 +20,7 @@ __all__ = [
     "importTags",
     "isOverlaysEnabled",
     "move",
+    "queryAnnotations",
     "queryTagCalculations",
     "queryTagDensity",
     "queryTagHistory",
@@ -26,8 +28,10 @@ __all__ = [
     "readAll",
     "readAsync",
     "readBlocking",
+    "rename",
     "requestGroupExecution",
     "setOverlaysEnabled",
+    "storeAnnotations",
     "storeTagHistory",
     "write",
     "writeAll",
@@ -438,17 +442,13 @@ def configure(basePath, tags, collisionPolicy="o"):
             configuration to the parent folder of the existing tag(s).
         collisionPolicy (str): The action to take when a tag or folder
             with the same path and name is encountered. Possible values
-            include:
-
-            a - Abort and throw an exception
-            o - Overwrite and replace existing Tag's configuration
-            i - Ignore that item in the list
-            m - merge, modifying values that are specified in the
-                definition, without impacting values that aren't
-                defined in the definition. Use this when you want to
-                apply a slight change to tags, without having to build
-                a complete configuration object
-            Defaults to Overwrite. Optional.
+            include: "a" Abort and throw an exception, "o" Overwrite and
+            replace existing Tag's configuration, "i" Ignore that item
+            in the list, "m" merge, modifying values that are specified
+            in the definition, without impacting values that aren't
+            defined in the definition. Use this when you want to apply a
+            slight change to tags, without having to build a complete
+            configuration object Defaults to Overwrite. Optional.
 
     Returns:
         list[QualityCode]: A List of QualityCode objects, one for each
@@ -482,6 +482,33 @@ def copy(tags, destination, collisionPolicy="o"):
     """
     print (tags, destination, collisionPolicy)
     return [QualityCode()]
+
+
+def deleteAnnotations(paths, storageIds):
+    """Removes stored annotations from the sqlth_annotations table.
+    Requires the full tag path (including history provider) for each
+    annotation, as well as each annotation's storage ID. Storage ID
+    values can be retrieved with system.tag.queryAnnotations.
+
+    Args:
+        paths (list[str]): A list of tag paths with existing
+            annotations. The paths are equivalent to what would be used
+            for a tag history query, and should specify the source
+            provider as well. For example,
+            "[HistoryProvider/Gateway:Provider]Path/To/Tag".
+        storageIds (list[int]): A sequence of storage identifiers for If
+            defined, these will be used to perform updates, or deletes
+            (if the corresponding delete parameter is True). Storage id
+            is available on the Annotation object, and is returned as
+            the result value from the storeAnnotations call.
+
+    Returns:
+        list[QualifiedValue]: A list of qualified values. The quality
+            code will indicate success or failure, and if successful,
+            the storage id of the annotation will have been deleted.
+    """
+    print (paths, storageIds)
+    return None
 
 
 def deleteTags(tagPaths):
@@ -617,6 +644,33 @@ def move(tags, destination, collisionPolicy):
     """
     print (tags, destination, collisionPolicy)
     return [QualityCode()]
+
+
+def queryAnnotations(paths, startTime=None, endTime=None, types=None):
+    """Queries user stored annotations from the tag history system for a
+    set of paths, for a given time range.
+
+    Args:
+        paths (list[str]): A list of tag paths to query. The paths are
+            equivalent to what would be used ofr a tag history query,
+            and should specify the source provider as well. For example,
+            "[HistoryProvider/Gateway:Provider]Path/To/Tag".
+        startTime (Date): The start of the time range. If not defined,
+            defaults to 12 hours ago. Optional.
+        endTime (Date): The end of time range. If not defined, defaults
+            to "now". Optional.
+        types (list[object]): A list of string "types" to filter on.
+            Types are defined by the annotations and various subsystems,
+            and may vary with different providers. Possible annotation
+            types are listed on the system.tag.storeAnnotations page.
+             Optional.
+
+    Returns:
+        list[object]: A list of Annotation objects that match the query
+            criteria.
+    """
+    print (paths, startTime, endTime, types)
+    return None
 
 
 def queryTagCalculations(
@@ -755,6 +809,8 @@ def queryTagHistory(
     noInterpolation=None,
     ignoreBadQuality=None,
     timeout=None,
+    intervalSeconds=None,
+    rangeSeconds=None,
 ):
     """Issues a query to the Tag Historian. Querying tag history
     involves specifying the tags and the date range, as well as a few
@@ -822,6 +878,14 @@ def queryTagHistory(
             ignored in calculations and in the result set. Optional.
         timeout (int): Timeout in milliseconds for Client Scope. This
             property is ignored in the Gateway Scope. Optional.
+        intervalSeconds (int): Same as intervalHours and interval
+            Minutes, but in seconds. Can be used on its own, or in
+            conjunction with intervalHours and intervalMinutes.
+            Optional.
+        rangeSeconds (int): Allows you to specify the query range in
+            seconds, instead of using start and end date. Can be
+            positive or negative, and can be used in conjunction with
+            startDate or endDate. Optional.
 
     Returns:
         Dataset: A dataset representing the historian values for the
@@ -850,6 +914,8 @@ def queryTagHistory(
         noInterpolation,
         ignoreBadQuality,
         timeout,
+        intervalSeconds,
+        rangeSeconds,
     )
     return None
 
@@ -945,6 +1011,26 @@ def readBlocking(tagPaths, timeout=45000):
     return [QualifiedValue() for _ in tagPaths]
 
 
+def rename(tag, newName, collisionPollicy="a"):
+    """Renames a single tag or a folder.
+
+    Args:
+        tag (str): The tag path to rename.
+        newName (str): The new name.
+        collisionPollicy (str): The action to take when a tag or folder
+            with the same path and names is encountered. Possible values
+            include "a" (Abort, throws an exception), "o" (Overwrite,
+            completely replaces a tag's configuration), and "i"
+            (Ignore). Defaults to Abort if not specified.
+
+    Returns:
+        object: A quality code that contains the result of the rename
+            operation.
+    """
+    print (tag, newName, collisionPollicy)
+    return None
+
+
 def requestGroupExecution(provider, tagGroup):
     """Sends a request to the specified Tag Group to execute now.
 
@@ -964,6 +1050,65 @@ def setOverlaysEnabled(enabled):
             turn them off.
     """
     print enabled
+
+
+def storeAnnotations(
+    paths,
+    startTimes=None,
+    endTimes=None,
+    types=None,
+    data=None,
+    storageIds=None,
+    deleted=None,
+):
+    """Stores annotations into the tag history system. Annotations are
+    stored by the underlying historian implementations, so different
+    providers may store in different ways, and some providers may not
+    support annotation storage. All parameters are 1-to-1, so all
+    provided lists should be of the same length. If a particular
+    annotation doesn't need a parameter, that element can be None in the
+    list.
+
+    Args:
+        paths (list[str]): A list of tag paths to store for. The paths
+            are equivalent to what would be used for a tag history
+            query, and should specify the source provider as well. For
+            example, "[HistoryProvider/Gateway:Provider]Path/To/Tag".
+            This parameter is required, even if storage ids are
+            included, because it is used to identify the underlying
+            storage provider.
+        startTimes (list[Date]): The start times of the events. If
+            omitted, defaults to the current time. Optional.
+        endTimes (list[Date]): The end times of the event, if
+            applicable. If omitted, does not store an end time for the
+            annotation. Optional.
+        types (list[str]): The type id for the annotation. If not
+            defined, "marker" will be used. See the Annotation Types for
+            more details. Optional.
+        data (list[str]): Data for the annotation, such as text
+            describing the meaning of the annotation. Optional.
+        storageIds (list[int]): If defined, the function will instead
+            update the existing annotation instead of adding new ones,
+            overriding existing values for the annotation with those
+            provided by this function (if the corresponding delete
+            parameter is True). Storage id is available on the
+            Annotation object, and is returned as the result value from
+            the storeAnnotations call. Optional.
+        deleted (list[bool]): A list of booleans indicating that the
+            individual annotation should be deleted. Requires storage id
+            to be set as well. Optional.
+
+    Returns:
+        list[QualifiedValue]: A list of qualified values. The quality
+            code will indicate success or failure, and if successful,
+            the storage id of the annotation will be returned in the
+            value. Since annotations are stored by individual providers,
+            there is no guarantee as to the type or format of the
+            storage id. However, it can be held and re-used in order to
+            update or delete.
+    """
+    print (paths, startTimes, endTimes, types, data, storageIds, deleted)
+    return None
 
 
 def storeTagHistory(

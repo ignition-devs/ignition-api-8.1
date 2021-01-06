@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """SFC Functions
@@ -32,15 +32,15 @@ class PyChartScope(object):
     pass
 
 
-def cancelChart(id):
+def cancelChart(instanceId):
     """Cancels the execution of a running chart instance. Any running
     steps will be told to stop, and the chart will enter Canceling
     state.
 
     Args:
-        id (str): The ID of the chart instance to cancel.
+        instanceId (str): The ID of the chart instance to cancel.
     """
-    print id
+    print instanceId
 
 
 def getRunningCharts(charPath=None):
@@ -78,14 +78,14 @@ def getVariables(instanceId):
     return PyChartScope()
 
 
-def pauseChart(id):
+def pauseChart(instanceId):
     """Pauses a running chart instance. Any running steps will be told
     to pause, and the chart will enter Pausing state.
 
     Args:
-        id (str): The ID of the chart instance to pause.
+        instanceId (str): The ID of the chart instance to pause.
     """
-    print id
+    print instanceId
 
 
 def redundantCheckpoint(instanceId):
@@ -100,18 +100,18 @@ def redundantCheckpoint(instanceId):
     print instanceId
 
 
-def resumeChart(id):
+def resumeChart(instanceId):
     """Resumes a chart that was paused. Steps which were previously
     paused will be resumed, and chart will enter Resuming state.
 
     Args:
-        id (str): The ID of the chart instance to resume.
+        instanceId (str): The ID of the chart instance to resume.
 
     Raises:
         KeyError: If the ID does not match any running chart instance.
     """
-    if not id:
-        raise KeyError("Invalid UUID string: {}".format(id))
+    if not instanceId:
+        raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
 def setVariable(instanceId, stepId, variableName, variableValue):
@@ -140,13 +140,15 @@ def setVariables(instanceId, stepId, variableMap):
     print (instanceId, stepId, variableMap)
 
 
-def startChart(path, arguments):
+def startChart(path, chartPath, arguments):
     """Starts a new instance of a chart. The chart must be set to
     "Callable" execution mode.
 
     Args:
         path (str): The path to the chart, for example:
             "ChartFolder/ChartName".
+        chartPath (str): The path to the chart, for example
+            "ChartFolder/ChartName"
         arguments (dict): A dictionary of arguments. Each key-value pair
             in the dictionary becomes a variable in the chart scope and
             will override any default.
@@ -154,5 +156,5 @@ def startChart(path, arguments):
     Returns:
         str: The unique ID of this chart.
     """
-    print (path, arguments)
+    print (path, chartPath, arguments)
     return "UUID"

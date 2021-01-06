@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """OPC Functions
@@ -167,13 +167,20 @@ def browseSimple(opcServer, device, folderPath, opcItemPath):
     return [OPCBrowseTag()]
 
 
-def getServers():
+def getServers(includeDisabled=False):
     """Returns a list of server names.
+
+    Args:
+        includeDisabled (bool): Optional; default value is False. If set
+            to True, enabled and disabled servers will be returned. If
+            set to False, only enabled servers will be returned.
+            Defaults to False. Optional.
 
     Returns:
         list[str]: A list of server name strings. If no servers are
             found, returns an empty list.
     """
+    print includeDisabled
     return []
 
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2020
+# Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 """Database Functions
@@ -410,18 +410,18 @@ def execSProcCall(callContext):
     print callContext
 
 
-def getConnectionInfo(name):
-    """Returns a dataset of information about a single database
-    connection, as specified by the name argument.
+def getConnectionInfo(name=None):
+    """Returns a dataset of information about a database connection.
 
     Args:
         name (str): The name of the database connection to find
-            information about.
+            information about, or the project's default connection if
+            omitted. Optional.
 
     Returns:
-        Dataset: A dataset containing information about the named
-            database connection, or an empty dataset if the connection
-            wasn't found.
+        Dataset: A dataset containing information about the database
+            connection, or an empty dataset if the connection wasn't
+            found.
     """
     print name
     return Dataset()
