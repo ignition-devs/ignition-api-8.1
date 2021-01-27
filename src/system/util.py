@@ -720,7 +720,7 @@ def modifyTranslation(term, translation, locale="en"):
     print (term, translation, locale)
 
 
-def playSoundClip(wav, volume, wait):
+def playSoundClip(wav, volume=1.0, wait=False):
     """Plays a sound clip from a wav file to the system's default audio
     device. The wav file can be specified as a filepath, a URL, or
     directly as a raw byte[].
