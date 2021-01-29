@@ -1,15 +1,22 @@
 <!--- Badges --->
-![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
-![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)
-![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)
+[![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
+[![GitHub license](https://img.shields.io/github/license/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/blob/main/LICENSE)
+[![GitHub downloads](https://img.shields.io/github/downloads/thecesrom/Ignition/total)](https://github.com/thecesrom/Ignition/releases)
 [![time tracker](https://wakatime.com/badge/github/thecesrom/Ignition.svg)](https://wakatime.com/badge/github/thecesrom/Ignition)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/Ignition/discussions)
 
 # Ignition
 
 Ignition is a set of packages and modules that allow developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
+
+# Releases
+
+Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
+
+If you can't find it, feel free to submit your request on our [Discussions](https://github.com/thecesrom/Ignition/discussions).
 
 ## Branches
 
