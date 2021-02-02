@@ -1,3 +1,4 @@
+# Ignition
 <!--- Badges --->
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
@@ -8,9 +9,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/thecesrom/Ignition/discussions)
 
-# Ignition
-
-Ignition is a set of packages and modules that allow developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
+Ignition is a set of packages and modules that allows developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
 # Releases
 
