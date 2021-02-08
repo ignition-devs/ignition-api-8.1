@@ -140,7 +140,8 @@ class BrowseTag(Object):
 
 
 class QualifiedValue(object):
-    """Represents a value with a DataQuality & timestamp attached to it."""
+    """Represents a value with a DataQuality & timestamp attached to
+    it."""
 
     def __init__(self, value=None, quality=None, timestamp=None):
         self._value = value
