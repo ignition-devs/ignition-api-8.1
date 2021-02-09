@@ -688,13 +688,13 @@ def toMillis(date):
         date (datetime): The date object to convert.
 
     Returns:
-        long: 8-byte integer representing the number of millisecond
+        int: 8-byte integer representing the number of millisecond
             elapsed since January 1, 1970, 00:00:00 UTC (GMT).
     """
     from time import mktime
 
     millis = mktime(date.timetuple()) * 1000 + date.microsecond // 1000
-    return long(millis)
+    return int(millis)
 
 
 def weeksBetween(date_1, date_2):
