@@ -262,7 +262,7 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
     return [PyJsonObjectAdapter(None)]
 
 
-def isAuthorized(isAllOf, securityLevels):
+def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
     """Checks if the user in the current session is authorized against a
     target collection of security levels.
 
@@ -275,6 +275,9 @@ def isAuthorized(isAllOf, securityLevels):
             security level node in the form of "Path/To/Node". Each
             level in the tree is delimited by a forward slash character.
             The public node is never a part of the path.
+        sessionId (str): Identifier of the Session to target. If
+            omitted, the current Session will be used automatically.
+            Optional.
 
     Returns:
         bool: True if the user in the current session is authorized,
@@ -282,7 +285,7 @@ def isAuthorized(isAllOf, securityLevels):
     """
     from __builtin__ import print
 
-    print(isAllOf, securityLevels)
+    print(isAllOf, securityLevels, sessionId)
     return True
 
 
@@ -422,6 +425,7 @@ def openPopup(
     overlayDismiss=False,
     sessionId="current_session",
     pageId="current_page",
+    viewPortBound=False,
 ):
     """Open a popup view over the given page.
 
@@ -456,6 +460,10 @@ def openPopup(
             must be included in the call. Optional.
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
+        viewPortBound (bool): If True, popups will be "shifted" to open
+            within the bounds of the viewport. If the popup would be
+            larger than the viewport, then it will be resized to fit
+            within the bounds. Default is False. Optional.
     """
     from __builtin__ import print
 
@@ -472,6 +480,7 @@ def openPopup(
         overlayDismiss,
         sessionId,
         pageId,
+        viewPortBound,
     )
 
 
@@ -607,6 +616,7 @@ def togglePopup(
     overlayDismiss=False,
     sessionId="current_session",
     pageId="current_page",
+    viewPortBound=False,
 ):
     """Toggles a popup. Will open up the popup if it has not been opened
     yet. Otherwise, it will close the currently opened popup.
@@ -642,6 +652,10 @@ def togglePopup(
             must be included in the call. Optional.
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
+        viewPortBound (bool): If True, popups will be "shifted" to open
+            within the bounds of the viewport. If the popup would be
+            larger than the viewport, then it will be resized to fit
+            within the bounds. Default is False. Optional.
     """
     from __builtin__ import print
 
@@ -658,6 +672,7 @@ def togglePopup(
         overlayDismiss,
         sessionId,
         pageId,
+        viewPortBound,
     )
 
 
