@@ -12,4 +12,4 @@ Additional information on scripting Ignition can be found in the
 Scripting section.
 """
 
-__version__ = "8.1.2"
+__version__ = "8.1.4"

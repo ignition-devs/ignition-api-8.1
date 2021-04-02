@@ -15,6 +15,7 @@ __all__ = [
     "closePopup",
     "closeSession",
     "download",
+    "getProjectInfo",
     "getSessionInfo",
     "isAuthorized",
     "login",
@@ -238,6 +239,28 @@ def download(
     from __builtin__ import print
 
     print(filename, data, contentType, sessionId, pageId)
+
+
+def getProjectInfo(projectName):
+    """Returns a dictionary of meta data from a Perspective Project.
+
+    Args:
+        projectName (str): The name of the project.
+
+    Returns:
+        dict: A dictionary of project meta data.
+    """
+    from __builtin__ import print
+
+    print(projectName)
+    return {
+        "name": "Project",
+        "title": "Project",
+        "description": "Project's description",
+        "lastModified": "2021-04-01T13:37:00.000Z",
+        "lastModifiedBy": "thecesrom",
+        "views": [{"path": "Page/Home"}],
+    }
 
 
 def getSessionInfo(usernameFilter=None, projectFilter=None):
