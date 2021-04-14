@@ -123,9 +123,7 @@ class Version(Object):
     dev = True
     snapshot = False
 
-    def __init__(
-        self, major=None, minor=None, rev=None, build=None, beta=None, rc=None
-    ):
+    def __init__(self, major=0, minor=0, rev=0, build=0, beta=0, rc=0):
         """
         Version initializer.
 
@@ -145,21 +143,38 @@ class Version(Object):
         self.rc = rc
 
     def __eq__(self, other, strict=False):
-        if strict:
-            return (
-                self.major == other.major
-                and self.minor == other.minor
-                and self.rev == other.rev
-                and self.build == other.build
-                and self.beta == other.beta
-                and self.rc == other.rc
-            )
+        if self.major > other.major:
+            return 1
+        elif self.major < other.major:
+            return -1
+        elif self.minor > other.minor:
+            return 1
+        elif self.minor < other.minor:
+            return -1
+        elif self.rev > other.rev:
+            return 1
+        elif self.rev < other.rev:
+            return -1
+        elif strict:
+            if self.build > other.build:
+                return 1
+            elif self.build < other.build:
+                return -1
+            elif self.beta > other.beta:
+                return 1
+            elif self.beta < other.beta:
+                return -1
+            elif self.rc > other.rc:
+                return 1
+            elif self.rc < other.rc:
+                return -1
+            else:
+                return 0
         else:
-            return (
-                self.major == other.major
-                and self.minor == other.minor
-                and self.rev == other.rev
-            )
+            return 0
+
+    def __str__(self):
+        return self.toString()
 
     def compareTo(self, that):
         """
@@ -171,7 +186,8 @@ class Version(Object):
             that (Version): The version to compare.
 
         Returns:
-             bool: True if both versions are equal, False otherwise.
+             int: 0 if self and that are equal, -1 if that is greater
+                than self, or 1 if self is greater than that.
         """
         return self.__eq__(that, True)
 
@@ -183,12 +199,12 @@ class Version(Object):
         pass
 
     def getBasicString(self):
-        if self.rc is not None:
-            return "{}.{}.{}".format(self.major, self.minor, self.rev)
-        else:
+        if self.rc > 0:
             return "{}.{}.{}-rc{}".format(
                 self.major, self.minor, self.rev, self.rc
             )
+        else:
+            return "{}.{}.{}".format(self.major, self.minor, self.rev)
 
     def getBeta(self):
         return self.beta
@@ -215,23 +231,24 @@ class Version(Object):
         return self.dev
 
     def isFutureVersion(self, arg):
-        if type(arg) == str:
-            return arg == self.getBasicString()
-        else:
-            return self.__eq__(arg)
+        other = self.parse(arg)
+        return self.__eq__(other) == -1
 
     def isSnapshot(self):
         return self.snapshot
 
     @staticmethod
-    def parse(self, s):
-        pass
+    def parse(s):
+        import re
+
+        sem_ver = [int(i) for i in re.findall(r"-?\d+", s)]
+        return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
     def toParseableString(self):
         pass
 
     def toString(self):
-        if self.rc is not None:
+        if self.rc > 0:
             return "{}.{}.{}-rc{} (b{})".format(
                 self.major, self.minor, self.rev, self.rc, self.build
             )
@@ -239,10 +256,12 @@ class Version(Object):
             return "{}.{}.{}-SNAPSHOT (b{})".format(
                 self.major, self.minor, self.rev, self.build
             )
-        else:
+        elif self.build is not None:
             return "{}.{}.{} (b{})".format(
                 self.major, self.minor, self.rev, self.build
             )
+        else:
+            return "{}.{}.{}".format(self.major, self.minor, self.rev)
 
 
 def audit(
@@ -645,7 +664,9 @@ def getVersion():
         Version: The currently running Ignition version number. as a
             Version object.
     """
-    return Version(major=8, minor=0, rev=15, build=2020072213).toString()
+    major, minor, rev = [int(i) for i in system.__version__.split(".")]
+    build = int(system.__build__)
+    return Version(major=major, minor=minor, rev=rev, build=build)
 
 
 def invokeAsynchronous(function, args=None, kwargs=None, description=None):
@@ -1123,7 +1144,7 @@ def threadDump():
     Returns:
         str: The dump of the current running JVM.
     """
-    return "Ignition version: 8.1.x..."
+    return "Ignition version: {}...".format(getVersion())
 
 
 def translate(term, locale=None, strict=False):
