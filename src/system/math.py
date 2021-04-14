@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Math Functions
+
+"""
+Math Functions
+
 The following functions assist with running statistical analysis.
 """
 
@@ -35,9 +38,10 @@ class DimensionMismatchException(JException):
 
 
 def geometricMean(values):
-    """Calculates the geometric mean. Geometric Mean is a type of
-    average which indicates a typical value in a set of numbers by using
-    the product of values in the set.
+    """
+    Calculates the geometric mean. Geometric Mean is a type of average
+    which indicates a typical value in a set of numbers by using the
+    product of values in the set.
 
     Returns nan (Not A Number) if passed an empty sequence.
 
@@ -57,11 +61,12 @@ def geometricMean(values):
 
 
 def kurtosis(values):
-    """Calculates the kurtosis of a sequence of values. Kurtosis
-    measures if data is peaked or flat relative to normal distribution.
-    A set of data with high kurtosis will have distinct peaks near the
-    mean, while a set of data with low kurtosis will have a flat top
-    near the mean. Uniform distribution is typically a flat line.
+    """
+    Calculates the kurtosis of a sequence of values. Kurtosis measures
+    if data is peaked or flat relative to normal distribution. A set of
+    data with high kurtosis will have distinct peaks near the mean,
+    while a set of data with low kurtosis will have a flat top near the
+    mean. Uniform distribution is typically a flat line.
 
     Returns nan (Not a Number) if passed an empty sequence measure of
     whether the data are heavy-tailed or light-tailed of a given
@@ -83,7 +88,8 @@ def kurtosis(values):
 
 
 def max(values):
-    """Given a sequence of values, returns the greatest value in the
+    """
+    Given a sequence of values, returns the greatest value in the
     sequence, also known as the "max" value.
 
     Returns nan (Not A Number) if passed an empty sequence.
@@ -104,7 +110,8 @@ def max(values):
 
 
 def mean(values):
-    """Given a sequence of values, calculates the arithmetic mean
+    """
+    Given a sequence of values, calculates the arithmetic mean
     (average).
 
     Returns nan (Not A Number) if passed an empty sequence, a null.
@@ -126,7 +133,8 @@ def mean(values):
 
 
 def meanDifference(values1, values2):
-    """Given two sequences of values, calculates the mean of the signed
+    """
+    Given two sequences of values, calculates the mean of the signed
     difference between both sequences. In other words, returns the
     absolute difference between the mean values of two different sets of
     data.
@@ -155,7 +163,8 @@ def meanDifference(values1, values2):
 
 
 def median(values):
-    """Takes a sequence of values, and returns the median. The Median
+    """
+    Takes a sequence of values, and returns the median. The Median
     represents the middle value in a set of data.
 
     Returns nan (Not A Number) if passed an empty sequence.
@@ -174,7 +183,8 @@ def median(values):
 
 
 def min(values):
-    """Given a Sequence of numerical values, returns the minimum value,
+    """
+    Given a Sequence of numerical values, returns the minimum value,
     also known as the "min" value.
 
     Returns nan (Not A Number) if passed an empty sequence.
@@ -195,7 +205,8 @@ def min(values):
 
 
 def mode(values):
-    """Given a sequence of values, returns the 'mode', or most frequent
+    """
+    Given a sequence of values, returns the 'mode', or most frequent
     values.
 
     Returns an empty list if the sequence was empty or None.
@@ -216,9 +227,10 @@ def mode(values):
 
 
 def normalize(values):
-    """Given a sequence of values, normalizes the values. Normalizing
-    data refers to adjusting values measured on different scales and
-    brings them into alignment to allow the comparison of corresponding
+    """
+    Given a sequence of values, normalizes the values. Normalizing data
+    refers to adjusting values measured on different scales and brings
+    them into alignment to allow the comparison of corresponding
     normalized values. This creates uniformity of values by eliminating
     the different units of measurement, and to more easily compare data
     from different places
@@ -242,7 +254,8 @@ def normalize(values):
 
 
 def percentile(values, percentile):
-    """Given a sequence of numerical values, estimates the percentile of
+    """
+    Given a sequence of numerical values, estimates the percentile of
     input.
 
     The percentile is a value on a scale that represents a percentage
@@ -268,7 +281,8 @@ def percentile(values, percentile):
 
 
 def populationVariance(values):
-    """Given a sequence of values, returns the Population Variance.
+    """
+    Given a sequence of values, returns the Population Variance.
     Population variance calculates how values in a dataset are spread
     out from their average value.
 
@@ -289,9 +303,9 @@ def populationVariance(values):
 
 
 def product(values):
-    """Given a sequence of values, calculates the product of the
-    sequence: the result of multiplying of all values in the sequence
-    together.
+    """
+    Given a sequence of values, calculates the product of the sequence:
+    the result of multiplying of all values in the sequence together.
 
     Returns nan (Not A Number) if passed an empty sequence.
 
@@ -310,9 +324,10 @@ def product(values):
 
 
 def skewness(values):
-    """Given a sequence of values, calculates the skewness (third
-    central moment). Skewness is a measure of the degree of asymmetry of
-    a distribution of the mean. If skewed to the left, the distribution
+    """
+    Given a sequence of values, calculates the skewness (third central
+    moment). Skewness is a measure of the degree of asymmetry of a
+    distribution of the mean. If skewed to the left, the distribution
     has a long tail in the negative direction. If skewed to the right,
     the tail will be skewed in the positive direction.
 
@@ -333,7 +348,8 @@ def skewness(values):
 
 
 def standardDeviation(values):
-    """Given a Sequence of numerical values, calculates the standard
+    """
+    Given a Sequence of numerical values, calculates the standard
     deviation. Standard deviation is a calculated number for how close,
     or how far the values of that dataset are in relation to the mean.
 
@@ -354,7 +370,8 @@ def standardDeviation(values):
 
 
 def sum(values):
-    """Given a sequence of values, calculates the sum of all values. The
+    """
+    Given a sequence of values, calculates the sum of all values. The
     sum is the number returned by addition.
 
     Returns nan (Not A Number) if passed an empty sequence.
@@ -375,7 +392,8 @@ def sum(values):
 
 
 def sumDifference(values1, values2):
-    """Given two sequences of values, calculates the sum of the signed
+    """
+    Given two sequences of values, calculates the sum of the signed
     difference between both sequences. In other words, the sum and
     difference between two sets of numbers.
 
@@ -403,8 +421,8 @@ def sumDifference(values1, values2):
 
 
 def sumLog(values):
-    """Given a sequence of values, calculates the sum of the natural
-    logs.
+    """
+    Given a sequence of values, calculates the sum of the natural logs.
 
     Returns nan (Not A Number) if passed an empty sequence.
 
@@ -423,10 +441,10 @@ def sumLog(values):
 
 
 def sumSquares(values):
-    """Given a sequence of values, calculates the sum of the squares of
-    all values. Sum squares measures how far individual values are from
-    the mean by calculating how much variation there is in a set of
-    values.
+    """
+    Given a sequence of values, calculates the sum of the squares of all
+    values. Sum squares measures how far individual values are from the
+    mean by calculating how much variation there is in a set of values.
 
     Returns nan (Not A Number) if passed an empty sequence.
 
@@ -446,9 +464,10 @@ def sumSquares(values):
 
 
 def variance(values):
-    """Given a sequence of values, calculates the variance of all
-    values. Variance measures how far values in a set are spread out
-    from their mean value.
+    """
+    Given a sequence of values, calculates the variance of all values.
+    Variance measures how far values in a set are spread out from their
+    mean value.
 
     Returns nan (Not A Number) if passed an empty sequence.
 

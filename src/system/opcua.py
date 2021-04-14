@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""OPC - UA Functions
+
+"""
+OPC - UA Functions
+
 The following functions allow you to interact directly with an OPC-UA
 server.
 """
@@ -10,7 +13,8 @@ __all__ = ["callMethod"]
 
 
 def callMethod(connectionName, objectId, methodId, inputs):
-    """Calls a method in an OPC UA server. To make the most of this
+    """
+    Calls a method in an OPC UA server. To make the most of this
     function, you'll need to be familiar with methods in the OPC-UA
     server.
 

@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Dataset Functions
+
+"""
+Dataset Functions
+
 The following functions give you access to view and interact with
 datasets.
 """
@@ -39,18 +42,20 @@ from java.util import Locale
 
 
 class Dataset(Iterable):
-    """A dataset is a collection of values arranged in a structured
-    format. Most datasets are two dimensional -- they can be viewed as a
-    table with rows and columns being the two dimensions. Values in a
-    dataset are usually accessed by specifying one index for each
-    dimension of data (row and column for tables).
+    """
+    A dataset is a collection of values arranged in a structured format.
+    Most datasets are two dimensional -- they can be viewed as a table
+    with rows and columns being the two dimensions. Values in a dataset
+    are usually accessed by specifying one index for each dimension of
+    data (row and column for tables).
     """
 
     def __iter__(self):
         pass
 
     def getColumnCount(self):
-        """Returns the number of columns in the dataset.
+        """
+        Returns the number of columns in the dataset.
 
         Returns:
             int: The number of columns in the dataset.
@@ -59,7 +64,8 @@ class Dataset(Iterable):
         return 4
 
     def getColumnIndex(self, colName):
-        """Returns the index of the column with the name colName.
+        """
+        Returns the index of the column with the name colName.
 
         Args:
             colName (str): The name of the column
@@ -71,7 +77,8 @@ class Dataset(Iterable):
         return 2
 
     def getColumnName(self, colIndex):
-        """Returns the name of the column at the index colIndex.
+        """
+        Returns the name of the column at the index colIndex.
 
         Args:
             colIndex (str): The index of the column.
@@ -83,7 +90,8 @@ class Dataset(Iterable):
         return "Population"
 
     def getColumnNames(self):
-        """Returns a list with the names of all the columns.
+        """
+        Returns a list with the names of all the columns.
 
         Returns:
             list[str]: A list with the names of all the columns.
@@ -92,7 +100,8 @@ class Dataset(Iterable):
         return ["City", "Population", "Timezone", "GMTOffset"]
 
     def getColumnType(self, colIndex):
-        """Returns the type of the column at the index colIndex.
+        """
+        Returns the type of the column at the index colIndex.
 
         Args:
             colIndex (int): The index of the column.
@@ -104,7 +113,8 @@ class Dataset(Iterable):
         return type(0)
 
     def getColumnTypes(self):
-        """Returns a list with the types of all the columns.
+        """
+        Returns a list with the types of all the columns.
 
         Returns:
              list[object]: A list with the types of all the columns.
@@ -113,7 +123,8 @@ class Dataset(Iterable):
         return [type(""), type(0), type(""), type(0)]
 
     def getRowCount(self):
-        """Returns the number of rows in the dataset.
+        """
+        Returns the number of rows in the dataset.
 
         Returns:
             int: The number of rows in the dataset.
@@ -122,7 +133,8 @@ class Dataset(Iterable):
         return 5
 
     def getValueAt(self, *args):
-        """Returns the value at the specified row index and column name.
+        """
+        Returns the value at the specified row index and column name.
 
         Args:
             args (object): args[0] = rowIndex, args[1] colIndex or
@@ -141,7 +153,8 @@ class Dataset(Iterable):
 
 
 class PyDataSet(Iterable):
-    """PyDatasets are special, in that they can be handled similarly to
+    """
+    PyDatasets are special, in that they can be handled similarly to
     other Python sequences.
     """
 
@@ -150,8 +163,9 @@ class PyDataSet(Iterable):
 
 
 def addColumn(dataset, colIndex, col, colName, colType):
-    """Takes a dataset and returns a new dataset with a new column added
-    or inserted into it. Datasets are immutable, so it is important to
+    """
+    Takes a dataset and returns a new dataset with a new column added or
+    inserted into it. Datasets are immutable, so it is important to
     realize that this function does not actually add a column to a
     dataset. You'll need to do something with the new dataset that this
     function creates to achieve something useful. If the columnIndex
@@ -184,7 +198,8 @@ def addColumn(dataset, colIndex, col, colName, colType):
 
 
 def addRow(dataset, rowIndex, row):
-    """Takes a dataset and returns a new dataset with a new row added or
+    """
+    Takes a dataset and returns a new dataset with a new row added or
     inserted into it. Datasets are immutable, so it is important to
     realize that this function does not actually add a row to a dataset.
     You'll need to do something with the new dataset that this function
@@ -212,7 +227,8 @@ def addRow(dataset, rowIndex, row):
 
 
 def addRows(dataset, rowIndex, rows):
-    """Takes a dataset and returns a new dataset with a new row added or
+    """
+    Takes a dataset and returns a new dataset with a new row added or
     inserted into it. Datasets are immutable, so it is important to
     realize that this function does not actually add a row to a dataset.
     You'll need to do something with the new dataset that this function
@@ -240,7 +256,8 @@ def addRows(dataset, rowIndex, rows):
 
 
 def appendDataset(dataset1, dataset2):
-    """Takes two different datasets and returns a new dataset with the
+    """
+    Takes two different datasets and returns a new dataset with the
     second dataset appended to the first. Will throw an error if the
     number and types of columns do not match.
 
@@ -259,7 +276,8 @@ def appendDataset(dataset1, dataset2):
 
 
 def clearDataset(dataset):
-    """Takes a dataset and returns a new dataset with all of the same
+    """
+    Takes a dataset and returns a new dataset with all of the same
     column names, but all of the rows deleted.
 
     Args:
@@ -274,7 +292,8 @@ def clearDataset(dataset):
 
 
 def dataSetToHTML(showHeaders, dataset, title):
-    """Formats the contents of a dataset as an HTML page, returning the
+    """
+    Formats the contents of a dataset as an HTML page, returning the
     results as a string. Uses the <table> element to create a data table
     page.
 
@@ -292,7 +311,8 @@ def dataSetToHTML(showHeaders, dataset, title):
 
 
 def deleteRow(dataset, rowIndex):
-    """Takes a dataset and returns a new dataset with a row removed.
+    """
+    Takes a dataset and returns a new dataset with a row removed.
     Datasets are immutable, so it is important to realize that this
     function does not actually remove the row from the argument dataset.
     You'll need to do something with the new dataset that this function
@@ -320,7 +340,8 @@ def deleteRow(dataset, rowIndex):
 
 
 def deleteRows(dataset, rowIndices):
-    """Takes a dataset and returns a new dataset with one or more rows
+    """
+    Takes a dataset and returns a new dataset with one or more rows
     removed. Datasets are immutable, so it is important to realize that
     this function does not actually remove the rows from the argument
     dataset. You'll need to do something with the new dataset that this
@@ -349,8 +370,9 @@ def deleteRows(dataset, rowIndices):
 
 
 def exportCSV(filename, showHeaders, dataset):
-    """Exports the contents of a dataset as a CSV file, prompting the
-    user to save the file to disk.
+    """
+    Exports the contents of a dataset as a CSV file, prompting the user
+    to save the file to disk.
 
     Args:
         filename (str): A suggested filename to save as.
@@ -369,9 +391,10 @@ def exportCSV(filename, showHeaders, dataset):
 
 
 def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
-    """Exports the contents of a dataset as an Excel spreadsheet,
-    prompting the user to save the file to disk. Uses the same format as
-    the toExcel function.
+    """
+    Exports the contents of a dataset as an Excel spreadsheet, prompting
+    the user to save the file to disk. Uses the same format as the
+    toExcel function.
 
     Args:
         filename (str): A suggested filename to save as.
@@ -394,8 +417,9 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
 
 
 def exportHTML(filename, showHeaders, dataset, title):
-    """Exports the contents of a dataset to an HTML page. Prompts the
-    user to save the file to disk.
+    """
+    Exports the contents of a dataset to an HTML page. Prompts the user
+    to save the file to disk.
 
     Args:
         filename (str): A suggested filename to save as.
@@ -415,7 +439,8 @@ def exportHTML(filename, showHeaders, dataset, title):
 
 
 def filterColumns(dataset, columns):
-    """Takes a dataset and returns a view of the dataset containing only
+    """
+    Takes a dataset and returns a view of the dataset containing only
     the columns found within the given list of columns.
 
     Args:
@@ -432,7 +457,8 @@ def filterColumns(dataset, columns):
 
 
 def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
-    """Returns a new dataset with Date columns as strings formatted
+    """
+    Returns a new dataset with Date columns as strings formatted
     according to the dateFormat specified.
 
     Args:
@@ -451,7 +477,8 @@ def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
 
 
 def fromCSV(csv):
-    """Converts a dataset stored in a CSV formatted string to a dataset
+    """
+    Converts a dataset stored in a CSV formatted string to a dataset
     that can be immediately assignable to a dataset property in your
     project. Usually this is used in conjunction with
     system.file.readFileAsString when reading in a CSV file that was
@@ -469,7 +496,8 @@ def fromCSV(csv):
 
 
 def getColumnHeaders(dataset):
-    """Takes in a dataset and returns the headers as a python list.
+    """
+    Takes in a dataset and returns the headers as a python list.
 
     Args:
         dataset (Dataset): The input dataset.
@@ -482,9 +510,10 @@ def getColumnHeaders(dataset):
 
 
 def setValue(dataset, rowIndex, columnName, value):
-    """Takes a dataset and returns a new dataset with a one value
-    altered. Datasets are immutable, so it is important to realize that
-    this function does not actually set a value in the argument dataset.
+    """
+    Takes a dataset and returns a new dataset with a one value altered.
+    Datasets are immutable, so it is important to realize that this
+    function does not actually set a value in the argument dataset.
     You'll need to do something with the new dataset that this function
     creates to achieve something useful.
 
@@ -507,7 +536,8 @@ def setValue(dataset, rowIndex, columnName, value):
 
 
 def sort(dataset, keyColumn, ascending=True):
-    """Sorts a dataset and returns the sorted dataset. This works on
+    """
+    Sorts a dataset and returns the sorted dataset. This works on
     numeric, as well as alphanumeric columns. It will go character by
     character, going from 0-9, A-Z, a-z.
 
@@ -526,10 +556,11 @@ def sort(dataset, keyColumn, ascending=True):
 
 
 def toCSV(dataset, showHeaders=True, forExport=False, localized=False):
-    """Formats the contents of a dataset as CSV (comma separated
-    values), returning the resulting CSV as a string. If the "forExport"
-    flag is set, then the format will be appropriate for parsing using
-    the system.dataset.fromCSV function.
+    """
+    Formats the contents of a dataset as CSV (comma separated values),
+    returning the resulting CSV as a string. If the "forExport" flag is
+    set, then the format will be appropriate for parsing using the
+    system.dataset.fromCSV function.
 
     Args:
         dataset (Dataset): The dataset to export to CSV.
@@ -551,7 +582,8 @@ def toCSV(dataset, showHeaders=True, forExport=False, localized=False):
 
 
 def toDataSet(*args):
-    """This function is used to
+    """
+    This function is used to
     1) convert PyDataSets to DataSets, and
     2) create new datasets from raw Python lists.
 
@@ -572,7 +604,8 @@ def toDataSet(*args):
 
 
 def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
-    """Formats the contents of one or more datasets as an excel
+    """
+    Formats the contents of one or more datasets as an excel
     spreadsheet, returning the results as a string. Each dataset
     specified will be added as a worksheet in the Excel workbook. This
     function uses an xml-format for Excel spreadsheets, not the native
@@ -602,8 +635,9 @@ def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
 
 
 def toPyDataSet(dataset):
-    """This function converts from a normal DataSet to a PyDataSet,
-    which is a wrapper class which makes working with datasets more
+    """
+    This function converts from a normal DataSet to a PyDataSet, which
+    is a wrapper class which makes working with datasets more
     Python-esque.
 
     Args:
@@ -617,7 +651,8 @@ def toPyDataSet(dataset):
 
 
 def updateRow(dataset, rowIndex, changes):
-    """Takes a dataset and returns a new dataset with a one row altered.
+    """
+    Takes a dataset and returns a new dataset with a one row altered.
     Datasets are immutable, so it is important to realize that this
     function does not actually change the row in the argument dataset.
     You'll need to do something with the new dataset that this function

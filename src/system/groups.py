@@ -1,18 +1,22 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Transaction Group Functions
-The following functions give you access to import and remove
-Transaction Groups.
+
+"""
+Transaction Group Functions
+
+The following functions give you access to import and remove Transaction
+Groups.
 """
 
 __all__ = ["loadFromFile", "removeGroups"]
 
 
 def loadFromFile(filePath, projectName, mode):
-    """Loads a transaction group configuration from an xml export,
-    into the specified project (creating the project if necessary).
-    The mode parameter dictates how overwrites occur.
+    """
+    Loads a transaction group configuration from an xml export, into the
+    specified project (creating the project if necessary). The mode
+    parameter dictates how overwrites occur.
 
     Args:
         filePath (str): The path to a valid transaction group xml or csv
@@ -25,8 +29,9 @@ def loadFromFile(filePath, projectName, mode):
 
 
 def removeGroups(projectName, paths):
-    """Removes the specified groups from the project. The group paths
-    are "Folder/Path/To/GroupName", separated by forward slashes.
+    """
+    Removes the specified groups from the project. The group paths are
+    "Folder/Path/To/GroupName", separated by forward slashes.
 
     Args:
         projectName (str): The project to remove from. If the project

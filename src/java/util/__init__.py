@@ -1,10 +1,12 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Contains the collections framework, legacy collection classes,
-event model, date and time facilities, internationalization, and
-miscellaneous utility classes (a string tokenizer, a random-number
-generator, and a bit array).
+
+"""
+Contains the collections framework, legacy collection classes, event
+model, date and time facilities, internationalization, and miscellaneous
+utility classes (a string tokenizer, a random-number generator, and a
+bit array).
 """
 
 __all__ = ["Date", "EventObject", "Locale"]
@@ -13,12 +15,14 @@ from java.lang import Object
 
 
 class Date(Object):
-    """The class Date represents a specific instant in time, with
+    """
+    The class Date represents a specific instant in time, with
     millisecond precision.
     """
 
     def __new__(cls, date=None):
-        """Allocates a Date object and initializes it...
+        """
+        Allocates a Date object and initializes it...
 
         1) so that it represents the time at which it was allocated,
         measured to the nearest millisecond.
@@ -45,8 +49,8 @@ class Date(Object):
 
 
 class EventObject(Object):
-    """The root class from which all event state objects shall be
-    derived.
+    """
+    The root class from which all event state objects shall be derived.
 
     All Events are constructed with a reference to the object, the
     "source", that is logically deemed to be the object upon which the
@@ -61,7 +65,8 @@ class EventObject(Object):
 
 
 class Locale(Object):
-    """A Locale object represents a specific geographical, political, or
+    """
+    A Locale object represents a specific geographical, political, or
     cultural region. An operation that requires a Locale to perform its
     task is called locale-sensitive and uses the Locale to tailor
     information for the user. For example, displaying a number is a
@@ -71,7 +76,8 @@ class Locale(Object):
     """
 
     def __init__(self, language, country=None, variant=None):
-        """Locale initializer.
+        """
+        Locale initializer.
 
         Args:
             language (str): Language code.

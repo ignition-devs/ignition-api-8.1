@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Security Functions
+
+"""
+Security Functions
+
 The following functions give you access to interact with the users and
 roles in the Gateway.
 """
@@ -20,8 +23,9 @@ __all__ = [
 
 
 def getRoles():
-    """Finds the roles that the currently logged in user has, returns
-    them as a Python tuple of strings.
+    """
+    Finds the roles that the currently logged in user has, returns them
+    as a Python tuple of strings.
 
     Returns:
         tuple[str]: A list of the roles (strings) that are assigned to
@@ -31,7 +35,8 @@ def getRoles():
 
 
 def getUsername():
-    """Returns the currently logged-in username.
+    """
+    Returns the currently logged-in username.
 
     Returns:
         str: The current username.
@@ -42,9 +47,10 @@ def getUsername():
 
 
 def getUserRoles(username, password, authProfile="", timeout=60000):
-    """Fetches the roles for a user from the Gateway. This may not be
-    the currently logged in user. Requires the password for that user.
-    If the authentication profile name  is omitted, then the current
+    """
+    Fetches the roles for a user from the Gateway. This may not be the
+    currently logged in user. Requires the password for that user. If
+    the authentication profile name  is omitted, then the current
     project's default authentication profile is used.
 
     Args:
@@ -65,7 +71,8 @@ def getUserRoles(username, password, authProfile="", timeout=60000):
 
 
 def isScreenLocked():
-    """Returns whether or not the screen is currently locked.
+    """
+    Returns whether or not the screen is currently locked.
 
     Returns:
         bool: A flag indication whether or not the screen is currently
@@ -75,8 +82,9 @@ def isScreenLocked():
 
 
 def lockScreen(obscure=False):
-    """Used to put a running client in lock-screen mode. The screen can
-    be unlocked by the user with the proper credentials, or by scripting
+    """
+    Used to put a running client in lock-screen mode. The screen can be
+    unlocked by the user with the proper credentials, or by scripting
     via the system.security.unlockScreen() function.
 
     Args:
@@ -87,14 +95,16 @@ def lockScreen(obscure=False):
 
 
 def logout():
-    """Logs out of the client for the current user and brings the client
-    to the login screen.
+    """
+    Logs out of the client for the current user and brings the client to
+    the login screen.
     """
     pass
 
 
 def switchUser(username, password, event, hideError=False):
-    """Attempts to switch the current user on the fly. If the given
+    """
+    Attempts to switch the current user on the fly. If the given
     username and password fail, this function will return False. If it
     succeeds, then all currently opened windows are closed, the user is
     switched, and windows are then re-opened in the states that they
@@ -122,14 +132,17 @@ def switchUser(username, password, event, hideError=False):
 
 
 def unlockScreen():
-    """Unlocks the client, if it is currently in lock-screen mode."""
+    """
+    Unlocks the client, if it is currently in lock-screen mode.
+    """
     pass
 
 
 def validateUser(username, password, authProfile="", timeout=60000):
-    """Tests credentials (username and password) against an
-    authentication profile. Returns a boolean based upon whether or not
-    the authentication profile accepts the  credentials. If the
+    """
+    Tests credentials (username and password) against an authentication
+    profile. Returns a boolean based upon whether or not the
+    authentication profile accepts the  credentials. If the
     authentication profile name is omitted, then the current project's
     default authentication profile is used.
 

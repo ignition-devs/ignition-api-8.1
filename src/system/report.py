@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Report Functions
+
+"""
+Report Functions
+
 The following functions give you access to report details and the
 ability to run reports.
 """
@@ -20,10 +23,11 @@ from system.dataset import Dataset
 def executeAndDistribute(
     path, project="project", parameters=None, action=None, actionSettings=None
 ):
-    """Executes and distributes a report. Similar to scheduling a report
-    to execute, except a schedule in not required to utilize this
-    function. This is a great way to distribute the report on demand
-    from a client.
+    """
+    Executes and distributes a report. Similar to scheduling a report to
+    execute, except a schedule in not required to utilize this function.
+    This is a great way to distribute the report on demand from a
+    client.
 
     Args:
         path (str): The path to the existing report.
@@ -48,8 +52,9 @@ def executeAndDistribute(
 
 
 def executeReport(path, project="project", parameters=None, fileType="pdf"):
-    """Immediately executes an existing report and returns a byte[] of
-    the output.
+    """
+    Immediately executes an existing report and returns a byte[] of the
+    output.
 
     Args:
         path (str): The path to the existing report.
@@ -76,7 +81,8 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
 
 
 def getReportNamesAsDataset(project="project"):
-    """Gets a data of all reports for a project. This dataset is
+    """
+    Gets a data of all reports for a project. This dataset is
     particularly suited for display in a Tree View component.
 
     Args:
@@ -99,7 +105,8 @@ def getReportNamesAsDataset(project="project"):
 
 
 def getReportNamesAsList(project="project"):
-    """Gets a list of all reports for a project.
+    """
+    Gets a list of all reports for a project.
 
     Args:
         project (str):  The name of the project where the reports are

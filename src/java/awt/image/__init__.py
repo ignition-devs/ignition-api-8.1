@@ -1,10 +1,12 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Provides classes for creating and modifying images. Images are
-processed using a streaming framework that involves an image producer,
-optional image filters, and an image consumer. This framework makes it
-possible to progressively render an image while it is being fetched and
+
+"""
+Provides classes for creating and modifying images. Images are processed
+using a streaming framework that involves an image producer, optional
+image filters, and an image consumer. This framework makes it possible
+to progressively render an image while it is being fetched and
 generated. Moreover, the framework allows an application to discard the
 storage used by an image and to regenerate it at any time. This package
 provides a number of image producers, consumers, and filters that you
@@ -17,7 +19,8 @@ from java.awt import Image
 
 
 class BufferedImage(Image):
-    """The BufferedImage subclass describes an Image with an accessible
+    """
+    The BufferedImage subclass describes an Image with an accessible
     buffer of image data. A BufferedImage is comprised of a ColorModel
     and a Raster of image data. The number and types of bands in the
     SampleModel of the Raster must match the number and types required
@@ -31,7 +34,8 @@ class BufferedImage(Image):
     """
 
     def __init__(self, *args):
-        """Constructs a BufferedImage.
+        """
+        Constructs a BufferedImage.
 
         Args:
             *args: Variable length argument list.

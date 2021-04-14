@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""OPC Functions
+
+"""
+OPC Functions
+
 The following functions allow you to read, write and browser OPC
 servers.
 """
@@ -26,7 +29,9 @@ from java.lang import Object
 
 
 class OPCBrowseTag(Object):
-    """BrowseTag class."""
+    """
+    BrowseTag class.
+    """
 
     def __init__(
         self,
@@ -37,6 +42,7 @@ class OPCBrowseTag(Object):
         dataType=None,
         opcItemPath=None,
     ):
+        super(OPCBrowseTag, self).__init__()
         self.opcServer = opcServer
         self.type = type
         self.displayName = displayName
@@ -64,8 +70,9 @@ class OPCBrowseTag(Object):
 
 
 class QualifiedValue(ABCMeta):
-    """Represents a value with a DataQuality & timestamp attached to
-    it."""
+    """
+    Represents a value with a DataQuality & timestamp attached to it.
+    """
 
     def __new__(mcs, *args, **kwargs):
         pass
@@ -106,8 +113,9 @@ class Quality(ABCMeta):
 
 
 def browse(opcServer, device, folderPath, opcItemPath):
-    """Allows browsing of the OPC servers in the runtime, returning a
-    list of tags.
+    """
+    Allows browsing of the OPC servers in the runtime, returning a list
+    of tags.
 
     Args:
         opcServer (str): The name of the OPC server to browse.
@@ -129,9 +137,9 @@ def browse(opcServer, device, folderPath, opcItemPath):
 
 
 def browseServer(opcServer, nodeId):
-    """When called from a Vision Client, returns a list of
-    OPCBrowseElement objects for the given server. Otherwise returns a
-    list of PyOPCTag.
+    """
+    When called from a Vision Client, returns a list of OPCBrowseElement
+    objects for the given server. Otherwise returns a list of PyOPCTag.
 
     Args:
         opcServer (str): The name of the OPC server connection.
@@ -145,7 +153,8 @@ def browseServer(opcServer, nodeId):
 
 
 def browseSimple(opcServer, device, folderPath, opcItemPath):
-    """Allows browsing of OPC servers in the runtime returning a list of
+    """
+    Allows browsing of OPC servers in the runtime returning a list of
     tags. browseSimple() takes mandatory parameters, which can be null,
     while browse() uses keyword-style arguments.
 
@@ -169,13 +178,13 @@ def browseSimple(opcServer, device, folderPath, opcItemPath):
 
 
 def getServers(includeDisabled=False):
-    """Returns a list of server names.
+    """
+    Returns a list of server names.
 
     Args:
-        includeDisabled (bool): Optional; default value is False. If set
-            to True, enabled and disabled servers will be returned. If
-            set to False, only enabled servers will be returned.
-            Defaults to False. Optional.
+        includeDisabled (bool): If set to True, enabled and disabled
+            servers will be returned. If set to False, only enabled
+            servers will be returned. Defaults to False. Optional.
 
     Returns:
         list[str]: A list of server name strings. If no servers are
@@ -186,8 +195,9 @@ def getServers(includeDisabled=False):
 
 
 def getServerState(opcServer):
-    """Retrieves the current state of the given OPC server connection.
-    If the given server is not found, the return value will be None.
+    """
+    Retrieves the current state of the given OPC server connection. If
+    the given server is not found, the return value will be None.
     Otherwise, the return value will be one of these strings:
         - UNKNOWN
         - FAULTED
@@ -208,7 +218,8 @@ def getServerState(opcServer):
 
 
 def isServerEnabled(serverName):
-    """Checks if an OPC server connection is enabled or disabled.
+    """
+    Checks if an OPC server connection is enabled or disabled.
 
     Args:
         serverName (str): The name of an OPC server connection.
@@ -222,7 +233,8 @@ def isServerEnabled(serverName):
 
 
 def readValue(opcServer, itemPath):
-    """Reads a single value directly from an OPC server connection. The
+    """
+    Reads a single value directly from an OPC server connection. The
     address is specified as a string, for example, [MyDevice]N11/N11:0.
     The object returned from this function has three attributes: value,
     quality, and timestamp. The value attribute represents the current
@@ -248,7 +260,8 @@ def readValue(opcServer, itemPath):
 
 
 def readValues(opcServer, itemPaths):
-    """This function is equivalent to the system.opc.readValue function,
+    """
+    This function is equivalent to the system.opc.readValue function,
     except that it can operate in bulk. You can specify a list of
     multiple addresses to read from, and you will receive a list of the
     same length, where each entry is the qualified value object for the
@@ -271,7 +284,8 @@ def readValues(opcServer, itemPaths):
 
 
 def setServerEnabled(serverName, enabled):
-    """Enables or disables an OPC server connection.
+    """
+    Enables or disables an OPC server connection.
 
     Args:
         serverName (str): The name of an OPC server connection.
@@ -282,7 +296,8 @@ def setServerEnabled(serverName, enabled):
 
 
 def writeValue(opcServer, itemPath, value):
-    """Writes a value directly through an OPC server connection
+    """
+    Writes a value directly through an OPC server connection
     synchronously. Will return an OPC-UA status code object. You can
     quickly check if the write succeeded by calling isGood() on the
     return value from this function.
@@ -302,12 +317,13 @@ def writeValue(opcServer, itemPath, value):
 
 
 def writeValues(opcServer, itemPaths, values):
-    """This function is a bulk version of system.opc.writeValue. It
-    takes a list of addresses and a list of objects, which must be the
-    same length. It will write the corresponding object to the
-    corresponding address in bulk. It will return a list of status codes
-    representing the individual write success or failure for each
-    corresponding address.
+    """
+    This function is a bulk version of system.opc.writeValue. It takes a
+    list of addresses and a list of objects, which must be the same
+    length. It will write the corresponding object to the corresponding
+    address in bulk. It will return a list of status codes representing
+    the individual write success or failure for each corresponding
+    address.
 
     Args:
         opcServer (str): The name of the OPC server connection in which

@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Project Functions
+
+"""
+Project Functions
+
 The following functions allow you to list projects on the Gateway
 through scripting.
 """
@@ -10,10 +13,11 @@ __all__ = ["getProjectName", "getProjectNames"]
 
 
 def getProjectName():
-    """Returns the name of the project where the function was called
-    from. When called from the Gateway scope from a resource that
-    originates from a singular project (reports, SFCs, etc.), will
-    return that resources project.
+    """
+    Returns the name of the project where the function was called from.
+    When called from the Gateway scope from a resource that originates
+    from a singular project (reports, SFCs, etc.), will return that
+    resources project.
 
     Resources that run in the Gateway scope, but are configured in a
     singular project (such as a report), will use that project's name.
@@ -30,7 +34,8 @@ def getProjectName():
 
 
 def getProjectNames():
-    """Returns an unsorted collection of strings, where each string
+    """
+    Returns an unsorted collection of strings, where each string
     represents the name of a project on the Gateway. If no projects
     exist, returns an empty list.
 

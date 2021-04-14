@@ -1,7 +1,9 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Provides classes that are fundamental to the design of the Java
+
+"""
+Provides classes that are fundamental to the design of the Java
 programming language.
 """
 
@@ -18,13 +20,15 @@ from __builtin__ import Exception as PyException
 
 
 class Object(object):
-    """Class Object is the root of the class hierarchy. Every class has
+    """
+    Class Object is the root of the class hierarchy. Every class has
     Object as a superclass. All objects, including arrays, implement the
     methods of this class.
     """
 
     def clone(self):
-        """Creates and returns a copy of this object.
+        """
+        Creates and returns a copy of this object.
 
         Returns:
             object: A copy of this object.
@@ -34,7 +38,8 @@ class Object(object):
         return copy.deepcopy(self)
 
     def equals(self, obj):
-        """Indicates whether some other object is "equal to" this one.
+        """
+        Indicates whether some other object is "equal to" this one.
 
         The equals method implements an equivalence relation on non-null
         object references:
@@ -91,8 +96,9 @@ class Object(object):
         pass
 
     def toString(self):
-        """Returns a string representation of the object. In general,
-        the toString method returns a string that "textually represents"
+        """
+        Returns a string representation of the object. In general, the
+        toString method returns a string that "textually represents"
         this object. The result should be a concise but informative
         representation that is easy for a person to read. It is
         recommended that all subclasses override this method.
@@ -103,7 +109,8 @@ class Object(object):
         return repr(self)
 
     def wait(self, timeoutMillis=None, nanos=None):
-        """Causes the current thread to wait until it is awakened,
+        """
+        Causes the current thread to wait until it is awakened,
         typically by being notified or interrupted, or until a certain
         amount of real time has elapsed.
 
@@ -117,12 +124,14 @@ class Object(object):
 
 
 class Throwable(Object, PyException):
-    """The Throwable class is the superclass of all errors and
-    exceptions in the Java language.
+    """
+    The Throwable class is the superclass of all errors and exceptions
+    in the Java language.
     """
 
     def __init__(self, message=None, cause=None):
-        """Constructs a new throwable.
+        """
+        Constructs a new throwable.
 
         Args:
             message (str): The detail message (which is saved for later
@@ -140,7 +149,8 @@ class Throwable(Object, PyException):
         return self._cause
 
     def addSuppressed(self, exception):
-        """Appends the specified exception to the exceptions that were
+        """
+        Appends the specified exception to the exceptions that were
         suppressed in order to deliver this exception.
 
         Args:
@@ -189,9 +199,10 @@ class Throwable(Object, PyException):
 
 
 class Exception(Throwable):
-    """The class Exception and its subclasses are a form of Throwable
-    that indicates conditions that a reasonable application might want
-    to catch.
+    """
+    The class Exception and its subclasses are a form of Throwable that
+    indicates conditions that a reasonable application might want to
+    catch.
 
     The class Exception and any subclasses that are not also subclasses
     of RuntimeException are checked exceptions. Checked exceptions need
@@ -205,8 +216,9 @@ class Exception(Throwable):
 
 
 class RuntimeException(Exception):
-    """RuntimeException is the superclass of those exceptions that can
-    be thrown during the normal operation of the Java Virtual Machine.
+    """
+    RuntimeException is the superclass of those exceptions that can be
+    thrown during the normal operation of the Java Virtual Machine.
 
     RuntimeException and its subclasses are unchecked exceptions.
     Unchecked exceptions do not need to be declared in a method or
@@ -220,7 +232,8 @@ class RuntimeException(Exception):
 
 
 class IllegalArgumentException(RuntimeException):
-    """Thrown to indicate that a method has been passed an illegal or
+    """
+    Thrown to indicate that a method has been passed an illegal or
     inappropriate argument.
     """
 
@@ -229,8 +242,9 @@ class IllegalArgumentException(RuntimeException):
 
 
 class NullPointerException(RuntimeException):
-    """Thrown when an application attempts to use null in a case where
-    an object is required.
+    """
+    Thrown when an application attempts to use null in a case where an
+    object is required.
     """
 
     def __init__(self, message=None, cause=None):
@@ -238,7 +252,8 @@ class NullPointerException(RuntimeException):
 
 
 class Thread(Object):
-    """A thread is a thread of execution in a program. The Java Virtual
+    """
+    A thread is a thread of execution in a program. The Java Virtual
     Machine allows an application to have multiple threads of execution
     running concurrently.
 
@@ -252,7 +267,8 @@ class Thread(Object):
 
     @staticmethod
     def sleep(millis):
-        """Causes the currently executing thread to sleep (temporarily
+        """
+        Causes the currently executing thread to sleep (temporarily
         cease execution) for the specified number of milliseconds,
         subject to the precision and accuracy of system timers and
         schedulers. The thread does not lose ownership of any monitors.

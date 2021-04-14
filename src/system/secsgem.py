@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""SECS/GEM Functions
+
+"""
+SECS/GEM Functions
+
 The following functions allow you to interact with equipment defined by
 the SECS/GEM module. Note that the SECS/GEM module must be installed
 before these functions will be accessible.
@@ -36,7 +39,8 @@ def copyEquipment(
     dbTablePrefix=None,
     description=None,
 ):
-    """Creates a copy of an equipment connection. Common settings can be
+    """
+    Creates a copy of an equipment connection. Common settings can be
     overridden for the new connection.
 
     An exception is thrown if the new Equipment Connection cannot be
@@ -87,7 +91,8 @@ def copyEquipment(
 
 
 def deleteToolProgram(ppid):
-    """Deletes a process program from the Gateway.
+    """
+    Deletes a process program from the Gateway.
 
     Args:
         ppid (str): The PPID that was sent from the tool when the S7F3
@@ -97,8 +102,8 @@ def deleteToolProgram(ppid):
 
 
 def enableDisableEquipment(enable, names):
-    """Enables or disables a Tuple of equipment connections from a
-    script.
+    """
+    Enables or disables a Tuple of equipment connections from a script.
 
     Args:
         enable (bool): Set to True to enable equipment connections, or
@@ -122,7 +127,8 @@ def enableDisableEquipment(enable, names):
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
-    """Attempts to retrieve a response message from the Gateway. The
+    """
+    Attempts to retrieve a response message from the Gateway. The
     transaction id from the sent message is used to retrieve the
     response.
 
@@ -149,8 +155,9 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
 
 
 def getToolProgram(ppid):
-    """Returns a process program from the Gateway that was previously
-    sent by a a tool in an S7F3 message.
+    """
+    Returns a process program from the Gateway that was previously sent
+    by a a tool in an S7F3 message.
 
     Args:
         ppid (str): The PPID that was sent from the tool when the S7F3
@@ -171,7 +178,8 @@ def getToolProgram(ppid):
 
 
 def getToolProgramDataset():
-    """Returns a Dataset containing information about all stored process
+    """
+    Returns a Dataset containing information about all stored process
     programs.
 
     Returns:
@@ -183,7 +191,8 @@ def getToolProgramDataset():
 
 
 def sendRequest(streamFunction, reply, body, equipment):
-    """Sends a JSON-formatted SECS message to a tool. An equipment
+    """
+    Sends a JSON-formatted SECS message to a tool. An equipment
     connection must be configured for the tool in the Gateway.
 
     Args:
@@ -206,9 +215,10 @@ def sendRequest(streamFunction, reply, body, equipment):
 
 
 def startSimEventRun(simulatorName, eventRunName):
-    """Starts a configured simulator event run in the Gateway. Note,
-    that this function only works with the simulators that come included
-    with the SECS/GEM module.
+    """
+    Starts a configured simulator event run in the Gateway. Note, that
+    this function only works with the simulators that come included with
+    the SECS/GEM module.
 
     The function will throw an exception if the specified Event Run
     cannot be started.
@@ -224,7 +234,8 @@ def startSimEventRun(simulatorName, eventRunName):
 
 
 def toDataSet(secsObject):
-    """Converts a SECS message data structure, as returned by the
+    """
+    Converts a SECS message data structure, as returned by the
     system.secsgem.getResponse function, into a dataset and returns it.
 
     Args:
@@ -240,7 +251,8 @@ def toDataSet(secsObject):
 
 
 def toTreeDataSet(dataset):
-    """Changes an existing dataset, as returned by the
+    """
+    Changes an existing dataset, as returned by the
     system.secsgem.toDataSet function, to make it usable for the Tree
     View component.
 
@@ -259,10 +271,11 @@ def toTreeDataSet(dataset):
 
 
 def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
-    """Sends a JSON-formatted SECS response message to a message sent by
-    a tool. An equipment connection must be configured for the tool in
-    the Gateway, and this must be used within a Message Handler to
-    create a Custom Message Response Handler.
+    """
+    Sends a JSON-formatted SECS response message to a message sent by a
+    tool. An equipment connection must be configured for the tool in the
+    Gateway, and this must be used within a Message Handler to create a
+    Custom Message Response Handler.
 
     Args:
         transactionID (int): The TxID of the response. The TxID from the

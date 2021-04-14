@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""DNP3 Functions
+
+"""
+DNP3 Functions
+
 The following functions give you access to interact with the DNP3
 devices.
 """
@@ -28,7 +31,8 @@ TRIP = 2
 
 
 def directOperateAnalog(deviceName, index, value, variation=None):
-    """Issues a Select-And-Operate command to set an analog value in an
+    """
+    Issues a Select-And-Operate command to set an analog value in an
     analog output point.
 
     Args:
@@ -56,7 +60,8 @@ def directOperateBinary(
     onTime=None,
     offTime=None,
 ):
-    """Issues a Direct-Operate command for digital control operations at
+    """
+    Issues a Direct-Operate command for digital control operations at
     binary output points (CROB).
 
     Args:
@@ -82,7 +87,8 @@ def directOperateBinary(
 
 
 def freezeAnalogs(deviceName, indexes=None):
-    """Issues a freeze command on the given analog outputs.
+    """
+    Issues a freeze command on the given analog outputs.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
@@ -94,6 +100,8 @@ def freezeAnalogs(deviceName, indexes=None):
 
 def freezeAnalogsAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
     """
+    Issues a freeze command on the given analog outputs at the given
+    time for the specified duration.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
@@ -102,13 +110,14 @@ def freezeAnalogsAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
         intervalTime (int): The interval at which to periodically
             freeze, in millis.
         indexes (list[object]): An optional list of specific indexes on
-            which to issue the freeze command.
+            which to issue the freeze command. Optional.
     """
     print(deviceName, absoluteTime, intervalTime, indexes)
 
 
 def freezeCounters(deviceName, indexes=None):
-    """Issues a freeze command on the given counters.
+    """
+    Issues a freeze command on the given counters.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
@@ -119,8 +128,9 @@ def freezeCounters(deviceName, indexes=None):
 
 
 def freezeCountersAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
-    """Issues a freeze command on the given counters at the given time
-    for the specified duration.
+    """
+    Issues a freeze command on the given counters at the given time for
+    the specified duration.
 
     Args:
         deviceName (str): The name of the DNP3 device driver.
@@ -135,7 +145,8 @@ def freezeCountersAtTime(deviceName, absoluteTime, intervalTime, indexes=None):
 
 
 def selectOperateAnalog(deviceName, index, value, variation=None):
-    """Issues a Select-And-Operate command to set an analog value in an
+    """
+    Issues a Select-And-Operate command to set an analog value in an
     analog output point.
 
     Args:
@@ -162,8 +173,9 @@ def selectOperateBinary(
     onTime=None,
     offTime=None,
 ):
-    """Issues a Select-And-Operate command for digital control
-    operations at binary output points (CROB).
+    """
+    Issues a Select-And-Operate command for digital control operations
+    at binary output points (CROB).
 
     Args:
         deviceName: The name of the DNP3 device driver.

@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Twilio Functions
+
+"""
+Twilio Functions
+
 The following functions give you access to read info and send SMS
 through Twilio. This requires the Twilio Module, which is not included
 in a typical install.
@@ -19,7 +22,8 @@ from system.dataset import Dataset
 
 
 def getAccounts():
-    """Return a list of Twilio accounts that have been configured in the
+    """
+    Return a list of Twilio accounts that have been configured in the
     Gateway.
 
     Returns:
@@ -29,7 +33,8 @@ def getAccounts():
 
 
 def getAccountsDataset():
-    """Return a list of Twilio accounts that have been configured in the
+    """
+    Return a list of Twilio accounts that have been configured in the
     Gateway as a single-column Dataset.
 
     Returns:
@@ -40,9 +45,10 @@ def getAccountsDataset():
 
 
 def getPhoneNumbers(accountName):
-    """Returns a list of outgoing phone numbers for a Twilio account.
-    Note that these numbers are supplied by Twilio, and are not defined
-    on a user in Ignition.
+    """
+    Returns a list of outgoing phone numbers for a Twilio account. Note
+    that these numbers are supplied by Twilio, and are not defined on a
+    user in Ignition.
 
     Args:
         accountName (str): The Twilio account to retrieve phone numbers
@@ -58,7 +64,8 @@ def getPhoneNumbers(accountName):
 
 
 def getPhoneNumbersDataset(accountName):
-    """Return a list of outgoing phone numbers for a Twilio account as a
+    """
+    Return a list of outgoing phone numbers for a Twilio account as a
     single-column Dataset. Note that these numbers are supplied by
     Twilio, and are not defined on a user in Ignition.
 
@@ -75,7 +82,8 @@ def getPhoneNumbersDataset(accountName):
 
 
 def sendSms(accountName, fromNumber, toNumber, message):
-    """Sends a SMS message.
+    """
+    Sends a SMS message.
 
     Args:
         accountName (str): The Twilio account to send the SMS from.

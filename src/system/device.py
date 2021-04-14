@@ -1,7 +1,10 @@
 # Copyright (C) 2018-2021
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
-"""Device Functions
+
+"""
+Device Functions
+
 The following functions give you access to view and edit device
 connections in the Gateway.
 """
@@ -20,7 +23,8 @@ from system.dataset import Dataset
 
 
 def addDevice(deviceType, deviceName, deviceProps):
-    """Adds a new device connection in Ignition. Accepts a dictionary of
+    """
+    Adds a new device connection in Ignition. Accepts a dictionary of
     parameters to configure the connection. Acceptable parameters differ
     by device type: i.e., a Modbus/TCP connection requires a hostname
     and port, but a simulator doesn't require any parameters.
@@ -41,7 +45,8 @@ def addDevice(deviceType, deviceName, deviceProps):
 
 
 def getDeviceHostname(deviceName):
-    """Gets the hostname of a device.
+    """
+    Gets the hostname of a device.
 
     Args:
         deviceName (str): The name of the device in Ignition.
@@ -55,8 +60,9 @@ def getDeviceHostname(deviceName):
 
 
 def listDevices():
-    """Returns a dataset of information about each configured device.
-    Each row represents a single device.
+    """
+    Returns a dataset of information about each configured device. Each
+    row represents a single device.
 
     Returns:
         Dataset: A dataset, where each row represents a device. Contains
@@ -66,7 +72,8 @@ def listDevices():
 
 
 def refreshBrowse(deviceName):
-    """Forces Ignition to browse the controller. Only works for
+    """
+    Forces Ignition to browse the controller. Only works for
     Allen-Bradley controllers.
 
     Args:
@@ -76,7 +83,8 @@ def refreshBrowse(deviceName):
 
 
 def removeDevice(deviceName):
-    """Removes a given device from Ignition.
+    """
+    Removes a given device from Ignition.
 
     Args:
         deviceName (str): The name of the device in Ignition.
@@ -85,7 +93,8 @@ def removeDevice(deviceName):
 
 
 def setDeviceEnabled(deviceName, enabled):
-    """Enables/disables a device in Ignition.
+    """
+    Enables/disables a device in Ignition.
 
     Args:
         deviceName (str): The name of the device in Ignition.
@@ -95,7 +104,8 @@ def setDeviceEnabled(deviceName, enabled):
 
 
 def setDeviceHostname(deviceName, hostname):
-    """Changes the hostname of a device. Used for all ethernet based
+    """
+    Changes the hostname of a device. Used for all ethernet based
     drivers.
 
     Args:
