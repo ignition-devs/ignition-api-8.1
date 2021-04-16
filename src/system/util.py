@@ -245,7 +245,16 @@ class Version(Object):
         return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
     def toParseableString(self):
-        pass
+        """
+        Returns the version as a compact, parseable (non-XML) string
+        that can be parsed with the 1-string constructor of this class.
+
+        Returns:
+            string: Compact, parseable (non-XML) string.
+        """
+        return "{}.{}.{}.{}".format(
+            self.major, self.minor, self.rev, self.build
+        )
 
     def toString(self):
         if self.rc > 0:
