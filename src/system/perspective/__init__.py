@@ -24,6 +24,8 @@ __all__ = [
     "login",
     "logout",
     "navigate",
+    "navigateBack",
+    "navigateForward",
     "openDock",
     "openPopup",
     "print",
@@ -385,6 +387,7 @@ def navigate(
     params=None,
     sessionId="current_session",
     pageId="current_page",
+    newTab=False,
 ):
     """
     Navigate the session to a specified view or mounted page.
@@ -420,10 +423,47 @@ def navigate(
             must be included in the call. Optional.
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
+        newTab (bool): If True, opens the contents in a new tab.
+            Optional.
     """
     from __builtin__ import print
 
-    print(page, url, view, params, sessionId, pageId)
+    print(page, url, view, params, sessionId, pageId, newTab)
+
+
+def navigateBack(sessionId=None, pageId=None):
+    """
+    Navigate the session to a specified view or mounted page. This is
+    similar to a browser's "back" function.
+
+    Args:
+        sessionId (str): Identifier of the Session to target. If
+            omitted, the current Session will be used automatically.
+            Optional.
+        pageId (str): Identifier of the page to target. If omitted, the
+            current page will be used automatically. Optional.
+    """
+    from __builtin__ import print
+
+    print(sessionId, pageId)
+
+
+def navigateForward(sessionId=None, pageId=None):
+    """
+    Navigate the session to a specified view or mounted page. This is
+    similar to a browser's "forward" function.
+
+    Args:
+        sessionId (str): Identifier of the Session to target. If
+            omitted, the current Session will be used automatically.
+            When targeting a different session, then the pageId
+            parameter must be included in the call. Optional.
+        pageId (str): Identifier of the page to target. If omitted, the
+            current page will be used automatically. Optional.
+    """
+    from __builtin__ import print
+
+    print(sessionId, pageId)
 
 
 def openDock(
