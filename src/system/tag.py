@@ -577,7 +577,7 @@ def exportTags(filePath, tagPaths, recursive=True, exportType="json"):
     was running; for example, running this script in a Gateway Timer
     script will export the file to the Gateway file system.
 
-    ArgsL
+    Args:
         filePath (str): The file path that the Tags will be exported to.
             If the file does not already exist, this function will
             attempt to create it.
