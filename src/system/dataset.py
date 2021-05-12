@@ -603,7 +603,7 @@ def toDataSet(*args):
     return Dataset()
 
 
-def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
+def toExcel(showHeaders, dataset, nullsEmpty=False, sheetNames=None):
     """
     Formats the contents of one or more datasets as an excel
     spreadsheet, returning the results as a string. Each dataset
@@ -614,7 +614,7 @@ def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
     Args:
         showHeaders (bool): If True, the spreadsheet will include a
             header row. If False, the header row will be omitted.
-        datasets (list[Dataset]): A sequence of one or more datasets,
+        dataset (list[Dataset]): A sequence of one or more datasets,
             one for each sheet in the resulting workbook.
         nullsEmpty (bool): If True (1), the spreadsheet will leave cells
             with NULL values empty, instead of allowing Excel to provide
@@ -630,7 +630,7 @@ def toExcel(showHeaders, datasets, nullsEmpty=False, sheetNames=None):
         str: An Excel-compatible XML-based workbook, with one worksheet
             per dataset.
     """
-    print (showHeaders, datasets, nullsEmpty, sheetNames)
+    print (showHeaders, dataset, nullsEmpty, sheetNames)
     return None
 
 

@@ -651,7 +651,7 @@ def isOverlaysEnabled():
     return False
 
 
-def move(tags, destination, collisionPolicy):
+def move(tags, destination, collisionPolicy="o"):
     """
     Moves Tags or Folders to a new destination. The new destination can
     be a separate tag provider. If interested in copying the tags to a
@@ -1255,7 +1255,7 @@ def writeAll(tagPaths, values):
     return [1] * len(tagPaths)
 
 
-def writeAsync(tagPaths, values, callback):
+def writeAsync(tagPaths, values, callback=None):
     """
     Asynchronously writes values to Tags a the given paths. You must
     provide a Python callback function that can process the write
@@ -1272,6 +1272,7 @@ def writeAsync(tagPaths, values, callback):
             single argument, which will hold a List of quality codes
             when the callback function is invoked. The quality codes
             will hold the result of the write operation for that Tag.
+            Optional.
     """
     print (tagPaths, values, callback)
 

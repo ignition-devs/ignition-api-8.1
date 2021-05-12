@@ -226,7 +226,7 @@ def closeSession(message=None, sessionId="current_session"):
 def download(
     filename,
     data,
-    contentType,
+    contentType=None,
     sessionId="current_session",
     pageId="current_page",
 ):

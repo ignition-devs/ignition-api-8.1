@@ -184,12 +184,12 @@ class SProcCall(Object):
 def addDatasource(
     jdbcDriver,
     name,
-    description,
-    connectUrl,
-    username,
-    password,
-    props,
-    validationQuery,
+    description=None,
+    connectUrl=None,
+    username=None,
+    password=None,
+    props=None,
+    validationQuery=None,
     maxConnections=8,
 ):
     """
@@ -199,14 +199,15 @@ def addDatasource(
         jdbcDriver (str): The name of the JDBC driver in Ignition.
             Required.
         name (str): The datasource name. Required.
-        description (str): Description of the datasource.
+        description (str): Description of the datasource. Optional.
         connectUrl (str): Default is the connect URL for JDBC driver.
         username (str): Username to login to the datasource with.
-        password (str): Password for the login.
-        props (str): The extra connection parameters.
+            Optional.
+        password (str): Password for the login. Optional.
+        props (str): The extra connection parameters. Optional.
         validationQuery (str): Default is the validation query for the
-            JDBC driver.
-        maxConnections (int): Default is 8.
+            JDBC driver. Optional.
+        maxConnections (int): Default is 8. Optional.
     """
     print (
         jdbcDriver,
@@ -667,7 +668,7 @@ def runScalarPrepQuery(query, args, database="", tx=None):
     return None
 
 
-def runScalarQuery(query, database, tx):
+def runScalarQuery(query, database="", tx=None):
     """
     Runs a query against a database connection just like the runQuery
     function, but only returns the value from the first row and column.

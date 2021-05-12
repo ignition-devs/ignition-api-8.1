@@ -283,14 +283,14 @@ def queryJournal(
 
 
 def queryStatus(
-    priority,
-    state,
-    path,
-    source,
-    displaypath,
-    all_properties,
-    any_properties,
-    defined,
+    priority=None,
+    state=None,
+    path=None,
+    source=None,
+    displaypath=None,
+    all_properties=None,
+    any_properties=None,
+    defined=None,
     includeShelved=False,
 ):
     """
@@ -304,35 +304,37 @@ def queryStatus(
         priority (list[str]): A list of possible priorities to match.
             Priorities can be specified by name or number, with the
             values: Diagnostic(0), Low(1), Medium(2), High(3),
-            Critical(4).
+            Critical(4). Optional.
         state (list[str]): A list of states to allow. Valid values:
             "ClearUnacked", "ClearAcked", "ActiveUnacked",
-            "ActiveAcked".
+            "ActiveAcked". Optional.
         path (list[str]): A list of possible source paths to search at.
             The wildcard "*" may be used. Works the same as the source
-            argument, and either can be used.
+            argument, and either can be used. Optional.
         source (list[str]): A list of possible source paths to search
             at. The wildcard "*" may be used. Works the same as the path
-            argument, and either can be used.
+            argument, and either can be used. Optional.
         displaypath (list[str]): A list of display paths to search at.
             Display paths are separated by "/", and if a path ends in
             "/*", everything below that path will be searched as well.
+            Optional.
         all_properties (list[object]): A set of property conditions, all
             of which must be met for the condition to pass. This
             parameter is a list of tuples, in the form ("propName",
             "condition", value). Valid condition values: "=", "!=", "<",
             "<=", ">", ">=". Only the first two conditions may be used
-            for string values.
+            for string values. Optional.
         any_properties (list[object]): A set of property conditions, any
             of which will cause the overall the condition to pass. This
             parameter is a list of tuples, in the form ("propName",
             "condition", value). Valid condition values: "=", "!=", "<",
             "<=", ">", ">=". Only the first two conditions may be used
-            for string values.
+            for string values. Optional.
         defined (list[str]): A list of string property names, all of
-            which must be present on an event for it to pass.
+            which must be present on an event for it to pass. Optional.
         includeShelved (bool): A flag indicating whether shelved events
             should be included in the results. Defaults to "False".
+            Optional.
 
     Returns:
         AlarmQueryResults: The AlarmQueryResults object is functionally
@@ -356,7 +358,7 @@ def queryStatus(
     return AlarmQueryResults()
 
 
-def shelve(path, timeoutSeconds, timeoutMinutes):
+def shelve(path, timeoutSeconds=None, timeoutMinutes=None):
     """
     This function shelves the specified alarms for the specified amount
     of time. The paths may be either source paths, or display paths. The
@@ -371,10 +373,10 @@ def shelve(path, timeoutSeconds, timeoutMinutes):
             below that path.
         timeoutSeconds (int): The amount of time to shelve the matching
             alarms for, specified in seconds. 0 indicates that matching
-            alarm events should now be allowed to pass.
+            alarm events should now be allowed to pass. Optional.
         timeoutMinutes (int): The amount of time to shelve the matching
             alarms for, specified in minutes. 0 indicates that matching
-            alarm events should now be allowed to pass.
+            alarm events should now be allowed to pass. Optional.
     """
     print (path, timeoutSeconds, timeoutMinutes)
 
