@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-SFC Functions
+"""SFC Functions.
 
 The following functions give you access to interact with the SFCs in the
 Gateway.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "cancelChart",
@@ -25,33 +26,34 @@ from system.dataset import Dataset
 
 
 class PyChartScope(object):
-    """
-    This class represents any "scope" in the SFC system, and is
-    fundamentally just an observable dictionary. Despite its name, it is
-    not limited to chart scope. This class notifies listeners when
-    values are changed, and wraps any dictionaries assigned to it as
-    PyChartScopes as well.
+    """This class represents any "scope" in the SFC system, and is
+    fundamentally just an observable dictionary.
+
+    Despite its name, it is not limited to chart scope. This class
+    notifies listeners when values are changed, and wraps any
+    dictionaries assigned to it as PyChartScopes as well.
     """
 
     pass
 
 
 def cancelChart(instanceId):
-    """
-    Cancels the execution of a running chart instance. Any running steps
-    will be told to stop, and the chart will enter Canceling state.
+    """Cancels the execution of a running chart instance.
+
+    Any running steps will be told to stop, and the chart will enter
+    Canceling state.
 
     Args:
         instanceId (str): The ID of the chart instance to cancel.
     """
-    print instanceId
+    print(instanceId)
 
 
 def getRunningCharts(charPath=None):
-    """
-    Retrieves information about running charts. Can search all running
-    charts, or be filtered charts at a specific path. This function will
-    return charts that are in a Paused state.
+    """Retrieves information about running charts.
+
+    Can search all running charts, or be filtered charts at a specific
+    path. This function will return charts that are in a Paused state.
 
     Args:
         charPath (str): The path to a chart to filter on: i.e.,
@@ -62,15 +64,15 @@ def getRunningCharts(charPath=None):
     Returns:
         Dataset: A dataset with information on the active chart.
     """
-    print charPath
+    print(charPath)
     return Dataset()
 
 
 def getVariables(instanceId):
-    """
-    Get the variables in a chart instance's scope. Commonly used to
-    check the value of a Chart Parameter, or determine how long the
-    chart has been running for.
+    """Get the variables in a chart instance's scope.
+
+    Commonly used to check the value of a Chart Parameter, or determine
+    how long the chart has been running for.
 
     Args:
         instanceId (str): The instance identifier of the chart.
@@ -79,38 +81,38 @@ def getVariables(instanceId):
         PyChartScope: A python dictionary of variables. Step scopes for
             active steps are found under the "activeSteps" key.
     """
-    print instanceId
+    print(instanceId)
     return PyChartScope()
 
 
 def pauseChart(instanceId):
-    """
-    Pauses a running chart instance. Any running steps will be told to
-    pause, and the chart will enter Pausing state.
+    """Pauses a running chart instance.
+
+    Any running steps will be told to pause, and the chart will enter
+    Pausing state.
 
     Args:
         instanceId (str): The ID of the chart instance to pause.
     """
-    print instanceId
+    print(instanceId)
 
 
 def redundantCheckpoint(instanceId):
-    """
-    Synchronizes chart and step variables of the specified chart
+    """Synchronizes chart and step variables of the specified chart
     instance across a redundant cluster, allowing the chart instance to
-    continue where it left off if a redundant failover occurs. Check out
-    redundancy sync for more information.
+    continue where it left off if a redundant failover occurs.
 
     Args:
         instanceId (str): The instance identifier of the chart.
     """
-    print instanceId
+    print(instanceId)
 
 
 def resumeChart(instanceId):
-    """
-    Resumes a chart that was paused. Steps which were previously paused
-    will be resumed, and chart will enter Resuming state.
+    """Resumes a chart that was paused.
+
+    Steps which were previously paused will be resumed, and chart will
+    enter Resuming state.
 
     Args:
         instanceId (str): The ID of the chart instance to resume.
@@ -123,8 +125,7 @@ def resumeChart(instanceId):
 
 
 def setVariable(instanceId, stepId, variableName, variableValue):
-    """
-    Sets a variable inside a currently running chart.
+    """Sets a variable inside a currently running chart.
 
     Args:
         instanceId (str): The instance identifier of the chart.
@@ -133,12 +134,11 @@ def setVariable(instanceId, stepId, variableName, variableValue):
         variableName (str): The name of the variable to set.
         variableValue (object): The value for the variable to be set to.
     """
-    print (instanceId, stepId, variableName, variableValue)
+    print(instanceId, stepId, variableName, variableValue)
 
 
 def setVariables(instanceId, stepId, variableMap):
-    """
-    Sets any number of variables inside a currently running chart.
+    """Sets any number of variables inside a currently running chart.
 
     Args:
         instanceId (str): The instance identifier of the chart.
@@ -147,13 +147,13 @@ def setVariables(instanceId, stepId, variableMap):
         variableMap (dict): A dictionary containing the name:value pairs
             of the variables to set.
     """
-    print (instanceId, stepId, variableMap)
+    print(instanceId, stepId, variableMap)
 
 
 def startChart(path, chartPath, arguments):
-    """
-    Starts a new instance of a chart. The chart must be set to
-    "Callable" execution mode.
+    """Starts a new instance of a chart.
+
+    The chart must be set to "Callable" execution mode.
 
     Args:
         path (str): The path to the chart, for example:
@@ -167,5 +167,5 @@ def startChart(path, chartPath, arguments):
     Returns:
         str: The unique ID of this chart.
     """
-    print (path, chartPath, arguments)
+    print(path, chartPath, arguments)
     return "UUID"

@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Navigation Functions
+"""Navigation Functions.
 
 The following functions allow you to open and close windows in the
 client.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "centerWindow",
@@ -31,9 +32,7 @@ from javax.swing import JInternalFrame
 
 
 class FPMIWindow(JInternalFrame):
-    """
-    FPMIWindow object.
-    """
+    """FPMIWindow object."""
 
     # Fields.
     CACHE_ALWAYS = 2
@@ -58,12 +57,11 @@ class FPMIWindow(JInternalFrame):
         return self._path
 
     def getRootContainer(self):
-        print self
+        print(self)
 
 
 class INavUtilities(ABCMeta):
-    """
-    Parent interface to coordinate the functions between NavUtilities
+    """Parent interface to coordinate the functions between NavUtilities
     and NavUtilitiesDispatcher.
     """
 
@@ -120,46 +118,45 @@ class INavUtilities(ABCMeta):
 
 
 def centerWindow(arg):
-    """
-    Given a window path, or a reference to a window itself, it will
-    center the window. The window should be floating and non-maximized.
-    If the window can't be found, this function will do nothing.
+    """Given a window path, or a reference to a window itself, it will
+    center the window.
+
+    The window should be floating and non-maximized. If the window can't
+    be found, this function will do nothing.
 
     Args:
         arg (object): The path of the window (str) or a reference to the
             window (FPMIWindow) to center.
     """
-    print arg
+    print(arg)
 
 
 def closeParentWindow(event):
-    """
-    Closes the parent window given a component event object.
+    """Closes the parent window given a component event object.
 
     Args:
         event (EventObject): A component event object. The enclosing
             window for the component will be closed.
     """
-    print event
+    print(event)
 
 
 def closeWindow(arg):
-    """
-    Given a window path, or a reference to a window itself, it will
-    close the window. If the window can't be found, this function will
-    do nothing.
+    """Given a window path, or a reference to a window itself, it will
+    close the window.
+
+    If the window can't be found, this function will do nothing.
 
     Args:
         arg (object): A reference to the window to close as an
             FPMIWindow instance or the path of the window to close as a
             String.
     """
-    print arg
+    print(arg)
 
 
 def desktop(handle="primary"):
-    """
-    Allows for invoking system.nav functions on a specific desktop.
+    """Allows for invoking system.nav functions on a specific desktop.
 
     Args:
         handle (str): The handle for the desktop to use. The screen
@@ -172,15 +169,16 @@ def desktop(handle="primary"):
         INavUtilities: A copy of system.nav that will alter the desktop
             named by the given handle.
     """
-    print handle
+    print(handle)
     return INavUtilities()
 
 
 def getCurrentWindow():
-    """
-    Returns the path of the current "main screen" window, which is
-    defined as the maximized window. With the Typical Navigation
-    Strategy, there is only ever one maximized window at a time.
+    """Returns the path of the current "main screen" window, which is
+    defined as the maximized window.
+
+    With the Typical Navigation Strategy, there is only ever one
+    maximized window at a time.
 
     Returns:
         str: The path of the current "main screen" window - the
@@ -190,8 +188,7 @@ def getCurrentWindow():
 
 
 def goBack():
-    """
-    When using the Typical Navigation Strategy, this function will
+    """When using the Typical Navigation Strategy, this function will
     navigate back to the previous main screen window.
 
     Returns:
@@ -201,8 +198,7 @@ def goBack():
 
 
 def goForward():
-    """
-    When using the Typical Navigation Strategy, this function will
+    """When using the Typical Navigation Strategy, this function will
     navigate "forward" to the last main-screen window the user was on
     when they executed a system.nav.goBack().
 
@@ -213,10 +209,11 @@ def goForward():
 
 
 def goHome():
-    """
-    When using the Typical Navigation Strategy, this function will
-    navigate to the "home" window. This is automatically detected as the
-    first main-screen window shown in a project.
+    """When using the Typical Navigation Strategy, this function will
+    navigate to the "home" window.
+
+    This is automatically detected as the first main-screen window shown
+    in a project.
 
     Returns:
         FPMIWindow: The window that was returned to.
@@ -225,11 +222,11 @@ def goHome():
 
 
 def openWindow(path, params=None):
-    """
-    Opens the window with the given path. If the window is already open,
-    brings it to the front. The optional params dictionary contains
-    key:value pairs which will be used to set the target window's root
-    container's dynamic variables.
+    """Opens the window with the given path.
+
+    If the window is already open, brings it to the front. The optional
+    params dictionary contains key:value pairs which will be used to set
+    the target window's root container's dynamic variables.
 
     Args:
         path (str): The path to the window to open.
@@ -242,16 +239,17 @@ def openWindow(path, params=None):
     Returns:
         FPMIWindow: A reference to the opened window.
     """
-    print (path, params)
+    print(path, params)
     return FPMIWindow("Opened Window")
 
 
 def openWindowInstance(path, params=None):
-    """
-    Operates exactly like system.nav.openWindow, except that if the
+    """Operates exactly like system.nav.openWindow, except that if the
     named window is already open, then an additional instance of the
-    window will be opened. There is no limit to the number of additional
-    instances of a window that you can open.
+    window will be opened.
+
+    There is no limit to the number of additional instances of a window
+    that you can open.
 
     Args:
         path (str): The path to the window to open.
@@ -264,16 +262,16 @@ def openWindowInstance(path, params=None):
     Returns:
         FPMIWindow: A reference to the opened window.
     """
-    print (path, params)
+    print(path, params)
     return FPMIWindow("Window Instance")
 
 
 def swapTo(path, params=None):
-    """
-    Performs a window swap from the current main screen window to the
-    window specified. Swapping means that the opened window will take
-    the place of the closing window - in this case it will be maximized.
-    See also: Navigation Strategies.
+    """Performs a window swap from the current main screen window to the
+    window specified.
+
+    Swapping means that the opened window will take the place of the
+    closing window - in this case it will be maximized.
 
     This function works like system.nav.swapWindow except that you
     cannot specify the source for the swap.
@@ -289,16 +287,17 @@ def swapTo(path, params=None):
     Returns:
         FPMIWindow: A reference to the swapped-to window.
     """
-    print (path, params)
+    print(path, params)
     return FPMIWindow("Swapped To")
 
 
 def swapWindow(arg, swapToPath, params=None):
-    """
-    Performs a window swap. This means that one window is closed, and
-    another is opened and takes its place - assuming its size, floating
-    state, and maximization state. This gives a seamless transition; one
-    window seems to simply turn into another.
+    """Performs a window swap.
+
+    This means that one window is closed, and another is opened and
+    takes its place - assuming its size, floating state, and
+    maximization state. This gives a seamless transition; one window
+    seems to simply turn into another.
 
     Args:
         arg (object): The path of the window (str) to swap from. Must be
@@ -315,5 +314,5 @@ def swapWindow(arg, swapToPath, params=None):
     Returns:
         FPMIWindow: A reference to the swapped-to window.
     """
-    print (arg, swapToPath, params)
+    print(arg, swapToPath, params)
     return FPMIWindow("Swapped To")

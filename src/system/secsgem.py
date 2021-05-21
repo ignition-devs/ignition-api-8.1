@@ -2,13 +2,14 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-SECS/GEM Functions
+"""SECS/GEM Functions.
 
 The following functions allow you to interact with equipment defined by
 the SECS/GEM module. Note that the SECS/GEM module must be installed
 before these functions will be accessible.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "copyEquipment",
@@ -39,9 +40,9 @@ def copyEquipment(
     dbTablePrefix=None,
     description=None,
 ):
-    """
-    Creates a copy of an equipment connection. Common settings can be
-    overridden for the new connection.
+    """Creates a copy of an equipment connection.
+
+    Common settings can be overridden for the new connection.
 
     An exception is thrown if the new Equipment Connection cannot be
     created.
@@ -76,7 +77,7 @@ def copyEquipment(
             connection. If no description is specified, the description
             of the source equipment will be used. Optional.
     """
-    print (
+    print(
         equipmentSource,
         newEquipmentName,
         enabled,
@@ -91,19 +92,18 @@ def copyEquipment(
 
 
 def deleteToolProgram(ppid):
-    """
-    Deletes a process program from the Gateway.
+    """Deletes a process program from the Gateway.
 
     Args:
         ppid (str): The PPID that was sent from the tool when the S7F3
             message was saved.
     """
-    print ppid
+    print(ppid)
 
 
 def enableDisableEquipment(enable, names):
-    """
-    Enables or disables a Tuple of equipment connections from a script.
+    """Enables or disables a Tuple of equipment connections from a
+    script.
 
     Args:
         enable (bool): Set to True to enable equipment connections, or
@@ -120,16 +120,16 @@ def enableDisableEquipment(enable, names):
             enabled/disabled. If the list is empty, then all specified
             equipment connections were successfully modified.
     """
-    print enable
+    print(enable)
     for name in names:
-        print name
+        print(name)
     return [""]
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
-    """
-    Attempts to retrieve a response message from the Gateway. The
-    transaction id from the sent message is used to retrieve the
+    """Attempts to retrieve a response message from the Gateway.
+
+    The transaction id from the sent message is used to retrieve the
     response.
 
     Args:
@@ -150,14 +150,13 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
             result is a JSON string that's decoded into a python object,
             as shown on the mapping on the system.util.jsonDecode page.
     """
-    print (transactionID, equipment, timeout, poll)
+    print(transactionID, equipment, timeout, poll)
     return None
 
 
 def getToolProgram(ppid):
-    """
-    Returns a process program from the Gateway that was previously sent
-    by a a tool in an S7F3 message.
+    """Returns a process program from the Gateway that was previously
+    sent by a a tool in an S7F3 message.
 
     Args:
         ppid (str): The PPID that was sent from the tool when the S7F3
@@ -169,7 +168,7 @@ def getToolProgram(ppid):
     """
     import system.date
 
-    print ppid
+    print(ppid)
     return {
         "editDate": system.date.now(),
         "ppBody": "program",
@@ -178,8 +177,7 @@ def getToolProgram(ppid):
 
 
 def getToolProgramDataset():
-    """
-    Returns a Dataset containing information about all stored process
+    """Returns a Dataset containing information about all stored process
     programs.
 
     Returns:
@@ -191,9 +189,10 @@ def getToolProgramDataset():
 
 
 def sendRequest(streamFunction, reply, body, equipment):
-    """
-    Sends a JSON-formatted SECS message to a tool. An equipment
-    connection must be configured for the tool in the Gateway.
+    """Sends a JSON-formatted SECS message to a tool.
+
+    An equipment connection must be configured for the tool in the
+    Gateway.
 
     Args:
         streamFunction (str): The stream and function of the SECS
@@ -210,15 +209,15 @@ def sendRequest(streamFunction, reply, body, equipment):
     Returns:
         int: The transactionID of the SECS message response.
     """
-    print (streamFunction, reply, body, equipment)
+    print(streamFunction, reply, body, equipment)
     return 0
 
 
 def startSimEventRun(simulatorName, eventRunName):
-    """
-    Starts a configured simulator event run in the Gateway. Note, that
-    this function only works with the simulators that come included with
-    the SECS/GEM module.
+    """Starts a configured simulator event run in the Gateway.
+
+    Note, that this function only works with the simulators that come
+    included with the SECS/GEM module.
 
     The function will throw an exception if the specified Event Run
     cannot be started.
@@ -230,12 +229,11 @@ def startSimEventRun(simulatorName, eventRunName):
         eventRunName (str): The event run to start. Will throw an
             exception if the specified simulator can't be found.
     """
-    print (simulatorName, eventRunName)
+    print(simulatorName, eventRunName)
 
 
 def toDataSet(secsObject):
-    """
-    Converts a SECS message data structure, as returned by the
+    """Converts a SECS message data structure, as returned by the
     system.secsgem.getResponse function, into a dataset and returns it.
 
     Args:
@@ -246,13 +244,12 @@ def toDataSet(secsObject):
     Returns:
          Dataset: A Dataset representing a SECS message.
     """
-    print secsObject
+    print(secsObject)
     return Dataset()
 
 
 def toTreeDataSet(dataset):
-    """
-    Changes an existing dataset, as returned by the
+    """Changes an existing dataset, as returned by the
     system.secsgem.toDataSet function, to make it usable for the Tree
     View component.
 
@@ -266,14 +263,15 @@ def toTreeDataSet(dataset):
         Dataset: A Dataset containing a SECS message that can be used in
             the Tree View component.
     """
-    print dataset
+    print(dataset)
     return Dataset()
 
 
 def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
-    """
-    Sends a JSON-formatted SECS response message to a message sent by a
-    tool. An equipment connection must be configured for the tool in the
+    """Sends a JSON-formatted SECS response message to a message sent by
+    a tool.
+
+    An equipment connection must be configured for the tool in the
     Gateway, and this must be used within a Message Handler to create a
     Custom Message Response Handler.
 
@@ -293,4 +291,4 @@ def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
             system.util.jsonDecode function.
         equipment (str): Name of the equipment connection to use.
     """
-    print (transactionID, systemBytes, streamFunction, body, equipment)
+    print(transactionID, systemBytes, streamFunction, body, equipment)

@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Roster Functions
+"""Roster Functions.
 
 Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "addUsers",
@@ -21,9 +22,9 @@ from system.user import PyUser
 
 
 def addUsers(rosterName, users):
-    """
-    Adds a list of users to an existing roster. Users are always
-    appended to the end of the roster.
+    """Adds a list of users to an existing roster.
+
+    Users are always appended to the end of the roster.
 
     Args:
         rosterName (str): The name of the roster to modify.
@@ -32,15 +33,14 @@ def addUsers(rosterName, users):
             the system.user.getUser and system.user.addUser functions.
             These users must exist before being added to the roster.
     """
-    print rosterName
+    print(rosterName)
     for user in users:
-        print user.Username
+        print(user.Username)
 
 
 def createRoster(name, description):
-    """
-    Creates a roster with the given name and description, if it does not
-    already exist.
+    """Creates a roster with the given name and description, if it does
+    not already exist.
 
     This function was designed to run in the Gateway and in Perspective
     sessions. If creating rosters from Vision clients, use
@@ -51,22 +51,20 @@ def createRoster(name, description):
         description (str): The description for the roster. May be None,
             but the parameter is mandatory.
     """
-    print (name, description)
+    print(name, description)
 
 
 def deleteRoster(rosterName):
-    """
-    Deletes a roster with the given name.
+    """Deletes a roster with the given name.
 
     Args:
         rosterName (str): The name of the roster to delete.
     """
-    print rosterName
+    print(rosterName)
 
 
 def getRosters():
-    """
-    Returns a dictionary of rosters, where the key is the name of the
+    """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
     This function was designed to run in the Gateway and in Perspective
@@ -81,15 +79,14 @@ def getRosters():
 
 
 def removeUsers(rosterName, users):
-    """
-    Removes one or more users from an existing roster.
+    """Removes one or more users from an existing roster.
 
     Args:
         rosterName (str): The name of the roster to modify.
         users (list[PyUser]): A list of user objects that will be added
-            to  the end of the roster. User objects can be created with
+            to the end of the roster. User objects can be created with
             the system.user.getUser and system.user.addUser functions.
     """
-    print rosterName
+    print(rosterName)
     for user in users:
-        print user.Username
+        print(user.Username)

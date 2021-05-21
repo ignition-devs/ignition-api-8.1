@@ -2,10 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
+"""Package java.awt.
+
 Contains all of the classes for creating user interfaces and for
 painting graphics and images.
 """
+
+from __future__ import print_function
 
 __all__ = ["Color", "Component", "Container", "Frame", "Image", "Window"]
 
@@ -13,10 +16,11 @@ from java.lang import Object
 
 
 class Color(Object):
-    """
-    The Color class is used to encapsulate colors in the default sRGB
+    """The Color class is used to encapsulate colors in the default sRGB
     color space or colors in arbitrary color spaces identified by a
-    ColorSpace. Every color has an implicit alpha value of 1.0 or an
+    ColorSpace.
+
+    Every color has an implicit alpha value of 1.0 or an
     explicit one provided in the constructor. The alpha value defines
     the transparency of a color and can be represented by a float value
     in the range 0.0 - 1.0 or 0 - 255. An alpha value of 1.0 or 255
@@ -32,43 +36,38 @@ class Color(Object):
     """
 
     def __init__(self, *args):
-        """
-        Creates a color.
+        """Creates a color.
 
         Args:
             *args: Variable length argument list.
         """
-        print args
+        print(args)
 
 
 class Component(Object):
-    """
-    A component is an object having a graphical representation that can
-    be displayed on the screen and that can interact with the user.
+    """A component is an object having a graphical representation that
+    can be displayed on the screen and that can interact with the user.
     """
 
     pass
 
 
 class Container(Component):
-    """
-    A generic Abstract Window Toolkit(AWT) container object is a
+    """A generic Abstract Window Toolkit(AWT) container object is a
     component that can contain other AWT components.
     """
 
     def add(self, *args):
-        """
-        Adds the specified component.
+        """Adds the specified component.
 
         Args:
             *args: Variable length argument list.
         """
-        print (self, args)
+        print(self, args)
 
 
 class Window(Container):
-    """
-    A Window object is a top-level window with no borders and no
+    """A Window object is a top-level window with no borders and no
     menubar.
     """
 
@@ -76,18 +75,16 @@ class Window(Container):
 
 
 class Frame(Window):
-    """
-    A Frame is a top-level window with a title and a border.
-    """
+    """A Frame is a top-level window with a title and a border."""
 
     pass
 
 
 class Image(Object):
-    """
-    The abstract class Image is the superclass of all classes that
-    represent graphical images. The image must be obtained in a
-    platform-specific manner.
+    """The abstract class Image is the superclass of all classes that
+    represent graphical images.
+
+    The image must be obtained in a platform-specific manner.
     """
 
     pass

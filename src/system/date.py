@@ -2,8 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Date Functions
+"""Date Functions.
 
 The following functions give you access to test and modify dates.
 """
@@ -60,8 +59,7 @@ from java.util import Locale
 
 
 def addDays(date, value):
-    """
-    Add or subtract an amount of days to a given date and time.
+    """Add or subtract an amount of days to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -76,8 +74,7 @@ def addDays(date, value):
 
 
 def addHours(date, value):
-    """
-    Add or subtract an amount of hours to a given date and time.
+    """Add or subtract an amount of hours to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -92,8 +89,8 @@ def addHours(date, value):
 
 
 def addMillis(date, value):
-    """
-    Add or subtract an amount of milliseconds to a given date and time.
+    """Add or subtract an amount of milliseconds to a given date and
+    time.
 
     Args:
         date (datetime): The starting date.
@@ -108,8 +105,7 @@ def addMillis(date, value):
 
 
 def addMinutes(date, value):
-    """
-    Add or subtract an amount of minutes to a given date and time.
+    """Add or subtract an amount of minutes to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -124,13 +120,13 @@ def addMinutes(date, value):
 
 
 def addMonths(date, value):
-    """
-    Add or subtract an amount of months to a given date and time. This
-    function is unique since each month can have a variable number of
-    days. For example, if the date passed in is March 31st, and we add
-    one month, April does not have a 31st day, so the returned date will
-    be the proper number of months rounded down to the closest available
-    day, in this case April 30th.
+    """Add or subtract an amount of months to a given date and time.
+
+    This function is unique since each month can have a variable number
+    of days. For example, if the date passed in is March 31st, and we
+    add one month, April does not have a 31st day, so the returned date
+    will be the proper number of months rounded down to the closest
+    available day, in this case April 30th.
 
     Args:
         date (datetime): The starting date.
@@ -152,8 +148,7 @@ def addMonths(date, value):
 
 
 def addSeconds(date, value):
-    """
-    Add or subtract an amount of seconds to a given date and time.
+    """Add or subtract an amount of seconds to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -168,8 +163,7 @@ def addSeconds(date, value):
 
 
 def addWeeks(date, value):
-    """
-    Add or subtract an amount of weeks to a given date and time.
+    """Add or subtract an amount of weeks to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -184,8 +178,7 @@ def addWeeks(date, value):
 
 
 def addYears(date, value):
-    """
-    Add or subtract an amount of years to a given date and time.
+    """Add or subtract an amount of years to a given date and time.
 
     Args:
         date (datetime): The starting date.
@@ -200,9 +193,9 @@ def addYears(date, value):
 
 
 def daysBetween(date_1, date_2):
-    """
-    Calculates the number of whole days between two dates. Daylight
-    Saving Time changes are taken into account.
+    """Calculates the number of whole days between two dates.
+
+    Daylight Saving Time changes are taken into account.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -216,8 +209,7 @@ def daysBetween(date_1, date_2):
 
 
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
-    """
-    Returns the given date as a string, formatted according to a
+    """Returns the given date as a string, formatted according to a
     pattern.
 
     Note:
@@ -252,12 +244,11 @@ def format(date, format="yyyy-MM-dd HH:mm:ss"):
 
 
 def fromMillis(millis):
-    """
-    Creates a date object given a millisecond value.
+    """Creates a date object given a millisecond value.
 
     Args:
         millis (long): The number of milliseconds elapsed since
-        January 1, 1970, 00:00:00 UTC (GMT).
+            January 1, 1970, 00:00:00 UTC (GMT).
 
     Returns:
         datetime: A new date object.
@@ -269,9 +260,8 @@ def fromMillis(millis):
 
 
 def getAMorPM(date):
-    """
-    Returns a 0 if the time is before noon, and a 1 if the time is after
-    noon.
+    """Returns a 0 if the time is before noon, and a 1 if the time is
+    after noon.
 
     Args:
         date (datetime): The date to use.
@@ -283,9 +273,9 @@ def getAMorPM(date):
 
 
 def getDate(year, month, day):
-    """
-    Creates a new Date object given a year, month and a day. The time
-    will be set to midnight of that day.
+    """Creates a new Date object given a year, month and a day.
+
+    The time will be set to midnight of that day.
 
     Args:
         year (int): The year for the new date.
@@ -301,8 +291,7 @@ def getDate(year, month, day):
 
 
 def getDayOfMonth(date):
-    """
-    Extracts the day of the month from a date. The first day of the
+    """Extracts the day of the month from a date. The first day of the
     month is day 1.
 
     Args:
@@ -315,9 +304,9 @@ def getDayOfMonth(date):
 
 
 def getDayOfWeek(date):
-    """
-    Extracts the day of the week from a date. Sunday is day 1, Saturday
-    is day 7.
+    """Extracts the day of the week from a date.
+
+    Sunday is day 1, Saturday is day 7.
 
     Args:
         date (datetime): The date to use.
@@ -330,9 +319,8 @@ def getDayOfWeek(date):
 
 
 def getDayOfYear(date):
-    """
-    Extracts the day of the year from a date. The first day of the year
-    is day 1.
+    """Extracts the day of the year from a date. The first day of the
+    year is day 1.
 
     Args:
         date (datetime): The date to use.
@@ -344,8 +332,7 @@ def getDayOfYear(date):
 
 
 def getHour12(date):
-    """
-    Extracts the hour from a date. Uses a 12 hour clock, so noon and
+    """Extracts the hour from a date. Uses a 12 hour clock, so noon and
     midnight are returned as 0.
 
     Args:
@@ -358,9 +345,8 @@ def getHour12(date):
 
 
 def getHour24(date):
-    """
-    Extracts the hour from a date. Uses a 24 hour clock, so midnight is
-    zero.
+    """Extracts the hour from a date. Uses a 24 hour clock, so midnight
+    is zero.
 
     Args:
         date (datetime): The date to use.
@@ -372,8 +358,7 @@ def getHour24(date):
 
 
 def getMillis(date):
-    """
-    Extracts the milliseconds from a date, ranging from 0-999.
+    """Extracts the milliseconds from a date, ranging from 0-999.
 
     Args:
         date (datetime): The date to use.
@@ -385,8 +370,7 @@ def getMillis(date):
 
 
 def getMinute(date):
-    """
-    Extracts the minutes from a date, ranging from 0-59.
+    """Extracts the minutes from a date, ranging from 0-59.
 
     Args:
         date (datetime): The date to use.
@@ -398,8 +382,7 @@ def getMinute(date):
 
 
 def getMonth(date):
-    """
-    Extracts the month from a date, where January is month 0.
+    """Extracts the month from a date, where January is month 0.
 
     Args:
         date (datetime): The date to use.
@@ -411,8 +394,7 @@ def getMonth(date):
 
 
 def getQuarter(date):
-    """
-    Extracts the quarter from a date, ranging from 1-4.
+    """Extracts the quarter from a date, ranging from 1-4.
 
     Args:
         date (datetime): The date to use.
@@ -420,12 +402,11 @@ def getQuarter(date):
     Returns:
         int: An integer that is representative of the extracted value.
     """
-    print((date.month - 1) // 3) + 1
+    return ((date.month - 1) // 3) + 1
 
 
 def getSecond(date):
-    """
-    Extracts the seconds from a date, ranging from 0-59.
+    """Extracts the seconds from a date, ranging from 0-59.
 
     Args:
         date (datetime): The date to use.
@@ -437,8 +418,7 @@ def getSecond(date):
 
 
 def getTimezone():
-    """
-    Returns the ID of the current timezone.
+    """Returns the ID of the current timezone.
 
     Returns:
         str: A representation of the current timezone.
@@ -447,8 +427,7 @@ def getTimezone():
 
 
 def getTimezoneOffset(date=datetime.now()):
-    """
-    Returns the current timezone's offset versus UTC for a given
+    """Returns the current timezone's offset versus UTC for a given
     instant, taking Daylight Saving Time into account.
 
     Args:
@@ -462,9 +441,8 @@ def getTimezoneOffset(date=datetime.now()):
 
 
 def getTimezoneRawOffset():
-    """
-    Returns the current timezone offset versus UTC, not taking Daylight
-    Saving Time into account.
+    """Returns the current timezone offset versus UTC, not taking
+    Daylight Saving Time into account.
 
     Returns:
          float: The timezone offset.
@@ -474,8 +452,7 @@ def getTimezoneRawOffset():
 
 
 def getYear(date):
-    """
-    Extracts the year from a date.
+    """Extracts the year from a date.
 
     Args:
         date (datetime): The date to use.
@@ -487,8 +464,7 @@ def getYear(date):
 
 
 def hoursBetween(date_1, date_2):
-    """
-    Calculates the number of whole hours between two dates.
+    """Calculates the number of whole hours between two dates.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -504,8 +480,7 @@ def hoursBetween(date_1, date_2):
 
 
 def isAfter(date_1, date_2):
-    """
-    Compares two dates to see if date_1 is after date_2.
+    """Compares two dates to see if date_1 is after date_2.
 
     Args:
         date_1 (datetime): The first date.
@@ -518,8 +493,7 @@ def isAfter(date_1, date_2):
 
 
 def isBefore(date_1, date_2):
-    """
-    Compares to dates to see if date_1 is before date_2.
+    """Compares to dates to see if date_1 is before date_2.
 
     Args:
         date_1 (datetime): The first date.
@@ -532,8 +506,7 @@ def isBefore(date_1, date_2):
 
 
 def isBetween(target_date, start_date, end_date):
-    """
-    Compares two dates to see if a target date is between two other
+    """Compares two dates to see if a target date is between two other
     dates.
 
     Args:
@@ -550,9 +523,8 @@ def isBetween(target_date, start_date, end_date):
 
 
 def isDaylightTime(date=datetime.now()):
-    """
-    Checks to see if the current timezone is using Daylight Saving Time
-    during the date specified.
+    """Checks to see if the current timezone is using Daylight Saving
+    Time during the date specified.
 
     Args:
         date (datetime): The date you want to check if the current
@@ -582,8 +554,7 @@ def isDaylightTime(date=datetime.now()):
 
 
 def midnight(date):
-    """
-    Returns a copy of a date with the hour, minute, second, and
+    """Returns a copy of a date with the hour, minute, second, and
     millisecond fields set to zero.
 
     Args:
@@ -596,8 +567,7 @@ def midnight(date):
 
 
 def millisBetween(date_1, date_2):
-    """
-    Calculates the number of whole milliseconds between two dates.
+    """Calculates the number of whole milliseconds between two dates.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -613,8 +583,7 @@ def millisBetween(date_1, date_2):
 
 
 def minutesBetween(date_1, date_2):
-    """
-    Calculates the number of whole minutes between two dates.
+    """Calculates the number of whole minutes between two dates.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -630,8 +599,7 @@ def minutesBetween(date_1, date_2):
 
 
 def monthsBetween(date_1, date_2):
-    """
-    Calculates the number of whole months between two dates. Daylight
+    """Calculates the number of whole months between two dates. Daylight
     Saving Time changes are taken into account.
 
     Args:
@@ -656,8 +624,7 @@ def monthsBetween(date_1, date_2):
 
 
 def now():
-    """
-    Returns a java.util.Date object that represents the current time
+    """Returns a java.util.Date object that represents the current time
     according to the local system clock.
 
     Returns:
@@ -669,9 +636,9 @@ def now():
 def parse(
     dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH
 ):
-    """
-    Attempts to parse a string and create a Date. Causes ParseException
-    if the date dateString parameter is in an unrecognized format.
+    """Attempts to parse a string and create a Date. Causes
+    ParseException if the date dateString parameter is in an
+    unrecognized format.
 
     Args:
         dateString (str): The string to parse into a date.
@@ -689,8 +656,7 @@ def parse(
 
 
 def secondsBetween(date_1, date_2):
-    """
-    Calculates the number of whole * between two dates.
+    """Calculates the number of whole seconds between two dates.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -706,9 +672,8 @@ def secondsBetween(date_1, date_2):
 
 
 def setTime(date, hour, minute, second):
-    """
-    Takes in a date, and returns a copy of it with the time fields set
-    as specified.
+    """Takes in a date, and returns a copy of it with the time fields
+    set as specified.
 
     Args:
         date (datetime): The starting date.
@@ -723,8 +688,7 @@ def setTime(date, hour, minute, second):
 
 
 def toMillis(date):
-    """
-    Converts a Date object to its millisecond value elapsed since
+    """Converts a Date object to its millisecond value elapsed since
     January 1, 1970, 00:00:00 UTC (GMT).
 
     Args:
@@ -741,8 +705,7 @@ def toMillis(date):
 
 
 def weeksBetween(date_1, date_2):
-    """
-    Calculates the number of whole weeks between two dates.
+    """Calculates the number of whole weeks between two dates.
 
     Args:
         date_1 (datetime): The first date to use.
@@ -757,8 +720,7 @@ def weeksBetween(date_1, date_2):
 
 
 def yearsBetween(date_1, date_2):
-    """
-    Calculates the number of whole years between two dates. Daylight
+    """Calculates the number of whole years between two dates. Daylight
     Saving Time changes are taken into account.
 
     Args:

@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Device Functions
+"""Device Functions.
 
 The following functions give you access to view and edit device
 connections in the Gateway.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "addDevice",
@@ -23,11 +24,12 @@ from system.dataset import Dataset
 
 
 def addDevice(deviceType, deviceName, deviceProps):
-    """
-    Adds a new device connection in Ignition. Accepts a dictionary of
-    parameters to configure the connection. Acceptable parameters differ
-    by device type: i.e., a Modbus/TCP connection requires a hostname
-    and port, but a simulator doesn't require any parameters.
+    """Adds a new device connection in Ignition.
+
+    Accepts a dictionary of parameters to configure the connection.
+    Acceptable parameters differ by device type: i.e., a Modbus/TCP
+    connection requires a hostname and port, but a simulator doesn't
+    require any parameters.
 
     Args:
         deviceType (str): The device driver type. Possible values are
@@ -41,12 +43,11 @@ def addDevice(deviceType, deviceName, deviceProps):
             properties that appear when manually creating a device
             connection.
     """
-    print (deviceType, deviceName, deviceProps)
+    print(deviceType, deviceName, deviceProps)
 
 
 def getDeviceHostname(deviceName):
-    """
-    Gets the hostname of a device.
+    """Gets the hostname of a device.
 
     Args:
         deviceName (str): The name of the device in Ignition.
@@ -55,14 +56,14 @@ def getDeviceHostname(deviceName):
         str: The hostname of the device. Null if device doesn't have a
             hostname.
     """
-    print deviceName
+    print(deviceName)
     return None
 
 
 def listDevices():
-    """
-    Returns a dataset of information about each configured device. Each
-    row represents a single device.
+    """Returns a dataset of information about each configured device.
+
+    Each row represents a single device.
 
     Returns:
         Dataset: A dataset, where each row represents a device. Contains
@@ -72,44 +73,42 @@ def listDevices():
 
 
 def refreshBrowse(deviceName):
-    """
-    Forces Ignition to browse the controller. Only works for
-    Allen-Bradley controllers.
+    """Forces Ignition to browse the controller.
+
+    Only works for Allen-Bradley controllers.
 
     Args:
         deviceName (str): The name of the device in Ignition.
     """
-    print deviceName
+    print(deviceName)
 
 
 def removeDevice(deviceName):
-    """
-    Removes a given device from Ignition.
+    """Removes a given device from Ignition.
 
     Args:
         deviceName (str): The name of the device in Ignition.
     """
-    print deviceName
+    print(deviceName)
 
 
 def setDeviceEnabled(deviceName, enabled):
-    """
-    Enables/disables a device in Ignition.
+    """Enables/disables a device in Ignition.
 
     Args:
         deviceName (str): The name of the device in Ignition.
         enabled (bool): The enabled status of the device.
     """
-    print (deviceName, enabled)
+    print(deviceName, enabled)
 
 
 def setDeviceHostname(deviceName, hostname):
-    """
-    Changes the hostname of a device. Used for all ethernet based
-    drivers.
+    """Changes the hostname of a device.
+
+    Used for all ethernet based drivers.
 
     Args:
         deviceName (str): The name of the device in Ignition.
         hostname (str): The new IP address or hostname.
     """
-    print (deviceName, hostname)
+    print(deviceName, hostname)

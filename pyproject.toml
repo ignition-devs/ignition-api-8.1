@@ -6,3 +6,7 @@ target-version = ['py27']
 profile = "black"
 multi_line_output = 3
 py_version = 27
+
+[tool.pydocstyle]
+convention = "google"
+add_ignore = ["D205", "D209", "D415"]

@@ -2,8 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Print Functions
+"""Print Functions.
 
 The following functions allow you to send to a printer.
 """
@@ -18,9 +17,7 @@ from java.lang import Object
 
 
 class JythonPrintJob(Object):
-    """
-    JythonPrintJob object.
-    """
+    """JythonPrintJob object."""
 
     def getBottomMargin(self):
         pass
@@ -93,11 +90,11 @@ class JythonPrintJob(Object):
 
 
 def createImage(component):
-    """
-    Advanced Function. Takes a snapshot of a component and creates a
-    Java BufferedImage out of it. You can use javax.imageio.ImageIO to
-    turn this into bytes that can be saved to a file or a BLOB field in
-    a database.
+    """Takes a snapshot of a component and creates a Java BufferedImage
+    out of it.
+
+    You can use javax.imageio.ImageIO to turn this into bytes that can
+    be saved to a file or a BLOB field in a database.
 
     Args:
         component (Component): The component to render.
@@ -112,12 +109,13 @@ def createImage(component):
 
 
 def createPrintJob(component):
-    """
-    Provides a general printing facility for printing the contents of a
-    window or component to a printer. The general workflow for this
-    function is that you create the print job, set the options you'd
-    like on it, and then call print()  on the job. For printing reports
-    or tables, use those components' dedicated print() functions.
+    """Provides a general printing facility for printing the contents of
+    a window or component to a printer.
+
+    The general workflow for this function is that you create the print
+    job, set the options you'd like on it, and then call print() on the
+    job. For printing reports or tables, use those components' dedicated
+    print() functions.
 
     Args:
         component (Component): The component that you'd like to print.
@@ -131,12 +129,12 @@ def createPrintJob(component):
 
 
 def printToImage(component, filename=None):
-    """
-    This function prints the given component (such as a graph,
+    """This function prints the given component (such as a graph,
     container, entire window, etc) to an image file, and saves the file
-    where ever the operating system deems appropriate. A filename and
-    path may be provided to determine the name and location of the saved
-    file.
+    where ever the operating system deems appropriate.
+
+    A filename and path may be provided to determine the name and
+    location of the saved file.
 
     While not required, it is highly recommended to pass in a filename
     and path. The script may fail if the function attempts to save to a

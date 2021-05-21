@@ -2,8 +2,7 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Contains the collections framework, legacy collection classes, event
+"""Contains the collections framework, legacy collection classes, event
 model, date and time facilities, internationalization, and miscellaneous
 utility classes (a string tokenizer, a random-number generator, and a
 bit array).
@@ -15,14 +14,12 @@ from java.lang import Object
 
 
 class Date(Object):
-    """
-    The class Date represents a specific instant in time, with
+    """The class Date represents a specific instant in time, with
     millisecond precision.
     """
 
     def __new__(cls, date=None):
-        """
-        Allocates a Date object and initializes it...
+        """Allocates a Date object and initializes it...
 
         1) so that it represents the time at which it was allocated,
         measured to the nearest millisecond.
@@ -49,8 +46,8 @@ class Date(Object):
 
 
 class EventObject(Object):
-    """
-    The root class from which all event state objects shall be derived.
+    """The root class from which all event state objects shall be
+    derived.
 
     All Events are constructed with a reference to the object, the
     "source", that is logically deemed to be the object upon which the
@@ -58,15 +55,21 @@ class EventObject(Object):
     """
 
     def __init__(self, source):
+        """Constructs a prototypical Event.
+
+        Args:
+            source (Object): The object on which the Event initially
+                occurred.
+        """
         self.source = source
 
     def getSource(self):
+        """The object on which the Event initially occurred."""
         return self.source
 
 
 class Locale(Object):
-    """
-    A Locale object represents a specific geographical, political, or
+    """A Locale object represents a specific geographical, political, or
     cultural region. An operation that requires a Locale to perform its
     task is called locale-sensitive and uses the Locale to tailor
     information for the user. For example, displaying a number is a
@@ -76,8 +79,7 @@ class Locale(Object):
     """
 
     def __init__(self, language, country=None, variant=None):
-        """
-        Locale initializer.
+        """Locale initializer.
 
         Args:
             language (str): Language code.
@@ -88,89 +90,107 @@ class Locale(Object):
         self.country = country
         self.variant = variant
 
-    def Builder(self):
-        pass
-
     @property
     def CANADA(self):
+        """Useful constant for country."""
         return self.__init__("en", "CA")
 
     @property
     def CANADA_FRENCH(self):
+        """Useful constant for country."""
         return self.__init__("fr", "CA")
 
     @property
     def CHINA(self):
+        """Useful constant for country."""
         return self.__init__("zh", "CN")
 
     @property
     def CHINESE(self):
+        """Useful constant for country."""
         return self.__init__("zh")
 
     @property
     def ENGLISH(self):
+        """Useful constant for country."""
         return self.__init__("en")
 
     @property
     def FRANCE(self):
+        """Useful constant for country."""
         return self.__init__("fr", "FR")
 
     @property
     def FRENCH(self):
+        """Useful constant for country."""
         return self.__init__("fr")
 
     @property
     def GERMAN(self):
+        """Useful constant for country."""
         return self.__init__("de")
 
     @property
     def GERMANY(self):
+        """Useful constant for country."""
         return self.__init__("de", "DE")
 
     @property
     def ITALIAN(self):
+        """Useful constant for country."""
         return self.__init__("it")
 
     @property
     def ITALY(self):
+        """Useful constant for country."""
         return self.__init__("it", "IT")
 
     @property
     def JAPAN(self):
+        """Useful constant for country."""
         return self.__init__("ja", "JP")
 
     @property
     def JAPANESE(self):
+        """Useful constant for country."""
         return self.__init__("ja")
 
     @property
     def KOREA(self):
+        """Useful constant for country."""
         return self.__init__("ko", "KR")
 
     @property
     def KOREAN(self):
+        """Useful constant for country."""
         return self.__init__("ko")
 
     @property
     def PRC(self):
+        """Useful constant for country."""
         return self.CHINA
 
     @property
     def SIMPLIFIED_CHINESE(self):
+        """Useful constant for country."""
         return self.CHINA
 
     @property
     def TAIWAN(self):
+        """Useful constant for country."""
         return self.__init__("zh", "TW")
 
     @property
     def TRADITIONAL_CHINESE(self):
+        """Useful constant for country."""
         return self.__init__("zh", "TW")
 
     @property
     def UK(self):
+        """Useful constant for country."""
         return self.__init__("en", "GB")
 
     @property
     def US(self):
+        """Useful constant for country."""
         return self.__init__("en", "US")

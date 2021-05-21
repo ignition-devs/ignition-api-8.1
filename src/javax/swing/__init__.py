@@ -2,9 +2,8 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Provides a set of "lightweight" (all-Java language) components that, to
-the maximum degree possible, work the same on all platforms.
+"""Provides a set of "lightweight" (all-Java language) components that,
+to the maximum degree possible, work the same on all platforms.
 """
 
 __all__ = [
@@ -23,44 +22,37 @@ from javax.swing.text import JTextComponent
 
 
 class JComponent(Container):
-    """
-    The base class for all Swing components except top-level containers.
-    """
+    """The base class for all Swing components except top-level
+    containers."""
 
     pass
 
 
 class JFrame(Frame):
-    """
-    An extended version of java.awt.Frame that adds support for the
-    JFC/Swing component architecture.
-    """
+    """An extended version of java.awt.Frame that adds support for the
+    JFC/Swing component architecture."""
 
     pass
 
 
 class JInternalFrame(JComponent):
-    """
-    A lightweight object that provides many of the features of a native
-    frame, including dragging, closing, becoming an icon, resizing,
-    title display, and support for a menu bar.
-    """
+    """A lightweight object that provides many of the features of a
+    native frame, including dragging, closing, becoming an icon,
+    resizing, title display, and support for a menu bar."""
 
     pass
 
 
 class JLabel(JComponent):
-    """
-    A display area for a short text string or an image, or both.
-    """
+    """A display area for a short text string or an image, or both."""
 
     def __init__(self, *args):
+        """Creates a JLabel instance."""
         pass
 
 
 class JOptionPane(JComponent):
-    """
-    JOptionPane makes it easy to pop up a standard dialog box that
+    """JOptionPane makes it easy to pop up a standard dialog box that
     prompts users for a value or informs them of something. For
     information about using JOptionPane, see How to Make Dialogs, a
     section in The Java Tutorial.
@@ -96,8 +88,7 @@ class JOptionPane(JComponent):
         messageType=None,
         icon=None,
     ):
-        """
-        Asks a confirming question, like yes/no/cancel.
+        """Asks a confirming question, like yes/no/cancel.
 
         Args:
             parentComponent (Component): Determines the Frame in which
@@ -114,6 +105,7 @@ class JOptionPane(JComponent):
                 INFORMATION_MESSAGE, WARNING_MESSAGE, QUESTION_MESSAGE,
                 or PLAIN_MESSAGE. Optional.
             icon (Icon): The icon to display in the dialog. Optional.
+
         Returns:
             int: An integer indicating the option selected by the user.
         """
@@ -130,8 +122,7 @@ class JOptionPane(JComponent):
         selectionValues=None,
         initialSelectionValue=None,
     ):
-        """
-        Prompt for some input.
+        """Prompt for some input.
 
         Args:
             parentComponent (Component): Determines the Frame in which
@@ -147,6 +138,7 @@ class JOptionPane(JComponent):
                 possible selections. Optional.
             initialSelectionValue (object): The value used to initialize
                 the input field. Optional.
+
         Returns:
             object: An integer indicating the option selected by the
                 user.
@@ -166,8 +158,7 @@ class JOptionPane(JComponent):
     def showMessageDialog(
         parentComponent, message, title=None, messageType=None, icon=None
     ):
-        """
-        Tell the user about something that has happened.
+        """Tell the user about something that has happened.
 
         Args:
             parentComponent (Component): Determines the Frame in which
@@ -193,8 +184,7 @@ class JOptionPane(JComponent):
         options=None,
         initialValue=None,
     ):
-        """
-        The Grand Unification of the above three.
+        """The Grand Unification of the above three.
 
         Args:
             parentComponent (Component): Determines the Frame in which
@@ -220,6 +210,7 @@ class JOptionPane(JComponent):
             initialValue (object): The object that represents the
                 default selection for the dialog; only meaningful if
                 options is used; can be null. Optional.
+
         Returns:
             int: An integer indicating the option chosen by the user, or
                 CLOSED_OPTION if the user closed the dialog.
@@ -238,21 +229,18 @@ class JOptionPane(JComponent):
 
 
 class JPanel(JComponent):
-    """
-    JPanel is a generic lightweight container.
-    """
+    """JPanel is a generic lightweight container."""
 
     pass
 
 
 class JPopupMenu(JComponent):
-    """
-    An implementation of a popup menu -- a small window that pops up and
-    displays a series of choices. A JPopupMenu is used for the menu that
-    appears when the user selects an item on the menu bar. It is also
-    used for "pull-right" menu that appears when the selects a menu item
-    that activates it. Finally, a JPopupMenu can also be used anywhere
-    else you want a menu to appear. For example, when the user
+    """An implementation of a popup menu -- a small window that pops up
+    and displays a series of choices. A JPopupMenu is used for the menu
+    that appears when the user selects an item on the menu bar. It is
+    also used for "pull-right" menu that appears when the selects a menu
+    item that activates it. Finally, a JPopupMenu can also be used
+    anywhere else you want a menu to appear. For example, when the user
     right-clicks in a specified area.
     """
 
@@ -260,10 +248,10 @@ class JPopupMenu(JComponent):
 
 
 class JTextField(JTextComponent):
-    """
-    JTextField is a lightweight component that allows the editing of a
-    single line of text.
+    """JTextField is a lightweight component that allows the editing of
+    a single line of text.
     """
 
     def __init__(self, *args):
+        """Constructor."""
         pass

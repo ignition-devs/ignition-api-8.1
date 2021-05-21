@@ -2,12 +2,13 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Serial Functions
+"""Serial Functions.
 
 The following functions give you access to read and write through serial
 ports.
 """
+
+from __future__ import print_function
 
 __all__ = [
     "closeSerialPort",
@@ -75,10 +76,10 @@ class PortManager(object):
         pass
 
     def __enter__(self):
-        print "Enter"
+        print("Enter")
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print "Exit"
+        print("Exit")
 
 
 class SerialConfigurator(object):
@@ -86,25 +87,27 @@ class SerialConfigurator(object):
 
 
 def closeSerialPort(port):
-    """
-    Closes a previously opened serial port. Returns without doing
-    anything if the named serial port is not currently open. Will throw
-    an exception if the port is open and cannot be closed.
+    """Closes a previously opened serial port.
+
+    Returns without doing anything if the named serial port is not
+    currently open. Will throw an exception if the port is open and
+    cannot be closed.
 
     Args:
         port (str): The name of the serial port, e.g., "COM1" or
             "dev/ttyS0".
     """
-    print port
+    print(port)
 
 
 def configureSerialPort(
     port, bitRate, dataBits, handshake, hardwareFlowControl, parity, stopBits
 ):
-    """
-    Configure a serial port for use in a later call. This only needs to
-    be done once unless the configuration has changed after the initial
-    call. All access to constants must be prefixed by "system.serial.".
+    """Configure a serial port for use in a later call.
+
+    This only needs to be done once unless the configuration has changed
+    after the initial call. All access to constants must be prefixed by
+    "system.serial.".
 
     Args:
         port (str): The name of the serial port, e.g., "COM1" or
@@ -137,7 +140,7 @@ def configureSerialPort(
             configure the serial port instead of or in addition to the
             given keyword arguments.
     """
-    print (
+    print(
         port,
         bitRate,
         dataBits,
@@ -150,15 +153,15 @@ def configureSerialPort(
 
 
 def openSerialPort(port):
-    """
-    Opens a previously configured serial port for use. Will throw an
-    exception if the serial port cannot be opened.
+    """Opens a previously configured serial port for use.
+
+    Will throw an exception if the serial port cannot be opened.
 
     Args:
         port (str): The name of the serial port, e.g., "COM1" or
             "dev/ttyS0".
     """
-    print port
+    print(port)
 
 
 def port(
@@ -170,12 +173,12 @@ def port(
     parity=None,
     stopBits=None,
 ):
-    """
-    Returns a context manager wrapping a serial port, allowing the rest
-    of the system to interact with that port. This function effectively
-    combines the system.serial.configureSerialPort,
-    system.serial.openSerialPort, and system.serial.closeSerialPort
-    functions into a single call.
+    """Returns a context manager wrapping a serial port, allowing the
+    rest of the system to interact with that port.
+
+    This function effectively combines the
+    system.serial.configureSerialPort, system.serial.openSerialPort,
+    and system.serial.closeSerialPort functions into a single call.
 
     Intended to be used with the Python 'with' statement. The object
     aliased in the 'with' statement has special access to all of the
@@ -219,7 +222,7 @@ def port(
             entered by using a 'with' statement. The port will
             automatically close on exiting the 'with' statement scope.
     """
-    print (
+    print(
         port,
         bitRate,
         dataBits,
@@ -232,8 +235,7 @@ def port(
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
-    """
-    Read numberOfBytes bytes from a serial port.
+    """Read numberOfBytes bytes from a serial port.
 
     Args:
         port (str): The previously configured serial port to use.
@@ -244,16 +246,17 @@ def readBytes(port, numberOfBytes, timeout=5000):
     Returns:
         object: A byte[] containing bytes read from the serial port.
     """
-    print (port, numberOfBytes, timeout)
+    print(port, numberOfBytes, timeout)
     return None
 
 
 def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
-    """
-    Read numberOfBytes bytes from a serial port and convert them to a
-    String. If a specific encoding is needed to match the source of the
-    data, use system.serial.readBytes and use the desired encoding to
-    decode the byte array returned.
+    """Read numberOfBytes bytes from a serial port and convert them to a
+    String.
+
+    If a specific encoding is needed to match the source of the data,
+    use system.serial.readBytes and use the desired encoding to decode
+    the byte array returned.
 
     Args:
         port (str): The previously configured serial port to use.
@@ -266,15 +269,16 @@ def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
     Returns:
         str: A String created from the bytes read.
     """
-    print (port, numberOfBytes, timeout, encoding)
+    print(port, numberOfBytes, timeout, encoding)
     return ""
 
 
 def readLine(port, timeout=5000, encoding="utf-8", crlfRequired=False):
-    """
-    Attempts to read a line from a serial port. A "line" is considered
-    to be terminated by either a line feed ('\n'), a carriage return
-    ('\r'), or a carriage return followed immediately by a line feed.
+    r"""Attempts to read a line from a serial port.
+
+    A "line" is considered to be terminated by either a line feed
+    ('\n'), a carriage return ('\r'), or a carriage return followed
+    immediately by a line feed.
 
     The function will wait until the timeout period for a terminator. If
     the timeout is reached before the line is properly terminated, then
@@ -292,15 +296,15 @@ def readLine(port, timeout=5000, encoding="utf-8", crlfRequired=False):
     Returns:
         str: A line of text.
     """
-    print (port, timeout, encoding, crlfRequired)
+    print(port, timeout, encoding, crlfRequired)
     return ""
 
 
 def readUntil(port, delimiter, includeDelimiter, timeout=5000):
-    """
-    Reads a byte at a time from a serial port until a delimiter
-    character is encountered. The read will block for up to timeout
-    milliseconds before returning.
+    """Reads a byte at a time from a serial port until a delimiter
+    character is encountered.
+
+    The read will block for up to timeout milliseconds before returning.
 
     If the delimiter is not found before the timeout period, then the
     buffer will dump, potentially resulting in data loss.
@@ -312,18 +316,18 @@ def readUntil(port, delimiter, includeDelimiter, timeout=5000):
             in the return value.
         timeout (int): Optional timeout in milliseconds. Default is
             5000.
+
     Returns:
         str: Returns a String containing all 8-bit ASCII characters read
             until the delimiter was reached, and including the delimiter
             if the "includeDelimiter" parameter was True.
     """
-    print (port, delimiter, includeDelimiter, timeout)
+    print(port, delimiter, includeDelimiter, timeout)
     return ""
 
 
 def sendBreak(port, millis):
-    """
-    Sends a break signal for approximately millis milliseconds.
+    """Sends a break signal for approximately millis milliseconds.
 
     Args:
         port (str): The name of the serial port, e.g., "COM1" or
@@ -331,12 +335,11 @@ def sendBreak(port, millis):
         millis (int): Approximate length of break signal, in
             milliseconds.
     """
-    print (port, millis)
+    print(port, millis)
 
 
 def write(port, toWrite, encoding="utf-8"):
-    """
-    Write a String to a serial port using the platforms default
+    """Write a String to a serial port using the platforms default
     character encoding.
 
     Args:
@@ -345,12 +348,11 @@ def write(port, toWrite, encoding="utf-8"):
         encoding (str): Encoding to use when constructing the string.
             Defaults to the platform's default character set. Optional.
     """
-    print (port, toWrite, encoding)
+    print(port, toWrite, encoding)
 
 
 def writeBytes(port, toWrite, timeout=5000):
-    """
-    Write a byte[] to a serial port.
+    """Write a byte[] to a serial port.
 
     Args:
         port (str): The previously configured serial port to use.
@@ -358,4 +360,4 @@ def writeBytes(port, toWrite, timeout=5000):
         timeout (int): Optional timeout in milliseconds. Default is
             5000. Optional.
     """
-    print (port, toWrite, timeout)
+    print(port, toWrite, timeout)

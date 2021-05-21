@@ -2,6 +2,4 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-java package.
-"""
+"""java package."""

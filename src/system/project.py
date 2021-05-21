@@ -2,19 +2,21 @@
 # Author: Cesar Roman
 # Contact: cesar@thecesrom.dev
 
-"""
-Project Functions
+"""Project Functions.
 
 The following functions allow you to list projects on the Gateway
 through scripting.
 """
 
+from __future__ import print_function
+
 __all__ = ["getProjectName", "getProjectNames"]
 
 
 def getProjectName():
-    """
-    Returns the name of the project where the function was called from.
+    """Returns the name of the project where the function was called
+    from.
+
     When called from the Gateway scope from a resource that originates
     from a singular project (reports, SFCs, etc.), will return that
     resources project.
@@ -34,10 +36,10 @@ def getProjectName():
 
 
 def getProjectNames():
-    """
-    Returns an unsorted collection of strings, where each string
-    represents the name of a project on the Gateway. If no projects
-    exist, returns an empty list.
+    """Returns an unsorted collection of strings, where each string
+    represents the name of a project on the Gateway.
+
+    If no projects exist, returns an empty list.
 
     This function only ever returns project names, ignoring project
     titles. The function also ignores the "enabled" property, including
