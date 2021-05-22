@@ -9,4 +9,4 @@ py_version = 27
 
 [tool.pydocstyle]
 convention = "google"
-add_ignore = ["D205", "D209", "D415"]
+add_ignore = ["D205", "D415"]

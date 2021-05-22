@@ -23,14 +23,16 @@ from javax.swing.text import JTextComponent
 
 class JComponent(Container):
     """The base class for all Swing components except top-level
-    containers."""
+    containers.
+    """
 
     pass
 
 
 class JFrame(Frame):
     """An extended version of java.awt.Frame that adds support for the
-    JFC/Swing component architecture."""
+    JFC/Swing component architecture.
+    """
 
     pass
 
@@ -38,7 +40,8 @@ class JFrame(Frame):
 class JInternalFrame(JComponent):
     """A lightweight object that provides many of the features of a
     native frame, including dragging, closing, becoming an icon,
-    resizing, title display, and support for a menu bar."""
+    resizing, title display, and support for a menu bar.
+    """
 
     pass
 
