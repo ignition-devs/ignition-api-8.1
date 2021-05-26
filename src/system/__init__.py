@@ -13,5 +13,5 @@ Additional information on scripting Ignition can be found in the
 Scripting section.
 """
 
-__version__ = "8.1.5"
-__build__ = "2021042810"
+__version__ = "8.1.6"
+__build__ = "2021052512"
