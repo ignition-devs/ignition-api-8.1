@@ -14,7 +14,7 @@ __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
 import system.date
 from java.lang import Object
-from java.util import Locale
+from java.util import Date, Locale
 from system.dataset import Dataset
 
 
@@ -71,9 +71,9 @@ def queryAgentHistory(
         agentIds (list[str]): A list of agent names to restrict the
             results to. If not specified, all agents will be allowed.
             Optional.
-        startDate (datetime): The starting time for history events. If
+        startDate (Date): The starting time for history events. If
             null, defaults to 8 hours previous to now. Optional.
-        endDate (datetime): The ending time for the query range. If
+        endDate (Date): The ending time for the query range. If
             null, defaults to "now". Optional.
         limit (int): The limit of results to return. Defaults to 100. A
             value of 0 means "no limit". Optional.

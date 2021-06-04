@@ -56,6 +56,7 @@ __all__ = [
 import system.date
 import system.security
 from java.lang import Object, Thread
+from java.util import Date
 from system.dataset import Dataset, PyDataSet
 
 
@@ -299,7 +300,7 @@ def audit(
             be populated automatically if omitted.
         originatingSystem (object): An even-length list providing
             additional context to the audit event. Optional.
-        eventTimestamp (datetime): When the event happened. Will be set
+        eventTimestamp (Date): When the event happened. Will be set
             to the current time if omitted. Optional.
         originatingContext (int): What scope the event originated from:
             1 means Gateway, 2 means Designer, 4 means Client. Will be
@@ -813,9 +814,9 @@ def queryAuditLog(
     Args:
         auditProfileName (str): The name of the audit profile to pull
             the history from.
-        startDate (datetime): The earliest audit event to return. If
+        startDate (Date): The earliest audit event to return. If
             omitted, the current time - 8 hours will be used. Optional.
-        endDate (datetime): The latest audit event to return. If
+        endDate (Date): The latest audit event to return. If
             omitted, the current time will be used. Optional.
         actorFilter (str): A filter string used to restrict the results
             by actor. Optional.

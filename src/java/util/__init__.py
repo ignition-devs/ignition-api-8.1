@@ -10,10 +10,12 @@ bit array).
 
 __all__ = ["Date", "EventObject", "Locale"]
 
+from datetime import datetime
+
 from java.lang import Object
 
 
-class Date(Object):
+class Date(datetime):
     """The class Date represents a specific instant in time, with
     millisecond precision.
     """
