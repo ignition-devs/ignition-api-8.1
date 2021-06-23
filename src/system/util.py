@@ -143,35 +143,25 @@ class Version(Object):
         self.rc = rc
 
     def __eq__(self, other, strict=False):
-        if self.major > other.major:
-            return 1
-        elif self.major < other.major:
-            return -1
-        elif self.minor > other.minor:
-            return 1
-        elif self.minor < other.minor:
-            return -1
-        elif self.rev > other.rev:
-            return 1
-        elif self.rev < other.rev:
-            return -1
-        elif strict:
-            if self.build > other.build:
+        version_1 = [self.major, self.minor, self.rev]
+        version_2 = [other.major, other.minor, other.rev]
+
+        if strict:
+            version_1.append(self.build)
+            version_1.append(self.beta)
+            version_1.append(self.rc)
+            version_2.append(other.build)
+            version_2.append(other.beta)
+            version_2.append(other.rc)
+
+        for i in range(max(len(version_1), len(version_2))):
+            v1 = version_1[i] if i < len(version_1) else 0
+            v2 = version_2[i] if i < len(version_2) else 0
+            if v1 > v2:
                 return 1
-            elif self.build < other.build:
+            elif v1 < v2:
                 return -1
-            elif self.beta > other.beta:
-                return 1
-            elif self.beta < other.beta:
-                return -1
-            elif self.rc > other.rc:
-                return 1
-            elif self.rc < other.rc:
-                return -1
-            else:
-                return 0
-        else:
-            return 0
+        return 0
 
     def __str__(self):
         return self.toString()
