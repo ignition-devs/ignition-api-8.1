@@ -13,6 +13,20 @@
 
 Ignition is a set of packages and modules that allows developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
+# Table of contents
+
+- [Releases](#releases)
+- [Branches](#branches)
+    - [Cloning a single branch](#cloning-a-single-branch)
+- [Prerequisites](#prerequisites)
+- [Using Ignition](#using-ignition)
+- [Packages](#packages)
+- [Contributing to Ignition](#contributing-to-ignition)
+- [Discussions](#discussions)
+- [Contributors](#contributors)
+- [License](#license)
+- [Code of conduct](#code-of-conduct)
+
 # Releases
 
 Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
@@ -34,6 +48,23 @@ This branch will contain all Scripting Functions from the latest Ignition Releas
 
 ### [jython](https://github.com/thecesrom/Ignition/tree/jython)
 This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
+
+### Cloning a single branch
+
+If you wish to clone just one branch in particular, use any of the following commands:
+
+- HTTPS
+    ```bash
+    $ git clone --single-branch --branch <name> https://github.com/thecesrom/Ignition.git [<directory>]
+    ```
+- SSH
+    ```bash
+    $ git clone --single-branch --branch <name> git@github.com:thecesrom/Ignition.git [<directory>]
+    ```
+- GitHub CLI
+    ```bash
+    $ gh repo clone thecesrom/Ignition [<directory>] -- --single-branch --branch <name>
+    ```
 
 ## Prerequisites
 
