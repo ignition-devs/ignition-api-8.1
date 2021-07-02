@@ -1,4 +1,5 @@
 # Ignition
+
 <!--- Badges --->
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/thecesrom/Ignition/main)
 [![GitHub contributors](https://img.shields.io/github/contributors/thecesrom/Ignition)](https://github.com/thecesrom/Ignition/graphs/contributors)
@@ -17,7 +18,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 
 - [Releases](#releases)
 - [Branches](#branches)
-    - [Cloning a single branch](#cloning-a-single-branch)
+  - [Cloning a single branch](#cloning-a-single-branch)
 - [Prerequisites](#prerequisites)
 - [Using Ignition](#using-ignition)
 - [Packages](#packages)
@@ -38,15 +39,19 @@ If you can't find it, feel free to submit your request on our [Discussions](http
 This repository consists of the following branches:
 
 ### [main](https://github.com/thecesrom/Ignition/tree/main)
+
 This branch will contain all Scripting Functions from the latest Ignition Release requiring only Python
 
 ### [7.9](https://github.com/thecesrom/Ignition/tree/7.9)
+
 This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version requiring only Python
 
 ### [8.0](https://github.com/thecesrom/Ignition/tree/8.0)
+
 This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
 
 ### [jython](https://github.com/thecesrom/Ignition/tree/jython)
+
 This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
 
 ### Cloning a single branch
@@ -55,20 +60,21 @@ If you wish to clone just one branch in particular, use any of the following com
 
 - HTTPS
     ```bash
-    $ git clone --single-branch --branch <name> https://github.com/thecesrom/Ignition.git [<directory>]
+    git clone --single-branch --branch <name> https://github.com/thecesrom/Ignition.git [<directory>]
     ```
 - SSH
     ```bash
-    $ git clone --single-branch --branch <name> git@github.com:thecesrom/Ignition.git [<directory>]
+    git clone --single-branch --branch <name> git@github.com:thecesrom/Ignition.git [<directory>]
     ```
 - GitHub CLI
     ```bash
-    $ gh repo clone thecesrom/Ignition [<directory>] -- --single-branch --branch <name>
+    gh repo clone thecesrom/Ignition [<directory>] -- --single-branch --branch <name>
     ```
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
+
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
 * You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
 
@@ -117,7 +123,6 @@ Up-to-date list of contributors can be found [here](https://github.com/thecesrom
 ## License
 
 See the [LICENSE](https://github.com/thecesrom/Ignition/blob/HEAD/LICENSE).
-
 
 ## Code of conduct
 
