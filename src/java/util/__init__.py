@@ -38,7 +38,7 @@ class Date(datetime):
                 00:00:00 GMT. Optional.
 
         Returns:
-            datetime: A new Date instance.
+            Date: A new Date instance.
         """
         import system.date
 
