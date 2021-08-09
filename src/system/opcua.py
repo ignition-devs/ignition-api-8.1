@@ -10,7 +10,42 @@ server.
 
 from __future__ import print_function
 
-__all__ = ["callMethod"]
+__all__ = ["addConnection", "callMethod", "removeConnection"]
+
+
+def addConnection(
+    name,
+    description,
+    discoveryUrl,
+    endpointUrl,
+    securityPolicy,
+    securityMode,
+    settings,
+):
+    """Adds a new OPC UA connection.
+
+    Args:
+        name (str): Name to assign to the new connection.
+        description (str): Description assigned to the new OPC UA
+            connection.
+        discoveryUrl (str): Endpoint URL to use for discovery
+            services.
+        endpointUrl (str): Endpoint URL to use for session services.
+        securityPolicy (str): The name of the SecurityPolicy to use.
+        securityMode (str): The name of the MessageSecurityMode to
+            use.
+        settings (dict): A dictionary of additional settings to apply
+            to the connection.
+    """
+    print(
+        name,
+        description,
+        discoveryUrl,
+        endpointUrl,
+        securityPolicy,
+        securityMode,
+        settings,
+    )
 
 
 def callMethod(connectionName, objectId, methodId, inputs):
@@ -37,3 +72,19 @@ def callMethod(connectionName, objectId, methodId, inputs):
     """
     print(connectionName, objectId, methodId, inputs)
     return None, None, None
+
+
+def removeConnection(name):
+    """Removes an OPC UA Connection.
+
+    Args:
+        name (str): The name of the OPC UA connection to remove.
+
+    Returns:
+        bool: A boolean value representing whether the function was
+            able to remove the connection. Returns True if the
+            connection was successfully removed. Returns False if the
+            connection was not removed.
+    """
+    print(name)
+    return True
