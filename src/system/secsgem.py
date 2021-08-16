@@ -25,6 +25,7 @@ __all__ = [
     "sendResponse",
 ]
 
+import system.date
 from system.dataset import Dataset
 
 
@@ -151,7 +152,6 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
             as shown on the mapping on the system.util.jsonDecode page.
     """
     print(transactionID, equipment, timeout, poll)
-    return None
 
 
 def getToolProgram(ppid):
@@ -166,8 +166,6 @@ def getToolProgram(ppid):
         dict: A Python Dictionary containing the following keys:
             [editDate, ppbody, bodyFormat].
     """
-    import system.date
-
     print(ppid)
     return {
         "editDate": system.date.now(),

@@ -10,7 +10,15 @@ painting graphics and images.
 
 from __future__ import print_function
 
-__all__ = ["Color", "Component", "Container", "Frame", "Image", "Window"]
+__all__ = [
+    "Color",
+    "Component",
+    "Container",
+    "Frame",
+    "Image",
+    "Toolkit",
+    "Window",
+]
 
 from java.lang import Object
 
@@ -66,6 +74,36 @@ class Container(Component):
         print(self, args)
 
 
+class Image(Object):
+    """The abstract class Image is the superclass of all classes that
+    represent graphical images.
+
+    The image must be obtained in a platform-specific manner.
+    """
+
+    pass
+
+
+class Toolkit(Object):
+    """This class is the abstract superclass of all actual
+    implementations of the Abstract Window Toolkit.
+
+    Subclasses of the Toolkit class are used to bind the various
+    components to particular native toolkit implementations.
+    """
+
+    def beep(self):
+        """Emits an audio beep depending on native system settings and
+        hardware capabilities.
+        """
+        print(self, "Beep!")
+
+    @staticmethod
+    def getDefaultToolkit():
+        """Gets the default toolkit."""
+        return Toolkit()
+
+
 class Window(Container):
     """A Window object is a top-level window with no borders and no
     menubar.
@@ -76,15 +114,5 @@ class Window(Container):
 
 class Frame(Window):
     """A Frame is a top-level window with a title and a border."""
-
-    pass
-
-
-class Image(Object):
-    """The abstract class Image is the superclass of all classes that
-    represent graphical images.
-
-    The image must be obtained in a platform-specific manner.
-    """
 
     pass

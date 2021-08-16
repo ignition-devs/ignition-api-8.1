@@ -178,7 +178,7 @@ def listPipelines(projectName="alarm-pipelines"):
             in the list.
     """
     print(projectName)
-    return None
+    return []
 
 
 def queryJournal(

@@ -168,7 +168,7 @@ def getServers():
     Returns:
         list[str]: A list of the string names of servers.
     """
-    return None
+    return []
 
 
 def insert(serverName, itemId, value, date, quality):

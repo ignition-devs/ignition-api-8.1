@@ -71,7 +71,6 @@ def callMethod(connectionName, objectId, methodId, inputs):
 
     """
     print(connectionName, objectId, methodId, inputs)
-    return None, None, None
 
 
 def removeConnection(name):

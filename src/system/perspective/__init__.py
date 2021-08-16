@@ -36,14 +36,16 @@ __all__ = [
     "vibrateDevice",
 ]
 
+import __builtin__ as builtins
+
 from java.lang import Object
 
 
 class PyJsonObjectAdapter(Object):
-    def __init__(self, obj):
-        from __builtin__ import print
+    """Class PyJsonObjectAdapter."""
 
-        print(self, obj)
+    def __init__(self, obj):
+        builtins.print(self, obj)
 
     def __delitem__(self, key):
         pass
@@ -133,9 +135,9 @@ def alterLogging(
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId)
+    builtins.print(
+        remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId
+    )
 
 
 def closeDock(id, sessionId=None, pageId=None):
@@ -152,9 +154,7 @@ def closeDock(id, sessionId=None, pageId=None):
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(id, sessionId, pageId)
+    builtins.print(id, sessionId, pageId)
 
 
 def closePage(
@@ -178,9 +178,7 @@ def closePage(
         pageID (str): Identifier of the page to be closed. If omitted,
             the current pageId is used. Optional.
     """
-    from __builtin__ import print
-
-    print(message, sessionId, pageID)
+    builtins.print(message, sessionId, pageID)
 
 
 def closePopup(id, sessionId="current_session", pageId="current_page"):
@@ -197,9 +195,7 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(id, sessionId, pageId)
+    builtins.print(id, sessionId, pageId)
 
 
 def closeSession(message=None, sessionId="current_session"):
@@ -217,9 +213,7 @@ def closeSession(message=None, sessionId="current_session"):
         sessionId (str): Identifier of the session to be closed. If
             omitted, the current sessionId is used. Optional.
     """
-    from __builtin__ import print
-
-    print(message, sessionId)
+    builtins.print(message, sessionId)
 
 
 def download(
@@ -245,9 +239,7 @@ def download(
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(filename, data, contentType, sessionId, pageId)
+    builtins.print(filename, data, contentType, sessionId, pageId)
 
 
 def getProjectInfo(projectName):
@@ -259,9 +251,7 @@ def getProjectInfo(projectName):
     Returns:
         dict: A dictionary of project meta data.
     """
-    from __builtin__ import print
-
-    print(projectName)
+    builtins.print(projectName)
     return {
         "name": "Project",
         "title": "Project",
@@ -289,9 +279,7 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
         list[PyJsonObjectAdapter]: A list of objects
             (PyJsonObjectAdapter).
     """
-    from __builtin__ import print
-
-    print(usernameFilter, projectFilter)
+    builtins.print(usernameFilter, projectFilter)
     return [PyJsonObjectAdapter(None)]
 
 
@@ -316,9 +304,7 @@ def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
         bool: True if the user in the current session is authorized,
             False otherwise.
     """
-    from __builtin__ import print
-
-    print(isAllOf, securityLevels, sessionId)
+    builtins.print(isAllOf, securityLevels, sessionId)
     return True
 
 
@@ -352,9 +338,7 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
             function will use the re-authentication setting defined
             under Project Properties. Optional.
     """
-    from __builtin__ import print
-
-    print(sessionId, pageId, forceAuth)
+    builtins.print(sessionId, pageId, forceAuth)
 
 
 def logout(sessionId="current_session", pageId="current_page"):
@@ -371,9 +355,7 @@ def logout(sessionId="current_session", pageId="current_page"):
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(sessionId, pageId)
+    builtins.print(sessionId, pageId)
 
 
 def navigate(
@@ -421,9 +403,7 @@ def navigate(
         newTab (bool): If True, opens the contents in a new tab.
             Optional.
     """
-    from __builtin__ import print
-
-    print(page, url, view, params, sessionId, pageId, newTab)
+    builtins.print(page, url, view, params, sessionId, pageId, newTab)
 
 
 def navigateBack(sessionId=None, pageId=None):
@@ -438,9 +418,7 @@ def navigateBack(sessionId=None, pageId=None):
         pageId (str): Identifier of the page to target. If omitted, the
             current page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(sessionId, pageId)
+    builtins.print(sessionId, pageId)
 
 
 def navigateForward(sessionId=None, pageId=None):
@@ -456,9 +434,7 @@ def navigateForward(sessionId=None, pageId=None):
         pageId (str): Identifier of the page to target. If omitted, the
             current page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(sessionId, pageId)
+    builtins.print(sessionId, pageId)
 
 
 def openDock(
@@ -481,9 +457,7 @@ def openDock(
         params (dict): Parameters that can be passed into the docked
             view. Must match the docked views View Parameters. Optional.
     """
-    from __builtin__ import print
-
-    print(id, sessionId, pageId, params)
+    builtins.print(id, sessionId, pageId, params)
 
 
 def openPopup(
@@ -539,9 +513,7 @@ def openPopup(
             larger than the viewport, then it will be resized to fit
             within the bounds. Default is False. Optional.
     """
-    from __builtin__ import print
-
-    print(
+    builtins.print(
         id,
         view,
         params,
@@ -583,9 +555,7 @@ def print(
             specified, must be "client", "gateway", or "all". Default is
             "client". Optional.
     """
-    from __builtin__ import print
-
-    print(message, sessionId, pageId, destination)
+    builtins.print(message, sessionId, pageId, destination)
 
 
 def refresh(sessionId="current_session", pageId="current_page"):
@@ -599,9 +569,7 @@ def refresh(sessionId="current_session", pageId="current_page"):
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(sessionId, pageId)
+    builtins.print(sessionId, pageId)
 
 
 def sendMessage(
@@ -629,9 +597,7 @@ def sendMessage(
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(messageType, payload, scope, sessionId, pageId)
+    builtins.print(messageType, payload, scope, sessionId, pageId)
 
 
 def setTheme(name, sessionId="current_session", pageId="current_page"):
@@ -651,9 +617,7 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
         pageId (str): Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    from __builtin__ import print
-
-    print(name, sessionId, pageId)
+    builtins.print(name, sessionId, pageId)
 
 
 def toggleDock(
@@ -674,9 +638,7 @@ def toggleDock(
         params (dict): Parameters that can be passed into the docked
             view. Must match the docked views View Parameters. Optional.
     """
-    from __builtin__ import print
-
-    print(id, sessionId, pageId, params)
+    builtins.print(id, sessionId, pageId, params)
 
 
 def togglePopup(
@@ -735,9 +697,7 @@ def togglePopup(
             larger than the viewport, then it will be resized to fit
             within the bounds. Default is False. Optional.
     """
-    from __builtin__ import print
-
-    print(
+    builtins.print(
         id,
         view,
         params,
@@ -766,6 +726,4 @@ def vibrateDevice(duration, sessionId="current_session"):
             targeting a different session, then the pageId parameter
             must be included in the call. Optional.
     """
-    from __builtin__ import print
-
-    print(duration, sessionId)
+    builtins.print(duration, sessionId)

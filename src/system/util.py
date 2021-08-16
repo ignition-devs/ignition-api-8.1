@@ -53,8 +53,21 @@ __all__ = [
     "translate",
 ]
 
+import getpass
+import os
+import platform
+import re
+import sys
+
+try:
+    import winsound
+except ImportError:
+    pass
+
+
 import system.date
 import system.security
+from java.awt import Toolkit
 from java.lang import Object, Thread
 from java.util import Date
 from system.dataset import Dataset, PyDataSet
@@ -143,6 +156,7 @@ class Version(Object):
         self.rc = rc
 
     def __eq__(self, other, strict=False):
+        ret = 0
         version_1 = [self.major, self.minor, self.rev]
         version_2 = [other.major, other.minor, other.rev]
 
@@ -155,13 +169,13 @@ class Version(Object):
             version_2.append(other.rc)
 
         for i in range(max(len(version_1), len(version_2))):
-            v1 = version_1[i] if i < len(version_1) else 0
-            v2 = version_2[i] if i < len(version_2) else 0
-            if v1 > v2:
-                return 1
-            elif v1 < v2:
-                return -1
-        return 0
+            v_1 = version_1[i] if i < len(version_1) else 0
+            v_2 = version_2[i] if i < len(version_2) else 0
+            if v_1 > v_2:
+                ret = 1
+            elif v_1 < v_2:
+                ret = -1
+        return ret
 
     def __str__(self):
         return self.toString()
@@ -190,11 +204,12 @@ class Version(Object):
 
     def getBasicString(self):
         if self.rc > 0:
-            return "{}.{}.{}-rc{}".format(
+            ret = "{}.{}.{}-rc{}".format(
                 self.major, self.minor, self.rev, self.rc
             )
         else:
-            return "{}.{}.{}".format(self.major, self.minor, self.rev)
+            ret = "{}.{}.{}".format(self.major, self.minor, self.rev)
+        return ret
 
     def getBeta(self):
         return self.beta
@@ -229,8 +244,6 @@ class Version(Object):
 
     @staticmethod
     def parse(s):
-        import re
-
         sem_ver = [int(i) for i in re.findall(r"-?\d+", s)]
         return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
@@ -247,19 +260,20 @@ class Version(Object):
 
     def toString(self):
         if self.rc > 0:
-            return "{}.{}.{}-rc{} (b{})".format(
+            version = "{}.{}.{}-rc{} (b{})".format(
                 self.major, self.minor, self.rev, self.rc, self.build
             )
         elif self.isSnapshot():
-            return "{}.{}.{}-SNAPSHOT (b{})".format(
+            version = "{}.{}.{}-SNAPSHOT (b{})".format(
                 self.major, self.minor, self.rev, self.build
             )
         elif self.build is not None:
-            return "{}.{}.{} (b{})".format(
+            version = "{}.{}.{} (b{})".format(
                 self.major, self.minor, self.rev, self.build
             )
         else:
-            return "{}.{}.{}".format(self.major, self.minor, self.rev)
+            version = "{}.{}.{}".format(self.major, self.minor, self.rev)
+        return version
 
 
 def audit(
@@ -317,8 +331,6 @@ def audit(
 
 def beep():
     """Tells the computer to make a "beep" sound."""
-    import sys
-
     platforms = {
         "linux1": "Linux",
         "linux2": "Linux",
@@ -327,20 +339,11 @@ def beep():
     }
 
     if "java" in sys.platform:
-        from java.awt import Toolkit
-
         Toolkit.getDefaultToolkit().beep()
     elif sys.platform in platforms:
         if platforms[sys.platform] == "Windows":
-            try:
-                import winsound
-
-                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
-            except ImportError:
-                print("Beep!")
+            winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
         elif platforms[sys.platform] == "macOS":
-            import os
-
             os.system('say "beep"')
         elif platforms[sys.platform] == "Linux":
             # TODO: Make Linux speak.
@@ -503,7 +506,7 @@ def getGlobals():
     Returns:
         dict: The global namespace, as a dictionary.
     """
-    return None
+    return {}
 
 
 def getInactivitySeconds():
@@ -574,11 +577,6 @@ def getProperty(propertyName):
     """
     # Initialize variables.
     ret = None
-
-    # Imports.
-    import getpass
-    import os
-    import platform
 
     if propertyName == "file.separator":
         ret = os.sep
@@ -949,7 +947,6 @@ def sendMessage(
         hostName,
         remoteServers,
     )
-    return None
 
 
 def sendRequest(
@@ -1000,7 +997,6 @@ def sendRequest(
         remoteServer,
         timeoutSec,
     )
-    return None
 
 
 def sendRequestAsync(

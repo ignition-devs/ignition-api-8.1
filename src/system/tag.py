@@ -201,7 +201,7 @@ class QualityCode(Object):
         pass
 
     @staticmethod
-    def values(self):
+    def values():
         pass
 
     @staticmethod
@@ -499,7 +499,6 @@ def deleteAnnotations(paths, storageIds):
             the storage id of the annotation will have been deleted.
     """
     print(paths, storageIds)
-    return None
 
 
 def deleteTags(tagPaths):
@@ -578,7 +577,6 @@ def getConfiguration(basePath, recursive=False):
             list marked as "tags" in the dictionary.
     """
     print(basePath, recursive)
-    return None
 
 
 def importTags(filePath, basePath, collisionPolicy="o"):
@@ -666,7 +664,6 @@ def queryAnnotations(paths, startTime=None, endTime=None, types=None):
             criteria.
     """
     print(paths, startTime, endTime, types)
-    return None
 
 
 def queryTagCalculations(
@@ -916,7 +913,6 @@ def queryTagHistory(
         intervalSeconds,
         rangeSeconds,
     )
-    return None
 
 
 def read(tagPath):
@@ -1028,7 +1024,6 @@ def rename(tag, newName, collisionPollicy="a"):
             operation.
     """
     print(tag, newName, collisionPollicy)
-    return None
 
 
 def requestGroupExecution(provider, tagGroup):
@@ -1109,7 +1104,6 @@ def storeAnnotations(
             update or delete.
     """
     print(paths, startTimes, endTimes, types, data, storageIds, deleted)
-    return None
 
 
 def storeTagHistory(

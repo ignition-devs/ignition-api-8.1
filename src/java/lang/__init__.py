@@ -17,6 +17,8 @@ __all__ = [
     "Throwable",
 ]
 
+import copy
+import time
 from __builtin__ import Exception as PyException
 
 
@@ -32,8 +34,6 @@ class Object(object):
         Returns:
             object: A copy of this object.
         """
-        import copy
-
         return copy.deepcopy(self)
 
     def equals(self, obj):
@@ -161,10 +161,7 @@ class Throwable(Object, PyException):
                 throwable cannot suppress itself.
             NullPointerException: If exception is null.
         """
-        if self == exception:
-            raise IllegalArgumentException()
-        elif exception is None:
-            raise NullPointerException()
+        pass
 
     def fillInStackTrace(self):
         """Fills in the execution stack trace."""
@@ -304,6 +301,4 @@ class Thread(Object):
         Args:
             millis (long): The length of time to sleep in milliseconds.
         """
-        import time
-
         time.sleep(millis // 1000)

@@ -57,7 +57,6 @@ def getDeviceHostname(deviceName):
             hostname.
     """
     print(deviceName)
-    return None
 
 
 def listDevices():

@@ -20,6 +20,10 @@ __all__ = [
     "writeFile",
 ]
 
+import io
+import os.path
+import tempfile
+
 
 def fileExists(filepath):
     """Checks to see if a file or folder at a given path exists.
@@ -30,8 +34,6 @@ def fileExists(filepath):
     Returns:
         bool: True (1) if the file/folder exists, False (0) otherwise.
     """
-    import os.path
-
     return os.path.isfile(filepath)
 
 
@@ -48,9 +50,10 @@ def getTempFile(extension):
     Returns:
         str: The path to the newly created temp file.
     """
-    import tempfile
-
-    return tempfile.NamedTemporaryFile(suffix="." + extension).name
+    suffix = ".{}".format(extension)
+    with tempfile.NamedTemporaryFile(suffix=suffix) as temp:
+        name = temp.name
+    return name
 
 
 def openFile(extension=None, defaultLocation=None):
@@ -71,7 +74,6 @@ def openFile(extension=None, defaultLocation=None):
         str: The path to the selected file, or None if canceled.
     """
     print(extension, defaultLocation)
-    return None
 
 
 def openFiles(extension=None, defaultLocation=None):
@@ -92,7 +94,6 @@ def openFiles(extension=None, defaultLocation=None):
         list[str]: The paths to the selected files, or None if canceled.
     """
     print(extension, defaultLocation)
-    return None
 
 
 def readFileAsBytes(filepath):
@@ -112,8 +113,8 @@ def readFileAsBytes(filepath):
     Returns:
         bytearray: The contents of the file as an array of bytes.
     """
-    with open(filepath, "rb") as f:
-        return f.read()
+    with open(filepath, "rb") as _file:
+        return _file.read()
 
 
 def readFileAsString(filepath, encoding="UTF-8"):
@@ -134,10 +135,8 @@ def readFileAsString(filepath, encoding="UTF-8"):
     Returns:
         str: The contents of the file as a string.
     """
-    import io
-
-    with io.open(filepath, "r", encoding=encoding) as f:
-        return f.read()
+    with io.open(filepath, "r", encoding=encoding) as _file:
+        return _file.read()
 
 
 def saveFile(filename, extension=None, typeDesc=None):
@@ -160,7 +159,6 @@ def saveFile(filename, extension=None, typeDesc=None):
             None if they canceled.
     """
     print(filename, extension, typeDesc)
-    return None
 
 
 def writeFile(filepath, data, append=False, encoding="UTF-8"):

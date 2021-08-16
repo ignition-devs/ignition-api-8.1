@@ -383,7 +383,7 @@ def getScreens():
         list[tuple]: A sequence of tuples of the form (index, width,
             height) for each screen device (monitor) available.
     """
-    return None
+    return [(0, 1024, 768), (1, 3840, 2160)]
 
 
 def getSibling(event, name):
@@ -699,7 +699,6 @@ def transform(
         acceleration,
         coordSpace,
     )
-    return None
 
 
 def warningBox(message, title="Warning"):

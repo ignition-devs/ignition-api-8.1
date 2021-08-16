@@ -22,6 +22,8 @@ __all__ = [
     "validateUser",
 ]
 
+import getpass
+
 
 def getRoles():
     """Finds the roles that the currently logged in user has, returns
@@ -40,8 +42,6 @@ def getUsername():
     Returns:
         str: The current username.
     """
-    import getpass
-
     return getpass.getuser()
 
 

@@ -40,10 +40,21 @@ class Date(datetime):
         Returns:
             Date: A new Date instance.
         """
-        import system.date
+        return datetime.now() if date is None else Date._from_millis(date)
 
-        return (
-            system.date.now() if date is None else system.date.fromMillis(date)
+    @staticmethod
+    def _from_millis(millis):
+        seconds = millis // 1000
+        micro = (millis % 1000) * 1000
+        date = datetime.fromtimestamp(seconds)
+        return datetime(
+            date.year,
+            date.month,
+            date.day,
+            date.hour,
+            date.minute,
+            date.second,
+            micro,
         )
 
 

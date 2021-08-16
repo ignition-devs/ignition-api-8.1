@@ -53,7 +53,9 @@ __all__ = [
     "yearsBetween",
 ]
 
+from calendar import monthrange
 from datetime import datetime, timedelta
+from time import localtime, mktime
 
 from java.util import Date, Locale
 
@@ -137,14 +139,12 @@ def addMonths(date, value):
         Date: A new date object offset by the integer passed to the
             function.
     """
-    import calendar
-
-    m = (date.month + value) % 12
-    y = date.year + (date.month + value - 1) // 12
-    if not m:
-        m = 12
-    d = min(date.day, calendar.monthrange(y, m)[1])
-    return date.replace(day=d, month=m, year=y)
+    month = (date.month + value) % 12
+    year = date.year + (date.month + value - 1) // 12
+    if not month:
+        month = 12
+    day = min(date.day, monthrange(year, month)[1])
+    return date.replace(day=day, month=month, year=year)
 
 
 def addSeconds(date, value):
@@ -253,10 +253,18 @@ def fromMillis(millis):
     Returns:
         Date: A new date object.
     """
-    s = millis // 1000
+    seconds = millis // 1000
     micro = (millis % 1000) * 1000
-    d = datetime.fromtimestamp(s)
-    return datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, micro)
+    _date = datetime.fromtimestamp(seconds)
+    return datetime(
+        _date.year,
+        _date.month,
+        _date.day,
+        _date.hour,
+        _date.minute,
+        _date.second,
+        micro,
+    )
 
 
 def getAMorPM(date):
@@ -475,8 +483,8 @@ def hoursBetween(date_1, date_2):
             two dates.
     """
     diff = date_2 - date_1
-    d, s, _ = diff.days, diff.seconds, diff.microseconds
-    return d * 24 + s // 3600
+    days, seconds, _ = diff.days, diff.seconds, diff.microseconds
+    return days * 24 + seconds // 3600
 
 
 def isAfter(date_1, date_2):
@@ -535,9 +543,7 @@ def isDaylightTime(date=datetime.now()):
         bool: True (1) if date is observing Daylight Saving Time in the
             current timezone, False (0) otherwise.
     """
-    import time
-
-    tt = (
+    time_tuple = (
         date.year,
         date.month,
         date.day,
@@ -548,9 +554,9 @@ def isDaylightTime(date=datetime.now()):
         0,
         0,
     )
-    stamp = time.mktime(tt)
-    tt = time.localtime(stamp)
-    return tt.tm_isdst > 0
+    stamp = mktime(time_tuple)
+    time_tuple = localtime(stamp)
+    return time_tuple.tm_isdst > 0
 
 
 def midnight(date):
@@ -594,8 +600,8 @@ def minutesBetween(date_1, date_2):
             two dates.
     """
     diff = date_2 - date_1
-    d, s, _ = diff.days, diff.seconds, diff.microseconds
-    return d * 1440 + s // 60
+    days, seconds, _ = diff.days, diff.seconds, diff.microseconds
+    return days * 1440 + seconds // 60
 
 
 def monthsBetween(date_1, date_2):
@@ -610,8 +616,6 @@ def monthsBetween(date_1, date_2):
         int: An integer that is representative of the difference between
             two dates.
     """
-    from calendar import monthrange
-
     delta = 0
     while True:
         mdays = monthrange(date_1.year, date_2.month)[1]
@@ -667,8 +671,8 @@ def secondsBetween(date_1, date_2):
             two dates.
     """
     diff = date_2 - date_1
-    d, s, _ = diff.days, diff.seconds, diff.microseconds
-    return d * 86400 + s
+    days, seconds, _ = diff.days, diff.seconds, diff.microseconds
+    return days * 86400 + seconds
 
 
 def setTime(date, hour, minute, second):
@@ -698,8 +702,6 @@ def toMillis(date):
         int: 8-byte integer representing the number of millisecond
             elapsed since January 1, 1970, 00:00:00 UTC (GMT).
     """
-    from time import mktime
-
     millis = mktime(date.timetuple()) * 1000 + date.microsecond // 1000
     return int(millis)
 

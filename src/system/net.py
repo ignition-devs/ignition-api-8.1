@@ -23,6 +23,8 @@ __all__ = [
     "sendEmail",
 ]
 
+import socket
+
 from java.lang import Object
 
 
@@ -130,8 +132,6 @@ def getHostName():
     Returns:
         str: The hostname of the local machine.
     """
-    import socket
-
     return socket.gethostname()
 
 

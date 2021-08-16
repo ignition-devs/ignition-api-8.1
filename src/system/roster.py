@@ -75,7 +75,7 @@ def getRosters():
         dict: A python dictionary of rosters. Refer to the list of User
             objects.
     """
-    return None
+    return {}
 
 
 def removeUsers(rosterName, users):

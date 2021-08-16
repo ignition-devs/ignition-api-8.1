@@ -20,3 +20,14 @@ class JTextComponent(Container):
     def getText(self):
         """Returns the text contained in this TextComponent."""
         return self._text
+
+    def setText(self, t):
+        """Sets the text of this TextComponent to the specified text.
+        If the text is null or empty, has the effect of simply deleting
+        the old text. When text has been inserted, the resulting caret
+        location is determined by the implementation of the caret class.
+
+        Args:
+            t (str): The new text to be set.
+        """
+        self._text = t

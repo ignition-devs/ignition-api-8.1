@@ -247,7 +247,6 @@ def readBytes(port, numberOfBytes, timeout=5000):
         object: A byte[] containing bytes read from the serial port.
     """
     print(port, numberOfBytes, timeout)
-    return None
 
 
 def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
