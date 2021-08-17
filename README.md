@@ -76,7 +76,7 @@ If you wish to clone just one branch in particular, use any of the following com
 Before you begin, ensure you have met the following requirements:
 
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
-* You are familiar with [Ignition 8.1 Scripting Functions](https://docs.inductiveautomation.com/display/DOC81/Scripting+Functions)
+* You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 
 ## Using Ignition
 
