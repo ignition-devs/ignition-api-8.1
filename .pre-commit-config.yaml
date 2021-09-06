@@ -1,5 +1,6 @@
 ci:
   autoupdate_commit_msg: 'build(pre-commit.ci): pre-commit autoupdate'
+  skip: [pylint]
 
 repos:
   - repo: https://github.com/psf/black
