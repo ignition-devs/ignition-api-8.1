@@ -147,7 +147,7 @@ def getRosters():
             usernames in the roster. The List of usernames may be empty
             if no users have been added to the roster.
     """
-    return dict()
+    return {}
 
 
 def getShelvedPaths():

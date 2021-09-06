@@ -14,8 +14,8 @@ __all__ = [
     "browse",
     "browseServer",
     "browseSimple",
-    "getServers",
     "getServerState",
+    "getServers",
     "isServerEnabled",
     "readValue",
     "readValues",
@@ -177,22 +177,6 @@ def browseSimple(opcServer, device, folderPath, opcItemPath):
     return [OPCBrowseTag()]
 
 
-def getServers(includeDisabled=False):
-    """Returns a list of server names.
-
-    Args:
-        includeDisabled (bool): If set to True, enabled and disabled
-            servers will be returned. If set to False, only enabled
-            servers will be returned. Defaults to False. Optional.
-
-    Returns:
-        list[str]: A list of server name strings. If no servers are
-            found, returns an empty list.
-    """
-    print(includeDisabled)
-    return []
-
-
 def getServerState(opcServer):
     """Retrieves the current state of the given OPC server connection.
 
@@ -214,6 +198,22 @@ def getServerState(opcServer):
     """
     print(opcServer)
     return "CONNECTED"
+
+
+def getServers(includeDisabled=False):
+    """Returns a list of server names.
+
+    Args:
+        includeDisabled (bool): If set to True, enabled and disabled
+            servers will be returned. If set to False, only enabled
+            servers will be returned. Defaults to False. Optional.
+
+    Returns:
+        list[str]: A list of server name strings. If no servers are
+            found, returns an empty list.
+    """
+    print(includeDisabled)
+    return []
 
 
 def isServerEnabled(serverName):

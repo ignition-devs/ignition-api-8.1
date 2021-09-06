@@ -155,8 +155,16 @@ class PyDataSet(Iterable):
     other Python sequences.
     """
 
+    def __add__(self, other):
+        """Add a new element."""
+        pass
+
     def __iter__(self):
         """Return the iterator object itself."""
+        pass
+
+    def __len__(self):
+        """Return the number of elements."""
         pass
 
 

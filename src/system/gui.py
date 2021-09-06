@@ -101,7 +101,23 @@ class FPMIWindow(JInternalFrame):
 class WindowUtilities(Object):
     """WindowUtilities object."""
 
-    pass
+    def confirm(self, *args):
+        pass
+
+    def errorBox(self, *args):
+        pass
+
+    def inputBox(self, *args):
+        pass
+
+    def messageBox(self, *args):
+        pass
+
+    def passwordBox(self, *args):
+        pass
+
+    def warningBox(self, *args):
+        pass
 
 
 def _dummy(message, title):

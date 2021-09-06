@@ -30,11 +30,11 @@ __all__ = [
     "runPrepQuery",
     "runPrepUpdate",
     "runQuery",
-    "runScalarPrepQuery",
-    "runScalarQuery",
     "runSFNamedQuery",
     "runSFPrepUpdate",
     "runSFUpdateQuery",
+    "runScalarPrepQuery",
+    "runScalarQuery",
     "runUpdateQuery",
     "setDatasourceConnectURL",
     "setDatasourceEnabled",
@@ -634,57 +634,6 @@ def runQuery(query, database="", tx=None):
     return PyDataSet()
 
 
-def runScalarPrepQuery(query, args, database="", tx=None):
-    """Runs a prepared statement against a database connection just like
-    the runPrepQuery function, but only returns the value from the first
-    row and column.
-
-    If no results are returned from the query, the special value None is
-    returned.
-
-    Args:
-        query (str): A SQL query (typically a SELECT) to run as a
-            prepared statement with placeholders (?) denoting where the
-            arguments go, that should be designed to return one row and
-            one column.
-        args (list[object]): A list of arguments. Will be used in order
-            to match each placeholder (?) found in the query.
-        database (str): The name of the database connection to execute
-            against. If omitted or "", the project's default database
-            connection will be used. Optional.
-        tx (str): A transaction identifier. If omitted, the query will
-            be executed in its own transaction.
-
-    Returns:
-         object: The value from the first row and first column of the
-            results. Returns None if no rows were returned.
-    """
-    print(query, args, database, tx)
-
-
-def runScalarQuery(query, database="", tx=None):
-    """Runs a query against a database connection just like the runQuery
-    function, but only returns the value from the first row and column.
-
-    If no results are returned from the query, the special value None is
-    returned.
-
-    Args:
-        query (str): A SQL query that should be designed to return one
-            row and one column.
-        database (str): The name of the database connection to execute
-            against. If omitted or "", the project's default database
-            connection will be used. Optional.
-        tx (str): A transaction identifier. If omitted, the query will
-            be executed in its own transaction.
-
-    Returns:
-         object: The value from the first row and first column of the
-            results. Returns None if no rows were returned.
-    """
-    print(query, database, tx)
-
-
 def runSFNamedQuery(*args):
     """Runs a named query that goes through the Store and Forward
     system.
@@ -753,6 +702,57 @@ def runSFUpdateQuery(query, datasources):
     """
     print(query, datasources)
     return True
+
+
+def runScalarPrepQuery(query, args, database="", tx=None):
+    """Runs a prepared statement against a database connection just like
+    the runPrepQuery function, but only returns the value from the first
+    row and column.
+
+    If no results are returned from the query, the special value None is
+    returned.
+
+    Args:
+        query (str): A SQL query (typically a SELECT) to run as a
+            prepared statement with placeholders (?) denoting where the
+            arguments go, that should be designed to return one row and
+            one column.
+        args (list[object]): A list of arguments. Will be used in order
+            to match each placeholder (?) found in the query.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        tx (str): A transaction identifier. If omitted, the query will
+            be executed in its own transaction.
+
+    Returns:
+         object: The value from the first row and first column of the
+            results. Returns None if no rows were returned.
+    """
+    print(query, args, database, tx)
+
+
+def runScalarQuery(query, database="", tx=None):
+    """Runs a query against a database connection just like the runQuery
+    function, but only returns the value from the first row and column.
+
+    If no results are returned from the query, the special value None is
+    returned.
+
+    Args:
+        query (str): A SQL query that should be designed to return one
+            row and one column.
+        database (str): The name of the database connection to execute
+            against. If omitted or "", the project's default database
+            connection will be used. Optional.
+        tx (str): A transaction identifier. If omitted, the query will
+            be executed in its own transaction.
+
+    Returns:
+         object: The value from the first row and first column of the
+            results. Returns None if no rows were returned.
+    """
+    print(query, database, tx)
 
 
 def runUpdateQuery(query, database="", tx=None, getKey=False, skipAudit=True):

@@ -12,8 +12,8 @@ from __future__ import print_function
 
 __all__ = [
     "getRoles",
-    "getUsername",
     "getUserRoles",
+    "getUsername",
     "isScreenLocked",
     "lockScreen",
     "logout",
@@ -34,15 +34,6 @@ def getRoles():
             the current user.
     """
     return "Administrator", "Developer"
-
-
-def getUsername():
-    """Returns the currently logged-in username.
-
-    Returns:
-        str: The current username.
-    """
-    return getpass.getuser()
 
 
 def getUserRoles(username, password, authProfile="", timeout=60000):
@@ -67,6 +58,15 @@ def getUserRoles(username, password, authProfile="", timeout=60000):
     """
     print(username, password, authProfile, timeout)
     return "Administrator", "Developer"
+
+
+def getUsername():
+    """Returns the currently logged-in username.
+
+    Returns:
+        str: The current username.
+    """
+    return getpass.getuser()
 
 
 def isScreenLocked():

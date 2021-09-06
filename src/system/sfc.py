@@ -34,7 +34,14 @@ class PyChartScope(object):
     dictionaries assigned to it as PyChartScopes as well.
     """
 
-    pass
+    def __set__(self, instance, value):
+        pass
+
+    def __setattr__(self, key, value):
+        pass
+
+    def __setitem__(self, key, value):
+        pass
 
 
 def cancelChart(instanceId):

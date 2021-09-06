@@ -64,10 +64,6 @@ class Aggregate(ABCMeta):
         pass
 
 
-class ReadResult(Object):
-    pass
-
-
 class Results(Object):
     """The results of a browse operation.
 
@@ -249,7 +245,7 @@ def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
             QualifiedValues.
     """
     print(serverName, itemId, attributeIds, startDate, endDate)
-    return [ReadResult()]
+    return []
 
 
 def readProcessed(
@@ -291,7 +287,7 @@ def readProcessed(
         resampleIntervalMS,
         aggregates,
     )
-    return [ReadResult()]
+    return []
 
 
 def readRaw(
@@ -320,7 +316,7 @@ def readRaw(
             QualifiedValues.
     """
     print(serverName, itemIds, startDate, endDate, maxValues, boundingValues)
-    return [ReadResult()]
+    return []
 
 
 def replace(serverName, itemId, value, date, quality):

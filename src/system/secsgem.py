@@ -19,10 +19,10 @@ __all__ = [
     "getToolProgram",
     "getToolProgramDataset",
     "sendRequest",
+    "sendResponse",
     "startSimEventRun",
     "toDataSet",
     "toTreeDataSet",
-    "sendResponse",
 ]
 
 import system.date
@@ -211,6 +211,33 @@ def sendRequest(streamFunction, reply, body, equipment):
     return 0
 
 
+def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
+    """Sends a JSON-formatted SECS response message to a message sent by
+    a tool.
+
+    An equipment connection must be configured for the tool in the
+    Gateway, and this must be used within a Message Handler to create a
+    Custom Message Response Handler.
+
+    Args:
+        transactionID (int): The TxID of the response. The TxID from the
+            received request in the payload of the message handler must
+            be specified here.
+        systemBytes (int): The SystemBytes of the response. The
+            SystemBytes from the received request in the payload of the
+            message handler must be specified here.
+        streamFunction (str): The stream and function of the SECS
+            message to send. Example: "S1F14".
+        body (object): This contains the body of a SECS response. The
+            argument can be a Python Object or JSON string representing
+            the body of a SECS message. If this argument is a string
+            then it will be converted to a Python Object using the
+            system.util.jsonDecode function.
+        equipment (str): Name of the equipment connection to use.
+    """
+    print(transactionID, systemBytes, streamFunction, body, equipment)
+
+
 def startSimEventRun(simulatorName, eventRunName):
     """Starts a configured simulator event run in the Gateway.
 
@@ -263,30 +290,3 @@ def toTreeDataSet(dataset):
     """
     print(dataset)
     return Dataset()
-
-
-def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
-    """Sends a JSON-formatted SECS response message to a message sent by
-    a tool.
-
-    An equipment connection must be configured for the tool in the
-    Gateway, and this must be used within a Message Handler to create a
-    Custom Message Response Handler.
-
-    Args:
-        transactionID (int): The TxID of the response. The TxID from the
-            received request in the payload of the message handler must
-            be specified here.
-        systemBytes (int): The SystemBytes of the response. The
-            SystemBytes from the received request in the payload of the
-            message handler must be specified here.
-        streamFunction (str): The stream and function of the SECS
-            message to send. Example: "S1F14".
-        body (object): This contains the body of a SECS response. The
-            argument can be a Python Object or JSON string representing
-            the body of a SECS message. If this argument is a string
-            then it will be converted to a Python Object using the
-            system.util.jsonDecode function.
-        equipment (str): Name of the equipment connection to use.
-    """
-    print(transactionID, systemBytes, streamFunction, body, equipment)

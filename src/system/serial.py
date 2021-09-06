@@ -83,7 +83,28 @@ class PortManager(object):
 
 
 class SerialConfigurator(object):
-    pass
+    """Serial Configurator class."""
+
+    def setBitRate(self, value):
+        pass
+
+    def setDataBits(self, value):
+        pass
+
+    def setFlowControl(self, value):
+        pass
+
+    def setHandshake(self, value):
+        pass
+
+    def setHardwareFlowControl(self, value):
+        pass
+
+    def setParity(self, value):
+        pass
+
+    def setStopBits(self, value):
+        pass
 
 
 def closeSerialPort(port):

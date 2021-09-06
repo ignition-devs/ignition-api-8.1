@@ -584,8 +584,8 @@ def millisBetween(date_1, date_2):
             between two dates.
     """
     diff = date_2 - date_1
-    d, s, micro = diff.days, diff.seconds, diff.microseconds
-    return d * 86400 * 1000 + s * 1000 + micro // 1000
+    days, seconds, microseconds = diff.days, diff.seconds, diff.microseconds
+    return days * 86400 * 1000 + seconds * 1000 + microseconds // 1000
 
 
 def minutesBetween(date_1, date_2):

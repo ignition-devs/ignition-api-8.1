@@ -12,6 +12,3 @@ while the rest will work in any scope.
 Additional information on scripting Ignition can be found in the
 Scripting section.
 """
-
-__version__ = "8.1.9"
-__build__ = "2021080617"

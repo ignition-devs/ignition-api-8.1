@@ -18,8 +18,8 @@ __all__ = [
     "getAvailableLocales",
     "getAvailableTerms",
     "getClientId",
-    "getConnectionMode",
     "getConnectTimeout",
+    "getConnectionMode",
     "getEdition",
     "getGatewayAddress",
     "getGatewayStatus",
@@ -44,8 +44,8 @@ __all__ = [
     "sendMessage",
     "sendRequest",
     "sendRequestAsync",
-    "setConnectionMode",
     "setConnectTimeout",
+    "setConnectionMode",
     "setLocale",
     "setLoggingLevel",
     "setReadTimeout",
@@ -54,6 +54,7 @@ __all__ = [
 ]
 
 import getpass
+import json
 import os
 import platform
 import re
@@ -65,6 +66,7 @@ except ImportError:
     pass
 
 
+import system.__version__ as version
 import system.date
 import system.security
 from java.awt import Toolkit
@@ -81,7 +83,15 @@ class LoggerEx(Object):
     builder.
     """
 
-    pass
+    def getLogger(self):
+        pass
+
+    def getName(self):
+        pass
+
+    @staticmethod
+    def log(*args):
+        pass
 
 
 class Request(Object):
@@ -346,8 +356,7 @@ def beep():
         elif platforms[sys.platform] == "macOS":
             os.system('say "beep"')
         elif platforms[sys.platform] == "Linux":
-            # TODO: Make Linux speak.
-            print("Beep!")
+            print("\a")
     else:
         print("Beep!")
 
@@ -418,17 +427,6 @@ def getClientId():
     return "92247003"
 
 
-def getConnectionMode():
-    """Retrieves this client session's current connection mode.
-
-    3 is read/write, 2 is read-only, and 1 is disconnected.
-
-    Returns:
-        int: The current connection mode for the client.
-    """
-    return 3
-
-
 def getConnectTimeout():
     """Returns the connect timeout in milliseconds for all
     client-to-gateway communication.
@@ -442,6 +440,17 @@ def getConnectTimeout():
             10,000 (ten seconds).
     """
     return 10000
+
+
+def getConnectionMode():
+    """Retrieves this client session's current connection mode.
+
+    3 is read/write, 2 is read-only, and 1 is disconnected.
+
+    Returns:
+        int: The current connection mode for the client.
+    """
+    return 3
 
 
 def getEdition():
@@ -655,8 +664,8 @@ def getVersion():
         Version: The currently running Ignition version number. as a
             Version object.
     """
-    major, minor, rev = [int(i) for i in system.__version__.split(".")]
-    build = int(system.__build__)
+    major, minor, rev = [int(i) for i in version.__version__.split(".")]
+    build = int(version.__build__)
     return Version(major=major, minor=minor, rev=rev, build=build)
 
 
@@ -731,8 +740,7 @@ def jsonDecode(jsonString):
     Returns:
         dict: The decoded Python object.
     """
-    print(jsonString)
-    return {"key": "value"}
+    return json.loads(jsonString)
 
 
 def jsonEncode(pyObj, indentFactor=4):
@@ -748,8 +756,7 @@ def jsonEncode(pyObj, indentFactor=4):
     Returns:
         str: The encoded JSON string.
     """
-    print(pyObj, indentFactor)
-    return ""
+    return json.dumps(pyObj, indent=indentFactor)
 
 
 def modifyTranslation(term, translation, locale="en"):
@@ -1059,6 +1066,18 @@ def sendRequestAsync(
     return Request()
 
 
+def setConnectTimeout(connectTimeout):
+    """Sets the connect timeout for client-to-gateway communication.
+
+    Specified in milliseconds.
+
+    Args:
+        connectTimeout (int): The new connect timeout, specified in
+            milliseconds.
+    """
+    print(connectTimeout)
+
+
 def setConnectionMode(mode):
     """Sets the connection mode for the client session.
 
@@ -1074,18 +1093,6 @@ def setConnectionMode(mode):
             2 = Read-only, 3 = Read/Write.
     """
     print(mode)
-
-
-def setConnectTimeout(connectTimeout):
-    """Sets the connect timeout for client-to-gateway communication.
-
-    Specified in milliseconds.
-
-    Args:
-        connectTimeout (int): The new connect timeout, specified in
-            milliseconds.
-    """
-    print(connectTimeout)
 
 
 def setLocale(locale):

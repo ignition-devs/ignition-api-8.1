@@ -73,7 +73,7 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
             occurs: If the file type is not recognized, path does not
             exist, project does not exist.
     """
-    _fileTypes = [
+    file_types = [
         "csv",
         "html",
         "jpeg",
@@ -84,7 +84,7 @@ def executeReport(path, project="project", parameters=None, fileType="pdf"):
         "xlsx",
         "xml",
     ]
-    if path is None or project is None or fileType not in _fileTypes:
+    if path is None or project is None or fileType not in file_types:
         raise IllegalArgumentException()
     print(path, project, parameters, fileType)
 

@@ -28,8 +28,8 @@ __all__ = [
     "getNewUser",
     "getRoles",
     "getSchedule",
-    "getScheduledUsers",
     "getScheduleNames",
+    "getScheduledUsers",
     "getSchedules",
     "getUser",
     "getUsers",
@@ -51,6 +51,18 @@ class ContactInfo(Object):
     def __init__(self, contactType=None, value=None):
         self.contactType = contactType
         self.value = value
+
+    def getContactType(self):
+        pass
+
+    def getValue(self):
+        pass
+
+    def setContactType(self, contactType):
+        pass
+
+    def setValue(self, value):
+        pass
 
 
 class HolidayModel(Object):
@@ -108,7 +120,65 @@ class ScheduleAdjustment(Object):
 
 
 class ScheduleModel(Object):
-    pass
+    def deselectDayOfWeek(self, day):
+        pass
+
+    def getEveryHour(self):
+        pass
+
+    def getHour(self):
+        pass
+
+    def getMinute(self):
+        pass
+
+    def getSelectedDays(self):
+        pass
+
+    def isAlldays(self):
+        pass
+
+    def isDaySelected(self, day):
+        pass
+
+    def isEveryHourEnabled(self):
+        pass
+
+    def isEveryMinuteEnabled(self):
+        pass
+
+    def isHourEnabled(self):
+        pass
+
+    def isMinuteEnabled(self):
+        pass
+
+    def selectDayOfWeek(self, day):
+        pass
+
+    def setAllDays(self, allDays):
+        pass
+
+    def setEveryHour(self, everyHour):
+        pass
+
+    def setHour(self, hour):
+        pass
+
+    def setHourEnabled(self, hourEnabled):
+        pass
+
+    def setMinute(self, minute):
+        pass
+
+    def setMinuteEnabled(self, minuteEnabled):
+        pass
+
+    def setSelectedDays(self, selectedDays):
+        pass
+
+    def toCronString(self):
+        pass
 
 
 class UIResponse(Object):
@@ -647,6 +717,17 @@ def getSchedule(scheduleName):
     print(scheduleName)
 
 
+def getScheduleNames():
+    """Returns a sequence of strings representing the names of all of
+    the schedules available.
+
+    Returns:
+        list[str]: A List of Strings that holds the names of all the
+            available schedules.
+    """
+    return ["A", "Always", "B", "C", "Example", "MyComposite", "MySchedule"]
+
+
 def getScheduledUsers(userSource, date=None):
     """Returns a list of users that are scheduled on.
 
@@ -666,17 +747,6 @@ def getScheduledUsers(userSource, date=None):
     """
     date = system.date.now() if date is None else date
     print(userSource, date)
-
-
-def getScheduleNames():
-    """Returns a sequence of strings representing the names of all of
-    the schedules available.
-
-    Returns:
-        list[str]: A List of Strings that holds the names of all the
-            available schedules.
-    """
-    return ["A", "Always", "B", "C", "Example", "MyComposite", "MySchedule"]
 
 
 def getSchedules():
