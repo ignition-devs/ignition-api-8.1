@@ -60,12 +60,6 @@ import platform
 import re
 import sys
 
-try:
-    import winsound
-except ImportError:
-    pass
-
-
 import system.__version__ as version
 import system.date
 import system.security
@@ -352,7 +346,12 @@ def beep():
         Toolkit.getDefaultToolkit().beep()
     elif sys.platform in platforms:
         if platforms[sys.platform] == "Windows":
-            winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+            try:
+                import winsound
+
+                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
+            except ImportError:
+                print("Beep!")
         elif platforms[sys.platform] == "macOS":
             os.system('say "beep"')
         elif platforms[sys.platform] == "Linux":
