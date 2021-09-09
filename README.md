@@ -113,7 +113,7 @@ Also, it can be installed by running `pip`. It requires Python 2.7 (we recommend
 $ python2 -m pip install ignition-api
 ```
 
-This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using and IDE (we recommend PyCharm).
+This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
 
 ```bash
 Python 2.7.18 (default, Nov  9 2020, 16:23:15) 
