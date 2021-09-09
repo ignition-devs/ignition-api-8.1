@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Perspective Workstation Functions.
 
 The following functions offer various ways to interact with Perspective

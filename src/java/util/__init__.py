@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Contains the collections framework, legacy collection classes, event
 model, date and time facilities, internationalization, and miscellaneous
 utility classes (a string tokenizer, a random-number generator, and a

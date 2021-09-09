@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Provides classes for creating and modifying images.
 
 Images are processed using a streaming framework that involves an image

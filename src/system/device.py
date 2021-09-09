@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Device Functions.
 
 The following functions give you access to view and edit device
@@ -23,7 +19,7 @@ __all__ = [
 from system.dataset import Dataset
 
 
-def addDevice(deviceType, deviceName, deviceProps):
+def addDevice(deviceType, deviceName, deviceProps, description=None):
     """Adds a new device connection in Ignition.
 
     Accepts a dictionary of parameters to configure the connection.
@@ -42,8 +38,10 @@ def addDevice(deviceType, deviceName, deviceProps):
             case-insensitive, spaces are omitted, and the names of the
             properties that appear when manually creating a device
             connection.
+        description (str): The description that will be given to the
+            new device connection. Optional.
     """
-    print(deviceType, deviceName, deviceProps)
+    print(deviceType, deviceName, deviceProps, description)
 
 
 def getDeviceHostname(deviceName):

@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Provides a set of "lightweight" (all-Java language) components that,
 to the maximum degree possible, work the same on all platforms.
 """

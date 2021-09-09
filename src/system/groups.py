@@ -1,7 +1,3 @@
-# Copyright (C) 2018-2021
-# Author: Cesar Roman
-# Contact: cesar@thecesrom.dev
-
 """Transaction Group Functions.
 
 The following functions give you access to import and remove Transaction
