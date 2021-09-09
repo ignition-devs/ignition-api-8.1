@@ -25,7 +25,7 @@ setup(
     long_description_content_type="text/markdown",
     author=about["__author__"],
     author_email=about["__author_email__"],
-    python_requires=">=2.7",
+    python_requires=">=2.7, !=3.*",
     url=about["__url__"],
     packages=find_packages(where="src"),
     package_dir={"": "src"},
