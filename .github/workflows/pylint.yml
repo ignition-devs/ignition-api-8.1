@@ -1,15 +1,6 @@
 name: Pylint
 
-on:
-  push:
-    branches:
-    - "7.9"
-    - "8.0"
-    - jython
-    - main
-  pull_request:
-    branches:
-    - main
+on: [push, pull_request]
 
 jobs:
   build:
