@@ -3,6 +3,8 @@
 The following functions give you access to test and modify dates.
 """
 
+from __future__ import print_function
+
 __all__ = [
     "addDays",
     "addHours",

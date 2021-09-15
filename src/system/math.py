@@ -29,12 +29,6 @@ __all__ = [
 
 import __builtin__ as builtins
 
-from java.lang import Exception as JException
-
-
-class DimensionMismatchException(JException):
-    pass
-
 
 def geometricMean(values):
     """Calculates the geometric mean.
@@ -149,8 +143,7 @@ def meanDifference(values1, values2):
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    if len(values1) != len(values2):
-        raise DimensionMismatchException()
+    print(values1, values2)
 
 
 def median(values):
@@ -392,8 +385,7 @@ def sumDifference(values1, values2):
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    if len(values1) != len(values2):
-        raise DimensionMismatchException()
+    print(values1, values2)
 
 
 def sumLog(values):

@@ -20,88 +20,9 @@ __all__ = [
     "replace",
 ]
 
-from abc import ABCMeta, abstractmethod
-
-from java.lang import Object
+from com.inductiveautomation.ignition.common.browsing import Results
+from com.inductiveautomation.ignition.common.sqltags.history import Aggregate
 from java.util import Date
-
-
-class Aggregate(ABCMeta):
-    """This interface defines an aggregation function used by the
-    history query system.
-
-    Different types of history providers may support different Aggregate
-    functions, and may define new types of aggregates. The name and
-    description are for informational purposes, aggregates are only
-    identified by their id (name and description should not be taken
-    into account).
-
-    The general implementation class is AggregateInfo. Common or "well
-    known" aggregates are defined in the AggregationMode enum. The
-    system works like this for historical reasons, previous to 7.7 only
-    the AggregationMode aggregates were used. After, with the
-    introduction of history providers as an extension point, new
-    providers could define any aggregation function.
-    """
-
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def getDesc(cls):
-        pass
-
-    @abstractmethod
-    def getId(cls):
-        pass
-
-    @abstractmethod
-    def getName(cls):
-        pass
-
-
-class Results(Object):
-    """The results of a browse operation.
-
-    May only represent a partial result set, which can be determined by
-    comparing the Total Available Size to the Returned Size. If there is
-    a mismatch, the continuation point should be non-null and can be
-    used in constructing the subsequent BrowseFilter to continue the
-    browse.
-    """
-
-    def error(self, result):
-        pass
-
-    def getContinuationPoint(self):
-        pass
-
-    def getResultQuality(self):
-        pass
-
-    def getResults(self):
-        pass
-
-    def getReturnedSize(self):
-        pass
-
-    def getTotalAvailableSize(self):
-        pass
-
-    def of(self, arg):
-        pass
-
-    def setContinuationPoint(self, continuationPoint):
-        pass
-
-    def setResultQuality(self, value):
-        pass
-
-    def setResults(self, results):
-        pass
-
-    def setTotalAvailableResults(self, totalAvailableResults):
-        pass
 
 
 def browse(root):

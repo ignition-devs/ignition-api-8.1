@@ -21,6 +21,7 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - toml
+        exclude: ^src/com/
   - repo: local
     hooks:
       - id: pylint

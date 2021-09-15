@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 import system.date
-from system.dataset import Dataset
+from com.inductiveautomation.ignition.common import Dataset
 
 
 def copyEquipment(

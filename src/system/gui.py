@@ -41,13 +41,15 @@ __all__ = [
     "warningBox",
 ]
 
+from com.inductiveautomation.factorypmi.application import FPMIWindow
+from com.inductiveautomation.ignition.common.script.builtin import (
+    WindowUtilities,
+)
 from java.awt import Color
-from java.lang import Object
 from java.util import EventObject
 from javax.swing import (
     JComponent,
     JFrame,
-    JInternalFrame,
     JLabel,
     JOptionPane,
     JPanel,
@@ -63,57 +65,6 @@ ACCL_SLOW_TO_FAST = 3
 ACCL_EASE = 4
 COORD_SCREEN = 0
 COORD_DESIGNER = 1
-
-
-class FPMIWindow(JInternalFrame):
-    """FPMIWindow object."""
-
-    # Fields.
-    CACHE_ALWAYS = 2
-    CACHE_AUTO = 0
-    CACHE_NEVER = 1
-    DOCK_EAST = 2
-    DOCK_FLOAT = 0
-    DOCK_NORTH = 2
-    DOCK_SOUTH = 4
-    DOCK_WEST = 3
-    PARENT_WINDOW_NAME = "_parent"
-    SHOW_ALWAYS = 0
-    SHOW_NEVER = 1
-    SHOW_MAXIMIZED = 2
-
-    _path = "Path/To/Window"
-
-    def __init__(self, name):
-        self.name = name
-
-    def getPath(self):
-        return self._path
-
-    def getRootContainer(self):
-        print(self)
-
-
-class WindowUtilities(Object):
-    """WindowUtilities object."""
-
-    def confirm(self, *args):
-        pass
-
-    def errorBox(self, *args):
-        pass
-
-    def inputBox(self, *args):
-        pass
-
-    def messageBox(self, *args):
-        pass
-
-    def passwordBox(self, *args):
-        pass
-
-    def warningBox(self, *args):
-        pass
 
 
 def _dummy(message, title):

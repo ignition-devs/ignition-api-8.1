@@ -7,82 +7,11 @@ from __future__ import print_function
 
 __all__ = ["createImage", "createPrintJob", "printToImage"]
 
+from com.inductiveautomation.factorypmi.application.script.builtin import (
+    PrintUtilities,
+)
 from java.awt import Component
 from java.awt.image import BufferedImage
-from java.lang import Object
-
-
-class JythonPrintJob(Object):
-    """JythonPrintJob object."""
-
-    def getBottomMargin(self):
-        pass
-
-    def getLeftMargin(self):
-        pass
-
-    def getOrientation(self):
-        pass
-
-    def getPageHeight(self):
-        pass
-
-    def getPageWidth(self):
-        pass
-
-    def getPrinterName(self):
-        pass
-
-    def getRightMargin(self):
-        pass
-
-    def getTopMargin(self):
-        pass
-
-    def getZoomFactor(self):
-        pass
-
-    def isFitToPage(self):
-        pass
-
-    def isShowPrintDialog(self):
-        pass
-
-    def print(self):
-        pass
-
-    def setBottomMargin(self, bottomMargin):
-        pass
-
-    def setFitToPage(self, fitToPage):
-        pass
-
-    def setLeftMargin(self, leftMargin):
-        pass
-
-    def setMargins(self, m):
-        pass
-
-    def setOrientation(self, orientation):
-        pass
-
-    def setPageHeight(self, pageHeight):
-        pass
-
-    def setPageWidth(self, pageWidth):
-        pass
-
-    def setPrinterName(self, printerName):
-        pass
-
-    def setRightMargin(self, rightMargin):
-        pass
-
-    def setShowPrintDialog(self, showPrintDialog):
-        pass
-
-    def setZoomFactor(self, zoomFactor):
-        pass
 
 
 def createImage(component):
@@ -99,9 +28,8 @@ def createImage(component):
         BufferedImage: A java.awt.image.BufferedImage representing the
             component.
     """
-    print(component)
-    width = height = imageType = 1
-    return BufferedImage(width, height, imageType)
+    print_utils = PrintUtilities()
+    return print_utils.createImage(component)
 
 
 def createPrintJob(component):
@@ -121,7 +49,7 @@ def createPrintJob(component):
             started. To start the print job, use .print().
     """
     print(component)
-    return JythonPrintJob()
+    return PrintUtilities.JythonPrintJob()
 
 
 def printToImage(component, filename=None):

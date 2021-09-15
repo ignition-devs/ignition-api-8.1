@@ -4,6 +4,8 @@ The following functions give you access to interact with the DNP3
 devices.
 """
 
+from __future__ import print_function
+
 __all__ = [
     "directOperateAnalog",
     "directOperateBinary",

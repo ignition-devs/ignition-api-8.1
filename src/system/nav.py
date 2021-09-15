@@ -21,96 +21,11 @@ __all__ = [
     "swapWindow",
 ]
 
-from abc import ABCMeta, abstractmethod
-
+from com.inductiveautomation.factorypmi.application import FPMIWindow
+from com.inductiveautomation.factorypmi.application.script.builtin import (
+    INavUtilities,
+)
 from java.util import EventObject
-from javax.swing import JInternalFrame
-
-
-class FPMIWindow(JInternalFrame):
-    """FPMIWindow object."""
-
-    # Fields.
-    CACHE_ALWAYS = 2
-    CACHE_AUTO = 0
-    CACHE_NEVER = 1
-    DOCK_EAST = 2
-    DOCK_FLOAT = 0
-    DOCK_NORTH = 2
-    DOCK_SOUTH = 4
-    DOCK_WEST = 3
-    PARENT_WINDOW_NAME = "_parent"
-    SHOW_ALWAYS = 0
-    SHOW_NEVER = 1
-    SHOW_MAXIMIZED = 2
-
-    _path = "Path/To/Window"
-
-    def __init__(self, name):
-        self.name = name
-
-    def getPath(self):
-        return self._path
-
-    def getRootContainer(self):
-        print(self)
-
-
-class INavUtilities(ABCMeta):
-    """Parent interface to coordinate the functions between NavUtilities
-    and NavUtilitiesDispatcher.
-    """
-
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def centerWindow(cls, arg):
-        pass
-
-    @abstractmethod
-    def closeParentWindow(cls, event):
-        pass
-
-    @abstractmethod
-    def closeWindow(cls, arg):
-        pass
-
-    @abstractmethod
-    def getCurrentWindow(cls):
-        pass
-
-    @abstractmethod
-    def goBack(cls):
-        pass
-
-    @abstractmethod
-    def goForward(cls):
-        pass
-
-    @abstractmethod
-    def goHome(cls):
-        pass
-
-    @abstractmethod
-    def openWindow(cls, *args):
-        pass
-
-    @abstractmethod
-    def openWindowImpl(cls, path, params, openAdditional):
-        pass
-
-    @abstractmethod
-    def openWindowInstance(cls, *args):
-        pass
-
-    @abstractmethod
-    def swapTo(cls, *args):
-        pass
-
-    @abstractmethod
-    def swapWindow(cls, *args):
-        pass
 
 
 def centerWindow(arg):

@@ -7,8 +7,6 @@ datasets.
 from __future__ import print_function
 
 __all__ = [
-    "Dataset",
-    "PyDataSet",
     "addColumn",
     "addRow",
     "addRows",
@@ -34,134 +32,12 @@ __all__ = [
 ]
 
 import os
-from collections import Iterable
 
+from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common.script.builtin import (
+    DatasetUtilities,
+)
 from java.util import Locale
-
-
-class Dataset(Iterable):
-    """A dataset is a collection of values arranged in a structured
-    format.
-
-    Most datasets are two dimensional -- they can be viewed as a table
-    with rows and columns being the two dimensions. Values in a dataset
-    are usually accessed by specifying one index for each dimension of
-    data (row and column for tables).
-    """
-
-    def __iter__(self):
-        """Return the iterator object itself."""
-        pass
-
-    def getColumnCount(self):
-        """Returns the number of columns in the dataset.
-
-        Returns:
-            int: The number of columns in the dataset.
-        """
-        print(self)
-        return 4
-
-    def getColumnIndex(self, colName):
-        """Returns the index of the column with the name colName.
-
-        Args:
-            colName (str): The name of the column
-
-        Returns:
-            int: The index of the column with the name colName.
-        """
-        print(self, colName)
-        return 2
-
-    def getColumnName(self, colIndex):
-        """Returns the name of the column at the index colIndex.
-
-        Args:
-            colIndex (str): The index of the column.
-
-        Returns:
-            str: The name of the column at the index colIndex.
-        """
-        print(self, colIndex)
-        return "Population"
-
-    def getColumnNames(self):
-        """Returns a list with the names of all the columns.
-
-        Returns:
-            list[str]: A list with the names of all the columns.
-        """
-        print(self)
-        return ["City", "Population", "Timezone", "GMTOffset"]
-
-    def getColumnType(self, colIndex):
-        """Returns the type of the column at the index colIndex.
-
-        Args:
-            colIndex (int): The index of the column.
-
-        Returns:
-            object: The type of the column at the index colIndex.
-        """
-        print(self, colIndex)
-        return type(0)
-
-    def getColumnTypes(self):
-        """Returns a list with the types of all the columns.
-
-        Returns:
-             list[object]: A list with the types of all the columns.
-        """
-        print(self)
-        return [type(""), type(0), type(""), type(0)]
-
-    def getRowCount(self):
-        """Returns the number of rows in the dataset.
-
-        Returns:
-            int: The number of rows in the dataset.
-        """
-        print(self)
-        return 5
-
-    def getValueAt(self, *args):
-        """Returns the value at the specified row index and column name.
-
-        Args:
-            args (object): args[0] = rowIndex, args[1] colIndex or
-                colName.
-
-        Returns:
-            object: The value at the specified row index and column
-                name.
-        """
-        ret = None
-        if isinstance(args[1], int):
-            print(self, "colIndex")
-            ret = "PST"
-        elif isinstance(args[1], str):
-            print(self, "colName")
-            ret = 2853114
-        return ret
-
-
-class PyDataSet(Iterable):
-    """PyDatasets are special, in that they can be handled similarly to
-    other Python sequences.
-    """
-
-    def __add__(self, other):
-        """Add a new element."""
-        pass
-
-    def __iter__(self):
-        """Return the iterator object itself."""
-        pass
-
-    def __len__(self):
-        """Return the number of elements."""
-        pass
 
 
 def addColumn(dataset, colIndex, col, colName, colType):
@@ -638,7 +514,7 @@ def toPyDataSet(dataset):
         PyDataSet: The newly created PyDataSet.
     """
     print(dataset)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def updateRow(dataset, rowIndex, changes):

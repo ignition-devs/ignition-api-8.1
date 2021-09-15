@@ -19,69 +19,14 @@ __all__ = [
     "unshelve",
 ]
 
-from abc import ABCMeta, abstractmethod
-
 import system.date
-from java.lang import Object
+from com.inductiveautomation.ignition.common.alarming.evaluation import (
+    ShelvedPath,
+)
+from com.inductiveautomation.ignition.common.alarming.query import (
+    AlarmQueryResults,
+)
 from java.util import Date
-
-
-class AlarmQueryResults(ABCMeta):
-    """This is the result of a query against the alarming system, for
-    both status and history.
-
-    It provides the results as a list, but also provides additional
-    helper functions for getting the event and associated data as a
-    dataset.
-    """
-
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def getAssociatedDate(cls, uuid):
-        pass
-
-    @abstractmethod
-    def getDataSet(cls):
-        pass
-
-    @abstractmethod
-    def getEvent(cls, uuid):
-        pass
-
-
-class ShelvedPath(Object):
-    """This class provides information about a path that has been
-    "shelved", such as when it was shelved, and by whom, and the actual
-    path.
-    """
-
-    def __init__(self, path=None, user=None, expiration=None):
-        self.path = path
-        self.user = user
-        self.expiration = expiration
-
-    def getExpiration(self):
-        pass
-
-    def getHitCount(self):
-        pass
-
-    def getPath(self):
-        pass
-
-    def getShelveTime(self):
-        pass
-
-    def getUser(self):
-        pass
-
-    def incrementHitCount(self):
-        pass
-
-    def isExpired(self):
-        pass
 
 
 def acknowledge(alarmIds, notes=None, username=None):

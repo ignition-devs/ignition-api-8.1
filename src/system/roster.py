@@ -14,7 +14,7 @@ __all__ = [
     "removeUsers",
 ]
 
-from system.user import PyUser
+from com.inductiveautomation.ignition.common.user import PyUser
 
 
 def addUsers(rosterName, users):

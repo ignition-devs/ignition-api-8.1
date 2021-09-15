@@ -20,6 +20,10 @@ __all__ = [
     "writeBytes",
 ]
 
+from com.inductiveautomation.ignition.modules.serial.scripting import (
+    SerialScriptModule,
+)
+
 # Bit rate constants.
 BIT_RATE_110 = 110
 BIT_RATE_150 = 150
@@ -65,42 +69,6 @@ PARITY_NONE = 0
 # Stop bits constants.
 STOP_BITS_1 = 1
 STOP_BITS_2 = 3
-
-
-class PortManager(object):
-    def __init__(self):
-        pass
-
-    def __enter__(self):
-        print("Enter")
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Exit")
-
-
-class SerialConfigurator(object):
-    """Serial Configurator class."""
-
-    def setBitRate(self, value):
-        pass
-
-    def setDataBits(self, value):
-        pass
-
-    def setFlowControl(self, value):
-        pass
-
-    def setHandshake(self, value):
-        pass
-
-    def setHardwareFlowControl(self, value):
-        pass
-
-    def setParity(self, value):
-        pass
-
-    def setStopBits(self, value):
-        pass
 
 
 def closeSerialPort(port):
@@ -166,7 +134,7 @@ def configureSerialPort(
         parity,
         stopBits,
     )
-    return SerialConfigurator()
+    return SerialScriptModule.SerialConfigurator()
 
 
 def openSerialPort(port):
@@ -248,7 +216,7 @@ def port(
         parity,
         stopBits,
     )
-    return PortManager()
+    return SerialScriptModule.PortManager()
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
