@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["PyJsonObjectAdapter"]
+
 from java.lang import Object
 
 

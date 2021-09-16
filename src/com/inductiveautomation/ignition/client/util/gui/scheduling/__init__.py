@@ -1,6 +1,5 @@
 __all__ = ["ScheduleModel"]
 
-
 from java.lang import Object
 
 

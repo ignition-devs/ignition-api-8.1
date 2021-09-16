@@ -22,7 +22,7 @@ __all__ = [
 
 from com.inductiveautomation.ignition.common.model.values import (
     QualifiedValue,
-    Quality,
+    QualityCode,
 )
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import (
     OPCBrowseTag,
@@ -225,11 +225,11 @@ def writeValue(opcServer, itemPath, value):
         value (object): The value to write to the OPC item.
 
     Returns:
-        Quality: The status of the write. Use returnValue.isGood() to
-            check if the write succeeded.
+        QualityCode: The status of the write. Use returnValue.isGood()
+            to check if the write succeeded.
     """
     print(opcServer, itemPath, value)
-    return Quality()
+    return QualityCode()
 
 
 def writeValues(opcServer, itemPaths, values):
@@ -250,8 +250,8 @@ def writeValues(opcServer, itemPaths, values):
             specified.
 
     Returns:
-        list[Quality]: An array of Quality objects, each entry
+        list[QualityCode]: An array of Quality objects, each entry
             corresponding in order to the addresses specified.
     """
     print(opcServer, itemPaths, values)
-    return [Quality()]
+    return [QualityCode()]

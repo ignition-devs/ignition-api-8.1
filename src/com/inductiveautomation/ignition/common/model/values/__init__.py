@@ -1,4 +1,4 @@
-__all__ = ["QualityCode", "QualifiedValue", "Quality"]
+__all__ = ["QualityCode", "QualifiedValue"]
 
 from abc import ABCMeta, abstractmethod
 
@@ -80,26 +80,4 @@ class QualifiedValue(ABCMeta):
 
     @abstractmethod
     def getValue(self):
-        pass
-
-
-class Quality(ABCMeta):
-    def __new__(mcs, *args, **kwargs):
-        pass
-
-    @abstractmethod
-    def getDescription(self):
-        pass
-
-    def getLevel(self):
-        pass
-
-    @abstractmethod
-    def getName(self):
-        pass
-
-    def getQualityCode(self):
-        pass
-
-    def isGood(self):
         pass

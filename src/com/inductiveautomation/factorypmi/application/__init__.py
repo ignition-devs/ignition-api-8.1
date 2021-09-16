@@ -1,3 +1,5 @@
+__all__ = ["FPMIWindow"]
+
 from javax.swing import JInternalFrame
 
 

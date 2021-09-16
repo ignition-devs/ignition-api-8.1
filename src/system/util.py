@@ -62,8 +62,8 @@ from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
-    SystemUtilities,
 )
+from com.inductiveautomation.ignition.common.script.message import Request
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from java.awt import Toolkit
 from java.lang import Thread
@@ -852,7 +852,7 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return SystemUtilities.RequestImpl()
+    return Request()
 
 
 def setConnectTimeout(connectTimeout):

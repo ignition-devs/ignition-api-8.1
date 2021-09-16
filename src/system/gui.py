@@ -42,7 +42,7 @@ __all__ = [
 ]
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
-from com.inductiveautomation.ignition.common.script.builtin import (
+from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
 from java.awt import Color
