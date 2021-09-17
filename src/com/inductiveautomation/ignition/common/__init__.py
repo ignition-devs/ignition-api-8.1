@@ -1,8 +1,4 @@
-__all__ = [
-    "AbstractDataset",
-    "BasicDataset",
-    "Dataset",
-]
+__all__ = ["AbstractDataset", "BasicDataset", "Dataset"]
 
 from abc import ABCMeta, abstractmethod
 

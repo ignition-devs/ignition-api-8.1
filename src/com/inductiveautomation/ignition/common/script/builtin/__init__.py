@@ -1,8 +1,4 @@
-__all__ = [
-    "DatasetUtilities",
-    "SProcCall",
-    "SystemUtilities",
-]
+__all__ = ["DatasetUtilities", "SProcCall", "SystemUtilities"]
 
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.script.abc import (

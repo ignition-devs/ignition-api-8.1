@@ -1,8 +1,4 @@
-__all__ = [
-    "ContactInfo",
-    "PyUser",
-    "User",
-]
+__all__ = ["ContactInfo", "PyUser", "User"]
 
 from abc import ABCMeta, abstractmethod
 
