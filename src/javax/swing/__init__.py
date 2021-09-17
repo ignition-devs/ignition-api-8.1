@@ -2,6 +2,8 @@
 to the maximum degree possible, work the same on all platforms.
 """
 
+from __future__ import print_function
+
 __all__ = [
     "JComponent",
     "JFrame",

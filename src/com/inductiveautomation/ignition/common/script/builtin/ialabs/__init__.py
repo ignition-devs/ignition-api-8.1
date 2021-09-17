@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["BrowseTag", "OPCBrowseTag"]
 
 from java.lang import Object

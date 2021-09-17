@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["SerialScriptModule"]
 
 from java.lang import Object
