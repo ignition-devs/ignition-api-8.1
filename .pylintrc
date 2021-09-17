@@ -76,6 +76,7 @@ confidence=
 # --disable=W".
 disable=bad-mcs-classmethod-argument,
         bad-mcs-method-argument,
+        consider-using-f-string,
         deprecated-class,
         missing-class-docstring,
         missing-function-docstring,
