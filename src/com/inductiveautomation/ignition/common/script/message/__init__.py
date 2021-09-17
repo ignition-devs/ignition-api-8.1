@@ -8,23 +8,23 @@ class Request(ABCMeta):
         pass
 
     @abstractmethod
-    def cancel(self):
+    def cancel(cls):
         pass
 
     @abstractmethod
-    def get(self):
+    def get(cls):
         pass
 
     @abstractmethod
-    def getError(self):
+    def getError(cls):
         pass
 
     @abstractmethod
-    def onError(self, func):
+    def onError(cls, func):
         pass
 
     @abstractmethod
-    def onSuccess(self, func):
+    def onSuccess(cls, func):
         pass
 
 
@@ -33,9 +33,9 @@ class RequestWatcher(ABCMeta):
         pass
 
     @abstractmethod
-    def block(self):
+    def block(cls):
         pass
 
     @abstractmethod
-    def compose(self, requestWatchers):
+    def compose(cls, requestWatchers):
         pass

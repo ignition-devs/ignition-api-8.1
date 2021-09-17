@@ -1,9 +1,9 @@
-__all__ = ["AlarmQueryResults"]
+__all__ = ["AlarmQueryResult"]
 
 from abc import ABCMeta, abstractmethod
 
 
-class AlarmQueryResults(ABCMeta):
+class AlarmQueryResult(ABCMeta):
     """This is the result of a query against the alarming system, for
     both status and history.
 

@@ -4,8 +4,6 @@ from javax.swing import JInternalFrame
 
 
 class FPMIWindow(JInternalFrame):
-
-    # Fields.
     CACHE_ALWAYS = 2
     CACHE_AUTO = 0
     CACHE_NEVER = 1

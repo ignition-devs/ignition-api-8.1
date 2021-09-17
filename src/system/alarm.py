@@ -24,7 +24,7 @@ from com.inductiveautomation.ignition.common.alarming.evaluation import (
     ShelvedPath,
 )
 from com.inductiveautomation.ignition.common.alarming.query import (
-    AlarmQueryResults,
+    AlarmQueryResult,
 )
 from java.util import Date
 
@@ -191,12 +191,12 @@ def queryJournal(
             must not be a system event.
 
     Returns:
-        AlarmQueryResults: The AlarmQueryResults object is functionally
-            a list of AlarmEvent objects. The AlarmQueryResults object
-            has a built-in getDataset() function that will return a
-            Standard Dataset containing the Event Id (UUID of the
-            alarm), Source Path, Display Path, Event Time, State (as an
-            integer), and Priority (as an integer).
+        AlarmQueryResult: The AlarmQueryResult object is functionally a
+            list of AlarmEvent objects. The AlarmQueryResult object has
+            a built-in getDataset() function that will return a Standard
+            Dataset containing the Event Id (UUID of the alarm), Source
+            Path, Display Path, Event Time, State (as an integer), and
+            Priority (as an integer).
     """
     endDate = system.date.now() if endDate is None else endDate
     startDate = (
@@ -218,7 +218,7 @@ def queryJournal(
         includeSystem,
         isSystem,
     )
-    return AlarmQueryResults()
+    return AlarmQueryResult()
 
 
 def queryStatus(
@@ -277,12 +277,12 @@ def queryStatus(
             Optional.
 
     Returns:
-        AlarmQueryResults: The AlarmQueryResults object is functionally
-            a list of AlarmEvent objects. The AlarmQueryResults object
-            has a built-in getDataset() function that will return a
-            Standard Dataset containing the Event Id (UUID of the
-            alarm), Source Path, Display Path, Event Time, State (as an
-            integer), and Priority (as an integer).
+        AlarmQueryResult: The AlarmQueryResult object is functionally a
+            list of AlarmEvent objects. The AlarmQueryResult object has
+            a built-in getDataset() function that will return a Standard
+            Dataset containing the Event Id (UUID of the alarm), Source
+            Path, Display Path, Event Time, State (as an integer), and
+            Priority (as an integer).
     """
     print(
         priority,
@@ -295,7 +295,7 @@ def queryStatus(
         defined,
         includeShelved,
     )
-    return AlarmQueryResults()
+    return AlarmQueryResult()
 
 
 def shelve(path, timeoutSeconds=None, timeoutMinutes=None):

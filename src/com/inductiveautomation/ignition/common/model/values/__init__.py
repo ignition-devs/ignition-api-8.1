@@ -71,13 +71,13 @@ class QualifiedValue(ABCMeta):
         pass
 
     @abstractmethod
-    def getQuality(self):
+    def getQuality(cls):
         pass
 
     @abstractmethod
-    def getTimestamp(self):
+    def getTimestamp(cls):
         pass
 
     @abstractmethod
-    def getValue(self):
+    def getValue(cls):
         pass

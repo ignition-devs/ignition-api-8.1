@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["INavUtilities", "PrintUtilities", "WindowUtilities"]
 
 from abc import ABCMeta, abstractmethod
@@ -64,6 +66,9 @@ class INavUtilities(ABCMeta):
 
 
 class PrintUtilities(Object):
+    def __init__(self, app):
+        print(self, app)
+
     def createImage(self, c):
         print(self, c)
         width = height = imageType = 1

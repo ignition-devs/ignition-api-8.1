@@ -28,7 +28,7 @@ def createImage(component):
         BufferedImage: A java.awt.image.BufferedImage representing the
             component.
     """
-    print_utils = PrintUtilities()
+    print_utils = PrintUtilities("app")
     return print_utils.createImage(component)
 
 

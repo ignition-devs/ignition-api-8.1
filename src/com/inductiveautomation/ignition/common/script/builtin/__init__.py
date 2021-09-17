@@ -1,9 +1,6 @@
 __all__ = ["DatasetUtilities", "SProcCall", "SystemUtilities"]
 
 from com.inductiveautomation.ignition.common import Dataset
-from com.inductiveautomation.ignition.common.script.abc import (
-    AbstractJythonSequence,
-)
 from com.inductiveautomation.ignition.common.script.message import (
     Request,
     RequestWatcher,
@@ -129,8 +126,32 @@ class DatasetUtilities(Object):
     def updateRow(ds, row, changes):
         pass
 
-    class PyDataSet(AbstractJythonSequence):
-        def __new__(mcs, *args, **kwargs):
+    class PyDataSet(Dataset):
+        def getColumnCount(cls):
+            pass
+
+        def getColumnIndex(cls, name):
+            pass
+
+        def getColumnName(cls, col):
+            pass
+
+        def getColumnNames(cls):
+            pass
+
+        def getColumnType(cls, col):
+            pass
+
+        def getPrimitiveValueAt(cls, row, col):
+            pass
+
+        def getQualityAt(cls, row, col):
+            pass
+
+        def getRowCount(cls):
+            pass
+
+        def getValueAt(cls, row, colName):
             pass
 
 
