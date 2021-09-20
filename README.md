@@ -22,8 +22,9 @@ Ignition is a set of packages and modules that allows developers to get code com
 - [Prerequisites](#prerequisites)
 - [Packages](#packages)
 - [Installation and usage](#installation-and-usage)
-  - [PyCharm installation](#pycharm-installation)
   - [Installing with pip](#installing-with-pip)
+  - [Downloading from releases](#downloading-from-releases)
+    - [PyCharm installation](#pycharm-installation)
 - [Contributing to Ignition](#contributing-to-ignition)
 - [Discussions](#discussions)
 - [Contributors](#contributors)
@@ -80,13 +81,17 @@ Before you begin, ensure you have met the following requirements:
 * You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
 * You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 
-
 ## Packages
 
 Ignition consists of the following packages:
 
+* com
 * java/javax
 * system
+
+### com
+
+These are libraries for some of Inductive Automation's Java packages and functions that are imported in `system` packages.
 
 ### java/javax
 
@@ -98,16 +103,11 @@ Is a package that includes all Ignition Scripting Functions.
 
 ## Installation and usage
 
-To use Ignition, download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
-
-### PyCharm Installation
-To use Ignition in PyCharm, you will need to attach it to your project.
-1. With your project open that you want to use with Ignition, navigate to `File > Open` and select the `Ignition` project folder.
-2. Choose `Attach` when you're prompted on how to open the project.
-3. Under the new `Ignition` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`.
+To use Ignition, you may install it by doing any of the following.
 
 ### Installing with `pip`
-Also, it can be installed by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
+
+The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18).
 
 ```bash
 $ python2 -m pip install ignition-api
@@ -132,9 +132,22 @@ Client data, as well as interact with other various systems.
 ```
 
 And to uninstall:
+
 ```bash
 $ python2 -m pip uninstall ignition-api
 ```
+
+### Downloading from releases
+
+You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
+
+#### PyCharm Installation
+
+To use Ignition in PyCharm, you will need to attach it to your project.
+
+1. With your project open that you want to use with Ignition, navigate to `File > Open` and select the `Ignition` project folder.
+2. Choose `Attach` when you're prompted on how to open the project.
+3. Under the new `Ignition` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`.
 
 ## Contributing to Ignition
 
