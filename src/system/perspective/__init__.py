@@ -32,7 +32,10 @@ __all__ = [
     "vibrateDevice",
 ]
 
-import __builtin__ as builtins
+try:
+    import __builtin__ as builtins
+except ImportError:
+    import builtins
 
 from com.inductiveautomation.ignition.common.script.adapters import (
     PyJsonObjectAdapter,

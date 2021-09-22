@@ -315,7 +315,8 @@ def getInactivitySeconds():
         long: The number of seconds the mouse and keyboard have been
             inactive for this client.
     """
-    return long(0)
+    long_instance = int if sys.version_info[0] == 3 else long
+    return long_instance(0)
 
 
 def getLocale():

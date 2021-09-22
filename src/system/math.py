@@ -27,7 +27,10 @@ __all__ = [
     "variance",
 ]
 
-import __builtin__ as builtins
+try:
+    import __builtin__ as builtins
+except ImportError:
+    import builtins
 
 
 def geometricMean(values):

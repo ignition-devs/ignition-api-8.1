@@ -15,7 +15,12 @@ __all__ = [
 
 import copy
 import time
-from __builtin__ import Exception as PyException
+
+try:
+    import __builtin__ as builtins
+except ImportError:
+    import builtins
+from builtins import Exception as PyException
 
 
 class Object(object):
