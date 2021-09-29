@@ -14,7 +14,7 @@
 
 Ignition is a set of packages and modules that allows developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
 
-# Table of contents
+## Table of contents
 
 - [Releases](#releases)
 - [Branches](#branches)
@@ -31,7 +31,7 @@ Ignition is a set of packages and modules that allows developers to get code com
 - [License](#license)
 - [Code of conduct](#code-of-conduct)
 
-# Releases
+## Releases
 
 Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
 
@@ -62,55 +62,60 @@ This branch will contain all Scripting Functions from the latest Ignition Releas
 If you wish to clone just one branch in particular, use any of the following commands:
 
 - HTTPS
+
     ```bash
     git clone --single-branch --branch <name> https://github.com/thecesrom/Ignition.git [<directory>]
     ```
+
 - SSH
+
     ```bash
     git clone --single-branch --branch <name> git@github.com:thecesrom/Ignition.git [<directory>]
     ```
+
 - GitHub CLI
+
     ```bash
     gh repo clone thecesrom/Ignition [<directory>] -- --single-branch --branch <name>
     ```
 
-## Prerequisites
+#### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-* You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
-* You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
+- You have installed Python 2.7.18 ([download here](https://www.python.org/downloads/release/python-2718/))
+- You are familiar with [Ignition 8.1 System Functions](https://docs.inductiveautomation.com/display/DOC81/System+Functions)
 
-## Packages
+#### Packages
 
 Ignition consists of the following packages:
 
-* com
-* java/javax
-* system
+- com
+- java/javax
+- system
 
-### com
+##### com
 
 These are libraries for some of Inductive Automation's Java packages and functions that are imported in `system` packages.
 
-### java/javax
+##### java/javax
 
 These are libraries for some Java packages and functions that are imported in `system` packages meant to be used on development environments where no JDK can be installed, and the project interpreter is Python 2.7.
 
-### system
+##### system
 
 Is a package that includes all Ignition Scripting Functions.
 
-## Installation and usage
+#### Installation and usage
 
 To use Ignition, you may install it by doing any of the following.
 
-### Installing with `pip`
+##### Installing with `pip`
 
 The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18), or Python 3.
 
 ```bash
-$ python -m pip install ignition-api
+python -m pip install ignition-api
 ```
 
 This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
@@ -135,14 +140,14 @@ Client data, as well as interact with other various systems.
 And to uninstall:
 
 ```bash
-$ python -m pip uninstall ignition-api
+python -m pip uninstall ignition-api
 ```
 
-### Downloading from releases
+##### Downloading from releases
 
 You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
-#### PyCharm Installation
+######## PyCharm Installation
 
 To use Ignition in PyCharm, you will need to attach it to your project.
 
@@ -150,7 +155,7 @@ To use Ignition in PyCharm, you will need to attach it to your project.
 2. Choose `Attach` when you're prompted on how to open the project.
 3. Under the new `Ignition` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`.
 
-## Contributing to Ignition
+#### Contributing to Ignition
 
 To contribute to Ignition, follow these steps:
 
@@ -163,20 +168,20 @@ To contribute to Ignition, follow these steps:
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## Discussions
+#### Discussions
 
 Feel free to post your questions and/or ideas at [Discussions](https://github.com/thecesrom/incendium/discussions).
 
-## Contributors
+#### Contributors
 
 Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/thecesrom/Ignition/graphs/contributors).
 
-## License
+#### License
 
 See the [LICENSE](https://github.com/thecesrom/Ignition/blob/HEAD/LICENSE).
 
-## Code of conduct
+#### Code of conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
