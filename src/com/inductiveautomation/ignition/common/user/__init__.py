@@ -26,8 +26,59 @@ class ContactInfo(Object):
 
 
 class User(ABCMeta):
+    _Badge = "badge"
+    _DEFAULT_SCHEDULE_NAME = "Always"
+    _FirstName = "John"
+    _Language = "en"
+    _LastName = "Doe"
+    _Notes = "These are some notes."
+    _Password = "password"
+    _Schedule = "Always"
+    _Username = "johdoe"
+    _USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
+
     def __new__(mcs, *args, **kwargs):
         pass
+
+    @property
+    def Badge(cls):
+        return cls._Badge
+
+    @property
+    def DEFAULT_SCHEDULE_NAME(cls):
+        return cls._DEFAULT_SCHEDULE_NAME
+
+    @property
+    def FirstName(cls):
+        return cls._FirstName
+
+    @property
+    def Language(cls):
+        return cls._Language
+
+    @property
+    def LastName(cls):
+        return cls._LastName
+
+    @property
+    def Notes(cls):
+        return cls._Notes
+
+    @property
+    def Password(cls):
+        return cls._Password
+
+    @property
+    def Schedule(cls):
+        return cls._Schedule
+
+    @property
+    def Username(cls):
+        return cls._Username
+
+    @property
+    def USERNAME_PATTERN(cls):
+        return cls._USERNAME_PATTERN
 
     @abstractmethod
     def getContactInfo(cls):
