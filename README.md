@@ -147,7 +147,7 @@ python -m pip uninstall ignition-api
 
 You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
 
-######## PyCharm Installation
+###### PyCharm Installation
 
 To use Ignition in PyCharm, you will need to attach it to your project.
 
