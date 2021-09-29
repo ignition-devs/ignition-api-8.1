@@ -38,7 +38,8 @@ class User(ABCMeta):
     _USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
 
     def __new__(mcs, *args, **kwargs):
-        pass
+        print(args, kwargs)
+        return super(User, mcs).__new__(mcs, mcs.__name__, mcs.__bases__, {})
 
     @property
     def Badge(cls):
@@ -110,18 +111,10 @@ class PyUser(User):
     has some methods that are more scripting friendly.
     """
 
-    Badge = "badge"
-    DEFAULT_SCHEDULE_NAME = "Always"
-    FirstName = "John"
-    Language = "en_US"
-    LastName = "Doe"
-    Notes = "These are some notes."
-    Password = "password"
-    Schedule = "Always"
-    Username = "johdoe"
-    USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
+    def __init__(cls):
+        super(PyUser, cls).__init__(cls.__name__, cls.__bases__, {})
 
-    def addContactInfo(self, *args):
+    def addContactInfo(cls, *args):
         """Convenience method for scripting to add a new contactInfo
         easily.
 
@@ -132,9 +125,9 @@ class PyUser(User):
         Args:
             args: Variable length argument list.
         """
-        print(self, args)
+        print(cls, args)
 
-    def addRole(self, role):
+    def addRole(cls, role):
         """Convenience method for scripting to add a new role easily.
 
         Only works if user type supports roles.
@@ -143,17 +136,17 @@ class PyUser(User):
             role (str): A new role to add. If empty or null, no
                 effect.
         """
-        print(self, role)
+        print(cls, role)
 
-    def addRoles(self, roles):
+    def addRoles(cls, roles):
         """Adds the provided roles to this user.
 
         Args:
             roles (list[str]): A list of roles.
         """
-        print(self, roles)
+        print(cls, roles)
 
-    def addScheduleAdjustment(self, start, end, available=True, note=None):
+    def addScheduleAdjustment(cls, start, end, available=True, note=None):
         """Convenience method for scripting to add a new schedule
         adjustment easily.
 
@@ -166,22 +159,22 @@ class PyUser(User):
                 this period. Optional.
             note (str): May be null or empty. Optional.
         """
-        print(self, start, end, available, note)
+        print(cls, start, end, available, note)
 
-    def addScheduleAdjustments(self, scheduleAdjustments):
+    def addScheduleAdjustments(cls, scheduleAdjustments):
         """Add Schedule Adjustments.
 
         Args:
             scheduleAdjustments (ScheduleAdjustment): ScheduleAdjustment
                 object.
         """
-        print(self, scheduleAdjustments)
+        print(cls, scheduleAdjustments)
 
-    def contains(self, prop):
+    def contains(cls, prop):
         """Returns if this users contains a given property."""
         pass
 
-    def get(self, propertyName):
+    def get(cls, propertyName):
         """Returns a the value of the requested item.
 
         Args:
@@ -190,10 +183,10 @@ class PyUser(User):
         Returns:
             str: The value of the requested property.
         """
-        print(self)
+        print(cls)
         return propertyName
 
-    def getContactInfo(self):
+    def getContactInfo(cls):
         """Returns a sequence of ContactInfo objects.
 
         Each of these objects will have a contactType and value property
@@ -207,18 +200,18 @@ class PyUser(User):
         ci_sms = ContactInfo("sms", "+1 5557654321")
         return [ci_email, ci_phone, ci_sms]
 
-    def getCount(self):
+    def getCount(cls):
         """Get count."""
-        print(self)
+        print(cls)
         return 1
 
-    def getId(self):
+    def getId(cls):
         """An opaque identifier that can be used to identify this
         user.
         """
         pass
 
-    def getOrDefault(self, prop):
+    def getOrDefault(cls, prop):
         """Returns a default value if the requested item is not
         present.
 
@@ -228,88 +221,88 @@ class PyUser(User):
         Returns:
             object: The value of the requested property.
         """
-        print(self, prop)
+        print(cls, prop)
 
-    def getOrElse(self, property, value):
+    def getOrElse(cls, property, value):
         """Get the value for a given Property, or else fall back to
         value if it's not present.
         """
         pass
 
-    def getPath(self):
+    def getPath(cls):
         """Generate an path that unambiguously references this user."""
         pass
 
-    def getProfileName(self):
+    def getProfileName(cls):
         """The name of the user management profile this user was
         retrieved from.
         """
         pass
 
-    def getProperties(self):
+    def getProperties(cls):
         """Returns all properties for this user."""
         pass
 
-    def getRoles(self):
+    def getRoles(cls):
         """Returns all of the roles this user is a has."""
         return ["Administrator", "Developer"]
 
-    def getScheduleAdjustments(self):
+    def getScheduleAdjustments(cls):
         """Returns all of this user's upcoming schedule adjustments."""
         pass
 
-    def getValues(self):
+    def getValues(cls):
         """Returns the opaque PropertyValue objects."""
         pass
 
-    def isExtended(self, prop):
+    def isExtended(cls, prop):
         """Returns whether this property set contains a value for the
         prop, and the prop was actually inherited.
         """
         pass
 
-    def isInherited(self, prop):
+    def isInherited(cls, prop):
         """Indicates whether the property was inherited from a parent
         type.
         """
         pass
 
-    def iterator(self):
+    def iterator(cls):
         """Property iterator."""
         pass
 
-    def merge(self, other, localOnly):
+    def merge(cls, other, localOnly):
         """Merges the values from other collection into this one."""
         pass
 
-    def remove(self, prop):
+    def remove(cls, prop):
         """Remove a property for this user."""
         pass
 
-    def removeContactInfo(self, contactType, value):
+    def removeContactInfo(cls, contactType, value):
         """Remove contact information for this user."""
         pass
 
-    def removeRole(self, role):
+    def removeRole(cls, role):
         """Remove a role for this user."""
         pass
 
-    def removeScheduleAdjustment(self, start, end, available=True, note=None):
+    def removeScheduleAdjustment(cls, start, end, available=True, note=None):
         """Remove schedule adjustment for this user."""
         pass
 
-    def set(self, *args):
+    def set(cls, *args):
         """Set a property for this user."""
         pass
 
-    def setContactInfo(self, contactInfo):
+    def setContactInfo(cls, contactInfo):
         """Set contact information for this user."""
         pass
 
-    def setRoles(self, roles):
+    def setRoles(cls, roles):
         """Set roles for this user."""
         pass
 
-    def setScheduleAdjustments(self, scheduleAdjustments):
+    def setScheduleAdjustments(cls, scheduleAdjustments):
         """Set schedule adjustments for this user."""
         pass
