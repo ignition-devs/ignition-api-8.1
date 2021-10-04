@@ -1,9 +1,7 @@
 __all__ = ["AbstractDataset", "BasicDataset", "Dataset"]
 
-from abc import ABCMeta, abstractmethod
 
-
-class Dataset(ABCMeta):
+class Dataset(object):
     """A dataset is a collection of values arranged in a structured
     format.
 
@@ -13,47 +11,57 @@ class Dataset(ABCMeta):
     data (row and column for tables).
     """
 
-    def __new__(mcs, *args, **kwargs):
+    def binarySearch(self, column, key):
         pass
 
-    @abstractmethod
-    def getColumnCount(cls):
+    def getColumnAsList(self, col):
         pass
 
-    @abstractmethod
-    def getColumnIndex(cls, name):
-        pass
+    def getColumnCount(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getColumnName(cls, col):
-        pass
+    def getColumnIndex(self, name):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getColumnNames(cls):
-        pass
+    def getColumnName(self, col):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getColumnType(cls, col):
-        pass
+    def getColumnNames(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getPrimitiveValueAt(cls, row, col):
-        pass
+    def getColumnType(self, col):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getQualityAt(cls, row, col):
-        pass
+    def getColumnTypes(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getRowCount(cls):
-        pass
+    def getPrimitiveValueAt(self, row, col):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getValueAt(cls, row, colName):
+    def getQualityAt(self, row, col):
+        raise NotImplementedError
+
+    def getRowCount(self):
+        raise NotImplementedError
+
+    def getValueAt(self, row, col):
+        raise NotImplementedError
+
+    def hasQualityData(self):
         pass
 
 
 class AbstractDataset(Dataset):
+    _columnNames = None
+    _columnNamesLowercase = None
+    _columnTypes = None
+    _qualityCodes = None
+
+    def __init__(self, columnNames, columnTypes, qualityCodes=None):
+        self._columnNames = columnNames
+        self._columnTypes = columnTypes
+        self._qualityCodes = qualityCodes
+
     @staticmethod
     def convertToQualityCodes(dataQualities):
         pass
@@ -88,10 +96,7 @@ class AbstractDataset(Dataset):
     def getRowCount(self):
         pass
 
-    def getValueAt(self, row, colName):
-        pass
-
-    def hasQualityData(self):
+    def getValueAt(self, row, col):
         pass
 
     def setColumnNames(self, arg):
@@ -105,8 +110,8 @@ class AbstractDataset(Dataset):
 
 
 class BasicDataset(AbstractDataset):
-    def binarySearch(self, column, key):
-        pass
+    def __init__(self, columnNames=None, columnTypes=None):
+        super(BasicDataset, self).__init__(columnNames, columnTypes)
 
     def columnContainsNulls(self, col):
         pass
@@ -114,13 +119,7 @@ class BasicDataset(AbstractDataset):
     def datasetContainsNulls(self):
         pass
 
-    def getColumnAsList(self, col):
-        pass
-
     def getData(self):
-        pass
-
-    def getRowCount(self):
         pass
 
     def setAllDirectly(self, columnNames, columnTypes, data):

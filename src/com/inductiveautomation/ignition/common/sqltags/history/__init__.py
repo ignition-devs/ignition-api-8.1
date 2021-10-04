@@ -1,9 +1,7 @@
-__all__ = ["Aggregate"]
-
-from abc import ABCMeta, abstractmethod
+__all__ = ["Aggregate", "AggregateInfo"]
 
 
-class Aggregate(ABCMeta):
+class Aggregate(object):
     """This interface defines an aggregation function used by the
     history query system.
 
@@ -21,17 +19,22 @@ class Aggregate(ABCMeta):
     providers could define any aggregation function.
     """
 
-    def __new__(mcs, *args, **kwargs):
+    def getDesc(self):
+        raise NotImplementedError
+
+    def getId(self):
+        raise NotImplementedError
+
+    def getName(self):
+        raise NotImplementedError
+
+
+class AggregateInfo(Aggregate):
+    def getDesc(self):
         pass
 
-    @abstractmethod
-    def getDesc(cls):
+    def getId(self):
         pass
 
-    @abstractmethod
-    def getId(cls):
-        pass
-
-    @abstractmethod
-    def getName(cls):
+    def getName(self):
         pass

@@ -1,67 +1,93 @@
 from __future__ import print_function
 
-__all__ = ["INavUtilities", "PrintUtilities", "WindowUtilities"]
-
-from abc import ABCMeta, abstractmethod
+__all__ = [
+    "INavUtilities",
+    "NavUtilities",
+    "PrintUtilities",
+    "WindowUtilities",
+]
 
 from java.awt.image import BufferedImage
 from java.lang import Object
 
 
-class INavUtilities(ABCMeta):
+class INavUtilities(object):
     """Parent interface to coordinate the functions between NavUtilities
     and NavUtilitiesDispatcher.
     """
 
-    def __new__(mcs, *args, **kwargs):
+    def centerWindow(self, arg):
+        raise NotImplementedError
+
+    def closeParentWindow(self, event):
+        raise NotImplementedError
+
+    def closeWindow(self, arg):
+        raise NotImplementedError
+
+    def getCurrentWindow(self):
+        raise NotImplementedError
+
+    def goBack(self):
+        raise NotImplementedError
+
+    def goForward(self):
+        raise NotImplementedError
+
+    def goHome(self):
+        raise NotImplementedError
+
+    def openWindow(self, *args):
+        raise NotImplementedError
+
+    def openWindowImpl(self, path, params, openAdditional):
+        raise NotImplementedError
+
+    def openWindowInstance(self, *args):
+        raise NotImplementedError
+
+    def swapTo(self, *args):
+        raise NotImplementedError
+
+    def swapWindow(self, *args):
+        raise NotImplementedError
+
+
+class NavUtilities(INavUtilities):
+    def centerWindow(self, arg):
         pass
 
-    @abstractmethod
-    def centerWindow(cls, arg):
+    def closeParentWindow(self, event):
         pass
 
-    @abstractmethod
-    def closeParentWindow(cls, event):
+    def closeWindow(self, arg):
         pass
 
-    @abstractmethod
-    def closeWindow(cls, arg):
+    def getCurrentWindow(self):
         pass
 
-    @abstractmethod
-    def getCurrentWindow(cls):
+    def goBack(self):
         pass
 
-    @abstractmethod
-    def goBack(cls):
+    def goForward(self):
         pass
 
-    @abstractmethod
-    def goForward(cls):
+    def goHome(self):
         pass
 
-    @abstractmethod
-    def goHome(cls):
+    def openWindow(self, *args):
         pass
 
-    @abstractmethod
-    def openWindow(cls, *args):
+    def openWindowImpl(self, path, params, openAdditional):
         pass
 
-    @abstractmethod
-    def openWindowImpl(cls, path, params, openAdditional):
+    def openWindowInstance(self, *args):
         pass
 
-    @abstractmethod
-    def openWindowInstance(cls, *args):
+    def swapTo(self, *args):
         pass
 
-    @abstractmethod
-    def swapTo(cls, *args):
-        pass
-
-    @abstractmethod
-    def swapWindow(cls, *args):
+    def swapWindow(self, *args):
         pass
 
 

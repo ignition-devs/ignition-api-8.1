@@ -1,28 +1,22 @@
 __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 
-from abc import ABCMeta, abstractmethod
-
 from java.lang import Object
 
 
-class MessageInterface(ABCMeta):
-    @abstractmethod
-    def addMessageReceiver(cls, protocol, rcv):
-        pass
+class MessageInterface(object):
+    def addMessageReceiver(self, protocol, rcv):
+        raise NotImplementedError
 
-    @abstractmethod
-    def sendCall(cls, protocol, scope, msg):
-        pass
+    def sendCall(self, protocol, scope, msg):
+        raise NotImplementedError
 
-    @abstractmethod
-    def sendMessage(cls, protocol, scope, msg):
-        pass
+    def sendMessage(self, protocol, scope, msg):
+        raise NotImplementedError
 
 
-class MessageReceiver(ABCMeta):
-    @abstractmethod
-    def receiveCall(cls, msg):
-        pass
+class MessageReceiver(object):
+    def receiveCall(self, msg):
+        raise NotImplementedError
 
 
 class UIResponse(Object):

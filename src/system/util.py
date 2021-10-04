@@ -58,7 +58,7 @@ import sys
 import system.__version__ as version
 import system.date
 import system.security
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
@@ -636,7 +636,7 @@ def queryAuditLog(
         systemFilter,
         contextFilter,
     )
-    return Dataset()
+    return BasicDataset()
 
 
 def retarget(project, addresses=None, params=None, windows=None):

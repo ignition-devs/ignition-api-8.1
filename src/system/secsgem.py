@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 import system.date
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 
 
 def copyEquipment(
@@ -179,7 +179,7 @@ def getToolProgramDataset():
             process programs. Includes the following columns in order:
             ppid, editDate, bodyFormat.
     """
-    return Dataset()
+    return BasicDataset()
 
 
 def sendRequest(streamFunction, reply, body, equipment):
@@ -266,7 +266,7 @@ def toDataSet(secsObject):
          Dataset: A Dataset representing a SECS message.
     """
     print(secsObject)
-    return Dataset()
+    return BasicDataset()
 
 
 def toTreeDataSet(dataset):
@@ -285,4 +285,4 @@ def toTreeDataSet(dataset):
             the Tree View component.
     """
     print(dataset)
-    return Dataset()
+    return BasicDataset()

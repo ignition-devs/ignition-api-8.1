@@ -1,26 +1,20 @@
 __all__ = ["Result", "Results"]
 
-from abc import ABCMeta, abstractmethod
-
 from java.lang import Object
 
 
-class Result(ABCMeta):
-    @abstractmethod
-    def getDisplayPath(cls):
-        pass
+class Result(object):
+    def getDisplayPath(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getPath(cls):
-        pass
+    def getPath(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getType(cls):
-        pass
+    def getType(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def hasChildren(cls):
-        pass
+    def hasChildren(self):
+        raise NotImplementedError
 
 
 class Results(Object):

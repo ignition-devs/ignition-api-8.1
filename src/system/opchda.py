@@ -21,7 +21,10 @@ __all__ = [
 ]
 
 from com.inductiveautomation.ignition.common.browsing import Results
-from com.inductiveautomation.ignition.common.sqltags.history import Aggregate
+from com.inductiveautomation.ignition.common.sqltags.history import (
+    Aggregate,
+    AggregateInfo,
+)
 from java.util import Date
 
 
@@ -53,7 +56,7 @@ def getAggregates(serverName):
             object has 'id', 'name', and 'desc' properties defined.
     """
     print(serverName)
-    return [Aggregate()]
+    return [AggregateInfo()]
 
 
 def getAttributes(serverName):
@@ -69,7 +72,7 @@ def getAttributes(serverName):
             object has 'id', 'name', and 'desc' properties defined.
     """
     print(serverName)
-    return [Aggregate()]
+    return [AggregateInfo()]
 
 
 def getServers():

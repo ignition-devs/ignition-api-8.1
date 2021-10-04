@@ -9,192 +9,155 @@ __all__ = [
     "MutableJythonSequence",
 ]
 
-from abc import ABCMeta, abstractmethod
 
+class JythonMap(object):
+    def __contains__(self, item):
+        raise NotImplementedError
 
-class JythonMap(ABCMeta):
-    @abstractmethod
-    def __contains__(cls, item):
+    def __finditem__(self, key):
+        raise NotImplementedError
+
+    def __iter__(self):
+        raise NotImplementedError
+
+    def __len__(self):
+        raise NotImplementedError
+
+    def get(self, *args):
+        raise NotImplementedError
+
+    def has_key(self, pyKey):
+        raise NotImplementedError
+
+    def items(self):
         pass
 
-    @abstractmethod
-    def __finditem__(cls, key):
+    def iteritems(self):
+        raise NotImplementedError
+
+    def iterkeys(self):
+        raise NotImplementedError
+
+    def itervalues(self):
+        raise NotImplementedError
+
+    def keys(self):
+        raise NotImplementedError
+
+    def values(self):
+        raise NotImplementedError
+
+
+class JythonSequence(object):
+    def __contains__(self, item):
+        raise NotImplementedError
+
+    def __iter__(self):
+        raise NotImplementedError
+
+    def __len__(self):
+        raise NotImplementedError
+
+    def __mul__(self, other):
         pass
 
-    @abstractmethod
-    def __iter__(cls):
+    def __repr__(self):
         pass
 
-    @abstractmethod
-    def __len__(cls):
-        pass
+    def __rmul__(self, other):
+        raise NotImplementedError
 
-    @abstractmethod
-    def get(cls, *args):
-        pass
+    def count(self, element):
+        raise NotImplementedError
 
-    @abstractmethod
-    def has_key(cls, pyKey):
-        pass
-
-    @abstractmethod
-    def items(cls):
-        pass
-
-    @abstractmethod
-    def iteritems(cls):
-        pass
-
-    @abstractmethod
-    def iterkeys(cls):
-        pass
-
-    @abstractmethod
-    def itervalues(cls):
-        pass
-
-    @abstractmethod
-    def keys(cls):
-        pass
-
-    @abstractmethod
-    def values(cls):
-        pass
+    def index(self, element):
+        raise NotImplementedError
 
 
-class JythonSequence(ABCMeta):
-    @abstractmethod
-    def __contains__(cls, item):
-        pass
+class MutableJythonMap(object):
+    def __delitem__(self, key):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __iter__(cls):
-        pass
+    def __setitem__(self, key, value):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __len__(cls):
-        pass
+    def clear(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __mul__(cls, other):
-        pass
+    def pop(self, *args):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __repr__(cls):
-        pass
+    def popitem(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __rmul__(cls, other):
-        pass
+    def setdefault(self, *args):
+        raise NotImplementedError
 
-    @abstractmethod
-    def count(cls, element):
-        pass
-
-    @abstractmethod
-    def index(cls, element):
-        pass
+    def update(self, *args, **kwargs):
+        raise NotImplementedError
 
 
-class MutableJythonMap(ABCMeta):
-    @abstractmethod
-    def __delitem__(cls, key):
-        pass
+class MutableJythonSequence(object):
+    def __add__(self, other):
+        raise NotImplementedError
 
-    @abstractmethod
-    def __setitem__(cls, key, value):
-        pass
+    def __imul__(self, other):
+        raise NotImplementedError
 
-    @abstractmethod
-    def clear(cls):
-        pass
+    def append(self, element):
+        raise NotImplementedError
 
-    @abstractmethod
-    def pop(cls, *args):
-        pass
+    def extend(self, sequence):
+        raise NotImplementedError
 
-    @abstractmethod
-    def popitem(cls):
-        pass
+    def insert(self, index, element):
+        raise NotImplementedError
 
-    @abstractmethod
-    def setdefault(cls, *args):
-        pass
+    def pop(self, *args):
+        raise NotImplementedError
 
-    @abstractmethod
-    def update(cls, *args, **kwargs):
-        pass
+    def remove(self, element):
+        raise NotImplementedError
 
-
-class MutableJythonSequence(ABCMeta):
-    @abstractmethod
-    def __add__(cls, other):
-        pass
-
-    @abstractmethod
-    def __imul__(cls, other):
-        pass
-
-    @abstractmethod
-    def append(cls, element):
-        pass
-
-    @abstractmethod
-    def extend(cls, sequence):
-        pass
-
-    @abstractmethod
-    def insert(cls, index, element):
-        pass
-
-    @abstractmethod
-    def pop(cls, *args):
-        pass
-
-    @abstractmethod
-    def remove(cls, element):
-        pass
-
-    @abstractmethod
-    def sort(cls, *args, **kwargs):
-        pass
+    def sort(self, *args, **kwargs):
+        raise NotImplementedError
 
 
 class AbstractJythonMap(JythonMap):
-    def __contains__(cls, item):
+    def __contains__(self, item):
         pass
 
-    def __finditem__(cls, key):
+    def __finditem__(self, key):
         pass
 
-    def __iter__(cls):
+    def __iter__(self):
         pass
 
-    def __len__(cls):
+    def __len__(self):
         pass
 
-    def get(cls, *args):
+    def get(self, *args):
         pass
 
-    def has_key(cls, pyKey):
+    def has_key(self, pyKey):
         pass
 
-    def items(cls):
+    def items(self):
         pass
 
-    def iteritems(cls):
+    def iteritems(self):
         pass
 
-    def iterkeys(cls):
+    def iterkeys(self):
         pass
 
-    def itervalues(cls):
+    def itervalues(self):
         pass
 
-    def keys(cls):
+    def keys(self):
         pass
 
-    def values(cls):
+    def values(self):
         pass
 
 
@@ -225,49 +188,49 @@ class AbstractJythonSequence(JythonSequence):
 
 
 class AbstractMutableJythonMap(MutableJythonMap):
-    def __delitem__(cls, key):
+    def __delitem__(self, key):
         pass
 
-    def __setitem__(cls, key, value):
+    def __setitem__(self, key, value):
         pass
 
-    def clear(cls):
+    def clear(self):
         pass
 
-    def pop(cls, *args):
+    def pop(self, *args):
         pass
 
-    def popitem(cls):
+    def popitem(self):
         pass
 
-    def setdefault(cls, *args):
+    def setdefault(self, *args):
         pass
 
-    def update(cls, *args, **kwargs):
+    def update(self, *args, **kwargs):
         pass
 
 
 class AbstractMutableJythonSequence(MutableJythonSequence):
-    def __add__(cls, other):
+    def __add__(self, other):
         pass
 
-    def __imul__(cls, other):
+    def __imul__(self, other):
         pass
 
-    def append(cls, element):
+    def append(self, element):
         pass
 
-    def extend(cls, sequence):
+    def extend(self, sequence):
         pass
 
-    def insert(cls, index, element):
+    def insert(self, index, element):
         pass
 
-    def pop(cls, *args):
+    def pop(self, *args):
         pass
 
-    def remove(cls, element):
+    def remove(self, element):
         pass
 
-    def sort(cls, *args, **kwargs):
+    def sort(self, *args, **kwargs):
         pass

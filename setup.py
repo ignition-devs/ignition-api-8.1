@@ -45,6 +45,5 @@ setup(
     keywords="hmi, ignition, inductive automation, scada",
     package_dir={"": "src"},
     packages=find_packages(where="src"),
-    python_requires=">=2.7",
-    options={"bdist_wheel": {"universal": True}},
+    python_requires=">=2.7.18",
 )

@@ -33,7 +33,7 @@ __all__ = [
 
 import os
 
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
 )
@@ -72,7 +72,7 @@ def addColumn(dataset, colIndex, col, colName, colType):
         Dataset: A new dataset with the new column inserted or appended.
     """
     print(dataset, colIndex, col, colName, colType)
-    return Dataset()
+    return BasicDataset()
 
 
 def addRow(dataset, rowIndex, row):
@@ -102,7 +102,7 @@ def addRow(dataset, rowIndex, row):
         Dataset: A new dataset with the new row inserted or appended.
     """
     print(dataset, rowIndex, row)
-    return Dataset()
+    return BasicDataset()
 
 
 def addRows(dataset, rowIndex, rows):
@@ -132,7 +132,7 @@ def addRows(dataset, rowIndex, rows):
         Dataset: A new dataset with the new row inserted or appended.
     """
     print(dataset, rowIndex, rows)
-    return Dataset()
+    return BasicDataset()
 
 
 def appendDataset(dataset1, dataset2):
@@ -152,7 +152,7 @@ def appendDataset(dataset1, dataset2):
             datasets.
     """
     print(dataset1, dataset2)
-    return Dataset()
+    return BasicDataset()
 
 
 def clearDataset(dataset):
@@ -167,7 +167,7 @@ def clearDataset(dataset):
         Dataset: A new dataset with no data.
     """
     print(dataset)
-    return Dataset()
+    return BasicDataset()
 
 
 def dataSetToHTML(showHeaders, dataset, title):
@@ -215,7 +215,7 @@ def deleteRow(dataset, rowIndex):
     if rowIndex < 0:
         raise IndexError("Error")
 
-    return Dataset()
+    return BasicDataset()
 
 
 def deleteRows(dataset, rowIndices):
@@ -246,7 +246,7 @@ def deleteRows(dataset, rowIndices):
     if -1 in rowIndices:
         raise IndexError("Error")
 
-    return Dataset()
+    return BasicDataset()
 
 
 def exportCSV(filename, showHeaders, dataset):
@@ -324,7 +324,7 @@ def filterColumns(dataset, columns):
         Dataset: A new dataset containing the filtered columns.
     """
     print(dataset, columns)
-    return Dataset()
+    return BasicDataset()
 
 
 def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
@@ -343,7 +343,7 @@ def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
         Dataset: A new dataset, containing the formatted dates.
     """
     print(dataset, dateFormat, locale)
-    return Dataset()
+    return BasicDataset()
 
 
 def fromCSV(csv):
@@ -363,7 +363,7 @@ def fromCSV(csv):
         Dataset: A new dataset.
     """
     print(csv)
-    return Dataset()
+    return BasicDataset()
 
 
 def getColumnHeaders(dataset):
@@ -403,7 +403,7 @@ def setValue(dataset, rowIndex, columnName, value):
             location.
     """
     print(dataset, rowIndex, columnName, value)
-    return Dataset()
+    return BasicDataset()
 
 
 def sort(dataset, keyColumn, ascending=True):
@@ -423,7 +423,7 @@ def sort(dataset, keyColumn, ascending=True):
         Dataset: A new sorted dataset.
     """
     print(dataset, keyColumn, ascending)
-    return Dataset()
+    return BasicDataset()
 
 
 def toCSV(dataset, showHeaders=True, forExport=False, localized=False):
@@ -469,7 +469,7 @@ def toDataSet(*args):
     """
     for arg in args:
         print(arg)
-    return Dataset()
+    return BasicDataset()
 
 
 def toExcel(showHeaders, dataset, nullsEmpty=False, sheetNames=None):
@@ -543,4 +543,4 @@ def updateRow(dataset, rowIndex, changes):
             updated according to the values in the dictionary.
     """
     print(dataset, rowIndex, changes)
-    return Dataset()
+    return BasicDataset()

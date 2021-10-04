@@ -1,6 +1,4 @@
-__all__ = ["QualityCode", "QualifiedValue"]
-
-from abc import ABCMeta, abstractmethod
+__all__ = ["BasicQualifiedValue", "QualityCode", "QualifiedValue"]
 
 from java.lang import Object
 
@@ -62,22 +60,27 @@ class QualityCode(Object):
             pass
 
 
-class QualifiedValue(ABCMeta):
+class QualifiedValue(object):
     """Represents a value with a DataQuality & timestamp attached to
     it.
     """
 
-    def __new__(mcs, *args, **kwargs):
+    def getQuality(self):
+        raise NotImplementedError
+
+    def getTimestamp(self):
+        raise NotImplementedError
+
+    def getValue(self):
+        raise NotImplementedError
+
+
+class BasicQualifiedValue(QualifiedValue):
+    def getQuality(self):
         pass
 
-    @abstractmethod
-    def getQuality(cls):
+    def getTimestamp(self):
         pass
 
-    @abstractmethod
-    def getTimestamp(cls):
-        pass
-
-    @abstractmethod
-    def getValue(cls):
+    def getValue(self):
         pass

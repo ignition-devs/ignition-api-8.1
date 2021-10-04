@@ -74,15 +74,11 @@ confidence=
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
-disable=bad-mcs-classmethod-argument,
-        bad-mcs-method-argument,
-        consider-using-f-string,
-        deprecated-class,
+disable=consider-using-f-string,
+        duplicate-code,
         missing-class-docstring,
         missing-function-docstring,
         missing-module-docstring,
-        no-member,
-        no-name-in-module,
         redefined-builtin,
         redefined-outer-name,
         signature-differs,
@@ -93,7 +89,7 @@ disable=bad-mcs-classmethod-argument,
         unnecessary-pass,
         unused-import,
         useless-object-inheritance,
-        useless-super-delegation
+        useless-super-delegation,
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
@@ -557,7 +553,7 @@ max-returns=6
 max-statements=50
 
 # Minimum number of public methods for a class (see R0903).
-min-public-methods=2
+min-public-methods=1
 
 
 [EXCEPTIONS]

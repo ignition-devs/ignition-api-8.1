@@ -1,6 +1,8 @@
+from __future__ import print_function
+
 __all__ = ["DatasetUtilities", "SProcCall", "SystemUtilities"]
 
-from com.inductiveautomation.ignition.common import Dataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.abc import (
     AbstractJythonSequence,
 )
@@ -130,6 +132,11 @@ class DatasetUtilities(Object):
         pass
 
     class PyDataSet(Dataset, AbstractJythonSequence):
+        _ds = None
+
+        def __init__(self, ds=None):
+            self._ds = ds
+
         def getColumnCount(self):
             pass
 
@@ -145,6 +152,9 @@ class DatasetUtilities(Object):
         def getColumnType(self, col):
             pass
 
+        def getColumnTypes(self):
+            pass
+
         def getPrimitiveValueAt(self, row, col):
             pass
 
@@ -154,7 +164,7 @@ class DatasetUtilities(Object):
         def getRowCount(self):
             pass
 
-        def getValueAt(self, row, colName):
+        def getValueAt(self, row, col):
             pass
 
 
@@ -171,7 +181,7 @@ class SProcCall(Object):
                 stored procedure, if any.
         """
         print(self)
-        return Dataset()
+        return BasicDataset()
 
     def getUpdateCount(self):
         """Returns the number of rows modified by the stored procedure,

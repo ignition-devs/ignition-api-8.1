@@ -1,9 +1,7 @@
 __all__ = ["AlarmQueryResult"]
 
-from abc import ABCMeta, abstractmethod
 
-
-class AlarmQueryResult(ABCMeta):
+class AlarmQueryResult(object):
     """This is the result of a query against the alarming system, for
     both status and history.
 
@@ -12,17 +10,11 @@ class AlarmQueryResult(ABCMeta):
     dataset.
     """
 
-    def __new__(mcs, *args, **kwargs):
-        pass
+    def getAssociatedDate(self, uuid):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getAssociatedDate(cls, uuid):
-        pass
+    def getDataSet(self):
+        raise NotImplementedError
 
-    @abstractmethod
-    def getDataSet(cls):
-        pass
-
-    @abstractmethod
-    def getEvent(cls, uuid):
-        pass
+    def getEvent(self, uuid):
+        raise NotImplementedError

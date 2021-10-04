@@ -24,6 +24,7 @@ __all__ = [
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
     INavUtilities,
+    NavUtilities,
 )
 from java.util import EventObject
 
@@ -81,7 +82,7 @@ def desktop(handle="primary"):
             named by the given handle.
     """
     print(handle)
-    return INavUtilities()
+    return NavUtilities()
 
 
 def getCurrentWindow():
