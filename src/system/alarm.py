@@ -25,6 +25,7 @@ from com.inductiveautomation.ignition.common.alarming.evaluation import (
 )
 from com.inductiveautomation.ignition.common.alarming.query import (
     AlarmQueryResult,
+    AlarmQueryResultImpl,
 )
 from java.util import Date
 
@@ -218,7 +219,7 @@ def queryJournal(
         includeSystem,
         isSystem,
     )
-    return AlarmQueryResult()
+    return AlarmQueryResultImpl()
 
 
 def queryStatus(
@@ -295,7 +296,7 @@ def queryStatus(
         defined,
         includeShelved,
     )
-    return AlarmQueryResult()
+    return AlarmQueryResultImpl()
 
 
 def shelve(path, timeoutSeconds=None, timeoutMinutes=None):

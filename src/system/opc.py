@@ -21,6 +21,7 @@ __all__ = [
 ]
 
 from com.inductiveautomation.ignition.common.model.values import (
+    BasicQualifiedValue,
     QualifiedValue,
     QualityCode,
 )
@@ -172,7 +173,7 @@ def readValue(opcServer, itemPath):
             specified.
     """
     print(opcServer, itemPath)
-    return QualifiedValue()
+    return BasicQualifiedValue()
 
 
 def readValues(opcServer, itemPaths):
@@ -196,7 +197,7 @@ def readValues(opcServer, itemPaths):
             for the corresponding address.
     """
     print(opcServer, itemPaths)
-    return [QualifiedValue()]
+    return [BasicQualifiedValue()]
 
 
 def setServerEnabled(serverName, enabled):

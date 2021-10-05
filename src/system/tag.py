@@ -44,6 +44,7 @@ import warnings
 import system.date
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import (
+    BasicQualifiedValue,
     QualifiedValue,
     QualityCode,
 )
@@ -735,7 +736,7 @@ def read(tagPath):
         DeprecationWarning,
     )
     print(tagPath)
-    return QualifiedValue()
+    return BasicQualifiedValue()
 
 
 def readAll(tagPaths):
@@ -759,7 +760,7 @@ def readAll(tagPaths):
         DeprecationWarning,
     )
     print(tagPaths)
-    return [QualifiedValue() for _ in range(len(tagPaths))]
+    return [BasicQualifiedValue() for _ in range(len(tagPaths))]
 
 
 def readAsync(tagPaths, callback):
@@ -800,7 +801,7 @@ def readBlocking(tagPaths, timeout=45000):
             have three sub members: value, quality, and timestamp.
     """
     print(tagPaths, timeout)
-    return [QualifiedValue() for _ in tagPaths]
+    return [BasicQualifiedValue() for _ in tagPaths]
 
 
 def rename(tag, newName, collisionPollicy="a"):

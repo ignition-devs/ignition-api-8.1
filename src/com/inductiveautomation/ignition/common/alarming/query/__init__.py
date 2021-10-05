@@ -1,4 +1,4 @@
-__all__ = ["AlarmQueryResult"]
+__all__ = ["AlarmQueryResult", "AlarmQueryResultImpl"]
 
 
 class AlarmQueryResult(object):
@@ -18,3 +18,17 @@ class AlarmQueryResult(object):
 
     def getEvent(self, uuid):
         raise NotImplementedError
+
+
+class AlarmQueryResultImpl(AlarmQueryResult):
+    def __init__(self, *args):
+        pass
+
+    def getAssociatedDate(self, uuid):
+        pass
+
+    def getDataSet(self):
+        pass
+
+    def getEvent(self, uuid):
+        pass
