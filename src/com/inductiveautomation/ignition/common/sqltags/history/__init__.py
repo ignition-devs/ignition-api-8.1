@@ -1,5 +1,7 @@
 __all__ = ["Aggregate", "AggregateInfo"]
 
+from java.lang import Object
+
 
 class Aggregate(object):
     """This interface defines an aggregation function used by the
@@ -29,7 +31,7 @@ class Aggregate(object):
         raise NotImplementedError
 
 
-class AggregateInfo(Aggregate):
+class AggregateInfo(Object, Aggregate):
     def getDesc(self):
         pass
 

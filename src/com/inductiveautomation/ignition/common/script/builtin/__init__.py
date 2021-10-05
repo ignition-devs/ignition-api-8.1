@@ -289,9 +289,6 @@ class SProcCall(Object):
 
 
 class SystemUtilities(Object):
-    def __init__(self, timeout):
-        self.timeout = timeout
-
     @staticmethod
     def logger(loggerName):
         pass
@@ -300,17 +297,11 @@ class SystemUtilities(Object):
     def parseTranslateArguments(*args, **kwargs):
         pass
 
-    class RequestImpl(Request, RequestWatcher):
-        def block(self):
-            pass
-
-        def cancel(self):
-            pass
+    class RequestImpl(Object, Request):
+        def __init__(self, timeout):
+            self.timeout = timeout
 
         def checkTimeout(self):
-            pass
-
-        def compose(self, requestWatchers):
             pass
 
         def dispatchFunc(self):
@@ -320,6 +311,12 @@ class SystemUtilities(Object):
             pass
 
         def finishSuccessfully(self, value):
+            pass
+
+        def getLongId(self):
+            pass
+
+        def cancel(self):
             pass
 
         def get(self):

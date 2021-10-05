@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-__all__ = ["ContactInfo", "PyUser", "User"]
+__all__ = ["BasicUser", "ContactInfo", "PyUser", "User"]
 
 from java.lang import Object
 

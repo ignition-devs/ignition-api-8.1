@@ -854,7 +854,7 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return SystemUtilities.RequestImpl()
+    return SystemUtilities.RequestImpl(1000)
 
 
 def setConnectTimeout(connectTimeout):

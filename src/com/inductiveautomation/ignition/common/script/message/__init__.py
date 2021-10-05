@@ -1,9 +1,23 @@
 __all__ = ["Request", "RequestWatcher"]
 
 
-class Request(object):
+class RequestWatcher(object):
+    def block(self):
+        raise NotImplementedError
+
+    def compose(self, requestWatchers):
+        raise NotImplementedError
+
+
+class Request(RequestWatcher):
+    def block(self):
+        pass
+
     def cancel(self):
         raise NotImplementedError
+
+    def compose(self, requestWatchers):
+        pass
 
     def get(self):
         raise NotImplementedError
@@ -15,12 +29,4 @@ class Request(object):
         raise NotImplementedError
 
     def onSuccess(self, func):
-        raise NotImplementedError
-
-
-class RequestWatcher(object):
-    def block(self):
-        raise NotImplementedError
-
-    def compose(self, requestWatchers):
         raise NotImplementedError
