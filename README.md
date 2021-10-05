@@ -112,7 +112,7 @@ To use Ignition, you may install it by doing any of the following.
 
 ##### Installing with `pip`
 
-The preferred method is to install it by running `pip`. It requires Python 2.7 (we recommend version 2.7.18), or Python 3.
+The preferred method is to install it by running `pip`. It requires Python 2.7.18, or higher.
 
 ```bash
 python -m pip install ignition-api
