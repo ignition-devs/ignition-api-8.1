@@ -42,6 +42,7 @@ __all__ = [
 import warnings
 
 import system.date
+from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import (
     BasicQualifiedValue,
@@ -533,7 +534,7 @@ def queryTagCalculations(
             ignored in calculations. Default is "False". Optional.
 
     Returns:
-        Dataset: A dataset representing the calculations over the
+        BasicDataset: A dataset representing the calculations over the
             specified range.
     """
     endDate = system.date.now() if endDate is None else endDate
@@ -553,6 +554,7 @@ def queryTagCalculations(
         noInterpolation,
         ignoreBadQuality,
     )
+    return BasicDataset()
 
 
 def queryTagDensity(paths, startDate, endDate):
@@ -576,11 +578,11 @@ def queryTagDensity(paths, startDate, endDate):
         endDate (Date): The end of the range to query.
 
     Returns:
-        Dataset: A 2-column dataset consisting of a timestamp and a
+        BasicDataset: A 2-column dataset consisting of a timestamp and a
             weight. Each row is valid until the next row.
     """
     print(paths, startDate, endDate)
-    return [0, 0]
+    return BasicDataset()
 
 
 def queryTagHistory(
@@ -681,9 +683,9 @@ def queryTagHistory(
             startDate or endDate. Optional.
 
     Returns:
-        Dataset: A dataset representing the historian values for the
-            specified tag paths. The first column will be the timestamp,
-            and each column after that represents a tag.
+        BasicDataset: A dataset representing the historian values for
+            the specified tag paths. The first column will be the
+            timestamp, and each column after that represents a tag.
     """
     endDate = system.date.now() if endDate is None else endDate
     startDate = (
@@ -710,6 +712,7 @@ def queryTagHistory(
         intervalSeconds,
         rangeSeconds,
     )
+    return BasicDataset()
 
 
 def read(tagPath):
@@ -728,7 +731,7 @@ def read(tagPath):
             specified in the path, the Value property is assumed.
 
     Returns:
-        QualifiedValue: A qualified value. This object has three
+        BasicQualifiedValue: A qualified value. This object has three
             sub-members: value, quality, and timestamp.
     """
     warnings.warn(
@@ -796,7 +799,7 @@ def readBlocking(tagPaths, timeout=45000):
             defaults to 45000 milliseconds if not specified. Optional.
 
     Returns:
-        list[QualifiedValue]: A list of QualifiedValue objects
+        list[BasicQualifiedValue]: A list of QualifiedValue objects
             corresponding to the Tag paths. Each qualified value will
             have three sub members: value, quality, and timestamp.
     """
