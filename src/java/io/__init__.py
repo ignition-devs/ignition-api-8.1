@@ -12,6 +12,7 @@ __all__ = [
     "FileOutputStream",
     "FilterOutputStream",
     "OutputStream",
+    "PrintStream",
 ]
 
 from java.lang import Object
@@ -53,7 +54,7 @@ class FileOutputStream(OutputStream):
 
 
 class FilterOutputStream(OutputStream):
-    _out = None
+    _out = OutputStream()
 
     def __init__(self, out):
         self._out = out
@@ -73,6 +74,9 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeByte(self, v):
+        pass
+
+    def writeBytes(self, s):
         pass
 
     def writeChar(self, v):
@@ -97,4 +101,36 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeUTF(self, s):
+        pass
+
+
+class PrintStream(FilterOutputStream):
+    _out = OutputStream()
+
+    def __init__(self, *args):
+        print(args)
+        super(PrintStream, self).__init__(self._out)
+
+    def append(self, *args):
+        pass
+
+    def checkError(self):
+        pass
+
+    def clearError(self):
+        pass
+
+    def format(self, *args):
+        pass
+
+    def print(self, arg):
+        pass
+
+    def printf(self, *args):
+        pass
+
+    def println(self, arg):
+        pass
+
+    def setError(self):
         pass
