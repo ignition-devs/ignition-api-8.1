@@ -6,10 +6,7 @@ from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.abc import (
     AbstractJythonSequence,
 )
-from com.inductiveautomation.ignition.common.script.message import (
-    Request,
-    RequestWatcher,
-)
+from com.inductiveautomation.ignition.common.script.message import Request
 from java.lang import Object
 from java.util import Locale
 
@@ -177,7 +174,7 @@ class SProcCall(Object):
         procedure, if any.
 
         Returns:
-            Dataset: The dataset that is the resulting data of the
+            BasicDataset: The dataset that is the resulting data of the
                 stored procedure, if any.
         """
         print(self)

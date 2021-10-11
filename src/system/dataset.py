@@ -69,7 +69,8 @@ def addColumn(dataset, colIndex, col, colName, colType):
             exist.
 
     Returns:
-        Dataset: A new dataset with the new column inserted or appended.
+        BasicDataset: A new dataset with the new column inserted or
+            appended.
     """
     print(dataset, colIndex, col, colName, colType)
     return BasicDataset()
@@ -99,7 +100,8 @@ def addRow(dataset, rowIndex, row):
             the dataset.
 
     Returns:
-        Dataset: A new dataset with the new row inserted or appended.
+        BasicDataset: A new dataset with the new row inserted or
+            appended.
     """
     print(dataset, rowIndex, row)
     return BasicDataset()
@@ -129,7 +131,8 @@ def addRows(dataset, rowIndex, rows):
             number of columns in the dataset.
 
     Returns:
-        Dataset: A new dataset with the new row inserted or appended.
+        BasicDataset: A new dataset with the new row inserted or
+            appended.
     """
     print(dataset, rowIndex, rows)
     return BasicDataset()
@@ -148,8 +151,8 @@ def appendDataset(dataset1, dataset2):
             the end in the returned dataset.
 
     Returns:
-        Dataset: A new dataset that is a combination of the original two
-            datasets.
+        BasicDataset: A new dataset that is a combination of the
+            original two datasets.
     """
     print(dataset1, dataset2)
     return BasicDataset()
@@ -164,7 +167,7 @@ def clearDataset(dataset):
             will be returned.
 
     Returns:
-        Dataset: A new dataset with no data.
+        BasicDataset: A new dataset with no data.
     """
     print(dataset)
     return BasicDataset()
@@ -205,7 +208,7 @@ def deleteRow(dataset, rowIndex):
         rowIndex (int): The index (starting at 0) of the row to delete.
 
     Returns:
-        Dataset: A new dataset with the specified row removed.
+        BasicDataset: A new dataset with the specified row removed.
 
     Raises:
         IndexError: If rowIndex is less than zero or greater than the
@@ -236,7 +239,7 @@ def deleteRows(dataset, rowIndices):
             to delete.
 
     Returns:
-        Dataset: A new dataset with the specified row removed.
+        BasicDataset: A new dataset with the specified row removed.
 
     Raises:
         IndexError: If any element is less than zero or greater than the
@@ -321,7 +324,7 @@ def filterColumns(dataset, columns):
             (starting at 0), or the name of the columns as Strings.
 
     Returns:
-        Dataset: A new dataset containing the filtered columns.
+        BasicDataset: A new dataset containing the filtered columns.
     """
     print(dataset, columns)
     return BasicDataset()
@@ -340,7 +343,7 @@ def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
             is specified, the default Locale will be used. Optional.
 
     Returns:
-        Dataset: A new dataset, containing the formatted dates.
+        BasicDataset: A new dataset, containing the formatted dates.
     """
     print(dataset, dateFormat, locale)
     return BasicDataset()
@@ -360,7 +363,7 @@ def fromCSV(csv):
         csv (str): A string holding a CSV dataset.
 
     Returns:
-        Dataset: A new dataset.
+        BasicDataset: A new dataset.
     """
     print(csv)
     return BasicDataset()
@@ -399,8 +402,8 @@ def setValue(dataset, rowIndex, columnName, value):
         value (object): The new value for the specified row/column.
 
     Returns:
-         Dataset: A new dataset, with the new value set at the given
-            location.
+         BasicDataset: A new dataset, with the new value set at the
+            given location.
     """
     print(dataset, rowIndex, columnName, value)
     return BasicDataset()
@@ -420,7 +423,7 @@ def sort(dataset, keyColumn, ascending=True):
             order. If omitted, ascending order will be used. Optional.
 
     Returns:
-        Dataset: A new sorted dataset.
+        BasicDataset: A new sorted dataset.
     """
     print(dataset, keyColumn, ascending)
     return BasicDataset()
@@ -465,7 +468,7 @@ def toDataSet(*args):
         args: A variable-length argument list.
 
     Returns:
-        Dataset: The newly created dataset.
+        BasicDataset: The newly created dataset.
     """
     for arg in args:
         print(arg)
@@ -539,8 +542,8 @@ def updateRow(dataset, rowIndex, changes):
             their values will be used to update the row.
 
     Returns:
-         Dataset: A new dataset with the values at the specified row
-            updated according to the values in the dictionary.
+         BasicDataset: A new dataset with the values at the specified
+            row updated according to the values in the dictionary.
     """
     print(dataset, rowIndex, changes)
     return BasicDataset()

@@ -168,8 +168,8 @@ def readValue(opcServer, itemPath):
         itemPath (str): The item path, or address, to read from.
 
     Returns:
-        QualifiedValue: An object that contains the value, quality, and
-            timestamp returned from the OPC server for the address
+        BasicQualifiedValue: An object that contains the value, quality,
+            and timestamp returned from the OPC server for the address
             specified.
     """
     print(opcServer, itemPath)

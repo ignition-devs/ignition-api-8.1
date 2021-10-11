@@ -18,7 +18,7 @@ __all__ = [
     "startChart",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.sfc.api import PyChartScope
 
 
@@ -47,7 +47,7 @@ def getRunningCharts(charPath=None):
             function will return data for all active charts.
 
     Returns:
-        Dataset: A dataset with information on the active chart.
+        BasicDataset: A dataset with information on the active chart.
     """
     print(charPath)
     return BasicDataset()

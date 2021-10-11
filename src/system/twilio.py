@@ -15,7 +15,7 @@ __all__ = [
     "sendSms",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def getAccounts():
@@ -33,8 +33,8 @@ def getAccountsDataset():
     Gateway as a single-column Dataset.
 
     Returns:
-        Dataset: A list of configured Twilio accounts as a single-column
-            Dataset.
+        BasicDataset: A list of configured Twilio accounts as a
+            single-column Dataset.
     """
     return BasicDataset()
 
@@ -70,8 +70,8 @@ def getPhoneNumbersDataset(accountName):
             for.
 
     Returns:
-        Dataset: A list of phone numbers for the given Twilio account as
-            a single-column Dataset.
+        BasicDataset: A list of phone numbers for the given Twilio
+            account as a single-column Dataset.
     """
     print(accountName)
     return BasicDataset()

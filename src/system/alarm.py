@@ -24,7 +24,6 @@ from com.inductiveautomation.ignition.common.alarming.evaluation import (
     ShelvedPath,
 )
 from com.inductiveautomation.ignition.common.alarming.query import (
-    AlarmQueryResult,
     AlarmQueryResultImpl,
 )
 from java.util import Date
@@ -192,12 +191,12 @@ def queryJournal(
             must not be a system event.
 
     Returns:
-        AlarmQueryResult: The AlarmQueryResult object is functionally a
-            list of AlarmEvent objects. The AlarmQueryResult object has
-            a built-in getDataset() function that will return a Standard
-            Dataset containing the Event Id (UUID of the alarm), Source
-            Path, Display Path, Event Time, State (as an integer), and
-            Priority (as an integer).
+        AlarmQueryResultImpl: The AlarmQueryResult object is
+            functionally a list of AlarmEvent objects. The
+            AlarmQueryResult object has a built-in getDataset() function
+            that will return a Standard Dataset containing the Event Id
+            (UUID of the alarm), Source Path, Display Path, Event Time,
+            State (as an integer), and Priority (as an integer).
     """
     endDate = system.date.now() if endDate is None else endDate
     startDate = (
@@ -278,12 +277,12 @@ def queryStatus(
             Optional.
 
     Returns:
-        AlarmQueryResult: The AlarmQueryResult object is functionally a
-            list of AlarmEvent objects. The AlarmQueryResult object has
-            a built-in getDataset() function that will return a Standard
-            Dataset containing the Event Id (UUID of the alarm), Source
-            Path, Display Path, Event Time, State (as an integer), and
-            Priority (as an integer).
+        AlarmQueryResultImpl: The AlarmQueryResult object is
+            functionally a list of AlarmEvent objects. The
+            AlarmQueryResult object has a built-in getDataset() function
+            that will return a Standard Dataset containing the Event Id
+            (UUID of the alarm), Source Path, Display Path, Event Time,
+            State (as an integer), and Priority (as an integer).
     """
     print(
         priority,

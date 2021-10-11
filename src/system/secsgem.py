@@ -175,7 +175,7 @@ def getToolProgramDataset():
     programs.
 
     Returns:
-         Dataset: A Dataset containing information about all stored
+         BasicDataset: A Dataset containing information about all stored
             process programs. Includes the following columns in order:
             ppid, editDate, bodyFormat.
     """
@@ -263,7 +263,7 @@ def toDataSet(secsObject):
             dataset.
 
     Returns:
-         Dataset: A Dataset representing a SECS message.
+         BasicDataset: A Dataset representing a SECS message.
     """
     print(secsObject)
     return BasicDataset()
@@ -281,8 +281,8 @@ def toTreeDataSet(dataset):
             processed by system.secsgem.toDataSet.
 
     Returns:
-        Dataset: A Dataset containing a SECS message that can be used in
-            the Tree View component.
+        BasicDataset: A Dataset containing a SECS message that can be
+            used in the Tree View component.
     """
     print(dataset)
     return BasicDataset()

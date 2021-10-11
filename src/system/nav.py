@@ -23,7 +23,6 @@ __all__ = [
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
-    INavUtilities,
     NavUtilities,
 )
 from java.util import EventObject
@@ -78,7 +77,7 @@ def desktop(handle="primary"):
             the Primary Desktop.
 
     Returns:
-        INavUtilities: A copy of system.nav that will alter the desktop
+        NavUtilities: A copy of system.nav that will alter the desktop
             named by the given handle.
     """
     print(handle)

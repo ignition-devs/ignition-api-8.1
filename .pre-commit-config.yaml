@@ -23,7 +23,7 @@ repos:
       - id: pydocstyle
         additional_dependencies:
           - '.[toml]'
-        exclude: ^src/com/
+        exclude: ^(src/com/|src/java/|src/javax/)
   - repo: local
     hooks:
       - id: pylint

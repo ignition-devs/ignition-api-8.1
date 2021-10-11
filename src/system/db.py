@@ -37,7 +37,7 @@ __all__ = [
     "setDatasourceMaxConnections",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
     SProcCall,
@@ -351,7 +351,7 @@ def getConnectionInfo(name=""):
             omitted. Optional.
 
     Returns:
-        Dataset: A dataset containing information about the named
+        BasicDataset: A dataset containing information about the named
             database connection or about the current project's default
             database connection, or an empty dataset if the connection
             wasn't found.
@@ -367,7 +367,7 @@ def getConnections():
     Each row represents a single connection.
 
     Returns:
-        Dataset: A dataset, where each row represents a database
+        BasicDataset: A dataset, where each row represents a database
             connection.
     """
     return BasicDataset()

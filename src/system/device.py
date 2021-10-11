@@ -16,7 +16,7 @@ __all__ = [
     "setDeviceHostname",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def addDevice(deviceType, deviceName, deviceProps, description=None):
@@ -63,8 +63,8 @@ def listDevices():
     Each row represents a single device.
 
     Returns:
-        Dataset: A dataset, where each row represents a device. Contains
-            4 columns Name, Enabled, State, and Driver.
+        BasicDataset: A dataset, where each row represents a device.
+            Contains 4 columns Name, Enabled, State, and Driver.
     """
     return BasicDataset()
 

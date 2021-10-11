@@ -9,7 +9,7 @@ from __future__ import print_function
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
 import system.date
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
 from java.util import Date, Locale
 
@@ -43,7 +43,7 @@ def queryAgentHistory(
             value of 0 means "no limit". Optional.
 
     Returns:
-        Dataset: A dataset with columns id, agent_name, agent_role,
+        BasicDataset: A dataset with columns id, agent_name, agent_role,
             event_time, event_category, event_type, event_source,
             event_level, event_level_int, and message, where each row is
             a new agent event.
@@ -70,10 +70,10 @@ def queryAgentStatus(groupIds=None, agentIds=None, isConnected=True):
             agents will be returned.
 
     Returns:
-        Dataset: A dataset with columns AgentName, NodeRole, AgentGroup,
-            LastCommunication, IsConnected, IsRunning, RunningState,
-            RunningStateInt, LicenseKey, and Version, where each row is
-            a new agent.
+        BasicDataset: A dataset with columns AgentName, NodeRole,
+            AgentGroup, LastCommunication, IsConnected, IsRunning,
+            RunningState, RunningStateInt, LicenseKey, and Version,
+            where each row is a new agent.
     """
     print(groupIds, agentIds, isConnected)
     return BasicDataset()

@@ -13,7 +13,7 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import IllegalArgumentException
 
 
@@ -98,8 +98,9 @@ def getReportNamesAsDataset(project="project", includeReportName=True):
             does not include the report name. Default is True. Optional.
 
     Returns:
-        Dataset: A dataset of report paths and names for the project.
-            Returns an empty dataset if the project has no reports.
+        BasicDataset: A dataset of report paths and names for the
+            project. Returns an empty dataset if the project has no
+            reports.
 
     Raises:
         IllegalArgumentException: Thrown when any of the following

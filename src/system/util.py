@@ -58,7 +58,7 @@ import sys
 import system.__version__ as version
 import system.date
 import system.security
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
@@ -619,7 +619,7 @@ def queryAuditLog(
             Optional.
 
     Returns:
-        Dataset: A dataset with the audit events from the specified
+        BasicDataset: A dataset with the audit events from the specified
             profile that match the filter arguments.
     """
     endDate = system.date.now() if endDate is None else endDate
