@@ -15,7 +15,6 @@ __pycache__/
 build/
 develop-eggs/
 dist/
-dist-build/
 downloads/
 eggs/
 .eggs/
@@ -98,6 +97,9 @@ ipython_config.py
 #   having no cross-platform support, pipenv may install dependencies that don't work, or not
 #   install all needed dependencies.
 #Pipfile.lock
+
+# Jython
+.jython_cache/
 
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow
 __pypackages__/
