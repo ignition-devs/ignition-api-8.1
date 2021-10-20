@@ -143,17 +143,14 @@ And to uninstall:
 python -m pip uninstall ignition-api
 ```
 
-##### Downloading from releases
+###### Using Ignition as a dependency on PyCharm
 
-You may also download the code targeted to your desired version from the [releases page](https://github.com/thecesrom/Ignition/releases) and add it as a dependency to your scripting project.
+To include Ignition as a dependency on PyCharm, you will need to attach it to your project.
 
-###### PyCharm Installation
-
-To use Ignition in PyCharm, you will need to attach it to your project.
-
-1. With your project open that you want to use with Ignition, navigate to `File > Open` and select the `Ignition` project folder.
-2. Choose `Attach` when you're prompted on how to open the project.
-3. Under the new `Ignition` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`.
+1. Clone the repo or download from [releases](https://github.com/thecesrom/Ignition/releases)
+2. With your project open where you want to include `Ignition`, navigate to `File > Open` and select the `Ignition` project folder
+3. Choose `Attach` when prompted
+4. Under the `Ignition` project folder, right-click on the `src/` folder and choose `Mark Directory as > Sources Root`
 
 #### Contributing to Ignition
 
