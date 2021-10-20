@@ -7,6 +7,7 @@ from __future__ import print_function
 __all__ = [
     "Exception",
     "IllegalArgumentException",
+    "Iterable",
     "Object",
     "RuntimeException",
     "Thread",
@@ -20,6 +21,25 @@ try:
     import __builtin__ as builtins
 except ImportError:
     import builtins
+
+
+class Iterable(object):
+    """Implementing this interface allows an object to be the target of
+    the enhanced for statement (sometimes called the "for-each loop"
+    statement).
+    """
+
+    def __iter__(self):
+        pass
+
+    def forEach(self, action):
+        pass
+
+    def iterator(self):
+        raise NotImplementedError
+
+    def spliterator(self):
+        pass
 
 
 class Object(object):
