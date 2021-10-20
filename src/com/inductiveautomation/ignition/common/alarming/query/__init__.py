@@ -1,5 +1,7 @@
 __all__ = ["AlarmQueryResult", "AlarmQueryResultImpl"]
 
+from com.inductiveautomation.ignition.common.alarming import PyAlarmEvent
+
 
 class AlarmQueryResult(object):
     """This is the result of a query against the alarming system, for
@@ -23,6 +25,9 @@ class AlarmQueryResult(object):
 class AlarmQueryResultImpl(AlarmQueryResult):
     def __init__(self, *args):
         pass
+
+    def __iter__(self):
+        yield PyAlarmEvent()
 
     def getAssociatedDate(self, uuid):
         pass
