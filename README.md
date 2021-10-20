@@ -53,9 +53,9 @@ This branch will contain all Scripting Functions from the latest Ignition Releas
 
 This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
 
-### [jython](https://github.com/thecesrom/Ignition/tree/jython)
+### jython [Archived]
 
-This branch will contain all Scripting Functions from the latest Ignition Release requiring Jython (see [jython prerequisites](https://github.com/thecesrom/Ignition/tree/jython#prerequisites))
+This branch is no longer maintained and it has been archived here: <https://github.com/thecesrom/ignition-api-jython>
 
 ### Cloning a single branch
 
