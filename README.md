@@ -35,27 +35,25 @@ Ignition is a set of packages and modules that allows developers to get code com
 
 Check the [releases page](https://github.com/thecesrom/Ignition/releases) and download the one for your current version.
 
-If you can't find it, feel free to submit your request on our [Discussions](https://github.com/thecesrom/Ignition/discussions).
-
 ## Branches
 
 This repository consists of the following branches:
 
 ### [main](https://github.com/thecesrom/Ignition/tree/main)
 
-This branch will contain all Scripting Functions from the latest Ignition Release requiring only Python
+This branch will contain all Scripting Functions from the latest Ignition Release.
 
 ### [7.9](https://github.com/thecesrom/Ignition/tree/7.9)
 
-This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version requiring only Python
+This branch will contain all Scripting Functions from the latest Ignition Release for the 7.9 version.
 
 ### [8.0](https://github.com/thecesrom/Ignition/tree/8.0)
 
-This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version requiring only Python
+This branch will contain all Scripting Functions from the latest Ignition Release for the 8.0 version.
 
 ### jython [Archived]
 
-This branch is no longer maintained and it has been archived here: <https://github.com/thecesrom/ignition-api-jython>
+This branch is no longer maintained and it has been archived here: <https://github.com/thecesrom/ignition-api-jython>.
 
 ### Cloning a single branch
 
@@ -90,21 +88,26 @@ Before you begin, ensure you have met the following requirements:
 
 Ignition consists of the following packages:
 
-- com
+- com.inductiveautomation
 - java/javax
+- org.python
 - system
 
-##### com
+##### com.inductiveautomation
 
-These are libraries for some of Inductive Automation's Java packages and functions that are imported in `system` packages.
+This package includes supporting Inductive Automation's classes and interfaces imported in the `system` package. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.11/index.html>.
 
 ##### java/javax
 
-These are libraries for some Java packages and functions that are imported in `system` packages meant to be used on development environments where no JDK can be installed, and the project interpreter is Python 2.7.
+These packages include supporting Java classes and interfaces imported in the `system` package. For more information, see documentation here: <https://docs.oracle.com/en/java/javase/11/docs/api/index.html>.
+
+##### org.python
+
+This package includes supporting classes and interfaces imported in the `system` package. For more information, see documentation here: <https://docs.oracle.com/en/java/javase/11/docs/api/index.html>.
 
 ##### system
 
-Is a package that includes all Ignition Scripting Functions.
+This package includes all Ignition Scripting Functions. For more information, see documentation here: <https://docs.inductiveautomation.com/display/DOC81/System+Functions>.
 
 #### Installation and usage
 
