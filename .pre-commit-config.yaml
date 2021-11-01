@@ -7,8 +7,6 @@ repos:
     rev: 21.9b0
     hooks:
       - id: black
-        additional_dependencies:
-          - '.[python2]'
   - repo: https://github.com/PyCQA/isort
     rev: 5.9.3
     hooks:
