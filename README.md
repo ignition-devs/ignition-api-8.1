@@ -115,16 +115,16 @@ To use Ignition, you may install it by doing any of the following.
 
 ##### Installing with `pip`
 
-The preferred method is to install it by running `pip`. It requires Python 2.7.18, or higher.
+The preferred method is to install it by running `pip`. It requires Python 2.7.18.
 
 ```bash
-python -m pip install ignition-api
+python2 -m pip install ignition-api
 ```
 
 This will install it as package to your Python installation, which will allow you to call Ignition Scripting functions from Python's REPL, and get code completion using an IDE (we recommend PyCharm).
 
 ```bash
-$ python
+$ python2
 Python 2.7.18 (default, Nov  9 2020, 16:23:15) 
 [GCC Apple LLVM 12.0.0 (clang-1200.0.32.21)] on darwin
 Type "help", "copyright", "credits" or "license" for more information.
@@ -143,7 +143,7 @@ Client data, as well as interact with other various systems.
 And to uninstall:
 
 ```bash
-python -m pip uninstall ignition-api
+python2 -m pip uninstall ignition-api
 ```
 
 ###### Using Ignition as a dependency on PyCharm

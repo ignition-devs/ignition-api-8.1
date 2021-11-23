@@ -121,6 +121,8 @@ class QualifiedValue(object):
 
 
 class BasicQualifiedValue(QualifiedValue, Object):
+    """The basic implementation of QualifiedValue."""
+
     quality = QualityCode.Bad_Stale
     timestamp = Date()
     value = None

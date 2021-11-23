@@ -4,7 +4,7 @@ The following functions give you access to read and write through serial
 ports.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "closeSerialPort",
@@ -20,9 +20,12 @@ __all__ = [
     "writeBytes",
 ]
 
-from com.inductiveautomation.ignition.modules.serial.scripting import (
-    SerialScriptModule,
-)
+from typing import Any, Optional, Union
+
+from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
+
+PortManager = SerialScriptModule.PortManager
+SerialConfigurator = SerialScriptModule.SerialConfigurator
 
 # Bit rate constants.
 BIT_RATE_110 = 110
@@ -72,6 +75,7 @@ STOP_BITS_2 = 3
 
 
 def closeSerialPort(port):
+    # type: (Union[str, unicode]) -> None
     """Closes a previously opened serial port.
 
     Returns without doing anything if the named serial port is not
@@ -79,15 +83,21 @@ def closeSerialPort(port):
     cannot be closed.
 
     Args:
-        port (str): The name of the serial port, e.g., "COM1" or
-            "dev/ttyS0".
+        port: The name of the serial port, e.g., "COM1" or "dev/ttyS0".
     """
     print(port)
 
 
 def configureSerialPort(
-    port, bitRate, dataBits, handshake, hardwareFlowControl, parity, stopBits
+    port,  # type: Union[str, unicode]
+    bitRate,  # type: int
+    dataBits,  # type: int
+    handshake,  # type: int
+    hardwareFlowControl,  # type: bool
+    parity,  # type: int
+    stopBits,  # type: int
 ):
+    # type: (...) -> SerialConfigurator
     """Configure a serial port for use in a later call.
 
     This only needs to be done once unless the configuration has changed
@@ -95,35 +105,33 @@ def configureSerialPort(
     "system.serial.".
 
     Args:
-        port (str): The name of the serial port, e.g., "COM1" or
-            "/dev/ttyS0". This parameter is required.
-        bitRate (int): Configure the bit rate. Valid values are defined
-            by the following constants: BIT_RATE_110, BIT_RATE_150,
+        port: The name of the serial port, e.g., "COM1" or "/dev/ttyS0".
+            This parameter is required.
+        bitRate: Configure the bit rate. Valid values are defined by the
+            following constants: BIT_RATE_110, BIT_RATE_150,
             BIT_RATE_300, BIT_RATE_600, BIT_RATE_1200, BIT_RATE_2400,
             BIT_RATE_4800, BIT_RATE_9600, BIT_RATE_19200,
             BIT_RATE_38400, BIT_RATE_57600, BIT_RATE_115200,
             BIT_RATE_230400, BIT_RATE_460800, BIT_RATE_921600.
-        dataBits (int): Configure the data bits. Valid values are
-            defined by the following constants: DATA_BITS_5,
-            DATA_BITS_6, DATA_BITS_7, DATA_BITS_8.
-        handshake (int): Configure the handshake. Valid values are
-            defined by the following constants: HANDSHAKE_CTS_DTR,
+        dataBits: Configure the data bits. Valid values are defined by
+            the following constants: DATA_BITS_5, DATA_BITS_6,
+            DATA_BITS_7, DATA_BITS_8.
+        handshake: Configure the handshake. Valid values are defined by
+            the following constants: HANDSHAKE_CTS_DTR,
             HANDSHAKE_CTS_RTS, HANDSHAKE_DSR_DTR, HANDSHAKE_HARD_IN,
             HANDSHAKE_HARD_OUT, HANDSHAKE_NONE, HANDSHAKE_SOFT_IN,
             HANDSHAKE_SOFT_OUT, HANDSHAKE_SPLIT_MASK,
             HANDSHAKE_XON_XOFF.
-        hardwareFlowControl (bool): Configure hardware flow control. On
-            or off.
-        parity (int): Configure parity. Valid values are defined by the
+        hardwareFlowControl: Configure hardware flow control. On or off.
+        parity: Configure parity. Valid values are defined by the
             following constants: PARITY_EVEN, PARITY_ODD, PARITY_MARK,
             PARITY_SPACE, PARITY_NONE.
-        stopBits (int): Configure stop bits. Valid values are defined by
-            the following constants: STOP_BITS_1, STOP_BITS_2.
+        stopBits: Configure stop bits. Valid values are defined by the
+            following constants: STOP_BITS_1, STOP_BITS_2.
 
     Returns:
-        SerialConfigurator: A SerialConfigurator that can be used to
-            configure the serial port instead of or in addition to the
-            given keyword arguments.
+        A SerialConfigurator that can be used to configure the serial
+        port instead of or in addition to the given keyword arguments.
     """
     print(
         port,
@@ -134,30 +142,31 @@ def configureSerialPort(
         parity,
         stopBits,
     )
-    return SerialScriptModule.SerialConfigurator()
+    return SerialConfigurator()
 
 
 def openSerialPort(port):
+    # type: (Union[str, unicode]) -> None
     """Opens a previously configured serial port for use.
 
     Will throw an exception if the serial port cannot be opened.
 
     Args:
-        port (str): The name of the serial port, e.g., "COM1" or
-            "dev/ttyS0".
+        port: The name of the serial port, e.g., "COM1" or "dev/ttyS0".
     """
     print(port)
 
 
 def port(
-    port,
-    bitRate=None,
-    dataBits=None,
-    handshake=None,
-    hardwareFlowControl=None,
-    parity=None,
-    stopBits=None,
+    port,  # type: Union[str, unicode]
+    bitRate=None,  # type: Optional[int]
+    dataBits=None,  # type: Optional[int]
+    handshake=None,  # type: Optional[int]
+    hardwareFlowControl=None,  # type: Optional[bool]
+    parity=None,  # type: Optional[int]
+    stopBits=None,  # type: Optional[int]
 ):
+    # type: (...) -> PortManager
     """Returns a context manager wrapping a serial port, allowing the
     rest of the system to interact with that port.
 
@@ -177,35 +186,34 @@ def port(
     parameter descriptions.
 
     Args:
-        port (str): The name of the serial port, e.g., "COM1" or
-            "dev/ttyS0".
-        bitRate (int): Configure the bit rate. Valid values are defined
-            by the following constants: BIT_RATE_110, BIT_RATE_150,
+        port: The name of the serial port, e.g., "COM1" or "dev/ttyS0".
+        bitRate: Configure the bit rate. Valid values are defined by the
+            following constants: BIT_RATE_110, BIT_RATE_150,
             BIT_RATE_300, BIT_RATE_600, BIT_RATE_1200, BIT_RATE_2400,
             BIT_RATE_4800, BIT_RATE_9600, BIT_RATE_19200,
             BIT_RATE_38400, BIT_RATE_57600, BIT_RATE_115200,
             BIT_RATE_230400, BIT_RATE_460800, BIT_RATE_921600. Optional.
-        dataBits (int): Configure the data bits. Valid values are
-            defined by the following constants: DATA_BITS_5,
-            DATA_BITS_6, DATA_BITS_7, DATA_BITS_8. Optional.
-        handshake (int): Configure the handshake. Valid values are
-            defined by the following constants: HANDSHAKE_CTS_DTR,
+        dataBits: Configure the data bits. Valid values are defined by
+            the following constants: DATA_BITS_5, DATA_BITS_6,
+            DATA_BITS_7, DATA_BITS_8. Optional.
+        handshake: Configure the handshake. Valid values are defined by
+            the following constants: HANDSHAKE_CTS_DTR,
             HANDSHAKE_CTS_RTS, HANDSHAKE_DSR_DTR, HANDSHAKE_HARD_IN,
             HANDSHAKE_HARD_OUT, HANDSHAKE_NONE, HANDSHAKE_SOFT_IN,
             HANDSHAKE_SOFT_OUT, HANDSHAKE_SPLIT_MASK,
             HANDSHAKE_XON_XOFF. Optional.
-        hardwareFlowControl (bool): Configure hardware flow control. On
-            or off. Optional.
-        parity (int): Configure parity. Valid values are defined by the
+        hardwareFlowControl: Configure hardware flow control. On or off.
+            Optional.
+        parity: Configure parity. Valid values are defined by the
             following constants: PARITY_EVEN, PARITY_ODD, PARITY_MARK,
             PARITY_SPACE, PARITY_NONE. Optional.
-        stopBits (int): Configure stop bits. Valid values are defined by
-            the following constants: STOP_BITS_1, STOP_BITS_2. Optional.
+        stopBits: Configure stop bits. Valid values are defined by the
+            following constants: STOP_BITS_1, STOP_BITS_2. Optional.
 
     Returns:
-        PortManager: A wrapper around the configured port, that can be
-            entered by using a 'with' statement. The port will
-            automatically close on exiting the 'with' statement scope.
+        A wrapper around the configured port, that can be entered by
+        using a 'with' statement. The port will automatically close on
+        exiting the 'with' statement scope.
     """
     print(
         port,
@@ -216,25 +224,32 @@ def port(
         parity,
         stopBits,
     )
-    return SerialScriptModule.PortManager()
+    return PortManager()
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
+    # type: (Union[str, unicode], int, Optional[int]) -> Any
     """Read numberOfBytes bytes from a serial port.
 
     Args:
-        port (str): The previously configured serial port to use.
-        numberOfBytes (int): The number of bytes to read.
-        timeout (int): Maximum amount of time, in milliseconds, to block
+        port: The previously configured serial port to use.
+        numberOfBytes: The number of bytes to read.
+        timeout: Maximum amount of time, in milliseconds, to block
             before returning. Default is 5000. Optional.
 
     Returns:
-        object: A byte[] containing bytes read from the serial port.
+        A list containing bytes read from the serial port.
     """
     print(port, numberOfBytes, timeout)
 
 
-def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
+def readBytesAsString(
+    port,  # type: Union[str, unicode]
+    numberOfBytes,  # type: int
+    timeout=5000,  # type: Optional[int]
+    encoding="utf-8",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> Union[str, unicode]
     """Read numberOfBytes bytes from a serial port and convert them to a
     String.
 
@@ -243,21 +258,27 @@ def readBytesAsString(port, numberOfBytes, timeout=5000, encoding="utf-8"):
     the byte array returned.
 
     Args:
-        port (str): The previously configured serial port to use.
-        numberOfBytes (int): The number of bytes to read.
-        timeout (int): Maximum amount of time, in milliseconds, to block
+        port: The previously configured serial port to use.
+        numberOfBytes: The number of bytes to read.
+        timeout: Maximum amount of time, in milliseconds, to block
             before returning. Default is 5000. Optional.
-        encoding (str): Encoding to use when constructing the string.
-            Defaults to the platform's default character set. Optional.
+        encoding: Encoding to use when constructing the string. Defaults
+            to the platform's default character set. Optional.
 
     Returns:
-        str: A String created from the bytes read.
+        A String created from the bytes read.
     """
     print(port, numberOfBytes, timeout, encoding)
     return ""
 
 
-def readLine(port, timeout=5000, encoding="utf-8", crlfRequired=False):
+def readLine(
+    port,  # type: Union[str, unicode]
+    timeout=5000,  # type: Optional[int]
+    encoding="utf-8",  # type: Optional[Union[str, unicode]]
+    crlfRequired=False,  # type: Optional[bool]
+):
+    # type: (...) -> Union[str, unicode]
     r"""Attempts to read a line from a serial port.
 
     A "line" is considered to be terminated by either a line feed
@@ -269,22 +290,27 @@ def readLine(port, timeout=5000, encoding="utf-8", crlfRequired=False):
     the buffer will be dumped, possibly resulting in data loss.
 
     Args:
-        port (str): The previously configured serial port to use.
-        timeout (int): Maximum amount of time, in milliseconds, to block
+        port: The previously configured serial port to use.
+        timeout: Maximum amount of time, in milliseconds, to block
             before returning. Default is 5000. Optional.
-        encoding (str): The String encoding to use. Default is UTF8.
-            Optional.
-        crlfRequired (bool): True if both CR and LF are required to
-            delimit a line. Optional.
+        encoding: The String encoding to use. Default is UTF8. Optional.
+        crlfRequired: True if both CR and LF are required to delimit a
+            line. Optional.
 
     Returns:
-        str: A line of text.
+        A line of text.
     """
     print(port, timeout, encoding, crlfRequired)
     return ""
 
 
-def readUntil(port, delimiter, includeDelimiter, timeout=5000):
+def readUntil(
+    port,  # type: Union[str, unicode]
+    delimiter,  # type: Union[str, unicode]
+    includeDelimiter,  # type: bool
+    timeout=5000,  # type: Optional[int]
+):
+    # type: (...) -> Union[str, unicode]
     """Reads a byte at a time from a serial port until a delimiter
     character is encountered.
 
@@ -294,41 +320,44 @@ def readUntil(port, delimiter, includeDelimiter, timeout=5000):
     buffer will dump, potentially resulting in data loss.
 
     Args:
-        port (str): The previously configured serial port to use.
-        delimiter (str): The delimiter to read until.
-        includeDelimiter (bool): If True, the delimiter will be included
-            in the return value.
-        timeout (int): Optional timeout in milliseconds. Default is
-            5000.
+        port: The previously configured serial port to use.
+        delimiter: The delimiter to read until.
+        includeDelimiter: If True, the delimiter will be included in the
+            return value.
+        timeout: Optional timeout in milliseconds. Default is 5000.
 
     Returns:
-        str: Returns a String containing all 8-bit ASCII characters read
-            until the delimiter was reached, and including the delimiter
-            if the "includeDelimiter" parameter was True.
+        A String containing all 8-bit ASCII characters read until the
+        delimiter was reached, and including the delimiter if the
+        "includeDelimiter" parameter was True.
     """
     print(port, delimiter, includeDelimiter, timeout)
     return ""
 
 
 def sendBreak(port, millis):
+    # type: (Union[str, unicode], int) -> None
     """Sends a break signal for approximately millis milliseconds.
 
     Args:
-        port (str): The name of the serial port, e.g., "COM1" or
-            "dev/ttyS0".
-        millis (int): Approximate length of break signal, in
-            milliseconds.
+        port: The name of the serial port, e.g., "COM1" or "dev/ttyS0".
+        millis: Approximate length of break signal, in milliseconds.
     """
     print(port, millis)
 
 
-def write(port, toWrite, encoding="utf-8"):
+def write(
+    port,  # type: Union[str, unicode]
+    toWrite,  # type: Union[str, unicode]
+    encoding="utf-8",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Write a String to a serial port using the platforms default
     character encoding.
 
     Args:
-        port (str): The previously configured serial port to use.
-        toWrite (str): The String to write.
+        port: The previously configured serial port to use.
+        toWrite: The String to write.
         encoding (str): Encoding to use when constructing the string.
             Defaults to the platform's default character set. Optional.
     """
@@ -336,12 +365,13 @@ def write(port, toWrite, encoding="utf-8"):
 
 
 def writeBytes(port, toWrite, timeout=5000):
+    # type: (Union[str, unicode], Any, Optional[int]) -> None
     """Write a byte[] to a serial port.
 
     Args:
-        port (str): The previously configured serial port to use.
-        toWrite (object): The byte[] to write.
-        timeout (int): Optional timeout in milliseconds. Default is
-            5000. Optional.
+        port: The previously configured serial port to use.
+        toWrite: The byte[] to write.
+        timeout: Optional timeout in milliseconds. Default is 5000.
+            Optional.
     """
     print(port, toWrite, timeout)

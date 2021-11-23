@@ -20,7 +20,7 @@ fail-on=
 fail-under=10.0
 
 # Files or directories to be skipped. They should be base names, not paths.
-ignore=CVS
+ignore=
 
 # Add files or directories matching the regex patterns to the ignore-list. The
 # regex matches against paths.
@@ -49,6 +49,10 @@ load-plugins=
 
 # Pickle collected data for later comparisons.
 persistent=yes
+
+# Min Python version to use for version dependend checks. Will default to the
+# version used to run pylint.
+py-version=3.10
 
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
@@ -285,7 +289,7 @@ indent-after-paren=4
 indent-string="    "
 
 # Maximum number of characters on a single line.
-max-line-length=79
+max-line-length=120
 
 # Maximum number of lines in a module.
 max-module-lines=1500
@@ -400,7 +404,7 @@ good-names-rgxs=
 include-naming-hint=no
 
 # Naming style matching correct inline iteration names.
-inlinevar-naming-style=snake_case
+inlinevar-naming-style=any
 
 # Regular expression matching correct inline iteration names. Overrides
 # inlinevar-naming-style.
@@ -521,7 +525,7 @@ valid-metaclass-classmethod-first-arg=cls
 
 [DESIGN]
 
-# List of qualified class names to ignore when countint class parents (see
+# List of qualified class names to ignore when counting class parents (see
 # R0901)
 ignored-parents=
 

@@ -4,7 +4,7 @@ The following functions give you access to view various Gateway and
 Client data, as well as interact with other various systems.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "audit",
@@ -54,9 +54,9 @@ import json
 import os
 import platform
 import sys
+from typing import Any, Callable, Dict, List, Optional, Union
 
 import system.__version__ as version
-import system.date
 import system.security
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.model import Version
@@ -64,53 +64,52 @@ from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
     SystemUtilities,
 )
-from com.inductiveautomation.ignition.common.script.message import Request
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from java.awt import Toolkit
 from java.lang import Thread
 from java.util import Date
 
+PyDataSet = DatasetUtilities.PyDataSet
+RequestImpl = SystemUtilities.RequestImpl
+
 
 def audit(
-    action=None,
-    actionValue=None,
-    auditProfile="",
-    actor=None,
-    actorHost="localhost",
-    originatingSystem=None,
-    eventTimestamp=None,
-    originatingContext=4,
-    statusCode=0,
+    action=None,  # type: Optional[Union[str, unicode]]
+    actionValue=None,  # type: Optional[Union[str, unicode]]
+    auditProfile="",  # type: Optional[Union[str, unicode]]
+    actor=None,  # type: Optional[Union[str, unicode]]
+    actorHost="localhost",  # type: Optional[Union[str, unicode]]
+    originatingSystem=None,  # type: Optional[List[Union[str, unicode]]]
+    eventTimestamp=None,  # type: Optional[Date]
+    originatingContext=4,  # type: Optional[int]
+    statusCode=0,  # type: Optional[int]
 ):
+    # type: (...) -> None
     """Inserts a record into an audit profile.
 
     Args:
-        action (str): What happened. Default is null. Optional.
-        actionValue (str): What the action happened to. Default is null.
+        action: What happened. Default is null. Optional.
+        actionValue: What the action happened to. Default is null.
             Optional.
-        auditProfile (str): Where the audit record should be stored.
-            Defaults to the project's audit profile (if specified), or
-            the gateway audit profile if calling in the gateway or
+        auditProfile: Where the audit record should be stored. Defaults
+            to the project's audit profile (if specified), or the
+            gateway audit profile if calling in the gateway or
             perspective scope. Optional.
-        actor (str): Who made the change. Will be populated
-            automatically if omitted, assuming there is a known user.
-            Optional.
-        actorHost (str): The hostname of whoever made the change. Will
-            be populated automatically if omitted.
-        originatingSystem (object): An even-length list providing
-            additional context to the audit event. Optional.
-        eventTimestamp (Date): When the event happened. Will be set
-            to the current time if omitted. Optional.
-        originatingContext (int): What scope the event originated from:
-            1 means Gateway, 2 means Designer, 4 means Client. Will be
-            set automatically if omitted. Optional.
-        statusCode (int): A quality code to attach to the object.
-            Defaults to 0, indicating no special meaning. Optional.
+        actor: Who made the change. Will be populated automatically if
+            omitted, assuming there is a known user. Optional.
+        actorHost: The hostname of whoever made the change. Will be
+            populated automatically if omitted.
+        originatingSystem: An even-length list providing additional
+            context to the audit event. Optional.
+        eventTimestamp: When the event happened. Will be set to the
+            current time if omitted. Optional.
+        originatingContext: What scope the event originated from: 1
+            means Gateway, 2 means Designer, 4 means Client. Will be set
+            automatically if omitted. Optional.
+        statusCode: A quality code to attach to the object. Defaults to
+            0, indicating no special meaning. Optional.
     """
     actor = system.security.getUsername() if actor is None else actor
-    eventTimestamp = (
-        system.date.now() if eventTimestamp is None else eventTimestamp
-    )
     print(
         action,
         actionValue,
@@ -125,6 +124,7 @@ def audit(
 
 
 def beep():
+    # type: () -> None
     """Tells the computer to make a "beep" sound."""
     platforms = {
         "linux1": "Linux",
@@ -152,6 +152,7 @@ def beep():
 
 
 def execute(commands):
+    # type: (List[Union[str, unicode]]) -> None
     """Executes the given commands via the operating system, in a
     separate process.
 
@@ -160,13 +161,14 @@ def execute(commands):
     to that command.
 
     Args:
-        commands (list[str]): A list containing the command (1st entry)
-            and associated arguments (remaining entries) to execute.
+        commands: A list containing the command (1st entry) and
+            associated arguments (remaining entries) to execute.
     """
     print(commands)
 
 
 def exit(force=False):
+    # type: (Optional[bool]) -> None
     """Exits the running client, as long as the shutdown intercept
     script doesn't cancel the shutdown event.
 
@@ -175,35 +177,38 @@ def exit(force=False):
     You can use system.security.logout() to return to the login screen.
 
     Args:
-        force (bool): If True (1), the shutdown-intercept script will be
+        force: If True (1), the shutdown-intercept script will be
             skipped. Default is False (0). Optional.
     """
     print(force)
 
 
 def getAvailableLocales():
-    """Returns a collection of strings representing the Locales added to
-    the Translation Manager, such as 'en' for English.
+    # type: () -> List[Union[str, unicode]]
+    """Returns a collection of strings representing the Locales added
+    to the Translation Manager, such as 'en' for English.
 
     Returns:
-        list[str]: A collection of strings representing the Locales
-            added to the Translation Manager.
+        A collection of strings representing the Locales added to the
+        Translation Manager.
     """
-    return ["en"]
+    return ["en_US", "es_MX"]
 
 
 def getAvailableTerms():
+    # type: () -> List[Union[str, unicode]]
     """Returns a collection of available terms defined in the
     translation system.
 
     Returns:
-         list[str]: A collection of all of the terms available from the
-            Translation Manager.
+         A collection of all of the terms available from the Translation
+         Manager.
     """
     return ["term1", "term2"]
 
 
 def getClientId():
+    # type: () -> Union[str, unicode]
     """Returns a hex-string that represents a number unique to the
     running client's session.
 
@@ -211,13 +216,14 @@ def getClientId():
     clients.
 
     Returns:
-        str: A special code representing the client's session in a
-            unique way.
+        A special code representing the client's session in a unique
+        way.
     """
     return "92247003"
 
 
 def getConnectTimeout():
+    # type: () -> int
     """Returns the connect timeout in milliseconds for all
     client-to-gateway communication.
 
@@ -226,48 +232,53 @@ def getConnectTimeout():
     seconds).
 
     Returns:
-        int: The current connect timeout, in milliseconds. Default is
-            10,000 (ten seconds).
+        The current connect timeout, in milliseconds. Default is 10,000
+        (ten seconds).
     """
     return 10000
 
 
 def getConnectionMode():
+    # type: () -> int
     """Retrieves this client session's current connection mode.
 
     3 is read/write, 2 is read-only, and 1 is disconnected.
 
     Returns:
-        int: The current connection mode for the client.
+        The current connection mode for the client.
     """
     return 3
 
 
 def getEdition():
+    # type: () -> Union[str, unicode]
     """Returns the "edition" of the Vision client - "standard",
     "limited", or "panel".
 
     Returns:
-        str: The edition of the Vision module that is running the
-            client.
+        The edition of the Vision module that is running the client.
     """
     return "standard"
 
 
 def getGatewayAddress():
+    # type: () -> Union[str, unicode]
     """Returns the address of the gateway that the client is currently
     communicating with.
 
     Returns:
-        str: The address of the Gateway that the client is communicating
-            with.
+        The address of the Gateway that the client is communicating
+        with.
     """
     return "http://localhost:8088/"
 
 
 def getGatewayStatus(
-    gatewayAddress, connectTimeoutMillis=None, socketTimeoutMillis=None
+    gatewayAddress,  # type: Union[str, unicode]
+    connectTimeoutMillis=None,  # type: Optional[int]
+    socketTimeoutMillis=None,  # type: Optional[int]
 ):
+    # type: (...) -> Union[str, unicode]
     """Returns a string that indicates the status of the Gateway.
 
     A status of RUNNING means that the Gateway is fully functional.
@@ -275,23 +286,24 @@ def getGatewayStatus(
     the string.
 
     Args:
-        gatewayAddress (str): The gateway address to ping, in the form
-            of ADDR:PORT/main.
-        connectTimeoutMillis (int): The maximum time in milliseconds to
+        gatewayAddress: The gateway address to ping, in the form of
+            ADDR:PORT/main.
+        connectTimeoutMillis: The maximum time in milliseconds to
             attempt to initially contact a Gateway. Optional.
-        socketTimeoutMillis (int): The maximum time in milliseconds to
-            wait for a response from a Gateway after initial connection
-            has been established. Optional.
+        socketTimeoutMillis: The maximum time in milliseconds to wait
+            for a response from a Gateway after initial connection has
+            been established. Optional.
 
     Returns:
-        str: A string that indicates the status of the Gateway. A status
-            of RUNNING means that the Gateway is fully functional.
+        A string that indicates the status of the Gateway. A status of
+        RUNNING means that the Gateway is fully functional.
     """
     print(gatewayAddress, connectTimeoutMillis, socketTimeoutMillis)
     return "RUNNING"
 
 
 def getGlobals():
+    # type: () -> Dict[Union[str, unicode], Any]
     """This method returns a dictionary that provides access to the
     legacy global namespace.
 
@@ -303,58 +315,64 @@ def getGlobals():
     scripts that used the old meaning of the 'global' keyword.
 
     Returns:
-        dict: The global namespace, as a dictionary.
+        The global namespace, as a dictionary.
     """
-    return {}
+    return {"foo": "bar"}
 
 
 def getInactivitySeconds():
+    # type: () -> long
     """Returns the number of seconds since any keyboard or mouse
     activity.
 
+    Note - this function will always return zero in the Designer.
+
     Returns:
-        long: The number of seconds the mouse and keyboard have been
-            inactive for this client.
+        The number of seconds the mouse and keyboard have been inactive
+        for this client.
     """
-    long_instance = int if sys.version_info[0] == 3 else long
-    return long_instance(0)
+    return long(0)
 
 
 def getLocale():
+    # type: () -> Union[str, unicode]
     """Returns the current string representing the user's Locale, such
     as 'en' for English.
 
     Returns:
-        str: The current Locale.
+        The current Locale.
     """
-    return "en"
+    return "en_US"
 
 
 def getLogger(name):
+    # type: (Union[str, unicode]) -> LoggerEx
     """Returns a Logger object that can be used to log messages to the
     console.
 
     Args:
-        name (str): The name of a logger to create.
+        name: The name of a logger to create.
 
     Returns:
-        LoggerEx: A new Logger object used to log informational and
-            error messages.
+        A new Logger object used to log informational and error
+        messages.
     """
     print(name)
     return LoggerEx()
 
 
 def getProjectName():
+    # type: () -> Union[str, unicode]
     """Returns the name of the project that is currently being run.
 
     Returns:
-        str: The name of the currently running project.
+        The name of the currently running project.
     """
     return "MyProject"
 
 
 def getProperty(propertyName):
+    # type: (Union[str, unicode]) -> Optional[Union[str, unicode]]
     r"""Retrieves the value of a named system property.
 
     Some of the available properties are:
@@ -370,12 +388,11 @@ def getProperty(propertyName):
         user.name. User's account name.
 
     Args:
-        propertyName (str): The name of the system property to get.
+        propertyName: The name of the system property to get.
 
     Returns:
-        str: The value for the named property.
+        The value for the named property.
     """
-    # Initialize variables.
     ret = None
 
     if propertyName == "file.separator":
@@ -389,7 +406,7 @@ def getProperty(propertyName):
     elif propertyName == "os.version":
         ret = platform.release()
     elif propertyName == "user.home":
-        ret = os.path.expanduser("~")
+        ret = os.path.expanduser(str("~"))
     elif propertyName == "user.name":
         ret = getpass.getuser()
 
@@ -397,6 +414,7 @@ def getProperty(propertyName):
 
 
 def getReadTimeout():
+    # type: () -> int
     """Returns the read timeout in milliseconds for all
     client-to-gateway communication.
 
@@ -404,13 +422,17 @@ def getReadTimeout():
     operation to complete. The default is 60,000 ms (1 minute).
 
     Returns:
-         int: The current read timeout, in milliseconds. Default is
-            60,000 ms (one minute).
+         The current read timeout, in milliseconds. Default is 60,000 ms
+         (one minute).
     """
     return 60000
 
 
-def getSessionInfo(usernameFilter=None, projectFilter=None):
+def getSessionInfo(
+    usernameFilter=None,  # type: Optional[Union[str, unicode]]
+    projectFilter=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> PyDataSet
     """Returns a PyDataSet holding information about all of the sessions
     (logged-in users) on the Gateway.
 
@@ -418,20 +440,20 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
     the username or the username and the project returned.
 
     Args:
-        usernameFilter (str): A regular-expression based filter string
-            to restrict the list by username. Optional.
-        projectFilter (str): A regular-expression based filter string to
+        usernameFilter: A regular-expression based filter string to
+            restrict the list by username. Optional.
+        projectFilter: A regular-expression based filter string to
             restrict the list by project. Optional.
 
     Returns:
-        PyDataSet: A dataset representing the Gateway's current
-            sessions.
+        A dataset representing the Gateway's current sessions.
     """
     print(usernameFilter, projectFilter)
-    return DatasetUtilities.PyDataSet()
+    return PyDataSet()
 
 
 def getSystemFlags():
+    # type: () -> int
     """Returns an integer that represents a bit field containing
     information about the currently running system.
 
@@ -440,27 +462,33 @@ def getSystemFlags():
     are currently active.
 
     Returns:
-        int: A total of all the bits that are currently active. A full
-            screen client launched from the gateway webpage with no SSL
-            will have a value of 44 (Fullscreen flag + Webstart Flag +
-            Client Flag).
+        A total of all the bits that are currently active. A full screen
+        client launched from the gateway webpage with no SSL will have a
+        value of 44 (Fullscreen flag + Webstart Flag + Client Flag).
     """
     return 1
 
 
 def getVersion():
+    # type: () -> Version
     """Returns the Ignition version number that is currently being run.
 
     Returns:
-        Version: The currently running Ignition version number. as a
-            Version object.
+        The currently running Ignition version number, as a Version
+        object.
     """
     major, minor, rev = [int(i) for i in version.__version__.split(".")]
     build = int(version.__build__)
     return Version(major=major, minor=minor, rev=rev, build=build)
 
 
-def invokeAsynchronous(function, args=None, kwargs=None, description=None):
+def invokeAsynchronous(
+    function,  # type: Callable
+    args=None,  # type: Optional[List[Any]]
+    kwargs=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    description=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> Thread
     """Invokes (calls) the given Python function on a different thread.
 
     This means that calls to invokeAsynchronous will return immediately,
@@ -471,32 +499,33 @@ def invokeAsynchronous(function, args=None, kwargs=None, description=None):
     time.
 
     Args:
-        function (object): A Python function object that will get
-            invoked with no arguments in a separate thread.
+        function: A Python function object that will get invoked with no
+            arguments in a separate thread.
         args: A list or tuple of Python objects that will be provided to
             the called function as arguments. Equivalent to the *
             operator. Optional.
         kwargs: A dictionary of keyword argument names to Python object
             values that will be provided to the called function as
             keyword arguments. Equivalent to the ** operator. Optional.
-        description (str): A description to use for the asynchronous
-            thread. Will be displayed on the current scope's diagnostic
-            view for scripts. For Vision and the Designer, this would be
-            the "Scripts" tab of the Diagnostics popup. For Perspective
-            and the Gateway scope, this would be the Gateway's Running
+        description: A description to use for the asynchronous thread.
+            Will be displayed on the current scope's diagnostic view for
+            scripts. For Vision and the Designer, this would be the
+            "Scripts" tab of the Diagnostics popup. For Perspective and
+            the Gateway scope, this would be the Gateway's Running
             Scripts status page. Optional.
 
     Returns:
-        Thread: The executing thread.
+        The executing thread.
     """
     print(function, args, kwargs, description)
     return Thread()
 
 
 def invokeLater(function, delay=0):
+    # type: (Callable, Optional[int]) -> None
     """Invokes (calls) the given Python function object after all of the
-    currently processing and pending events are done being processed, or
-    after a specified delay.
+    currently processing and pending events are done being processed,
+    or after a specified delay.
 
     The function will be executed on the GUI, or event dispatch, thread.
     This is useful for events like propertyChange events, where the
@@ -507,29 +536,27 @@ def invokeLater(function, delay=0):
     pending events are processed plus the duration of that time.
 
     Args:
-        function (object): A Python function object that will be invoked
-            later, on the GUI, or event-dispatch, thread with no
-            arguments.
-        delay (int): A delay, in milliseconds, to wait before the
-            function is invoked. The default is 0, which means it will
-            be invoked after all currently pending events are processed.
-            Optional.
+        function: A Python function object that will be invoked later,
+            on the GUI, or event-dispatch, thread with no arguments.
+        delay: A delay, in milliseconds, to wait before the function is
+            invoked. The default is 0, which means it will be invoked
+            after all currently pending events are processed. Optional.
     """
     print(function, delay)
 
 
 def jsonDecode(jsonString):
+    # type: (Union[str, unicode]) -> Any
     """Takes a json String and converts it into a Python object such as
     a list or a dict.
 
     If the input is not valid json, a string is returned.
 
     Args:
-        jsonString (str): The JSON string to decode into a Python
-            object.
+        jsonString: The JSON string to decode into a Python object.
 
     Returns:
-        dict: The decoded Python object.
+        The decoded Python object.
     """
     return json.loads(jsonString)
 
@@ -539,31 +566,37 @@ def jsonEncode(pyObj, indentFactor=4):
     json string.
 
     Args:
-        pyObj (object): The Python object to encode into JSON such as a
-            Python list or dictionary.
-        indentFactor (int): The number of spaces to add to each level of
+        pyObj: The Python object to encode into JSON such as a Python
+            list or dictionary.
+        indentFactor: The number of spaces to add to each level of
             indentation for prettyprinting. Optional.
 
     Returns:
-        str: The encoded JSON string.
+        The encoded JSON string.
     """
     return json.dumps(pyObj, indent=indentFactor)
 
 
-def modifyTranslation(term, translation, locale="en"):
+def modifyTranslation(
+    term,  # type: Union[str, unicode]
+    translation,  # type: Union[str, unicode]
+    locale="es_MX",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """This function allows you to add or modify a global translation.
 
     Args:
-        term (str): The key term to translate.
-        translation (str): The translated value to store.
-        locale (str): If specified, the locale code (such as "es")
-            identifying the language of the translation. Otherwise, the
-            currently set language is used. Optional.
+        term: The key term to translate.
+        translation: The translated value to store.
+        locale: If specified, the locale code (such as "es") identifying
+            the language of the translation. Otherwise, the currently
+            set language is used. Optional.
     """
     print(term, translation, locale)
 
 
 def playSoundClip(wav, volume=1.0, wait=False):
+    # type: (Any, Optional[float], Optional[bool]) -> None
     """Plays a sound clip from a wav file to the system's default audio
     device.
 
@@ -571,61 +604,58 @@ def playSoundClip(wav, volume=1.0, wait=False):
     raw byte[].
 
     Args:
-        wav (object): A byte list of a wav file or filepath or URL that
+        wav: A byte list of a wav file or filepath or URL that
             represents a wav file.
-        volume (float): The clip's volume, represented as a floating
-            point number between 0.0 and 1.0. Optional.
-        wait (bool): A boolean flag indicating whether or not the call
-            to playSoundClip should wait for the clip to finish before
-            it returns. Optional.
+        volume: The clip's volume, represented as a floating point
+            number between 0.0 and 1.0. Optional.
+        wait: A boolean flag indicating whether or not the call to
+            playSoundClip should wait for the clip to finish before it
+            returns. Optional.
     """
     print(wav, volume, wait)
 
 
 def queryAuditLog(
-    auditProfileName,
-    startDate=None,
-    endDate=None,
-    actorFilter=None,
-    actionFilter=None,
-    targetFilter=None,
-    valueFilter=None,
-    systemFilter=None,
-    contextFilter=None,
+    auditProfileName,  # type: Union[str, unicode]
+    startDate=None,  # type: Optional[Date]
+    endDate=None,  # type: Optional[Date]
+    actorFilter=None,  # type: Optional[Union[str, unicode]]
+    actionFilter=None,  # type: Optional[Union[str, unicode]]
+    targetFilter=None,  # type: Optional[Union[str, unicode]]
+    valueFilter=None,  # type: Optional[Union[str, unicode]]
+    systemFilter=None,  # type: Optional[Union[str, unicode]]
+    contextFilter=None,  # type: Optional[int]
 ):
+    # type: (...) -> BasicDataset
     """Queries an audit profile for audit history.
 
     Returns the results as a dataset.
 
     Args:
-        auditProfileName (str): The name of the audit profile to pull
-            the history from.
-        startDate (Date): The earliest audit event to return. If
-            omitted, the current time - 8 hours will be used. Optional.
-        endDate (Date): The latest audit event to return. If
-            omitted, the current time will be used. Optional.
-        actorFilter (str): A filter string used to restrict the results
-            by actor. Optional.
-        actionFilter (str): A filter string used to restrict the results
-            by action. Optional.
-        targetFilter (str): A filter string used to restrict the results
-            by target. Optional.
-        valueFilter (str): A filter string used to restrict the results
-            by value. Optional.
-        systemFilter (str): A filter string used to restrict the results
-            by system. Optional.
-        contextFilter (int): A bitmask used to restrict the results by
+        auditProfileName: The name of the audit profile to pull the
+            history from.
+        startDate: The earliest audit event to return. If omitted, the
+            current time - 8 hours will be used. Optional.
+        endDate: The latest audit event to return. If omitted, the
+            current time will be used. Optional.
+        actorFilter: A filter string used to restrict the results by
+            actor. Optional.
+        actionFilter: A filter string used to restrict the results by
+            action. Optional.
+        targetFilter: A filter string used to restrict the results by
+            target. Optional.
+        valueFilter: A filter string used to restrict the results by
+            value. Optional.
+        systemFilter: A filter string used to restrict the results by
+            system. Optional.
+        contextFilter: A bitmask used to restrict the results by
             context. 0x01 = Gateway, 0x02 = Designer, 0x04 = Client.
             Optional.
 
     Returns:
-        BasicDataset: A dataset with the audit events from the specified
-            profile that match the filter arguments.
+        A dataset with the audit events from the specified profile that
+        match the filter arguments.
     """
-    endDate = system.date.now() if endDate is None else endDate
-    startDate = (
-        system.date.addHours(endDate, -8) if startDate is None else startDate
-    )
     print(
         auditProfileName,
         startDate,
@@ -640,7 +670,13 @@ def queryAuditLog(
     return BasicDataset()
 
 
-def retarget(project, addresses=None, params=None, windows=None):
+def retarget(
+    project,  # type: Union[str, unicode]
+    addresses=None,  # type: Optional[Union[Union[str, unicode], List[Union[str, unicode]]]]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    windows=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """This function allows you to programmatically 'retarget' the
     Client to a different project and/or different Gateway.
 
@@ -663,36 +699,37 @@ def retarget(project, addresses=None, params=None, windows=None):
     _RETARGET_FROM_GATEWAY to the address of the current Gateway.
 
     Args:
-        project (str): The name of the project to retarget to.
-        addresses (object): The address of the Gateway that the project
-            resides on. If omitted, the current Gateway will be used.
-            Format is: host:port. Optional.
-            As of 8.0.8 this can be a list of strings. When using a
-            list, the function will try each address in order, waiting
-            for the timeout period between each address attempt.
-        params (dict): A dictionary of parameters that will be passed to
-            the new project. They will be set as global variables in the
-            new project's Python scripting environment. Optional.
-        windows (list[str]): A list of window paths to use as the
-            startup windows. If omitted, the project's normal startup
-            windows will be opened. If specified, the project's normal
-            startup windows will be ignored, and this list will be used
-            instead. Optional.
+        project: The name of the project to retarget to.
+        addresses: The address of the Gateway that the project resides
+            on. Format is host:port when not using SSL/TLS, or
+            https://host:port when SSL/TLS is enabled on the target
+            gateway. This can be a list of strings. When using a list,
+            the function will try each address in order, waiting for the
+            timeout period between each address attempt. Optional.
+        params: A dictionary of parameters that will be passed to the
+            new project. They will be set as global variables in the new
+            project's Python scripting environment. Optional.
+        windows: A list of window paths to use as the startup windows.
+            If omitted, the project's normal startup windows will be
+            opened. If specified, the project's normal startup windows
+            will be ignored, and this list will be used instead.
+            Optional.
     """
     print(project, addresses, params, windows)
 
 
 def sendMessage(
-    project,
-    messageHandler,
-    payload=None,
-    scope=None,
-    clientSessionId=None,
-    user=None,
-    hasRole=None,
-    hostName=None,
-    remoteServers=None,
+    project,  # type: Union[str, unicode]
+    messageHandler,  # type: Union[str, unicode]
+    payload=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    scope=None,  # type: Optional[Union[str, unicode]]
+    clientSessionId=None,  # type: Optional[Union[str, unicode]]
+    user=None,  # type: Optional[Union[str, unicode]]
+    hasRole=None,  # type: Optional[Union[str, unicode]]
+    hostName=None,  # type: Optional[Union[str, unicode]]
+    remoteServers=None,  # type: Optional[List[Union[str, unicode]]]
 ):
+    # type: (...) -> List[Union[str, unicode]]
     """This function sends a message to clients running under the
     Gateway, or to a project within the Gateway itself.
 
@@ -703,36 +740,34 @@ def sendMessage(
     dialogs.
 
     Args:
-        project (str): The name of the project containing the message
-            handler.
-        messageHandler (str): The name of the message handler that will
-            fire upon receiving a message.
-        payload (dict): A PyDictionary which will get passed to the
-            message handler. Use "payload" in the message handler to
-            access dictionary variables. Optional.
-        scope (str): Limits the scope of the message delivery to "C"
+        project: The name of the project containing the message handler.
+        messageHandler: The name of the message handler that will fire
+            upon receiving a message.
+        payload: A PyDictionary which will get passed to the message
+            handler. Use "payload" in the message handler to access
+            dictionary variables. Optional.
+        scope: Limits the scope of the message delivery to "C"
             (clients), "G" (Gateway), or "CG" for clients and the
             Gateway. Defaults to "C" if the user name, role or host name
             parameters are set, and to "CG" if none of these parameters
             are set. Optional.
-        clientSessionId (str): Limits the message delivery to a client
-            with the specified session ID. Optional.
-        user (str): Limits the message delivery to clients where the
-            specified user has logged in. Optional.
-        hasRole (str): Limits the message delivery to any client where
-            the logged in user has the specified user role. Optional.
-        hostName (str): Limits the message delivery to the client that
-            has the specified network host name. Optional.
-        remoteServers (list[str]): A list of Strings representing
-            Gateway Server names. The message will be delivered to each
-            server in the list. Upon delivery, the message is
-            distributed to the local Gateway and clients as per the
-            other parameters. Optional.
+        clientSessionId: Limits the message delivery to a client with
+            the specified session ID. Optional.
+        user: Limits the message delivery to clients where the specified
+            user has logged in. Optional.
+        hasRole: Limits the message delivery to any client where the
+            logged in user has the specified user role. Optional.
+        hostName: Limits the message delivery to the client that has the
+            specified network host name. Optional.
+        remoteServers: A list of Strings representing Gateway Server
+            names. The message will be delivered to each server in the
+            list. Upon delivery, the message is distributed to the local
+            Gateway and clients as per the other parameters. Optional.
 
     Returns:
-        list[str]: A List of Strings containing information about each
-            system that was selected for delivery, where each List item
-            is comma-delimited.
+        A List of Strings containing information about each system that
+        was selected for delivery, where each List item is
+        comma-delimited.
     """
     print(
         project,
@@ -745,16 +780,18 @@ def sendMessage(
         hostName,
         remoteServers,
     )
+    return ["information about the system"]
 
 
 def sendRequest(
-    project,
-    messageHandler,
-    payload=None,
-    hostName=None,
-    remoteServer=None,
-    timeoutSec=None,
+    project,  # type: Union[str, unicode]
+    messageHandler,  # type: Union[str, unicode]
+    payload=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    hostName=None,  # type: Optional[Union[str, unicode]]
+    remoteServer=None,  # type: Optional[Union[str, unicode]]
+    timeoutSec=None,  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> Any
     """This function sends a message to the Gateway, working in a
     similar manner to the sendMessage function, except sendRequest
     expects a response to the message.
@@ -767,25 +804,24 @@ def sendRequest(
     "Message" section of the Gateway Event Script configuration dialog.
 
     Args:
-        project (str): The name of the project containing the message
-            handler.
-        messageHandler (str): The name of the message handler that will
-            fire upon receiving a message.
-        payload (dict): A PyDictionary which will get passed to the
-            message handler. Use "payload" in the message handler to
-            access dictionary variables. Optional.
-        hostName (str): Limits the message delivery to the client that
-            has the specified network host name. Optional.
-        remoteServer (str): A string representing a target Gateway
-            Server name. The message will be delivered to the remote
-            Gateway over the Gateway Network. Upon delivery, the message
-            is distributed to the local Gateway and clients as per the
+        project: The name of the project containing the message handler.
+        messageHandler: The name of the message handler that will fire
+            upon receiving a message.
+        payload: A PyDictionary which will get passed to the message
+            handler. Use "payload" in the message handler to access
+            dictionary variables. Optional.
+        hostName: Limits the message delivery to the client that has the
+            specified network host name. Optional.
+        remoteServer: A string representing a target Gateway Server
+            name. The message will be delivered to the remote Gateway
+            over the Gateway Network. Upon delivery, the message is
+            distributed to the local Gateway and clients as per the
             other parameters. Optional.
-        timeoutSec (str): The number of seconds before the sendRequest
-            call times out. Optional.
+        timeoutSec: The number of seconds before the sendRequest call
+            times out. Optional.
 
     Returns:
-        object: The return from the message handler.
+        The return from the message handler.
     """
     print(
         project,
@@ -798,15 +834,16 @@ def sendRequest(
 
 
 def sendRequestAsync(
-    project,
-    messageHandler,
-    payload=None,
-    hostName=None,
-    remoteServer=None,
-    timeoutSec=None,
-    onSuccess=None,
-    onError=None,
+    project,  # type: Union[str, unicode]
+    messageHandler,  # type: Union[str, unicode]
+    payload=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    hostName=None,  # type: Optional[Union[str, unicode]]
+    remoteServer=None,  # type: Optional[Union[str, unicode]]
+    timeoutSec=None,  # type: Optional[int]
+    onSuccess=None,  # type: Optional[Callable]
+    onError=None,  # type: Optional[Callable]
 ):
+    # type: (...) -> RequestImpl
     """This function sends a message to the Gateway and expects a
     response.
 
@@ -815,34 +852,32 @@ def sendRequestAsync(
     handle for it.
 
     Args:
-        project (str): The name of the project containing the message
-            handler.
-        messageHandler (str): The name of the message handler that will
-            fire upon receiving a message.
-        payload (dict): A PyDictionary which will get passed to the
-            message handler. Use "payload" in the message handler to
-            access dictionary variables. Optional.
-        hostName (str): Limits the message delivery to the client that
-            has the specified network host name. Optional.
-        remoteServer (str): A string representing the target Gateway
-            Server name. The message will be delivered to the remote
-            Gateway over the Gateway Network. Upon delivery, the message
-            is distributed to the local Gateway and clients as per the
+        project: The name of the project containing the message handler.
+        messageHandler: The name of the message handler that will fire
+            upon receiving a message.
+        payload: A PyDictionary which will get passed to the message
+            handler. Use "payload" in the message handler to access
+            dictionary variables. Optional.
+        hostName: Limits the message delivery to the client that has the
+            specified network host name. Optional.
+        remoteServer: A string representing the target Gateway Server
+            name. The message will be delivered to the remote Gateway
+            over the Gateway Network. Upon delivery, the message is
+            distributed to the local Gateway and clients as per the
             other parameters. Optional.
-        timeoutSec (int): The number of seconds before the sendRequest
-            call times out. Optional.
-        onSuccess (object): Should take one argument, which will be the
-            result from the message handler. Callback functions will be
+        timeoutSec: The number of seconds before the sendRequest call
+            times out. Optional.
+        onSuccess: Should take one argument, which will be the result
+            from the message handler. Callback functions will be
             executed on the GUI thread, similar to
             system.util.invokeLater. Optional.
-        onError (object): Should take one argument, which will be the
-            exception encountered. Callback functions will be executed
-            on the GUI thread, similar to system.util.invokeLater.
-            Optional.
+        onError: Should take one argument, which will be the exception
+            encountered. Callback functions will be executed on the GUI
+            thread, similar to system.util.invokeLater. Optional.
 
     Returns:
-        Request: The Request object that can be used while waiting for
-            the message handler callback.
+        The Request object that can be used while waiting for the
+        message handler callback.
     """
     print(
         project,
@@ -854,22 +889,24 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return SystemUtilities.RequestImpl(1000)
+    return RequestImpl(1000)
 
 
 def setConnectTimeout(connectTimeout):
+    # type: (int) -> None
     """Sets the connect timeout for client-to-gateway communication.
 
     Specified in milliseconds.
 
     Args:
-        connectTimeout (int): The new connect timeout, specified in
+        connectTimeout: The new connect timeout, specified in
             milliseconds.
     """
     print(connectTimeout)
 
 
 def setConnectionMode(mode):
+    # type: (int) -> None
     """Sets the connection mode for the client session.
 
     Normally a client runs in mode 3, which is read-write. You may wish
@@ -880,82 +917,93 @@ def setConnectionMode(mode):
     all tag and query features will not work.
 
     Args:
-        mode (int): The new connection mode. 1 = Disconnected,
-            2 = Read-only, 3 = Read/Write.
+        mode: The new connection mode. 1 = Disconnected, 2 = Read-only,
+            3 = Read/Write.
     """
     print(mode)
 
 
 def setLocale(locale):
+    # type: (Union[str, unicode]) -> None
     """Sets the user's current Locale.
 
     Any valid Java locale code (case-insensitive) can be used as a
     parameter, including ones that have not yet been added to the
-    Translation Manager. An invalid locale code will cause an Illegal
-    Argument Exception.
+    Translation Manager.
 
     Args:
-        locale (str): A locale code, such as 'en_US' for US English.
+        locale: A locale code, such as 'en_US' for US English.
+
+    Raises:
+        IllegalArgumentException: If passed an invalid local code.
     """
     print(locale)
 
 
 def setLoggingLevel(loggerName, loggerLevel):
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Sets the logging level on the given logger.
 
     This can be a logger you create, or a logger already defined in the
     system.
 
     Args:
-        loggerName (str): The unique name of the logger to change the
-            logging level on, for example "Tags.Client".
-        loggerLevel (str): The level you want to change to logger to:
-            "trace", "debug", "info", "warn" or "error".
+        loggerName: The unique name of the logger to change the logging
+            level on, for example "Tags.Client".
+        loggerLevel: The level you want to change to logger to: "trace",
+            "debug", "info", "warn" or "error".
     """
     print(loggerName, loggerLevel)
 
 
 def setReadTimeout(readTimeout):
+    # type: (int) -> None
     """Sets the read timeout for client-to-gateway communication.
 
     Specified in milliseconds.
 
     Args:
-        readTimeout (int): The new read timeout, specified in
+        readTimeout: The new read timeout, specified in
             milliseconds.
     """
     print(readTimeout)
 
 
 def threadDump():
+    # type: () -> Union[str, unicode]
     """Creates a thread dump of the current running JVM.
 
     Returns:
-        str: The dump of the current running JVM.
+        The dump of the current running JVM.
     """
     return "Ignition version: {}...".format(getVersion())
 
 
-def translate(term, locale=None, strict=False):
+def translate(
+    term,  # type: Union[str, unicode]
+    locale=None,  # type: Optional[Union[str, unicode]]
+    strict=False,  # type: Optional[bool]
+):
+    # type: (...) -> Union[str, unicode]
     """This function allows you to retrieve the global translation of a
     term from the translation database using the current locale.
 
     Args:
-        term (str): The term to look up.
-        locale (str): Which locale to translate against. Useful when
-            there are multiple locales defined for a single term. If
-            omitted, the function attempts to use the current locale (as
-            defined by the client, session, or Designer). Optional.
-        strict (bool): If False, the function will return the passed
-            term (param 1) if it could not find a defined translation
-            for the locale: meaning, if you pass a term that hasn't been
+        term: The term to look up.
+        locale: Which locale to translate against. Useful when there are
+            multiple locales defined for a single term. If omitted, the
+            function attempts to use the current locale (as defined by
+            the client, session, or Designer). Optional.
+        strict: If False, the function will return the passed term
+            (param 1) if it could not find a defined translation for the
+            locale: meaning, if you pass a term that hasn't been
             configured, the function will just send the term back to
             you. If True, then the function will return a None when it
             fails to find a defined translation. Default is False.
             Optional.
 
     Returns:
-        str: The translated term.
+        The translated term.
     """
     print(term, locale, strict)
     return term

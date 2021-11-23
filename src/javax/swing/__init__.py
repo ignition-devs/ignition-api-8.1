@@ -1,8 +1,4 @@
-"""Provides a set of "lightweight" (all-Java language) components that,
-to the maximum degree possible, work the same on all platforms.
-"""
-
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "JComponent",
@@ -48,7 +44,6 @@ class JLabel(JComponent):
     """A display area for a short text string or an image, or both."""
 
     def __init__(self, *args):
-        """Creates a JLabel instance."""
         pass
 
 
@@ -89,27 +84,6 @@ class JOptionPane(JComponent):
         messageType=None,
         icon=None,
     ):
-        """Asks a confirming question, like yes/no/cancel.
-
-        Args:
-            parentComponent (Component): Determines the Frame in which
-                the dialog is displayed; if None, or if the
-                parentComponent has no Frame, a default Frame is used.
-            message (object): The object to display.
-            title (str): The title string for the dialog. Optional.
-            optionType (int): An int designating the options available
-                on the dialog: YES_NO_OPTION, YES_NO_CANCEL_OPTION, or
-                OK_CANCEL_OPTION. Optional.
-            messageType (int): An integer designating the kind of
-                message this is; primarily used to determine the icon
-                from the pluggable Look and Feel: ERROR_MESSAGE,
-                INFORMATION_MESSAGE, WARNING_MESSAGE, QUESTION_MESSAGE,
-                or PLAIN_MESSAGE. Optional.
-            icon (Icon): The icon to display in the dialog. Optional.
-
-        Returns:
-            int: An integer indicating the option selected by the user.
-        """
         print(parentComponent, message, title, optionType, messageType, icon)
         return JOptionPane.YES_OPTION
 
@@ -123,27 +97,6 @@ class JOptionPane(JComponent):
         selectionValues=None,
         initialSelectionValue=None,
     ):
-        """Prompt for some input.
-
-        Args:
-            parentComponent (Component): Determines the Frame in which
-                the dialog is displayed; if None, or if the
-                parentComponent has no Frame, a default Frame is used.
-            message (object): The object to display.
-            title (str): The title string for the dialog. Optional.
-            messageType (int): The type of message to be displayed:
-                ERROR_MESSAGE, INFORMATION_MESSAGE, WARNING_MESSAGE,
-                QUESTION_MESSAGE, or PLAIN_MESSAGE. Optional.
-            icon (Icon): The icon to display in the dialog. Optional.
-            selectionValues (object): An array of Objects that gives the
-                possible selections. Optional.
-            initialSelectionValue (object): The value used to initialize
-                the input field. Optional.
-
-        Returns:
-            object: An integer indicating the option selected by the
-                user.
-        """
         print(
             parentComponent,
             message,
@@ -159,19 +112,6 @@ class JOptionPane(JComponent):
     def showMessageDialog(
         parentComponent, message, title=None, messageType=None, icon=None
     ):
-        """Tell the user about something that has happened.
-
-        Args:
-            parentComponent (Component): Determines the Frame in which
-                the dialog is displayed; if None, or if the
-                parentComponent has no Frame, a default Frame is used.
-            message (object): The object to display.
-            title (str): The title string for the dialog. Optional.
-            messageType (int): The type of message to be displayed:
-                ERROR_MESSAGE, INFORMATION_MESSAGE, WARNING_MESSAGE,
-                QUESTION_MESSAGE, or PLAIN_MESSAGE. Optional.
-            icon (Icon): The icon to display in the dialog. Optional.
-        """
         print(parentComponent, message, title, messageType, icon)
 
     @staticmethod
@@ -185,37 +125,6 @@ class JOptionPane(JComponent):
         options=None,
         initialValue=None,
     ):
-        """The Grand Unification of the above three.
-
-        Args:
-            parentComponent (Component): Determines the Frame in which
-                the dialog is displayed; if None, or if the
-                parentComponent has no Frame, a default Frame is used.
-            message (object): The object to display.
-            title (str): The title string for the dialog. Optional.
-            optionType (int): An integer designating the options
-                available on the dialog: DEFAULT_OPTION, YES_NO_OPTION,
-                YES_NO_CANCEL_OPTION, or OK_CANCEL_OPTION. Optional.
-            messageType (int): An integer designating the kind of
-                message this is; primarily used to determine the icon
-                from the pluggable Look and Feel: ERROR_MESSAGE,
-                INFORMATION_MESSAGE, WARNING_MESSAGE, QUESTION_MESSAGE,
-                or PLAIN_MESSAGE. Optional.
-            icon (Icon): The icon to display in the dialog. Optional.
-            options (list): An array of objects indicating the possible
-                choices the user can make; if the objects are
-                components, they are rendered properly; non-String
-                objects are rendered using their toString methods; if
-                this parameter is null, the options are determined by
-                the Look and Feel. Optional.
-            initialValue (object): The object that represents the
-                default selection for the dialog; only meaningful if
-                options is used; can be null. Optional.
-
-        Returns:
-            int: An integer indicating the option chosen by the user, or
-                CLOSED_OPTION if the user closed the dialog.
-        """
         print(
             parentComponent,
             message,
@@ -235,6 +144,18 @@ class JPanel(JComponent):
     pass
 
 
+class JToolTip(JComponent):
+    def getAccessibleContext(self):
+        pass
+
+    def getComponent(self):
+        print(self)
+        return JComponent()
+
+    def getTipText(self):
+        pass
+
+
 class JPopupMenu(JComponent):
     """An implementation of a popup menu -- a small window that pops up
     and displays a series of choices. A JPopupMenu is used for the menu
@@ -245,7 +166,27 @@ class JPopupMenu(JComponent):
     right-clicks in a specified area.
     """
 
-    pass
+    def addAncestorListener(self, listener):
+        pass
+
+    def addNotify(self):
+        pass
+
+    def createToolTip(self):
+        print(self)
+        return JToolTip()
+
+    @staticmethod
+    def getDefaultLocale():
+        pass
+
+    @staticmethod
+    def isLightweightComponent(c):
+        pass
+
+    @staticmethod
+    def setDefaultLocale(l):
+        pass
 
 
 class JTextField(JTextComponent):
@@ -254,5 +195,4 @@ class JTextField(JTextComponent):
     """
 
     def __init__(self, *args):
-        """Constructor."""
         pass

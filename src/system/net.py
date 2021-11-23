@@ -3,7 +3,7 @@
 The following functions give you access to interact with http services.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "getExternalIpAddress",
@@ -20,13 +20,13 @@ __all__ = [
 ]
 
 import socket
+from typing import Any, Callable, Dict, List, Optional, Union
 
-from com.inductiveautomation.ignition.common.script.builtin.http import (
-    JythonHttpClient,
-)
+from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
 
 
 def getExternalIpAddress():
+    # type: () -> Union[str, unicode]
     """Returns the client's IP address, as it is detected by the
     Gateway.
 
@@ -38,14 +38,16 @@ def getExternalIpAddress():
     system.net.getIpAddress.
 
     Returns:
-        str: A text representation of the client's IP address, as
-            detected by the Gateway.
+        A text representation of the client's IP address, as detected by
+        the Gateway.
     """
     return "52.52.32.221"
 
 
 def getHostName():
-    """Returns the host name of the computer that the script was ran on.
+    # type: () -> Union[str, unicode]
+    """Returns the host name of the computer that the script was ran
+    on.
 
     When run in the Gateway scope, returns the Gateway hostname. When
     run in the Client scope, returns the Client hostname. On Windows,
@@ -53,51 +55,53 @@ def getHostName():
     EAST_WING_WORKSTATION or bobs-laptop.
 
     Returns:
-        str: The hostname of the local machine.
+        The hostname of the local machine.
     """
     return socket.gethostname()
 
 
 def getIpAddress():
+    # type: () -> Union[str, unicode]
     """Returns the IP address of the computer the client is running on,
     as it appears to the client.
 
     See also: system.net.getExternalIpAddress().
 
     Returns:
-        str: Returns the IP address of the local machine, as it sees it.
+        Returns the IP address of the local machine, as it sees it.
     """
-    return "127.0.0.1"
+    return socket.gethostbyname(str(getHostName()))
 
 
 def getRemoteServers(runningOnly=True):
+    # type: (Optional[bool]) -> List[Union[str, unicode]]
     """This function returns a List of Gateway Network servers that are
     visible from the local Gateway.
 
     Args:
-        runningOnly (bool): If set to True, only servers on the Gateway
-            Network that are running will be returned. Servers that have
-            lost contact with the Gateway Network will be filtered out.
+        runningOnly: If set to True, only servers on the Gateway Network
+            that are running will be returned. Servers that have lost
+            contact with the Gateway Network will be filtered out.
             Optional.
 
     Returns:
-        list[str]: A List of Strings representing Gateway Network server
-            ids.
+        A List of Strings representing Gateway Network server ids.
     """
     print(runningOnly)
     return []
 
 
 def httpClient(
-    timeout=60000,
-    bypass_cert_validation=True,
-    username=None,
-    password=None,
-    proxy=None,
-    cookie_policy="ACCEPT_ORIGINAL_SERVER",
-    redirect_policy="NORMAL",
-    customizer=None,
+    timeout=60000,  # type: Optional[int]
+    bypass_cert_validation=True,  # type: Optional[bool]
+    username=None,  # type: Optional[Union[str, unicode]]
+    password=None,  # type: Optional[Union[str, unicode]]
+    proxy=None,  # type: Optional[Union[str, unicode]]
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[Union[str, unicode]]
+    redirect_policy="NORMAL",  # type: Optional[Union[str, unicode]]
+    customizer=None,  # type: Optional[Callable]
 ):
+    # type: (...) -> JythonHttpClient
     """Provides a general use object that can be used to send and
     receive HTTP requests.
 
@@ -107,42 +111,42 @@ def httpClient(
     get(), post()) on the JythonHttpClient to actually issue a request.
 
     Args:
-        timeout (int): A value, in milliseconds, to set the client's
-            connect timeout setting to. Defaults to 60000. Optional.
-        bypass_cert_validation (bool): A boolean indicating whether the
-            client should attempt to validate the certificates of remote
+        timeout: A value, in milliseconds, to set the client's connect
+            timeout setting to. Defaults to 60000. Optional.
+        bypass_cert_validation: A boolean indicating whether the client
+            should attempt to validate the certificates of remote
             servers, if connecting via HTTPS/SSL. Defaults to True.
             Optional.
-        username (str): A string indicating the username to use for
+        username: A string indicating the username to use for
             authentication if the remote server requests authentication;
             specifically, by responding with a WWW-Authenticate or
             Proxy-Authenticate header. Only supports Basic
             authentication. If username is specified but not password,
             an empty string will be used for the password in the Basic
             Authentication response. Defaults to None. Optional.
-        password (str): A string indicating the password to use for
+        password: A string indicating the password to use for
             authentication. Defaults to None. Optional.
-        proxy (str): The address of a proxy server, which will be used
-            for HTTP and HTTPS traffic. If a port is not specified as
-            part of that address, it will be assumed from the protocol
-            in the URL, i.e. 80/443. Defaults to None. Optional.
-        cookie_policy (str): A string representing this client's cookie
+        proxy: The address of a proxy server, which will be used for
+            HTTP and HTTPS traffic. If a port is not specified as part
+            of that address, it will be assumed from the protocol in the
+            URL, i.e. 80/443. Defaults to None. Optional.
+        cookie_policy: A string representing this client's cookie
             policy. Accepts values "ACCEPT_ALL", "ACCEPT_NONE", and
             "ACCEPT_ORIGINAL_SERVER". Defaults to
             "ACCEPT_ORIGINAL_SERVER". Optional.
-        redirect_policy (str): A string representing this client's
-            redirect policy. Acceptable values are listed below.
-            Defaults to "Normal". Optional.
-        customizer (object): A reference to a function. This function
-            will be called with one argument (an instance of
+        redirect_policy: A string representing this client's redirect
+            policy. Acceptable values are listed below. Defaults to
+            "Normal". Optional.
+        customizer: A reference to a function. This function will be
+            called with one argument (an instance of
             HttpClient.Builder). The function should operate on that
             builder instance, which allows for customization of the
             created HTTP client. Defaults to None. Optional.
 
     Returns:
-        JythonHttpClient: An object wrapped around an instance of Java's
-            HttpClient class. The httpClient object has methods that can
-            be called to execute HTTP requests against a server.
+        An object wrapped around an instance of Java's HttpClient class.
+        The httpClient object has methods that can be called to execute
+        HTTP requests against a server.
     """
     print(
         timeout,
@@ -158,39 +162,39 @@ def httpClient(
 
 
 def httpDelete(
-    url,
-    contentType=None,
-    connectTimeout=10000,
-    readTimeout=60000,
-    username=None,
-    password=None,
-    headerValues=None,
-    bypassCertValidation=True,
+    url,  # type: Union[str, unicode]
+    contentType=None,  # type: Optional[Union[str, unicode]]
+    connectTimeout=10000,  # type: Optional[int]
+    readTimeout=60000,  # type: Optional[int]
+    username=None,  # type: Optional[Union[str, unicode]]
+    password=None,  # type: Optional[Union[str, unicode]]
+    headerValues=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    bypassCertValidation=True,  # type: Optional[bool]
 ):
+    # type: (...) -> Union[str, unicode]
     """Performs an HTTP DELETE to the given URL.
 
     Args:
-        url (str): The URL to send the request to.
-        contentType (str): The MIME type used in the HTTP 'Content-type'
+        url: The URL to send the request to.
+        contentType: The MIME type used in the HTTP 'Content-type'
             header. Optional.
-        connectTimeout (int): The timeout for connecting to the URL in
+        connectTimeout: The timeout for connecting to the URL in
             milliseconds. Default is 10,000. Optional.
-        readTimeout (int): The read timeout for the operation in
+        readTimeout: The read timeout for the operation in
             milliseconds. Default is 60,000. Optional.
-        username (str): If specified, the call will attempt to
-            authenticate with basic HTTP authentication. Optional.
-        password (str): The password used for basic HTTP authentication,
-            if the username parameter is also present. Optional.
-        headerValues (dict): A dictionary of name/value pairs that will
-            be set in the HTTP header. Optional.
-        bypassCertValidation (bool): If the target address in an HTTPS
-            address, and this parameter is TRUE, the system will bypass
-            all SSL certificate validation. This is not recommended,
-            though is sometimes necessary for self-signed certificates.
-            Optional.
+        username: If specified, the call will attempt to authenticate
+            with basic HTTP authentication. Optional.
+        password: The password used for basic HTTP authentication, if
+            the username parameter is also present. Optional.
+        headerValues: A dictionary of name/value pairs that will be set
+            in the HTTP header. Optional.
+        bypassCertValidation: If the target address in an HTTPS address,
+            and this parameter is TRUE, the system will bypass all SSL
+            certificate validation. This is not recommended, though is
+            sometimes necessary for self-signed certificates. Optional.
 
     Returns:
-        object: The content returned for the DELETE operation.
+        The content returned for the DELETE operation.
     """
     print(
         url,
@@ -202,20 +206,21 @@ def httpDelete(
         headerValues,
         bypassCertValidation,
     )
-    return object
+    return "DELETE"
 
 
 def httpGet(
-    url,
-    connectTimeout=10000,
-    readTimeout=60000,
-    username=None,
-    password=None,
-    headerValues=None,
-    bypassCertValidation=None,
-    useCaches=True,
-    throwOnError=True,
+    url,  # type: Union[str, unicode]
+    connectTimeout=10000,  # type: Optional[int]
+    readTimeout=60000,  # type: Optional[int]
+    username=None,  # type: Optional[Union[str, unicode]]
+    password=None,  # type: Optional[Union[str, unicode]]
+    headerValues=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    bypassCertValidation=None,  # type: Optional[bool]
+    useCaches=True,  # type: Optional[bool]
+    throwOnError=True,  # type: Optional[bool]
 ):
+    # type: (...) -> Union[str, unicode]
     """Retrieves the document at the given URL using the HTTP GET
     protocol.
 
@@ -225,33 +230,31 @@ def httpGet(
     function.
 
     Args:
-        url (str): The URL to retrieve.
-        connectTimeout (int): The timeout for connecting to the URL. In
+        url: The URL to retrieve.
+        connectTimeout: The timeout for connecting to the URL. In
             milliseconds. Default is 10,000. Optional.
-        readTimeout (int): The read timeout for the get operation. In
+        readTimeout: The read timeout for the get operation. In
             milliseconds. Default is 60,000. Optional.
-        username (str): If specified, the call will attempt to
-            authenticate with basic HTTP authentication. Optional.
-        password (str): The password used for basic HTTP authentication,
-            if the username parameter is also present. Optional.
-        headerValues (dict): A dictionary of name/value pairs that will
-            be set in the HTTP header. Optional.
-        bypassCertValidation (bool): If the target address is an HTTPS
-            address, and this parameter is True, the system will bypass
-            all SSL certificate validation. This is not recommended,
-            though is sometimes necessary for self-signed certificates.
-            Optional.
-        useCaches (bool): Will cache the information returned by the
-            httpGet call. If using this for something that constantly
-            updates like an rss feed, it would be better to set this to
-            False. Default is True. Optional.
-        throwOnError (bool): Set to False if you wish to get the error
-            body rather than a Python exception if the GET request
-            returns an error code (non-200 responsive). Default is True.
-            Optional.
+        username: If specified, the call will attempt to authenticate
+            with basic HTTP authentication. Optional.
+        password: The password used for basic HTTP authentication, if
+            the username parameter is also present. Optional.
+        headerValues: A dictionary of name/value pairs that will be set
+            in the HTTP header. Optional.
+        bypassCertValidation: If the target address is an HTTPS address,
+            and this parameter is True, the system will bypass all SSL
+            certificate validation. This is not recommended, though is
+            sometimes necessary for self-signed certificates. Optional.
+        useCaches: Will cache the information returned by the httpGet
+            call. If using this for something that constantly updates
+            like an rss feed, it would be better to set this to False.
+            Default is True. Optional.
+        throwOnError: Set to False if you wish to get the error body
+            rather than a Python exception if the GET request returns an
+            error code (non-200 responsive). Default is True. Optional.
 
     Returns:
-        str: The content found at the given URL.
+        The content found at the given URL.
     """
     print(
         url,
@@ -267,7 +270,8 @@ def httpGet(
     return ""
 
 
-def httpPost(url, *args):
+def httpPost(url, *args, **kwargs):
+    # type: (Union[str, unicode], *Any, **Any) -> Union[str, unicode]
     """Retrieves the document at the given URL using the HTTP POST
     protocol.
 
@@ -278,111 +282,114 @@ def httpPost(url, *args):
     as a string.
 
     Args:
-        url (str): The URL to post to.
+        url: The URL to post to.
         *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
 
     Returns:
-        str: The content returned for the POST operation.
+        The content returned for the POST operation.
     """
-    print(url, args)
+    print(url, args, kwargs)
     return ""
 
 
 def httpPut(url, *args, **kwargs):
+    # type: (Union[str, unicode], *Any, **Any) -> Union[str, unicode]
     """Performs an HTTP PUT to the given URL.
 
     Encodes the given dictionary of parameters using
     "applications/x-www-form-urlencoded" format.
 
     Args:
-        url (str): The URL to send the request to.
+        url: The URL to send the request to.
         *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
 
     Returns:
-        str: The content returned by the PUT operation.
+        The content returned by the PUT operation.
     """
     print(url, args, kwargs)
     return ""
 
 
 def openURL(url, useApplet=False):
+    # type: (Union[str, unicode], Optional[bool]) -> None
     """Opens the given URL or URI scheme outside of the currently
     running Client in whatever application the host operating system
     deems appropriate.
 
     Args:
-        url (str): The URL to open in a web browser.
-        useApplet (bool): If set to True (1), and the client is running
-            as an Applet, then the browser instance that launched the
-            applet will be used to open the URL. Optional.
+        url: The URL to open in a web browser.
+        useApplet: If set to True (1), and the client is running as an
+            Applet, then the browser instance that launched the applet
+            will be used to open the URL. Optional.
     """
     print(url, useApplet)
 
 
 def sendEmail(
-    smtp,
-    fromAddr,
-    subject,
-    body,
-    html,
-    to,
-    attachmentNames=None,
-    attachmentData=None,
-    timeout=300000,
-    username=None,
-    password=None,
-    priority="3",
-    smtpProfile=None,
-    cc=None,
-    bcc=None,
-    retries=0,
-    replyTo=None,
+    smtp,  # type: Union[str, unicode]
+    fromAddr,  # type: Union[str, unicode]
+    subject,  # type: Union[str, unicode]
+    body,  # type: Union[str, unicode]
+    html,  # type: Union[str, unicode]
+    to,  # type: List[Union[str, unicode]]
+    attachmentNames=None,  # type: Optional[List[object]]
+    attachmentData=None,  # type: Optional[List[object]]
+    timeout=300000,  # type: Optional[int]
+    username=None,  # type: Optional[Union[str, unicode]]
+    password=None,  # type: Optional[Union[str, unicode]]
+    priority="3",  # type: Optional[Union[str, unicode]]
+    smtpProfile=None,  # type: Optional[Union[str, unicode]]
+    cc=None,  # type: Optional[List[Union[str, unicode]]]
+    bcc=None,  # type: Optional[List[Union[str, unicode]]]
+    retries=0,  # type: Optional[int]
+    replyTo=None,  # type: Optional[List[Union[str, unicode]]]
 ):
+    # type: (...) -> None
     """Sends an email through the given SMTP server.
 
     Note that this email is relayed first through the Gateway - the
     client host machine doesn't need network access to the SMTP server.
 
     Args:
-        smtp (str): The address of an SMTP server to send the email
-            through, like "mail.example.com". A port can be specified,
-            like "mail.example.com:25". SSL can also be forced, like
+        smtp: The address of an SMTP server to send the email through,
+            like "mail.example.com". A port can be specified, like
+            "mail.example.com:25". SSL can also be forced, like
             "mail.example.com:25:tls".
-        fromAddr (str): An email address to have the email come from.
-        subject (str): The subject line for the email.
-        body (str): The body text of the email.
-        html (bool): A flag indicating whether or not to send the email
-            as an HTML email. Will auto-detect if omitted.
-        to (list[str]): A list of email addresses to send to.
-        attachmentNames (list[str]): A list of attachment names.
-            Attachment names must have the correct extension for the
-            file type or an error will occur.
-        attachmentData (list[object]): A list of attachment data, in
-            binary format.
-        timeout (int): A timeout for the email, specified in
-            milliseconds. Defaults to 5 minutes (60,000*5). Optional.
-        username (str): If specified, will be used to authenticate with
-            the SMTP host. Optional.
-        password (str): If specified, will be used to authenticate with
-            the SMTP host. Optional.
-        priority (str): Priority for the message, from "1" to "5", with
-            "1" being highest priority. Defaults to "3" (normal)
-            priority. Optional.
-        smtpProfile (str): If specified, the named SMTP profile defined
+        fromAddr: An email address to have the email come from.
+        subject: The subject line for the email.
+        body: The body text of the email.
+        html: A flag indicating whether or not to send the email as an
+            HTML email. Will auto-detect if omitted.
+        to: A list of email addresses to send to.
+        attachmentNames: A list of attachment names. Attachment names
+            must have the correct extension for the file type or an
+            error will occur. Optional.
+        attachmentData: A list of attachment data, in binary format.
+        timeout: A timeout for the email, specified in milliseconds.
+            Defaults to 5 minutes (60,000*5). Optional.
+        username: If specified, will be used to authenticate with the
+            SMTP host. Optional.
+        password: If specified, will be used to authenticate with the
+            SMTP host. Optional.
+        priority: Priority for the message, from "1" to "5", with "1"
+            being highest priority. Defaults to "3" (normal) priority.
+            Optional.
+        smtpProfile: If specified, the named SMTP profile defined
             in the Gateway will be used. If this keyword is present, the
             smtp, username, and password keywords will be ignored.
             Optional.
-        cc (list[str]): A list of email addresses to carbon copy. Only
+        cc: A list of email addresses to carbon copy. Only available if
+            a smtpProfile is used. Optional.
+        bcc: A list of email addresses to blind carbon copy. Only
             available if a smtpProfile is used. Optional.
-        bcc (list[str]): A list of email addresses to blind carbon copy.
-            Only available if a smtpProfile is used. Optional.
-        retries (int): The number of additional times to retry sending
-            on failure. Defaults to 0. Only available if a smtpProfile
-            is used. Optional.
-        replyTo (list[str]): An optional list of addresses to have the
-            recipients reply to. If omitted, this defaults to the from
-            address. Optional.
+        retries: The number of additional times to retry sending on
+            failure. Defaults to 0. Only available if a smtpProfile is
+            used. Optional.
+        replyTo: An optional list of addresses to have the recipients
+            reply to. If omitted, this defaults to the from address.
+            Optional.
     """
     print(
         smtp,

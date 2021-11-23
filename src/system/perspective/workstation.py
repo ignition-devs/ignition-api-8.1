@@ -9,6 +9,7 @@ __all__ = ["exit", "toKiosk", "toWindowed"]
 
 
 def exit():
+    # type: () -> None
     """When called from a session running in Workstation, this function
     will close Workstation.
     """
@@ -16,6 +17,7 @@ def exit():
 
 
 def toKiosk():
+    # type: () -> None
     """When called from a session running in Perspective Workstation,
     attempts to put Workstation into Kiosk mode.
     """
@@ -23,6 +25,7 @@ def toKiosk():
 
 
 def toWindowed():
+    # type: () -> None
     """When called from a Session running in Perspective Workstation,
     attempts to put Workstation into windowed mode.
     """

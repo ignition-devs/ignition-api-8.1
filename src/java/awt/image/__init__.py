@@ -9,7 +9,7 @@ This package provides a number of image producers, consumers, and
 filters that you can configure for your image processing needs.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = ["BufferedImage"]
 
@@ -32,9 +32,4 @@ class BufferedImage(Image):
     """
 
     def __init__(self, *args):
-        """Constructs a BufferedImage.
-
-        Args:
-            *args: Variable length argument list.
-        """
         print(args)

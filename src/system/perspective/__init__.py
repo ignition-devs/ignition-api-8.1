@@ -4,7 +4,7 @@ The following functions offer various ways to interact with a
 Perspective session from a Python script.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "alterLogging",
@@ -32,71 +32,75 @@ __all__ = [
     "vibrateDevice",
 ]
 
-try:
-    import __builtin__ as builtins
-except ImportError:
-    import builtins
+from typing import Any, Dict, List, Optional, Union
 
-from com.inductiveautomation.ignition.common.script.adapters import (
-    PyJsonObjectAdapter,
-)
+import __builtin__ as builtins
+
+from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
 
 
 def alterLogging(
-    remoteLoggingEnabled=False,
-    level="info",
-    remoteLoggingLevel="warn",
-    sessionId="current_session",
-    pageId="current_page",
+    remoteLoggingEnabled=False,  # type: Optional[bool]
+    level="info",  # type: Optional[Union[str, unicode]]
+    remoteLoggingLevel="warn",  # type: Optional[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> None
     """Changes Perspective Session logging attributes and levels.
 
     All parameters are optional, with the caveat that at least one of
     them needs to be used.
 
     Args:
-        remoteLoggingEnabled (bool): Will enable remote logging if True.
-            Remote logging will send log events from the Session to the
-            Gateway under the perspective.client logger if the meet the
+        remoteLoggingEnabled: Will enable remote logging if True. Remote
+            logging will send log events from the Session to the Gateway
+            under the perspective.client logger if the meet the
             remoteLevel logging level requirement. Optional.
-        level (str): The desired Session logging level. Possible values
-            are: all, trace, debug, info, warn, error, fatal, off. The
+        level: The desired Session logging level. Possible values are:
+            all, trace, debug, info, warn, error, fatal, off. The
             default is info. Optional.
-        remoteLoggingLevel (str): The desired remote logging level.
-            Possible values are: all, trace, debug, info, warn, error,
-            fatal, off. The default is warn. Optional.
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        remoteLoggingLevel: The desired remote logging level. Possible
+            values are: all, trace, debug, info, warn, error, fatal,
+            off. The default is warn. Optional.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
-    builtins.print(
-        remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId
-    )
+    builtins.print(remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId)
 
 
-def closeDock(id, sessionId=None, pageId=None):
+def closeDock(
+    id,  # type: Union[str, unicode]
+    sessionId=None,  # type: Optional[Union[str, unicode]]
+    pageId=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Closes a docked view.
 
     Args:
-        id (str): The unique, preconfigured 'Dock ID' for the docked
-            View. Is specified when a View is assigned as docked for a
-            particular Page (in Page Configuration).
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        id: The unique, preconfigured 'Dock ID' for the docked View. Is
+            specified when a View is assigned as docked for a particular
+            Page (in Page Configuration).
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(id, sessionId, pageId)
 
 
 def closePage(
-    message=None, sessionId="current_session", pageID="current_page"
+    message=None,  # type: Optional[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageID="current_page",  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> None
     """Closes the page with the given page id or the current page if no
     page id is provided.
 
@@ -105,37 +109,46 @@ def closePage(
     Properties) is displayed.
 
     Args:
-        message (str): The message to display when the page closes. If
+        message: The message to display when the page closes. If
             omitted, the default message (set in the Project Properties)
             is shown. Optional.
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageID (str): Identifier of the page to be closed. If omitted,
-            the current pageId is used. Optional.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageID: Identifier of the page to be closed. If omitted, the
+            current pageId is used. Optional.
     """
     builtins.print(message, sessionId, pageID)
 
 
-def closePopup(id, sessionId="current_session", pageId="current_page"):
+def closePopup(
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Closes a popup View.
 
     Args:
-        id (str): The unique identifier for the the popup, given to the
-            popup when first opened. If given an empty string, then the
-            most recently focused popup will be closed.
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        id: The unique identifier for the the popup, given to the popup
+            when first opened. If given an empty string, then the most
+            recently focused popup will be closed.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(id, sessionId, pageId)
 
 
-def closeSession(message=None, sessionId="current_session"):
+def closeSession(
+    message=None,  # type: Optional[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Closes the Perspective Session with the given session ID or the
     current session if no ID is provided.
 
@@ -144,62 +157,65 @@ def closeSession(message=None, sessionId="current_session"):
     Properties) is displayed.
 
     Args:
-        message (str): The message to display when the session closes.
-            If omitted, the default message (set in the Project
-            Properties) is shown. Optional.
-        sessionId (str): Identifier of the session to be closed. If
-            omitted, the current sessionId is used. Optional.
+        message: The message to display when the session closes. If
+            omitted, the default message (set in the Project Properties)
+            is shown. Optional.
+        sessionId: Identifier of the session to be closed. If omitted,
+            the current sessionId is used. Optional.
     """
     builtins.print(message, sessionId)
 
 
 def download(
-    filename,
-    data,
-    contentType=None,
-    sessionId="current_session",
-    pageId="current_page",
+    filename,  # type: Union[str, unicode]
+    data,  # type: Any
+    contentType=None,  # type: Optional[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> None
     """Downloads data from the gateway to a device running a session.
 
     Args:
-        filename (str): Suggested name for the downloaded file.
-        data (object): The data to be downloaded. May be a String, a
-            byte[], or an InputStream. Strings will be written with in
-            "utf-8" encoding.
-        contentType (str): Value for the "Content-Type" header. Example:
+        filename: Suggested name for the downloaded file.
+        data: The data to be downloaded. May be a String, a byte[], or
+            an InputStream. Strings will be written with in "utf-8"
+            encoding.
+        contentType: Value for the "Content-Type" header. Example:
             "text/plain; charset=utf-8". Optional.
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(filename, data, contentType, sessionId, pageId)
 
 
-def getProjectInfo(projectName):
+def getProjectInfo():
+    # type: () -> Dict[Union[str, unicode], Any]
     """Returns a dictionary of meta data from a Perspective Project.
 
-    Args:
-        projectName (str): The name of the project.
-
     Returns:
-        dict: A dictionary of project meta data.
+        A dictionary of project meta data.
     """
-    builtins.print(projectName)
     return {
         "name": "Project",
         "title": "Project",
         "description": "Project's description",
-        "lastModified": "2021-04-01T13:37:00.000Z",
+        "lastModified": "2021-11-22T20:46:00.000Z",
         "lastModifiedBy": "thecesrom",
         "views": [{"path": "Page/Home"}],
+        "pageConfigs": [{"url": "", "primaryView": ""}],
     }
 
 
-def getSessionInfo(usernameFilter=None, projectFilter=None):
+def getSessionInfo(
+    usernameFilter=None,  # type: Optional[Union[str, unicode]]
+    projectFilter=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> List[PyJsonObjectAdapter]
     """Returns information about one or more Perspective sessions.
 
     The information returned by this function is a combination of
@@ -207,45 +223,51 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
     Gateway, and some session props (id and userAgent).
 
     Args:
-        usernameFilter (str): A filter based on logged in user.
-            Optional.
-        projectFilter (str): A filter based on the project name.
-            Optional.
+        usernameFilter: A filter based on logged in user. Optional.
+        projectFilter: A filter based on the project name. Optional.
 
     Returns:
-        list[PyJsonObjectAdapter]: A list of objects
-            (PyJsonObjectAdapter).
+        A list of objects (PyJsonObjectAdapter).
     """
     builtins.print(usernameFilter, projectFilter)
     return [PyJsonObjectAdapter(None)]
 
 
-def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
+def isAuthorized(
+    isAllOf,  # type: bool
+    securityLevels,  # type: List[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> bool
     """Checks if the user in the current session is authorized against a
     target collection of security levels.
 
     Args:
-        isAllOf (bool): True if the current user must have all of the
-            given security levels to be authorized. False if the current
-            user must have at least one of the given security levels to
-            be authorized.
-        securityLevels (list[str]): An array of string paths to a
-            security level node in the form of "Path/To/Node". Each
-            level in the tree is delimited by a forward slash character.
-            The public node is never a part of the path.
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            Optional.
+        isAllOf: True if the current user must have all of the given
+            security levels to be authorized. False if the current user
+            must have at least one of the given security levels to be
+            authorized.
+        securityLevels: An array of string paths to a security level
+            node in the form of "Path/To/Node". Each level in the tree
+            is delimited by a forward slash character. The public node
+            is never a part of the path.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. Optional.
 
     Returns:
-        bool: True if the user in the current session is authorized,
-            False otherwise.
+        True if the user in the current session is authorized, False
+        otherwise.
     """
     builtins.print(isAllOf, securityLevels, sessionId)
     return True
 
 
-def login(sessionId="current_session", pageId="current_page", forceAuth=False):
+def login(
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    forceAuth=False,  # type: Optional[bool]
+):
+    # type: (...) -> None
     """Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP).
 
@@ -255,13 +277,13 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
     sign in to access certain restricted features.
 
     Args:
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        forceAuth (bool): Determines if Ignition should ask the Identity
+        forceAuth: Determines if Ignition should ask the Identity
             Provider to re-authenticate the user, even if the user is
             already signed into the Identity Provider. If set to True,
             then the Identity Provider will ask the user to re-enter
@@ -278,32 +300,37 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
     builtins.print(sessionId, pageId, forceAuth)
 
 
-def logout(sessionId="current_session", pageId="current_page"):
+def logout(
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Triggers a logout event, which will log the user out.
 
     For this function to work, an Identity Provider must be set in the
     Perspective project properties.
 
     Args:
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(sessionId, pageId)
 
 
 def navigate(
-    page,
-    url=None,
-    view=None,
-    params=None,
-    sessionId="current_session",
-    pageId="current_page",
-    newTab=False,
+    page,  # type: Union[str, unicode]
+    url=None,  # type: Optional[Union[str, unicode]]
+    view=None,  # type: Optional[Union[str, unicode]]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    newTab=False,  # type: Optional[bool]
 ):
+    # type: (...) -> None
     """Navigate the session to a specified view or mounted page.
 
     The function can be used in three different ways, depending on which
@@ -343,112 +370,123 @@ def navigate(
     builtins.print(page, url, view, params, sessionId, pageId, newTab)
 
 
-def navigateBack(sessionId=None, pageId=None):
+def navigateBack(
+    sessionId=None,  # type: Optional[Union[str, unicode]]
+    pageId=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Navigate the session to a specified view or mounted page.
 
     This is similar to a browser's "back" function.
 
     Args:
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            Optional.
-        pageId (str): Identifier of the page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. Optional.
+        pageId: Identifier of the page to target. If omitted, the
             current page will be used automatically. Optional.
     """
     builtins.print(sessionId, pageId)
 
 
-def navigateForward(sessionId=None, pageId=None):
+def navigateForward(
+    sessionId=None,  # type: Optional[Union[str, unicode]]
+    pageId=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Navigate the session to a specified view or mounted page.
 
     This is similar to a browser's "forward" function.
 
     Args:
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the page to target. If omitted, the
             current page will be used automatically. Optional.
     """
     builtins.print(sessionId, pageId)
 
 
 def openDock(
-    id, sessionId="current_session", pageId="current_page", params=None
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
 ):
+    # type: (...) -> None
     """Opens a docked View.
 
     Requires the preconfigured dock ID for the view.
 
     Args:
-        id (str): The unique, preconfigured 'Dock ID' for the docked
-            View. Is specified when a View is assigned as docked for a
-            particular Page (in Page Configuration).
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        id: The unique, preconfigured 'Dock ID' for the docked View. Is
+            specified when a View is assigned as docked for a particular
+            Page (in Page Configuration).
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        params (dict): Parameters that can be passed into the docked
-            view. Must match the docked views View Parameters. Optional.
+        params: Parameters that can be passed into the docked view. Must
+            match the docked views View Parameters. Optional.
     """
     builtins.print(id, sessionId, pageId, params)
 
 
 def openPopup(
-    id,
-    view,
-    params=None,
-    title="",
-    position=None,
-    showCloseIcon=True,
-    draggable=True,
-    resizable=False,
-    modal=False,
-    overlayDismiss=False,
-    sessionId="current_session",
-    pageId="current_page",
-    viewPortBound=False,
+    id,  # type: Union[str, unicode]
+    view,  # type: Union[str, unicode]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    title="",  # type: Optional[Union[str, unicode]]
+    position=None,  # type: Optional[Dict[Union[str, unicode], int]]
+    showCloseIcon=True,  # type: Optional[bool]
+    draggable=True,  # type: Optional[bool]
+    resizable=False,  # type: Optional[bool]
+    modal=False,  # type: Optional[bool]
+    overlayDismiss=False,  # type: Optional[bool]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    viewPortBound=False,  # type: Optional[bool]
 ):
+    # type: (...) -> None
     """Open a popup view over the given page.
 
     Args:
-        id (str): A unique popup string. Will be used to close the popup
-            from other popup or script actions.
-        view (str): The path to the View to use in the popup.
-        params (dict): Dictionary of key-value pairs to us as input
-            parameters to the View. Optional.
-        title (str): Text to display in the title bar. If no value or an
-            empty string are given, the title bar will not be displayed.
+        id: A unique popup string. Will be used to close the popup from
+            other popup or script actions.
+        view: The path to the View to use in the popup.
+        params: Dictionary of key-value pairs to us as input parameters
+            to the View. Optional.
+        title: Text to display in the title bar. If no value or an empty
+            string are given, the title bar will not be displayed.
             Defaults to an empty string. Optional.
-        position (dict): Dictionary of key-value pairs to use for
-            position. Possible position keys are: left, top, right,
-            bottom, width, height. Defaults to the center of the window.
-            Optional.
-        showCloseIcon (bool): Will show the close icon if True. Defaults
+        position: Dictionary of key-value pairs to use for position.
+            Possible position keys are: left, top, right, bottom, width,
+            height. Defaults to the center of the window. Optional.
+        showCloseIcon: Will show the close icon if True. Defaults to
+            True. Optional.
+        draggable: Will allow the popup to be dragged if True. Defaults
             to True. Optional.
-        draggable (bool): Will allow the popup to be dragged if True.
-            Defaults to True. Optional.
-        resizable (bool): Will allow the popup to be resized if True.
-            Defaults to False. Optional.
-        modal (bool): Will make the popup modal if True. A modal popup
-            is the only view the user can interact with. Defaults to
-            False. Optional.
-        overlayDismiss (bool): Will allow the user to dismiss and close
-            a modal popup by clicking outside of it if True. Defaults to
-            False. Optional.
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        resizable: Will allow the popup to be resized if True. Defaults
+            to False. Optional.
+        modal: Will make the popup modal if True. A modal popup is the
+            only view the user can interact with. Defaults to False.
+            Optional.
+        overlayDismiss: Will allow the user to dismiss and close a modal
+            popup by clicking outside of it if True. Defaults to False.
+            Optional.
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        viewPortBound (bool): If True, popups will be "shifted" to open
-            within the bounds of the viewport. If the popup would be
-            larger than the viewport, then it will be resized to fit
-            within the bounds. Default is False. Optional.
+        viewPortBound: If True, popups will be "shifted" to open within
+            the bounds of the viewport. If the popup would be larger
+            than the viewport, then it will be resized to fit within the
+            bounds. Default is False. Optional.
     """
     builtins.print(
         id,
@@ -468,11 +506,12 @@ def openPopup(
 
 
 def print(
-    message,
-    sessionId="current_session",
-    pageId="current_page",
-    destination="client",
+    message,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    destination="client",  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> None
     """Sends print statements to the scripting console when in the
     Designer.
 
@@ -480,64 +519,74 @@ def print(
     This function makes scripting diagnostics easier.
 
     Args:
-        message (str): The print statement that will be displayed on the
+        message: The print statement that will be displayed on the
             console.
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        destination (str): Where the message should be printed. If
-            specified, must be "client", "gateway", or "all". Default is
-            "client". Optional.
+        destination: Where the message should be printed. If specified,
+            must be "client", "gateway", or "all". Default is "client".
+            Optional.
     """
     builtins.print(message, sessionId, pageId, destination)
 
 
-def refresh(sessionId="current_session", pageId="current_page"):
+def refresh(
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Triggers a refresh of the page.
 
     Args:
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(sessionId, pageId)
 
 
 def sendMessage(
-    messageType,
-    payload,
-    scope="page",
-    sessionId="current_session",
-    pageId="current_page",
+    messageType,  # type: Union[str, unicode]
+    payload,  # type: Dict[Union[str, unicode], Union[str, unicode]]
+    scope="page",  # type: Optional[Union[str, unicode]]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
 ):
+    # type: (...) -> None
     """Send a message to a message handler within the same session.
 
     Args:
-        messageType (str): The message type that will be invoked.
-            Message handlers configured within the project are listening
-            for messages of a specific messageType.
-        payload (dict): A python dictionary representing any parameters
-            that will be passed to the message handler.
-        scope (str): The scope that the message should be delivered to.
-            Valid values are "session", "page", or "view". If omitted,
-            "page" will be used. Optional.
-        sessionId (str): Identifier of the Session to target. If
-            omitted, the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        messageType: The message type that will be invoked. Message
+            handlers configured within the project are listening for
+            messages of a specific messageType.
+        payload: A python dictionary representing any parameters that
+            will be passed to the message handler.
+        scope: The scope that the message should be delivered to. Valid
+            values are "session", "page", or "view". If omitted, "page"
+            will be used. Optional.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(messageType, payload, scope, sessionId, pageId)
 
 
-def setTheme(name, sessionId="current_session", pageId="current_page"):
+def setTheme(
+    name,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
@@ -545,94 +594,98 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
     directly to the session.theme property instead.
 
     Args:
-        name (str): The theme name to switch to. Possible values are
-            "dark" or "light".
-        sessionId (str): Identifier of the Session to target. If
-            omitted the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        name: The theme name to switch to. Possible values are "dark" or
+            "light".
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
     """
     builtins.print(name, sessionId, pageId)
 
 
 def toggleDock(
-    id, sessionId="current_session", pageId="current_page", params=None
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
 ):
+    # type: (...) -> None
     """Toggles a docked View.
 
     Args:
-        id (str): The unique, preconfigured 'Dock ID' for the docked
-            View. Is specified when a View is assigned as docked for a
-            particular Page (in Page Configuration).
-        sessionId (str): Identifier of the Session to target. If
-            omitted the current Session will be used automatically.
-            When targeting a different session, then the pageId
-            parameter must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        id: The unique, preconfigured 'Dock ID' for the docked View. Is
+            specified when a View is assigned as docked for a particular
+            Page (in Page Configuration).
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        params (dict): Parameters that can be passed into the docked
-            view. Must match the docked views View Parameters. Optional.
+        params: Parameters that can be passed into the docked view. Must
+            match the docked views View Parameters. Optional.
     """
     builtins.print(id, sessionId, pageId, params)
 
 
 def togglePopup(
-    id,
-    view,
-    params,
-    title="",
-    position=None,
-    showCloseIcon=True,
-    draggable=True,
-    resizable=False,
-    modal=False,
-    overlayDismiss=False,
-    sessionId="current_session",
-    pageId="current_page",
-    viewPortBound=False,
+    id,  # type: Union[str, unicode]
+    view,  # type: Union[str, unicode]
+    params,  # type: Optional[Dict[Union[str, unicode], Any]]
+    title="",  # type: Optional[Union[str, unicode]]
+    position=None,  # type: Optional[Dict[Union[str, unicode], int]]
+    showCloseIcon=True,  # type: Optional[bool]
+    draggable=True,  # type: Optional[bool]
+    resizable=False,  # type: Optional[bool]
+    modal=False,  # type: Optional[bool]
+    overlayDismiss=False,  # type: Optional[bool]
+    sessionId="current_session",  # type: Optional[Union[str, unicode]]
+    pageId="current_page",  # type: Optional[Union[str, unicode]]
+    viewPortBound=False,  # type: Optional[bool]
 ):
+    # type: (...) -> None
     """Toggles a popup.
 
     Will open up the popup if it has not been opened yet. Otherwise, it
     will close the currently opened popup.
 
     Args:
-        id (str): A unique popup string. Will be used to close the popup
-            from other popup or script actions.
-        view (str): The path to the View to use in the popup.
-        params (dict): Dictionary of key-value pairs to us as input
-            parameters to the View. Optional.
-        title (str): Text to display in the title bar. If no value or an
-            empty string are given, the title bar will not be displayed.
+        id: A unique popup string. Will be used to close the popup from
+            other popup or script actions.
+        view: The path to the View to use in the popup.
+        params: Dictionary of key-value pairs to us as input parameters
+            to the View. Optional.
+        title: Text to display in the title bar. If no value or an empty
+            string are given, the title bar will not be displayed.
             Defaults to an empty string. Optional.
-        position (dict): Dictionary of key-value pairs to use for
-            position. Possible position keys are: left, top, right,
-            bottom, width, height. Defaults to the center of the window.
-            Optional.
-        showCloseIcon (bool): Will show the close icon if True. Defaults
+        position: Dictionary of key-value pairs to use for position.
+            Possible position keys are: left, top, right, bottom, width,
+            height. Defaults to the center of the window. Optional.
+        showCloseIcon: Will show the close icon if True. Defaults to
+            True. Optional.
+        draggable: Will allow the popup to be dragged if True. Defaults
             to True. Optional.
-        draggable (bool): Will allow the popup to be dragged if True.
-            Defaults to True. Optional.
-        resizable (bool): Will allow the popup to be resized if True.
-            Defaults to False. Optional.
-        modal (bool): Will make the popup modal if True. A modal popup
-            is the only view the user can interact with. Defaults to
-            False. Optional.
-        overlayDismiss (bool): Will allow the user to dismiss and close
-            a modal popup by clicking outside of it if True. Defaults to
-            False. Optional.
-        sessionId (str): Identifier of the Session to target. If omitted
-            the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
-        pageId (str): Identifier of the Page to target. If omitted, the
+        resizable: Will allow the popup to be resized if True. Defaults
+            to False. Optional.
+        modal: Will make the popup modal if True. A modal popup is the
+            only view the user can interact with. Defaults to False.
+            Optional.
+        overlayDismiss: Will allow the user to dismiss and close a modal
+            popup by clicking outside of it if True. Defaults to False.
+            Optional.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
             current Page will be used automatically. Optional.
-        viewPortBound (bool): If True, popups will be "shifted" to open
-            within the bounds of the viewport. If the popup would be
-            larger than the viewport, then it will be resized to fit
-            within the bounds. Default is False. Optional.
+        viewPortBound: If True, popups will be "shifted" to open within
+            the bounds of the viewport. If the popup would be larger
+            than the viewport, then it will be resized to fit within the
+            bounds. Default is False. Optional.
     """
     builtins.print(
         id,
@@ -652,15 +705,15 @@ def togglePopup(
 
 
 def vibrateDevice(duration, sessionId="current_session"):
+    # type: (int, Optional[Union[str, unicode]]) -> None
     """When called from the Perspective mobile app, will cause the
     device to vibrate for the specified number of milliseconds.
 
     Args:
-        duration (int): The duration in milliseconds to vibrate the
-            device.
-        sessionId (str): Identifier of the Session to target. If
-            omitted the current Session will be used automatically. When
-            targeting a different session, then the pageId parameter
-            must be included in the call. Optional.
+        duration: The duration in milliseconds to vibrate the device.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
     """
     builtins.print(duration, sessionId)

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 __all__ = ["Version"]
 
 import re
@@ -10,16 +12,6 @@ class Version(Object):
     snapshot = False
 
     def __init__(self, major=0, minor=0, rev=0, build=0, beta=0, rc=0):
-        """Version initializer.
-
-        Args:
-            major (int): Major number.
-            minor (int): Minor number.
-            rev (int): Revision number.
-            build (int): Build number.
-            beta (int): Beta number.
-            rc (int): Release Candidate number.
-        """
         self.major = major
         self.minor = minor
         self.rev = rev
@@ -53,18 +45,6 @@ class Version(Object):
         return self.toString()
 
     def compareTo(self, that):
-        """Compares two Versions.
-
-        Note that this comparison is stricter than we want for Gateway
-        restores or project imports. For those, isFutureVersion().
-
-        Args:
-            that (Version): The version to compare.
-
-        Returns:
-             int: 0 if self and that are equal, -1 if that is greater
-                than self, or 1 if self is greater than that.
-        """
         return self.__eq__(that, True)
 
     def exists(self):
@@ -75,13 +55,11 @@ class Version(Object):
         pass
 
     def getBasicString(self):
-        if self.rc > 0:
-            ret = "{}.{}.{}-rc{}".format(
-                self.major, self.minor, self.rev, self.rc
-            )
-        else:
-            ret = "{}.{}.{}".format(self.major, self.minor, self.rev)
-        return ret
+        return (
+            "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
+            if self.rc > 0
+            else "{}.{}.{}".format(self.major, self.minor, self.rev)
+        )
 
     def getBeta(self):
         return self.beta
@@ -120,15 +98,7 @@ class Version(Object):
         return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
     def toParseableString(self):
-        """Returns the version as a compact, parseable (non-XML) string
-        that can be parsed with the 1-string constructor of this class.
-
-        Returns:
-            string: Compact, parseable (non-XML) string.
-        """
-        return "{}.{}.{}.{}".format(
-            self.major, self.minor, self.rev, self.build
-        )
+        return "{}.{}.{}.{}".format(self.major, self.minor, self.rev, self.build)
 
     def toString(self):
         if self.rc > 0:

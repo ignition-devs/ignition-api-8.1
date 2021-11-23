@@ -1,14 +1,70 @@
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
-__all__ = ["DatasetUtilities", "SProcCall", "SystemUtilities"]
+__all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtilities"]
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
-from com.inductiveautomation.ignition.common.script.abc import (
-    AbstractJythonSequence,
-)
+from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
 from java.lang import Object
 from java.util import Locale
+from org.python.core import PyObject
+
+
+class AbstractOPCUtilities(Object):
+    def browseServer(self, opcServer, nodeId):
+        return [AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, None, self.__class__)]
+
+    def getServers(self):
+        pass
+
+    def getServerState(self, opcServer):
+        pass
+
+    def isServerEnabled(self, serverName):
+        pass
+
+    def readValue(self, opcServer, itemPath):
+        pass
+
+    def readValues(self, opcServer, itemPaths):
+        pass
+
+    def setServerEnabled(self, serverName, enabled):
+        pass
+
+    def writeValue(self, *args, **kwargs):
+        pass
+
+    def writeValues(self, *args, **kwargs):
+        pass
+
+    class PyOPCTag(PyObject):
+        _displayName = None
+        _elementType = None
+        _nodeId = None
+        _serverName = None
+
+        def __init__(self, serverName, nodeId, displayName, elementType):
+            self._serverName = serverName
+            self._nodeId = nodeId
+            self._displayName = displayName
+            self._elementType = elementType
+            super(AbstractOPCUtilities.PyOPCTag, self).__init__()
+
+        def __findattr_ex__(self, name):
+            pass
+
+        def getDisplayName(self):
+            return self._displayName
+
+        def getElementType(self):
+            return self._elementType
+
+        def getNodeId(self):
+            return self._nodeId
+
+        def getServerName(self):
+            return self._serverName
 
 
 class DatasetUtilities(Object):
@@ -170,80 +226,28 @@ class SProcCall(Object):
         pass
 
     def getResultSet(self):
-        """Returns a dataset that is the resulting data of the stored
-        procedure, if any.
-
-        Returns:
-            BasicDataset: The dataset that is the resulting data of the
-                stored procedure, if any.
-        """
         print(self)
         return BasicDataset()
 
     def getUpdateCount(self):
-        """Returns the number of rows modified by the stored procedure,
-        or -1 if not applicable.
-
-        Returns:
-             int: The number of rows modified by the stored procedure,
-                or -1 if not applicable.
-        """
         print(self)
         return 1
 
     def getReturnValue(self):
-        """Returns the return value, if registerReturnParam had been
-        called.
-
-        Returns:
-             int: The return value, if registerReturnParam had been
-                called.
-        """
         print(self)
         return 0
 
     def getOutParamValue(self, param):
-        """Returns the value of the previously registered out-parameter.
-
-        Args:
-            param (object): Index (int) or name (str) of the previously
-                registered out-parameter.
-
-        Returns:
-            object: The value of the previously registered
-                out-parameter.
-        """
         print(self, param)
         return 0
 
     def registerInParam(self, param, typeCode, value):
-        """Registers an in parameter for the stored procedure.
-
-        Args:
-            param (object): Index (int starting at 1, not 0), or name
-                (str).
-            typeCode (int): Type code constant.
-            value (object): Value of type typeCode.
-        """
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        """Registers an out parameter for the stored procedure.
-
-        Args:
-            param (object): Index (int starting at 1, not 0), or name
-                (str).
-            typeCode (int): Type code constant.
-        """
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
-        """Use this function to specify the datatype of the returned
-        value.
-
-        Args:
-            typeCode (int): Type code constant.
-        """
         print(self, typeCode)
 
     class SProcArg(Object):

@@ -3,7 +3,7 @@
 The following functions give you access to read and write to files.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "fileExists",
@@ -16,43 +16,49 @@ __all__ = [
     "writeFile",
 ]
 
-import io
 import os.path
 import tempfile
+from codecs import open
+from typing import Any, List, Optional, Union
 
 
 def fileExists(filepath):
+    # type: (Union[str, unicode]) -> bool
     """Checks to see if a file or folder at a given path exists.
 
     Args:
-        filepath (str): The path of the file or folder to check.
+        filepath: The path of the file or folder to check.
 
     Returns:
-        bool: True (1) if the file/folder exists, False (0) otherwise.
+        True (1) if the file/folder exists, False (0) otherwise.
     """
     return os.path.isfile(filepath)
 
 
 def getTempFile(extension):
+    # type: (Union[str, unicode]) -> Union[str, unicode]
     """Creates a new temp file on the host machine with a certain
     extension, returning the path to the file.
 
     The file is marked to be removed when the Java VM exits.
 
     Args:
-        extension (str): An extension, like ".txt", to append to the end
-            of the temporary file.
+        extension: An extension, like ".txt", to append to the end of
+            the temporary file.
 
     Returns:
-        str: The path to the newly created temp file.
+        The path to the newly created temp file.
     """
     suffix = ".{}".format(extension)
     with tempfile.NamedTemporaryFile(suffix=suffix) as temp:
-        name = temp.name
-    return name
+        return temp.name
 
 
-def openFile(extension=None, defaultLocation=None):
+def openFile(
+    extension=None,  # type: Optional[Union[str, unicode]]
+    defaultLocation=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> Union[str, unicode]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file to open.
 
@@ -61,18 +67,23 @@ def openFile(extension=None, defaultLocation=None):
     in that sets the filetype filter to that extension.
 
     Args:
-        extension (str): A file extension, like "pdf", to try to open.
+        extension: A file extension, like "pdf", to try to open.
             Optional.
-        defaultLocation (str): A folder location, like "C:\\MyFiles", to
-            use as the starting location for the file chooser. Optional.
+        defaultLocation: A folder location, like "C:\\MyFiles", to use
+            as the starting location for the file chooser. Optional.
 
     Returns:
-        str: The path to the selected file, or None if canceled.
+        The path to the selected file, or None if canceled.
     """
     print(extension, defaultLocation)
+    return ""
 
 
-def openFiles(extension=None, defaultLocation=None):
+def openFiles(
+    extension=None,  # type: Optional[Union[str, unicode]]
+    defaultLocation=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> List[Union[str, unicode]]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file or files to open.
 
@@ -81,18 +92,20 @@ def openFiles(extension=None, defaultLocation=None):
     in that sets the filetype filter to that extension.
 
     Args:
-        extension (str): A file extension, like "pdf", to try to open.
+        extension: A file extension, like "pdf", to try to open.
             Optional.
-        defaultLocation (str): A folder location, like "C:\\MyFiles", to
-            use as the starting location for the file chooser. Optional.
+        defaultLocation: A folder location, like "C:\\MyFiles", to use
+            as the starting location for the file chooser. Optional.
 
     Returns:
-        list[str]: The paths to the selected files, or None if canceled.
+        The paths to the selected files, or None if canceled.
     """
     print(extension, defaultLocation)
+    return ["path/to/file"]
 
 
 def readFileAsBytes(filepath):
+    # type: (Union[str, unicode]) -> Any
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as an array of bytes. Commonly this array of bytes
@@ -104,16 +117,20 @@ def readFileAsBytes(filepath):
     attachment using system.net.sendEmail.
 
     Args:
-        filepath (str): The path of the file to read.
+        filepath: The path of the file to read.
 
     Returns:
-        bytearray: The contents of the file as an array of bytes.
+        The contents of the file as an array of bytes.
     """
-    with open(filepath, "rb") as _file:
-        return _file.read()
+    with open(str(filepath), str("r+b")) as f:
+        return f.read()
 
 
-def readFileAsString(filepath, encoding="UTF-8"):
+def readFileAsString(
+    filepath,  # type: Union[str, unicode]
+    encoding="UTF-8",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> Union[str, unicode]
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as a string. Common things to do with this string
@@ -122,20 +139,25 @@ def readFileAsString(filepath, encoding="UTF-8"):
     system.file.writeFile function.
 
     Args:
-        filepath (str): The path of the file to read.
-        encoding (str): The character encoding of the file to be read.
-            Will throw an exception if the string does not represent a
+        filepath: The path of the file to read.
+        encoding: The character encoding of the file to be read. Will
+            throw an exception if the string does not represent a
             supported encoding. Common encodings are "UTF-8",
             "ISO-8859-1" and "US-ASCII". Optional.
 
     Returns:
-        str: The contents of the file as a string.
+        The contents of the file as a string.
     """
-    with io.open(filepath, "r", encoding=encoding) as _file:
-        return _file.read()
+    with open(str(filepath), str("r"), str(encoding)) as f:
+        return f.read()
 
 
-def saveFile(filename, extension=None, typeDesc=None):
+def saveFile(
+    filename,  # type: Union[str, unicode]
+    extension=None,  # type: Optional[Union[str, unicode]]
+    typeDesc=None,  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> Union[str, unicode]
     """Prompts the user to save a new file named filename.
 
     The optional extension and typeDesc arguments can be added to be
@@ -144,20 +166,27 @@ def saveFile(filename, extension=None, typeDesc=None):
     be returned.
 
     Args:
-        filename (str): A file name to suggest to the user.
-        extension (str): The appropriate file extension, like "jpeg",
-            for the file. Optional.
-        typeDesc (str): A description of the extension, like "JPEG
-            Image". Optional.
+        filename: A file name to suggest to the user.
+        extension: The appropriate file extension, like "jpeg", for the
+            file. Optional.
+        typeDesc: A description of the extension, like "JPEG Image".
+            Optional.
 
     Returns:
-        str: The path to the file that the user decided to save to, or
-            None if they canceled.
+        The path to the file that the user decided to save to, or None
+        if they canceled.
     """
     print(filename, extension, typeDesc)
+    return ""
 
 
-def writeFile(filepath, data, append=False, encoding="UTF-8"):
+def writeFile(
+    filepath,  # type: Union[str, unicode]
+    data,  # type: Any
+    append=False,  # type: Optional[bool]
+    encoding="UTF-8",  # type: Optional[Union[str, unicode]]
+):
+    # type: (...) -> None
     """Writes the given data to the file at file path filename.
 
     If the file exists, the append argument determines whether or not it
@@ -167,14 +196,13 @@ def writeFile(filepath, data, append=False, encoding="UTF-8"):
     system.file.readFileAsBytes).
 
     Args:
-        filepath (str): The path of the file to write to.
-        data (object): The character or binary content to write to the
-            file.
-        append (bool): If True(1), the file will be appended to if it
-            already exists. If False(0), the file will be overwritten if
-            it exists. The default is False(0). Optional.
-        encoding (str): The character encoding of the file to write.
-            Will throw an exception if the string does not represent a
+        filepath: The path of the file to write to.
+        data: The character or binary content to write to the file.
+        append: If True(1), the file will be appended to if it already
+            exists. If False(0), the file will be overwritten if it
+            exists. The default is False(0). Optional.
+        encoding: The character encoding of the file to write. Will
+            throw an exception if the string does not represent a
             supported encoding. Common encodings are "UTF-8",
             "ISO-8859-1" and "US-ASCII". Default is "UTF-8". Optional.
     """

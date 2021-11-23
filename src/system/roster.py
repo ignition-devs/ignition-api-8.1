@@ -4,7 +4,7 @@ Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "addUsers",
@@ -14,20 +14,23 @@ __all__ = [
     "removeUsers",
 ]
 
+from typing import Dict, List, Union
+
 from com.inductiveautomation.ignition.common.user import PyUser
 
 
 def addUsers(rosterName, users):
+    # type: (Union[str, unicode], List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
 
     Args:
-        rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of User objects that will be added
-            to the end of the roster. User objects can be created with
-            the system.user.getUser and system.user.addUser functions.
-            These users must exist before being added to the roster.
+        rosterName: The name of the roster to modify.
+        users: A list of User objects that will be added to the end of
+            the roster. User objects can be created with the
+            system.user.getUser and system.user.addUser functions. These
+            users must exist before being added to the roster.
     """
     print(rosterName)
     for user in users:
@@ -35,6 +38,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -43,23 +47,25 @@ def createRoster(name, description):
     system.alarm.createRoster instead.
 
     Args:
-        name (str): The name of the roster to create.
-        description (str): The description for the roster. May be None,
-            but the parameter is mandatory.
+        name: The name of the roster to create.
+        description: The description for the roster. May be None, but
+            the parameter is mandatory.
     """
     print(name, description)
 
 
 def deleteRoster(rosterName):
+    # type: (Union[str, unicode]) -> None
     """Deletes a roster with the given name.
 
     Args:
-        rosterName (str): The name of the roster to delete.
+        rosterName: The name of the roster to delete.
     """
     print(rosterName)
 
 
 def getRosters():
+    # type: () -> Dict[Union[str, unicode], List[Union[str, unicode]]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -68,20 +74,21 @@ def getRosters():
     system.alarm.getRosters instead.
 
     Returns:
-        dict: A python dictionary of rosters. Refer to the list of User
-            objects.
+        A python dictionary of rosters. Refer to the list of User
+        objects.
     """
     return {}
 
 
 def removeUsers(rosterName, users):
+    # type: (Union[str, unicode], List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:
-        rosterName (str): The name of the roster to modify.
-        users (list[PyUser]): A list of user objects that will be added
-            to the end of the roster. User objects can be created with
-            the system.user.getUser and system.user.addUser functions.
+        rosterName: The name of the roster to modify.
+        users: A list of user objects that will be added to the end of
+            the roster. User objects can be created with the
+            system.user.getUser and system.user.addUser functions.
     """
     print(rosterName)
     for user in users:

@@ -4,7 +4,7 @@ null argument to a constructor or method in any class or interface in
 this package will cause a NullPointerException to be thrown.
 """
 
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = [
     "DataOutputStream",

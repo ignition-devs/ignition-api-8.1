@@ -1,4 +1,4 @@
-from __future__ import print_function
+from __future__ import print_function, unicode_literals
 
 __all__ = ["SerialScriptModule"]
 
@@ -56,9 +56,7 @@ class SerialScriptModule(Object):
         ):
             pass
 
-        def readLine(
-            self, port, timeout=5000, encoding="utf-8", crlfRequired=False
-        ):
+        def readLine(self, port, timeout=5000, encoding="utf-8", crlfRequired=False):
             pass
 
         def readUntil(self, port, delimiter, includeDelimiter, timeout=5000):
