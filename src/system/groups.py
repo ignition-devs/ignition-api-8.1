@@ -4,19 +4,24 @@ The following functions give you access to import and remove Transaction
 Groups.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["loadFromFile", "removeGroups"]
 
-from typing import List, Union
+from typing import AnyStr, List
 
 
 def loadFromFile(filePath, projectName, mode):
-    # type: (Union[str, unicode], Union[str, unicode], int) -> None
+    # type: (AnyStr, AnyStr, int) -> None
     """Loads a transaction group configuration from an xml export, into
     the specified project (creating the project if necessary).
 
     The mode parameter dictates how overwrites occur.
+
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
 
     Args:
         filePath: The path to a valid transaction group xml or csv file.
@@ -28,7 +33,7 @@ def loadFromFile(filePath, projectName, mode):
 
 
 def removeGroups(projectName, paths):
-    # type: (Union[str, unicode], List[Union[str, unicode]]) -> None
+    # type: (AnyStr, List[AnyStr]) -> None
     """Removes the specified groups from the project.
 
     The group paths are "Folder/Path/To/GroupName", separated by forward

@@ -3,7 +3,7 @@
 The following functions give you access to read and write to files.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "fileExists",
@@ -16,31 +16,41 @@ __all__ = [
     "writeFile",
 ]
 
+import io
 import os.path
 import tempfile
-from codecs import open
-from typing import Any, List, Optional, Union
+from typing import Any, AnyStr, List, Optional
 
 
 def fileExists(filepath):
-    # type: (Union[str, unicode]) -> bool
+    # type: (AnyStr) -> bool
     """Checks to see if a file or folder at a given path exists.
+
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
 
     Args:
         filepath: The path of the file or folder to check.
 
     Returns:
-        True (1) if the file/folder exists, False (0) otherwise.
+        True if the file/folder exists, False otherwise.
     """
     return os.path.isfile(filepath)
 
 
 def getTempFile(extension):
-    # type: (Union[str, unicode]) -> Union[str, unicode]
+    # type: (AnyStr) -> AnyStr
     """Creates a new temp file on the host machine with a certain
     extension, returning the path to the file.
 
     The file is marked to be removed when the Java VM exits.
+
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
 
     Args:
         extension: An extension, like ".txt", to append to the end of
@@ -54,11 +64,8 @@ def getTempFile(extension):
         return temp.name
 
 
-def openFile(
-    extension=None,  # type: Optional[Union[str, unicode]]
-    defaultLocation=None,  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> Union[str, unicode]
+def openFile(extension=None, defaultLocation=None):
+    # type: (Optional[AnyStr], Optional[AnyStr]) -> Optional[AnyStr]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file to open.
 
@@ -80,10 +87,10 @@ def openFile(
 
 
 def openFiles(
-    extension=None,  # type: Optional[Union[str, unicode]]
-    defaultLocation=None,  # type: Optional[Union[str, unicode]]
+    extension=None,  # type: Optional[AnyStr]
+    defaultLocation=None,  # type: Optional[AnyStr]
 ):
-    # type: (...) -> List[Union[str, unicode]]
+    # type: (...) -> Optional[List[AnyStr]]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file or files to open.
 
@@ -105,7 +112,7 @@ def openFiles(
 
 
 def readFileAsBytes(filepath):
-    # type: (Union[str, unicode]) -> Any
+    # type: (AnyStr) -> Any
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as an array of bytes. Commonly this array of bytes
@@ -116,21 +123,23 @@ def readFileAsBytes(filepath):
     system.file.writeFile function, or send the bytes as an email
     attachment using system.net.sendEmail.
 
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
+
     Args:
         filepath: The path of the file to read.
 
     Returns:
         The contents of the file as an array of bytes.
     """
-    with open(str(filepath), str("r+b")) as f:
+    with io.open(filepath, "r+b") as f:
         return f.read()
 
 
-def readFileAsString(
-    filepath,  # type: Union[str, unicode]
-    encoding="UTF-8",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> Union[str, unicode]
+def readFileAsString(filepath, encoding="UTF-8"):
+    # type: (AnyStr, Optional[AnyStr]) -> unicode
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as a string. Common things to do with this string
@@ -138,26 +147,31 @@ def readFileAsString(
     to a database table, or save it to another file using
     system.file.writeFile function.
 
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
+
     Args:
         filepath: The path of the file to read.
         encoding: The character encoding of the file to be read. Will
             throw an exception if the string does not represent a
             supported encoding. Common encodings are "UTF-8",
-            "ISO-8859-1" and "US-ASCII". Optional.
+            "ISO-8859-1" and "US-ASCII". Default is "UTF-8". Optional.
 
     Returns:
         The contents of the file as a string.
     """
-    with open(str(filepath), str("r"), str(encoding)) as f:
+    with io.open(filepath, "r", encoding=encoding) as f:
         return f.read()
 
 
 def saveFile(
-    filename,  # type: Union[str, unicode]
-    extension=None,  # type: Optional[Union[str, unicode]]
-    typeDesc=None,  # type: Optional[Union[str, unicode]]
+    filename,  # type: AnyStr
+    extension=None,  # type: Optional[AnyStr]
+    typeDesc=None,  # type: Optional[AnyStr]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> Optional[AnyStr]
     """Prompts the user to save a new file named filename.
 
     The optional extension and typeDesc arguments can be added to be
@@ -181,10 +195,10 @@ def saveFile(
 
 
 def writeFile(
-    filepath,  # type: Union[str, unicode]
+    filepath,  # type: AnyStr
     data,  # type: Any
     append=False,  # type: Optional[bool]
-    encoding="UTF-8",  # type: Optional[Union[str, unicode]]
+    encoding="UTF-8",  # type: Optional[AnyStr]
 ):
     # type: (...) -> None
     """Writes the given data to the file at file path filename.
@@ -195,12 +209,17 @@ def writeFile(
     BLOB in a database or read from another file using
     system.file.readFileAsBytes).
 
+    Note:
+        This function is scoped for Perspective Sessions, but since all
+        scripts in Perspective run on the Gateway, the file must be
+        located on the Gateway's file system.
+
     Args:
         filepath: The path of the file to write to.
         data: The character or binary content to write to the file.
-        append: If True(1), the file will be appended to if it already
-            exists. If False(0), the file will be overwritten if it
-            exists. The default is False(0). Optional.
+        append: If True, the file will be appended to if it already
+            exists. If False, the file will be overwritten if it
+            exists. The default is False. Optional.
         encoding: The character encoding of the file to write. Will
             throw an exception if the string does not represent a
             supported encoding. Common encodings are "UTF-8",

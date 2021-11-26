@@ -43,6 +43,11 @@ class EventObject(Object):
         return self.source
 
 
+class ClassProperty(property):
+    def __get__(self, cls, owner):
+        return classmethod(self.fget).__get__(None, owner)()
+
+
 class Locale(Object):
     """A Locale object represents a specific geographical, political, or
     cultural region. An operation that requires a Locale to perform its
@@ -58,86 +63,97 @@ class Locale(Object):
         self.country = country
         self.variant = variant
 
-    @property
+    def __repr__(self):
+        return "{!r}".format(self.__str__())
+
+    def __str__(self):
+        ret = self.language
+        if self.country:
+            ret += "_{}".format(self.country)
+        if self.variant:
+            ret += "_{}".format(self.variant)
+        return unicode(ret)
+
+    @ClassProperty
     def CANADA(self):
-        return self.__init__("en", "CA")
+        return Locale("en", "CA")
 
-    @property
+    @ClassProperty
     def CANADA_FRENCH(self):
-        return self.__init__("fr", "CA")
+        return Locale("fr", "CA")
 
-    @property
+    @ClassProperty
     def CHINA(self):
-        return self.__init__("zh", "CN")
+        return Locale("zh", "CN")
 
-    @property
+    @ClassProperty
     def CHINESE(self):
-        return self.__init__("zh")
+        return Locale("zh")
 
-    @property
+    @ClassProperty
     def ENGLISH(self):
-        return self.__init__("en")
+        return Locale("en")
 
-    @property
+    @ClassProperty
     def FRANCE(self):
-        return self.__init__("fr", "FR")
+        return Locale("fr", "FR")
 
-    @property
+    @ClassProperty
     def FRENCH(self):
-        return self.__init__("fr")
+        return Locale("fr")
 
-    @property
+    @ClassProperty
     def GERMAN(self):
-        return self.__init__("de")
+        return Locale("de")
 
-    @property
+    @ClassProperty
     def GERMANY(self):
-        return self.__init__("de", "DE")
+        return Locale("de", "DE")
 
-    @property
+    @ClassProperty
     def ITALIAN(self):
-        return self.__init__("it")
+        return Locale("it")
 
-    @property
+    @ClassProperty
     def ITALY(self):
-        return self.__init__("it", "IT")
+        return Locale("it", "IT")
 
-    @property
+    @ClassProperty
     def JAPAN(self):
-        return self.__init__("ja", "JP")
+        return Locale("ja", "JP")
 
-    @property
+    @ClassProperty
     def JAPANESE(self):
-        return self.__init__("ja")
+        return Locale("ja")
 
-    @property
+    @ClassProperty
     def KOREA(self):
-        return self.__init__("ko", "KR")
+        return Locale("ko", "KR")
 
-    @property
+    @ClassProperty
     def KOREAN(self):
-        return self.__init__("ko")
+        return Locale("ko")
 
-    @property
+    @ClassProperty
     def PRC(self):
         return self.CHINA
 
-    @property
+    @ClassProperty
     def SIMPLIFIED_CHINESE(self):
         return self.CHINA
 
-    @property
+    @ClassProperty
     def TAIWAN(self):
-        return self.__init__("zh", "TW")
+        return Locale("zh", "TW")
 
-    @property
+    @ClassProperty
     def TRADITIONAL_CHINESE(self):
-        return self.__init__("zh", "TW")
+        return Locale("zh", "TW")
 
-    @property
+    @ClassProperty
     def UK(self):
-        return self.__init__("en", "GB")
+        return Locale("en", "GB")
 
-    @property
+    @ClassProperty
     def US(self):
-        return self.__init__("en", "US")
+        return Locale("en", "US")

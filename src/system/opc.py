@@ -4,7 +4,7 @@ The following functions allow you to read, write and browser OPC
 servers.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "browse",
@@ -20,7 +20,7 @@ __all__ = [
     "writeValues",
 ]
 
-from typing import Any, List, Optional, Union
+from typing import Any, AnyStr, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.model.values import (
     BasicQualifiedValue,
@@ -33,18 +33,13 @@ from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBro
 PyOPCTag = AbstractOPCUtilities.PyOPCTag
 
 
-def browse(
-    opcServer,  # type: Union[str, unicode]
-    device,  # type: Union[str, unicode]
-    folderPath,  # type: Union[str, unicode]
-    opcItemPath,  # type: Union[str, unicode]
-):
-    # type: (...) -> List[OPCBrowseTag]
-    """Allows browsing of the OPC servers in the runtime, returning a
-    list of tags.
+def browse(opcServer, device, folderPath, opcItemPath):
+    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> List[OPCBrowseTag]
+    """Allows browsing of the OPC Servers in the runtime, returning a
+    list of Tags.
 
     Args:
-        opcServer: The name of the OPC server to browse.
+        opcServer: The name of the OPC Server to browse.
         device: The name of the device to browse.
         folderPath: Filters on a folder path. Use * as a wildcard for
             any number of characters and a ? for a single character.
@@ -59,17 +54,16 @@ def browse(
 
 
 def browseServer(
-    opcServer,  # type: Union[str, unicode]
-    nodeId,  # type: Union[str, unicode]
+    opcServer,  # type: AnyStr
+    nodeId,  # type: AnyStr
 ):
     # type: (...) -> List[Union[BasicOPCBrowseElement, PyOPCTag]]
     """When called from a Vision Client, returns a list of
-    OPCBrowseElement objects for the given server.
-
-    Otherwise returns a list of PyOPCTag.
+    OPCBrowseElement objects for the given Server. Otherwise returns a
+    list of PyOPCTag.
 
     Args:
-        opcServer: The name of the OPC server connection.
+        opcServer: The name of the OPC Server connection.
         nodeId: The node ID to browse.
 
     Returns:
@@ -79,21 +73,20 @@ def browseServer(
     return [BasicOPCBrowseElement()]
 
 
-def browseSimple(
-    opcServer,  # type: Union[str, unicode]
-    device,  # type: Union[str, unicode]
-    folderPath,  # type: Union[str, unicode]
-    opcItemPath,  # type: Union[str, unicode]
-):
-    # type: (...) -> List[OPCBrowseTag]
+def browseSimple(opcServer, device, folderPath, opcItemPath):
+    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> List[OPCBrowseTag]
     """Allows browsing of OPC servers in the runtime returning a list of
     tags.
 
     browseSimple() takes mandatory parameters, which can be null, while
     browse() uses keyword-style arguments.
 
+    Note:
+        The spelling on the opcServer and device parameters must be
+        exact.
+
     Args:
-        opcServer: The name of the OPC server to browse.
+        opcServer: The name of the OPC Server to browse.
         device: The name of the device to browse.
         folderPath: Filters on a folder path. Use * as a wildcard for
             any number of characters and a ? for a single character.
@@ -108,10 +101,10 @@ def browseSimple(
 
 
 def getServerState(opcServer):
-    # type: (Union[str, unicode]) -> Union[str, unicode]
-    """Retrieves the current state of the given OPC server connection.
+    # type: (AnyStr) -> Optional[AnyStr]
+    """Retrieves the current state of the given OPC Server connection.
 
-    If the given server is not found, the return value will be None.
+    If the given Server is not found, the return value will be None.
     Otherwise, the return value will be one of these strings:
         - UNKNOWN
         - FAULTED
@@ -121,7 +114,7 @@ def getServerState(opcServer):
         - DISABLED
 
     Args:
-        opcServer: The name of an OPC server connection.
+        opcServer: The name of an OPC Server connection.
 
     Returns:
         A string representing the current state of the connection, or
@@ -132,8 +125,8 @@ def getServerState(opcServer):
 
 
 def getServers(includeDisabled=False):
-    # type: (Optional[bool]) -> List[Union[str, unicode]]
-    """Returns a list of server names.
+    # type: (Optional[bool]) -> List[AnyStr]
+    """Returns a list of Server names.
 
     Args:
         includeDisabled: If set to True, enabled and disabled servers
@@ -141,7 +134,7 @@ def getServers(includeDisabled=False):
             be returned. Defaults to False. Optional.
 
     Returns:
-        A list of server name strings. If no servers are found, returns
+        A list of Server name strings. If no servers are found, returns
         an empty list.
     """
     print(includeDisabled)
@@ -149,11 +142,11 @@ def getServers(includeDisabled=False):
 
 
 def isServerEnabled(serverName):
-    # type: (Union[str, unicode]) -> bool
-    """Checks if an OPC server connection is enabled or disabled.
+    # type: (AnyStr) -> bool
+    """Checks if an OPC Server connection is enabled or disabled.
 
     Args:
-        serverName: The name of an OPC server connection.
+        serverName: The name of an OPC Server connection.
 
     Returns:
         True if the connection is enabled, False if the connection is
@@ -163,12 +156,9 @@ def isServerEnabled(serverName):
     return True
 
 
-def readValue(
-    opcServer,  # type: Union[str, unicode]
-    itemPath,  # type: Union[str, unicode]
-):
-    # type: (...) -> BasicQualifiedValue
-    """Reads a single value directly from an OPC server connection.
+def readValue(opcServer, itemPath):
+    # type: (AnyStr, AnyStr) -> BasicQualifiedValue
+    """Reads a single value directly from an OPC Server connection.
 
     The address is specified as a string, for example,
     [MyDevice]N11/N11:0. The object returned from this function has
@@ -181,23 +171,20 @@ def readValue(
     represents the time that the value was retrieved at.
 
     Args:
-        opcServer: The name of the OPC server connection in which the
+        opcServer: The name of the OPC Server connection in which the
             item resides.
         itemPath: The item path, or address, to read from.
 
     Returns:
         An object that contains the value, quality, and timestamp
-        returned from the OPC server for the address specified.
+        returned from the OPC Server for the address specified.
     """
     print(opcServer, itemPath)
     return BasicQualifiedValue()
 
 
-def readValues(
-    opcServer,  # type: Union[str, unicode]
-    itemPaths,  # type: List[Union[str, unicode]]
-):
-    # type: (...) -> List[BasicQualifiedValue]
+def readValues(opcServer, itemPaths):
+    # type: (AnyStr, List[AnyStr]) -> List[BasicQualifiedValue]
     """This function is equivalent to the system.opc.readValue function,
     except that it can operate in bulk.
 
@@ -206,7 +193,7 @@ def readValues(
     qualified value object for the corresponding address.
 
     Args:
-        opcServer: The name of the OPC server connection in which the
+        opcServer: The name of the OPC Server connection in which the
             items reside.
         itemPaths: A list of strings, each representing an item path, or
             address to read from.
@@ -214,31 +201,27 @@ def readValues(
     Returns:
         A sequence of objects, one for each address specified, in order.
         Each object will contains the value, quality, and timestamp
-        returned from the OPC server for the corresponding address.
+        returned from the OPC Server for the corresponding address.
     """
     print(opcServer, itemPaths)
-    return [BasicQualifiedValue()]
+    return [BasicQualifiedValue() for _ in itemPaths]
 
 
 def setServerEnabled(serverName, enabled):
-    # type: (Union[str, unicode], bool) -> None
-    """Enables or disables an OPC server connection.
+    # type: (AnyStr, bool) -> None
+    """Enables or disables an OPC Server connection.
 
     Args:
-        serverName: The name of an OPC server connection.
+        serverName: The name of an OPC Server connection.
         enabled: The new state the connection should be set to: True to
             enable the connection, False to disable.
     """
     print(serverName, enabled)
 
 
-def writeValue(
-    opcServer,  # type: Union[str, unicode]
-    itemPath,  # type: Union[str, unicode]
-    value,  # type: Any
-):
-    # type: (...) -> QualityCode
-    """Writes a value directly through an OPC server connection
+def writeValue(opcServer, itemPath, value):
+    # type: (AnyStr, AnyStr, Any) -> QualityCode
+    """Writes a value directly through an OPC Server connection
     synchronously.
 
     Will return an OPC-UA status code object. You can quickly check if
@@ -246,7 +229,7 @@ def writeValue(
     this function.
 
     Args:
-        opcServer: The name of the OPC server connection in which the
+        opcServer: The name of the OPC Server connection in which the
             item resides.
         itemPath: The item path, or address, to write to.
         value: The value to write to the OPC item.
@@ -259,12 +242,8 @@ def writeValue(
     return QualityCode()
 
 
-def writeValues(
-    opcServer,  # type: Union[str, unicode]
-    itemPaths,  # type: List[Union[str, unicode]]
-    values,  # type: List[Any]
-):
-    # type: (...) -> List[QualityCode]
+def writeValues(opcServer, itemPaths, values):
+    # type: (AnyStr, List[AnyStr], List[Any]) -> List[QualityCode]
     """This function is a bulk version of system.opc.writeValue.
 
     It takes a list of addresses and a list of objects, which must be
@@ -274,7 +253,7 @@ def writeValues(
     corresponding address.
 
     Args:
-        opcServer: The name of the OPC server connection in which the
+        opcServer: The name of the OPC Server connection in which the
             items reside.
         itemPaths: A list of item paths, or addresses, to write to.
         values: A list of values to write to each address specified.
@@ -284,4 +263,4 @@ def writeValues(
         to the addresses specified.
     """
     print(opcServer, itemPaths, values)
-    return [QualityCode()]
+    return [QualityCode() for _ in itemPaths]

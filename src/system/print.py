@@ -3,11 +3,11 @@
 The following functions allow you to send to a printer.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["createImage", "createPrintJob", "printToImage"]
 
-from typing import Optional, Union
+from typing import AnyStr, Optional
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 from java.awt import Component
@@ -21,8 +21,8 @@ def createImage(component):
     """Takes a snapshot of a component and creates a Java BufferedImage
     out of it.
 
-    You can use javax.imageio.ImageIO to turn this into bytes that can
-    be saved to a file or a BLOB field in a database.
+    You can use javax.imageio. to turn this into bytes that can be saved
+    to a file or a BLOB field in a database.
 
     Args:
         component: The component to render.
@@ -56,7 +56,7 @@ def createPrintJob(component):
 
 
 def printToImage(component, filename=None):
-    # type: (Component, Optional[Union[str, unicode]]) -> None
+    # type: (Component, Optional[AnyStr]) -> None
     """This function prints the given component (such as a graph,
     container, entire window, etc) to an image file, and saves the file
     where ever the operating system deems appropriate.

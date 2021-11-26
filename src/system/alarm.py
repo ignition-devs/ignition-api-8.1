@@ -4,7 +4,7 @@ The following functions give you access to view and interact with the
 Alarm system in Ignition.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "acknowledge",
@@ -19,19 +19,15 @@ __all__ = [
     "unshelve",
 ]
 
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, AnyStr, Dict, List, Optional, Tuple, Union
 
 from com.inductiveautomation.ignition.common.alarming.evaluation import ShelvedPath
 from com.inductiveautomation.ignition.common.alarming.query import AlarmQueryResultImpl
 from java.util import Date
 
 
-def acknowledge(
-    alarmIds,  # type: List[Union[str, unicode]]
-    notes=None,  # type: Optional[Union[str, unicode]]
-    username=None,  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> None
+def acknowledge(alarmIds, notes, username=None):
+    # type: (List[AnyStr], AnyStr, Optional[AnyStr]) -> None
     """Acknowledges any number of alarms, specified by their event ids.
 
     The event id is generated for an alarm when it becomes active, and
@@ -40,37 +36,42 @@ def acknowledge(
     making the call. Additionally, acknowledgement notes may be included
     and will be stored along with the acknowledgement.
 
+    Note:
+         The `username` parameter is only used when called from a
+         gateway scoped script. This parameter should be omitted from
+         any client-based scripts.
+
     Args:
-        alarmIds: List of alarm event ids (uuids) to acknowledge.
-        notes: Notes that will be stored on the acknowledged alarm
-            events. Optional.
-        username: The user that acknowledged the alarm. NOTE that this
-            parameter is only used when called from a gateway scoped
-            script. This parameter should be omitted from any
-            client-based scripts. Optional.
+        alarmIds: List of alarm event ids (UUIDs) to acknowledge.
+        notes: A string that will be used as the Ack Note on each
+            acknowledged alarm event. If set to None, then an Ack Note
+            note will not be assigned to the alarm event.
+        username: The user that acknowledged the alarm.
     """
     print(alarmIds, notes, username)
 
 
 def cancel(alarmIds):
-    # type: (List[Union[str, unicode]]) -> None
+    # type: (List[AnyStr]) -> None
     """Cancels any number of alarms, specified by their event ids.
 
-    The event id is generated for an alarm when it becomes active, and
-    is used to identify a particular event from other events for the
-    same source. The alarm will still be active, but will drop out of
-    alarm pipelines.
+    Event ids can be obtained from the system.alarm.queryStatus
+    function. Canceling a pipeline will not impact the alarm that
+    triggered the pipeline. The alarm will still be active, but will
+    drop out of alarm pipelines.
 
     Args:
-        alarmIds: List of alarm event ids (uuids) to cancel.
+        alarmIds: List of alarm event ids (UUIDs) to cancel.
     """
     print(alarmIds)
 
 
 def createRoster(name, description):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
-    """This function creates a new roster. Users may be added to the
-    roster through the Gateway or the Roster Management component.
+    # type: (AnyStr, AnyStr) -> None
+    """This function creates a new roster.
+
+    Users may be added to the roster through the Gateway or the Roster
+    Management component.
 
     Args:
         name: The name for the new roster.
@@ -81,13 +82,13 @@ def createRoster(name, description):
 
 
 def getRosters():
-    # type: () -> Dict[Union[str, unicode], List[Union[str, unicode]]]
+    # type: () -> Dict[AnyStr, List[AnyStr]]
     """This function returns a mapping of roster names to a list of
     usernames contained in the roster.
 
     Returns:
         A dictionary that maps roster names to a List of usernames in
-        the roster. The List of usernames may be empty if no users have
+        the roster. The list of usernames may be empty if no users have
         been added to the roster.
     """
     return {}
@@ -95,21 +96,17 @@ def getRosters():
 
 def getShelvedPaths():
     # type: () -> List[ShelvedPath]
-    """A list of ShelvedPath objects.
-
-    ShelvedPath objects can be examined with getExpiration, getHitCount,
-    getPath, getShelveTime, getUser, and isExpired.
+    """Returns a list of ShelvedPath objects, which each represent a
+    shelved alarm.
 
     Returns:
-        A list of ShelvedPath objects. ShelvedPath objects can be
-        examined with getExpiration, getHitCount, getPath,
-        getShelveTime, getUser, and isExpired.
+        A list of ShelvedPath objects.
     """
     return [ShelvedPath()]
 
 
 def listPipelines(projectName="alarm-pipelines"):
-    # type: (Optional[Union[str, unicode]]) -> List[Union[str, unicode]]
+    # type: (Optional[AnyStr]) -> List[AnyStr]
     """Will return a list of the available Alarm Notification Pipelines.
 
     Args:
@@ -128,15 +125,15 @@ def listPipelines(projectName="alarm-pipelines"):
 def queryJournal(
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
-    journalName=None,  # type: Optional[Union[str, unicode]]
-    priority=None,  # type: Optional[List[Union[str, unicode]]]
-    state=None,  # type: Optional[List[Union[str, unicode]]]
-    path=None,  # type: Optional[List[Union[str, unicode]]]
-    source=None,  # type: Optional[List[Union[str, unicode]]]
-    displaypath=None,  # type: Optional[List[Union[str, unicode]]]
-    all_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
-    any_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
-    defined=None,  # type: Optional[List[Union[str, unicode]]]
+    journalName=None,  # type: Optional[AnyStr]
+    priority=None,  # type: Optional[List[Union[AnyStr, int]]]
+    state=None,  # type: Optional[List[Union[AnyStr, int]]]
+    path=None,  # type: Optional[List[AnyStr]]
+    source=None,  # type: Optional[List[AnyStr]]
+    displaypath=None,  # type: Optional[List[AnyStr]]
+    all_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
+    any_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
+    defined=None,  # type: Optional[List[AnyStr]]
     includeData=None,  # type: Optional[bool]
     includeSystem=None,  # type: Optional[bool]
     isSystem=None,  # type: Optional[bool]
@@ -145,27 +142,34 @@ def queryJournal(
     """Queries the specified journal for historical alarm events.
 
     The result is a list of alarm events, which can be queried for
-    individual properties. The result object also has a getDataset()
-    function that can be used to convert the query results into a normal
-    dataset, with the columns: EventId, Source, DisplayPath, EventTime,
-    EventState, Priority, IsSystemEvent.
+    individual properties.
+
+    Note:
+        Each item in the resulting object is a separate alarm event: an
+        alarm becoming active is one item, while the same alarm becoming
+        acknowledged is a separate item. This differs from
+        `system.alarm.queryStatus()` which groups each event into a
+        single item.
 
     Args:
         startDate: The start of the time range to query. Defaults to 8
             hours previous to now if omitted. Time range is inclusive.
+            Optional.
         endDate: The end of the time range to query. Defaults to "now"
-            if omitted.
-        journalName: The journal name to query.
+            if omitted. Optional.
+        journalName: The journal name to query. If only one journal
+            exists on the Gateway, can be omitted. Optional.
         priority: A list of possible priorities to match. Priorities can
             be specified by name or number, with the values:
             Diagnostic(0), Low(1), Medium(2), High(3), Critical(4).
+            Optional.
         state: A list of the event state types to match. Valid values
-            are "ClearUnacked", "ClearAcked", "ActiveUnacked", and
-            "ActiveAcked".
+            can either be integers or strings, representing a number of
+            states. Optional.
         path: A list of possible source paths to search at. The wildcard
-            "*" may be used.
+            "*" may be used. Optional.
         source: A list of possible source paths to search at. The
-            wildcard "*" may be used.
+            wildcard "*" may be used. Optional.
         displaypath: A list of display paths to search at. Display paths
             are separated by "/", and if a path ends in "/*", everything
             below that path will be searched as well.
@@ -173,30 +177,28 @@ def queryJournal(
             be met for the condition to pass. This parameter is a list
             of tuples, in the form ("propName", "condition", value).
             Valid condition values: "=", "!=", "<", "<=", ">", ">=".
-            Only the first two conditions may be used for string values.
+            String values can only be compared using "=" and "!="
+            conditions. Optional.
         any_properties: A set of property conditions, any of which will
-            cause the overall the condition to pass. This parameter is a
+            cause the overall condition to pass. This parameter is a
             list of tuples, in the form ("propName", "condition",
             value). Valid condition values: "=", "!=", "<", "<=", ">",
-            ">=". Only the first two conditions may be used for string
-            values.
+            ">=". String values can only be compared using "=" and "!="
+            conditions. Optional.
         defined: A list of string property names, all of which must be
-            present on an event for it to pass.
+            present on an event for it to pass. Optional.
         includeData: Whether or not event data should be included in the
-            return. If this parameter is False, and if there are no
-            conditions specified on associated data, the properties
-            table will not be queried.
+            return. If True, returns Python dictionaries (or nulls) for
+            Active Data, Clear Data, Ack Data, Runtime Data inside of
+            the AlarmQueryResult object. Optional.
         includeSystem: Specifies whether system events are included in
-            the return.
+            the return. Optional.
         isSystem: Specifies whether the returned event must or must not
-            be a system event.
+            be a system event. Optional.
 
     Returns:
         The AlarmQueryResult object is functionally a list of AlarmEvent
-        objects. The AlarmQueryResult object has a built-in getDataset()
-        function that will return a Standard Dataset containing the
-        Event Id (UUID of the alarm), Source Path, Display Path, Event
-        Time, State (as an integer), and Priority (as an integer).
+        objects.
     """
     print(
         startDate,
@@ -218,62 +220,68 @@ def queryJournal(
 
 
 def queryStatus(
-    priority=None,  # type: Optional[List[Union[str, unicode]]]
-    state=None,  # type: Optional[List[Union[str, unicode]]]
-    path=None,  # type: Optional[List[Union[str, unicode]]]
-    source=None,  # type: Optional[List[Union[str, unicode]]]
-    displaypath=None,  # type: Optional[List[Union[str, unicode]]]
-    all_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
-    any_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
-    defined=None,  # type: Optional[List[Union[str, unicode]]]
+    priority=None,  # type: Optional[List[Union[AnyStr, int]]]
+    state=None,  # type: Optional[List[Union[AnyStr, int]]]
+    path=None,  # type: Optional[List[AnyStr]]
+    source=None,  # type: Optional[List[AnyStr]]
+    displaypath=None,  # type: Optional[List[AnyStr]]
+    all_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
+    any_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
+    defined=None,  # type: Optional[List[AnyStr]]
     includeShelved=False,  # type: Optional[bool]
 ):
     # type: (...) -> AlarmQueryResultImpl
     """Queries the current state of alarms.
 
     The result is a list of alarm events, which can be queried for
-    individual properties. The result object also has a getDataset()
-    function that can be used to convert the query results into a normal
-    dataset, with the columns: EventId, Source, DisplayPath, EventTime,
-    State, Priority.
+    individual properties. The results provided by this function
+    represent the current state of alarms, in contrast to the historical
+    alarm events retrieved by the `system.alarm.queryJournal` function.
+
+    Note:
+        Depending on the number of alarm events in the system, this
+        function can be fairly intensive and take a while to finish
+        executing. This can be problematic if the application is
+        attempting to show the results on a component (such as using
+        this function to retrieve a count of alarms). In these cases
+        it's preferred to call this function in a gateway script of some
+        sort (such as a timer script), and store the results in a tag.
 
     Args:
         priority: A list of possible priorities to match. Priorities can
             be specified by name or number, with the values:
             Diagnostic(0), Low(1), Medium(2), High(3), Critical(4).
-        state: A list of states to allow. Valid values: "ClearUnacked",
-            "ClearAcked", "ActiveUnacked", "ActiveAcked".
+            Optional.
+        state: A list of states to allow. Optional.
         path: A list of possible source paths to search at. The
             wildcard "*" may be used. Works the same as the source
-            argument, and either can be used.
+            argument, and either can be used. Optional.
         source: A list of possible source paths to search at. The
             wildcard "*" may be used. Works the same as the path
-            argument, and either can be used.
+            argument, and either can be used. Optional.
         displaypath: A list of display paths to search at. Display paths
             are separated by "/", and if a path ends in "/*", everything
-            below that path will be searched as well.
+            below that path will be searched as well. Optional.
         all_properties: A set of property conditions, all of which must
             be met for the condition to pass. This parameter is a list
             of tuples, in the form ("propName", "condition", value).
             Valid condition values: "=", "!=", "<", "<=", ">", ">=".
-            Only the first two conditions may be used for string values.
+            String values can only be compared using "=" and "!="
+            conditions. Optional.
         any_properties: A set of property conditions, any of which will
             cause the overall the condition to pass. This parameter is a
             list of tuples, in the form ("propName", "condition",
             value). Valid condition values: "=", "!=", "<", "<=", ">",
-            ">=". Only the first two conditions may be used for string
-            values.
+            ">=". String values can only be compared using "=" and "!="
+            conditions. Optional.
         defined: A list of string property names, all of which must be
-            present on an event for it to pass.
+            present on an event for it to pass. Optional.
         includeShelved: A flag indicating whether shelved events should
-            be included in the results. Defaults to "False".
+            be included in the results. Defaults to False. Optional.
 
     Returns:
         The AlarmQueryResult object is functionally a list of AlarmEvent
-        objects. The AlarmQueryResult object has a built-in getDataset()
-        function that will return a Standard Dataset containing the
-        Event Id (UUID of the alarm), Source Path, Display Path, Event
-        Time, State (as an integer), and Priority (as an integer).
+        objects with some additional helper methods.
     """
     print(
         priority,
@@ -289,34 +297,33 @@ def queryStatus(
     return AlarmQueryResultImpl()
 
 
-def shelve(path, timeoutSeconds=None, timeoutMinutes=None):
-    # type: (List[Union[str, unicode]], int, int) -> None
+def shelve(path, timeoutSeconds=0, timeoutMinutes=15):
+    # type: (List[AnyStr], Optional[int], Optional[int]) -> None
     """This function shelves the specified alarms for the specified
     amount of time.
 
-    The paths may be either source paths, or display paths. The time can
-    be specified in minutes (timeoutMinutes) or seconds
+    The time can be specified in minutes (timeoutMinutes) or seconds
     (timeoutSeconds). If an alarm is already shelved, this will
-    overwrite the remaining time. To unshelve alarms, this function may
-    be used with a time of "0".
+    overwrite the remaining time. If no timeout is specified, will
+    default to 15 minutes.
 
     Args:
         path: A list of possible source paths to search at. If a path
             ends in "/*", the results will include anything below that
             path.
         timeoutSeconds: The amount of time to shelve the matching alarms
-            for, specified in seconds. 0 indicates that matching alarm
-            events should now be allowed to pass.
+            for, specified in seconds. Setting this to 0 will unshelve
+            the alarms. Optional.
         timeoutMinutes: The amount of time to shelve the matching alarms
-            for, specified in minutes. 0 indicates that matching alarm
-            events should now be allowed to pass.
+            for, specified in minutes. Setting this to 0 will unshelve
+            the alarms. Optional.
     """
     print(path, timeoutSeconds, timeoutMinutes)
 
 
 def unshelve(path):
-    # type: (List[Union[str, unicode]]) -> None
-    """Unshelves alarms in accordance with the path parameter.
+    # type: (List[AnyStr]) -> None
+    """Unshelves a list of alarms based on the source paths provided.
 
     Args:
         path: A list of possible source paths to search at. If a path

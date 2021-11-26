@@ -9,7 +9,7 @@ This package provides a number of image producers, consumers, and
 filters that you can configure for your image processing needs.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["BufferedImage"]
 

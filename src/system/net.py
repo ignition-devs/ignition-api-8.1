@@ -3,7 +3,7 @@
 The following functions give you access to interact with http services.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "getExternalIpAddress",
@@ -20,32 +20,33 @@ __all__ = [
 ]
 
 import socket
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, AnyStr, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
 
 
 def getExternalIpAddress():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the client's IP address, as it is detected by the
     Gateway.
 
     This means that this call will communicate with the Gateway, and the
     Gateway will tell the client what IP address its incoming traffic is
-    coming from. If you have a client behind a NAT router, then this
-    address will be the WAN address of the router instead of the LAN
-    address of the client, which is what you'd get with
+    coming from. If you have a client behind a Network Address
+    Translation (NAT) router, then this address will be the Wide Area
+    Network (WAN) address of the router instead of the Local Area
+    Network (LAN) address of the client, which is what you'd get with
     system.net.getIpAddress.
 
     Returns:
-        A text representation of the client's IP address, as detected by
+        A text representation of the Client's IP address, as detected by
         the Gateway.
     """
     return "52.52.32.221"
 
 
 def getHostName():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the host name of the computer that the script was ran
     on.
 
@@ -61,11 +62,9 @@ def getHostName():
 
 
 def getIpAddress():
-    # type: () -> Union[str, unicode]
-    """Returns the IP address of the computer the client is running on,
-    as it appears to the client.
-
-    See also: system.net.getExternalIpAddress().
+    # type: () -> AnyStr
+    """Returns the IP address of the computer that the script was ran
+    on.
 
     Returns:
         Returns the IP address of the local machine, as it sees it.
@@ -74,7 +73,7 @@ def getIpAddress():
 
 
 def getRemoteServers(runningOnly=True):
-    # type: (Optional[bool]) -> List[Union[str, unicode]]
+    # type: (Optional[bool]) -> List[AnyStr]
     """This function returns a List of Gateway Network servers that are
     visible from the local Gateway.
 
@@ -85,7 +84,7 @@ def getRemoteServers(runningOnly=True):
             Optional.
 
     Returns:
-        A List of Strings representing Gateway Network server ids.
+        A List of strings representing Gateway Network Server IDs.
     """
     print(runningOnly)
     return []
@@ -93,13 +92,13 @@ def getRemoteServers(runningOnly=True):
 
 def httpClient(
     timeout=60000,  # type: Optional[int]
-    bypass_cert_validation=True,  # type: Optional[bool]
-    username=None,  # type: Optional[Union[str, unicode]]
-    password=None,  # type: Optional[Union[str, unicode]]
-    proxy=None,  # type: Optional[Union[str, unicode]]
-    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[Union[str, unicode]]
-    redirect_policy="NORMAL",  # type: Optional[Union[str, unicode]]
-    customizer=None,  # type: Optional[Callable]
+    bypass_cert_validation=False,  # type: Optional[bool]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    proxy=None,  # type: Optional[AnyStr]
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[AnyStr]
+    redirect_policy="NORMAL",  # type: Optional[AnyStr]
+    customizer=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> JythonHttpClient
     """Provides a general use object that can be used to send and
@@ -115,7 +114,7 @@ def httpClient(
             timeout setting to. Defaults to 60000. Optional.
         bypass_cert_validation: A boolean indicating whether the client
             should attempt to validate the certificates of remote
-            servers, if connecting via HTTPS/SSL. Defaults to True.
+            servers, if connecting via HTTPS/SSL. Defaults to False.
             Optional.
         username: A string indicating the username to use for
             authentication if the remote server requests authentication;
@@ -162,16 +161,16 @@ def httpClient(
 
 
 def httpDelete(
-    url,  # type: Union[str, unicode]
-    contentType=None,  # type: Optional[Union[str, unicode]]
+    url,  # type: AnyStr
+    contentType=None,  # type: Optional[AnyStr]
     connectTimeout=10000,  # type: Optional[int]
     readTimeout=60000,  # type: Optional[int]
-    username=None,  # type: Optional[Union[str, unicode]]
-    password=None,  # type: Optional[Union[str, unicode]]
-    headerValues=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
     bypassCertValidation=True,  # type: Optional[bool]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> AnyStr
     """Performs an HTTP DELETE to the given URL.
 
     Args:
@@ -210,17 +209,17 @@ def httpDelete(
 
 
 def httpGet(
-    url,  # type: Union[str, unicode]
+    url,  # type: AnyStr
     connectTimeout=10000,  # type: Optional[int]
     readTimeout=60000,  # type: Optional[int]
-    username=None,  # type: Optional[Union[str, unicode]]
-    password=None,  # type: Optional[Union[str, unicode]]
-    headerValues=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
     bypassCertValidation=None,  # type: Optional[bool]
     useCaches=True,  # type: Optional[bool]
     throwOnError=True,  # type: Optional[bool]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> AnyStr
     """Retrieves the document at the given URL using the HTTP GET
     protocol.
 
@@ -271,7 +270,7 @@ def httpGet(
 
 
 def httpPost(url, *args, **kwargs):
-    # type: (Union[str, unicode], *Any, **Any) -> Union[str, unicode]
+    # type: (AnyStr, *Any, **Any) -> AnyStr
     """Retrieves the document at the given URL using the HTTP POST
     protocol.
 
@@ -294,14 +293,14 @@ def httpPost(url, *args, **kwargs):
 
 
 def httpPut(url, *args, **kwargs):
-    # type: (Union[str, unicode], *Any, **Any) -> Union[str, unicode]
+    # type: (AnyStr, *Any, **Any) -> AnyStr
     """Performs an HTTP PUT to the given URL.
 
     Encodes the given dictionary of parameters using
     "applications/x-www-form-urlencoded" format.
 
     Args:
-        url: The URL to send the request to.
+        url: The URL to put to.
         *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
 
@@ -313,14 +312,14 @@ def httpPut(url, *args, **kwargs):
 
 
 def openURL(url, useApplet=False):
-    # type: (Union[str, unicode], Optional[bool]) -> None
+    # type: (AnyStr, Optional[bool]) -> None
     """Opens the given URL or URI scheme outside of the currently
     running Client in whatever application the host operating system
     deems appropriate.
 
     Args:
         url: The URL to open in a web browser.
-        useApplet: If set to True (1), and the client is running as an
+        useApplet: If set to True, and the client is running as an
             Applet, then the browser instance that launched the applet
             will be used to open the URL. Optional.
     """
@@ -328,23 +327,23 @@ def openURL(url, useApplet=False):
 
 
 def sendEmail(
-    smtp,  # type: Union[str, unicode]
-    fromAddr,  # type: Union[str, unicode]
-    subject,  # type: Union[str, unicode]
-    body,  # type: Union[str, unicode]
-    html,  # type: Union[str, unicode]
-    to,  # type: List[Union[str, unicode]]
+    smtp,  # type: AnyStr
+    fromAddr,  # type: AnyStr
+    subject,  # type: AnyStr
+    body,  # type: AnyStr
+    html,  # type: AnyStr
+    to,  # type: List[AnyStr]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
     timeout=300000,  # type: Optional[int]
-    username=None,  # type: Optional[Union[str, unicode]]
-    password=None,  # type: Optional[Union[str, unicode]]
-    priority="3",  # type: Optional[Union[str, unicode]]
-    smtpProfile=None,  # type: Optional[Union[str, unicode]]
-    cc=None,  # type: Optional[List[Union[str, unicode]]]
-    bcc=None,  # type: Optional[List[Union[str, unicode]]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    priority="3",  # type: Optional[AnyStr]
+    smtpProfile=None,  # type: Optional[AnyStr]
+    cc=None,  # type: Optional[List[AnyStr]]
+    bcc=None,  # type: Optional[List[AnyStr]]
     retries=0,  # type: Optional[int]
-    replyTo=None,  # type: Optional[List[Union[str, unicode]]]
+    replyTo=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> None
     """Sends an email through the given SMTP server.

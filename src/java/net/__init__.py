@@ -1,6 +1,6 @@
 """Provides the classes for implementing networking applications."""
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["InetSocketAddress", "Socket", "SocketAddress"]
 

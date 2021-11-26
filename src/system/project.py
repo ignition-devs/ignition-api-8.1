@@ -4,15 +4,15 @@ The following functions allow you to list projects on the Gateway
 through scripting.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["getProjectName", "getProjectNames"]
 
-from typing import List, Union
+from typing import AnyStr, List
 
 
 def getProjectName():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the name of the project where the function was called
     from.
 
@@ -35,7 +35,7 @@ def getProjectName():
 
 
 def getProjectNames():
-    # type: () -> List[Union[str, unicode]]
+    # type: () -> List[AnyStr]
     """Returns an unsorted collection of strings, where each string
     represents the name of a project on the Gateway.
 

@@ -3,7 +3,7 @@
 The following functions give you access to interact with Ignition Tags.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "browse",
@@ -33,7 +33,7 @@ __all__ = [
     "writeBlocking",
 ]
 
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, AnyStr, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
@@ -48,40 +48,29 @@ from com.inductiveautomation.ignition.common.sqltags.history.annotations import 
 from java.util import Date
 
 
-def browse(
-    path,  # type: Union[str, unicode]
-    filter=None,  # type: Optional[Dict[Union[str, unicode], Any]]
-):
-    # type: (...) -> Results
-    """Returns a list of tags found at the specified tag path.
+def browse(path, filter=None):
+    # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> Results
+    """Returns a list of tags found at the specified Tag path.
 
     The list objects are returned as dictionaries with some basic
-    information about each tag.
+    information about each Tag.
 
     Args:
         path: The path that will be browsed, typically to a folder or
             UDT instance.
-        filter: A dictionary of browse filter parameters. Parameters
-            include name (with wildcards), dataType, valueSource,
-            tagType, typeId, quality (specify Good or Bad), and
-            maxResults. The aforementioned wildcard character is the *
-            character. Again, the wildcard is only used with the Name
-            parameter.
+        filter: A dictionary of browse filter keys.
 
     Returns:
-        A Results object which contains a list of tag dictionaries, one
-        for each tag found during the browse. Use .getResults() on the
-        results object to get the list of tag dictionaries, or
-        .getReturnedSize() to the the number of items in results. Refer
-        to the list of tagBrowse objects.
+        A Results object which contains a list of Tag dictionaries, one
+        for each Tag found during the browse.
     """
     print(path, filter)
     return Results()
 
 
 def browseHistoricalTags(
-    path,  # type: Union[str, unicode]
-    nameFilters=None,  # type: Optional[List[Union[str, unicode]]]
+    path,  # type: AnyStr
+    nameFilters=None,  # type: Optional[List[AnyStr]]
     maxSize=None,  # type: Optional[int]
     continuationPoint=None,  # type: Optional[Any]
 ):
@@ -93,8 +82,7 @@ def browseHistoricalTags(
     through any children. Will return with a BrowseResults object.
 
     Args:
-        path: The Historical Tag Path to browse. See the Tag Export page
-            for a description of how to construct a historical Tag Path.
+        path: The Historical Tag Path to browse.
         nameFilters: A list of name filters to be applied to the result
             set. Optional.
         maxSize: The maximum size of the result set. Optional.
@@ -111,35 +99,29 @@ def browseHistoricalTags(
     return Results()
 
 
-def configure(
-    basePath,  # type: Union[str, unicode]
-    tags,  # type: Any
-    collisionPolicy="o",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> List[QualityCode]
+def configure(basePath, tags, collisionPolicy="o"):
+    # type: (AnyStr, Any, Optional[AnyStr]) -> List[QualityCode]
     """Creates Tags from a given list of Python dictionaries or from a
     JSON source string.
 
     Can be used to overwrite a current Tag's configuration.
 
-    When utilizing this function, the tag definitions must specify the
-    names of properties with their scripting/JSON name. A reference of
-    these properties can be found on the Tag Properties and Tag Alarm
-    Properties pages.
+    When utilizing this function, the Tag definitions must specify the
+    names of properties with their scripting/JSON name.
 
     Args:
         basePath: The starting point where the new Tags will be created.
             When making changes to existing tags with this function,
             you want to set the path to the parent folder of the
-            existing tag(s), not the tag(s) themselves.
+            existing Tag(s), not the Tag(s) themselves.
         tags: A list of Tag definitions, where each Tag definition is a
             Python dictionary. Alternately, a JSON source string may be
             passed to this parameter. When editing existing tags, it is
-            generally easier to retrieve the tag configurations with
-            system.tag.getConfiguration, modify the results of the
+            generally easier to retrieve the Tag configurations with
+            system.Tag.getConfiguration, modify the results of the
             getConfiguration call, and then write the new configuration
-            to the parent folder of the existing tag(s).
-        collisionPolicy: The action to take when a tag or folder with
+            to the parent folder of the existing Tag(s).
+        collisionPolicy: The action to take when a Tag or folder with
             the same path and name is encountered. Possible values
             include:
 
@@ -155,65 +137,63 @@ def configure(
             Defaults to Overwrite. Optional.
 
     Returns:
-        A List of QualityCode objects, one for each tag in the list,
+        A List of QualityCode objects, one for each Tag in the list,
         that is representative of the result of the operation.
     """
     print(basePath, tags, collisionPolicy)
-    return [QualityCode()]
+    return [QualityCode() for _ in tags]
 
 
 def copy(
-    tags,  # type: List[Union[str, unicode]]
-    destination,  # type: Union[str, unicode]
-    collisionPolicy="o",  # type: Optional[Union[str, unicode]]
+    tags,  # type: List[AnyStr]
+    destination,  # type: AnyStr
+    collisionPolicy="o",  # type: Optional[AnyStr]
 ):
     # type: (...) -> List[QualityCode]
     """Copies tags from one folder to another.
 
-    Multiple tag and folder paths may be passed to a single call of this
-    function. The new destination can be a separate tag provider.
+    Multiple Tag and folder paths may be passed to a single call of this
+    function. The new destination can be a separate Tag provider.
 
     Args:
         tags: A List of Tag paths to move.
         destination: The destination to copy the Tags to. All specified
             tags will be copied to the same destination. The destination
-            tag provider must be specified.
-        collisionPolicy: The action to take when a tag or folder with
+            Tag provider must be specified.
+        collisionPolicy: The action to take when a Tag or folder with
             the same path and name is encountered. Possible values
             include: "a" Abort and throw an exception, "o" Overwrite and
             replace existing Tag's configuration, "i" Ignore that item
             in the list. Defaults to Overwrite. Optional.
 
     Returns:
-        list[QualityCode]: A List of QualityCode objects, one for each
-            tag in the list, that is representative of the result of the
-            operation.
+        A List of QualityCode objects, one for each Tag in the list,
+        that is representative of the result of the operation.
     """
     print(tags, destination, collisionPolicy)
-    return [QualityCode()]
+    return [QualityCode() for _ in tags]
 
 
-def deleteAnnotations(
-    paths,  # type: List[Union[str, unicode]]
-    storageIds,  # type: List[Union[str, unicode]]
-):
-    # type: (...) -> List[BasicQualifiedValue]
+def deleteAnnotations(paths, storageIds):
+    # type: (List[AnyStr], List[AnyStr]) -> List[BasicQualifiedValue]
     """Removes stored annotations from the sqlth_annotations table.
 
-    Requires the full tag path (including history provider) for each
-    annotation, as well as each annotation's storage ID. Storage ID
-    values can be retrieved with system.tag.queryAnnotations.
+    Requires the full Tag path (including history provider) for each
+    annotation, as well as each annotation's storage ID.
+
+    The function expects two lists (PySequences) of equal length. The
+    items in each list is 1-to-1, meaning the first item in the "paths"
+    list relates to the first item in the "storageIds" list, the second
+    item in "paths" relates to the second item in "storageIds", etc.
 
     Args:
-        paths: A list of tag paths with existing annotations. The paths
-            are equivalent to what would be used for a tag history
+        paths: A list of Tag paths with existing annotations. The paths
+            are equivalent to what would be used for a Tag history
             query, and should specify the source provider as well. For
             example, "[HistoryProvider/Gateway:Provider]Path/To/Tag".
-        storageIds: A sequence of storage identifiers for If defined,
-            these will be used to perform updates, or deletes (if the
-            corresponding delete parameter is True). Storage id is
-            available on the Annotation object, and is returned as the
-            result value from the storeAnnotations call.
+        storageIds: A sequence of storage identifiers that will be
+            deleted. Storage ID values can be retrieved with
+            system.tag.queryAnnotations.
 
     Returns:
         A list of qualified values. The quality code will indicate
@@ -225,7 +205,7 @@ def deleteAnnotations(
 
 
 def deleteTags(tagPaths):
-    # type: (List[Union[str, unicode]]) -> List[QualityCode]
+    # type: (List[AnyStr]) -> List[QualityCode]
     """Deletes multiple Tags or Tag Folders.
 
     When deleting a Tag Folder, all Tags under the folder are also
@@ -236,35 +216,32 @@ def deleteTags(tagPaths):
             are to be removed.
 
     Returns:
-         A List of QualityCode objects, one for each tag in the list,
-         that is representative of the result of the operation, e.g.
-         "Good", "Bad_NotFound", etc. The quality codes have a built-in
-         isNotGood() method that can be used to determine if any
-         deletions failed.
+         A List of QualityCode objects, one for each Tag in the list,
+         that is representative of the result of the operation.
     """
     print(tagPaths)
-    return [QualityCode()]
+    return [QualityCode() for _ in tagPaths]
 
 
 def exists(tagPath):
-    # type: (Union[str, unicode]) -> bool
-    """Checks whether or not a tag with a given path exists.
+    # type: (AnyStr) -> bool
+    """Checks whether or not a Tag with a given path exists.
 
     Args:
-        tagPath: The path of the tag to look up.
+        tagPath: The path of the Tag to look up.
 
     Returns:
-        True if a tag exists for the given path, False otherwise.
+        True if a Tag exists for the given path, False otherwise.
     """
     print(tagPath)
     return True
 
 
 def exportTags(
-    filePath,  # type: Union[str, unicode]
-    tagPaths,  # type: List[Union[str, unicode]]
+    filePath,  # type: AnyStr
+    tagPaths,  # type: List[AnyStr]
     recursive=True,  # type: Optional[bool]
-    exportType="json",  # type: Optional[Union[str, unicode]]
+    exportType="json",  # type: Optional[AnyStr]
 ):
     # type: (...) -> None
     """Exports Tags to a file on a local file system.
@@ -287,11 +264,8 @@ def exportTags(
     print(filePath, tagPaths, recursive, exportType)
 
 
-def getConfiguration(
-    basePath,  # type: Union[str, unicode]
-    recursive=False,  # type: Optional[bool]
-):
-    # type: (...) -> List[Dict[Union[str, unicode], Any]]
+def getConfiguration(basePath, recursive=False):
+    # type: (AnyStr, Optional[bool]) -> List[Dict[AnyStr, Any]]
     """Retrieves Tags from the Gateway as Python dictionaries.
 
     These can be edited and then saved back using system.tag.configure.
@@ -314,13 +288,9 @@ def getConfiguration(
     return [{}]
 
 
-def importTags(
-    filePath,  # type: Union[str, unicode]
-    basePath,  # type: Union[str, unicode]
-    collisionPolicy="o",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> List[QualityCode]
-    """Imports a JSON tag file at the provided path.
+def importTags(filePath, basePath, collisionPolicy="o"):
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> List[QualityCode]
+    """Imports a JSON Tag file at the provided path.
 
     Also supports XML and CSV Tag file exports from legacy systems.
 
@@ -328,14 +298,14 @@ def importTags(
         filePath: The file path of the Tag export to import.
         basePath: The Tag path that will serve as the root node for the
             imported Tags.
-        collisionPolicy: The action to take when a tag or folder with
+        collisionPolicy: The action to take when a Tag or folder with
             the same path and name is encountered. Possible values
             include: "a" Abort and throw an exception, "o" Overwrite and
             replace existing Tag's configuration, "i" Ignore that item
             in the list. Defaults to Overwrite. Optional.
 
     Returns:
-        A List of QualityCode objects, one for each tag in the list,
+        A List of QualityCode objects, one for each Tag in the list,
         that is representative of the result of the operation.
     """
     print(filePath, basePath, collisionPolicy)
@@ -348,55 +318,51 @@ def isOverlaysEnabled():
     system is currently enabled.
 
     Returns:
-         True (1) if overlays are currently enabled.
+         True if overlays are currently enabled.
     """
     return False
 
 
-def move(
-    tags,  # type: Union[str, unicode]
-    destination,  # type: Union[str, unicode]
-    collisionPolicy="o",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> List[QualityCode]
+def move(tags, destination, collisionPolicy="o"):
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> List[QualityCode]
     """Moves Tags or Folders to a new destination.
 
-    The new destination can be a separate tag provider. If interested in
+    The new destination can be a separate Tag provider. If interested in
     copying the tags to a new destination, instead of moving them,
     please see the system.tag.copy page.
 
     Args:
         tags: A List of Tag paths to move.
         destination: The destination to move the Tags to. The
-            destination tag provider must be specified: i.e.,
+            destination Tag provider must be specified: i.e.,
             [default]Folder/myTag
-        collisionPolicy: The action to take when a tag or folder with
+        collisionPolicy: The action to take when a Tag or folder with
             the same path and name is encountered. Possible values
             include: "a" Abort and throw an exception, "o" Overwrite and
             replace existing Tag's configuration, "i" Ignore that item
             in the list. Defaults to Overwrite. Optional.
 
     Returns:
-        A List of QualityCode objects, one for each tag in the list,
+        A List of QualityCode objects, one for each Tag in the list,
         that is representative of the result of the operation.
     """
     print(tags, destination, collisionPolicy)
-    return [QualityCode()]
+    return [QualityCode() for _ in tags]
 
 
 def queryAnnotations(
-    paths,  # type: List[Union[str, unicode]]
+    paths,  # type: List[AnyStr]
     startTime=None,  # type: Optional[Date]
     endTime=None,  # type: Optional[Date]
-    types=None,  # type: Optional[List[Union[str, unicode]]]
+    types=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> List[Annotation]
-    """Queries user stored annotations from the tag history system for a
+    """Queries user stored annotations from the Tag history system for a
     set of paths, for a given time range.
 
     Args:
-        paths: A list of tag paths to query. The paths are equivalent to
-            what would be used ofr a tag history query, and should
+        paths: A list of Tag paths to query. The paths are equivalent to
+            what would be used ofr a Tag history query, and should
             specify the source provider as well. For example,
             "[HistoryProvider/Gateway:Provider]Path/To/Tag".
         startTime: The start of the time range. If not defined, defaults
@@ -406,7 +372,7 @@ def queryAnnotations(
         types: A list of string "types" to filter on. Types are defined
             by the annotations and various subsystems, and may vary with
             different providers. Possible annotation types are listed on
-            the system.tag.storeAnnotations page. Optional.
+            the system.Tag.storeAnnotations page. Optional.
 
     Returns:
         A list of Annotation objects that match the query criteria.
@@ -416,13 +382,13 @@ def queryAnnotations(
 
 
 def queryTagCalculations(
-    paths,  # type: List[Union[str, unicode]]
-    calculations,  # type: List[Union[str, unicode]]
+    paths,  # type: List[AnyStr]
+    calculations,  # type: List[AnyStr]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     rangeHours=None,  # type: Optional[int]
     rangeMinutes=None,  # type: Optional[int]
-    aliases=None,  # type: Optional[List[Union[str, unicode]]]
+    aliases=None,  # type: Optional[List[AnyStr]]
     includeBoundingValues=True,  # type: Optional[bool]
     validatesSCExec=True,  # type: Optional[bool]
     noInterpolation=False,  # type: Optional[bool]
@@ -432,20 +398,20 @@ def queryTagCalculations(
     """Queries various calculations (aggregations) for a set of tags
     over a specified range.
 
-    Returns a dataset with a row per tag, and a column per calculation.
+    Returns a dataset with a row per Tag, and a column per calculation.
 
-    This is useful when you wish to aggregate tag history collected over
+    This is useful when you wish to aggregate Tag history collected over
     a period of time into a single value per aggregate. If you want
     multiple values aggregated to a single time slice (i.e., hourly
-    aggregates for the same tag over an 8 hour period) consider using
-    system.tag.queryTagHistory
+    aggregates for the same Tag over an 8 hour period) consider using
+    system.Tag.queryTagHistory
 
     Args:
-        paths: An array of tag paths (strings) to query calculations
-            for. The resulting dataset will have a row for each tag, and
+        paths: An array of Tag paths (strings) to query calculations
+            for. The resulting dataset will have a row for each Tag, and
             a column for each calculation.
         calculations: An array of calculations (aggregation functions)
-            to execute for each tag. Valid values are: "Average"
+            to execute for each Tag. Valid values are: "Average"
             (time-weighted), "MinMax", "LastValue", "SimpleAverage",
             "Sum", "Minimum", "Maximum", "DurationOn", "DurationOff",
             "CountOn", "CountOff", "Count", "Range", "Variance",
@@ -460,27 +426,27 @@ def queryTagCalculations(
             negative, and can be used in conjunction with startDate or
             endDate. Optional.
         rangeMinutes: Same as rangeHours, but in minutes. Optional.
-        aliases: Aliases that will be used to override the tag path
-            names in the result dataset. Must be 1-to-1 with the tag
-            paths. If not specified, the tag paths themselves will be
+        aliases: Aliases that will be used to override the Tag path
+            names in the result dataset. Must be 1-to-1 with the Tag
+            paths. If not specified, the Tag paths themselves will be
             used. Optional.
         includeBoundingValues: A boolean flag indicating that the system
             should attempt to load values before and after the query
             bounds for the purpose of interpolation. The effect depends
-            on the aggregates used. The default is "True". Optional.
+            on the aggregates used. The default is True. Optional.
         validatesSCExec: A boolean flag indicating whether or not data
             should be validated against the scan class execution
             records. If False, calculations may include data that is
             assumed to be good, even though the system may not have been
-            running. Default is "True". Optional.
+            running. Default is True. Optional.
         noInterpolation: A boolean flag indicating that the system
             should not attempt to interpolate values in situations where
             it normally would, such as for analog tags. Default is
-            "False". Optional.
+            False. Optional.
         ignoreBadQuality: A boolean flag indicating that bad quality
             values should not be used in the query process. If set, any
             value with a "bad" quality will be completely ignored in
-            calculations. Default is "False". Optional.
+            calculations. Default is False. Optional.
 
     Returns:
         A dataset representing the calculations over the specified
@@ -503,7 +469,7 @@ def queryTagCalculations(
 
 
 def queryTagDensity(paths, startDate, endDate):
-    # type: (List[Union[str, unicode]], Date, Date) -> BasicDataset
+    # type: (List[AnyStr], Date, Date) -> BasicDataset
     """Queries the Tag history system for information about the density
     of data.
 
@@ -519,32 +485,39 @@ def queryTagDensity(paths, startDate, endDate):
     passed in, if three Tags were present during the span, the result
     would be 0.75.
 
+    Note:
+        This function relies on being able to validate the data against
+        tag group execution. This function will be unable to return
+        density information for tags that were stored by an Internal
+        Historian Provider, as well as cases where tag group validation
+        is disabled (such as by disabling Enable State Data Detection).
+
     Args:
         paths: An array of Tag paths (strings) to query.
         startDate: The start of the range to query.
         endDate: The end of the range to query.
 
     Returns:
-        A 2-column dataset consisting of a timestamp and a weight. Each
-        row is valid until the next row.
+        A two-column dataset consisting of a timestamp and a weight.
+        Each row is valid until the next row.
     """
     print(paths, startDate, endDate)
     return BasicDataset()
 
 
 def queryTagHistory(
-    paths,  # type: List[Union[str, unicode]]
+    paths,  # type: List[AnyStr]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     returnSize=-1,  # type: Optional[int]
-    aggregationMode="Average",  # type: Optional[Union[str, unicode]]
-    returnFormat="Wide",  # type: Optional[Union[str, unicode]]
-    columnNames=None,  # type: Optional[List[Union[str, unicode]]]
+    aggregationMode="Average",  # type: Optional[AnyStr]
+    returnFormat="Wide",  # type: Optional[AnyStr]
+    columnNames=None,  # type: Optional[List[AnyStr]]
     intervalHours=None,  # type: Optional[int]
     intervalMinutes=None,  # type: Optional[int]
     rangeHours=None,  # type: Optional[int]
     rangeMinutes=None,  # type: Optional[int]
-    aggregationModes=None,  # type: Optional[List[Union[str, unicode]]]
+    aggregationModes=None,  # type: Optional[List[AnyStr]]
     includeBoundingValues=None,  # type: Optional[bool]
     validateSCExec=None,  # type: Optional[bool]
     noInterpolation=None,  # type: Optional[bool]
@@ -556,13 +529,13 @@ def queryTagHistory(
     # type: (...) -> BasicDataset
     """Issues a query to the Tag Historian.
 
-    Querying tag history involves specifying the tags and the date
+    Querying Tag history involves specifying the tags and the date
     range, as well as a few optional parameters. The Tag historian will
     find the relevant history and then interpolate and aggregate it
     together into a coherent, tabular result set.
 
     Args:
-        paths: An array of tag paths (strings) to query. Each tag path
+        paths: An array of Tag paths (strings) to query. Each Tag path
             specified will be a column in the result dataset.
         startDate: The earliest value to retrieve. If omitted, 8 hours
             before current time is used. Optional.
@@ -578,12 +551,12 @@ def queryTagHistory(
             "Sum", "Minimum", "Maximum", "DurationOn", "DurationOff",
             "CountOn", "CountOff", "Count", "Range", "Variance",
             "StdDev", "PctGood", and "PctBad". Optional.
-        returnFormat: Use "Wide" to have a column per tag queried, or
+        returnFormat: Use "Wide" to have a column per Tag queried, or
             "Tall" to have a fixed-column format. Default is "Wide".
             Optional.
         columnNames: Aliases that will be used to override the column
-            names in the result dataset. Must be 1-to-1 with the tag
-            paths. If not specified, the tag paths themselves will be
+            names in the result dataset. Must be 1-to-1 with the Tag
+            paths. If not specified, the Tag paths themselves will be
             used as column titles. Optional.
         intervalHours: Allows you to specify the window interval in
             terms of hours, as opposed to using a specific return size.
@@ -629,8 +602,8 @@ def queryTagHistory(
 
     Returns:
         A dataset representing the historian values for the specified
-        tag paths. The first column will be the timestamp, and each
-        column after that represents a tag.
+        Tag paths. The first column will be the timestamp, and each
+        column after that represents a Tag.
     """
     print(
         paths,
@@ -657,7 +630,7 @@ def queryTagHistory(
 
 
 def readAsync(tagPaths, callback):
-    # type: (List[Union[str, unicode]], Callable) -> None
+    # type: (List[AnyStr], Callable[..., Any]) -> None
     """Asynchronously reads the value of the Tags at the given paths.
 
     You must provide a python callback function that can process the
@@ -675,11 +648,8 @@ def readAsync(tagPaths, callback):
     print(tagPaths, callback)
 
 
-def readBlocking(
-    tagPaths,  # type: List[Union[str, unicode]]
-    timeout=45000,  # type: Optional[int]
-):
-    # type: (...) -> List[BasicQualifiedValue]
+def readBlocking(tagPaths, timeout=45000):
+    # type: (List[AnyStr], Optional[int]) -> List[BasicQualifiedValue]
     """Reads the value of the Tags at the given paths.
 
     Will block until the read operation is complete or times out.
@@ -693,40 +663,34 @@ def readBlocking(
 
     Returns:
         A list of QualifiedValue objects corresponding to the Tag paths.
-        Each qualified value will have three sub members: value,
-        quality, and timestamp.
     """
     print(tagPaths, timeout)
     return [BasicQualifiedValue() for _ in tagPaths]
 
 
-def rename(
-    tag,  # type: Union[str, unicode]
-    newName,  # type: Union[str, unicode]
-    collisionPollicy="a",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> QualityCode
-    """Renames a single tag or a folder.
+def rename(Tag, newName, collisionPollicy="a"):
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> QualityCode
+    """Renames a single Tag or a folder.
 
     Args:
-        tag: The tag path to rename.
+        Tag: The Tag path to rename.
         newName: The new name.
-        collisionPollicy: The action to take when a tag or folder with
+        collisionPollicy: The action to take when a Tag or folder with
             the same path and names is encountered. Possible values
             include "a" (Abort, throws an exception), "o" (Overwrite,
-            completely replaces a tag's configuration), and "i"
-            (Ignore). Defaults to Abort if not specified.
+            completely replaces a Tag's configuration), and "i"
+            (Ignore). Defaults to Abort if not specified. Optional.
 
     Returns:
-        object: A quality code that contains the result of the rename
+        object: A QualityCode that contains the result of the rename
             operation.
     """
-    print(tag, newName, collisionPollicy)
+    print(Tag, newName, collisionPollicy)
     return QualityCode()
 
 
 def requestGroupExecution(provider, tagGroup):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Sends a request to the specified Tag Group to execute now.
 
     Args:
@@ -741,23 +705,23 @@ def setOverlaysEnabled(enabled):
     """Enables or disables the component quality overlay system.
 
     Args:
-        enabled: True (1) to turn on tag overlays, False (0) to turn
+        enabled: True to turn on Tag overlays, False to turn
             them off.
     """
     print(enabled)
 
 
 def storeAnnotations(
-    paths,  # type: List[Union[str, unicode]]
+    paths,  # type: List[AnyStr]
     startTimes=None,  # type: Optional[List[Date]]
     endTimes=None,  # type: Optional[List[Date]]
     types=None,  # type: Optional[List[Annotation]]
-    data=None,  # type: Optional[List[Union[str, unicode]]]
+    data=None,  # type: Optional[List[AnyStr]]
     storageIds=None,  # type: Optional[List[int]]
     deleted=None,  # type: Optional[List[bool]]
 ):
     # type: (...) -> List[BasicQualifiedValue]
-    """Stores annotations into the tag history system.
+    """Stores annotations into the Tag history system.
 
     Annotations are stored by the underlying historian implementations,
     so different providers may store in different ways, and some
@@ -767,8 +731,8 @@ def storeAnnotations(
     None in the list.
 
     Args:
-        paths (list[str]): A list of tag paths to store for. The paths
-            are equivalent to what would be used for a tag history
+        paths (list[str]): A list of Tag paths to store for. The paths
+            are equivalent to what would be used for a Tag history
             query, and should specify the source provider as well. For
             example, "[HistoryProvider/Gateway:Provider]Path/To/Tag".
             This parameter is required, even if storage ids are
@@ -796,28 +760,24 @@ def storeAnnotations(
             to be set as well. Optional.
 
     Returns:
-        list[QualifiedValue]: A list of qualified values. The quality
-            code will indicate success or failure, and if successful,
-            the storage id of the annotation will be returned in the
-            value. Since annotations are stored by individual providers,
-            there is no guarantee as to the type or format of the
-            storage id. However, it can be held and re-used in order to
-            update or delete.
+        A list of QualifiedValues. The quality code will indicate
+        success or failure. If successful,  the storage id of the
+        annotation will be returned in the value.
     """
     print(paths, startTimes, endTimes, types, data, storageIds, deleted)
     return [BasicQualifiedValue() for _ in paths]
 
 
 def storeTagHistory(
-    historyprovider,  # type: Union[str, unicode]
-    tagprovider,  # type: Union[str, unicode]
-    paths,  # type: List[Union[str, unicode]]
+    historyprovider,  # type: AnyStr
+    tagprovider,  # type: AnyStr
+    paths,  # type: List[AnyStr]
     values,  # type: List[Any]
     qualities=None,  # type: Optional[List[int]]
     timestamps=None,  # type: Optional[List[Date]]
 ):
     # type: (...) -> None
-    """Inserts data into the tag history system, allowing Tag history to
+    """Inserts data into the Tag history system, allowing Tag history to
     be recorded via scripting.
 
     The Tag paths are associated with a historical and realtime
@@ -827,20 +787,20 @@ def storeTagHistory(
     that Tag paths passed to the function are typed precisely, otherwise
     the history will be stored at an incorrect path.
 
-    Note that the Tag History system does cache tag data. Thus, if this
-    function is called, the tag path and tag id are cached until the
+    Note that the Tag History system does cache Tag data. Thus, if this
+    function is called, the Tag path and Tag id are cached until the
     history provider or gateway are restarted. This means manually
-    removing the tag from the sqlth_te table, and then calling this
-    function again with the same path will not re-populate the tag
-    execution table (especially so when working purely with virtual tag
+    removing the Tag from the sqlth_te table, and then calling this
+    function again with the same path will not re-populate the Tag
+    execution table (especially so when working purely with virtual Tag
     paths). Instead, the cache must first be cleared, and then a new
     entry will be added the next time this function is called.
 
     Args:
         historyprovider: The historical provider to store to.
-        tagprovider: The name of the realtime tag provider to associate
-            these tags with. The tag provider does not need to exist,
-            and the tag paths do not need to exist in it.
+        tagprovider: The name of the realtime Tag provider to associate
+            these tags with. The Tag provider does not need to exist,
+            and the Tag paths do not need to exist in it.
         paths: A list of paths to store. The values, qualities, and
             timestamps are one-to-one with the paths. A single path may
             be present multiple times in order to store multiple values.
@@ -858,9 +818,9 @@ def storeTagHistory(
 
 
 def writeAsync(
-    tagPaths,  # type: List[Union[str, unicode]]
+    tagPaths,  # type: List[AnyStr]
     values,  # type: List[Any]
-    callback=None,  # type: Optional[Callable]
+    callback=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> None
     """Asynchronously writes values to Tags a the given paths.
@@ -881,7 +841,7 @@ def writeAsync(
 
 
 def writeBlocking(
-    tagPaths,  # type: List[Union[str, unicode]]
+    tagPaths,  # type: List[AnyStr]
     values,  # type: List[Any]
     timeout=45000,  # type: Optional[int]
 ):
@@ -897,12 +857,10 @@ def writeBlocking(
         values: The values to write to the specified paths.
         timeout: How long to wait in milliseconds before the write
             operation times out. This parameter is optional, and
-            defaults to 45000 milliseconds if not specified.
+            defaults to 45,000 milliseconds if not specified. Optional.
 
     Returns:
-        A List of QualityCode objects, one for each Tag path. Each
-        quality code holds the result of the write operation for that
-        Tag.
+        A List of QualityCode objects, one for each Tag path.
     """
     print(tagPaths, values, timeout)
     return [QualityCode() for _ in tagPaths]

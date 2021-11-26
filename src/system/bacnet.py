@@ -4,15 +4,15 @@ The following functions are used with the BACnet driver and a BACnet/IP
 device.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["synchronizeTime", "synchronizeTimeUtc", "writeWithPriority"]
 
-from typing import Any, Union
+from typing import Any, AnyStr
 
 
 def synchronizeTime(deviceName):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Notifies the remote device of the correct current time, which is
     the system time (factoring in timezone and DST) of the server
     Ignition is running on.
@@ -25,7 +25,7 @@ def synchronizeTime(deviceName):
 
 
 def synchronizeTimeUtc(deviceName):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Notifies the remote device of the correct current time in UTC.
 
     Args:
@@ -36,7 +36,7 @@ def synchronizeTimeUtc(deviceName):
 
 
 def writeWithPriority(deviceName, objectType, objectId, value, priority):
-    # type: (Union[str, unicode], int, int, Any, int) -> None
+    # type: (AnyStr, int, int, Any, int) -> None
     """Write to the Present_Value attribute of an object with a custom
     priority level.
 

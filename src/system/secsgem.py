@@ -5,7 +5,7 @@ the SECS/GEM module. Note that the SECS/GEM module must be installed
 before these functions will be accessible.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "copyEquipment",
@@ -21,23 +21,23 @@ __all__ = [
     "toTreeDataSet",
 ]
 
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, AnyStr, Dict, List, Optional, Tuple
 
 import system.date
 from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def copyEquipment(
-    equipmentSource,  # type: Union[str, unicode]
-    newEquipmentName,  # type: Union[str, unicode]
+    equipmentSource,  # type: AnyStr
+    newEquipmentName,  # type: AnyStr
     enabled,  # type: bool
-    activeAddress,  # type: Union[str, unicode]
+    activeAddress,  # type: AnyStr
     activePort,  # type: int
-    passiveAddress,  # type: Union[str, unicode]
+    passiveAddress,  # type: AnyStr
     passivePort,  # type: int
     deviceId,  # type: int
-    dbTablePrefix=None,  # type: Union[str, unicode]
-    description=None,  # type: Optional[Union[str, unicode]]
+    dbTablePrefix=None,  # type: AnyStr
+    description=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> None
     """Creates a copy of an equipment connection.
@@ -91,7 +91,7 @@ def copyEquipment(
 
 
 def deleteToolProgram(ppid):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Deletes a process program from the Gateway.
 
     Args:
@@ -102,7 +102,7 @@ def deleteToolProgram(ppid):
 
 
 def enableDisableEquipment(enable, names):
-    # type: (bool, Tuple[Union[str, unicode], ...]) -> List[unicode]
+    # type: (bool, Tuple[AnyStr, ...]) -> List[unicode]
     """Enables or disables a Tuple of equipment connections from a
     script.
 
@@ -124,16 +124,11 @@ def enableDisableEquipment(enable, names):
     print(enable)
     for name in names:
         print(name)
-    return [""]
+    return [u""]
 
 
-def getResponse(
-    transactionID,  # type: int
-    equipment,  # type: Union[str, unicode]
-    timeout=5,  # type: Optional[int]
-    poll=150,  # type: Optional[int]
-):
-    # type: (...) -> Any
+def getResponse(transactionID, equipment, timeout=5, poll=150):
+    # type: (int, AnyStr, Optional[int], Optional[int]) -> Any
     """Attempts to retrieve a response message from the Gateway.
 
     The transaction id from the sent message is used to retrieve the
@@ -162,7 +157,7 @@ def getResponse(
 
 
 def getToolProgram(ppid):
-    # type: (Union[str, unicode]) -> Dict[Union[str, unicode], Any]
+    # type: (AnyStr) -> Dict[AnyStr, Any]
     """Returns a process program from the Gateway that was previously
     sent by a a tool in an S7F3 message.
 
@@ -196,7 +191,7 @@ def getToolProgramDataset():
 
 
 def sendRequest(streamFunction, reply, body, equipment):
-    # type: (Union[str, unicode], bool, Any, Union[str, unicode]) -> int
+    # type: (AnyStr, bool, Any, AnyStr) -> int
     """Sends a JSON-formatted SECS message to a tool.
 
     An equipment connection must be configured for the tool in the
@@ -220,14 +215,8 @@ def sendRequest(streamFunction, reply, body, equipment):
     return 0
 
 
-def sendResponse(
-    transactionID,  # type: int
-    systemBytes,  # type: int
-    streamFunction,  # type: Union[str, unicode]
-    body,  # type: Any
-    equipment,  # type: Union[str, unicode]
-):
-    # type: (...) -> None
+def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
+    # type: (int, int, AnyStr, Any, AnyStr) -> None
     """Sends a JSON-formatted SECS response message to a message sent by
     a tool.
 
@@ -255,7 +244,7 @@ def sendResponse(
 
 
 def startSimEventRun(simulatorName, eventRunName):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Starts a configured simulator event run in the Gateway.
 
     Note, that this function only works with the simulators that come

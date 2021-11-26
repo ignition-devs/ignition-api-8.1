@@ -4,7 +4,7 @@ The following functions give you access to view and edit device
 connections in the Gateway.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "addDevice",
@@ -12,20 +12,21 @@ __all__ = [
     "listDevices",
     "refreshBrowse",
     "removeDevice",
+    "restart",
     "setDeviceEnabled",
     "setDeviceHostname",
 ]
 
-from typing import Any, Dict, Optional, Union
+from typing import Any, AnyStr, Dict, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def addDevice(
-    deviceType,  # type: Union[str, unicode]
-    deviceName,  # type: Union[str, unicode]
-    deviceProps,  # type: Dict[Union[str, unicode], Any]
-    description,  # type: Optional[Union[str, unicode]]
+    deviceType,  # type: AnyStr
+    deviceName,  # type: AnyStr
+    deviceProps,  # type: Dict[AnyStr, Any]
+    description=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> None
     """Adds a new device connection in Ignition.
@@ -33,11 +34,11 @@ def addDevice(
     Accepts a dictionary of parameters to configure the connection.
     Acceptable parameters differ by device type: i.e., a Modbus/TCP
     connection requires a hostname and port, but a simulator doesn't
-    require any parameters.
+    require any parameters. When using this function, the arguments must
+    be passed in as keyword arguments.
 
     Args:
-        deviceType: The device driver type. Possible values are listed
-            in the Device Types table below.
+        deviceType: The device driver type.
         deviceName: The name that will be given to the the new device
             connection.
         deviceProps: A dictionary of device connection properties and
@@ -53,7 +54,7 @@ def addDevice(
 
 
 def getDeviceHostname(deviceName):
-    # type: (Union[str, unicode]) -> Union[str, unicode]
+    # type: (AnyStr) -> AnyStr
     """Gets the hostname of a device.
 
     Args:
@@ -81,7 +82,7 @@ def listDevices():
 
 
 def refreshBrowse(deviceName):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Forces Ignition to browse the controller.
 
     Only works for Allen-Bradley controllers.
@@ -93,7 +94,7 @@ def refreshBrowse(deviceName):
 
 
 def removeDevice(deviceName):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Removes a given device from Ignition.
 
     Args:
@@ -102,22 +103,35 @@ def removeDevice(deviceName):
     print(deviceName)
 
 
+def restart(deviceName):
+    # type: (AnyStr) -> None
+    """Restarts the named device connection.
+
+    Args:
+        deviceName: The name of the device connection to restart. The
+            function will throw an error if the specified deviceName
+            does not exist on the host gateway.
+    """
+    print(deviceName)
+
+
 def setDeviceEnabled(deviceName, enabled):
-    # type: (Union[str, unicode], bool) -> None
+    # type: (AnyStr, bool) -> None
     """Enables/disables a device in Ignition.
 
     Args:
         deviceName: The name of the device in Ignition.
-        enabled: The enabled status of the device.
+        enabled: Specifies whether the device connection will be set to
+            enabled or disabled state.
     """
     print(deviceName, enabled)
 
 
 def setDeviceHostname(deviceName, hostname):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Changes the hostname of a device.
 
-    Used for all ethernet based drivers.
+    Used for all Ethernet based drivers.
 
     Args:
         deviceName: The name of the device in Ignition.

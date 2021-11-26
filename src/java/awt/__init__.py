@@ -4,7 +4,7 @@ Contains all of the classes for creating user interfaces and for
 painting graphics and images.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "Color",

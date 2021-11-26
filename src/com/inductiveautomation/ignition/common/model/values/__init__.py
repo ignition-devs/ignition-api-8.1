@@ -1,7 +1,22 @@
-__all__ = ["BasicQualifiedValue", "QualityCode", "QualifiedValue"]
+__all__ = ["BasicQualifiedValue", "QualifiedValue", "QualityCode"]
 
 from java.lang import Object
 from java.util import Date
+
+
+class QualifiedValue(object):
+    """Represents a value with a DataQuality & timestamp attached to
+    it.
+    """
+
+    def getQuality(self):
+        raise NotImplementedError
+
+    def getTimestamp(self):
+        raise NotImplementedError
+
+    def getValue(self):
+        raise NotImplementedError
 
 
 class QualityCode(Object):
@@ -103,21 +118,6 @@ class QualityCode(Object):
         @staticmethod
         def values():
             pass
-
-
-class QualifiedValue(object):
-    """Represents a value with a DataQuality & timestamp attached to
-    it.
-    """
-
-    def getQuality(self):
-        raise NotImplementedError
-
-    def getTimestamp(self):
-        raise NotImplementedError
-
-    def getValue(self):
-        raise NotImplementedError
 
 
 class BasicQualifiedValue(QualifiedValue, Object):

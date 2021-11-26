@@ -4,7 +4,7 @@ The following functions give you access to read and write through serial
 ports.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "closeSerialPort",
@@ -20,7 +20,7 @@ __all__ = [
     "writeBytes",
 ]
 
-from typing import Any, Optional, Union
+from typing import Any, AnyStr, List, Optional
 
 from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
 
@@ -75,7 +75,7 @@ STOP_BITS_2 = 3
 
 
 def closeSerialPort(port):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Closes a previously opened serial port.
 
     Returns without doing anything if the named serial port is not
@@ -89,13 +89,13 @@ def closeSerialPort(port):
 
 
 def configureSerialPort(
-    port,  # type: Union[str, unicode]
-    bitRate,  # type: int
-    dataBits,  # type: int
-    handshake,  # type: int
-    hardwareFlowControl,  # type: bool
-    parity,  # type: int
-    stopBits,  # type: int
+    port,  # type: AnyStr
+    bitRate,  # type: Optional[int]
+    dataBits,  # type: Optional[int]
+    handshake,  # type: Optional[int]
+    hardwareFlowControl,  # type: Optional[bool]
+    parity,  # type: Optional[int]
+    stopBits,  # type: Optional[int]
 ):
     # type: (...) -> SerialConfigurator
     """Configure a serial port for use in a later call.
@@ -112,26 +112,27 @@ def configureSerialPort(
             BIT_RATE_300, BIT_RATE_600, BIT_RATE_1200, BIT_RATE_2400,
             BIT_RATE_4800, BIT_RATE_9600, BIT_RATE_19200,
             BIT_RATE_38400, BIT_RATE_57600, BIT_RATE_115200,
-            BIT_RATE_230400, BIT_RATE_460800, BIT_RATE_921600.
+            BIT_RATE_230400, BIT_RATE_460800, BIT_RATE_921600. Optional.
         dataBits: Configure the data bits. Valid values are defined by
             the following constants: DATA_BITS_5, DATA_BITS_6,
-            DATA_BITS_7, DATA_BITS_8.
+            DATA_BITS_7, DATA_BITS_8. Optional.
         handshake: Configure the handshake. Valid values are defined by
             the following constants: HANDSHAKE_CTS_DTR,
             HANDSHAKE_CTS_RTS, HANDSHAKE_DSR_DTR, HANDSHAKE_HARD_IN,
             HANDSHAKE_HARD_OUT, HANDSHAKE_NONE, HANDSHAKE_SOFT_IN,
             HANDSHAKE_SOFT_OUT, HANDSHAKE_SPLIT_MASK,
-            HANDSHAKE_XON_XOFF.
+            HANDSHAKE_XON_XOFF. Optional.
         hardwareFlowControl: Configure hardware flow control. On or off.
         parity: Configure parity. Valid values are defined by the
             following constants: PARITY_EVEN, PARITY_ODD, PARITY_MARK,
-            PARITY_SPACE, PARITY_NONE.
+            PARITY_SPACE, PARITY_NONE. Optional.
         stopBits: Configure stop bits. Valid values are defined by the
-            following constants: STOP_BITS_1, STOP_BITS_2.
+            following constants: STOP_BITS_1, STOP_BITS_2. Optional.
 
     Returns:
-        A SerialConfigurator that can be used to configure the serial
-        port instead of or in addition to the given keyword arguments.
+        A SerialConfigurator object with exposed functions that can be
+        used to configure the serial port instead of, or in addition to,
+        the arguments passed to configureSerialPort.
     """
     print(
         port,
@@ -146,7 +147,7 @@ def configureSerialPort(
 
 
 def openSerialPort(port):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Opens a previously configured serial port for use.
 
     Will throw an exception if the serial port cannot be opened.
@@ -158,7 +159,7 @@ def openSerialPort(port):
 
 
 def port(
-    port,  # type: Union[str, unicode]
+    port,  # type: AnyStr
     bitRate=None,  # type: Optional[int]
     dataBits=None,  # type: Optional[int]
     handshake=None,  # type: Optional[int]
@@ -228,28 +229,29 @@ def port(
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
-    # type: (Union[str, unicode], int, Optional[int]) -> Any
+    # type: (AnyStr, int, Optional[int]) -> List[Any]
     """Read numberOfBytes bytes from a serial port.
 
     Args:
         port: The previously configured serial port to use.
         numberOfBytes: The number of bytes to read.
         timeout: Maximum amount of time, in milliseconds, to block
-            before returning. Default is 5000. Optional.
+            before returning. Default is 5,000. Optional.
 
     Returns:
         A list containing bytes read from the serial port.
     """
     print(port, numberOfBytes, timeout)
+    return []
 
 
 def readBytesAsString(
-    port,  # type: Union[str, unicode]
+    port,  # type: AnyStr
     numberOfBytes,  # type: int
     timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[Union[str, unicode]]
+    encoding="utf-8",  # type: Optional[AnyStr]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> AnyStr
     """Read numberOfBytes bytes from a serial port and convert them to a
     String.
 
@@ -261,7 +263,7 @@ def readBytesAsString(
         port: The previously configured serial port to use.
         numberOfBytes: The number of bytes to read.
         timeout: Maximum amount of time, in milliseconds, to block
-            before returning. Default is 5000. Optional.
+            before returning. Default is 5,000. Optional.
         encoding: Encoding to use when constructing the string. Defaults
             to the platform's default character set. Optional.
 
@@ -273,12 +275,12 @@ def readBytesAsString(
 
 
 def readLine(
-    port,  # type: Union[str, unicode]
+    port,  # type: AnyStr
     timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[Union[str, unicode]]
+    encoding="utf-8",  # type: Optional[AnyStr]
     crlfRequired=False,  # type: Optional[bool]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> AnyStr
     r"""Attempts to read a line from a serial port.
 
     A "line" is considered to be terminated by either a line feed
@@ -305,12 +307,12 @@ def readLine(
 
 
 def readUntil(
-    port,  # type: Union[str, unicode]
-    delimiter,  # type: Union[str, unicode]
+    port,  # type: AnyStr
+    delimiter,  # type: AnyStr
     includeDelimiter,  # type: bool
     timeout=5000,  # type: Optional[int]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> AnyStr
     """Reads a byte at a time from a serial port until a delimiter
     character is encountered.
 
@@ -324,7 +326,7 @@ def readUntil(
         delimiter: The delimiter to read until.
         includeDelimiter: If True, the delimiter will be included in the
             return value.
-        timeout: Optional timeout in milliseconds. Default is 5000.
+        timeout: Timeout in milliseconds. Default is 5,000. Optional.
 
     Returns:
         A String containing all 8-bit ASCII characters read until the
@@ -336,7 +338,7 @@ def readUntil(
 
 
 def sendBreak(port, millis):
-    # type: (Union[str, unicode], int) -> None
+    # type: (AnyStr, int) -> None
     """Sends a break signal for approximately millis milliseconds.
 
     Args:
@@ -346,12 +348,8 @@ def sendBreak(port, millis):
     print(port, millis)
 
 
-def write(
-    port,  # type: Union[str, unicode]
-    toWrite,  # type: Union[str, unicode]
-    encoding="utf-8",  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> None
+def write(port, toWrite, encoding="utf-8"):
+    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
     """Write a String to a serial port using the platforms default
     character encoding.
 
@@ -365,13 +363,13 @@ def write(
 
 
 def writeBytes(port, toWrite, timeout=5000):
-    # type: (Union[str, unicode], Any, Optional[int]) -> None
-    """Write a byte[] to a serial port.
+    # type: (AnyStr, Any, Optional[int]) -> None
+    """Write a byte array to a serial port.
 
     Args:
         port: The previously configured serial port to use.
-        toWrite: The byte[] to write.
-        timeout: Optional timeout in milliseconds. Default is 5000.
+        toWrite: The byte array to write.
+        timeout: Optional timeout in milliseconds. Default is 5,000.
             Optional.
     """
     print(port, toWrite, timeout)

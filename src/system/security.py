@@ -1,10 +1,12 @@
 """Security Functions.
 
 The following functions give you access to interact with the users and
-roles in the Gateway.
+roles in the Gateway. These functions require the Vision module, as
+these functions can only be used with User Sources and their interaction
+with Vision Clients.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "getRoles",
@@ -19,13 +21,13 @@ __all__ = [
 ]
 
 import getpass
-from typing import Optional, Tuple, Union
+from typing import AnyStr, Optional, Tuple
 
 from java.util import EventObject
 
 
 def getRoles():
-    # type: () -> Tuple[Union[str, unicode], ...]
+    # type: () -> Tuple[AnyStr, ...]
     """Finds the roles that the currently logged in user has, returns
     them as a Python tuple of strings.
 
@@ -37,12 +39,12 @@ def getRoles():
 
 
 def getUserRoles(
-    username,  # type: Union[str, unicode]
-    password,  # type: Union[str, unicode]
-    authProfile="",  # type: Optional[Union[str, unicode]]
+    username,  # type: AnyStr
+    password,  # type: AnyStr
+    authProfile="",  # type: Optional[AnyStr]
     timeout=60000,  # type: Optional[int]
 ):
-    # type: (...) -> Tuple[Union[str, unicode], ...]
+    # type: (...) -> Optional[Tuple[AnyStr, ...]]
     """Fetches the roles for a user from the Gateway.
 
     This may not be the currently logged in user. Requires the password
@@ -53,10 +55,11 @@ def getUserRoles(
         username: The username to fetch roles for.
         password: The password for the user.
         authProfile: The name of the authentication profile to run
-            against. Optional. Leaving this out will use the project's
-            default profile.
-        timeout: Timeout for client-to-gateway communication. Optional.
-            (default: 60,000ms)
+            against. Leaving this out will use the project's default
+            profile. Optional.
+        timeout: Timeout for Client-to-Gateway communication. Default is
+            60,000ms. Optional.
+
 
     Returns:
         A list of the roles that this user has, if the user
@@ -67,7 +70,7 @@ def getUserRoles(
 
 
 def getUsername():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the currently logged-in username.
 
     Returns:
@@ -88,13 +91,13 @@ def isScreenLocked():
 
 def lockScreen(obscure=False):
     # type: (Optional[bool]) -> None
-    """Used to put a running client in lock-screen mode.
+    """Used to put a running Client in lock-screen mode.
 
     The screen can be unlocked by the user with the proper credentials,
     or by scripting via the system.security.unlockScreen() function.
 
     Args:
-        obscure: If True(1), the locked screen will be opaque, otherwise
+        obscure: If True, the locked screen will be opaque, otherwise
             it will be partially visible. Optional.
     """
     print(obscure)
@@ -102,19 +105,14 @@ def lockScreen(obscure=False):
 
 def logout():
     # type: () -> None
-    """Logs out of the client for the current user and brings the client
+    """Logs out of the Client for the current user and brings the Client
     to the login screen.
     """
     pass
 
 
-def switchUser(
-    username,  # type: Union[str, unicode]
-    password,  # type: Union[str, unicode]
-    event,  # type: EventObject
-    hideError=False,  # type: Optional[bool]
-):
-    # type: (...) -> bool
+def switchUser(username, password, event, hideError=False):
+    # type: (AnyStr, AnyStr, EventObject, Optional[bool]) -> bool
     """Attempts to switch the current user on the fly.
 
     If the given username and password fail, this function will return
@@ -132,11 +130,11 @@ def switchUser(
         password: The password to authenticate with.
         event: If specified, the enclosing window for this event's
             component will be closed in the switch user process.
-        hideError: If True (1), no error will be shown if the switch
-            user function fails. (default: 0)
+        hideError: If True, no error will be shown if the switch
+            user function fails. Default is False. Optional.
 
     Returns:
-        False(0) if the switch user operation failed, True (1)
+        False if the switch user operation failed, True
         otherwise.
     """
     print(username, password, event, hideError)
@@ -145,17 +143,12 @@ def switchUser(
 
 def unlockScreen():
     # type: () -> None
-    """Unlocks the client, if it is currently in lock-screen mode."""
+    """Unlocks the Client, if it is currently in lock-screen mode."""
     pass
 
 
-def validateUser(
-    username,  # type: Union[str, unicode]
-    password,  # type: Union[str, unicode]
-    authProfile="",  # type: Optional[Union[str, unicode]]
-    timeout=60000,  # type: Optional[int]
-):
-    # type: (...) -> bool
+def validateUser(username, password, authProfile="", timeout=60000):
+    # type: (AnyStr, AnyStr, Optional[AnyStr], Optional[int]) -> bool
     """Tests credentials (username and password) against an
     authentication profile.
 
@@ -168,13 +161,13 @@ def validateUser(
         username: The username to validate.
         password: The password for the user.
         authProfile: The name of the authentication profile to run
-            against. Optional. Leaving this out will use the project's
-            default profile.
-        timeout: Timeout for client-to-gateway communication. Optional.
-            (default: 60,000ms)
+            against. Leaving this out will use the project's default
+            profile. Optional.
+        timeout: Timeout for Client-to-Gateway communication. Default is
+            60,000ms. Optional.
 
     Returns:
-        False(0) if the user failed to authenticate, True(1) if the
+        False if the user failed to authenticate, True if the
         username/password was a valid combination.
     """
     print(username, password, authProfile, timeout)

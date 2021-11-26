@@ -1,24 +1,24 @@
 """OPC - UA Functions.
 
-The following functions allow you to interact directly with an OPC-UA
-server.
+The following functions allow you to interact directly with an OPC UA
+Server.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = ["addConnection", "callMethod", "removeConnection"]
 
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, AnyStr, Dict, List, Tuple
 
 
 def addConnection(
-    name,  # type: Union[str, unicode]
-    description,  # type: Union[str, unicode]
-    discoveryUrl,  # type: Union[str, unicode]
-    endpointUrl,  # type: Union[str, unicode]
-    securityPolicy,  # type: Union[str, unicode]
-    securityMode,  # type: Union[str, unicode]
-    settings,  # type: Dict[Union[str, unicode], Any]
+    name,  # type: AnyStr
+    description,  # type: AnyStr
+    discoveryUrl,  # type: AnyStr
+    endpointUrl,  # type: AnyStr
+    securityPolicy,  # type: AnyStr
+    securityMode,  # type: AnyStr
+    settings,  # type: Dict[AnyStr, Any]
 ):
     # type: (...) -> None
     """Adds a new OPC UA connection.
@@ -45,18 +45,19 @@ def addConnection(
 
 
 def callMethod(
-    connectionName,  # type: Union[str, unicode]
-    objectId,  # type: Union[str, unicode]
-    methodId,  # type: Union[str, unicode]
-    inputs,  # type: List[Union[str, unicode]]
+    connectionName,  # type: AnyStr
+    objectId,  # type: AnyStr
+    methodId,  # type: AnyStr
+    inputs,  # type: List[AnyStr]
 ):
     # type: (...) -> Tuple[Any, Any, Any]
-    """Calls a method in an OPC UA server. To make the most of this
-    function, you'll need to be familiar with methods in the OPC-UA
-    server.
+    """Calls a method in an OPC UA Server.
+
+    To make the most of this n, you'll need to be familiar with methods
+    in the OPC UA Server.
 
     Args:
-        connectionName: The name of the OPC-UA connection to the server
+        connectionName: The name of the OPC UA connection to the Server
             that the method resides in.
         objectId: The NodeId of the Object Node the Method is a member
             of.
@@ -76,7 +77,7 @@ def callMethod(
 
 
 def removeConnection(name):
-    # type: (Union[str, unicode]) -> bool
+    # type: (AnyStr) -> bool
     """Removes an OPC UA Connection.
 
     Args:
@@ -85,8 +86,7 @@ def removeConnection(name):
     Returns:
         A boolean value representing whether the function was able to
         remove the connection. Returns True if the connection was
-        successfully removed. Returns False if the connection was not
-        removed.
+        successfully removed, False if the connection was not removed.
     """
     print(name)
     return True

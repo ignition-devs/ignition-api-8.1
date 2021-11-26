@@ -4,7 +4,7 @@ The following functions give you access to report details and the
 ability to run reports.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "executeAndDistribute",
@@ -13,25 +13,33 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, AnyStr, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import IllegalArgumentException
 
 
 def executeAndDistribute(
-    path,  # type: Union[str, unicode]
-    project="project",  # type: Optional[Union[str, unicode]]
-    parameters=None,  # type: Optional[Dict[Union[str, unicode], int]]
-    action=None,  # type: Optional[Union[str, unicode]]
-    actionSettings=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    path,  # type: AnyStr
+    project="project",  # type: Optional[AnyStr]
+    parameters=None,  # type: Optional[Dict[AnyStr, int]]
+    action=None,  # type: Optional[AnyStr]
+    actionSettings=None,  # type: Optional[Dict[AnyStr, Any]]
 ):
     # type: (...) -> None
     """Executes and distributes a report.
 
     Similar to scheduling a report to execute, except a schedule in not
     required to utilize this function. This is a great way to distribute
-    the report on demand from a client.
+    the report on demand from a Client.
+
+    Note:
+        The function system.report.executeAndDistribute() does not run
+        on its own thread and can get blocked. For example, if a printer
+        is backed up and it takes a while to finish the request made by
+        this function, the script will block the execution of other
+        things on that thread until it finishes. Be sure to keep this in
+        mind when using it in a script.
 
     Args:
         path: The path to the existing report.
@@ -56,10 +64,10 @@ def executeAndDistribute(
 
 
 def executeReport(
-    path,  # type: Union[str, unicode]
-    project="project",  # type: Optional[Union[str, unicode]]
-    parameters=None,  # type: Optional[Dict[Union[str, unicode], int]]
-    fileType="pdf",  # type: Optional[Union[str, unicode]]
+    path,  # type: AnyStr
+    project="project",  # type: Optional[AnyStr]
+    parameters=None,  # type: Optional[Dict[AnyStr, int]]
+    fileType="pdf",  # type: Optional[AnyStr]
 ):
     # type: (...) -> Any
     """Immediately executes an existing report and returns a byte[] of
@@ -98,15 +106,9 @@ def executeReport(
     print(path, project, parameters, fileType)
 
 
-def getReportNamesAsDataset(
-    project="project",  # type: Optional[Union[str, unicode]]
-    includeReportName=True,  # type: Optional[bool]
-):
-    # type: (...) -> BasicDataset
+def getReportNamesAsDataset(project="project", includeReportName=True):
+    # type: (Optional[AnyStr], Optional[bool]) -> BasicDataset
     """Gets a data of all reports for a project.
-
-    This dataset is particularly suited for display in a Tree View
-    component.
 
     Args:
         project: The name of the project where the reports are located.
@@ -131,7 +133,7 @@ def getReportNamesAsDataset(
 
 
 def getReportNamesAsList(project="project"):
-    # type: (Optional[Union[str, unicode]]) -> List[Union[str, unicode]]
+    # type: (Optional[AnyStr]) -> List[AnyStr]
     """Gets a list of all reports for a project.
 
     Args:

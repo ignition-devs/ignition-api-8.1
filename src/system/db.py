@@ -4,7 +4,7 @@ The following functions give you access to view and modify data in the
 database.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "addDatasource",
@@ -37,7 +37,7 @@ __all__ = [
     "setDatasourceMaxConnections",
 ]
 
-from typing import Any, List, Optional, Union
+from typing import Any, AnyStr, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import (
@@ -99,14 +99,14 @@ SERIALIZABLE = 8
 
 
 def addDatasource(
-    jdbcDriver,  # type: Union[str, unicode]
-    name,  # type: Union[str, unicode]
-    description="",  # type: Optional[Union[str, unicode]]
-    connectUrl=None,  # type: Optional[Union[str, unicode]]
-    username=None,  # type: Optional[Union[str, unicode]]
-    password=None,  # type: Optional[Union[str, unicode]]
-    props=None,  # type: Optional[Union[str, unicode]]
-    validationQuery=None,  # type: Optional[Union[str, unicode]]
+    jdbcDriver,  # type: AnyStr
+    name,  # type: AnyStr
+    description="",  # type: Optional[AnyStr]
+    connectUrl=None,  # type: Optional[AnyStr]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    props=None,  # type: Optional[AnyStr]
+    validationQuery=None,  # type: Optional[AnyStr]
     maxConnections=8,  # type: Optional[int]
 ):
     # type: (...) -> None
@@ -141,7 +141,7 @@ def addDatasource(
 
 
 def beginNamedQueryTransaction(*args):
-    # type: (...) -> Union[str, unicode]
+    # type: (*Any) -> AnyStr
     """Begins a new database transaction using Named Queries.
 
     Database transactions are used to execute multiple queries in an
@@ -182,13 +182,10 @@ def beginNamedQueryTransaction(*args):
     return "transaction_id"
 
 
-def beginTransaction(
-    database="",  # type: Optional[Union[str, unicode]]
-    isolationLevel=None,  # type: Optional[int]
-    timeout=None,  # type: Optional[int]
-):
-    # type: (...) -> Union[str, unicode]
-    """Begins a new database transaction.
+def beginTransaction(database="", isolationLevel=None, timeout=None):
+    # type: (Optional[AnyStr], Optional[int], Optional[int]) -> AnyStr
+    """Begins a new database transaction for using run* and runPrep*
+    queries.
 
     Database transactions are used to execute multiple queries in an
     atomic fashion. After executing queries, you must either commit the
@@ -232,7 +229,7 @@ def beginTransaction(
 
 
 def clearAllNamedQueryCaches(project=None):
-    # type: (Optional[Union[str, unicode]]) -> None
+    # type: (Optional[AnyStr]) -> None
     """This clears the caches of all Named Queries in a project.
 
     If called from the Shared Scope (i.e., Tag Event Scripts, Alarm
@@ -241,13 +238,13 @@ def clearAllNamedQueryCaches(project=None):
 
     Args:
         project: The project that contains the Named Query whose cache
-            needs to be cleared.
+            needs to be cleared. Optional.
     """
     print(project)
 
 
 def clearNamedQueryCache(*args):
-    # type: (*Union[str, unicode]) -> None
+    # type: (*AnyStr) -> None
     """This clears the cache of a Named Query.
 
     If called from the Shared Scope (i.e., Tag Event Scripts, Alarm
@@ -267,12 +264,12 @@ def clearNamedQueryCache(*args):
 
 
 def closeTransaction(tx):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Closes the transaction with the given ID.
 
-    Note that you must commit or rollback the transaction before you
-    close it. Closing the transaction will return its database
-    connection to the pool. The transaction ID will no longer be valid.
+    You must commit or rollback the transaction before you close it.
+    Closing the transaction will return its database connection to the
+    pool. The transaction ID will no longer be valid.
 
     Args:
         tx: The transaction ID.
@@ -281,15 +278,17 @@ def closeTransaction(tx):
 
 
 def commitTransaction(tx):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Performs a commit for the given transaction.
 
     This will make all statements executed against the transaction since
     its beginning or since the last commit or rollback take effect in
     the database. Until you commit a transaction, any changes that the
-    transaction makes will not be visible to other connections. Note
-    that if you are done with the transaction, you must close it after
-    you commit it.
+    transaction makes will not be visible to other connections.
+
+    Note:
+        If you are done with the transaction, you must close it after
+        you commit it.
 
     Args:
         tx: The transaction ID.
@@ -298,9 +297,9 @@ def commitTransaction(tx):
 
 
 def createSProcCall(
-    procedureName,  # type: Union[str, unicode]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
+    procedureName,  # type: AnyStr
+    database="",  # type: Optional[AnyStr]
+    tx=None,  # type: Optional[AnyStr]
     skipAudit=False,  # type: Optional[bool]
 ):
     # type: (...) -> SProcCall
@@ -308,7 +307,7 @@ def createSProcCall(
     context.
 
     Args:
-        procedureName: The named of the stored procedure to call.
+        procedureName: The name of the stored procedure to call.
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used. Optional.
@@ -328,7 +327,7 @@ def createSProcCall(
 
 
 def dateFormat(date, formatPattern):
-    # type: (Date, Union[str, unicode]) -> Union[str, unicode]
+    # type: (Date, AnyStr) -> AnyStr
     """This function is used to format Dates nicely as strings.
 
     It uses a format string to guide its formatting behavior.
@@ -360,10 +359,14 @@ def execSProcCall(callContext):
 
 
 def getConnectionInfo(name=""):
-    # type: (Optional[Union[str, unicode]]) -> BasicDataset
+    # type: (Optional[AnyStr]) -> BasicDataset
     """Returns a dataset of information about a single database
     connection, as specified by the name argument, or about the current
     project's default database connection.
+
+    Note:
+        The database connection used when called from the Gateway scope
+        is the connection configured on the Gateway scripting project.
 
     Args:
         name: The name of the database connection to find information
@@ -392,9 +395,9 @@ def getConnections():
 
 
 def refresh(component, propertyName):
-    # type: (JComponent, Union[str, unicode]) -> bool
-    """This function will programmatically cause a SQL Query or DB
-    Browse property binding to execute immediately.
+    # type: (JComponent, AnyStr) -> bool
+    """This function will cause a Vision component binding to execute
+    immediately.
 
     This is most often used for bindings that are set to Polling - Off.
     In this way, you cause a binding to execute on demand, when you know
@@ -402,20 +405,29 @@ def refresh(component, propertyName):
     you simply specify the component and name of the property on whose
     binding you'd like to refresh.
 
+    Even though the function includes "db" in the name, the function can
+    update all types of Vision component bindings, including Property
+    and Expression bindings.
+
+    Note:
+        This function will only work within the Vision module. To
+        manually execute bindings in Perspective, use the refreshBinding
+        component method.
+
     Args:
         component: The component whose property you want to refresh.
-        propertyName: The name of the property that has a SQL Query
-            binding that needs to be refreshed.
+        propertyName: The name of the property that has a binding that
+            needs to be refreshed.
 
     Returns:
-        True (1) if the property was found and refreshed successfully.
+        True if the property was found and refreshed successfully.
     """
     print(component, propertyName)
     return True
 
 
 def removeDatasource(name):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Removes a database connection from Ignition.
 
     Args:
@@ -425,13 +437,15 @@ def removeDatasource(name):
 
 
 def rollbackTransaction(tx):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Performs a rollback on the given connection.
 
     This will make all statements executed against this transaction
     since its beginning or since the last commit or rollback undone.
-    Note that if you are done with the transaction, you must also close
-    it after you do a rollback on it.
+
+    Note:
+        If you are done with the transaction, you must also close it
+        after you do a rollback on it.
 
     Args:
         tx: The transaction ID.
@@ -440,7 +454,7 @@ def rollbackTransaction(tx):
 
 
 def runNamedQuery(*args):
-    # type: (...) -> Any
+    # type: (*Any) -> Any
     """Runs a named query and returns the results.
 
     Note that the number of parameters in the function is determined by
@@ -466,10 +480,10 @@ def runNamedQuery(*args):
 
 
 def runPrepQuery(
-    query,  # type: Union[str, unicode]
+    query,  # type: AnyStr
     args,  # type: List[Any]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
+    database="",  # type: Optional[AnyStr]
+    tx=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> PyDataSet
     """Runs a prepared statement against the database, returning the
@@ -489,6 +503,13 @@ def runPrepQuery(
     protects against a problem known as a SQL injection attack, where a
     user can input data that affects the query's semantics.
 
+    Note:
+        The "?" placeholder refers to variables of the query statement
+        that help the statement return the correct information. The "?"
+        placeholder cannot reference column names, table names, or the
+        underlying syntax of the query. This is because the SQL standard
+        for handling the "?" placeholder excludes these items.
+
     Args:
         query: A query (typically a SELECT) to run as a prepared
             statement with placeholders (?) denoting where the arguments
@@ -499,7 +520,7 @@ def runPrepQuery(
             against. If omitted or "", the project's default database
             connection will be used.
         tx: A transaction identifier. If omitted, the query will be
-            executed in its own transaction.
+            executed in its own transaction. Optional.
 
     Returns:
         The results of the query as a PyDataSet.
@@ -509,10 +530,10 @@ def runPrepQuery(
 
 
 def runPrepUpdate(
-    query,  # type: Union[str, unicode]
+    query,  # type: AnyStr
     args,  # type: List[Any]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
+    database="",  # type: Optional[AnyStr]
+    tx=None,  # type: Optional[AnyStr]
     getKey=False,  # type: Optional[bool]
     skipAudit=True,  # type: Optional[bool]
 ):
@@ -527,6 +548,13 @@ def runPrepUpdate(
     that the length of your argument array matches the number of
     question-mark placeholders in your query. This call should be used
     for UPDATE, INSERT, and DELETE queries.
+
+    Note:
+        The "?" placeholder refers to variables of the query statement
+        that help the statement return the correct information. The "?"
+        placeholder cannot reference column names, table names, or the
+        underlying syntax of the query. This is because the SQL standard
+        for handling the "?" placeholder excludes these items.
 
     Args:
         query: A query (typically an UPDATE, INSERT, or DELETE) to run
@@ -557,12 +585,8 @@ def runPrepUpdate(
     return 1
 
 
-def runQuery(
-    query,  # type: Union[str, unicode]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> PyDataSet
+def runQuery(query, database="", tx=None):
+    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> PyDataSet
     """Runs a SQL query, usually a SELECT query, against a database,
     returning the results as a dataset.
 
@@ -587,7 +611,7 @@ def runQuery(
 
 
 def runSFNamedQuery(*args):
-    # type: (...) -> bool
+    # type: (*Any) -> bool
     """Runs a named query that goes through the Store and Forward
     system.
 
@@ -595,28 +619,23 @@ def runSFNamedQuery(*args):
     scope.
 
     When calling from the Project Scope use:
-    system.db.runSFNamedQuery(path, parameters, [getKey])
+    system.db.runSFNamedQuery(path, params)
 
     When calling from the Gateway Scope use:
-    system.db.runSFNamedQuery(project, path, parameters, [getKey])
+    system.db.runSFNamedQuery(project, path, params)
 
     Args:
         *args : Variable length argument list.
 
     Returns:
-        Returns True if successfully sent to the Store and Forward
-        system.
+        True if successfully sent to the Store and Forward system.
     """
     print(args)
     return True
 
 
-def runSFPrepUpdate(
-    query,  # type: Union[str, unicode]
-    args,  # type: List[Any]
-    datasources,  # type: List[Union[str, unicode]]
-):
-    # type: (...) -> bool
+def runSFPrepUpdate(query, args, datasources):
+    # type: (AnyStr, List[Any], List[AnyStr]) -> bool
     """Runs a prepared statement query through the store and forward
     system and to multiple datasources at the same time.
 
@@ -637,14 +656,14 @@ def runSFPrepUpdate(
         datasources: List of datasources to run the query through.
 
     Returns:
-        Returns True if successfully sent to store-and-forward system.
+        True if successfully sent to Store and Forward system.
     """
     print(query, args, datasources)
     return True
 
 
 def runSFUpdateQuery(query, datasources):
-    # type: (Union[str, unicode], List[Union[str, unicode]]) -> bool
+    # type: (AnyStr, List[AnyStr]) -> bool
     """Runs an query through the store and forward system and to
     multiple datasources at the same time.
 
@@ -653,17 +672,17 @@ def runSFUpdateQuery(query, datasources):
         datasources: List of datasources to run the query through.
 
     Returns:
-        Returns True if successful and False if not.
+        True if successful and False if not.
     """
     print(query, datasources)
     return True
 
 
 def runScalarPrepQuery(
-    query,  # type: Union[str, unicode]
+    query,  # type: AnyStr
     args,  # type: List[Any]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
+    database="",  # type: Optional[AnyStr]
+    tx=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> Any
     """Runs a prepared statement against a database connection just like
@@ -684,7 +703,7 @@ def runScalarPrepQuery(
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         tx: A transaction identifier. If omitted, the query will be
-            executed in its own transaction.
+            executed in its own transaction. Optional.
 
     Returns:
          The value from the first row and first column of the results.
@@ -693,12 +712,8 @@ def runScalarPrepQuery(
     print(query, args, database, tx)
 
 
-def runScalarQuery(
-    query,  # type: Union[str, unicode]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> Any
+def runScalarQuery(query, database="", tx=None):
+    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> Any
     """Runs a query against a database connection just like the runQuery
     function, but only returns the value from the first row and column.
 
@@ -712,7 +727,7 @@ def runScalarQuery(
             against. If omitted or "", the project's default database
             connection will be used. Optional.
         tx: A transaction identifier. If omitted, the query will be
-            executed in its own transaction.
+            executed in its own transaction. Optional.
 
     Returns:
          The value from the first row and first column of the results.
@@ -722,9 +737,9 @@ def runScalarQuery(
 
 
 def runUpdateQuery(
-    query,  # type: Union[str, unicode]
-    database="",  # type: Optional[Union[str, unicode]]
-    tx=None,  # type: Optional[Union[str, unicode]]
+    query,  # type: AnyStr
+    database="",  # type: Optional[AnyStr]
+    tx=None,  # type: Optional[AnyStr]
     getKey=False,  # type: Optional[bool]
     skipAudit=True,  # type: Optional[bool]
 ):
@@ -736,9 +751,11 @@ def runUpdateQuery(
     is specified, or the database is the empty-string "", then the
     current project's default database connection will be used.
 
-    Note that you may want to use the runPrepUpdate query if your query
-    is constructed with user input (to avoid the user's input from
-    breaking your syntax) or if you need to insert binary or BLOB data.
+    Note:
+        You may want to use the runPrepUpdate query if your query is
+        constructed with user input (to avoid the user's input from
+        breaking your syntax) or if you need to insert binary or BLOB
+        data.
 
     Args:
         query: A SQL query, usually an INSERT, UPDATE, or DELETE query,
@@ -766,7 +783,7 @@ def runUpdateQuery(
 
 
 def setDatasourceConnectURL(name, connectUrl):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Changes the connect URL for a given database connection.
 
     Args:
@@ -777,24 +794,24 @@ def setDatasourceConnectURL(name, connectUrl):
 
 
 def setDatasourceEnabled(name, enabled):
-    # type: (Union[str, unicode], bool) -> None
+    # type: (AnyStr, bool) -> None
     """Enables/disables a given database connection.
 
     Args:
         name: The name of the database connection in Ignition.
-        enabled: True if the connection should be enabled, False
-            otherwise.
+        enabled: Specifies whether the database connection will be set
+            to enabled or disabled state.
     """
     print(name, enabled)
 
 
 def setDatasourceMaxConnections(name, maxConnections):
-    # type: (Union[str, unicode], int) -> None
+    # type: (AnyStr, int) -> None
     """Sets the Max Active and Max Idle parameters of a given database
     connection.
 
     Ags:
         name: The name of the database connection in Ignition.
-        maxConnections: The number of maximum connections allowed.
+        maxConnections: The new value for Max Active and Max Idle.
     """
     print(name, maxConnections)

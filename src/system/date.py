@@ -3,7 +3,7 @@
 The following functions give you access to test and modify dates.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "addDays",
@@ -53,7 +53,7 @@ __all__ = [
 
 from datetime import datetime
 from time import localtime, mktime
-from typing import Any, Optional, Union
+from typing import AnyStr, Optional
 
 from java.util import Date, Locale
 
@@ -221,24 +221,33 @@ def daysBetween(date_1, date_2):
     return 1
 
 
-def format(date, format):
-    # type: (Date, Union[str, unicode]) -> Union[str, unicode]
+def format(date, format="yyyy-MM-dd HH:mm:ss"):
+    # type: (Date, Optional[AnyStr]) -> unicode
     """Returns the given date as a string, formatted according to a
     pattern.
 
+    The pattern is a format that is full of various placeholders that
+    display different parts of the date. These are case-sensitive. These
+    placeholders can be repeated for a different effect. For example, M
+    will give you 1-12, MM will give you 01-12, MMM will give you
+    Jan-Dec, MMMM will give you January-December.
+
     Note:
-        Not all symbols from system.date.format() have a counterpart
-        directive on strftime().
+        The functions above are based off the the Java class
+        `SimpleDateFormat` internally. The functions will accept any
+        valid format string for that class.
 
     Args:
         date: The date to format.
-        format: A format string such as "yyyy-MM-dd HH:mm:ss".
+        format: A format string such as "yyyy-MM-dd HH:mm:ss". The
+            format argument is optional. The default is
+            "yyyy-MM-dd HH:mm:ss". Optional.
 
     Returns:
         A string representing the formatted datetime.
     """
     print(date, format)
-    return format
+    return u""
 
 
 def fromMillis(millis):
@@ -441,7 +450,7 @@ def getSecond(date):
 
 
 def getTimezone():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the ID of the current timezone.
 
     Returns:
@@ -515,7 +524,7 @@ def isAfter(date_1, date_2):
         date_2: The second date.
 
     Returns:
-        True (1) if date_1 is after date_2, False (0) otherwise.
+        True if date_1 is after date_2, False otherwise.
     """
     print(date_1, date_2)
     return True
@@ -530,7 +539,7 @@ def isBefore(date_1, date_2):
         date_2: The second date.
 
     Returns:
-        True (1) if date_1 is before date_2, False (0) otherwise.
+        True if date_1 is before date_2, False otherwise.
     """
     print(date_1, date_2)
     return False
@@ -548,8 +557,8 @@ def isBetween(target_date, start_date, end_date):
             start date.
 
     Returns:
-        True (1) if target_date is >= start_date and target_date <=
-        end_date, False (0) otherwise.
+        True if target_date is >= start_date and target_date <=
+        end_date, False otherwise.
     """
     print(target_date, start_date, end_date)
     return True
@@ -566,8 +575,8 @@ def isDaylightTime(date=None):
             Optional.
 
     Returns:
-        True (1) if date is observing Daylight Saving Time in the
-        current timezone, False (0) otherwise.
+        True if date is observing Daylight Saving Time in the
+        current timezone, False otherwise.
     """
     print(date)
     _date = _now()
@@ -663,12 +672,8 @@ def now():
     return Date()
 
 
-def parse(
-    dateString,  # type: Union[str, unicode]
-    formatString="yyyy-MM-dd HH:mm:ss",  # type: Optional[Union[str, unicode]]
-    locale=Locale.ENGLISH,  # type: Optional[Any]
-):
-    # type: (...) -> Date
+def parse(dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH):
+    # type: (AnyStr, Optional[AnyStr], Optional[Locale]) -> Date
     """Attempts to parse a string and create a Date.
 
     Causes ParseException if the date dateString parameter is in an
@@ -706,7 +711,7 @@ def secondsBetween(date_1, date_2):
 
 
 def setTime(date, hour, minute, second):
-    # type: (int, int, int, int) -> Date
+    # type: (Date, int, int, int) -> Date
     """Takes in a date, and returns a copy of it with the time fields
     set as specified.
 
@@ -732,7 +737,7 @@ def toMillis(date):
         date: The date object to convert.
 
     Returns:
-        8-byte integer representing the number of millisecond elapsed
+        An 8-byte integer representing the number of millisecond elapsed
         since January 1, 1970, 00:00:00 UTC (GMT).
     """
     print(date)

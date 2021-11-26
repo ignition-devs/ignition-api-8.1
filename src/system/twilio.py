@@ -5,7 +5,7 @@ through Twilio. This requires the Twilio Module, which is not included
 in a typical install.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "getAccounts",
@@ -15,13 +15,13 @@ __all__ = [
     "sendSms",
 ]
 
-from typing import List, Union
+from typing import AnyStr, List, Sequence
 
 from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def getAccounts():
-    # type: () -> List[Union[str, unicode]]
+    # type: () -> List[AnyStr]
     """Return a list of Twilio accounts that have been configured in the
     Gateway.
 
@@ -43,7 +43,7 @@ def getAccountsDataset():
 
 
 def getPhoneNumbers(accountName):
-    # type: (Union[str, unicode]) -> List[Union[str, unicode]]
+    # type: (AnyStr) -> Sequence
     """Returns a list of outgoing phone numbers for a Twilio account.
 
     Note that these numbers are supplied by Twilio, and are not defined
@@ -62,7 +62,7 @@ def getPhoneNumbers(accountName):
 
 
 def getPhoneNumbersDataset(accountName):
-    # type: (Union[str, unicode]) -> BasicDataset
+    # type: (AnyStr) -> BasicDataset
     """Return a list of outgoing phone numbers for a Twilio account as a
     single-column Dataset.
 
@@ -80,13 +80,8 @@ def getPhoneNumbersDataset(accountName):
     return BasicDataset()
 
 
-def sendSms(
-    accountName,  # type: Union[str, unicode]
-    fromNumber,  # type: Union[str, unicode]
-    toNumber,  # type: Union[str, unicode]
-    message,  # type: Union[str, unicode]
-):
-    # type: (...) -> None
+def sendSms(accountName, fromNumber, toNumber, message):
+    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> None
     """Sends an SMS message.
 
     Args:

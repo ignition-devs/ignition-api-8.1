@@ -4,7 +4,7 @@ The following functions allow you to control windows and create popup
 interfaces.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "chooseColor",
@@ -41,7 +41,7 @@ __all__ = [
     "warningBox",
 ]
 
-from typing import Any, Callable, List, Optional, Tuple, Union
+from typing import Any, AnyStr, Callable, List, Optional, Tuple, Union
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
@@ -71,7 +71,7 @@ COORD_DESIGNER = 1
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
-    # type: (Color, Optional[Union[str, unicode]]) -> Color
+    # type: (Color, Optional[AnyStr]) -> Color
     """Prompts the user to pick a color using the default color-chooser
     dialog box.
 
@@ -88,8 +88,8 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
     return Color()
 
 
-def closeDesktop(handle="primary"):
-    # type: (Optional[Union[str, unicode]]) -> None
+def closeDesktop(handle):
+    # type: (AnyStr) -> None
     """Allows you to close any of the open desktops associated with the
     current client.
 
@@ -106,8 +106,7 @@ def closeDesktop(handle="primary"):
 def color(*args):
     # type: (*Any) -> Color
     """Creates a new color object, either by parsing a string or by
-    having the RGB[A] channels specified explicitly. See toColor to see
-    a list of available color names.
+    having the RGB[A] channels specified explicitly.
 
     Args:
         args: Variable-length argument list.
@@ -119,14 +118,10 @@ def color(*args):
     return Color(*args)
 
 
-def confirm(
-    message,  # type: Union[str, unicode]
-    title="Confirm",  # type: Optional[Union[str, unicode]]
-    allowCancel=False,  # type: Optional[bool]
-):
-    # type: (...) -> Optional[bool]
+def confirm(message, title="Confirm", allowCancel=False):
+    # type: (AnyStr, Optional[AnyStr], Optional[bool]) -> Optional[bool]
     """Displays a confirmation dialog box to the user with "Yes", "No"
-    and "Cancel" options, and a custom message.
+    options, and a custom message.
 
     Args:
         message: The message to show in the confirmation dialog.
@@ -134,7 +129,7 @@ def confirm(
         allowCancel: Show a cancel button in the dialog. Optional.
 
     Returns:
-        True (1) if the user selected "Yes", False (0) if the user
+        True if the user selected "Yes", False if the user
         selected "No", None if the user selected "Cancel".
     """
     options = ["Yes", "No"]
@@ -181,7 +176,7 @@ def convertPointToScreen(x, y, event):
 
 
 def createPopupMenu(itemNames, itemFunctions):
-    # type: (List[Union[str, unicode]], List[Any]) -> JPopupMenu
+    # type: (List[AnyStr], List[Callable[..., Any]]) -> JPopupMenu
     """Creates a new popup menu, which can then be shown over a
     component on a mouse event.
 
@@ -196,16 +191,16 @@ def createPopupMenu(itemNames, itemFunctions):
     return JPopupMenu()
 
 
-def desktop(handle="primary"):
-    # type: (Optional[Union[str, unicode]]) -> WindowUtilities
+def desktop(handle):
+    # type: (AnyStr) -> WindowUtilities
     """Allows for invoking system.gui functions on a specific desktop.
 
     Args:
         handle: The handle for the desktop to use. The screen index cast
             as a string may be used instead of the handle. If omitted,
             this will default to the Primary Desktop. Alternatively, the
-            handle "primary" can be used to refer to the Primary
-            Desktop.
+            handle "primary" can be used to refer to the primary
+            desktop.
 
     Returns:
         A copy of system.gui that will be relative to the desktop named
@@ -216,7 +211,7 @@ def desktop(handle="primary"):
 
 
 def errorBox(message, title="Error"):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, Optional[AnyStr]) -> None
     """Displays an error-style message box to the user.
 
     Args:
@@ -227,7 +222,7 @@ def errorBox(message, title="Error"):
 
 
 def findWindow(path):
-    # type: (Union[str, unicode]) -> List[FPMIWindow]
+    # type: (AnyStr) -> List[FPMIWindow]
     """Finds and returns a list of windows with the given path.
 
     If the window is not open, an empty list will be returned. Useful
@@ -246,7 +241,7 @@ def findWindow(path):
 
 
 def getCurrentDesktop():
-    # type: () -> Union[str, unicode]
+    # type: () -> AnyStr
     """Returns the handle of the desktop this function was called from.
 
     Commonly used with the system.gui.desktop and system.nav.desktop
@@ -259,7 +254,7 @@ def getCurrentDesktop():
 
 
 def getDesktopHandles():
-    # type: () -> List[Union[str, unicode]]
+    # type: () -> List[AnyStr]
     """Gets a list of all secondary handles of the open desktops
     associated with the current client.
 
@@ -278,8 +273,8 @@ def getDesktopHandles():
 
 
 def getOpenedWindowNames():
-    # type: () -> Tuple[Union[str, unicode], ...]
-    """Finds all of the currently open windows, returning a tuple of
+    # type: () -> Tuple[AnyStr, ...]
+    """Finds all of the currently open windows and returns a tuple of
     their paths.
 
     Returns:
@@ -317,7 +312,7 @@ def getParentWindow(event):
 
 
 def getQuality(component, propertyName):
-    # type: (JComponent, Union[str, unicode]) -> int
+    # type: (JComponent, AnyStr) -> int
     """Returns the data quality for the property of the given component
     as an integer.
 
@@ -339,16 +334,17 @@ def getQuality(component, propertyName):
 def getScreenIndex():
     # type: () -> int
     """Returns the returns an integer value representing the current
-    screen index based on the screen this function was called from.
+    screen index based on the screen from which this function was
+    called.
 
     Returns:
-        int: The screen that the function was called from.
+        The screen from which the function was called.
     """
     return 0
 
 
 def getScreens():
-    # type: () -> List[Tuple[int, int, int]]
+    # type: () -> List[Tuple[AnyStr, int, int]]
     """Get a list of all the monitors on the computer this client is
     open on.
 
@@ -358,11 +354,11 @@ def getScreens():
         A sequence of tuples of the form (index, width, height) for each
         screen device (monitor) available.
     """
-    return [(0, 1440, 900), (1, 1920, 1080)]
+    return [("primary", 1440, 900), ("secondary", 1920, 1080)]
 
 
 def getSibling(event, name):
-    # type: (EventObject, Union[str, unicode]) -> FPMIWindow
+    # type: (EventObject, AnyStr) -> FPMIWindow
     """Given a component event object, looks up a sibling component.
 
     Shortcut for event.source.parent.getComponent("siblingName"). If no
@@ -380,7 +376,7 @@ def getSibling(event, name):
 
 
 def getWindow(name):
-    # type: (Union[str, unicode]) -> FPMIWindow
+    # type: (AnyStr) -> FPMIWindow
     """Finds a reference to an open window with the given name.
 
     Throws a ValueError if the named window is not open or not found.
@@ -389,15 +385,14 @@ def getWindow(name):
         name: The path to the window to field.
 
     Returns:
-        A reference to the window, if it was open. Use
-        .getRootContainer() to grab the root container of the window.
+        A reference to the window, if it was open.
     """
     print(name)
     return FPMIWindow("Main Window")
 
 
 def getWindowNames():
-    # type: () -> Tuple[Union[str, unicode], ...]
+    # type: () -> Tuple[AnyStr, ...]
     """Returns a list of the paths of all windows in the current
     project, sorted alphabetically.
 
@@ -408,11 +403,8 @@ def getWindowNames():
     return "Main Window", "Main Window 1", "Main Window 2"
 
 
-def inputBox(
-    message,  # type: Union[str, unicode]
-    defaultText=None,  # type: Optional[Union[str, unicode]]
-):
-    # type: (...) -> Optional[Union[str, unicode]]
+def inputBox(message, defaultText=None):
+    # type: (AnyStr, Optional[AnyStr]) -> Optional[AnyStr]
     """Opens up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -423,7 +415,7 @@ def inputBox(
 
     Args:
         message: The message to display for the input box. Will accept
-            html formatting.
+            HTML formatting.
         defaultText: The default text to initialize the input box with.
             Optional.
 
@@ -459,17 +451,17 @@ def isTouchscreenModeEnabled():
     currently enabled.
 
     Returns:
-         True(1) if the client currently has touchscreen mode activated.
+         True if the Client currently has Touch Screen mode activated.
     """
     return False
 
 
 def messageBox(message, title="Information"):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Displays an informational-style message popup box to the user.
 
     Args:
-        message: The message to display. Will accept html formatting.
+        message: The message to display. Will accept HTML formatting.
         title: The title for the message box. Optional.
     """
     JOptionPane.showMessageDialog(None, message, title, JOptionPane.INFORMATION_MESSAGE)
@@ -477,40 +469,41 @@ def messageBox(message, title="Information"):
 
 def openDesktop(
     screen=0,  # type: Optional[int]
-    handle=None,  # type: Optional[Union[str, unicode]]
-    title=None,  # type: Optional[Union[str, unicode]]
+    handle=None,  # type: Optional[AnyStr]
+    title=None,  # type: Optional[AnyStr]
     width=None,  # type: Optional[int]
     height=None,  # type: Optional[int]
     x=0,  # type: Optional[int]
     y=0,  # type: Optional[int]
-    windows=None,  # type: Optional[List[Union[str, unicode]]]
+    windows=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> JFrame
     """Creates an additional Desktop in a new frame.
 
     Args:
         screen: The screen index of which screen to place the new frame
-            on. If omitted, screen 0 will be used.
+            on. If omitted, screen 0 will be used. Optional.
         handle: A name for the desktop. If omitted, the screen index
-            will be used.
+            will be used. Optional.
         title: The title for the new frame. If omitted, the index handle
             will be used. If the handle and title are omitted, the
-            screen index will be used.
+            screen index will be used. Optional.
         width: The width for the new Desktop's frame. If omitted, frame
-            will become maximized on the specified monitor.
+            will become maximized on the specified monitor. Optional.
         height: The width for the new desktop's frame. If omitted, frame
-            will become maximized on the specified monitor.
+            will become maximized on the specified monitor. Optional.
         x: The X coordinate for the new desktop's frame. Only used if
             both width and height are specified. If omitted, defaults to
-            0.
+            0. Optional.
         y: The Y coordinate for the new desktop's frame. Only used if
             both width and height are specified. If omitted, defaults to
-            0.
+            0. Optional.
         windows: A list of window paths to open in the new Desktop
-            frame.
+            frame. If omitted, the desktop will open without any opened
+            windows. Optional.
 
     Returns:
-        A reference to the new Desktop frame.
+        A reference to the new Desktop frame object.
     """
     print(screen, handle, title, width, height, x, y, windows)
     return JFrame()
@@ -530,11 +523,11 @@ def openDiagnostics():
 
 
 def passwordBox(
-    message,  # type: Union[str, unicode]
-    title="Password",  # type: Optional[Union[str, unicode]]
-    echoChar="*",  # type: Optional[Union[str, unicode]]
+    message,  # type:AnyStr
+    title="Password",  # type: Optional[AnyStr]
+    echoChar="*",  # type: Optional[AnyStr]
 ):
-    # type: (...) -> Union[str, unicode]
+    # type: (...) -> Optional[AnyStr]
     """Pops up a special input box that uses a password field, so the
     text isn't echoed back in clear-text to the user.
 
@@ -542,7 +535,7 @@ def passwordBox(
     box.
 
     Args:
-        message: The message for the password prompt. Will accept html
+        message: The message for the password prompt. Will accept HTML
             formatting.
         title: A title for the password prompt. Optional.
         echoChar: A custom echo character. Defaults to: *. Optional.
@@ -570,16 +563,16 @@ def setScreenIndex(index):
 
 def setTouchscreenModeEnabled(enabled):
     # type: (bool) -> None
-    """Alters a running client's touchscreen mode on the fly.
+    """Alters a running Client's Touch Screen mode on the fly.
 
     Args:
-        enabled: The new value for touchscreen mode being enabled.
+        enabled: The new value for Touch Screen mode being enabled.
     """
     print(enabled)
 
 
 def showNumericKeypad(
-    initialValue=None,  # type: Optional[Union[float, int]]
+    initialValue,  # type: Union[float, int]
     fontSize=None,  # type: Optional[int]
     usePasswordMode=False,  # type: Optional[bool]
 ):
@@ -601,25 +594,21 @@ def showNumericKeypad(
     return 43
 
 
-def showTouchscreenKeyboard(
-    initialText=None,  # type: Union[str, unicode]
-    fontSize=None,  # type: Optional[int]
-    passwordMode=False,  # type: Optional[bool]
-):
-    # type: (...) -> Union[str, unicode]
+def showTouchscreenKeyboard(initialText, fontSize=None, passwordMode=False):
+    # type: (AnyStr, Optional[int], Optional[bool]) -> AnyStr
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor.
 
-    Returns the text that the user "typed".
+    Returns the text that the user entered.
 
     Args:
         initialText: The text to start the on-screen keyboard with.
         fontSize: The font size to display in the keypad. Optional.
-        passwordMode: True (1) to activate password mode, where the text
+        passwordMode: True to activate password mode, where the text
             entered isn't echoed back clear-text. Optional.
 
     Returns:
-        The text that was "typed" in the on-screen keyboard.
+        The text that was entered in the on-screen keyboard.
     """
     print(initialText, fontSize, passwordMode)
     return ""
@@ -632,7 +621,7 @@ def transform(
     newWidth=None,  # type: Optional[int]
     newHeight=None,  # type: Optional[int]
     duration=0,  # type: Optional[int]
-    callback=None,  # type: Optional[Callable]
+    callback=None,  # type: Optional[Callable[..., Any]]
     framesPerSecond=60,  # type: Optional[int]
     acceleration=None,  # type: Optional[int]
     coordSpace=None,  # type: Optional[int]
@@ -645,8 +634,9 @@ def transform(
     callback argument will be executed when the transformation is
     complete.
 
-    Note: The transformation is performed in Designer coordinate space
-    on components which are centered or have more than 2 anchors.
+    Note:
+        The transformation is performed in Designer coordinate space on
+        components which are centered or have more than two anchors.
 
     Args:
         component: The component to move or resize.
@@ -675,8 +665,8 @@ def transform(
             Designer. See system.gui constants for valid arguments.
 
     Returns:
-        An animation object that the script can use to pause(),
-        resume(), or cancel() the transformation.
+        An object that contains pause(), resume(), and cancel() methods,
+        allowing for a script to interrupt the animation.
     """
     print(
         component,
@@ -694,12 +684,12 @@ def transform(
 
 
 def warningBox(message, title="Warning"):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
-    """Displays a message to the user in a warning style pop-up dialog.
+    # type: (AnyStr, AnyStr) -> None
+    """Displays a message to the user in a warning style popup dialog.
 
     Args:
         message: The message to display in the warning box. Will accept
-            html formatting.
+            HTML formatting.
         title: The title for the warning box. Optional.
     """
     JOptionPane.showMessageDialog(None, message, title, JOptionPane.WARNING_MESSAGE)

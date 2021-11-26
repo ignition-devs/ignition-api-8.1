@@ -3,7 +3,7 @@
 The following functions assist with running statistical analysis.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "geometricMean",
@@ -31,6 +31,8 @@ from typing import List, Union
 
 import __builtin__ as builtins
 
+from org.apache.commons.math3.exception import DimensionMismatchException
+
 
 def geometricMean(values):
     # type: (List[Union[float, int]]) -> float
@@ -39,7 +41,7 @@ def geometricMean(values):
     Geometric Mean is a type of average which indicates a typical value
     in a set of numbers by using the product of values in the set.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -71,7 +73,7 @@ def kurtosis(values):
     distribution.
 
     Args:
-        values: A Sequence of numerical values. Accepts both Integers
+        values: A sequence of numerical values. Accepts both Integers
             and Floats. The sequence may not contain None type values.
             However, passing a None type object instead of a Sequence of
             numerical values will return NaN.
@@ -90,7 +92,7 @@ def max(values):
     """Given a sequence of values, returns the greatest value in the
     sequence, also known as the "max" value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -99,7 +101,7 @@ def max(values):
             numerical values will return NaN.
 
     Returns:
-        The maximum value contained in the 'values' parameter, or NaN if
+        The maximum value contained in the values parameter, or NaN if
         the input was empty or null.
     """
     return builtins.max(values)
@@ -110,7 +112,7 @@ def mean(values):
     """Given a sequence of values, calculates the arithmetic mean
     (average).
 
-    Returns NaN (Not A Number) if passed an empty sequence, a null.
+    Returns NaN (Not a Number) if passed an empty sequence, a null.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -151,7 +153,8 @@ def meanDifference(values1, values2):
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    print(values1, values2)
+    if len(values1) != len(values2):
+        raise DimensionMismatchException()
     return float(43)
 
 
@@ -161,7 +164,7 @@ def median(values):
 
     The Median represents the middle value in a set of data.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -181,7 +184,7 @@ def min(values):
     """Given a Sequence of numerical values, returns the minimum value,
     also known as the "min" value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -190,8 +193,8 @@ def min(values):
             numerical values will return NaN.
 
     Returns:
-        The minimum value contained within the 'values' parameter, or
-        NaN if the input was empty or null.
+        The minimum value contained within the values parameter, or NaN
+        if the input was empty or null.
     """
     return builtins.min(values)
 
@@ -209,7 +212,7 @@ def mode(values):
 
     Returns:
         A Java Array (functionally similar to a Python List) of floats
-        representing the most frequent values in the 'values' parameter.
+        representing the most frequent values in the values parameter.
         If the values parameter was empty, then an empty list will be
         returned instead.
     """
@@ -280,7 +283,7 @@ def populationVariance(values):
     Population variance calculates how values in a dataset are spread
     out from their average value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -301,7 +304,7 @@ def product(values):
     sequence: the result of multiplying of all values in the sequence
     together.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -310,8 +313,8 @@ def product(values):
             numerical values will return NaN.
 
     Returns:
-        The product of all values in the 'values' parameter, or NaN if
-        the input was empty or null.
+        The product of all values in the values parameter, or NaN if the
+        input was empty or null.
     """
     print(values)
     return float(43)
@@ -326,7 +329,7 @@ def skewness(values):
     in the negative direction. If skewed to the right, the tail will be
     skewed in the positive direction.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -335,8 +338,8 @@ def skewness(values):
             numerical values will return NaN.
 
     Returns:
-        The skewness of the 'values' parameter, or NaN if values was
-        empty or null.
+        The skewness of the values parameter, or NaN if values was empty
+        or null.
     """
     print(values)
     return float(43)
@@ -350,7 +353,7 @@ def standardDeviation(values):
     Standard deviation is a calculated number for how close, or how far
     the values of that dataset are in relation to the mean.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -359,7 +362,7 @@ def standardDeviation(values):
             numerical values will return NaN.
 
     Returns:
-        The standard deviation of the 'values' parameter, or NaN if the
+        The standard deviation of the values parameter, or NaN if the
         values was empty or null.
     """
     print(values)
@@ -372,7 +375,7 @@ def sum(values):
 
     The sum is the number returned by addition.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -381,8 +384,8 @@ def sum(values):
             numerical values will return NaN.
 
     Returns:
-        The sum of all values in the 'values' parameter, or NaN if
-        values was empty or null.
+        The sum of all values in the values parameter, or NaN if values
+        was empty or null.
     """
     return builtins.sum(values)
 
@@ -412,7 +415,8 @@ def sumDifference(values1, values2):
         DimensionMismatchException: If the two sequences have different
             lengths.
     """
-    print(values1, values2)
+    if len(values1) != len(values2):
+        raise DimensionMismatchException()
     return float(43)
 
 
@@ -421,7 +425,7 @@ def sumLog(values):
     """Given a sequence of values, calculates the sum of the natural
     logs.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -445,7 +449,7 @@ def sumSquares(values):
     Sum squares measures how far individual values are from the mean by
     calculating how much variation there is in a set of values.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -454,7 +458,7 @@ def sumSquares(values):
             numerical values will return NaN.
 
     Returns:
-        The sum of all squares of the 'values' parameter, or NaN if the
+        The sum of all squares of the values parameter, or NaN if the
         input was empty or null.
     """
     return builtins.sum(value ** 2 for value in values)
@@ -468,7 +472,7 @@ def variance(values):
     Variance measures how far values in a set are spread out from their
     mean value.
 
-    Returns NaN (Not A Number) if passed an empty sequence.
+    Returns NaN (Not a Number) if passed an empty sequence.
 
     Args:
         values: A Sequence of numerical values. Accepts both Integers
@@ -477,8 +481,8 @@ def variance(values):
             numerical values will return NaN.
 
     Returns:
-        The sum of all values in the 'values' parameter, or NaN if the
-        input was empty or null.
+        The variance of all values in the values parameter, or NaN if
+        the input was empty or null.
     """
     print(values)
     return float(43)

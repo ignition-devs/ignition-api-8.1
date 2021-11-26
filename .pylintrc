@@ -85,6 +85,7 @@ disable=consider-using-f-string,
         missing-module-docstring,
         redefined-builtin,
         redefined-outer-name,
+        redundant-u-string-prefix,
         signature-differs,
         super-with-arguments,
         too-many-arguments,
@@ -244,7 +245,7 @@ signature-mutators=
 
 # List of additional names supposed to be defined in builtins. Remember that
 # you should avoid defining new builtins when possible.
-additional-builtins=long
+additional-builtins=long,unicode
 
 # Tells whether unused global variables should be treated as a violation.
 allow-global-unused-variables=yes
@@ -289,7 +290,7 @@ indent-after-paren=4
 indent-string="    "
 
 # Maximum number of characters on a single line.
-max-line-length=120
+max-line-length=88
 
 # Maximum number of lines in a module.
 max-module-lines=1500

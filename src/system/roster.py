@@ -4,7 +4,7 @@ Functions that provide roster manipulation, including adding and remove
 users from a roster.
 """
 
-from __future__ import print_function, unicode_literals
+from __future__ import print_function
 
 __all__ = [
     "addUsers",
@@ -14,13 +14,13 @@ __all__ = [
     "removeUsers",
 ]
 
-from typing import Dict, List, Union
+from typing import AnyStr, Dict, List
 
 from com.inductiveautomation.ignition.common.user import PyUser
 
 
 def addUsers(rosterName, users):
-    # type: (Union[str, unicode], List[PyUser]) -> None
+    # type: (AnyStr, List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
@@ -38,7 +38,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    # type: (Union[str, unicode], Union[str, unicode]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -55,7 +55,7 @@ def createRoster(name, description):
 
 
 def deleteRoster(rosterName):
-    # type: (Union[str, unicode]) -> None
+    # type: (AnyStr) -> None
     """Deletes a roster with the given name.
 
     Args:
@@ -65,7 +65,7 @@ def deleteRoster(rosterName):
 
 
 def getRosters():
-    # type: () -> Dict[Union[str, unicode], List[Union[str, unicode]]]
+    # type: () -> Dict[AnyStr, List[AnyStr]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -74,14 +74,15 @@ def getRosters():
     system.alarm.getRosters instead.
 
     Returns:
-        A python dictionary of rosters. Refer to the list of User
-        objects.
+        A dictionary that maps roster names to a list of usernames in
+        the roster. The list of usernames may be empty if no users have
+        been added to the roster.
     """
     return {}
 
 
 def removeUsers(rosterName, users):
-    # type: (Union[str, unicode], List[PyUser]) -> None
+    # type: (AnyStr, List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:
