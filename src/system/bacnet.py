@@ -8,11 +8,13 @@ from __future__ import print_function
 
 __all__ = ["synchronizeTime", "synchronizeTimeUtc", "writeWithPriority"]
 
-from typing import Any, AnyStr
+from typing import Any, Union
+
+String = Union[str, unicode]
 
 
 def synchronizeTime(deviceName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Notifies the remote device of the correct current time, which is
     the system time (factoring in timezone and DST) of the server
     Ignition is running on.
@@ -25,7 +27,7 @@ def synchronizeTime(deviceName):
 
 
 def synchronizeTimeUtc(deviceName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Notifies the remote device of the correct current time in UTC.
 
     Args:
@@ -36,7 +38,7 @@ def synchronizeTimeUtc(deviceName):
 
 
 def writeWithPriority(deviceName, objectType, objectId, value, priority):
-    # type: (AnyStr, int, int, Any, int) -> None
+    # type: (String, int, int, Any, int) -> None
     """Write to the Present_Value attribute of an object with a custom
     priority level.
 

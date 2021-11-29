@@ -54,7 +54,7 @@ import json
 import os
 import platform
 import sys
-from typing import Any, AnyStr, Callable, Dict, Iterable, List, Optional, Union
+from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
 import system.__version__ as version
 import system.security
@@ -71,15 +71,16 @@ from java.util import Date
 
 PyDataSet = DatasetUtilities.PyDataSet
 RequestImpl = SystemUtilities.RequestImpl
+String = Union[str, unicode]
 
 
 def audit(
-    action=None,  # type: Optional[AnyStr]
-    actionValue=None,  # type: Optional[AnyStr]
-    auditProfile="",  # type: Optional[AnyStr]
-    actor=None,  # type: Optional[AnyStr]
-    actorHost="localhost",  # type: Optional[AnyStr]
-    originatingSystem=None,  # type: Optional[List[AnyStr]]
+    action=None,  # type: Optional[String]
+    actionValue=None,  # type: Optional[String]
+    auditProfile="",  # type: Optional[String]
+    actor=None,  # type: Optional[String]
+    actorHost="localhost",  # type: Optional[String]
+    originatingSystem=None,  # type: Optional[List[String]]
     eventTimestamp=None,  # type: Optional[Date]
     originatingContext=4,  # type: Optional[int]
     statusCode=0,  # type: Optional[int]
@@ -155,7 +156,7 @@ def beep():
 
 
 def execute(commands):
-    # type: (List[AnyStr]) -> None
+    # type: (List[String]) -> None
     """Executes the given commands via the operating system, in a
     separate process.
 
@@ -187,7 +188,7 @@ def exit(force=False):
 
 
 def getAvailableLocales():
-    # type: () -> List[AnyStr]
+    # type: () -> List[String]
     """Returns a collection of strings representing the Locales added
     to the Translation Manager, such as 'en' for English.
 
@@ -199,7 +200,7 @@ def getAvailableLocales():
 
 
 def getAvailableTerms():
-    # type: () -> List[AnyStr]
+    # type: () -> List[String]
     """Returns a collection of available terms defined in the
     translation system.
 
@@ -211,7 +212,7 @@ def getAvailableTerms():
 
 
 def getClientId():
-    # type: () -> unicode
+    # type: () -> String
     """Returns a hex-string that represents a number unique to the
     running Client's Session.
 
@@ -254,7 +255,7 @@ def getConnectionMode():
 
 
 def getEdition():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the "edition" of the Vision Client - "standard",
     "limited", or "panel".
 
@@ -265,7 +266,7 @@ def getEdition():
 
 
 def getGatewayAddress():
-    # type: () -> unicode
+    # type: () -> String
     """Returns the address of the gateway that the client is currently
     communicating with.
 
@@ -277,12 +278,12 @@ def getGatewayAddress():
 
 
 def getGatewayStatus(
-    gatewayAddress,  # type: AnyStr
+    gatewayAddress,  # type: String
     connectTimeoutMillis=None,  # type: Optional[int]
     socketTimeoutMillis=None,  # type: Optional[int]
     bypassCertValidation=True,  # type: Optional[bool]
 ):
-    # type: (...) -> unicode
+    # type: (...) -> String
     """Returns a string that indicates the status of the Gateway.
 
     A status of RUNNING means that the Gateway is fully functional.
@@ -313,7 +314,7 @@ def getGatewayStatus(
 
 
 def getGlobals():
-    # type: () -> Dict[AnyStr, Any]
+    # type: () -> Dict[String, Any]
     """This method returns a dictionary that provides access to the
     legacy global namespace.
 
@@ -349,7 +350,7 @@ def getInactivitySeconds():
 
 
 def getLocale():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the current string representing the user's Locale, such
     as 'en' for English.
 
@@ -360,7 +361,7 @@ def getLocale():
 
 
 def getLogger(name):
-    # type: (AnyStr) -> LoggerEx
+    # type: (String) -> LoggerEx
     """Returns a Logger object that can be used to log messages to the
     console.
 
@@ -376,7 +377,7 @@ def getLogger(name):
 
 
 def getProjectName():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the name of the project that is currently being run.
 
     Returns:
@@ -386,7 +387,7 @@ def getProjectName():
 
 
 def getProperty(propertyName):
-    # type: (AnyStr) -> Optional[unicode]
+    # type: (String) -> Optional[unicode]
     r"""Retrieves the value of a named system property.
 
     Some of the available properties are:
@@ -443,7 +444,7 @@ def getReadTimeout():
 
 
 def getSessionInfo(usernameFilter=None, projectFilter=None):
-    # type: (Optional[AnyStr], Optional[AnyStr]) -> PyDataSet
+    # type: (Optional[String], Optional[String]) -> PyDataSet
     """Returns a PyDataSet holding information about all of the open
     Designer Sessions and Vision Clients.
 
@@ -501,8 +502,8 @@ def getVersion():
 def invokeAsynchronous(
     function,  # type: Callable
     args=None,  # type: Optional[Iterable[Any]]
-    kwargs=None,  # type: Optional[Dict[AnyStr, Any]]
-    description=None,  # type: Optional[AnyStr]
+    kwargs=None,  # type: Optional[Dict[String, Any]]
+    description=None,  # type: Optional[String]
 ):
     # type: (...) -> Thread
     """Invokes (calls) the given Python function on a different thread.
@@ -562,7 +563,7 @@ def invokeLater(function, delay=0):
 
 
 def jsonDecode(jsonString):
-    # type: (AnyStr) -> Any
+    # type: (String) -> Any
     """Takes a JSON string and converts it into a Python object such as
     a list or a dictionary.
 
@@ -578,7 +579,7 @@ def jsonDecode(jsonString):
 
 
 def jsonEncode(pyObj, indentFactor=4):
-    # type: (Iterable[Any], Optional[int]) -> AnyStr
+    # type: (Iterable[Any], Optional[int]) -> String
     """Takes a Python object such as a list or dict and converts into a
     JSON string.
 
@@ -595,7 +596,7 @@ def jsonEncode(pyObj, indentFactor=4):
 
 
 def modifyTranslation(term, translation, locale="es_MX"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
+    # type: (String, String, Optional[String]) -> None
     """This function allows you to add or modify a global translation.
 
     Args:
@@ -631,14 +632,14 @@ def playSoundClip(wav, volume=1.0, wait=False):
 
 
 def queryAuditLog(
-    auditProfileName=None,  # type: Optional[AnyStr]
+    auditProfileName=None,  # type: Optional[String]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
-    actorFilter=None,  # type: Optional[AnyStr]
-    actionFilter=None,  # type: Optional[AnyStr]
-    targetFilter=None,  # type: Optional[AnyStr]
-    valueFilter=None,  # type: Optional[AnyStr]
-    systemFilter=None,  # type: Optional[AnyStr]
+    actorFilter=None,  # type: Optional[String]
+    actionFilter=None,  # type: Optional[String]
+    targetFilter=None,  # type: Optional[String]
+    valueFilter=None,  # type: Optional[String]
+    systemFilter=None,  # type: Optional[String]
     contextFilter=None,  # type: Optional[int]
 ):
     # type: (...) -> BasicDataset
@@ -686,10 +687,10 @@ def queryAuditLog(
 
 
 def retarget(
-    project,  # type: AnyStr
-    addresses=None,  # type: Optional[Union[AnyStr, List[AnyStr]]]
-    params=None,  # type: Optional[Dict[AnyStr, Any]]
-    windows=None,  # type: Optional[AnyStr]
+    project,  # type: String
+    addresses=None,  # type: Optional[Union[String, List[String]]]
+    params=None,  # type: Optional[Dict[String, Any]]
+    windows=None,  # type: Optional[String]
 ):
     # type: (...) -> None
     """This function allows you to programmatically 'retarget' the
@@ -734,17 +735,17 @@ def retarget(
 
 
 def sendMessage(
-    project,  # type: AnyStr
-    messageHandler,  # type: AnyStr
-    payload=None,  # type: Optional[Dict[AnyStr, Any]]
-    scope=None,  # type: Optional[AnyStr]
-    clientSessionId=None,  # type: Optional[AnyStr]
-    user=None,  # type: Optional[AnyStr]
-    hasRole=None,  # type: Optional[AnyStr]
-    hostName=None,  # type: Optional[AnyStr]
-    remoteServers=None,  # type: Optional[List[AnyStr]]
+    project,  # type: String
+    messageHandler,  # type: String
+    payload=None,  # type: Optional[Dict[String, Any]]
+    scope=None,  # type: Optional[String]
+    clientSessionId=None,  # type: Optional[String]
+    user=None,  # type: Optional[String]
+    hasRole=None,  # type: Optional[String]
+    hostName=None,  # type: Optional[String]
+    remoteServers=None,  # type: Optional[List[String]]
 ):
-    # type: (...) -> List[AnyStr]
+    # type: (...) -> List[String]
     """This function sends a message to clients running under the
     Gateway, or to a project within the Gateway itself.
 
@@ -799,12 +800,12 @@ def sendMessage(
 
 
 def sendRequest(
-    project,  # type: AnyStr
-    messageHandler,  # type: AnyStr
-    payload=None,  # type: Optional[Dict[AnyStr, Any]]
-    hostName=None,  # type: Optional[AnyStr]
-    remoteServer=None,  # type: Optional[AnyStr]
-    timeoutSec=None,  # type: Optional[AnyStr]
+    project,  # type: String
+    messageHandler,  # type: String
+    payload=None,  # type: Optional[Dict[String, Any]]
+    hostName=None,  # type: Optional[String]
+    remoteServer=None,  # type: Optional[String]
+    timeoutSec=None,  # type: Optional[String]
 ):
     # type: (...) -> Any
     """This function sends a message to the Gateway, working in a
@@ -849,11 +850,11 @@ def sendRequest(
 
 
 def sendRequestAsync(
-    project,  # type: AnyStr
-    messageHandler,  # type: AnyStr
-    payload=None,  # type: Optional[Dict[AnyStr, Any]]
-    hostName=None,  # type: Optional[AnyStr]
-    remoteServer=None,  # type: Optional[AnyStr]
+    project,  # type: String
+    messageHandler,  # type: String
+    payload=None,  # type: Optional[Dict[String, Any]]
+    hostName=None,  # type: Optional[String]
+    remoteServer=None,  # type: Optional[String]
     timeoutSec=None,  # type: Optional[int]
     onSuccess=None,  # type: Optional[Callable[..., Any]]
     onError=None,  # type: Optional[Callable[..., Any]]
@@ -939,7 +940,7 @@ def setConnectionMode(mode):
 
 
 def setLocale(locale):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Sets the user's current Locale.
 
     Any valid Java locale code (case-insensitive) can be used as a
@@ -956,7 +957,7 @@ def setLocale(locale):
 
 
 def setLoggingLevel(loggerName, loggerLevel):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (String, String) -> None
     """Sets the logging level on the given logger.
 
     This can be a logger you create, or a logger already defined in the
@@ -985,7 +986,7 @@ def setReadTimeout(readTimeout):
 
 
 def threadDump():
-    # type: () -> unicode
+    # type: () -> String
     """Creates a thread dump of the current running JVM.
 
     Returns:
@@ -997,7 +998,7 @@ def threadDump():
 
 
 def translate(term, locale="es_MX", strict=False):
-    # type: (AnyStr, Optional[AnyStr], bool) -> AnyStr
+    # type: (String, Optional[String], bool) -> String
     """This function allows you to retrieve the global translation of a
     term from the translation database using the current locale.
 

@@ -8,11 +8,13 @@ from __future__ import print_function
 
 __all__ = ["getProjectName", "getProjectNames"]
 
-from typing import AnyStr, List
+from typing import List, Union
+
+String = Union[str, unicode]
 
 
 def getProjectName():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the name of the project where the function was called
     from.
 
@@ -35,7 +37,7 @@ def getProjectName():
 
 
 def getProjectNames():
-    # type: () -> List[AnyStr]
+    # type: () -> List[String]
     """Returns an unsorted collection of strings, where each string
     represents the name of a project on the Gateway.
 

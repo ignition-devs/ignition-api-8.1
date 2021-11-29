@@ -21,15 +21,17 @@ __all__ = [
     "swapWindow",
 ]
 
-from typing import Any, AnyStr, Dict, Optional, Union
+from typing import Any, Dict, Optional, Union
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import NavUtilities
 from java.util import EventObject
 
+String = Union[str, unicode]
+
 
 def centerWindow(arg):
-    # type: (Union[AnyStr, FPMIWindow]) -> None
+    # type: (Union[String, FPMIWindow]) -> None
     """Given a window path, or a reference to a window itself, it will
     center the window.
 
@@ -55,7 +57,7 @@ def closeParentWindow(event):
 
 
 def closeWindow(arg):
-    # type: (Union[AnyStr, FPMIWindow]) -> None
+    # type: (Union[String, FPMIWindow]) -> None
     """Given a window path, or a reference to a window itself, it will
     close the window.
 
@@ -69,7 +71,7 @@ def closeWindow(arg):
 
 
 def desktop(handle="primary"):
-    # type: (Optional[AnyStr]) -> NavUtilities
+    # type: (Optional[String]) -> NavUtilities
     """Allows for invoking system.nav functions on a specific desktop.
 
     Args:
@@ -85,7 +87,7 @@ def desktop(handle="primary"):
 
 
 def getCurrentWindow():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the path of the current "main screen" window, which is
     defined as the maximized window.
 
@@ -137,7 +139,7 @@ def goHome():
 
 
 def openWindow(path, params=None):
-    # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> FPMIWindow
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Opens the window with the given path.
 
     If the window is already open, brings it to the front. The optional
@@ -159,7 +161,7 @@ def openWindow(path, params=None):
 
 
 def openWindowInstance(path, params=None):
-    # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> FPMIWindow
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Operates exactly like system.nav.openWindow, except that if the
     named window is already open, then an additional instance of the
     window will be opened.
@@ -182,7 +184,7 @@ def openWindowInstance(path, params=None):
 
 
 def swapTo(path, params=None):
-    # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> FPMIWindow
+    # type: (String, Optional[Dict[String, Any]]) -> FPMIWindow
     """Performs a window swap from the current main screen window to the
     window specified.
 
@@ -207,9 +209,9 @@ def swapTo(path, params=None):
 
 
 def swapWindow(
-    arg,  # type: Union[AnyStr, EventObject]
-    swapToPath,  # type: AnyStr
-    params=None,  # type: Optional[Dict[AnyStr, Any]]
+    arg,  # type: Union[String, EventObject]
+    swapToPath,  # type: String
+    params=None,  # type: Optional[Dict[String, Any]]
 ):
     # type: (...) -> FPMIWindow
     """Performs a window swap.

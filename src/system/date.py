@@ -53,9 +53,11 @@ __all__ = [
 
 from datetime import datetime
 from time import localtime, mktime
-from typing import AnyStr, Optional
+from typing import Optional, Union
 
 from java.util import Date, Locale
+
+String = Union[str, unicode]
 
 
 def _now():
@@ -222,7 +224,7 @@ def daysBetween(date_1, date_2):
 
 
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
-    # type: (Date, Optional[AnyStr]) -> unicode
+    # type: (Date, String) -> String
     """Returns the given date as a string, formatted according to a
     pattern.
 
@@ -247,7 +249,50 @@ def format(date, format="yyyy-MM-dd HH:mm:ss"):
         A string representing the formatted datetime.
     """
     print(date, format)
-    return u""
+    _date = _now()
+    _format = format
+    _format = _format.replace("a", "%p")
+    _format = _format.replace("D", "%j")
+    _format = _format.replace("dd", "{:02}".format(_date.day))
+    _format = _format.replace("d", "{}".format(_date.day))
+    _format = _format.replace("EEEE", "%A")
+    _format = _format.replace("E", "%a")
+    _format = _format.replace("F", "{}".format(_date.isocalendar()[2]))
+    _format = _format.replace("G", "AD")
+    _format = _format.replace("hh", "%I")
+    _format = _format.replace("h", "%-I")
+    _format = _format.replace("HH", "{:02}".format(_date.hour))
+    _format = _format.replace("H", "%-H")
+    _format = _format.replace("k", "%H")
+    _format = _format.replace("K", "%-I")
+    _format = _format.replace("MMMM", "%B")
+    _format = _format.replace("MMM", "%b")
+    _format = _format.replace("MM", "{:02}".format(_date.month))
+    _format = _format.replace("M", "{}".format(_date.month))
+    _format = _format.replace("mm", "%M")
+    _format = _format.replace("m", "%-M")
+    _millis = _date.microsecond % 1000
+    _format = _format.replace("SSS", "{:03}".format(_millis))
+    _format = _format.replace("SS", "{:02}".format(_millis))
+    _format = _format.replace("S", "{:01}".format(_millis))
+    _format = _format.replace("ss", "%S")
+    _format = _format.replace("s", "%-S")
+    _format = _format.replace("w", "{}".format(_date.isocalendar()[1] + 1))
+    _format = _format.replace("u", "%w")
+    _format = _format.replace(
+        "W",
+        "{}".format(_date.isocalendar()[1] - _date.replace(day=1).isocalendar()[1] + 1),
+    )
+    _format = _format.replace("XXX", "{:03.0f}:00".format(getTimezoneOffset()))
+    _format = _format.replace("XX", "{:03.0f}00".format(getTimezoneOffset()))
+    _format = _format.replace("X", "{:03.0f}".format(getTimezoneOffset()))
+    _format = _format.replace("yyyy", "{}".format(_date.year))
+    _format = _format.replace("yy", str(_date.year)[-2:])
+    _format = _format.replace("Y", "%Y")
+    _format = _format.replace("y", "%Y")
+    _format = _format.replace("Z", "{:03.0f}00".format(getTimezoneOffset()))
+    _format = _format.replace("z", "PDT")
+    return unicode(_date.strftime(_format))
 
 
 def fromMillis(millis):
@@ -450,7 +495,7 @@ def getSecond(date):
 
 
 def getTimezone():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the ID of the current timezone.
 
     Returns:
@@ -673,7 +718,7 @@ def now():
 
 
 def parse(dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH):
-    # type: (AnyStr, Optional[AnyStr], Optional[Locale]) -> Date
+    # type: (String, Optional[String], Optional[Locale]) -> Date
     """Attempts to parse a string and create a Date.
 
     Causes ParseException if the date dateString parameter is in an

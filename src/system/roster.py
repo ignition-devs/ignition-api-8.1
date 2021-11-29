@@ -14,13 +14,15 @@ __all__ = [
     "removeUsers",
 ]
 
-from typing import AnyStr, Dict, List
+from typing import Dict, List, Union
 
 from com.inductiveautomation.ignition.common.user import PyUser
 
+String = Union[str, unicode]
+
 
 def addUsers(rosterName, users):
-    # type: (AnyStr, List[PyUser]) -> None
+    # type: (String, List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
@@ -38,7 +40,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (String, String) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -55,7 +57,7 @@ def createRoster(name, description):
 
 
 def deleteRoster(rosterName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Deletes a roster with the given name.
 
     Args:
@@ -65,7 +67,7 @@ def deleteRoster(rosterName):
 
 
 def getRosters():
-    # type: () -> Dict[AnyStr, List[AnyStr]]
+    # type: () -> Dict[String, List[String]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -82,7 +84,7 @@ def getRosters():
 
 
 def removeUsers(rosterName, users):
-    # type: (AnyStr, List[PyUser]) -> None
+    # type: (String, List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:

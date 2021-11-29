@@ -33,13 +33,12 @@ __all__ = [
     "writeBlocking",
 ]
 
-from typing import Any, AnyStr, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import (
     BasicQualifiedValue,
-    QualifiedValue,
     QualityCode,
 )
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
@@ -47,9 +46,11 @@ from com.inductiveautomation.ignition.common.sqltags.history.annotations import 
 )
 from java.util import Date
 
+String = Union[str, unicode]
+
 
 def browse(path, filter=None):
-    # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> Results
+    # type: (String, Optional[Dict[String, Any]]) -> Results
     """Returns a list of tags found at the specified Tag path.
 
     The list objects are returned as dictionaries with some basic
@@ -69,8 +70,8 @@ def browse(path, filter=None):
 
 
 def browseHistoricalTags(
-    path,  # type: AnyStr
-    nameFilters=None,  # type: Optional[List[AnyStr]]
+    path,  # type: String
+    nameFilters=None,  # type: Optional[List[String]]
     maxSize=None,  # type: Optional[int]
     continuationPoint=None,  # type: Optional[Any]
 ):
@@ -100,7 +101,7 @@ def browseHistoricalTags(
 
 
 def configure(basePath, tags, collisionPolicy="o"):
-    # type: (AnyStr, Any, Optional[AnyStr]) -> List[QualityCode]
+    # type: (String, Any, Optional[String]) -> List[QualityCode]
     """Creates Tags from a given list of Python dictionaries or from a
     JSON source string.
 
@@ -145,9 +146,9 @@ def configure(basePath, tags, collisionPolicy="o"):
 
 
 def copy(
-    tags,  # type: List[AnyStr]
-    destination,  # type: AnyStr
-    collisionPolicy="o",  # type: Optional[AnyStr]
+    tags,  # type: List[String]
+    destination,  # type: String
+    collisionPolicy="o",  # type: Optional[String]
 ):
     # type: (...) -> List[QualityCode]
     """Copies tags from one folder to another.
@@ -175,7 +176,7 @@ def copy(
 
 
 def deleteAnnotations(paths, storageIds):
-    # type: (List[AnyStr], List[AnyStr]) -> List[BasicQualifiedValue]
+    # type: (List[String], List[String]) -> List[BasicQualifiedValue]
     """Removes stored annotations from the sqlth_annotations table.
 
     Requires the full Tag path (including history provider) for each
@@ -205,7 +206,7 @@ def deleteAnnotations(paths, storageIds):
 
 
 def deleteTags(tagPaths):
-    # type: (List[AnyStr]) -> List[QualityCode]
+    # type: (List[String]) -> List[QualityCode]
     """Deletes multiple Tags or Tag Folders.
 
     When deleting a Tag Folder, all Tags under the folder are also
@@ -224,7 +225,7 @@ def deleteTags(tagPaths):
 
 
 def exists(tagPath):
-    # type: (AnyStr) -> bool
+    # type: (String) -> bool
     """Checks whether or not a Tag with a given path exists.
 
     Args:
@@ -238,10 +239,10 @@ def exists(tagPath):
 
 
 def exportTags(
-    filePath,  # type: AnyStr
-    tagPaths,  # type: List[AnyStr]
+    filePath,  # type: String
+    tagPaths,  # type: List[String]
     recursive=True,  # type: Optional[bool]
-    exportType="json",  # type: Optional[AnyStr]
+    exportType="json",  # type: Optional[String]
 ):
     # type: (...) -> None
     """Exports Tags to a file on a local file system.
@@ -265,7 +266,7 @@ def exportTags(
 
 
 def getConfiguration(basePath, recursive=False):
-    # type: (AnyStr, Optional[bool]) -> List[Dict[AnyStr, Any]]
+    # type: (String, Optional[bool]) -> List[Dict[String, Any]]
     """Retrieves Tags from the Gateway as Python dictionaries.
 
     These can be edited and then saved back using system.tag.configure.
@@ -289,7 +290,7 @@ def getConfiguration(basePath, recursive=False):
 
 
 def importTags(filePath, basePath, collisionPolicy="o"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> List[QualityCode]
+    # type: (String, String, Optional[String]) -> List[QualityCode]
     """Imports a JSON Tag file at the provided path.
 
     Also supports XML and CSV Tag file exports from legacy systems.
@@ -324,7 +325,7 @@ def isOverlaysEnabled():
 
 
 def move(tags, destination, collisionPolicy="o"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> List[QualityCode]
+    # type: (String, String, Optional[String]) -> List[QualityCode]
     """Moves Tags or Folders to a new destination.
 
     The new destination can be a separate Tag provider. If interested in
@@ -351,10 +352,10 @@ def move(tags, destination, collisionPolicy="o"):
 
 
 def queryAnnotations(
-    paths,  # type: List[AnyStr]
+    paths,  # type: List[String]
     startTime=None,  # type: Optional[Date]
     endTime=None,  # type: Optional[Date]
-    types=None,  # type: Optional[List[AnyStr]]
+    types=None,  # type: Optional[List[String]]
 ):
     # type: (...) -> List[Annotation]
     """Queries user stored annotations from the Tag history system for a
@@ -382,13 +383,13 @@ def queryAnnotations(
 
 
 def queryTagCalculations(
-    paths,  # type: List[AnyStr]
-    calculations,  # type: List[AnyStr]
+    paths,  # type: List[String]
+    calculations,  # type: List[String]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     rangeHours=None,  # type: Optional[int]
     rangeMinutes=None,  # type: Optional[int]
-    aliases=None,  # type: Optional[List[AnyStr]]
+    aliases=None,  # type: Optional[List[String]]
     includeBoundingValues=True,  # type: Optional[bool]
     validatesSCExec=True,  # type: Optional[bool]
     noInterpolation=False,  # type: Optional[bool]
@@ -469,7 +470,7 @@ def queryTagCalculations(
 
 
 def queryTagDensity(paths, startDate, endDate):
-    # type: (List[AnyStr], Date, Date) -> BasicDataset
+    # type: (List[String], Date, Date) -> BasicDataset
     """Queries the Tag history system for information about the density
     of data.
 
@@ -506,18 +507,18 @@ def queryTagDensity(paths, startDate, endDate):
 
 
 def queryTagHistory(
-    paths,  # type: List[AnyStr]
+    paths,  # type: List[String]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     returnSize=-1,  # type: Optional[int]
-    aggregationMode="Average",  # type: Optional[AnyStr]
-    returnFormat="Wide",  # type: Optional[AnyStr]
-    columnNames=None,  # type: Optional[List[AnyStr]]
+    aggregationMode="Average",  # type: Optional[String]
+    returnFormat="Wide",  # type: Optional[String]
+    columnNames=None,  # type: Optional[List[String]]
     intervalHours=None,  # type: Optional[int]
     intervalMinutes=None,  # type: Optional[int]
     rangeHours=None,  # type: Optional[int]
     rangeMinutes=None,  # type: Optional[int]
-    aggregationModes=None,  # type: Optional[List[AnyStr]]
+    aggregationModes=None,  # type: Optional[List[String]]
     includeBoundingValues=None,  # type: Optional[bool]
     validateSCExec=None,  # type: Optional[bool]
     noInterpolation=None,  # type: Optional[bool]
@@ -630,7 +631,7 @@ def queryTagHistory(
 
 
 def readAsync(tagPaths, callback):
-    # type: (List[AnyStr], Callable[..., Any]) -> None
+    # type: (List[String], Callable[..., Any]) -> None
     """Asynchronously reads the value of the Tags at the given paths.
 
     You must provide a python callback function that can process the
@@ -649,7 +650,7 @@ def readAsync(tagPaths, callback):
 
 
 def readBlocking(tagPaths, timeout=45000):
-    # type: (List[AnyStr], Optional[int]) -> List[BasicQualifiedValue]
+    # type: (List[String], Optional[int]) -> List[BasicQualifiedValue]
     """Reads the value of the Tags at the given paths.
 
     Will block until the read operation is complete or times out.
@@ -668,13 +669,13 @@ def readBlocking(tagPaths, timeout=45000):
     return [BasicQualifiedValue() for _ in tagPaths]
 
 
-def rename(Tag, newName, collisionPollicy="a"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> QualityCode
-    """Renames a single Tag or a folder.
+def rename(tag, newName, collisionPollicy="a"):
+    # type: (String, String, Optional[String]) -> QualityCode
+    """Renames a single Tag or folder.
 
     Args:
-        Tag: The Tag path to rename.
-        newName: The new name.
+        tag: A path to the Tag or folder to rename.
+        newName: The new name for the tag or folder.
         collisionPollicy: The action to take when a Tag or folder with
             the same path and names is encountered. Possible values
             include "a" (Abort, throws an exception), "o" (Overwrite,
@@ -682,15 +683,15 @@ def rename(Tag, newName, collisionPollicy="a"):
             (Ignore). Defaults to Abort if not specified. Optional.
 
     Returns:
-        object: A QualityCode that contains the result of the rename
-            operation.
+        A QualityCode object that contains the result of the rename
+        operation.
     """
-    print(Tag, newName, collisionPollicy)
+    print(tag, newName, collisionPollicy)
     return QualityCode()
 
 
 def requestGroupExecution(provider, tagGroup):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (String, String) -> None
     """Sends a request to the specified Tag Group to execute now.
 
     Args:
@@ -712,11 +713,11 @@ def setOverlaysEnabled(enabled):
 
 
 def storeAnnotations(
-    paths,  # type: List[AnyStr]
+    paths,  # type: List[String]
     startTimes=None,  # type: Optional[List[Date]]
     endTimes=None,  # type: Optional[List[Date]]
     types=None,  # type: Optional[List[Annotation]]
-    data=None,  # type: Optional[List[AnyStr]]
+    data=None,  # type: Optional[List[String]]
     storageIds=None,  # type: Optional[List[int]]
     deleted=None,  # type: Optional[List[bool]]
 ):
@@ -769,9 +770,9 @@ def storeAnnotations(
 
 
 def storeTagHistory(
-    historyprovider,  # type: AnyStr
-    tagprovider,  # type: AnyStr
-    paths,  # type: List[AnyStr]
+    historyprovider,  # type: String
+    tagprovider,  # type: String
+    paths,  # type: List[String]
     values,  # type: List[Any]
     qualities=None,  # type: Optional[List[int]]
     timestamps=None,  # type: Optional[List[Date]]
@@ -818,7 +819,7 @@ def storeTagHistory(
 
 
 def writeAsync(
-    tagPaths,  # type: List[AnyStr]
+    tagPaths,  # type: List[String]
     values,  # type: List[Any]
     callback=None,  # type: Optional[Callable[..., Any]]
 ):
@@ -841,7 +842,7 @@ def writeAsync(
 
 
 def writeBlocking(
-    tagPaths,  # type: List[AnyStr]
+    tagPaths,  # type: List[String]
     values,  # type: List[Any]
     timeout=45000,  # type: Optional[int]
 ):

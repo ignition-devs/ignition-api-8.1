@@ -20,13 +20,15 @@ __all__ = [
 ]
 
 import socket
-from typing import Any, AnyStr, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
 
+String = Union[str, unicode]
+
 
 def getExternalIpAddress():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the client's IP address, as it is detected by the
     Gateway.
 
@@ -46,7 +48,7 @@ def getExternalIpAddress():
 
 
 def getHostName():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the host name of the computer that the script was ran
     on.
 
@@ -62,7 +64,7 @@ def getHostName():
 
 
 def getIpAddress():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the IP address of the computer that the script was ran
     on.
 
@@ -73,7 +75,7 @@ def getIpAddress():
 
 
 def getRemoteServers(runningOnly=True):
-    # type: (Optional[bool]) -> List[AnyStr]
+    # type: (Optional[bool]) -> List[String]
     """This function returns a List of Gateway Network servers that are
     visible from the local Gateway.
 
@@ -93,11 +95,11 @@ def getRemoteServers(runningOnly=True):
 def httpClient(
     timeout=60000,  # type: Optional[int]
     bypass_cert_validation=False,  # type: Optional[bool]
-    username=None,  # type: Optional[AnyStr]
-    password=None,  # type: Optional[AnyStr]
-    proxy=None,  # type: Optional[AnyStr]
-    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[AnyStr]
-    redirect_policy="NORMAL",  # type: Optional[AnyStr]
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    proxy=None,  # type: Optional[String]
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[String]
+    redirect_policy="NORMAL",  # type: Optional[String]
     customizer=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> JythonHttpClient
@@ -161,16 +163,16 @@ def httpClient(
 
 
 def httpDelete(
-    url,  # type: AnyStr
-    contentType=None,  # type: Optional[AnyStr]
+    url,  # type: String
+    contentType=None,  # type: Optional[String]
     connectTimeout=10000,  # type: Optional[int]
     readTimeout=60000,  # type: Optional[int]
-    username=None,  # type: Optional[AnyStr]
-    password=None,  # type: Optional[AnyStr]
-    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    headerValues=None,  # type: Optional[Dict[String, String]]
     bypassCertValidation=True,  # type: Optional[bool]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> String
     """Performs an HTTP DELETE to the given URL.
 
     Args:
@@ -209,17 +211,17 @@ def httpDelete(
 
 
 def httpGet(
-    url,  # type: AnyStr
+    url,  # type: String
     connectTimeout=10000,  # type: Optional[int]
     readTimeout=60000,  # type: Optional[int]
-    username=None,  # type: Optional[AnyStr]
-    password=None,  # type: Optional[AnyStr]
-    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    headerValues=None,  # type: Optional[Dict[String, String]]
     bypassCertValidation=None,  # type: Optional[bool]
     useCaches=True,  # type: Optional[bool]
     throwOnError=True,  # type: Optional[bool]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> String
     """Retrieves the document at the given URL using the HTTP GET
     protocol.
 
@@ -270,7 +272,7 @@ def httpGet(
 
 
 def httpPost(url, *args, **kwargs):
-    # type: (AnyStr, *Any, **Any) -> AnyStr
+    # type: (String, *Any, **Any) -> String
     """Retrieves the document at the given URL using the HTTP POST
     protocol.
 
@@ -293,7 +295,7 @@ def httpPost(url, *args, **kwargs):
 
 
 def httpPut(url, *args, **kwargs):
-    # type: (AnyStr, *Any, **Any) -> AnyStr
+    # type: (String, *Any, **Any) -> String
     """Performs an HTTP PUT to the given URL.
 
     Encodes the given dictionary of parameters using
@@ -312,7 +314,7 @@ def httpPut(url, *args, **kwargs):
 
 
 def openURL(url, useApplet=False):
-    # type: (AnyStr, Optional[bool]) -> None
+    # type: (String, Optional[bool]) -> None
     """Opens the given URL or URI scheme outside of the currently
     running Client in whatever application the host operating system
     deems appropriate.
@@ -327,23 +329,23 @@ def openURL(url, useApplet=False):
 
 
 def sendEmail(
-    smtp,  # type: AnyStr
-    fromAddr,  # type: AnyStr
-    subject,  # type: AnyStr
-    body,  # type: AnyStr
-    html,  # type: AnyStr
-    to,  # type: List[AnyStr]
+    smtp,  # type: String
+    fromAddr,  # type: String
+    subject,  # type: String
+    body,  # type: String
+    html,  # type: String
+    to,  # type: List[String]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
     timeout=300000,  # type: Optional[int]
-    username=None,  # type: Optional[AnyStr]
-    password=None,  # type: Optional[AnyStr]
-    priority="3",  # type: Optional[AnyStr]
-    smtpProfile=None,  # type: Optional[AnyStr]
-    cc=None,  # type: Optional[List[AnyStr]]
-    bcc=None,  # type: Optional[List[AnyStr]]
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    priority="3",  # type: Optional[String]
+    smtpProfile=None,  # type: Optional[String]
+    cc=None,  # type: Optional[List[String]]
+    bcc=None,  # type: Optional[List[String]]
     retries=0,  # type: Optional[int]
-    replyTo=None,  # type: Optional[List[AnyStr]]
+    replyTo=None,  # type: Optional[List[String]]
 ):
     # type: (...) -> None
     """Sends an email through the given SMTP server.

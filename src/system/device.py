@@ -17,16 +17,18 @@ __all__ = [
     "setDeviceHostname",
 ]
 
-from typing import Any, AnyStr, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 
+String = Union[str, unicode]
+
 
 def addDevice(
-    deviceType,  # type: AnyStr
-    deviceName,  # type: AnyStr
-    deviceProps,  # type: Dict[AnyStr, Any]
-    description=None,  # type: Optional[AnyStr]
+    deviceType,  # type: String
+    deviceName,  # type: String
+    deviceProps,  # type: Dict[String, Any]
+    description=None,  # type: Optional[String]
 ):
     # type: (...) -> None
     """Adds a new device connection in Ignition.
@@ -54,7 +56,7 @@ def addDevice(
 
 
 def getDeviceHostname(deviceName):
-    # type: (AnyStr) -> AnyStr
+    # type: (String) -> String
     """Gets the hostname of a device.
 
     Args:
@@ -82,7 +84,7 @@ def listDevices():
 
 
 def refreshBrowse(deviceName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Forces Ignition to browse the controller.
 
     Only works for Allen-Bradley controllers.
@@ -94,7 +96,7 @@ def refreshBrowse(deviceName):
 
 
 def removeDevice(deviceName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Removes a given device from Ignition.
 
     Args:
@@ -104,7 +106,7 @@ def removeDevice(deviceName):
 
 
 def restart(deviceName):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Restarts the named device connection.
 
     Args:
@@ -116,7 +118,7 @@ def restart(deviceName):
 
 
 def setDeviceEnabled(deviceName, enabled):
-    # type: (AnyStr, bool) -> None
+    # type: (String, bool) -> None
     """Enables/disables a device in Ignition.
 
     Args:
@@ -128,7 +130,7 @@ def setDeviceEnabled(deviceName, enabled):
 
 
 def setDeviceHostname(deviceName, hostname):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (String, String) -> None
     """Changes the hostname of a device.
 
     Used for all Ethernet based drivers.

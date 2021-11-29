@@ -8,17 +8,19 @@ from __future__ import print_function
 
 __all__ = ["addConnection", "callMethod", "removeConnection"]
 
-from typing import Any, AnyStr, Dict, List, Tuple
+from typing import Any, Dict, List, Tuple, Union
+
+String = Union[str, unicode]
 
 
 def addConnection(
-    name,  # type: AnyStr
-    description,  # type: AnyStr
-    discoveryUrl,  # type: AnyStr
-    endpointUrl,  # type: AnyStr
-    securityPolicy,  # type: AnyStr
-    securityMode,  # type: AnyStr
-    settings,  # type: Dict[AnyStr, Any]
+    name,  # type: String
+    description,  # type: String
+    discoveryUrl,  # type: String
+    endpointUrl,  # type: String
+    securityPolicy,  # type: String
+    securityMode,  # type: String
+    settings,  # type: Dict[String, Any]
 ):
     # type: (...) -> None
     """Adds a new OPC UA connection.
@@ -45,10 +47,10 @@ def addConnection(
 
 
 def callMethod(
-    connectionName,  # type: AnyStr
-    objectId,  # type: AnyStr
-    methodId,  # type: AnyStr
-    inputs,  # type: List[AnyStr]
+    connectionName,  # type: String
+    objectId,  # type: String
+    methodId,  # type: String
+    inputs,  # type: List[String]
 ):
     # type: (...) -> Tuple[Any, Any, Any]
     """Calls a method in an OPC UA Server.
@@ -77,7 +79,7 @@ def callMethod(
 
 
 def removeConnection(name):
-    # type: (AnyStr) -> bool
+    # type: (String) -> bool
     """Removes an OPC UA Connection.
 
     Args:

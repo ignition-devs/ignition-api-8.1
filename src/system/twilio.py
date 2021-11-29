@@ -15,13 +15,15 @@ __all__ = [
     "sendSms",
 ]
 
-from typing import AnyStr, List, Sequence
+from typing import List, Sequence, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 
+String = Union[str, unicode]
+
 
 def getAccounts():
-    # type: () -> List[AnyStr]
+    # type: () -> List[String]
     """Return a list of Twilio accounts that have been configured in the
     Gateway.
 
@@ -43,7 +45,7 @@ def getAccountsDataset():
 
 
 def getPhoneNumbers(accountName):
-    # type: (AnyStr) -> Sequence
+    # type: (String) -> Sequence
     """Returns a list of outgoing phone numbers for a Twilio account.
 
     Note that these numbers are supplied by Twilio, and are not defined
@@ -62,7 +64,7 @@ def getPhoneNumbers(accountName):
 
 
 def getPhoneNumbersDataset(accountName):
-    # type: (AnyStr) -> BasicDataset
+    # type: (String) -> BasicDataset
     """Return a list of outgoing phone numbers for a Twilio account as a
     single-column Dataset.
 
@@ -81,7 +83,7 @@ def getPhoneNumbersDataset(accountName):
 
 
 def sendSms(accountName, fromNumber, toNumber, message):
-    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> None
+    # type: (String, String, String, String) -> None
     """Sends an SMS message.
 
     Args:

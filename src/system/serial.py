@@ -20,12 +20,13 @@ __all__ = [
     "writeBytes",
 ]
 
-from typing import Any, AnyStr, List, Optional
+from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
 
 PortManager = SerialScriptModule.PortManager
 SerialConfigurator = SerialScriptModule.SerialConfigurator
+String = Union[str, unicode]
 
 # Bit rate constants.
 BIT_RATE_110 = 110
@@ -75,7 +76,7 @@ STOP_BITS_2 = 3
 
 
 def closeSerialPort(port):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Closes a previously opened serial port.
 
     Returns without doing anything if the named serial port is not
@@ -89,7 +90,7 @@ def closeSerialPort(port):
 
 
 def configureSerialPort(
-    port,  # type: AnyStr
+    port,  # type: String
     bitRate,  # type: Optional[int]
     dataBits,  # type: Optional[int]
     handshake,  # type: Optional[int]
@@ -147,7 +148,7 @@ def configureSerialPort(
 
 
 def openSerialPort(port):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Opens a previously configured serial port for use.
 
     Will throw an exception if the serial port cannot be opened.
@@ -159,7 +160,7 @@ def openSerialPort(port):
 
 
 def port(
-    port,  # type: AnyStr
+    port,  # type: String
     bitRate=None,  # type: Optional[int]
     dataBits=None,  # type: Optional[int]
     handshake=None,  # type: Optional[int]
@@ -229,7 +230,7 @@ def port(
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
-    # type: (AnyStr, int, Optional[int]) -> List[Any]
+    # type: (String, int, Optional[int]) -> List[Any]
     """Read numberOfBytes bytes from a serial port.
 
     Args:
@@ -246,12 +247,12 @@ def readBytes(port, numberOfBytes, timeout=5000):
 
 
 def readBytesAsString(
-    port,  # type: AnyStr
+    port,  # type: String
     numberOfBytes,  # type: int
     timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[AnyStr]
+    encoding="utf-8",  # type: Optional[String]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> String
     """Read numberOfBytes bytes from a serial port and convert them to a
     String.
 
@@ -275,12 +276,12 @@ def readBytesAsString(
 
 
 def readLine(
-    port,  # type: AnyStr
+    port,  # type: String
     timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[AnyStr]
+    encoding="utf-8",  # type: Optional[String]
     crlfRequired=False,  # type: Optional[bool]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> String
     r"""Attempts to read a line from a serial port.
 
     A "line" is considered to be terminated by either a line feed
@@ -307,12 +308,12 @@ def readLine(
 
 
 def readUntil(
-    port,  # type: AnyStr
-    delimiter,  # type: AnyStr
+    port,  # type: String
+    delimiter,  # type: String
     includeDelimiter,  # type: bool
     timeout=5000,  # type: Optional[int]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> String
     """Reads a byte at a time from a serial port until a delimiter
     character is encountered.
 
@@ -338,7 +339,7 @@ def readUntil(
 
 
 def sendBreak(port, millis):
-    # type: (AnyStr, int) -> None
+    # type: (String, int) -> None
     """Sends a break signal for approximately millis milliseconds.
 
     Args:
@@ -349,7 +350,7 @@ def sendBreak(port, millis):
 
 
 def write(port, toWrite, encoding="utf-8"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
+    # type: (String, String, Optional[String]) -> None
     """Write a String to a serial port using the platforms default
     character encoding.
 
@@ -363,7 +364,7 @@ def write(port, toWrite, encoding="utf-8"):
 
 
 def writeBytes(port, toWrite, timeout=5000):
-    # type: (AnyStr, Any, Optional[int]) -> None
+    # type: (String, Any, Optional[int]) -> None
     """Write a byte array to a serial port.
 
     Args:

@@ -8,11 +8,13 @@ from __future__ import print_function
 
 __all__ = ["loadFromFile", "removeGroups"]
 
-from typing import AnyStr, List
+from typing import List, Union
+
+String = Union[str, unicode]
 
 
 def loadFromFile(filePath, projectName, mode):
-    # type: (AnyStr, AnyStr, int) -> None
+    # type: (String, String, int) -> None
     """Loads a transaction group configuration from an xml export, into
     the specified project (creating the project if necessary).
 
@@ -33,7 +35,7 @@ def loadFromFile(filePath, projectName, mode):
 
 
 def removeGroups(projectName, paths):
-    # type: (AnyStr, List[AnyStr]) -> None
+    # type: (String, List[String]) -> None
     """Removes the specified groups from the project.
 
     The group paths are "Folder/Path/To/GroupName", separated by forward

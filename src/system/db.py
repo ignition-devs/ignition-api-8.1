@@ -37,7 +37,7 @@ __all__ = [
     "setDatasourceMaxConnections",
 ]
 
-from typing import Any, AnyStr, List, Optional
+from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import (
@@ -48,6 +48,7 @@ from java.util import Date
 from javax.swing import JComponent
 
 PyDataSet = DatasetUtilities.PyDataSet
+String = Union[str, unicode]
 
 # Type codes
 # These are codes defined by the JDBC specification.
@@ -99,14 +100,14 @@ SERIALIZABLE = 8
 
 
 def addDatasource(
-    jdbcDriver,  # type: AnyStr
-    name,  # type: AnyStr
-    description="",  # type: Optional[AnyStr]
-    connectUrl=None,  # type: Optional[AnyStr]
-    username=None,  # type: Optional[AnyStr]
-    password=None,  # type: Optional[AnyStr]
-    props=None,  # type: Optional[AnyStr]
-    validationQuery=None,  # type: Optional[AnyStr]
+    jdbcDriver,  # type: String
+    name,  # type: String
+    description="",  # type: Optional[String]
+    connectUrl=None,  # type: Optional[String]
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    props=None,  # type: Optional[String]
+    validationQuery=None,  # type: Optional[String]
     maxConnections=8,  # type: Optional[int]
 ):
     # type: (...) -> None
@@ -141,7 +142,7 @@ def addDatasource(
 
 
 def beginNamedQueryTransaction(*args):
-    # type: (*Any) -> AnyStr
+    # type: (*Any) -> String
     """Begins a new database transaction using Named Queries.
 
     Database transactions are used to execute multiple queries in an
@@ -183,7 +184,7 @@ def beginNamedQueryTransaction(*args):
 
 
 def beginTransaction(database="", isolationLevel=None, timeout=None):
-    # type: (Optional[AnyStr], Optional[int], Optional[int]) -> AnyStr
+    # type: (Optional[String], Optional[int], Optional[int]) -> String
     """Begins a new database transaction for using run* and runPrep*
     queries.
 
@@ -229,7 +230,7 @@ def beginTransaction(database="", isolationLevel=None, timeout=None):
 
 
 def clearAllNamedQueryCaches(project=None):
-    # type: (Optional[AnyStr]) -> None
+    # type: (Optional[String]) -> None
     """This clears the caches of all Named Queries in a project.
 
     If called from the Shared Scope (i.e., Tag Event Scripts, Alarm
@@ -244,7 +245,7 @@ def clearAllNamedQueryCaches(project=None):
 
 
 def clearNamedQueryCache(*args):
-    # type: (*AnyStr) -> None
+    # type: (*String) -> None
     """This clears the cache of a Named Query.
 
     If called from the Shared Scope (i.e., Tag Event Scripts, Alarm
@@ -264,7 +265,7 @@ def clearNamedQueryCache(*args):
 
 
 def closeTransaction(tx):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Closes the transaction with the given ID.
 
     You must commit or rollback the transaction before you close it.
@@ -278,7 +279,7 @@ def closeTransaction(tx):
 
 
 def commitTransaction(tx):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Performs a commit for the given transaction.
 
     This will make all statements executed against the transaction since
@@ -297,9 +298,9 @@ def commitTransaction(tx):
 
 
 def createSProcCall(
-    procedureName,  # type: AnyStr
-    database="",  # type: Optional[AnyStr]
-    tx=None,  # type: Optional[AnyStr]
+    procedureName,  # type: String
+    database="",  # type: Optional[String]
+    tx=None,  # type: Optional[String]
     skipAudit=False,  # type: Optional[bool]
 ):
     # type: (...) -> SProcCall
@@ -327,7 +328,7 @@ def createSProcCall(
 
 
 def dateFormat(date, formatPattern):
-    # type: (Date, AnyStr) -> AnyStr
+    # type: (Date, String) -> String
     """This function is used to format Dates nicely as strings.
 
     It uses a format string to guide its formatting behavior.
@@ -359,7 +360,7 @@ def execSProcCall(callContext):
 
 
 def getConnectionInfo(name=""):
-    # type: (Optional[AnyStr]) -> BasicDataset
+    # type: (Optional[String]) -> BasicDataset
     """Returns a dataset of information about a single database
     connection, as specified by the name argument, or about the current
     project's default database connection.
@@ -395,7 +396,7 @@ def getConnections():
 
 
 def refresh(component, propertyName):
-    # type: (JComponent, AnyStr) -> bool
+    # type: (JComponent, String) -> bool
     """This function will cause a Vision component binding to execute
     immediately.
 
@@ -427,7 +428,7 @@ def refresh(component, propertyName):
 
 
 def removeDatasource(name):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Removes a database connection from Ignition.
 
     Args:
@@ -437,7 +438,7 @@ def removeDatasource(name):
 
 
 def rollbackTransaction(tx):
-    # type: (AnyStr) -> None
+    # type: (String) -> None
     """Performs a rollback on the given connection.
 
     This will make all statements executed against this transaction
@@ -480,10 +481,10 @@ def runNamedQuery(*args):
 
 
 def runPrepQuery(
-    query,  # type: AnyStr
+    query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[AnyStr]
-    tx=None,  # type: Optional[AnyStr]
+    database="",  # type: Optional[String]
+    tx=None,  # type: Optional[String]
 ):
     # type: (...) -> PyDataSet
     """Runs a prepared statement against the database, returning the
@@ -530,10 +531,10 @@ def runPrepQuery(
 
 
 def runPrepUpdate(
-    query,  # type: AnyStr
+    query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[AnyStr]
-    tx=None,  # type: Optional[AnyStr]
+    database="",  # type: Optional[String]
+    tx=None,  # type: Optional[String]
     getKey=False,  # type: Optional[bool]
     skipAudit=True,  # type: Optional[bool]
 ):
@@ -586,7 +587,7 @@ def runPrepUpdate(
 
 
 def runQuery(query, database="", tx=None):
-    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> PyDataSet
+    # type: (String, Optional[String], Optional[String]) -> PyDataSet
     """Runs a SQL query, usually a SELECT query, against a database,
     returning the results as a dataset.
 
@@ -635,7 +636,7 @@ def runSFNamedQuery(*args):
 
 
 def runSFPrepUpdate(query, args, datasources):
-    # type: (AnyStr, List[Any], List[AnyStr]) -> bool
+    # type: (String, List[Any], List[String]) -> bool
     """Runs a prepared statement query through the store and forward
     system and to multiple datasources at the same time.
 
@@ -663,7 +664,7 @@ def runSFPrepUpdate(query, args, datasources):
 
 
 def runSFUpdateQuery(query, datasources):
-    # type: (AnyStr, List[AnyStr]) -> bool
+    # type: (String, List[String]) -> bool
     """Runs an query through the store and forward system and to
     multiple datasources at the same time.
 
@@ -679,10 +680,10 @@ def runSFUpdateQuery(query, datasources):
 
 
 def runScalarPrepQuery(
-    query,  # type: AnyStr
+    query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[AnyStr]
-    tx=None,  # type: Optional[AnyStr]
+    database="",  # type: Optional[String]
+    tx=None,  # type: Optional[String]
 ):
     # type: (...) -> Any
     """Runs a prepared statement against a database connection just like
@@ -713,7 +714,7 @@ def runScalarPrepQuery(
 
 
 def runScalarQuery(query, database="", tx=None):
-    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> Any
+    # type: (String, Optional[String], Optional[String]) -> Any
     """Runs a query against a database connection just like the runQuery
     function, but only returns the value from the first row and column.
 
@@ -737,9 +738,9 @@ def runScalarQuery(query, database="", tx=None):
 
 
 def runUpdateQuery(
-    query,  # type: AnyStr
-    database="",  # type: Optional[AnyStr]
-    tx=None,  # type: Optional[AnyStr]
+    query,  # type: String
+    database="",  # type: Optional[String]
+    tx=None,  # type: Optional[String]
     getKey=False,  # type: Optional[bool]
     skipAudit=True,  # type: Optional[bool]
 ):
@@ -783,7 +784,7 @@ def runUpdateQuery(
 
 
 def setDatasourceConnectURL(name, connectUrl):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (String, String) -> None
     """Changes the connect URL for a given database connection.
 
     Args:
@@ -794,7 +795,7 @@ def setDatasourceConnectURL(name, connectUrl):
 
 
 def setDatasourceEnabled(name, enabled):
-    # type: (AnyStr, bool) -> None
+    # type: (String, bool) -> None
     """Enables/disables a given database connection.
 
     Args:
@@ -806,7 +807,7 @@ def setDatasourceEnabled(name, enabled):
 
 
 def setDatasourceMaxConnections(name, maxConnections):
-    # type: (AnyStr, int) -> None
+    # type: (String, int) -> None
     """Sets the Max Active and Max Idle parameters of a given database
     connection.
 

@@ -8,15 +8,17 @@ from __future__ import print_function
 
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
-from typing import AnyStr, List, Optional
+from typing import List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
 from java.util import Date, Locale
 
+String = Union[str, unicode]
+
 
 def getGroups():
-    # type: () -> List[AnyStr]
+    # type: () -> List[String]
     """Returns the names of the defined agent organizational groups in
     the Gateway.
 
@@ -33,8 +35,8 @@ def getGroups():
 
 
 def queryAgentHistory(
-    groupIds=None,  # type: Optional[List[AnyStr]]
-    agentIds=None,  # type: Optional[List[AnyStr]]
+    groupIds=None,  # type: Optional[List[String]]
+    agentIds=None,  # type: Optional[List[String]]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     limit=100,  # type: Optional[int]
@@ -71,8 +73,8 @@ def queryAgentHistory(
 
 
 def queryAgentStatus(
-    groupIds=None,  # type: Optional[List[AnyStr]]
-    agentIds=None,  # type: Optional[List[AnyStr]]
+    groupIds=None,  # type: Optional[List[String]]
+    agentIds=None,  # type: Optional[List[String]]
     isConnected=True,  # type: Optional[bool]
 ):
     # type: (...) -> BasicDataset
@@ -108,7 +110,7 @@ def queryAgentStatus(
 
 
 def runTask(taskname):
-    # type: (AnyStr) -> UIResponse
+    # type: (String) -> UIResponse
     """Takes the name of a task as an argument as a string (must be
     configured on the Controller before hand), attempts to execute the
     task.

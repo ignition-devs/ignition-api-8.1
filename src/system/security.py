@@ -21,13 +21,15 @@ __all__ = [
 ]
 
 import getpass
-from typing import AnyStr, Optional, Tuple
+from typing import Optional, Tuple, Union
 
 from java.util import EventObject
 
+String = Union[str, unicode]
+
 
 def getRoles():
-    # type: () -> Tuple[AnyStr, ...]
+    # type: () -> Tuple[String, ...]
     """Finds the roles that the currently logged in user has, returns
     them as a Python tuple of strings.
 
@@ -39,12 +41,12 @@ def getRoles():
 
 
 def getUserRoles(
-    username,  # type: AnyStr
-    password,  # type: AnyStr
-    authProfile="",  # type: Optional[AnyStr]
+    username,  # type: String
+    password,  # type: String
+    authProfile="",  # type: Optional[String]
     timeout=60000,  # type: Optional[int]
 ):
-    # type: (...) -> Optional[Tuple[AnyStr, ...]]
+    # type: (...) -> Optional[Tuple[String, ...]]
     """Fetches the roles for a user from the Gateway.
 
     This may not be the currently logged in user. Requires the password
@@ -70,7 +72,7 @@ def getUserRoles(
 
 
 def getUsername():
-    # type: () -> AnyStr
+    # type: () -> String
     """Returns the currently logged-in username.
 
     Returns:
@@ -112,7 +114,7 @@ def logout():
 
 
 def switchUser(username, password, event, hideError=False):
-    # type: (AnyStr, AnyStr, EventObject, Optional[bool]) -> bool
+    # type: (String, String, EventObject, Optional[bool]) -> bool
     """Attempts to switch the current user on the fly.
 
     If the given username and password fail, this function will return
@@ -148,7 +150,7 @@ def unlockScreen():
 
 
 def validateUser(username, password, authProfile="", timeout=60000):
-    # type: (AnyStr, AnyStr, Optional[AnyStr], Optional[int]) -> bool
+    # type: (String, String, Optional[String], Optional[int]) -> bool
     """Tests credentials (username and password) against an
     authentication profile.
 
