@@ -53,7 +53,6 @@ import getpass
 import json
 import os
 import platform
-import sys
 from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
 import system.__version__ as version
@@ -130,29 +129,7 @@ def beep():
 
     The computer must have a way of producing sound.
     """
-    platforms = {
-        "linux1": "Linux",
-        "linux2": "Linux",
-        "darwin": "macOS",
-        "win32": "Windows",
-    }
-
-    if "java" in sys.platform:
-        Toolkit.getDefaultToolkit().beep()
-    elif sys.platform in platforms:
-        if platforms[sys.platform] == "Windows":
-            try:
-                import winsound
-
-                winsound.MessageBeep(winsound.MB_ICONEXCLAMATION)
-            except ImportError:
-                print("Beep!")
-        elif platforms[sys.platform] == "macOS":
-            os.system('say "beep"')
-        elif platforms[sys.platform] == "Linux":
-            print("\a")
-    else:
-        print("Beep!")
+    Toolkit.getDefaultToolkit().beep()
 
 
 def execute(commands):
