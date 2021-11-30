@@ -89,21 +89,26 @@ Before you begin, ensure you have met the following requirements:
 Ignition consists of the following packages:
 
 - com.inductiveautomation
-- java/javax
-- org.python
+- java
+- javax
+- org
 - system
 
 ##### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces imported in the `system` package. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.11/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.12/index.html>.
 
 ##### java/javax
 
-These packages include supporting Java classes and interfaces imported in the `system` package. For more information, see documentation here: <https://docs.oracle.com/en/java/javase/11/docs/api/index.html>.
+These packages include supporting Java classes and interfaces. For more information, see documentation here: <https://docs.oracle.com/en/java/javase/11/docs/api/index.html>.
+
+##### org.apache
+
+This package includes supporting classes and interfaces from Apache Commons Math API. For more information, see documentation here: <https://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/index.html>
 
 ##### org.python
 
-This package includes supporting classes and interfaces imported in the `system` package. For more information, see documentation here: <https://docs.oracle.com/en/java/javase/11/docs/api/index.html>.
+This package includes supporting Jython classes and interfaces. For more information, see documentation here: <https://www.javadoc.io/doc/org.python/jython-standalone/2.7.2/index.html>.
 
 ##### system
 
