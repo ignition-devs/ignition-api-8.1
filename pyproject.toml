@@ -2,6 +2,9 @@
 requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[tool.mypy]
+python_version = 2.7
+
 [tool.isort]
 profile = "black"
 
