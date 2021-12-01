@@ -32,6 +32,7 @@ __all__ = [
 ]
 
 import os.path
+
 from typing import Any, Dict, List, Optional, Type, TypeVar, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset

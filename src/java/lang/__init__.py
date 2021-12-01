@@ -14,10 +14,9 @@ __all__ = [
     "Throwable",
 ]
 
+import __builtin__ as builtins
 import copy
 import time
-
-import __builtin__ as builtins
 
 
 class Iterable(object):
