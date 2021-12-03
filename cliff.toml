@@ -4,6 +4,7 @@
 # changelog header
 header = """
 # Changelog
+
 All notable changes to this project will be documented in this file.\n
 """
 # template for the changelog body
@@ -17,7 +18,12 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
-        * {{ commit.message | upper_first }} ({{ commit.id | truncate(length=7, end="")}})\
+        {% set url = "https://github.com/thecesrom/Ignition/commit/" %}\
+        {% set hash = commit.id | truncate(length=7, end="") %}\
+        - {{ commit.message }} ([{{ hash }}]({{ url }}{{ commit.id }}))
+        {%- if commit.breaking %}
+        {% raw %}  {% endraw %}- **BREAKING**: {{ commit.breaking_description }}
+        {%- endif -%}
     {% endfor %}
 {% endfor %}\n
 """
@@ -42,6 +48,7 @@ commit_parsers = [
     { message = "^style", group = "Styling"},
     { message = "^test", group = "Testing"},
     { message = "^chore\\(release\\): prepare for", skip = true},
+    { message = "^chore\\(cliff\\):", skip = true},
     { message = "^chore", group = "Miscellaneous Tasks"},
     { message = "^ci", group = "CI"},
     { body = ".*security", group = "Security"},
