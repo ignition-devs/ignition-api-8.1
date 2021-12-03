@@ -190,7 +190,7 @@ def getAvailableTerms():
 
 
 def getClientId():
-    # type: () -> String
+    # type: () -> unicode
     """Returns a hex-string that represents a number unique to the
     running Client's Session.
 
@@ -244,7 +244,7 @@ def getEdition():
 
 
 def getGatewayAddress():
-    # type: () -> String
+    # type: () -> unicode
     """Returns the address of the gateway that the client is currently
     communicating with.
 
@@ -261,7 +261,7 @@ def getGatewayStatus(
     socketTimeoutMillis=None,  # type: Optional[int]
     bypassCertValidation=True,  # type: Optional[bool]
 ):
-    # type: (...) -> String
+    # type: (...) -> unicode
     """Returns a string that indicates the status of the Gateway.
 
     A status of RUNNING means that the Gateway is fully functional.
@@ -964,7 +964,7 @@ def setReadTimeout(readTimeout):
 
 
 def threadDump():
-    # type: () -> String
+    # type: () -> unicode
     """Creates a thread dump of the current running JVM.
 
     Returns:

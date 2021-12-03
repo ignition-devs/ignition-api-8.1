@@ -225,7 +225,7 @@ def daysBetween(date_1, date_2):
 
 
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
-    # type: (Date, String) -> String
+    # type: (Date, String) -> unicode
     """Returns the given date as a string, formatted according to a
     pattern.
 
