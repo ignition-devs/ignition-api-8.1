@@ -31,8 +31,7 @@ def createImage(component):
     Returns:
         A java.awt.image.BufferedImage representing the component.
     """
-    print_utils = PrintUtilities("app")
-    return print_utils.createImage(component)
+    return PrintUtilities("app").createImage(component)
 
 
 def createPrintJob(component):

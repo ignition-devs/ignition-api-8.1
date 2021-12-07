@@ -6,13 +6,7 @@ users from a roster.
 
 from __future__ import print_function
 
-__all__ = [
-    "addUsers",
-    "createRoster",
-    "deleteRoster",
-    "getRosters",
-    "removeUsers",
-]
+__all__ = ["addUsers", "createRoster", "deleteRoster", "getRosters", "removeUsers"]
 
 from typing import Dict, List, Union
 

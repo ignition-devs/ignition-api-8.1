@@ -23,8 +23,8 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-import system.date
 from com.inductiveautomation.ignition.common import BasicDataset
+from java.util import Date
 
 String = Union[str, unicode]
 
@@ -173,7 +173,7 @@ def getToolProgram(ppid):
     """
     print(ppid)
     return {
-        "editDate": system.date.now(),
+        "editDate": Date(),
         "ppBody": "program",
         "bodyFormat": "A",
     }

@@ -59,10 +59,10 @@ def executeAndDistribute(
             occurs: If the file type is not recognized, path does not
             exist, project does not exist, or a key is not valid.
     """
-    if project is not None:
-        print(path, project, parameters, action, actionSettings)
-    else:
+    if project is None:
         raise IllegalArgumentException()
+
+    print(path, project, parameters, action, actionSettings)
 
 
 def executeReport(

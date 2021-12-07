@@ -114,7 +114,7 @@ def color(*args):
         args: Variable-length argument list.
 
     Returns:
-        Color: The newly created color.
+        The newly created color.
     """
     print(args)
     return Color(*args)

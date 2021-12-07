@@ -399,7 +399,7 @@ def getProperty(propertyName):
     elif propertyName == "os.version":
         ret = platform.release()
     elif propertyName == "user.home":
-        ret = os.path.expanduser(str("~"))
+        ret = os.path.expanduser("~")
     elif propertyName == "user.name":
         ret = getpass.getuser()
 

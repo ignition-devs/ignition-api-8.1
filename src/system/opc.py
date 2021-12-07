@@ -201,7 +201,7 @@ def readValues(opcServer, itemPaths):
 
     Returns:
         A sequence of objects, one for each address specified, in order.
-        Each object will contains the value, quality, and timestamp
+        Each object will contain the value, quality, and timestamp
         returned from the OPC Server for the corresponding address.
     """
     print(opcServer, itemPaths)

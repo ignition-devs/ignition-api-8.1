@@ -43,7 +43,7 @@ def cancelChart(instanceId):
         raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
-def getRunningCharts(charPath=None):
+def getRunningCharts(chartPath=None):
     # type: (Optional[String]) -> BasicDataset
     """Retrieves information about running charts.
 
@@ -51,7 +51,7 @@ def getRunningCharts(charPath=None):
     path. This function will return charts that are in a Paused state.
 
     Args:
-        charPath: The path to a chart to filter on: i.e.,
+        chartPath: The path to a chart to filter on: i.e.,
             "folder/chartName". If specified, only charts at the path
             will be included in the returned dataset. If omitted, the
             function will return data for all active charts.
@@ -59,7 +59,7 @@ def getRunningCharts(charPath=None):
     Returns:
         A dataset with information on the active chart.
     """
-    print(charPath)
+    print(chartPath)
     return BasicDataset()
 
 

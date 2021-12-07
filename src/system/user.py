@@ -484,10 +484,7 @@ def removeSchedule(scheduleName):
 
 def removeUser(userSource, username):
     # type: (String, String) -> UIResponse
-    """Removes a specific user from the a user source based on username.
-
-    When altering the Gateway System User Source, the Allow User Admin
-    setting must be enabled.
+    """Removes a specific user from a user source based on username.
 
     Args:
         userSource: The user source in which the user is found. Blank

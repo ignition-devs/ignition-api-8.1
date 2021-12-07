@@ -91,12 +91,12 @@ def closeSerialPort(port):
 
 def configureSerialPort(
     port,  # type: String
-    bitRate,  # type: Optional[int]
-    dataBits,  # type: Optional[int]
-    handshake,  # type: Optional[int]
-    hardwareFlowControl,  # type: Optional[bool]
-    parity,  # type: Optional[int]
-    stopBits,  # type: Optional[int]
+    bitRate=None,  # type: Optional[int]
+    dataBits=None,  # type: Optional[int]
+    handshake=None,  # type: Optional[int]
+    hardwareFlowControl=None,  # type: Optional[bool]
+    parity=None,  # type: Optional[int]
+    stopBits=None,  # type: Optional[int]
 ):
     # type: (...) -> SerialConfigurator
     """Configure a serial port for use in a later call.
@@ -307,13 +307,8 @@ def readLine(
     return ""
 
 
-def readUntil(
-    port,  # type: String
-    delimiter,  # type: String
-    includeDelimiter,  # type: bool
-    timeout=5000,  # type: Optional[int]
-):
-    # type: (...) -> String
+def readUntil(port, delimiter, includeDelimiter, timeout=5000):
+    # type: (String, String, bool, Optional[int]) -> String
     """Reads a byte at a time from a serial port until a delimiter
     character is encountered.
 
@@ -357,8 +352,8 @@ def write(port, toWrite, encoding="utf-8"):
     Args:
         port: The previously configured serial port to use.
         toWrite: The String to write.
-        encoding (str): Encoding to use when constructing the string.
-            Defaults to the platform's default character set. Optional.
+        encoding: Encoding to use when constructing the string. Defaults
+            to the platform's default character set. Optional.
     """
     print(port, toWrite, encoding)
 
