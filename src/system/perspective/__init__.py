@@ -96,14 +96,14 @@ def closeDock(id, sessionId="current_session", pageId="current_page"):
 def closePage(
     message=None,  # type: Optional[String]
     sessionId="current_session",  # type: Optional[String]
-    pageID="current_page",  # type: Optional[String]
+    pageId="current_page",  # type: Optional[String]
 ):
     # type: (...) -> None
     """Closes the page with the given page id or the current page if no
     page id is provided.
 
     If a message is provided, it is displayed on the page when the page
-    closes. Otherwise the default message (set in the Project
+    closes. Otherwise, the default message (set in the Project
     Properties) is displayed.
 
     Args:
@@ -114,10 +114,10 @@ def closePage(
             current Session will be used automatically. When targeting a
             different Session, then the pageId parameter must be
             included in the call. Optional.
-        pageID: Identifier of the page to be closed. If omitted, the
+        pageId: Identifier of the page to be closed. If omitted, the
             current pageId is used. Optional.
     """
-    builtins.print(message, sessionId, pageID)
+    builtins.print(message, sessionId, pageId)
 
 
 def closePopup(id, sessionId="current_session", pageId="current_page"):
