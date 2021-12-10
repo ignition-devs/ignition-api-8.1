@@ -33,13 +33,13 @@ __all__ = [
 
 import os.path
 
-from typing import Any, Dict, List, Optional, Type, TypeVar, Union
+from typing import Any, Dict, List, Optional, Type, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
 from java.util import Date, Locale
 
-ColType = TypeVar("ColType", Date, float, int, str, unicode)
+ColType = Union[Date, float, int, str, unicode]
 PyDataSet = DatasetUtilities.PyDataSet
 String = Union[str, unicode]
 
