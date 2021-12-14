@@ -18,12 +18,11 @@ __all__ = [
     "startChart",
 ]
 
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.sfc.api import PyChartScope
-
-String = Union[str, unicode]
+from java.lang import String
 
 
 def cancelChart(instanceId):
@@ -164,13 +163,13 @@ def startChart(projectName, chartPath, arguments):
     Args:
         projectName: The name of the project that the chart was created
             in.
-        chartPath (str): The path to the chart, for example
+        chartPath: The path to the chart, for example
             "ChartFolder/ChartName"
         arguments: A dictionary containing the name:value pairs of the
             variables to set.
 
     Returns:
-        str: The unique ID of this chart.
+        The unique ID of this chart.
     """
     print(projectName, chartPath, arguments)
     return "UUID"

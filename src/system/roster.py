@@ -8,11 +8,10 @@ from __future__ import print_function
 
 __all__ = ["addUsers", "createRoster", "deleteRoster", "getRosters", "removeUsers"]
 
-from typing import Dict, List, Union
+from typing import Dict, List
 
 from com.inductiveautomation.ignition.common.user import PyUser
-
-String = Union[str, unicode]
+from java.lang import String
 
 
 def addUsers(rosterName, users):

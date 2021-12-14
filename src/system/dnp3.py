@@ -19,7 +19,7 @@ __all__ = [
 
 from typing import List, Optional, Union
 
-String = Union[str, unicode]
+from java.lang import String
 
 # Constants
 NUL = 0

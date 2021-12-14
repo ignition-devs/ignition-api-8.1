@@ -54,11 +54,10 @@ __all__ = [
 from datetime import datetime
 from time import localtime, mktime
 
-from typing import Optional, Union
+from typing import Optional
 
+from java.lang import String
 from java.util import Date, Locale
-
-String = Union[str, unicode]
 
 
 def _now():
@@ -500,7 +499,7 @@ def getTimezone():
     """Returns the ID of the current timezone.
 
     Returns:
-        str: A representation of the current timezone.
+        A representation of the current timezone.
     """
     return "America/Tijuana"
 

@@ -8,9 +8,9 @@ from __future__ import print_function
 
 __all__ = ["addConnection", "callMethod", "removeConnection"]
 
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, Dict, List, Tuple
 
-String = Union[str, unicode]
+from java.lang import String
 
 
 def addConnection(

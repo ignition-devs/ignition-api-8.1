@@ -33,7 +33,7 @@ __all__ = [
     "writeBlocking",
 ]
 
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
@@ -44,9 +44,8 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
     Annotation,
 )
+from java.lang import String
 from java.util import Date
-
-String = Union[str, unicode]
 
 
 def browse(path, filter=None):
@@ -732,33 +731,32 @@ def storeAnnotations(
     None in the list.
 
     Args:
-        paths (list[str]): A list of Tag paths to store for. The paths
-            are equivalent to what would be used for a Tag history
-            query, and should specify the source provider as well. For
-            example, "[HistoryProvider/Gateway:Provider]Path/To/Tag".
-            This parameter is required, even if storage ids are
-            included, because it is used to identify the underlying
-            storage provider.
-        startTimes (list[Date]): The start times of the events. If
-            omitted, defaults to the current time. Optional.
-        endTimes (list[Date]): The end times of the event, if
-            applicable. If omitted, does not store an end time for the
-            annotation. Optional.
-        types (list[str]): The type id for the annotation. If not
-            defined, "marker" will be used. See the Annotation Types for
-            more details. Optional.
-        data (list[str]): Data for the annotation, such as text
-            describing the meaning of the annotation. Optional.
-        storageIds (list[int]): If defined, the function will instead
-            update the existing annotation instead of adding new ones,
-            overriding existing values for the annotation with those
-            provided by this function (if the corresponding delete
-            parameter is True). Storage id is available on the
-            Annotation object, and is returned as the result value from
-            the storeAnnotations call. Optional.
-        deleted (list[bool]): A list of booleans indicating that the
-            individual annotation should be deleted. Requires storage id
-            to be set as well. Optional.
+        paths: A list of Tag paths to store for. The paths are
+            equivalent to what would be used for a Tag history query,
+            and should specify the source provider as well. For example,
+            "[HistoryProvider/Gateway:Provider]Path/To/Tag". This
+            parameter is required, even if storage ids are included,
+            because it is used to identify the underlying storage
+            provider.
+        startTimes: The start times of the events. If omitted, defaults
+            to the current time. Optional.
+        endTimes: The end times of the event, if applicable. If omitted,
+            does not store an end time for the annotation. Optional.
+        types: The type id for the annotation. If not defined, "marker"
+            will be used. See the Annotation Types for more details.
+            Optional.
+        data: Data for the annotation, such as text describing the
+            meaning of the annotation. Optional.
+        storageIds: If defined, the function will instead update the
+            existing annotation instead of adding new ones, overriding
+            existing values for the annotation with those provided by
+            this function (if the corresponding delete parameter is
+            True). Storage id is available on the Annotation object, and
+            is returned as the result value from the storeAnnotations
+            call. Optional.
+        deleted: A list of booleans indicating that the individual
+            annotation should be deleted. Requires storage id to be set
+            as well. Optional.
 
     Returns:
         A list of QualifiedValues. The quality code will indicate

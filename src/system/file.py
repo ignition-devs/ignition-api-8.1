@@ -20,9 +20,9 @@ import io
 import os.path
 import tempfile
 
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional
 
-String = Union[str, unicode]
+from java.lang import String
 
 
 def fileExists(filepath):

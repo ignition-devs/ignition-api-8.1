@@ -8,9 +8,9 @@ from __future__ import print_function
 
 __all__ = ["loadFromFile", "removeGroups"]
 
-from typing import List, Union
+from typing import List
 
-String = Union[str, unicode]
+from java.lang import String
 
 
 def loadFromFile(filePath, projectName, mode):
