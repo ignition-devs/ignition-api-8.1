@@ -795,6 +795,10 @@ def storeTagHistory(
     paths). Instead, the cache must first be cleared, and then a new
     entry will be added the next time this function is called.
 
+    If a Tag's datatype changes after recording Tag history, this
+    function will create a new entry in the sqlth_te table to reflect
+    the change.
+
     Args:
         historyprovider: The historical provider to store to.
         tagprovider: The name of the realtime Tag provider to associate
