@@ -975,7 +975,7 @@ def threadDump():
 
 
 def translate(term, locale="es_MX", strict=False):
-    # type: (String, Optional[String], bool) -> String
+    # type: (String, Optional[String], Optional[bool]) -> String
     """This function allows you to retrieve the global translation of a
     term from the translation database using the current locale.
 
