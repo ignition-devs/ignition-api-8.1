@@ -15,10 +15,11 @@ __all__ = [
     "sendSms",
 ]
 
-from typing import List, Sequence
+from typing import List, Sequence, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import String
+
+String = Union[str, unicode]
 
 
 def getAccounts():

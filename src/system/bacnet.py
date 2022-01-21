@@ -8,9 +8,9 @@ from __future__ import print_function
 
 __all__ = ["synchronizeTime", "synchronizeTimeUtc", "writeWithPriority"]
 
-from typing import Any
+from typing import Any, Union
 
-from java.lang import String
+String = Union[str, unicode]
 
 
 def synchronizeTime(deviceName):

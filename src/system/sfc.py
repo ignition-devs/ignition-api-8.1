@@ -18,11 +18,12 @@ __all__ = [
     "startChart",
 ]
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.sfc.api import PyChartScope
-from java.lang import String
+
+String = Union[str, unicode]
 
 
 def cancelChart(instanceId):

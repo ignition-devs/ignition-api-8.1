@@ -13,10 +13,12 @@ __all__ = [
     "getReportNamesAsList",
 ]
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import IllegalArgumentException, String
+from java.lang import IllegalArgumentException
+
+String = Union[str, unicode]
 
 
 def executeAndDistribute(

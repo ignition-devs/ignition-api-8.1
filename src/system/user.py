@@ -45,8 +45,9 @@ from com.inductiveautomation.ignition.common.user.schedule import (
     HolidayModel,
     ScheduleAdjustment,
 )
-from java.lang import String
 from java.util import Date, Locale
+
+String = Union[str, unicode]
 
 
 def addCompositeSchedule(name, scheduleOne, scheduleTwo, description=None):

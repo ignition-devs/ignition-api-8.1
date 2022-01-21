@@ -66,11 +66,12 @@ from com.inductiveautomation.ignition.common.script.builtin import (
 )
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from java.awt import Toolkit
-from java.lang import String, Thread
+from java.lang import Thread
 from java.util import Date
 
 PyDataSet = DatasetUtilities.PyDataSet
 RequestImpl = SystemUtilities.RequestImpl
+String = Union[str, unicode]
 
 
 def audit(

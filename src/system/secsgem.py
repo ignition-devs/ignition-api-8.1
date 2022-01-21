@@ -21,11 +21,12 @@ __all__ = [
     "toTreeDataSet",
 ]
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import String
 from java.util import Date
+
+String = Union[str, unicode]
 
 
 def copyEquipment(

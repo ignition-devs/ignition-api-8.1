@@ -8,12 +8,13 @@ from __future__ import print_function
 
 __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
-from java.lang import String
 from java.util import Date, Locale
+
+String = Union[str, unicode]
 
 
 def getGroups():

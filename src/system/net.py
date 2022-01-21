@@ -21,10 +21,11 @@ __all__ = [
 
 import socket
 
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
-from java.lang import String
+
+String = Union[str, unicode]
 
 
 def getExternalIpAddress():

@@ -7,14 +7,14 @@ from __future__ import print_function
 
 __all__ = ["createImage", "createPrintJob", "printToImage"]
 
-from typing import Optional
+from typing import Optional, Union
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 from java.awt import Component
 from java.awt.image import BufferedImage
-from java.lang import String
 
 JythonPrintJob = PrintUtilities.JythonPrintJob
+String = Union[str, unicode]
 
 
 def createImage(component):

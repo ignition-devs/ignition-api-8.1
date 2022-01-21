@@ -37,18 +37,18 @@ __all__ = [
     "setDatasourceMaxConnections",
 ]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
     SProcCall,
 )
-from java.lang import String
 from java.util import Date
 from javax.swing import JComponent
 
 PyDataSet = DatasetUtilities.PyDataSet
+String = Union[str, unicode]
 
 # Type codes
 # These are codes defined by the JDBC specification.

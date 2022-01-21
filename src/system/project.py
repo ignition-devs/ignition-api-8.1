@@ -8,9 +8,9 @@ from __future__ import print_function
 
 __all__ = ["getProjectName", "getProjectNames"]
 
-from typing import List
+from typing import List, Union
 
-from java.lang import String
+String = Union[str, unicode]
 
 
 def getProjectName():
