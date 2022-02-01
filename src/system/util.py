@@ -201,7 +201,7 @@ def getClientId():
         A special code representing the Client's Session in a unique
         way.
     """
-    return u"F6D410AC"
+    return unicode("F6D410AC")
 
 
 def getConnectTimeout():
@@ -252,7 +252,7 @@ def getGatewayAddress():
         The address of the Gateway that the client is communicating
         with.
     """
-    return u"http://localhost:8088/"
+    return unicode("http://localhost:8088/")
 
 
 def getGatewayStatus(
@@ -288,7 +288,7 @@ def getGatewayStatus(
     print(
         gatewayAddress, connectTimeoutMillis, socketTimeoutMillis, bypassCertValidation
     )
-    return u"RUNNING"
+    return unicode("RUNNING")
 
 
 def getGlobals():
@@ -970,7 +970,7 @@ def threadDump():
     Returns:
         The dump of the current running JVM.
     """
-    return u"""{0}\n  "version": "{1}"...{2}""".format(
+    return unicode("""{0}\n  "version": "{1}"...{2}""").format(
         "{", getVersion().toParseableString(), "}"
     )
 

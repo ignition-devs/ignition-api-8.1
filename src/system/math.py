@@ -461,7 +461,7 @@ def sumSquares(values):
         The sum of all squares of the values parameter, or NaN if the
         input was empty or null.
     """
-    return builtins.sum(value ** 2 for value in values)
+    return builtins.sum(value**2 for value in values)
 
 
 def variance(values):
