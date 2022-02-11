@@ -464,7 +464,7 @@ check-str-concat-over-line-jumps=no
 
 # List of modules that can be imported at any level, not just the top level
 # one.
-allow-any-import-level=winsound
+allow-any-import-level=
 
 # Allow wildcard imports from modules that define __all__.
 allow-wildcard-with-all=no
