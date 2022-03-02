@@ -3,8 +3,7 @@
 [changelog]
 # changelog header
 header = """
-# Changelog
-
+# Changelog\n
 All notable changes to this project will be documented in this file.\n
 """
 # template for the changelog body
@@ -27,7 +26,7 @@ body = """
     {% endfor %}
 {% endfor %}\n
 """
-# remove the leading and trailing whitespaces from the template
+# remove the leading and trailing whitespace from the template
 trim = true
 # changelog footer
 footer = """
@@ -62,7 +61,7 @@ tag_pattern = "v8.1.[0-9]*"
 skip_tags = "v0.1.0-beta.1"
 # regex for ignoring tags
 ignore_tags = ""
-# sort the tags topologically
-topo_order = false
+# sort the tags chronologically
+date_order = true
 # sort the commits inside sections by oldest/newest order
 sort_commits = "oldest"
