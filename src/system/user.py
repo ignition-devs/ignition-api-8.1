@@ -27,6 +27,7 @@ __all__ = [
     "getScheduledUsers",
     "getSchedules",
     "getUser",
+    "getUserSources",
     "getUsers",
     "isUserScheduled",
     "removeHoliday",
@@ -38,7 +39,7 @@ __all__ = [
 from typing import List, Optional, Union
 
 from com.inductiveautomation.ignition.common.messages import UIResponse
-from com.inductiveautomation.ignition.common.user import PyUser
+from com.inductiveautomation.ignition.common.user import PyUser, UserSourceMeta
 from com.inductiveautomation.ignition.common.user.schedule import (
     AbstractScheduleModel,
     BasicScheduleModel,
@@ -390,6 +391,25 @@ def getUser(userSource, username):
     """
     print(userSource, username)
     return PyUser()
+
+
+def getUserSources():
+    # type: () -> List[UserSourceMeta]
+    """Returns a sequence of objects representing all of the user source
+    profiles configured in the Gateway. Each object has a "name"
+    property, a "description" property, and a "type" property.
+
+    Returns:
+        A List of all user source profiles configured in the system in
+        ascending order by their names.
+    """
+    return [
+        UserSourceMeta(
+            "default",
+            "This user source profile was automatically created during a clean startup",
+            "INTERNAL",
+        )
+    ]
 
 
 def getUsers(userSource):

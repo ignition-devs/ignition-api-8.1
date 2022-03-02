@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-__all__ = ["BasicUser", "ContactInfo", "PyUser", "User"]
+__all__ = ["BasicUser", "ContactInfo", "PyUser", "User", "UserSourceMeta"]
 
 from java.lang import Object
 
@@ -224,3 +224,19 @@ class PyUser(User):
 
     def setScheduleAdjustments(self, scheduleAdjustments):
         pass
+
+
+class UserSourceMeta(object):
+    def __init__(self, name, description, type_):
+        self.name = name
+        self.description = description
+        self.type = type_
+
+    def getName(self):
+        return self.name
+
+    def getDescription(self):
+        return self.description
+
+    def getType(self):
+        return self.type
