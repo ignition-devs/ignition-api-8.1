@@ -3,6 +3,10 @@ ci:
   skip: [pylint]
 
 repos:
+  - repo: https://github.com/aio-libs/sort-all
+    rev: v1.2.0
+    hooks:
+      - id: sort-all
   - repo: https://github.com/psf/black
     rev: 22.1.0
     hooks:
