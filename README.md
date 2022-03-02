@@ -96,7 +96,7 @@ Ignition consists of the following packages:
 
 ##### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.12/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.15/index.html>.
 
 ##### java/javax
 
