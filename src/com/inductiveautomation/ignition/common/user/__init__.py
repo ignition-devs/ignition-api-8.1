@@ -226,7 +226,7 @@ class PyUser(User):
         pass
 
 
-class UserSourceMeta(object):
+class UserSourceMeta(Object):
     def __init__(self, name, description, type_):
         self.name = name
         self.description = description
