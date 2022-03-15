@@ -49,9 +49,9 @@ class Version(Object):
 
     def getBasicString(self):
         return (
-            f"{self.major}.{self.minor}.{self.rev}-rc{self.rc}"
+            "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
             if self.rc > 0
-            else f"{self.major}.{self.minor}.{self.rev}"
+            else "{}.{}.{}".format(self.major, self.minor, self.rev)
         )
 
     def getBeta(self):
@@ -91,14 +91,18 @@ class Version(Object):
         return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
     def toParseableString(self):
-        return f"{self.major}.{self.minor}.{self.rev}.{self.build}"
+        return "{}.{}.{}.{}".format(self.major, self.minor, self.rev, self.build)
 
     def toString(self):
         if self.rc > 0:
-            return f"{self.major}.{self.minor}.{self.rev}-rc{self.rc} (b{self.build})"
-        elif self.isSnapshot():
-            return f"{self.major}.{self.minor}.{self.rev}-SNAPSHOT (b{self.build})"
-        elif self.build is not None:
-            return f"{self.major}.{self.minor}.{self.rev} (b{self.build})"
-        else:
-            return f"{self.major}.{self.minor}.{self.rev}"
+            return "{}.{}.{}-rc{} (b{})".format(
+                self.major, self.minor, self.rev, self.rc, self.build
+            )
+        if self.isSnapshot():
+            return "{}.{}.{}-SNAPSHOT (b{})".format(
+                self.major, self.minor, self.rev, self.build
+            )
+        if self.build is not None:
+            return "{}.{}.{} (b{})".format(self.major, self.minor, self.rev, self.build)
+
+        return "{}.{}.{}".format(self.major, self.minor, self.rev)

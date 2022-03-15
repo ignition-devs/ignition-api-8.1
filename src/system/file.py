@@ -62,7 +62,7 @@ def getTempFile(extension):
     Returns:
         The path to the newly created temp file.
     """
-    suffix = f".{extension}"
+    suffix = ".{}".format(extension)
     with tempfile.NamedTemporaryFile(suffix=suffix) as temp:
         return temp.name
 

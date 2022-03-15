@@ -40,7 +40,7 @@ def cancelChart(instanceId):
         KeyError: If the ID does not match any running chart instance.
     """
     if not instanceId:
-        raise KeyError(f"Invalid UUID string: {instanceId}")
+        raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
 def getRunningCharts(chartPath=None):
@@ -95,7 +95,7 @@ def pauseChart(instanceId):
         KeyError: If the ID does not match any running chart instance.
     """
     if not instanceId:
-        raise KeyError(f"Invalid UUID string: {instanceId}")
+        raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
 def redundantCheckpoint(instanceId):
@@ -124,7 +124,7 @@ def resumeChart(instanceId):
         KeyError: If the ID does not match any running chart instance.
     """
     if not instanceId:
-        raise KeyError(f"Invalid UUID string: {instanceId}")
+        raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
 def setVariable(instanceId, stepId, variableName, variableValue):
