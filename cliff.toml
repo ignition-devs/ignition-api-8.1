@@ -17,7 +17,7 @@ body = """
 {% for group, commits in commits | group_by(attribute="group") %}
     ### {{ group | upper_first }}
     {% for commit in commits %}
-        {% set url = "https://github.com/thecesrom/Ignition/commit/" %}\
+        {% set url = "https://github.com/ignition-api/8.1/commit/" %}\
         {% set hash = commit.id | truncate(length=7, end="") %}\
         - {{ commit.message }} ([{{ hash }}]({{ url }}{{ commit.id }}))
         {%- if commit.breaking %}
@@ -56,7 +56,7 @@ commit_parsers = [
 # filter out the commits that are not matched by commit parsers
 filter_commits = false
 # glob pattern for matching git tags
-tag_pattern = "v8.1.[0-9]*"
+tag_pattern = "v[0-9]*"
 # regex for skipping tags
 skip_tags = "v0.1.0-beta.1"
 # regex for ignoring tags
