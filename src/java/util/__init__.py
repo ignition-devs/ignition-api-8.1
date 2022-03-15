@@ -69,9 +69,9 @@ class Locale(Object):
     def __str__(self):
         ret = self.language
         if self.country:
-            ret += "_{}".format(self.country)
+            ret += f"_{self.country}"
         if self.variant:
-            ret += "_{}".format(self.variant)
+            ret += f"_{self.variant}"
         return unicode(ret)
 
     @ClassProperty

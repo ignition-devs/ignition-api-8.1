@@ -213,7 +213,7 @@ def dataSetToHTML(showHeaders, dataset, title):
         The HTML page as a string.
     """
     print(showHeaders, dataset, title)
-    return "<html><head>{}</head><body>data</body></html>".format(title)
+    return f"<html><head>{title}</head><body>data</body></html>"
 
 
 def deleteRow(dataset, rowIndex):
@@ -326,7 +326,7 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
         by the user.
     """
     print(filename, showHeaders, dataset, nullsEmpty)
-    return os.path.expanduser(str("~"))
+    return os.path.expanduser("~")
 
 
 def exportHTML(filename, showHeaders, dataset, title):

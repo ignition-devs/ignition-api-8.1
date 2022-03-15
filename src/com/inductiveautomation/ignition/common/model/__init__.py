@@ -23,13 +23,8 @@ class Version(Object):
         version_2 = [other.major, other.minor, other.rev]
 
         if strict:
-            version_1.append(self.build)
-            version_1.append(self.beta)
-            version_1.append(self.rc)
-            version_2.append(other.build)
-            version_2.append(other.beta)
-            version_2.append(other.rc)
-
+            version_1.extend((self.build, self.beta, self.rc))
+            version_2.extend((other.build, other.beta, other.rc))
         for i in range(max(len(version_1), len(version_2))):
             v_1 = version_1[i] if i < len(version_1) else 0
             v_2 = version_2[i] if i < len(version_2) else 0
@@ -54,9 +49,9 @@ class Version(Object):
 
     def getBasicString(self):
         return (
-            "{}.{}.{}-rc{}".format(self.major, self.minor, self.rev, self.rc)
+            f"{self.major}.{self.minor}.{self.rev}-rc{self.rc}"
             if self.rc > 0
-            else "{}.{}.{}".format(self.major, self.minor, self.rev)
+            else f"{self.major}.{self.minor}.{self.rev}"
         )
 
     def getBeta(self):
@@ -96,21 +91,14 @@ class Version(Object):
         return Version(sem_ver[0], sem_ver[1], sem_ver[2])
 
     def toParseableString(self):
-        return "{}.{}.{}.{}".format(self.major, self.minor, self.rev, self.build)
+        return f"{self.major}.{self.minor}.{self.rev}.{self.build}"
 
     def toString(self):
         if self.rc > 0:
-            version = "{}.{}.{}-rc{} (b{})".format(
-                self.major, self.minor, self.rev, self.rc, self.build
-            )
+            return f"{self.major}.{self.minor}.{self.rev}-rc{self.rc} (b{self.build})"
         elif self.isSnapshot():
-            version = "{}.{}.{}-SNAPSHOT (b{})".format(
-                self.major, self.minor, self.rev, self.build
-            )
+            return f"{self.major}.{self.minor}.{self.rev}-SNAPSHOT (b{self.build})"
         elif self.build is not None:
-            version = "{}.{}.{} (b{})".format(
-                self.major, self.minor, self.rev, self.build
-            )
+            return f"{self.major}.{self.minor}.{self.rev} (b{self.build})"
         else:
-            version = "{}.{}.{}".format(self.major, self.minor, self.rev)
-        return version
+            return f"{self.major}.{self.minor}.{self.rev}"
