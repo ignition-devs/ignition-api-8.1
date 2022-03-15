@@ -284,6 +284,7 @@ def format(date, format="yyyy-MM-dd HH:mm:ss"):
         "W",
         "{}".format(_date.isocalendar()[1] - _date.replace(day=1).isocalendar()[1] + 1),
     )
+
     _format = _format.replace("XXX", "{:03.0f}:00".format(getTimezoneOffset()))
     _format = _format.replace("XX", "{:03.0f}00".format(getTimezoneOffset()))
     _format = _format.replace("X", "{:03.0f}".format(getTimezoneOffset()))

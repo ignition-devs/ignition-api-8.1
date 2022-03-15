@@ -326,7 +326,7 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
         by the user.
     """
     print(filename, showHeaders, dataset, nullsEmpty)
-    return os.path.expanduser(str("~"))
+    return os.path.expanduser("~")
 
 
 def exportHTML(filename, showHeaders, dataset, title):
