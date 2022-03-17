@@ -9,9 +9,8 @@ env:
 
 jobs:
   upload:
-
+    if: github.repository == 'ignition-api/8.1'
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ env.PYTHON_VERSION }}
