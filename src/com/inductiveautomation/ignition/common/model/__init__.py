@@ -2,7 +2,7 @@ __all__ = ["Version"]
 
 import re
 
-from java.lang import Object
+from java.lang import IllegalArgumentException, Object
 
 
 class Version(Object):
@@ -17,28 +17,19 @@ class Version(Object):
         self.beta = beta
         self.rc = rc
 
-    def __eq__(self, other, strict=False):
-        ret = 0
-        version_1 = [self.major, self.minor, self.rev]
-        version_2 = [other.major, other.minor, other.rev]
-
-        if strict:
-            version_1.extend((self.build, self.beta, self.rc))
-            version_2.extend((other.build, other.beta, other.rc))
-        for i in range(max(len(version_1), len(version_2))):
-            v_1 = version_1[i] if i < len(version_1) else 0
-            v_2 = version_2[i] if i < len(version_2) else 0
-            if v_1 > v_2:
-                ret = 1
-            elif v_1 < v_2:
-                ret = -1
-        return ret
+    def __eq__(self, other):
+        return self._compare(other, True) == 0
 
     def __str__(self):
         return self.toString()
 
+    def _compare(self, that, strict=False):
+        this = self.toTuple(strict)
+        that = that.toTuple(strict)
+        return (this > that) - (this < that)
+
     def compareTo(self, that):
-        return self.__eq__(that, True)
+        return self._compare(that, True) if isinstance(that, type(self)) else None
 
     def exists(self):
         pass
@@ -79,8 +70,15 @@ class Version(Object):
         return self.dev
 
     def isFutureVersion(self, arg):
-        other = self.parse(arg)
-        return self.__eq__(other) == -1
+        cls = type(self)
+        if isinstance(arg, basestring):
+            that = self.parse(arg)
+        elif isinstance(arg, cls):
+            that = arg
+        else:
+            raise TypeError("isFutureVersion(): 1st arg can't be coerced to String.")
+
+        return self._compare(that) == -1
 
     def isSnapshot(self):
         return self.snapshot
@@ -88,7 +86,10 @@ class Version(Object):
     @staticmethod
     def parse(s):
         sem_ver = [int(i) for i in re.findall(r"-?\d+", s)]
-        return Version(sem_ver[0], sem_ver[1], sem_ver[2])
+        if len(sem_ver) < 3:
+            raise IllegalArgumentException('Invalid version: "{}"'.format(s))
+        build_number = sem_ver[3] if len(sem_ver) == 4 else 0
+        return Version(sem_ver[0], sem_ver[1], sem_ver[2], build_number)
 
     def toParseableString(self):
         return "{}.{}.{}.{}".format(self.major, self.minor, self.rev, self.build)
@@ -106,3 +107,10 @@ class Version(Object):
             return "{}.{}.{} (b{})".format(self.major, self.minor, self.rev, self.build)
 
         return "{}.{}.{}".format(self.major, self.minor, self.rev)
+
+    def toTuple(self, strict=False):
+        return (
+            (self.major, self.minor, self.rev, self.build, self.beta, self.rc)
+            if strict
+            else (self.major, self.minor, self.rev)
+        )
