@@ -27,8 +27,9 @@ ignore=
 ignore-paths=
 
 # Files or directories matching the regex patterns are skipped. The regex
-# matches against base names, not paths.
-ignore-patterns=
+# matches against base names, not paths. The default value ignores emacs file
+# locks
+ignore-patterns=^\.#
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -54,6 +55,9 @@ persistent=yes
 # the version used to run pylint.
 py-version=3.10
 
+# Discover python modules and packages in the file system subtree.
+recursive=no
+
 # When enabled, pylint would attempt to guess common misconfiguration and emit
 # user-friendly hints instead of false-positive error messages.
 suggestion-mode=yes
@@ -66,14 +70,15 @@ unsafe-load-any-extension=no
 [MESSAGES CONTROL]
 
 # Only show warnings with the listed confidence levels. Leave empty to show
-# all. Valid levels: HIGH, INFERENCE, INFERENCE_FAILURE, UNDEFINED.
+# all. Valid levels: HIGH, CONTROL_FLOW, INFERENCE, INFERENCE_FAILURE,
+# UNDEFINED.
 confidence=
 
 # Disable the message, report, category or checker with the given id(s). You
 # can either give multiple identifiers separated by comma (,) or put this
 # option multiple times (only on the command line, not in the configuration
 # file where it should appear only once). You can also use "--disable=all" to
-# disable everything first and then reenable specific checks. For example, if
+# disable everything first and then re-enable specific checks. For example, if
 # you want to run only the similarities checker, you can use "--disable=all
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
@@ -85,11 +90,7 @@ disable=consider-using-f-string,
         missing-module-docstring,
         redefined-builtin,
         redefined-outer-name,
-        signature-differs,
         super-with-arguments,
-        too-many-arguments,
-        too-many-locals,
-        too-many-public-methods,
         unnecessary-pass,
         useless-object-inheritance,
         useless-super-delegation,
@@ -105,11 +106,11 @@ enable=c-extension-no-member
 [REPORTS]
 
 # Python expression which should return a score less than or equal to 10. You
-# have access to the variables 'error', 'warning', 'refactor', and 'convention'
-# which contain the number of messages in each category, as well as 'statement'
-# which is the total number of statements analyzed. This score is used by the
-# global evaluation report (RP0004).
-evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+# have access to the variables 'fatal', 'error', 'warning', 'refactor',
+# 'convention', and 'info' which contain the number of messages in each
+# category, as well as 'statement' which is the total number of statements
+# analyzed. This score is used by the global evaluation report (RP0004).
+evaluation=max(0, 0 if fatal else 10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10))
 
 # Template used to display messages. This is a python new-style format string
 # used to format the message information. See doc for all details.
@@ -322,7 +323,18 @@ ignore-imports=no
 ignore-signatures=no
 
 # Minimum lines number of a similarity.
-min-similarity-lines=10
+min-similarity-lines=4
+
+
+[STRING]
+
+# This flag controls whether inconsistent-quotes generates a warning when the
+# character used as a quote delimiter is used inconsistently within a module.
+check-quote-consistency=yes
+
+# This flag controls whether the implicit-str-concat should generate a warning
+# on implicit string concatenation in sequences defined over several lines.
+check-str-concat-over-line-jumps=no
 
 
 [BASIC]
@@ -331,13 +343,15 @@ min-similarity-lines=10
 argument-naming-style=any
 
 # Regular expression matching correct argument names. Overrides argument-
-# naming-style.
+# naming-style. If left empty, argument names will be checked with the set
+# naming style.
 #argument-rgx=
 
 # Naming style matching correct attribute names.
 attr-naming-style=any
 
 # Regular expression matching correct attribute names. Overrides attr-naming-
+# style. If left empty, attribute names will be checked with the set naming
 # style.
 #attr-rgx=
 
@@ -357,27 +371,30 @@ bad-names-rgxs=
 class-attribute-naming-style=any
 
 # Regular expression matching correct class attribute names. Overrides class-
-# attribute-naming-style.
+# attribute-naming-style. If left empty, class attribute names will be checked
+# with the set naming style.
 #class-attribute-rgx=
 
 # Naming style matching correct class constant names.
 class-const-naming-style=UPPER_CASE
 
 # Regular expression matching correct class constant names. Overrides class-
-# const-naming-style.
+# const-naming-style. If left empty, class constant names will be checked with
+# the set naming style.
 #class-const-rgx=
 
 # Naming style matching correct class names.
 class-naming-style=PascalCase
 
 # Regular expression matching correct class names. Overrides class-naming-
-# style.
+# style. If left empty, class names will be checked with the set naming style.
 #class-rgx=
 
 # Naming style matching correct constant names.
 const-naming-style=UPPER_CASE
 
 # Regular expression matching correct constant names. Overrides const-naming-
+# style. If left empty, constant names will be checked with the set naming
 # style.
 #const-rgx=
 
@@ -389,7 +406,8 @@ docstring-min-length=-1
 function-naming-style=camelCase
 
 # Regular expression matching correct function names. Overrides function-
-# naming-style.
+# naming-style. If left empty, function names will be checked with the set
+# naming style.
 #function-rgx=
 
 # Good variable names which should always be accepted, separated by a comma.
@@ -411,21 +429,22 @@ include-naming-hint=no
 inlinevar-naming-style=any
 
 # Regular expression matching correct inline iteration names. Overrides
-# inlinevar-naming-style.
+# inlinevar-naming-style. If left empty, inline iteration names will be checked
+# with the set naming style.
 #inlinevar-rgx=
 
 # Naming style matching correct method names.
 method-naming-style=any
 
 # Regular expression matching correct method names. Overrides method-naming-
-# style.
+# style. If left empty, method names will be checked with the set naming style.
 #method-rgx=
 
 # Naming style matching correct module names.
 module-naming-style=snake_case
 
 # Regular expression matching correct module names. Overrides module-naming-
-# style.
+# style. If left empty, module names will be checked with the set naming style.
 #module-rgx=
 
 # Colon-delimited sets of names that determine each other's naming style when
@@ -441,23 +460,43 @@ no-docstring-rgx=^_
 # These decorators are taken in consideration only for invalid-name.
 property-classes=abc.abstractproperty
 
+# Regular expression matching correct type variable names. If left empty, type
+# variable names will be checked with the set naming style.
+#typevar-rgx=
+
 # Naming style matching correct variable names.
 variable-naming-style=any
 
 # Regular expression matching correct variable names. Overrides variable-
-# naming-style.
+# naming-style. If left empty, variable names will be checked with the set
+# naming style.
 #variable-rgx=
 
 
-[STRING]
+[CLASSES]
 
-# This flag controls whether inconsistent-quotes generates a warning when the
-# character used as a quote delimiter is used inconsistently within a module.
-check-quote-consistency=no
+# Warn about protected attribute access inside special methods
+check-protected-access-in-special-methods=no
 
-# This flag controls whether the implicit-str-concat should generate a warning
-# on implicit string concatenation in sequences defined over several lines.
-check-str-concat-over-line-jumps=no
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,
+                      __new__,
+                      setUp,
+                      __post_init__
+
+# List of member names, which should be excluded from the protected access
+# warning.
+exclude-protected=_asdict,
+                  _fields,
+                  _replace,
+                  _source,
+                  _make
+
+# List of valid names for the first argument in a class method.
+valid-classmethod-first-arg=cls
+
+# List of valid names for the first argument in a metaclass class method.
+valid-metaclass-classmethod-first-arg=cls
 
 
 [IMPORTS]
@@ -501,32 +540,6 @@ known-third-party=enchant
 preferred-modules=
 
 
-[CLASSES]
-
-# Warn about protected attribute access inside special methods
-check-protected-access-in-special-methods=no
-
-# List of method names used to declare (i.e. assign) instance attributes.
-defining-attr-methods=__init__,
-                      __new__,
-                      setUp,
-                      __post_init__
-
-# List of member names, which should be excluded from the protected access
-# warning.
-exclude-protected=_asdict,
-                  _fields,
-                  _replace,
-                  _source,
-                  _make
-
-# List of valid names for the first argument in a class method.
-valid-classmethod-first-arg=cls
-
-# List of valid names for the first argument in a metaclass class method.
-valid-metaclass-classmethod-first-arg=cls
-
-
 [DESIGN]
 
 # List of regular expressions of class ancestor names to ignore when counting
@@ -538,7 +551,7 @@ exclude-too-few-public-methods=
 ignored-parents=
 
 # Maximum number of arguments for function / method.
-max-args=5
+max-args=25
 
 # Maximum number of attributes for a class (see R0902).
 max-attributes=7
@@ -550,13 +563,13 @@ max-bool-expr=5
 max-branches=12
 
 # Maximum number of locals for function / method body.
-max-locals=15
+max-locals=25
 
 # Maximum number of parents for a class (see R0901).
 max-parents=7
 
 # Maximum number of public methods for a class (see R0904).
-max-public-methods=20
+max-public-methods=50
 
 # Maximum number of return / yield for function / method body.
 max-returns=6
