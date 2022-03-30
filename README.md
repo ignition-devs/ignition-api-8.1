@@ -119,33 +119,24 @@ This package includes supporting Jython classes and interfaces. For more informa
 
 This package includes all Ignition Scripting Functions. For more information, see documentation here: <https://docs.inductiveautomation.com/display/DOC81/System+Functions>.
 
-### Contributing
+## Contributing
 
-To contribute to this project, follow these steps:
+See [CONTRIBUTING.md](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#contributing-to-ignition-api=).
 
-1. Fork this repository
-2. Create a local copy on your machine
-3. Create a branch
-4. Make your changes and commit them
-5. Push to the `main` branch
-6. Create the pull request
-
-Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
-
-### Discussions
+## Discussions
 
 Feel free to post your questions and/or ideas at [Discussions](https://github.com/ignition-api/discussions/discussions).
 
-### Contributors
+## Contributors
 
 Thanks to everyone who has contributed to this project.
 
 Up-to-date list of contributors can be found [here](https://github.com/ignition-api/8.1/graphs/contributors).
 
-### License
+## License
 
 See the [LICENSE](https://github.com/ignition-api/8.1/blob/HEAD/LICENSE).
 
-### Code of conduct
+## Code of conduct
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
