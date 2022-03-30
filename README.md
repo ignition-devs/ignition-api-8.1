@@ -121,7 +121,7 @@ This package includes all Ignition Scripting Functions. For more information, se
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#contributing-to-ignition-api=).
+See [CONTRIBUTING.md](https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#contributing-to-ignition-api).
 
 ## Discussions
 
