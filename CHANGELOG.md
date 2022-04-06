@@ -2,6 +2,53 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.16] - 2022-04-06
+
+### Bug Fixes
+
+- fix `ci.yml` (#5)
+
+### CI
+
+- fix packaging issues (#2)
+- update build action (#4)
+- maintenance (#6)
+- use `deps` scope for pre-commit.ci (#10)
+
+### Documentation
+
+- update downloads badge ([f162972](https://github.com/ignition-api/8.1/commit/f1629728b95b15c77812e2fe62b99af9c634bdc5))
+- add discussions badge ([7c2aa6f](https://github.com/ignition-api/8.1/commit/7c2aa6f063fb12cb0efc47f7f41efdef86ed200f))
+- replace old project name (#3)
+- use pepy.tech for counting downloads (#13)
+- add link to org CONTRIBUTING.md (#14)
+- fix link to CONTRIBUTING header ([72023b6](https://github.com/ignition-api/8.1/commit/72023b68917c436ec538aeba357d354c057242bc))
+
+### Features
+
+- add version argument to httpClient (#16)
+
+### Miscellaneous Tasks
+
+- move project to github org ([240c95f](https://github.com/ignition-api/8.1/commit/240c95f0d272e4b1c9da99b16b6daa632bfc5911))
+
+### Refactor
+
+- change parent class to Java `Object` ([8aaa459](https://github.com/ignition-api/8.1/commit/8aaa45969901a8c75b0ca32b89e1cba681fbd66d))
+- Sourcery refactored main branch (#1)
+- improve Version comparison logic (#11)
+
+### Build
+
+- bump actions/checkout from 2 to 3 (#7)
+- bump actions/setup-python from 2 to 3 (#8)
+- bump .pylintrc from 2.12.2 to 2.13.2 (#12)
+- pre-commit autoupdate (#15)
+
+### Revert
+
+- remove condition from job (#9)
+
 ## [8.1.15] - 2022-03-02
 
 ### Features
@@ -75,7 +122,7 @@ regardless of platform
 ### Build
 
 - update `pydocstyle` hook ([b04be0b](https://github.com/ignition-api/8.1/commit/b04be0b7e87834ec0c94f1ec96abcab1b9e82ff4))
-- pre-commit autoupdate (#52) ([29ee058](https://github.com/ignition-api/8.1/commit/29ee058ad3f011633f64c54ad71bcf0794d57ea4))
+- pre-commit autoupdate (#52)
 - remove files from `MANIFEST.in` ([d0fa375](https://github.com/ignition-api/8.1/commit/d0fa3755815b7f224b3268b00ee4776be07ff517))
 
 ## [8.1.12.post3] - 2021-11-29
@@ -138,7 +185,7 @@ regardless of platform
 - add project_urls ([8a37d41](https://github.com/ignition-api/8.1/commit/8a37d41a0ddd0243efb097c26fff3e5401ff9500))
 - add setup.py ([4c4cae6](https://github.com/ignition-api/8.1/commit/4c4cae65ecb9b5f71aa193087cf89c627c29a7b0))
 - update `black` hook ([a39dcdc](https://github.com/ignition-api/8.1/commit/a39dcdca750cca6ffa2b5d842c0e83691d229506))
-- pre-commit autoupdate (#51) ([4b1616c](https://github.com/ignition-api/8.1/commit/4b1616c28c29e2a7f107f792ef6eb67890d48944))
+- pre-commit autoupdate (#51)
 - deprecate Python 2.7 ([3c79759](https://github.com/ignition-api/8.1/commit/3c79759ad291b47f464dd42a9121b6aa21eb8f02))
 - pre-commit autoupdate ([3556987](https://github.com/ignition-api/8.1/commit/35569875c9d9d48a2411e11fa103d31ffdf98bbf))
 - pre-commit autoupdate ([d250949](https://github.com/ignition-api/8.1/commit/d250949865cc6aa4436442576c40b9e1d0137661))
@@ -164,7 +211,7 @@ regardless of platform
 
 ### Build
 
-- pre-commit autoupdate (#49) ([3aa56e2](https://github.com/ignition-api/8.1/commit/3aa56e2cece89f1c47c49032746f7e2f74b8f287))
+- pre-commit autoupdate (#49)
 - require setuptools >= 42 ([c784e57](https://github.com/ignition-api/8.1/commit/c784e573530a217f4c430bd110889ce569152747))
 
 ## [8.1.10.post7] - 2021-10-11
@@ -292,7 +339,7 @@ regardless of platform
 
 ### Build
 
-- pre-commit autoupdate (#46) ([aed840d](https://github.com/ignition-api/8.1/commit/aed840d0b6fb5bf313bcf81dc877c6c576fc4059))
+- pre-commit autoupdate (#46)
 - skip pylint ([7dc2336](https://github.com/ignition-api/8.1/commit/7dc23365a054b5a85efba496987674aeeefb7aca))
 - add pylint workflow ([fb675a9](https://github.com/ignition-api/8.1/commit/fb675a9e18e7a6c5dd744c6d3e43aa6887e55442))
 
@@ -304,7 +351,7 @@ regardless of platform
 - update README.md ([95d2f88](https://github.com/ignition-api/8.1/commit/95d2f8820c9291ac0d5c364bbbb96cbd55de9d06))
 - update README.md ([8531b0e](https://github.com/ignition-api/8.1/commit/8531b0e4c2860b0ff070a365e0ce28c0f8033215))
 - replaced datetime for Date ([dbc151a](https://github.com/ignition-api/8.1/commit/dbc151a8178e956ec2c0535f6416bad57bb11867))
-- add instructions for PyCharm (#42) ([50e5d68](https://github.com/ignition-api/8.1/commit/50e5d68954565fe33cdec515a0d90b4836836899))
+- add instructions for PyCharm (#42)
 
 ### Features
 
@@ -313,11 +360,11 @@ regardless of platform
 ### Build
 
 - add ci block ([a4626df](https://github.com/ignition-api/8.1/commit/a4626df596a6dd87dfba49a656056c717cf50569))
-- pre-commit autoupdate (#40) ([f561da6](https://github.com/ignition-api/8.1/commit/f561da612046da05f7cc6945d31bcd572cab9781))
+- pre-commit autoupdate (#40)
 - check max complexity ([c9e185f](https://github.com/ignition-api/8.1/commit/c9e185f9f52c46c1931544f79ef0d21a811a71cf))
-- pre-commit autoupdate (#43) ([d49be99](https://github.com/ignition-api/8.1/commit/d49be99370faff0c784e52e17e18f7fa9615d010))
-- pre-commit autoupdate (#44) ([12150eb](https://github.com/ignition-api/8.1/commit/12150eb794957029ac9b0b7ef04571929f576079))
-- pre-commit autoupdate (#45) ([7b665a2](https://github.com/ignition-api/8.1/commit/7b665a2802a60e10ed39a3e442cf6e45151d752a))
+- pre-commit autoupdate (#43)
+- pre-commit autoupdate (#44)
+- pre-commit autoupdate (#45)
 
 ## [8.1.7] - 2021-06-06
 

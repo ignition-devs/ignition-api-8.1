@@ -24,7 +24,7 @@ ignition-api is a Python package that allows developers to get code completion f
     - [Using as a dependency in PyCharm](#using-as-a-dependency-in-pycharm)
 - [Project structure](#project-structure)
   - [Packages](#packages)
-- [Contributing to this project](#contributing)
+- [Contributing](#contributing)
 - [Discussions](#discussions)
 - [Contributors](#contributors)
 - [License](#license)
@@ -101,7 +101,7 @@ This project consists of the following packages:
 
 #### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.15/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.16/index.html>.
 
 #### java/javax
 
