@@ -101,6 +101,7 @@ def httpClient(
     proxy=None,  # type: Optional[String]
     cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[String]
     redirect_policy="NORMAL",  # type: Optional[String]
+    version="HTTP_2",  # type: Optional[String]
     customizer=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> JythonHttpClient
@@ -139,6 +140,9 @@ def httpClient(
         redirect_policy: A string representing this client's redirect
             policy. Acceptable values are listed below. Defaults to
             "Normal". Optional.
+        version: A string specifying either HTTP_2 or HTTP_1_1 for the
+            HTTP protocol. When omitted, the previous default of HTTP_2
+            is implied. Optional.
         customizer: A reference to a function. This function will be
             called with one argument (an instance of
             HttpClient.Builder). The function should operate on that
@@ -158,6 +162,7 @@ def httpClient(
         proxy,
         cookie_policy,
         redirect_policy,
+        version,
         customizer,
     )
     return JythonHttpClient()
