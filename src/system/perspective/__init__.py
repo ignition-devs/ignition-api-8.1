@@ -82,7 +82,7 @@ def authenticationChallenge(
     idp="",  # type: Optional[String]
     forceAuth=False,  # type: Optional[bool]
     timeout=2,  # type: Optional[int]
-    payload=None,  # type: Optional[Any]
+    payload=None,  # type: Optional[Dict[String, Any]]
     framing="self",  # type: Optional[String]
 ):
     # type: (...) -> None
