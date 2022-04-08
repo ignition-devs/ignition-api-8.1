@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.16.post1] - 2022-04-08
+
+### Features
+
+- add perspective.authenticationChallenge (#17)
+
 ## [8.1.16] - 2022-04-06
 
 ### Bug Fixes
