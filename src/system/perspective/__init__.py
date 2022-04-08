@@ -8,6 +8,7 @@ from __future__ import print_function
 
 __all__ = [
     "alterLogging",
+    "authenticationChallenge",
     "closeDock",
     "closePage",
     "closePopup",
@@ -73,6 +74,56 @@ def alterLogging(
             current Page will be used automatically. Optional.
     """
     builtins.print(remoteLoggingEnabled, level, remoteLoggingLevel, sessionId, pageId)
+
+
+def authenticationChallenge(
+    sessionId="current_session",  # type: Optional[String]
+    pageId="current_page",  # type: Optional[String]
+    idp="",  # type: Optional[String]
+    forceAuth=False,  # type: Optional[bool]
+    timeout=2,  # type: Optional[int]
+    payload=None,  # type: Optional[Any]
+    framing="self",  # type: Optional[String]
+):
+    # type: (...) -> None
+    """Triggers an authentication challenge action.
+
+    Args:
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the page to target. If omitted, the
+            current page will be used. Optional.
+        idp: The name of the IdP to use for this authentication
+            challenge. If omitted, the Project default IdP will be used.
+            Optional.
+        forceAuth: True if Ignition should ask the IdP to
+            re-authenticate the user, even if the user is already signed
+            into the IdP. False if Ignition should not ask the IdP to
+            re-authenticate the user. If the IdP supports this option,
+            the IdP will ask the user to re-enter their credentials,
+            even if the user is already signed into the IdP. If omitted,
+            the default value for this argument will fall back to the
+            value in the Project Properties. Optional.
+        timeout: The number of minutes the system will wait in between
+            the authentication request and the authentication response
+            before timing out the request. If set to any number <= zero,
+            the request is rejected. If omitted, the default of two
+            minutes will be used as the timeout. Optional.
+        payload: An opaque payload object that may contain any
+            information. This object will be passed to the
+            onAuthenticationChallengeCompleted session event script. The
+            payload should be a JSON-encodable data structure.
+            Optional.
+        framing: A string representing the type of framing that should
+            be used. A value of "self" indicates that the same window
+            should be used. A value of "new" indicates that a new tab
+            should be used. A value of "embedded" indicates that an
+            embedded iframe should be used. If omitted, the default
+            value of "self" (same window) is used. Optional.
+    """
+    builtins.print(sessionId, pageId, idp, forceAuth, timeout, payload, framing)
 
 
 def closeDock(id, sessionId="current_session", pageId="current_page"):
