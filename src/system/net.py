@@ -337,10 +337,10 @@ def openURL(url, useApplet=False):
 def sendEmail(
     smtp,  # type: String
     fromAddr,  # type: String
-    subject,  # type: String
-    body,  # type: String
-    html,  # type: String
-    to,  # type: List[String]
+    subject=None,  # type: Optional[String]
+    body=None,  # type: Optional[String]
+    html=False,  # type: Optional[bool]
+    to=None,  # type: Optional[List[String]]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
     timeout=300000,  # type: Optional[int]
@@ -365,10 +365,10 @@ def sendEmail(
             "mail.example.com:25". SSL can also be forced, like
             "mail.example.com:25:tls".
         fromAddr: An email address to have the email come from.
-        subject: The subject line for the email.
-        body: The body text of the email.
+        subject: The subject line for the email. Optional.
+        body: The body text of the email. Optional.
         html: A flag indicating whether or not to send the email as an
-            HTML email. Will auto-detect if omitted.
+            HTML email. Will auto-detect if omitted. Optional.
         to: A list of email addresses to send to.
         attachmentNames: A list of attachment names. Attachment names
             must have the correct extension for the file type or an
