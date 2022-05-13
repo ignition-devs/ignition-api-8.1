@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.17] - 2022-04-14
+
+### Bug Fixes
+
+- update type hint for `html` arg (#20)
+
+### Refactor
+
+- update type hint for payload arg ([b8995ab](https://github.com/ignition-api/8.1/commit/b8995ab50a1118e8fa440987d0167141a0cb94ed))
+
+### Build
+
+- update pylint configuration (#18)
+
 ## [8.1.16.post1] - 2022-04-08
 
 ### Features
