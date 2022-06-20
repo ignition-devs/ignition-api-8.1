@@ -1,5 +1,8 @@
+from __future__ import print_function
+
 __all__ = ["Result", "Results"]
 
+from com.inductiveautomation.ignition.common.model.values import QualityCode
 from java.lang import Object
 
 
@@ -27,35 +30,44 @@ class Results(Object):
     browse.
     """
 
-    def error(self, result):
-        pass
+    def __init__(self, *args):
+        print(args)
+        self.continuationPoint = ""
+        self.resultQuality = QualityCode.Good
+        self.results = []
+        self.totalAvailableResults = 0
+
+    @staticmethod
+    def error(result):
+        return Results(result)
 
     def getContinuationPoint(self):
-        pass
+        return self.continuationPoint
 
     def getResultQuality(self):
-        pass
+        return self.resultQuality
 
     def getResults(self):
-        pass
+        return self.results
 
     def getReturnedSize(self):
-        pass
+        return 0 if self.results is None else len(self.results)
 
     def getTotalAvailableSize(self):
-        pass
+        return self.totalAvailableResults
 
-    def of(self, arg):
-        pass
+    @staticmethod
+    def of(results):
+        return Results(results)
 
-    def setContinuationPoint(self, continuationPoint):
-        pass
+    def setContinuationPoint(self, continuationPoint=None):
+        self.continuationPoint = continuationPoint
 
     def setResultQuality(self, value):
-        pass
+        self.resultQuality = value
 
     def setResults(self, results):
-        pass
+        self.results = results
 
     def setTotalAvailableResults(self, totalAvailableResults):
-        pass
+        self.totalAvailableResults = totalAvailableResults
