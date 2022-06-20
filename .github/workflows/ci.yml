@@ -17,6 +17,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install 'mypy[python2]'
+        python -m pip install types-enum34
         python -m pip install pylint
     - name: Analysing the code with mypy
       run: |
