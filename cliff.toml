@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.\n
 # https://tera.netlify.app/docs/#introduction
 body = """
 {% if version %}\
-    ## [{{ version | trim_start_matches(pat="v") }}] - {{ timestamp | date(format="%Y-%m-%d") }}
+    {% set utc = timestamp | date(format="%Y-%m-%dT%H:%M:%S%.3fZ") %}\
+    ## [{{ version | trim_start_matches(pat="v") }}] - {{ utc | date(format="%Y-%m-%d",  timezone="America/Tijuana") }}
 {% else %}\
     ## [unreleased]
 {% endif %}\
