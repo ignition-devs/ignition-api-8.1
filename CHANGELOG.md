@@ -2,7 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [8.1.17] - 2022-04-14
+## [8.1.18] - 2022-06-20
+
+### Features
+
+- add fields to Results class (#22)
+- add `readRaw`, `writeRaw` to `bacnet` module (#23)
+
+### Build
+
+- bump actions/setup-python from 3 to 4 (#21)
+
+## [8.1.17] - 2022-05-13
 
 ### Bug Fixes
 
@@ -88,7 +99,7 @@ All notable changes to this project will be documented in this file.
 - update black from 21.12b0 to 22.1.0 ([df5d6e9](https://github.com/ignition-api/8.1/commit/df5d6e999405f4e5d09f644c215eaa88fc0552d5))
 - add `sort-all@v1.2.0` ([3eeeb97](https://github.com/ignition-api/8.1/commit/3eeeb970ea96f3b1807af0a35d37f5fae7cb6e81))
 
-## [8.1.13.post1] - 2022-01-21
+## [8.1.13.post1] - 2022-01-20
 
 ### Features
 
@@ -103,7 +114,7 @@ All notable changes to this project will be documented in this file.
 
 - undo `java.lang.String` ([8b9c99c](https://github.com/ignition-api/8.1/commit/8b9c99c77ff4e47e53fd9813218ef5a38aa64c09))
 
-## [8.1.13] - 2021-12-23
+## [8.1.13] - 2021-12-22
 
 ### CI
 
@@ -155,7 +166,7 @@ regardless of platform
 
 - release 8.1.12.post3 ([f6a5ae1](https://github.com/ignition-api/8.1/commit/f6a5ae12c1b316a55d1156f633fbd71531ec7166))
 
-## [8.1.12.post2] - 2021-11-27
+## [8.1.12.post2] - 2021-11-26
 
 ### Miscellaneous Tasks
 
@@ -244,7 +255,7 @@ regardless of platform
 
 - git ignore dist-build directory ([368efb9](https://github.com/ignition-api/8.1/commit/368efb916ccd507eb7047794e9662638ed886f20))
 
-## [8.1.10.post6] - 2021-10-11
+## [8.1.10.post6] - 2021-10-10
 
 ### Bug Fixes
 
@@ -284,7 +295,7 @@ regardless of platform
 - update pylint workflow ([684f4d5](https://github.com/ignition-api/8.1/commit/684f4d5bf38bdd9eecb8470a04e173f713dcb283))
 - update workflows ([6977b00](https://github.com/ignition-api/8.1/commit/6977b009b47e6fbb95a45e82f3ebea32d49538eb))
 
-## [8.1.10.post5] - 2021-09-25
+## [8.1.10.post5] - 2021-09-24
 
 ### Bug Fixes
 
@@ -386,7 +397,7 @@ regardless of platform
 - pre-commit autoupdate (#44)
 - pre-commit autoupdate (#45)
 
-## [8.1.7] - 2021-06-06
+## [8.1.7] - 2021-06-05
 
 ### Features
 
@@ -416,7 +427,7 @@ regardless of platform
 - remove E211 and E99 from ignore ([0edf0ec](https://github.com/ignition-api/8.1/commit/0edf0eccd2661355f5929416c21c6ef9b112151f))
 - remove W503 from ignore ([ac25bbe](https://github.com/ignition-api/8.1/commit/ac25bbeb64c8e08d521026965b6c7af5e0a6a412))
 
-## [8.1.5-fix] - 2021-05-12
+## [8.1.5-fix] - 2021-05-11
 
 ### Bug Fixes
 
@@ -429,7 +440,7 @@ regardless of platform
 - update flake8 3.9.1 -> 3.9.2 ([b67503c](https://github.com/ignition-api/8.1/commit/b67503c5414c1c2eba9d9918ec8a5d90caa23979))
 - update black 21.5b0 -> 21.5b1 ([9226438](https://github.com/ignition-api/8.1/commit/92264382a304639b2e79dde749cfb0e639e38e1d))
 
-## [8.1.5] - 2021-04-29
+## [8.1.5] - 2021-04-28
 
 ### Features
 
@@ -459,7 +470,7 @@ regardless of platform
 
 - bump flake8 and isort to latest version ([f4d8fef](https://github.com/ignition-api/8.1/commit/f4d8fef980400e8357f11be8a74a28839b6b9fa0))
 
-## [8.1.3] - 2021-03-05
+## [8.1.3] - 2021-03-04
 
 ### Features
 
@@ -474,7 +485,7 @@ regardless of platform
 - :art: tell isort to use Python27 ([873015f](https://github.com/ignition-api/8.1/commit/873015fd0331fe44b240c3823f1591b753f01607))
 - remove blank line ([8b62da4](https://github.com/ignition-api/8.1/commit/8b62da459e1009ae75fb25cba6410d22ac9b4ec4))
 
-## [8.1.2] - 2021-02-13
+## [8.1.2] - 2021-02-12
 
 ### Features
 
@@ -491,13 +502,13 @@ regardless of platform
 - add flake8 and isort badges ([a0319f7](https://github.com/ignition-api/8.1/commit/a0319f7923f71624aa96f750357a247580914452))
 - :art: make isort compatible with black ([df9d357](https://github.com/ignition-api/8.1/commit/df9d357859c5ce37f7020952bfee3661e4db131a))
 
-## [8.1.1] - 2020-12-10
+## [8.1.1] - 2020-12-09
 
 ### Styling
 
 - Black ([9db745d](https://github.com/ignition-api/8.1/commit/9db745d9b14fb6f5ced27a357db89ac53bfb4be1))
 
-## [8.1.0] - 2020-11-16
+## [8.1.0] - 2020-11-15
 
 ### All
 
