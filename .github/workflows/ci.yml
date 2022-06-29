@@ -21,7 +21,7 @@ jobs:
         python -m pip install pylint
     - name: Analysing the code with mypy
       run: |
-        mypy src
+        mypy --py2 src
     - name: Analysing the code with pylint
       run: |
         pylint src
