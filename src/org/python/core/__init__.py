@@ -10,8 +10,8 @@ class PyObject(Object):
     an instance of the class PyObject or one of its subclasses.
     """
 
-    def __init__(self, objType=None):
-        print(objType)
+    def __init__(self, *args):
+        pass
 
     def __abs__(self):
         pass
@@ -46,7 +46,7 @@ class PyObject(Object):
     def __delitem__(self, key):
         pass
 
-    def __delslice__(self, start, stop, step=None):
+    def __delslice__(self, *args):
         pass
 
     def __dir__(self):
@@ -88,7 +88,7 @@ class PyObject(Object):
     def __getnewargs__(self):
         pass
 
-    def __getslice__(self, start, stop, step=None):
+    def __getslice__(self, *args):
         pass
 
     def __gt__(self, other):
@@ -283,7 +283,7 @@ class PyObject(Object):
     def _divmod(self, o2):
         pass
 
-    def _doget(self, container, wherefound=None):
+    def _doget(self, *args):
         pass
 
     def _doset(self, container, value):
@@ -403,25 +403,25 @@ class PyObject(Object):
     def asDouble(self):
         pass
 
-    def asIndex(self, err=None):
+    def asIndex(self, *args):
         pass
 
-    def asInt(self, index=None):
+    def asInt(self, *args):
         pass
 
     def asIterable(self):
         pass
 
-    def asLong(self, index=None):
+    def asLong(self, *args):
         pass
 
     def asName(self, arg):
         pass
 
-    def asString(self, index=None):
+    def asString(self, *args):
         pass
 
-    def asStringOrNull(self, index=None):
+    def asStringOrNull(self, *args):
         pass
 
     def bit_length(self):

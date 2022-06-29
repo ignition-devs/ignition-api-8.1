@@ -2,23 +2,35 @@ from __future__ import print_function
 
 __all__ = ["BrowseTag", "OPCBrowseTag"]
 
-from java.lang import Object
+from typing import Optional
+
+from com.inductiveautomation.ignition.common.opc import BrowseElementType
+from com.inductiveautomation.ignition.common.sqltags.model.types import DataType
+from com.inductiveautomation.ignition.common.tags.config.types import TagObjectType
+from java.lang import Class, Object
 
 
 class BrowseTag(Object):
+    dataType = None  # type: DataType
+    name = None  # type: str
+    fullPath = None  # type: str
+    path = None  # type: str
+    type = None  # type: TagObjectType
+    valueSource = None  # type: str
+
     def __init__(
         self,
-        name=None,
-        path=None,
-        fullPath=None,
-        type=None,
-        valueSource=None,
-        dataType=None,
+        name,  # type: str
+        path,  # type: str
+        fullPath,  # type: str
+        type_,  # type: TagObjectType
+        valueSource,  # type: str
+        dataType,  # type: DataType
     ):
         self.name = name
         self.path = path
         self.fullPath = fullPath
-        self.type = type
+        self.type = type_
         self.valueSource = valueSource
         self.dataType = dataType
 
@@ -69,34 +81,35 @@ class BrowseTag(Object):
 class OPCBrowseTag(Object):
     def __init__(
         self,
-        opcServer=None,
-        type=None,
-        displayName=None,
-        displayPath=None,
-        dataType=None,
-        opcItemPath=None,
+        opcServer=None,  # type: Optional[str]
+        type_=None,  # type: Optional[BrowseElementType]
+        displayName=None,  # type: Optional[str]
+        displayPath=None,  # type: Optional[str]
+        dataType=None,  # type: Optional[Class]
+        opcItemPath=None,  # type: Optional[str]
     ):
-        self.opcServer = opcServer
-        self.type = type
-        self.displayName = displayName
-        self.displayPath = displayPath
-        self.dataType = dataType
-        self.opcItemPath = opcItemPath
+        # type: (...) -> None
+        self._opcServer = opcServer
+        self._type = type_
+        self._displayName = displayName
+        self._displayPath = displayPath
+        self._dataType = dataType
+        self._opcItemPath = opcItemPath
 
     def getDataType(self):
-        return self.dataType
+        return self._dataType
 
     def getDisplayName(self):
-        return self.displayName
+        return self._displayName
 
     def getDisplayPath(self):
-        return self.displayPath
+        return self._displayPath
 
     def getOpcItemPath(self):
-        return self.opcItemPath
+        return self._opcItemPath
 
     def getOpcServer(self):
-        return self.opcServer
+        return self._opcServer
 
     def getType(self):
-        return self.type
+        return self._type

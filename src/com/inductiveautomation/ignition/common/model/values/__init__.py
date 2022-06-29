@@ -1,4 +1,7 @@
-__all__ = ["BasicQualifiedValue", "QualifiedValue", "QualityCode"]
+__all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
+
+from enum import Enum
+from typing import Any
 
 from java.lang import Object
 from java.util import Date
@@ -19,54 +22,82 @@ class QualifiedValue(object):
         raise NotImplementedError
 
 
+class Quality(object):
+    """Needed for gateway network interop with v7, but otherwise not
+    used."""
+
+    def getDescription(self):
+        pass
+
+    def getLevel(self):
+        pass
+
+    def getName(self):
+        pass
+
+    def getQualityCode(self):
+        pass
+
+    def isGood(self):
+        pass
+
+    class Level(Enum):
+        Bad = 512
+        Good = 192
+        Unknown = 256
+
+        def values(self):
+            pass
+
+
 class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string.
     """
 
-    Bad = None
-    Bad_AccessDenied = None
-    Bad_AggregateNotFound = None
-    Bad_DatabaseNotConnected = None
-    Bad_Disabled = None
-    Bad_Failure = None
-    Bad_GatewayCommOff = None
-    Bad_LicenseExceeded = None
-    Bad_NotConnected = None
-    Bad_NotFound = None
-    Bad_OutOfRange = 524
-    Bad_ReadOnly = None
-    Bad_Stale = None
-    Bad_ReferenceNotFound = None
-    Bad_TrialExpired = None
-    Bad_Unauthorized = None
-    Bad_Unsupported = None
-    Error = None
-    Error_Configuration = None
-    Error_CycleDetected = None
-    Error_DatabaseQuery = None
-    Error_Exception = None
-    Error_ExpressionEval = None
-    Error_Formatting = None
-    Error_InvalidPathSyntax = None
-    Error_IO = None
-    Error_ScriptEval = None
-    Error_TagExecution = None
-    Error_TimeoutExpired = None
-    Error_TypeConversion = None
-    Good = None
-    Good_Backfill = None
-    Good_Initial = None
-    Good_Overload = None
-    Good_Provisional = None
-    Good_Unspecified = None
-    Good_WritePending = None
-    Uncertain = None
-    Uncertain_LastKnownValue = None
-    Uncertain_InitialValue = None
-    Uncertain_DataSubNormal = None
-    Uncertain_EngineeringUnitsExceeded = None
-    Uncertain_IncompleteOperation = None
+    Bad = None  # type: QualityCode
+    Bad_AccessDenied = None  # type: QualityCode
+    Bad_AggregateNotFound = None  # type: QualityCode
+    Bad_DatabaseNotConnected = None  # type: QualityCode
+    Bad_Disabled = None  # type: QualityCode
+    Bad_Failure = None  # type: QualityCode
+    Bad_GatewayCommOff = None  # type: QualityCode
+    Bad_LicenseExceeded = None  # type: QualityCode
+    Bad_NotConnected = None  # type: QualityCode
+    Bad_NotFound = None  # type: QualityCode
+    Bad_OutOfRange = None  # type: QualityCode
+    Bad_ReadOnly = None  # type: QualityCode
+    Bad_Stale = None  # type: QualityCode
+    Bad_ReferenceNotFound = None  # type: QualityCode
+    Bad_TrialExpired = None  # type: QualityCode
+    Bad_Unauthorized = None  # type: QualityCode
+    Bad_Unsupported = None  # type: QualityCode
+    Error = None  # type: QualityCode
+    Error_Configuration = None  # type: QualityCode
+    Error_CycleDetected = None  # type: QualityCode
+    Error_DatabaseQuery = None  # type: QualityCode
+    Error_Exception = None  # type: QualityCode
+    Error_ExpressionEval = None  # type: QualityCode
+    Error_Formatting = None  # type: QualityCode
+    Error_InvalidPathSyntax = None  # type: QualityCode
+    Error_IO = None  # type: QualityCode
+    Error_ScriptEval = None  # type: QualityCode
+    Error_TagExecution = None  # type: QualityCode
+    Error_TimeoutExpired = None  # type: QualityCode
+    Error_TypeConversion = None  # type: QualityCode
+    Good = None  # type: QualityCode
+    Good_Backfill = None  # type: QualityCode
+    Good_Initial = None  # type: QualityCode
+    Good_Overload = None  # type: QualityCode
+    Good_Provisional = None  # type: QualityCode
+    Good_Unspecified = None  # type: QualityCode
+    Good_WritePending = None  # type: QualityCode
+    Uncertain = None  # type: QualityCode
+    Uncertain_LastKnownValue = None  # type: QualityCode
+    Uncertain_InitialValue = None  # type: QualityCode
+    Uncertain_DataSubNormal = None  # type: QualityCode
+    Uncertain_EngineeringUnitsExceeded = None  # type: QualityCode
+    Uncertain_IncompleteOperation = None  # type: QualityCode
 
     def __init__(self, *args):
         pass
@@ -123,9 +154,9 @@ class QualityCode(Object):
 class BasicQualifiedValue(QualifiedValue, Object):
     """The basic implementation of QualifiedValue."""
 
-    quality = QualityCode.Bad_Stale
-    timestamp = Date()
-    value = None
+    quality = QualityCode.Bad_Stale  # type: QualityCode
+    timestamp = Date()  # type: Date
+    value = None  # type: Any
 
     def __init__(self, *arg):
         pass

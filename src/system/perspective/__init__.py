@@ -43,11 +43,11 @@ String = Union[str, unicode]
 
 
 def alterLogging(
-    remoteLoggingEnabled=False,  # type: Optional[bool]
-    level="info",  # type: Optional[String]
-    remoteLoggingLevel="warn",  # type: Optional[String]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    remoteLoggingEnabled=False,  # type: bool
+    level="info",  # type: String
+    remoteLoggingLevel="warn",  # type: String
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
 ):
     # type: (...) -> None
     """Changes Perspective Session logging attributes and levels.
@@ -77,13 +77,13 @@ def alterLogging(
 
 
 def authenticationChallenge(
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    idp="",  # type: Optional[String]
-    forceAuth=False,  # type: Optional[bool]
-    timeout=2,  # type: Optional[int]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    idp="",  # type: String
+    forceAuth=False,  # type: bool
+    timeout=2,  # type: int
     payload=None,  # type: Optional[Dict[String, Any]]
-    framing="self",  # type: Optional[String]
+    framing="self",  # type: String
 ):
     # type: (...) -> None
     """Triggers an authentication challenge action.
@@ -127,7 +127,7 @@ def authenticationChallenge(
 
 
 def closeDock(id, sessionId="current_session", pageId="current_page"):
-    # type: (String, Optional[String], Optional[String]) -> None
+    # type: (String, String, String) -> None
     """Closes a docked view.
 
     Args:
@@ -146,8 +146,8 @@ def closeDock(id, sessionId="current_session", pageId="current_page"):
 
 def closePage(
     message=None,  # type: Optional[String]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
 ):
     # type: (...) -> None
     """Closes the page with the given page id or the current page if no
@@ -172,7 +172,7 @@ def closePage(
 
 
 def closePopup(id, sessionId="current_session", pageId="current_page"):
-    # type: (String, Optional[String], Optional[String]) -> None
+    # type: (String, String, String) -> None
     """Closes a popup View.
 
     Args:
@@ -190,7 +190,7 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
 
 
 def closeSession(message=None, sessionId="current_session"):
-    # type: (Optional[String], Optional[String]) -> None
+    # type: (Optional[String], String) -> None
     """Closes the Perspective Session with the given Session ID or the
     current Session if no ID is provided.
 
@@ -212,8 +212,8 @@ def download(
     filename,  # type: String
     data,  # type: Any
     contentType=None,  # type: Optional[String]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
 ):
     # type: (...) -> None
     """Downloads data from the gateway to a device running a Session.
@@ -276,7 +276,7 @@ def getSessionInfo(
 
 
 def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
-    # type: (bool, List[String], Optional[String]) -> bool
+    # type: (bool, List[String], String) -> bool
     """Checks if the user in the current Session is authorized against a
     target collection of security levels.
 
@@ -301,7 +301,7 @@ def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
 
 
 def login(sessionId="current_session", pageId="current_page", forceAuth=False):
-    # type: (Optional[String], Optional[String], Optional[bool]) -> None
+    # type: (String, String, bool) -> None
     """Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP).
 
@@ -335,9 +335,9 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
 
 
 def logout(
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    message="default message",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    message="default message",  # type: String
 ):
     # type: (...) -> None
     """Triggers a logout event, which will log the user out.
@@ -365,9 +365,9 @@ def navigate(
     url=None,  # type: Optional[String]
     view=None,  # type: Optional[String]
     params=None,  # type: Optional[Dict[String, String]]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    newTab=False,  # type: Optional[bool]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    newTab=False,  # type: bool
 ):
     # type: (...) -> None
     """Navigate the Session to a specified view or mounted page.
@@ -410,7 +410,7 @@ def navigate(
 
 
 def navigateBack(sessionId="current_session", pageId="current_page"):
-    # type: (Optional[String], Optional[String]) -> None
+    # type: (String, String) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "back" function.
@@ -425,7 +425,7 @@ def navigateBack(sessionId="current_session", pageId="current_page"):
 
 
 def navigateForward(sessionId="current_session", pageId="current_page"):
-    # type: (Optional[String], Optional[String]) -> None
+    # type: (String, String) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "forward" function.
@@ -443,8 +443,8 @@ def navigateForward(sessionId="current_session", pageId="current_page"):
 
 def openDock(
     id,  # type: String
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
     params=None,  # type: Optional[Dict[String, String]]
 ):
     # type: (...) -> None
@@ -472,16 +472,16 @@ def openPopup(
     id,  # type: String
     view,  # type: String
     params=None,  # type: Optional[Dict[String, Any]]
-    title="",  # type: Optional[String]
+    title="",  # type: String
     position=None,  # type: Optional[Dict[String, int]]
-    showCloseIcon=True,  # type: Optional[bool]
-    draggable=True,  # type: Optional[bool]
-    resizable=False,  # type: Optional[bool]
-    modal=False,  # type: Optional[bool]
-    overlayDismiss=False,  # type: Optional[bool]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    viewPortBound=False,  # type: Optional[bool]
+    showCloseIcon=True,  # type: bool
+    draggable=True,  # type: bool
+    resizable=False,  # type: bool
+    modal=False,  # type: bool
+    overlayDismiss=False,  # type: bool
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
     """Open a popup view over the given page.
@@ -540,9 +540,9 @@ def openPopup(
 
 def print(
     message,  # type: String
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    destination="client",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    destination="client",  # type: String
 ):
     # type: (...) -> None
     """Sends print statements to the scripting console when in the
@@ -590,9 +590,9 @@ def refresh(sessionId="current_session", pageId="current_page"):
 def sendMessage(
     messageType,  # type: String
     payload,  # type: Dict[String, String]
-    scope="page",  # type: Optional[String]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    scope="page",  # type: String
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
 ):
     # type: (...) -> None
     """Send a message to a message handler within the same Session.
@@ -639,8 +639,8 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
 
 def toggleDock(
     id,  # type: String
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
     params=None,  # type: Optional[Dict[String, String]]
 ):
     # type: (...) -> None
@@ -666,16 +666,16 @@ def togglePopup(
     id,  # type: String
     view,  # type: String
     params,  # type: Optional[Dict[String, Any]]
-    title="",  # type: Optional[String]
+    title="",  # type: String
     position=None,  # type: Optional[Dict[String, int]]
-    showCloseIcon=True,  # type: Optional[bool]
-    draggable=True,  # type: Optional[bool]
-    resizable=False,  # type: Optional[bool]
-    modal=False,  # type: Optional[bool]
-    overlayDismiss=False,  # type: Optional[bool]
-    sessionId="current_session",  # type: Optional[String]
-    pageId="current_page",  # type: Optional[String]
-    viewPortBound=False,  # type: Optional[bool]
+    showCloseIcon=True,  # type: bool
+    draggable=True,  # type: bool
+    resizable=False,  # type: bool
+    modal=False,  # type: bool
+    overlayDismiss=False,  # type: bool
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+    viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
     """Toggles a popup view.

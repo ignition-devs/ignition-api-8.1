@@ -1,18 +1,36 @@
 from __future__ import print_function
 
 __all__ = [
+    "Icon",
     "JComponent",
+    "JDesktopPane",
     "JFrame",
     "JInternalFrame",
     "JLabel",
+    "JLayeredPane",
     "JOptionPane",
     "JPanel",
     "JPopupMenu",
     "JTextField",
 ]
 
+from typing import Any, List, Optional, Union
+
 from java.awt import Container, Frame
 from javax.swing.text import JTextComponent
+
+String = Union[str, unicode]
+
+
+class Icon(object):
+    def getIconHeight(self):
+        pass
+
+    def getIconWidth(self):
+        pass
+
+    def paintIcon(self, c, g, x, y):
+        pass
 
 
 class JComponent(Container):
@@ -47,6 +65,63 @@ class JLabel(JComponent):
         pass
 
 
+class JLayeredPane(JComponent):
+    DEFAULT_LAYER = 0
+    DRAG_LAYER = 400
+    FRAME_CONTENT_LAYER = -30000
+    LAYER_PROPERTY = "layeredContainerLayer"
+    MODAL_LAYER = 200
+    PALETTE_LAYER = 100
+    POPUP_LAYER = 300
+
+    def __init__(self):
+        pass
+
+    def getComponentCountInLayer(self, layer):
+        pass
+
+    def getLayer(self, c):
+        pass
+
+    def highestLayer(self):
+        pass
+
+    def lowestLayer(self):
+        pass
+
+    def setPosition(self, c, position):
+        pass
+
+
+class JDesktopPane(JLayeredPane):
+    def __init__(self):
+        super(JDesktopPane, self).__init__()
+
+    def getAllFrames(self):
+        pass
+
+    def getAllFramesInLayer(self):
+        pass
+
+    def getDesktopManager(self):
+        pass
+
+    def getDragMode(self):
+        pass
+
+    def getSelectedFrame(self):
+        pass
+
+    def getUI(self):
+        pass
+
+    def getUIClassID(self):
+        pass
+
+    def updateUI(self):
+        pass
+
+
 class JOptionPane(JComponent):
     """JOptionPane makes it easy to pop up a standard dialog box that
     prompts users for a value or informs them of something. For
@@ -77,26 +152,28 @@ class JOptionPane(JComponent):
 
     @staticmethod
     def showConfirmDialog(
-        parentComponent,
-        message,
-        title=None,
-        optionType=None,
-        messageType=None,
-        icon=None,
+        parentComponent,  # type: Optional[Any]
+        message,  # type: Any
+        title=None,  # type: Optional[String]
+        optionType=None,  # type: Optional[int]
+        messageType=None,  # type: Optional[int]
+        icon=None,  # type: Optional[Icon]
     ):
+        # type: (...) -> int
         print(parentComponent, message, title, optionType, messageType, icon)
         return JOptionPane.YES_OPTION
 
     @staticmethod
     def showInputDialog(
-        parentComponent,
-        message,
-        title=None,
-        messageType=None,
-        icon=None,
-        selectionValues=None,
-        initialSelectionValue=None,
+        parentComponent,  # type: Optional[Any]
+        message,  # type: Any
+        title=None,  # type: Optional[String]
+        messageType=None,  # type: Optional[int]
+        icon=None,  # type: Optional[Icon]
+        selectionValues=None,  # type: Optional[List[Any]]
+        initialSelectionValue=None,  # type: Optional[Any]
     ):
+        # type: (...) -> String
         print(
             parentComponent,
             message,
@@ -110,21 +187,27 @@ class JOptionPane(JComponent):
 
     @staticmethod
     def showMessageDialog(
-        parentComponent, message, title=None, messageType=None, icon=None
+        parentComponent,  # type: Optional[Any]
+        message,  # type: Any
+        title=None,  # type: Optional[String]
+        messageType=None,  # type: Optional[int]
+        icon=None,  # type: Optional[Icon]
     ):
+        # type: (...) -> None
         print(parentComponent, message, title, messageType, icon)
 
     @staticmethod
     def showOptionDialog(
-        parentComponent,
-        message,
-        title=None,
-        optionType=None,
-        messageType=None,
-        icon=None,
-        options=None,
-        initialValue=None,
+        parentComponent,  # type: Optional[Any]
+        message,  # type: Any
+        title=None,  # type: Optional[String]
+        optionType=None,  # type: Optional[int]
+        messageType=None,  # type: Optional[int]
+        icon=None,  # type: Optional[Icon]
+        options=None,  # type: Optional[List[Any]]
+        initialValue=None,  # type: Optional[Any]
     ):
+        # type: (...) -> int
         print(
             parentComponent,
             message,

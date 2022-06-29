@@ -4,7 +4,11 @@ utility classes (a string tokenizer, a random-number generator, and a
 bit array).
 """
 
+from __future__ import print_function
+
 __all__ = ["Date", "EventObject", "Locale"]
+
+from typing import Optional
 
 from java.lang import Object
 
@@ -15,15 +19,43 @@ class Date(Object):
     """
 
     def __init__(self, date=None):
+        # type: (Optional[long]) -> None
         print(self, date)
 
+    def __cmp__(self, other):
+        # type: (Date) -> bool
+        pass
+
+    def __ge__(self, other):
+        # type: (Date) -> bool
+        pass
+
+    def __gt__(self, other):
+        # type: (Date) -> bool
+        pass
+
+    def __lt__(self, other):
+        # type: (Date) -> bool
+        pass
+
     def after(self, when):
+        # type: (Date) -> bool
         pass
 
     def before(self, when):
+        # type: (Date) -> bool
         pass
 
     def compareTo(self, anotherDate):
+        # type: (Date) -> int
+        pass
+
+    def getTime(self):
+        # type: () -> long
+        pass
+
+    def setTime(self, time):
+        # type: (long) -> None
         pass
 
 
@@ -35,6 +67,8 @@ class EventObject(Object):
     "source", that is logically deemed to be the object upon which the
     Event in question initially occurred upon.
     """
+
+    source = None  # type: Object
 
     def __init__(self, source):
         self.source = source
@@ -58,7 +92,12 @@ class Locale(Object):
     or culture.
     """
 
+    country = None  # type: Optional[str]
+    language = None  # type: str
+    variant = None  # type: Optional[str]
+
     def __init__(self, language, country=None, variant=None):
+        # type: (str, Optional[str], Optional[str]) -> None
         self.language = language
         self.country = country
         self.variant = variant

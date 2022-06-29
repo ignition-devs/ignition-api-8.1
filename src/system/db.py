@@ -102,13 +102,13 @@ SERIALIZABLE = 8
 def addDatasource(
     jdbcDriver,  # type: String
     name,  # type: String
-    description="",  # type: Optional[String]
+    description="",  # type: String
     connectUrl=None,  # type: Optional[String]
     username=None,  # type: Optional[String]
     password=None,  # type: Optional[String]
     props=None,  # type: Optional[String]
     validationQuery=None,  # type: Optional[String]
-    maxConnections=8,  # type: Optional[int]
+    maxConnections=8,  # type: int
 ):
     # type: (...) -> None
     """Adds a new database connection in Ignition.
@@ -299,9 +299,9 @@ def commitTransaction(tx):
 
 def createSProcCall(
     procedureName,  # type: String
-    database="",  # type: Optional[String]
+    database="",  # type: String
     tx=None,  # type: Optional[String]
-    skipAudit=False,  # type: Optional[bool]
+    skipAudit=False,  # type: bool
 ):
     # type: (...) -> SProcCall
     """Creates an SProcCall object, which is a stored procedure call
@@ -483,7 +483,7 @@ def runNamedQuery(*args):
 def runPrepQuery(
     query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[String]
+    database="",  # type: String
     tx=None,  # type: Optional[String]
 ):
     # type: (...) -> PyDataSet
@@ -533,10 +533,10 @@ def runPrepQuery(
 def runPrepUpdate(
     query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[String]
+    database="",  # type: String
     tx=None,  # type: Optional[String]
-    getKey=False,  # type: Optional[bool]
-    skipAudit=True,  # type: Optional[bool]
+    getKey=False,  # type: bool
+    skipAudit=True,  # type: bool
 ):
     # type: (...) -> int
     """Runs a prepared statement against the database, returning the
@@ -682,7 +682,7 @@ def runSFUpdateQuery(query, datasources):
 def runScalarPrepQuery(
     query,  # type: String
     args,  # type: List[Any]
-    database="",  # type: Optional[String]
+    database="",  # type: String
     tx=None,  # type: Optional[String]
 ):
     # type: (...) -> Any
@@ -739,10 +739,10 @@ def runScalarQuery(query, database="", tx=None):
 
 def runUpdateQuery(
     query,  # type: String
-    database="",  # type: Optional[String]
+    database="",  # type: String
     tx=None,  # type: Optional[String]
-    getKey=False,  # type: Optional[bool]
-    skipAudit=True,  # type: Optional[bool]
+    getKey=False,  # type: bool
+    skipAudit=True,  # type: bool
 ):
     # type: (...) -> int
     """Runs a query against a database connection, returning the number

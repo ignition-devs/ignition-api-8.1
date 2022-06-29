@@ -470,13 +470,13 @@ def messageBox(message, title="Information"):
 
 
 def openDesktop(
-    screen=0,  # type: Optional[int]
+    screen=0,  # type: int
     handle=None,  # type: Optional[String]
     title=None,  # type: Optional[String]
     width=None,  # type: Optional[int]
     height=None,  # type: Optional[int]
-    x=0,  # type: Optional[int]
-    y=0,  # type: Optional[int]
+    x=0,  # type: int
+    y=0,  # type: int
     windows=None,  # type: Optional[List[String]]
 ):
     # type: (...) -> JFrame
@@ -526,8 +526,8 @@ def openDiagnostics():
 
 def passwordBox(
     message,  # type:String
-    title="Password",  # type: Optional[String]
-    echoChar="*",  # type: Optional[String]
+    title="Password",  # type: String
+    echoChar="*",  # type: String
 ):
     # type: (...) -> Optional[String]
     """Pops up a special input box that uses a password field, so the
@@ -576,7 +576,7 @@ def setTouchscreenModeEnabled(enabled):
 def showNumericKeypad(
     initialValue,  # type: Union[float, int]
     fontSize=None,  # type: Optional[int]
-    usePasswordMode=False,  # type: Optional[bool]
+    usePasswordMode=False,  # type: bool
 ):
     # type: (...) -> Union[float, int]
     """Displays a modal on-screen numeric keypad, allowing for arbitrary
@@ -622,9 +622,9 @@ def transform(
     newY=None,  # type: Optional[int]
     newWidth=None,  # type: Optional[int]
     newHeight=None,  # type: Optional[int]
-    duration=0,  # type: Optional[int]
+    duration=0,  # type: int
     callback=None,  # type: Optional[Callable[..., Any]]
-    framesPerSecond=60,  # type: Optional[int]
+    framesPerSecond=60,  # type: int
     acceleration=None,  # type: Optional[int]
     coordSpace=None,  # type: Optional[int]
 ):

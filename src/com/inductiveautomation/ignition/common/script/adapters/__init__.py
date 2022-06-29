@@ -2,7 +2,10 @@ from __future__ import print_function
 
 __all__ = ["PyJsonObjectAdapter"]
 
+from typing import Optional
+
 from java.lang import Object
+from org.python.core import PyObject
 
 
 class PyJsonObjectAdapter(Object):
@@ -31,6 +34,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def get(self, key, default=None):
+        # type: (PyObject, Optional[PyObject]) -> PyObject
         pass
 
     def has_key(self, key):

@@ -2,6 +2,8 @@ from __future__ import print_function
 
 __all__ = ["Result", "Results"]
 
+from typing import Optional
+
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from java.lang import Object
 
@@ -32,42 +34,43 @@ class Results(Object):
 
     def __init__(self, *args):
         print(args)
-        self.continuationPoint = ""
-        self.resultQuality = QualityCode.Good
-        self.results = []
-        self.totalAvailableResults = 0
+        self._continuationPoint = ""
+        self._resultQuality = QualityCode.Good
+        self._results = []
+        self._totalAvailableResults = 0
 
     @staticmethod
     def error(result):
         return Results(result)
 
     def getContinuationPoint(self):
-        return self.continuationPoint
+        return self._continuationPoint
 
     def getResultQuality(self):
-        return self.resultQuality
+        return self._resultQuality
 
     def getResults(self):
-        return self.results
+        return self._results
 
     def getReturnedSize(self):
-        return 0 if self.results is None else len(self.results)
+        return 0 if self._results is None else len(self._results)
 
     def getTotalAvailableSize(self):
-        return self.totalAvailableResults
+        return self._totalAvailableResults
 
     @staticmethod
     def of(results):
         return Results(results)
 
     def setContinuationPoint(self, continuationPoint=None):
-        self.continuationPoint = continuationPoint
+        # type: (Optional[str]) -> None
+        self._continuationPoint = continuationPoint
 
     def setResultQuality(self, value):
-        self.resultQuality = value
+        self._resultQuality = value
 
     def setResults(self, results):
-        self.results = results
+        self._results = results
 
     def setTotalAvailableResults(self, totalAvailableResults):
-        self.totalAvailableResults = totalAvailableResults
+        self._totalAvailableResults = totalAvailableResults

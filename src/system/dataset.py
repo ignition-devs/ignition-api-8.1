@@ -302,7 +302,7 @@ def exportCSV(filename, showHeaders, dataset):
 
 
 def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
-    # type: (String, bool, List[BasicDataset], Optional[bool]) -> String
+    # type: (String, bool, List[BasicDataset], bool) -> String
     """Exports the contents of a dataset as an Excel spreadsheet,
     prompting the user to save the file to disk.
 
@@ -468,7 +468,7 @@ def setValue(dataset, rowIndex, columnName, value):
 def sort(
     dataset,  # type: BasicDataset
     keyColumn,  # type: Union[String, int]
-    ascending=True,  # type: Optional[bool]
+    ascending=True,  # type: bool
 ):
     # type: (...) -> BasicDataset
     """Takes a dataset and returns a sorted version of dataset.
@@ -500,9 +500,9 @@ def sort(
 
 def toCSV(
     dataset,  # type: BasicDataset
-    showHeaders=True,  # type: Optional[bool]
-    forExport=False,  # type: Optional[bool]
-    localized=False,  # type: Optional[bool]
+    showHeaders=True,  # type: bool
+    forExport=False,  # type: bool
+    localized=False,  # type: bool
 ):
     # type: (...) -> String
     """Formats the contents of a dataset as CSV (comma separated
@@ -553,7 +553,7 @@ def toDataSet(*args):
 def toExcel(
     showHeaders,  # type: bool
     dataset,  # type: List[BasicDataset]
-    nullsEmpty=False,  # type: Optional[bool]
+    nullsEmpty=False,  # type: bool
     sheetNames=None,  # type: Optional[List[String]]
 ):
     # type: (...) -> Any

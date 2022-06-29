@@ -101,7 +101,7 @@ def browseHistoricalTags(
 
 
 def configure(basePath, tags, collisionPolicy="o"):
-    # type: (String, Any, Optional[String]) -> List[QualityCode]
+    # type: (String, Any, String) -> List[QualityCode]
     """Creates Tags from a given list of Python dictionaries or from a
     JSON source string.
 
@@ -148,7 +148,7 @@ def configure(basePath, tags, collisionPolicy="o"):
 def copy(
     tags,  # type: List[String]
     destination,  # type: String
-    collisionPolicy="o",  # type: Optional[String]
+    collisionPolicy="o",  # type: String
 ):
     # type: (...) -> List[QualityCode]
     """Copies tags from one folder to another.
@@ -241,8 +241,8 @@ def exists(tagPath):
 def exportTags(
     filePath,  # type: String
     tagPaths,  # type: List[String]
-    recursive=True,  # type: Optional[bool]
-    exportType="json",  # type: Optional[String]
+    recursive=True,  # type: bool
+    exportType="json",  # type: String
 ):
     # type: (...) -> None
     """Exports Tags to a file on a local file system.
@@ -266,7 +266,7 @@ def exportTags(
 
 
 def getConfiguration(basePath, recursive=False):
-    # type: (String, Optional[bool]) -> List[Dict[String, Any]]
+    # type: (String, bool) -> List[Dict[String, Any]]
     """Retrieves Tags from the Gateway as Python dictionaries.
 
     These can be edited and then saved back using system.tag.configure.
@@ -290,7 +290,7 @@ def getConfiguration(basePath, recursive=False):
 
 
 def importTags(filePath, basePath, collisionPolicy="o"):
-    # type: (String, String, Optional[String]) -> List[QualityCode]
+    # type: (String, String, String) -> List[QualityCode]
     """Imports a JSON Tag file at the provided path.
 
     Also supports XML and CSV Tag file exports from legacy systems.
@@ -325,7 +325,7 @@ def isOverlaysEnabled():
 
 
 def move(tags, destination, collisionPolicy="o"):
-    # type: (String, String, Optional[String]) -> List[QualityCode]
+    # type: (String, String, String) -> List[QualityCode]
     """Moves Tags or Folders to a new destination.
 
     The new destination can be a separate Tag provider. If interested in
@@ -390,10 +390,10 @@ def queryTagCalculations(
     rangeHours=None,  # type: Optional[int]
     rangeMinutes=None,  # type: Optional[int]
     aliases=None,  # type: Optional[List[String]]
-    includeBoundingValues=True,  # type: Optional[bool]
-    validatesSCExec=True,  # type: Optional[bool]
-    noInterpolation=False,  # type: Optional[bool]
-    ignoreBadQuality=False,  # type: Optional[bool]
+    includeBoundingValues=True,  # type: bool
+    validatesSCExec=True,  # type: bool
+    noInterpolation=False,  # type: bool
+    ignoreBadQuality=False,  # type: bool
 ):
     # type: (...) -> BasicDataset
     """Queries various calculations (aggregations) for a set of tags
@@ -510,9 +510,9 @@ def queryTagHistory(
     paths,  # type: List[String]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
-    returnSize=-1,  # type: Optional[int]
-    aggregationMode="Average",  # type: Optional[String]
-    returnFormat="Wide",  # type: Optional[String]
+    returnSize=-1,  # type: int
+    aggregationMode="Average",  # type: String
+    returnFormat="Wide",  # type: String
     columnNames=None,  # type: Optional[List[String]]
     intervalHours=None,  # type: Optional[int]
     intervalMinutes=None,  # type: Optional[int]
@@ -650,7 +650,7 @@ def readAsync(tagPaths, callback):
 
 
 def readBlocking(tagPaths, timeout=45000):
-    # type: (List[String], Optional[int]) -> List[BasicQualifiedValue]
+    # type: (List[String], int) -> List[BasicQualifiedValue]
     """Reads the value of the Tags at the given paths.
 
     Will block until the read operation is complete or times out.
@@ -670,7 +670,7 @@ def readBlocking(tagPaths, timeout=45000):
 
 
 def rename(tag, newName, collisionPollicy="a"):
-    # type: (String, String, Optional[String]) -> QualityCode
+    # type: (String, String, String) -> QualityCode
     """Renames a single Tag or folder.
 
     Args:
@@ -847,7 +847,7 @@ def writeAsync(
 def writeBlocking(
     tagPaths,  # type: List[String]
     values,  # type: List[Any]
-    timeout=45000,  # type: Optional[int]
+    timeout=45000,  # type: int
 ):
     # type: (...) -> List[QualityCode]
     """Writes values to Tags at the given paths.

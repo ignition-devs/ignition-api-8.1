@@ -30,8 +30,9 @@ from com.inductiveautomation.ignition.common.opc import BasicOPCBrowseElement
 from com.inductiveautomation.ignition.common.script.builtin import AbstractOPCUtilities
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBrowseTag
 
-PyOPCTag = AbstractOPCUtilities.PyOPCTag
 String = Union[str, unicode]
+
+PyOPCTag = AbstractOPCUtilities.PyOPCTag
 
 
 def browse(opcServer, device, folderPath, opcItemPath):

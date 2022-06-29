@@ -1,6 +1,7 @@
 __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 
 from java.lang import Object
+from java.util import Locale
 
 
 class MessageInterface(object):
@@ -21,7 +22,8 @@ class MessageReceiver(object):
 
 class UIResponse(Object):
     def __init__(self, locale):
-        self.locale = locale
+        # type: (Locale) -> None
+        self._locale = locale
 
     def attempt(self, method):
         pass
@@ -36,7 +38,8 @@ class UIResponse(Object):
         pass
 
     def getLocale(self):
-        pass
+        # type: () -> Locale
+        return self._locale
 
     def getWarns(self):
         pass

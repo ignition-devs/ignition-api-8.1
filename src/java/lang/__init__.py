@@ -5,11 +5,14 @@ programming language.
 from __future__ import print_function
 
 __all__ = [
+    "Class",
+    "Enum",
     "Exception",
     "IllegalArgumentException",
     "Iterable",
     "Object",
     "RuntimeException",
+    "StackTraceElement",
     "Thread",
     "Throwable",
 ]
@@ -17,6 +20,63 @@ __all__ = [
 import __builtin__ as builtins
 import copy
 import time
+
+
+class Object(object):
+    """Class Object is the root of the class hierarchy. Every class has
+    Object as a superclass. All objects, including arrays, implement the
+    methods of this class.
+    """
+
+    def clone(self):
+        return copy.deepcopy(self)
+
+    def equals(self, obj):
+        pass
+
+    def getClass(self):
+        pass
+
+    def hashCode(self):
+        pass
+
+    def notify(self):
+        pass
+
+    def notifyAll(self):
+        pass
+
+    def toString(self):
+        return repr(self)
+
+    def wait(self, timeoutMillis=0, nanos=0):
+        # type: (long, int) -> None
+        pass
+
+
+class Class(Object):
+    def asSubClass(self, clazz):
+        pass
+
+    def cast(self, obj):
+        pass
+
+
+class Enum(Object):
+    def compareTo(self, o):
+        pass
+
+    def getDeclaringClass(self):
+        pass
+
+    def name(self):
+        pass
+
+    def ordinal(self):
+        pass
+
+    def valueOf(self, enumType, name):
+        pass
 
 
 class Iterable(object):
@@ -38,35 +98,40 @@ class Iterable(object):
         pass
 
 
-class Object(object):
-    """Class Object is the root of the class hierarchy. Every class has
-    Object as a superclass. All objects, including arrays, implement the
-    methods of this class.
-    """
-
-    def clone(self):
-        return copy.deepcopy(self)
-
-    def equals(self, obj):
-        print(self, obj)
-        return True
-
-    def getClass(self):
+class StackTraceElement(Object):
+    def __init__(self, *args):
         pass
 
-    def hashCode(self):
+    def getClassLoaderName(self):
+        # type: () -> str
         pass
 
-    def notify(self):
+    def getClassName(self):
+        # type: () -> str
         pass
 
-    def notifyAll(self):
+    def getFileName(self):
+        # type: () -> str
         pass
 
-    def toString(self):
-        return repr(self)
+    def getLineNumber(self):
+        # type: () -> int
+        pass
 
-    def wait(self, timeoutMillis=None, nanos=None):
+    def getMethodName(self):
+        # type: () -> str
+        pass
+
+    def getModuleName(self):
+        # type: () -> str
+        pass
+
+    def getModuleVersion(self):
+        # type: () -> str
+        pass
+
+    def isNativeMethod(self):
+        # type: () -> bool
         pass
 
 
@@ -76,28 +141,35 @@ class Throwable(Object, builtins.Exception):
     """
 
     def __init__(self, message=None, cause=None):
+        # type: (str, Throwable) -> None
         self._cause = cause
-        self.message = message
+        self._message = message
         builtins.Exception.__init__(self, message)
 
     @property
     def cause(self):
-        return self._cause
+        # type: () -> Throwable
+        pass
 
     def addSuppressed(self, exception):
+        # type: (Throwable) -> None
         pass
 
     def fillInStackTrace(self):
+        # type: () -> Throwable
         pass
 
     def getCause(self):
+        # type: () -> Throwable
         return self.cause
 
     def getLocalizedMessage(self):
+        # type: () -> str
         return self.message
 
     def getMessage(self):
-        return self.message
+        # type: () -> str
+        pass
 
     def getStackTrace(self):
         pass
@@ -106,6 +178,12 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def initCause(self, cause=None):
+        # type: (Throwable) -> None
+        pass
+
+    @property
+    def message(self):
+        # type: () -> str
         pass
 
     def printStackTrace(self, *args):
@@ -131,6 +209,7 @@ class Exception(Throwable):
     """
 
     def __init__(self, message=None, cause=None):
+        # type: (str, Throwable) -> None
         super(Exception, self).__init__(message, cause)
 
 
@@ -146,6 +225,7 @@ class RuntimeException(Exception):
     """
 
     def __init__(self, message=None, cause=None):
+        # type: (str, Throwable) -> None
         super(RuntimeException, self).__init__(message, cause)
 
 
@@ -155,6 +235,7 @@ class IllegalArgumentException(RuntimeException):
     """
 
     def __init__(self, message=None, cause=None):
+        # type: (str, Throwable) -> None
         super(IllegalArgumentException, self).__init__(message, cause)
 
 
@@ -164,6 +245,7 @@ class NullPointerException(RuntimeException):
     """
 
     def __init__(self, message=None, cause=None):
+        # type: (str, Throwable) -> None
         super(NullPointerException, self).__init__(message, cause)
 
 

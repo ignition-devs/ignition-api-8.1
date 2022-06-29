@@ -39,7 +39,7 @@ def queryAgentHistory(
     agentIds=None,  # type: Optional[List[String]]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
-    limit=100,  # type: Optional[int]
+    limit=100,  # type: int
 ):
     # type: (...) -> BasicDataset
     """Returns a list of the most recent agent events.
@@ -75,7 +75,7 @@ def queryAgentHistory(
 def queryAgentStatus(
     groupIds=None,  # type: Optional[List[String]]
     agentIds=None,  # type: Optional[List[String]]
-    isConnected=True,  # type: Optional[bool]
+    isConnected=True,  # type: bool
 ):
     # type: (...) -> BasicDataset
     """Returns the current state of the matching agents.
