@@ -23,7 +23,7 @@ String = Union[str, unicode]
 
 def executeAndDistribute(
     path,  # type: String
-    project="project",  # type: Optional[String]
+    project="project",  # type: String
     parameters=None,  # type: Optional[Dict[String, int]]
     action=None,  # type: Optional[String]
     actionSettings=None,  # type: Optional[Dict[String, Any]]
@@ -67,9 +67,9 @@ def executeAndDistribute(
 
 def executeReport(
     path,  # type: String
-    project="project",  # type: Optional[String]
+    project="project",  # type: String
     parameters=None,  # type: Optional[Dict[String, int]]
-    fileType="pdf",  # type: Optional[String]
+    fileType="pdf",  # type: String
 ):
     # type: (...) -> Any
     """Immediately executes an existing report and returns a byte[] of

@@ -44,8 +44,8 @@ def getRoles():
 def getUserRoles(
     username,  # type: String
     password,  # type: String
-    authProfile="",  # type: Optional[String]
-    timeout=60000,  # type: Optional[int]
+    authProfile="",  # type: String
+    timeout=60000,  # type: int
 ):
     # type: (...) -> Optional[Tuple[String, ...]]
     """Fetches the roles for a user from the Gateway.

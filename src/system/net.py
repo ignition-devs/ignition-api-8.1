@@ -94,14 +94,14 @@ def getRemoteServers(runningOnly=True):
 
 
 def httpClient(
-    timeout=60000,  # type: Optional[int]
-    bypass_cert_validation=False,  # type: Optional[bool]
+    timeout=60000,  # type: int
+    bypass_cert_validation=False,  # type: bool
     username=None,  # type: Optional[String]
     password=None,  # type: Optional[String]
     proxy=None,  # type: Optional[String]
-    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: Optional[String]
-    redirect_policy="NORMAL",  # type: Optional[String]
-    version="HTTP_2",  # type: Optional[String]
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: String
+    redirect_policy="NORMAL",  # type: String
+    version="HTTP_2",  # type: String
     customizer=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> JythonHttpClient
@@ -171,12 +171,12 @@ def httpClient(
 def httpDelete(
     url,  # type: String
     contentType=None,  # type: Optional[String]
-    connectTimeout=10000,  # type: Optional[int]
-    readTimeout=60000,  # type: Optional[int]
+    connectTimeout=10000,  # type: int
+    readTimeout=60000,  # type: int
     username=None,  # type: Optional[String]
     password=None,  # type: Optional[String]
     headerValues=None,  # type: Optional[Dict[String, String]]
-    bypassCertValidation=True,  # type: Optional[bool]
+    bypassCertValidation=True,  # type: bool
 ):
     # type: (...) -> String
     """Performs an HTTP DELETE to the given URL.
@@ -218,14 +218,14 @@ def httpDelete(
 
 def httpGet(
     url,  # type: String
-    connectTimeout=10000,  # type: Optional[int]
-    readTimeout=60000,  # type: Optional[int]
+    connectTimeout=10000,  # type: int
+    readTimeout=60000,  # type: int
     username=None,  # type: Optional[String]
     password=None,  # type: Optional[String]
     headerValues=None,  # type: Optional[Dict[String, String]]
     bypassCertValidation=None,  # type: Optional[bool]
-    useCaches=True,  # type: Optional[bool]
-    throwOnError=True,  # type: Optional[bool]
+    useCaches=True,  # type: bool
+    throwOnError=True,  # type: bool
 ):
     # type: (...) -> String
     """Retrieves the document at the given URL using the HTTP GET
@@ -339,18 +339,18 @@ def sendEmail(
     fromAddr,  # type: String
     subject=None,  # type: Optional[String]
     body=None,  # type: Optional[String]
-    html=False,  # type: Optional[bool]
+    html=False,  # type: bool
     to=None,  # type: Optional[List[String]]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
-    timeout=300000,  # type: Optional[int]
+    timeout=300000,  # type: int
     username=None,  # type: Optional[String]
     password=None,  # type: Optional[String]
-    priority="3",  # type: Optional[String]
+    priority="3",  # type: String
     smtpProfile=None,  # type: Optional[String]
     cc=None,  # type: Optional[List[String]]
     bcc=None,  # type: Optional[List[String]]
-    retries=0,  # type: Optional[int]
+    retries=0,  # type: int
     replyTo=None,  # type: Optional[List[String]]
 ):
     # type: (...) -> None

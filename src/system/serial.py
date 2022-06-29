@@ -249,8 +249,8 @@ def readBytes(port, numberOfBytes, timeout=5000):
 def readBytesAsString(
     port,  # type: String
     numberOfBytes,  # type: int
-    timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[String]
+    timeout=5000,  # type: int
+    encoding="utf-8",  # type: String
 ):
     # type: (...) -> String
     """Read numberOfBytes bytes from a serial port and convert them to a
@@ -277,9 +277,9 @@ def readBytesAsString(
 
 def readLine(
     port,  # type: String
-    timeout=5000,  # type: Optional[int]
-    encoding="utf-8",  # type: Optional[String]
-    crlfRequired=False,  # type: Optional[bool]
+    timeout=5000,  # type: int
+    encoding="utf-8",  # type: String
+    crlfRequired=False,  # type: bool
 ):
     # type: (...) -> String
     r"""Attempts to read a line from a serial port.

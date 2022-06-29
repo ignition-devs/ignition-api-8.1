@@ -7,6 +7,9 @@ __all__ = [
     "WindowUtilities",
 ]
 
+from typing import Optional
+
+from java.awt import Component
 from java.awt.image import BufferedImage
 from java.lang import Object
 
@@ -96,14 +99,17 @@ class PrintUtilities(Object):
         print(self, app)
 
     def createImage(self, c):
+        # type: (Component) -> BufferedImage
         print(self, c)
         width = height = imageType = 1
         return BufferedImage(width, height, imageType)
 
     def createPrintJob(self, c):
+        # type: (Component) -> PrintUtilities.JythonPrintJob
         pass
 
     def printToImage(self, c, fileName=None):
+        # type: (Component, Optional[str]) -> None
         pass
 
     class JythonPrintJob(Object):

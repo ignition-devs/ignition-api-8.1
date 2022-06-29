@@ -77,13 +77,13 @@ String = Union[str, unicode]
 def audit(
     action=None,  # type: Optional[String]
     actionValue=None,  # type: Optional[String]
-    auditProfile="",  # type: Optional[String]
+    auditProfile="",  # type: String
     actor=None,  # type: Optional[String]
-    actorHost="localhost",  # type: Optional[String]
+    actorHost="localhost",  # type: String
     originatingSystem=None,  # type: Optional[List[String]]
     eventTimestamp=None,  # type: Optional[Date]
-    originatingContext=4,  # type: Optional[int]
-    statusCode=0,  # type: Optional[int]
+    originatingContext=4,  # type: int
+    statusCode=0,  # type: int
 ):
     # type: (...) -> None
     """Inserts a record into an audit profile.
@@ -150,7 +150,7 @@ def execute(commands):
 
 
 def exit(force=False):
-    # type: (Optional[bool]) -> None
+    # type: (bool) -> None
     """Exits the running client, as long as the shutdown intercept
     script doesn't cancel the shutdown event.
 
@@ -259,7 +259,7 @@ def getGatewayStatus(
     gatewayAddress,  # type: String
     connectTimeoutMillis=None,  # type: Optional[int]
     socketTimeoutMillis=None,  # type: Optional[int]
-    bypassCertValidation=True,  # type: Optional[bool]
+    bypassCertValidation=True,  # type: bool
 ):
     # type: (...) -> unicode
     """Returns a string that indicates the status of the Gateway.
@@ -517,7 +517,7 @@ def invokeAsynchronous(
 
 
 def invokeLater(function, delay=0):
-    # type: (Callable[..., Any], Optional[int]) -> None
+    # type: (Callable[..., Any], int) -> None
     """Invokes (calls) the given Python function object after all of the
     currently processing and pending events are done being processed,
     or after a specified delay.
@@ -557,7 +557,7 @@ def jsonDecode(jsonString):
 
 
 def jsonEncode(pyObj, indentFactor=4):
-    # type: (Iterable[Any], Optional[int]) -> String
+    # type: (Iterable[Any], int) -> String
     """Takes a Python object such as a list or dict and converts into a
     JSON string.
 
@@ -574,7 +574,7 @@ def jsonEncode(pyObj, indentFactor=4):
 
 
 def modifyTranslation(term, translation, locale="es_MX"):
-    # type: (String, String, Optional[String]) -> None
+    # type: (String, String, String) -> None
     """This function allows you to add or modify a global translation.
 
     Args:
@@ -588,7 +588,7 @@ def modifyTranslation(term, translation, locale="es_MX"):
 
 
 def playSoundClip(wav, volume=1.0, wait=False):
-    # type: (Any, Optional[float], Optional[bool]) -> None
+    # type: (Any, float, bool) -> None
     """Plays a sound clip from a wav file to the system's default audio
     device.
 

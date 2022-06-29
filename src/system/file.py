@@ -200,8 +200,8 @@ def saveFile(
 def writeFile(
     filepath,  # type: String
     data,  # type: Any
-    append=False,  # type: Optional[bool]
-    encoding="UTF-8",  # type: Optional[String]
+    append=False,  # type: bool
+    encoding="UTF-8",  # type: String
 ):
     # type: (...) -> None
     """Writes the given data to the file at file path filename.

@@ -2,10 +2,13 @@ from __future__ import print_function
 
 __all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtilities"]
 
+from typing import Any, List, Optional, Union
+
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from java.lang import Object
+from java.lang import Class, Object
 from java.util import Locale
 from org.python.core import PyObject
 
@@ -149,7 +152,13 @@ class DatasetUtilities(Object):
         pass
 
     @staticmethod
-    def sort(ds, keyColumn, ascending=None, naturalOrdering=None):
+    def sort(
+        ds,  # type: BasicDataset
+        keyColumn,  # type: Union[int, str]
+        ascending=None,  # type: Optional[bool]
+        naturalOrdering=None,  # type: Optional[bool]
+    ):
+        # type: (...) -> BasicDataset
         pass
 
     @staticmethod
@@ -188,63 +197,94 @@ class DatasetUtilities(Object):
         _ds = None
 
         def __init__(self, ds=None):
+            # type: (Optional[BasicDataset]) -> None
             self._ds = ds
 
         def getColumnCount(self):
+            # type: () -> int
             pass
 
         def getColumnIndex(self, name):
+            # type: (str) -> int
             pass
 
         def getColumnName(self, col):
+            # type: (int) -> str
             pass
 
         def getColumnNames(self):
+            # type: () -> List[str]
             pass
 
         def getColumnType(self, col):
+            # type: (int) -> Class
             pass
 
         def getColumnTypes(self):
+            # type: () -> List[Class]
             pass
 
         def getPrimitiveValueAt(self, row, col):
+            # type: (int, int) -> float
             pass
 
         def getQualityAt(self, row, col):
+            # type: (int, int) -> QualityCode
             pass
 
         def getRowCount(self):
+            # type: () -> int
             pass
 
         def getValueAt(self, row, col):
+            # type: (int, Union[int, str]) -> Any
             pass
 
 
 class SProcCall(Object):
     def __init__(self):
+        # type: () -> None
         pass
 
-    def getResultSet(self):
-        print(self)
-        return BasicDataset()
-
-    def getUpdateCount(self):
-        print(self)
-        return 1
-
-    def getReturnValue(self):
-        print(self)
-        return 0
+    def getDataSource(self):
+        # type: () -> str
+        pass
 
     def getOutParamValue(self, param):
+        # type: (Union[int, str]) -> Any
         print(self, param)
         return 0
 
+    def getProcedureName(self):
+        # type: () -> str
+        pass
+
+    def getResultSet(self):
+        # type: () -> BasicDataset
+        print(self)
+        return BasicDataset()
+
+    def getReturnValue(self):
+        # type: () -> Any
+        print(self)
+        return 0
+
+    def getUpdateCount(self):
+        # type: () -> int
+        print(self)
+        return 1
+
+    def isSkipAudit(self):
+        # type: () -> bool
+        print(self)
+        return False
+
     def registerInParam(self, param, typeCode, value):
+        # type: (Union[int, str], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
+        # type: (Union[int, str], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
@@ -252,9 +292,11 @@ class SProcCall(Object):
 
     class SProcArg(Object):
         def getParamType(self):
+            # type: () -> int
             pass
 
         def getValue(self):
+            # type: () -> Any
             pass
 
         def isInParam(self):
@@ -299,7 +341,10 @@ class SystemUtilities(Object):
         pass
 
     class RequestImpl(Object, Request):
+        timeout = None  # type: int
+
         def __init__(self, timeout):
+            # type: (int) -> None
             self.timeout = timeout
 
         def checkTimeout(self):

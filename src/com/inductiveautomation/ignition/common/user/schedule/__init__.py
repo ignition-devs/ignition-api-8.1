@@ -6,7 +6,12 @@ __all__ = [
     "ScheduleAdjustment",
 ]
 
+from typing import Union
+
 from java.lang import Object
+from java.util import Date
+
+String = Union[str, unicode]
 
 
 class AbstractScheduleModel(Object):
@@ -173,18 +178,38 @@ class CompositeScheduleModel(AbstractScheduleModel):
 
 class HolidayModel(Object):
     def __init__(self, name, date, repeatAnnually):
-        self.name = name
-        self.date = date
-        self.repeatAnnually = repeatAnnually
+        # type: (String, Date, bool) -> None
+        self._name = name
+        self._date = date
+        self._repeatAnnually = repeatAnnually
 
     def getDate(self):
-        return self.date
+        # type: () -> Date
+        return self._date
 
     def getName(self):
-        return self.name
+        # type: () -> String
+        return self._name
 
-    def isRepeatedAnnually(self):
-        return self.repeatAnnually
+    def isRepeatAnnually(self):
+        # type: () -> bool
+        return self._repeatAnnually
+
+    def set(self, that):
+        # type: (HolidayModel) -> None
+        pass
+
+    def setDate(self, date):
+        # type: (Date) -> None
+        self._date = date
+
+    def setName(self, name):
+        # type: (String) -> None
+        self._name = name
+
+    def setRepeatAnnually(self, repeatAnnually):
+        # type: (bool) -> None
+        self._repeatAnnually = repeatAnnually
 
 
 class ScheduleAdjustment(Object):

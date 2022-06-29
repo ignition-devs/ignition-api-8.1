@@ -108,7 +108,7 @@ def getShelvedPaths():
 
 
 def listPipelines(projectName="alarm-pipelines"):
-    # type: (Optional[String]) -> List[String]
+    # type: (String) -> List[String]
     """Will return a list of the available Alarm Notification Pipelines.
 
     Args:
@@ -230,7 +230,7 @@ def queryStatus(
     all_properties=None,  # type: Optional[List[Tuple[String, String, Any]]]
     any_properties=None,  # type: Optional[List[Tuple[String, String, Any]]]
     defined=None,  # type: Optional[List[String]]
-    includeShelved=False,  # type: Optional[bool]
+    includeShelved=False,  # type: bool
 ):
     # type: (...) -> AlarmQueryResultImpl
     """Queries the current state of alarms.
@@ -300,7 +300,7 @@ def queryStatus(
 
 
 def shelve(path, timeoutSeconds=0, timeoutMinutes=15):
-    # type: (List[String], Optional[int], Optional[int]) -> None
+    # type: (List[String], int, int) -> None
     """This function shelves the specified alarms for the specified
     amount of time.
 

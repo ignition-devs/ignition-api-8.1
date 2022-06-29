@@ -11,6 +11,7 @@ __all__ = [
     "FileDescriptor",
     "FileOutputStream",
     "FilterOutputStream",
+    "InputStream",
     "OutputStream",
     "PrintStream",
 ]
@@ -61,7 +62,8 @@ class FilterOutputStream(OutputStream):
 
 
 class DataOutputStream(FilterOutputStream):
-    _written = 0
+    out = None  # type: OutputStream
+    written = 0  # type: int
 
     def __init__(self, out):
         self.out = out
@@ -133,4 +135,39 @@ class PrintStream(FilterOutputStream):
         pass
 
     def setError(self):
+        pass
+
+
+class InputStream(Object):
+    def available(self):
+        pass
+
+    def close(self):
+        pass
+
+    def mark(self, readlimit):
+        pass
+
+    def markSupported(self):
+        pass
+
+    def nullInputStream(self):
+        pass
+
+    def read(self, *args):
+        pass
+
+    def readAllBytes(self):
+        pass
+
+    def readNBytes(self, *args):
+        pass
+
+    def reset(self):
+        pass
+
+    def skip(self, n):
+        pass
+
+    def transferTo(self, out):
         pass
