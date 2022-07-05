@@ -5,6 +5,8 @@ programming language.
 from __future__ import print_function
 
 __all__ = [
+    "AutoCloseable",
+    "CharSequence",
     "Class",
     "Enum",
     "Exception",
@@ -13,6 +15,7 @@ __all__ = [
     "Object",
     "RuntimeException",
     "StackTraceElement",
+    "StringBuffer",
     "Thread",
     "Throwable",
 ]
@@ -52,6 +55,41 @@ class Object(object):
     def wait(self, timeoutMillis=0, nanos=0):
         # type: (long, int) -> None
         pass
+
+
+class AutoCloseable(object):
+    def close(self):
+        # type: () -> None
+        raise NotImplementedError
+
+
+class CharSequence(object):
+    def charAt(self, index):
+        # type: (int) -> str
+        raise NotImplementedError
+
+    def chars(self):
+        raise NotImplementedError
+
+    def codePoints(self):
+        raise NotImplementedError
+
+    @staticmethod
+    def compare(cs1, cs2):
+        # type: (CharSequence, CharSequence) -> int
+        raise NotImplementedError
+
+    def length(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def subSequence(self, start, end):
+        # type: (int, int) -> CharSequence
+        raise NotImplementedError
+
+    def toString(self):
+        # type: () -> str
+        raise NotImplementedError
 
 
 class Class(Object):
@@ -135,6 +173,116 @@ class StackTraceElement(Object):
         pass
 
 
+class StringBuffer(Object, CharSequence):
+    def __init__(self, *args):
+        pass
+
+    def append(self, *args):
+        pass
+
+    def appendCodePoint(self, codePoint):
+        # type: (int) -> StringBuffer
+        pass
+
+    def capacity(self):
+        # type: () -> int
+        pass
+
+    def charAt(self, index):
+        # type: (int) -> str
+        pass
+
+    def chars(self):
+        pass
+
+    def codePointAt(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointBefore(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointCount(self, beginIndex, endIndex):
+        # type: (int, int) -> int
+        pass
+
+    def codePoints(self):
+        pass
+
+    @staticmethod
+    def compare(cs1, cs2):
+        # type: (CharSequence, CharSequence) -> int
+        pass
+
+    def compareTo(self, another):
+        # type: (StringBuffer) -> int
+        pass
+
+    def delete(self, start, end):
+        # type: (int, int) -> StringBuffer
+        pass
+
+    def deleteCharAt(self, index):
+        # type: (int) -> StringBuffer
+        pass
+
+    def ensureCapacity(self, minimumCapacity):
+        # type: (int) -> None
+        pass
+
+    def getChars(self, srcBegin, srcEnd, dst, dstBegin):
+        # type: (int, int, str, int) -> None
+        pass
+
+    def indexOf(self, string, fromIndex=0):
+        # type: (str, int) -> int
+        pass
+
+    def insert(self, *args):
+        pass
+
+    def lastIndexOf(self, string, fromIndex=0):
+        # type: (str, int) -> int
+        pass
+
+    def length(self):
+        # type: () -> int
+        pass
+
+    def offsetByCodePoints(self, index, codePointOffset):
+        # type: (int, int) -> int
+        pass
+
+    def replace(self, start, end, string):
+        # type: (int, int, str) -> StringBuffer
+        pass
+
+    def reverse(self):
+        # type: () -> StringBuffer
+        pass
+
+    def setCharAt(self, index, ch):
+        # type: (int, str) -> None
+        pass
+
+    def setLength(self, newLength):
+        # type: (int) -> None
+        pass
+
+    def subSequence(self, start, end):
+        # type: (int, int) -> CharSequence
+        pass
+
+    def substring(self, start, end=-1):
+        # type: (int, int) -> str
+        pass
+
+    def trimToSize(self):
+        # type: () -> None
+        pass
+
+
 class Throwable(Object, builtins.Exception):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language.
@@ -149,7 +297,7 @@ class Throwable(Object, builtins.Exception):
     @property
     def cause(self):
         # type: () -> Throwable
-        pass
+        return Throwable()
 
     def addSuppressed(self, exception):
         # type: (Throwable) -> None
@@ -184,7 +332,7 @@ class Throwable(Object, builtins.Exception):
     @property
     def message(self):
         # type: () -> str
-        pass
+        return "message"
 
     def printStackTrace(self, *args):
         pass
