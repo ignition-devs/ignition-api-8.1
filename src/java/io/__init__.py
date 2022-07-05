@@ -7,6 +7,7 @@ this package will cause a NullPointerException to be thrown.
 from __future__ import print_function
 
 __all__ = [
+    "Closeable",
     "DataOutputStream",
     "FileDescriptor",
     "FileOutputStream",
@@ -16,7 +17,13 @@ __all__ = [
     "PrintStream",
 ]
 
-from java.lang import Object
+from java.lang import AutoCloseable, Object
+
+
+class Closeable(AutoCloseable):
+    def close(self):
+        # type: () -> None
+        raise NotImplementedError
 
 
 class FileDescriptor(Object):

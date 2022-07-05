@@ -115,6 +115,10 @@ This package includes supporting classes and interfaces from Apache Commons Math
 
 This package includes supporting Jython classes and interfaces. For more information, see documentation here: <https://www.javadoc.io/doc/org.python/jython-standalone/2.7.2/index.html>.
 
+#### org.slf4j
+
+This package includes supporting classes and interfaces from SLF4J API Module. For more information, see documentation here: <https://www.javadoc.io/doc/org.slf4j/slf4j-api/1.7.26/overview-summary.html>.
+
 #### system
 
 This package includes all Ignition Scripting Functions. For more information, see documentation here: <https://docs.inductiveautomation.com/display/DOC81/System+Functions>.
