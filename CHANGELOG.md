@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.18.post1] - 2022-07-05
+
+### CI
+
+- use Python 2 mode for mypy (#25)
+
+### Features
+
+- implement all LoggerEx functions (#27)
+
+### Miscellaneous Tasks
+
+- improve typing for `ignition-api-stubs` (#24)
+
+### Build
+
+- pre-commit autoupdate (#26)
+
 ## [8.1.18] - 2022-06-20
 
 ### Features
