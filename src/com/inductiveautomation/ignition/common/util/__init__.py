@@ -3,11 +3,9 @@ __all__ = ["LoggerEx"]
 from typing import Any, Optional, Union
 
 from java.io import Closeable
-from java.lang import AutoCloseable, Class, Object, Throwable
+from java.lang import AutoCloseable, Class, Object, String, Throwable
 from org.apache.commons.lang3.builder import ToStringStyle
 from org.slf4j import Logger
-
-String = Union[str, unicode]
 
 
 class LoggerEx(Object):
