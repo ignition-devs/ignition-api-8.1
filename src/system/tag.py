@@ -33,7 +33,7 @@ __all__ = [
     "writeBlocking",
 ]
 
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
@@ -44,9 +44,8 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
     Annotation,
 )
+from java.lang import String
 from java.util import Date
-
-String = Union[str, unicode]
 
 
 def browse(path, filter=None):

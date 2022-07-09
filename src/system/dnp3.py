@@ -19,9 +19,8 @@ __all__ = [
 
 from typing import List, Optional, Union
 
-String = Union[str, unicode]
-
 # Constants
+from java.lang import String
 
 NUL = 0
 PULSE_ON = 1

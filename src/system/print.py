@@ -7,14 +7,14 @@ from __future__ import print_function
 
 __all__ = ["createImage", "createPrintJob", "printToImage"]
 
-from typing import Optional, Union
+from typing import Optional
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 from java.awt import Component
 from java.awt.image import BufferedImage
+from java.lang import String
 
 JythonPrintJob = PrintUtilities.JythonPrintJob
-String = Union[str, unicode]
 
 
 def createImage(component):
@@ -58,7 +58,7 @@ def createPrintJob(component):
 def printToImage(component, filename=None):
     # type: (Component, Optional[String]) -> None
     """This function prints the given component (such as a graph,
-    container, entire window, etc) to an image file, and saves the file
+    container, entire window, etc.) to an image file, and saves the file
     where ever the operating system deems appropriate.
 
     A filename and path may be provided to determine the name and

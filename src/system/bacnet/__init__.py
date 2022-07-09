@@ -16,11 +16,10 @@ __all__ = [
     "writeWithPriority",
 ]
 
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional
 
+from java.lang import String
 from system.bacnet.enumerated import ObjectType, PropertyIdentifier
-
-String = Union[str, unicode]
 
 
 def readRaw(

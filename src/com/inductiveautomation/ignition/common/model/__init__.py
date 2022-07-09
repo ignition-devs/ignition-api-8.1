@@ -5,9 +5,7 @@ import re
 from typing import Any, Optional, Tuple, Union
 
 from java.io import InputStream
-from java.lang import IllegalArgumentException, Object
-
-String = Union[str, unicode]
+from java.lang import IllegalArgumentException, Object, String
 
 
 class Version(Object):

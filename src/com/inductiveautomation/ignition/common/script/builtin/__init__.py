@@ -8,7 +8,7 @@ from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from java.lang import Class, Object
+from java.lang import Class, Object, String
 from java.util import Locale
 from org.python.core import PyObject
 
@@ -55,6 +55,7 @@ class AbstractOPCUtilities(Object):
             super(AbstractOPCUtilities.PyOPCTag, self).__init__()
 
         def __findattr_ex__(self, name):
+            # type: (str) -> PyObject
             pass
 
         def getDisplayName(self):
@@ -247,16 +248,16 @@ class SProcCall(Object):
         pass
 
     def getDataSource(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getOutParamValue(self, param):
-        # type: (Union[int, str]) -> Any
+        # type: (Union[int, String]) -> Any
         print(self, param)
         return 0
 
     def getProcedureName(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getResultSet(self):
@@ -269,6 +270,10 @@ class SProcCall(Object):
         print(self)
         return 0
 
+    def getTxId(self):
+        # type: () -> String
+        return "transaction_id"
+
     def getUpdateCount(self):
         # type: () -> int
         print(self)
@@ -280,15 +285,24 @@ class SProcCall(Object):
         return False
 
     def registerInParam(self, param, typeCode, value):
-        # type: (Union[int, str], int, Any) -> None
+        # type: (Union[int, String], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        # type: (Union[int, str], int) -> None
+        # type: (Union[int, String], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
+        # type: (int) -> None
         print(self, typeCode)
+
+    def setSkipAudit(self, skipAudit):
+        # type: (bool) -> None
+        pass
+
+    def setTxId(self, txId):
+        # type: (String) -> None
+        pass
 
     class SProcArg(Object):
         def getParamType(self):
@@ -311,9 +325,6 @@ class SProcCall(Object):
         def setValue(self, value):
             pass
 
-        def toString(self):
-            pass
-
     class SProcArgKey(Object):
         def getParamIndex(self):
             pass
@@ -321,13 +332,7 @@ class SProcCall(Object):
         def getParamName(self):
             pass
 
-        def hashCode(self):
-            pass
-
         def isNamedParam(self):
-            pass
-
-        def toString(self):
             pass
 
 

@@ -29,8 +29,7 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BasicOPCBrowseElement
 from com.inductiveautomation.ignition.common.script.builtin import AbstractOPCUtilities
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBrowseTag
-
-String = Union[str, unicode]
+from java.lang import String
 
 PyOPCTag = AbstractOPCUtilities.PyOPCTag
 

@@ -12,12 +12,17 @@ __all__ = [
     "FileDescriptor",
     "FileOutputStream",
     "FilterOutputStream",
+    "Flushable",
     "InputStream",
     "OutputStream",
     "PrintStream",
+    "PrintWriter",
+    "Writer",
 ]
 
-from java.lang import AutoCloseable, Object
+from typing import Any, Union
+
+from java.lang import Appendable, AutoCloseable, CharSequence, Object
 
 
 class Closeable(AutoCloseable):
@@ -145,6 +150,11 @@ class PrintStream(FilterOutputStream):
         pass
 
 
+class Flushable(object):
+    def flush(self):
+        raise NotImplementedError
+
+
 class InputStream(Object):
     def available(self):
         pass
@@ -177,4 +187,61 @@ class InputStream(Object):
         pass
 
     def transferTo(self, out):
+        pass
+
+
+class Writer(Object, Appendable, Closeable, Flushable):
+    def append(self, c_csq, start=0, end=-1):
+        # type: (Union[CharSequence, str], int, int) -> Writer
+        pass
+
+    def close(self):
+        # type: () -> None
+        pass
+
+    def flush(self):
+        # type: () -> None
+        pass
+
+    @staticmethod
+    def nullWriter():
+        # type: () -> Writer
+        pass
+
+    def write(self, *args):
+        # type: (Any) -> None
+        pass
+
+
+class PrintWriter(Writer):
+    def __init__(self, *args):
+        # type: (Any) -> None
+        pass
+
+    def append(self, c_csq, start=0, end=-1):
+        # type: (Union[CharSequence, str], int, int) -> PrintWriter
+        pass
+
+    def checkError(self):
+        # type: () -> bool
+        pass
+
+    def format(self, *args):
+        # type: (Any) -> PrintWriter
+        pass
+
+    def print(self, arg):
+        # type: (Any) -> None
+        pass
+
+    def printf(self, *args):
+        # type: (Any) -> PrintWriter
+        pass
+
+    def println(self, arg):
+        # type: (Any) -> None
+        pass
+
+    def write(self, *args):
+        # type: (Any) -> None
         pass

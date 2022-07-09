@@ -2,12 +2,19 @@ from __future__ import print_function
 
 __all__ = ["AlarmEvent", "PyAlarmEvent", "PyAlarmEventImpl"]
 
-from java.lang import Iterable
+from typing import Any, Iterable
+
+from com.inductiveautomation.ignition.common.config import BasicPropertySet
 from org.python.core import PyObject
 
 
-class AlarmEvent(Iterable):
+class AlarmEvent(object):
+    def __iter__(self):
+        # type: () -> Iterable
+        raise NotImplementedError
+
     def acknowledge(self, ackData):
+        # type: (EventData) -> None
         raise NotImplementedError
 
     def active(self, activeData):
@@ -65,7 +72,21 @@ class AlarmEvent(Iterable):
         pass
 
 
+class EventData(BasicPropertySet):
+    def __init__(self, *args):
+        # type: (Any) -> None
+        super(EventData, self).__init__(*args)
+
+    def getTimeStamp(self):
+        # type: () -> long
+        pass
+
+
 class PyAlarmEvent(AlarmEvent):
+    def __iter__(self):
+        # type: () -> Iterable
+        pass
+
     def acknowledge(self, ackData):
         pass
 

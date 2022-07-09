@@ -35,11 +35,10 @@ __all__ = [
 
 import __builtin__ as builtins
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
-
-String = Union[str, unicode]
+from java.lang import String
 
 
 def alterLogging(

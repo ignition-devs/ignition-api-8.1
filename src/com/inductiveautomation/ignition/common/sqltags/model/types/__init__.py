@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from com.inductiveautomation.ignition.common.i18n import LocalizedString
 from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
-from java.lang import Enum, Object
+from java.lang import Enum, Object, String
 from java.util import Locale
 
 
@@ -56,7 +56,7 @@ class DataQuality(Object):
         pass
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> str
+        # type: (Optional[Locale]) -> String
         pass
 
     @staticmethod

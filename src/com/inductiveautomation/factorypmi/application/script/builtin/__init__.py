@@ -7,11 +7,14 @@ __all__ = [
     "WindowUtilities",
 ]
 
-from typing import Optional
+from typing import Any, Dict, Optional, Union
 
+from com.inductiveautomation.factorypmi.application import FPMIWindow
 from java.awt import Component
 from java.awt.image import BufferedImage
-from java.lang import Object
+from java.lang import Object, String
+from java.util import EventObject
+from org.python.core import PyObject
 
 
 class INavUtilities(object):
@@ -20,82 +23,107 @@ class INavUtilities(object):
     """
 
     def centerWindow(self, arg):
+        # type: (Union[FPMIWindow, String]) -> None
         raise NotImplementedError
 
     def closeParentWindow(self, event):
+        # type: (EventObject) -> None
         raise NotImplementedError
 
     def closeWindow(self, arg):
+        # type: (Union[FPMIWindow, String]) -> None
         raise NotImplementedError
 
     def getCurrentWindow(self):
+        # type: () -> String
         raise NotImplementedError
 
     def goBack(self):
+        # type: () -> PyObject
         raise NotImplementedError
 
     def goForward(self):
+        # type: () -> PyObject
         raise NotImplementedError
 
     def goHome(self):
+        # type: () -> PyObject
         raise NotImplementedError
 
-    def openWindow(self, *args):
+    def openWindow(self, path, params=None):
+        # type: (String, Optional[Dict[String, Any]]) -> PyObject
         raise NotImplementedError
 
     def openWindowImpl(self, path, params, openAdditional):
+        # type: (String, Dict[String, Any], bool) -> PyObject
         raise NotImplementedError
 
-    def openWindowInstance(self, *args):
+    def openWindowInstance(self, path, params=None):
+        # type: (String, Optional[Dict[String, Any]]) -> PyObject
         raise NotImplementedError
 
-    def swapTo(self, *args):
+    def swapTo(self, name, params):
+        # type: (String, Dict[String, Any]) -> PyObject
         raise NotImplementedError
 
     def swapWindow(self, *args):
+        # type: (Any) -> PyObject
         raise NotImplementedError
 
 
 class NavUtilities(INavUtilities):
     def centerWindow(self, arg):
+        # type: (Union[FPMIWindow, String]) -> None
         pass
 
     def closeParentWindow(self, event):
+        # type: (EventObject) -> None
         pass
 
     def closeWindow(self, arg):
+        # type: (Union[FPMIWindow, String]) -> None
         pass
 
     def getCurrentWindow(self):
+        # type: () -> String
         pass
 
     def goBack(self):
+        # type: () -> PyObject
         pass
 
     def goForward(self):
+        # type: () -> PyObject
         pass
 
     def goHome(self):
+        # type: () -> PyObject
         pass
 
-    def openWindow(self, *args):
+    def openWindow(self, path, params=None):
+        # type: (String, Optional[Dict[String, Any]]) -> PyObject
         pass
 
     def openWindowImpl(self, path, params, openAdditional):
+        # type: (String, Dict[String, Any], bool) -> PyObject
         pass
 
-    def openWindowInstance(self, *args):
+    def openWindowInstance(self, path, params=None):
+        # type: (String, Optional[Dict[String, Any]]) -> PyObject
         pass
 
-    def swapTo(self, *args):
+    def swapTo(self, name, params):
+        # type: (String, Dict[String, Any]) -> PyObject
         pass
 
     def swapWindow(self, *args):
+        # type: (Any) -> PyObject
         pass
 
 
 class PrintUtilities(Object):
     def __init__(self, app):
+        # type: (Any) -> None
         print(self, app)
 
     def createImage(self, c):

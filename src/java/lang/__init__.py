@@ -5,24 +5,30 @@ programming language.
 from __future__ import print_function
 
 __all__ = [
+    "Appendable",
     "AutoCloseable",
     "CharSequence",
     "Class",
     "Enum",
     "Exception",
     "IllegalArgumentException",
-    "Iterable",
+    "NullPointerException",
     "Object",
     "RuntimeException",
     "StackTraceElement",
+    "String",
     "StringBuffer",
+    "StringBuilder",
     "Thread",
     "Throwable",
 ]
 
 import __builtin__ as builtins
-import copy
 import time
+
+from typing import Any, Union
+
+String = Union[str, unicode]
 
 
 class Object(object):
@@ -31,30 +37,39 @@ class Object(object):
     methods of this class.
     """
 
-    def clone(self):
-        return copy.deepcopy(self)
-
     def equals(self, obj):
+        # type: (Object) -> bool
         pass
 
     def getClass(self):
+        # type: () -> Class
         pass
 
     def hashCode(self):
+        # type: () -> int
         pass
 
     def notify(self):
+        # type: () -> None
         pass
 
     def notifyAll(self):
+        # type: () -> None
         pass
 
     def toString(self):
+        # type: () -> String
         return repr(self)
 
     def wait(self, timeoutMillis=0, nanos=0):
         # type: (long, int) -> None
         pass
+
+
+class Appendable(object):
+    def append(self, c_csq, start=0, end=-1):
+        # type: (Union[CharSequence, str], int, int) -> Appendable
+        raise NotImplementedError
 
 
 class AutoCloseable(object):
@@ -69,15 +84,15 @@ class CharSequence(object):
         raise NotImplementedError
 
     def chars(self):
-        raise NotImplementedError
+        pass
 
     def codePoints(self):
-        raise NotImplementedError
+        pass
 
     @staticmethod
     def compare(cs1, cs2):
         # type: (CharSequence, CharSequence) -> int
-        raise NotImplementedError
+        pass
 
     def length(self):
         # type: () -> int
@@ -88,7 +103,7 @@ class CharSequence(object):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> str
+        # type: () -> String
         raise NotImplementedError
 
 
@@ -114,25 +129,6 @@ class Enum(Object):
         pass
 
     def valueOf(self, enumType, name):
-        pass
-
-
-class Iterable(object):
-    """Implementing this interface allows an object to be the target of
-    the enhanced for statement (sometimes called the "for-each loop"
-    statement).
-    """
-
-    def __iter__(self):
-        pass
-
-    def forEach(self, action):
-        pass
-
-    def iterator(self):
-        raise NotImplementedError
-
-    def spliterator(self):
         pass
 
 
@@ -192,9 +188,6 @@ class StringBuffer(Object, CharSequence):
         # type: (int) -> str
         pass
 
-    def chars(self):
-        pass
-
     def codePointAt(self, index):
         # type: (int) -> int
         pass
@@ -205,14 +198,6 @@ class StringBuffer(Object, CharSequence):
 
     def codePointCount(self, beginIndex, endIndex):
         # type: (int, int) -> int
-        pass
-
-    def codePoints(self):
-        pass
-
-    @staticmethod
-    def compare(cs1, cs2):
-        # type: (CharSequence, CharSequence) -> int
         pass
 
     def compareTo(self, another):
@@ -283,6 +268,104 @@ class StringBuffer(Object, CharSequence):
         pass
 
 
+class StringBuilder(Object, CharSequence):
+    def __init__(self, *args):
+        # type: (Any) -> None
+        pass
+
+    def append(self, *args):
+        # type: (Any) -> StringBuilder
+        pass
+
+    def capacity(self):
+        # type: () -> int
+        pass
+
+    def charAt(self, index):
+        # type: (int) -> str
+        pass
+
+    def codePointAt(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointBefore(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointCount(self, beginIndex, endIndex):
+        # type: (int, int) -> int
+        pass
+
+    def compareTo(self, another):
+        # type: (StringBuilder) -> int
+        pass
+
+    def delete(self, start, end):
+        # type: (int, int) -> StringBuilder
+        pass
+
+    def deleteCharAt(self, index):
+        # type: (int) -> StringBuilder
+        pass
+
+    def ensureCapacity(self, minimumCapacity):
+        # type: (int) -> None
+        pass
+
+    def getChars(self, srcBegin, srcEnd, dst, dstBegin):
+        # type: (int, int, str, int) -> None
+        pass
+
+    def indexOf(self, str_, fromIndex=0):
+        # type: (String, int) -> int
+        pass
+
+    def insert(self, *args):
+        # type: (Any) -> StringBuilder
+        pass
+
+    def lastIndexOf(self, str_, fromIndex=0):
+        # type: (String, int) -> int
+        pass
+
+    def length(self):
+        # type: () -> int
+        pass
+
+    def offsetByCodePoints(self, index, codePointOffset):
+        # type: (int, int) -> int
+        pass
+
+    def replace(self, start, end, str_):
+        # type: (int, int, int) -> StringBuilder
+        pass
+
+    def reverse(self):
+        # type: () -> StringBuilder
+        pass
+
+    def setCharAt(self, index, ch):
+        # type: (int, str) -> None
+        pass
+
+    def setLength(self, newLength):
+        # type: (int) -> None
+        pass
+
+    def subSequence(self, start, end):
+        # type: (int, int) -> CharSequence
+        pass
+
+    def substring(self, start, end=-1):
+        # type: (int, int) -> String
+        pass
+
+    def trimToSize(self):
+        # type: () -> None
+        pass
+
+
 class Throwable(Object, builtins.Exception):
     """The Throwable class is the superclass of all errors and
     exceptions in the Java language.
@@ -341,6 +424,7 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def toString(self):
+        # type: () -> String
         return "A short description of this throwable."
 
 

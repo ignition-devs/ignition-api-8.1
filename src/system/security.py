@@ -22,11 +22,10 @@ __all__ = [
 
 import getpass
 
-from typing import Optional, Tuple, Union
+from typing import Optional, Tuple
 
+from java.lang import String
 from java.util import EventObject
-
-String = Union[str, unicode]
 
 
 def getRoles():
