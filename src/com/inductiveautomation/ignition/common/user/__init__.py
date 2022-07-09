@@ -6,9 +6,7 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import QualifiedPath
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
-from java.lang import Object
-
-String = Union[str, unicode]
+from java.lang import Object, String
 
 
 class ContactInfo(Object):

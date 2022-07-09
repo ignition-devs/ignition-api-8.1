@@ -2,9 +2,7 @@ __all__ = ["ToStringStyle"]
 
 from typing import Any, Union
 
-from java.lang import Object, StringBuffer
-
-String = Union[str, unicode]
+from java.lang import Object, String, StringBuffer
 
 
 class ToStringStyle(Object):

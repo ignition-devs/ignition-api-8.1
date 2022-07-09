@@ -6,9 +6,7 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.sqltags.model.types import DataQuality
-from java.lang import Class, Object
-
-String = Union[str, unicode]
+from java.lang import Class, Object, String
 
 
 class Dataset(object):
@@ -66,7 +64,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getValueAt(self, row, col):
-        # type: (int, Union[int, str]) -> Any
+        # type: (int, Union[int, String]) -> Any
         raise NotImplementedError
 
     def hasQualityData(self):

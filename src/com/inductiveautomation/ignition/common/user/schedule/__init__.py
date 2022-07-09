@@ -8,10 +8,8 @@ __all__ = [
 
 from typing import Union
 
-from java.lang import Object
+from java.lang import Object, String
 from java.util import Date
-
-String = Union[str, unicode]
 
 
 class AbstractScheduleModel(Object):

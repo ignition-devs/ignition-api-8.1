@@ -17,9 +17,8 @@ __all__ = [
 from typing import Any, List, Optional, Union
 
 from java.awt import Container, Frame
+from java.lang import String
 from javax.swing.text import JTextComponent
-
-String = Union[str, unicode]
 
 
 class Icon(object):
