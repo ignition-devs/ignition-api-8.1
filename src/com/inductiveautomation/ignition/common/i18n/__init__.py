@@ -2,7 +2,7 @@ __all__ = ["LocalizedString"]
 
 from typing import Any, List, Optional
 
-from java.lang import Object
+from java.lang import Object, String
 from java.util import Locale
 
 
@@ -17,15 +17,15 @@ class LocalizedString(Object):
 
     @staticmethod
     def createRaw(stringVal):
-        # type: (str) -> LocalizedString
+        # type: (String) -> LocalizedString
         pass
 
     def getDefaultVal(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getKey(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getParams(self):
@@ -33,11 +33,11 @@ class LocalizedString(Object):
         pass
 
     def setDefaultVal(self, defaultVal):
-        # type: (str) -> None
+        # type: (String) -> None
         pass
 
     def setKey(self, key):
-        # type: (str) -> None
+        # type: (String) -> None
         pass
 
     def setParams(self, params):
@@ -45,5 +45,5 @@ class LocalizedString(Object):
         pass
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> str
+        # type: (Optional[Locale]) -> String
         pass

@@ -12,9 +12,6 @@ class SerialScriptModule(Object):
     def setTrialExpired(self, arg):
         pass
 
-    def toString(self):
-        pass
-
     class PortManager(object):
         def __init__(self):
             pass

@@ -48,6 +48,7 @@ from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
 from java.awt import Color
+from java.lang import String
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject
 from javax.swing import (
@@ -59,8 +60,6 @@ from javax.swing import (
     JPopupMenu,
     JTextField,
 )
-
-String = Union[str, unicode]
 
 # Constants
 ACCL_NONE = 0
