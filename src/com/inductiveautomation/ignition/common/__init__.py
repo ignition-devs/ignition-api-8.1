@@ -135,7 +135,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getValueAt(self, row, col):
-        # type: (int, Union[int, str]) -> Any
+        # type: (int, Union[int, String]) -> Any
         pass
 
     def setColumnNames(self, arg):

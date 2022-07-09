@@ -238,7 +238,7 @@ class DatasetUtilities(Object):
             pass
 
         def getValueAt(self, row, col):
-            # type: (int, Union[int, str]) -> Any
+            # type: (int, Union[int, String]) -> Any
             pass
 
 
