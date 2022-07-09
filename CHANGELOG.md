@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [8.1.18.post2] - 2022-07-09
+
+### Bug Fixes
+
+- add typing to Java code (#29)
+
+### Refactor
+
+- use java.lang.String (#30)
+
+### Revert
+
+- undo change on `mypy` ([34492d7](https://github.com/ignition-api/8.1/commit/34492d7fabe3f3f0b6bcafb15a1e1763bd1e5655))
+
 ## [8.1.18.post1] - 2022-07-05
 
 ### CI
