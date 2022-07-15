@@ -2,7 +2,26 @@ from __future__ import print_function
 
 from copy import PyStringMap
 
-__all__ = ["PyObject", "PyStringMap", "PyType"]
+__all__ = [
+    "CodeFlag",
+    "CompilerFlags",
+    "PyBaseCode",
+    "PyBuiltinCallable",
+    "PyBuiltinMethod",
+    "PyCell",
+    "PyCode",
+    "PyDescriptor",
+    "PyException",
+    "PyFrame",
+    "PyMethodDescr",
+    "PyNewWrapper",
+    "PyObject",
+    "PyStringMap",
+    "PyTraceback",
+    "PyType",
+    "TraceFunction",
+    "Visitproc",
+]
 
 from enum import Enum
 from typing import Any, Iterable, List, Optional, Tuple, Union
