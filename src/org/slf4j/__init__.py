@@ -2,6 +2,8 @@ __all__ = ["Logger", "Marker"]
 
 from typing import Any, Iterable, Optional, Union
 
+from java.lang import String
+
 
 class Logger(object):
     ROOT_LOGGER_NAME = "ROOT"
@@ -15,7 +17,7 @@ class Logger(object):
         pass
 
     def getName(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def info(self, *args):
@@ -56,7 +58,7 @@ class Marker(object):
         raise NotImplementedError
 
     def contains(self, arg):
-        # type: (Union[Marker, str]) -> bool
+        # type: (Union[Marker, String]) -> bool
         raise NotImplementedError
 
     def equals(self, o):
@@ -64,7 +66,7 @@ class Marker(object):
         pass
 
     def getName(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def hashCode(self):

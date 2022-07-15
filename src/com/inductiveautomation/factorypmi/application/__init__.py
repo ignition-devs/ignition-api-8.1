@@ -3,6 +3,7 @@ from __future__ import print_function
 __all__ = ["FPMIApp", "FPMIWindow", "VisionDesktop"]
 
 from com.inductiveautomation.ignition.client.model import ClientContext
+from java.lang import String
 from javax.swing import JDesktopPane, JInternalFrame
 
 
@@ -10,12 +11,9 @@ class VisionDesktop(JDesktopPane):
     PRIMARY_DESKTOP_HANDLE = "Primary"
 
     def __init__(self, clientContext, handle=""):
-        # type: (ClientContext, str) -> None
+        # type: (ClientContext, String) -> None
         super(VisionDesktop, self).__init__()
         print(clientContext, handle)
-
-    def fireWindowEvent(self, window, eventType):
-        pass
 
     def getAdapterContext(self):
         pass
@@ -67,15 +65,15 @@ class FPMIWindow(JInternalFrame):
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
-    name = ""
+    name = ""  # type: String
     _path = "Path/To/Window"
 
     def __init__(self, name):
-        # type: (str) -> None
+        # type: (String) -> None
         self.name = name
 
     def getPath(self):
         return self._path
 
     def getRootContainer(self):
-        print(self)
+        pass
