@@ -17,6 +17,8 @@ class PyObject(Object):
     an instance of the class PyObject or one of its subclasses.
     """
 
+    TYPE = None  # type: PyType
+
     def __init__(self, objtype=None):
         # type: (Optional[PyType]) -> None
         print(objtype)
@@ -828,7 +830,6 @@ class PyBuiltinMethod(PyBuiltinCallable):
 
 class PyCell(PyObject):
     ob_ref = None  # type: PyObject
-    TYPE = None  # type: PyType
 
     def __init__(self):
         super(PyCell, self).__init__(self.TYPE)
@@ -955,7 +956,6 @@ class PyFrame(PyObject):
     f_nfreevars = None  # type: int
     f_savedlocals = None  # type: List[Object]
     tracefunc = None  # type: TraceFunction
-    TYPE = None  # type: PyType
 
     def __init__(self, *args):
         super(PyFrame, self).__init__(self.TYPE)
@@ -1080,7 +1080,6 @@ class PyTraceback(PyObject):
     tb_frame = None  # type: PyFrame
     tb_lineno = None  # type: int
     tb_next = None  # type: PyObject
-    TYPE = None  # type: PyType
 
     def __init__(self, next, frame):
         # type: (PyTraceback, PyFrame) -> None
@@ -1101,8 +1100,6 @@ class PyTraceback(PyObject):
 
 
 class PyType(PyObject):
-    TYPE = None  # type: PyType
-
     @staticmethod
     def addBuilder(c, builder):
         # type: (Class, TypeBuilder) -> None
