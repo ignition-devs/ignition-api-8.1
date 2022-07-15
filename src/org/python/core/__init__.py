@@ -1100,7 +1100,6 @@ class PyTraceback(PyObject):
 
 
 class PyType(PyObject):
-
     @staticmethod
     def addBuilder(c, builder):
         # type: (Class, TypeBuilder) -> None
