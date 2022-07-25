@@ -1,9 +1,114 @@
-from typing import Any, List, Sequence, TypeVar, Union
+__all__ = [
+    "BasicProperty",
+    "BasicPropertySet",
+    "Property",
+    "PropertySet",
+    "PropertyValue",
+]
+
+from typing import Any, List, Sequence, Type, TypeVar, Union
 
 from java.beans import PropertyChangeListener
 from java.lang import Class, Object, String
 
 T = TypeVar("T")
+
+
+class Property(object):
+    def getDefaultValue(self):
+        # type: () -> T
+        raise NotImplementedError
+
+    def getName(self):
+        # type: () -> String
+        raise NotImplementedError
+
+    def getType(self):
+        # type: () -> Class
+        raise NotImplementedError
+
+
+class PropertySet(object):
+    @staticmethod
+    def builder():
+        # type: () -> BasicPropertySet.Builder
+        raise NotImplementedError
+
+    def extend(self, parent):
+        # type: (PropertySet) -> PropertySet
+        raise NotImplementedError
+
+    def isExtended(self, prop):
+        # type: (Property) -> bool
+        raise NotImplementedError
+
+    def newDefaultInstance(self):
+        # type: () -> PropertySet
+        raise NotImplementedError
+
+    def newExtension(self):
+        # type: () -> PropertySet
+        raise NotImplementedError
+
+
+class BasicProperty(Property, Object):
+    _name = None  # type: String
+    _clazz = None  # type: Type
+    _defaultValue = None  # type: Any
+    _hcode = None  # type: int
+
+    def __init__(self, *args):
+        if len(args) == 0:
+            self._hcode = 0
+        elif len(args) == 2:
+            self._name = args[0]
+            self._clazz = args[1]
+        elif len(args) == 3:
+            self._name = args[0]
+            self._clazz = args[1]
+            self._defaultValue = args[2]
+        else:
+            raise NotImplementedError
+
+    def getClazz(self):
+        # type: () -> Class
+        pass
+
+    def getDefaultValue(self):
+        # type: () -> T
+        return self._defaultValue
+
+    def getName(self):
+        # type: () -> String
+        return self._name
+
+    def getType(self):
+        # type: () -> Class
+        pass
+
+    def setClazz(self, clazz):
+        # type: (Class) -> None
+        pass
+
+    def setClazz_(self, clazz):
+        # type: (Class) -> BasicProperty
+        pass
+
+    def setDefaultValue(self, defaultValue):
+        # type: (Any) -> None
+        pass
+
+    def setDefaultValue_(self, defaultValue):
+        # type: (Any) -> BasicProperty
+        pass
+
+    def setName(self, name):
+        # type: (String) -> None
+        pass
+
+    def setName_(self, name):
+        # type: (String) -> BasicProperty
+        pass
 
 
 class BasicPropertySet(Object):
@@ -96,43 +201,6 @@ class BasicPropertySet(Object):
         def set(self, prop, value):
             # type: (Property, T) -> BasicPropertySet.Builder
             pass
-
-
-class Property(object):
-    def getDefaultValue(self):
-        # type: () -> T
-        pass
-
-    def getName(self):
-        # type: () -> String
-        pass
-
-    def getType(self):
-        # type: () -> Class
-        pass
-
-
-class PropertySet(object):
-    @staticmethod
-    def builder():
-        # type: () -> BasicPropertySet.Builder
-        pass
-
-    def extend(self, parent):
-        # type: (PropertySet) -> PropertySet
-        pass
-
-    def isExtended(self, prop):
-        # type: (Property) -> bool
-        pass
-
-    def newDefaultInstance(self):
-        # type: () -> PropertySet
-        pass
-
-    def newExtension(self):
-        # type: () -> PropertySet
-        pass
 
 
 class PropertyValue(Object):
