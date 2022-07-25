@@ -58,7 +58,7 @@ class BasicProperty(Property, Object):
     _hcode = None  # type: int
 
     def __init__(self, *args):
-        if len(args) == 0:
+        if not args:
             self._hcode = 0
         elif len(args) == 2:
             self._name = args[0]
