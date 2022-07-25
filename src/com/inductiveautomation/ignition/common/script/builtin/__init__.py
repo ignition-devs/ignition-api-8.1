@@ -248,16 +248,16 @@ class SProcCall(Object):
         pass
 
     def getDataSource(self):
-        # type: () -> String
+        # type: () -> str
         pass
 
     def getOutParamValue(self, param):
-        # type: (Union[int, String]) -> Any
+        # type: (Union[int, str]) -> Any
         print(self, param)
         return 0
 
     def getProcedureName(self):
-        # type: () -> String
+        # type: () -> str
         pass
 
     def getResultSet(self):
@@ -271,7 +271,7 @@ class SProcCall(Object):
         return 0
 
     def getTxId(self):
-        # type: () -> String
+        # type: () -> str
         return "transaction_id"
 
     def getUpdateCount(self):
@@ -285,11 +285,11 @@ class SProcCall(Object):
         return False
 
     def registerInParam(self, param, typeCode, value):
-        # type: (Union[int, String], int, Any) -> None
+        # type: (Union[int, str], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        # type: (Union[int, String], int) -> None
+        # type: (Union[int, str], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):

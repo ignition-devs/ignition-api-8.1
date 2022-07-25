@@ -100,6 +100,7 @@ class QualityCode(Object):
     Uncertain_IncompleteOperation = None  # type: QualityCode
 
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def derive(self, diagnosticMessage):
@@ -118,21 +119,27 @@ class QualityCode(Object):
         pass
 
     def isBad(self):
+        # type: () -> bool
         pass
 
     def isBadOrError(self):
+        # type: () -> bool
         pass
 
     def isError(self):
+        # type: () -> bool
         pass
 
     def isGood(self):
+        # type: () -> bool
         pass
 
     def isNotGood(self):
+        # type: () -> bool
         pass
 
     def isUncertain(self):
+        # type: () -> bool
         pass
 
     class Level(Object):
