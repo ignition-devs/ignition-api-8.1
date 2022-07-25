@@ -2,11 +2,18 @@ from __future__ import print_function
 
 __all__ = ["BasicUser", "ContactInfo", "PyUser", "User", "UserSourceMeta"]
 
-from typing import Any, List, Optional, Union
+from typing import Any, Iterable, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import QualifiedPath
+from com.inductiveautomation.ignition.common.config import (
+    BasicProperty,
+    Property,
+    PropertySet,
+    PropertyValue,
+)
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
 from java.lang import Object, String
+from java.util import Date
 
 
 class ContactInfo(Object):
@@ -37,15 +44,15 @@ class ContactInfo(Object):
 
 
 class User(object):
-    Badge = "badge"
+    Badge = BasicProperty("badge", str)  # type: BasicProperty
     DEFAULT_SCHEDULE_NAME = "Always"
-    FirstName = "John"
-    Language = "en"
-    LastName = "Doe"
-    Notes = "These are some notes."
-    Password = "password"
-    Schedule = "Always"
-    Username = "johdoe"
+    FirstName = BasicProperty("firstname", str)  # type: BasicProperty
+    Language = BasicProperty("language", str, "en")  # type: BasicProperty
+    LastName = BasicProperty("firstname", str)  # type: BasicProperty
+    Notes = BasicProperty("notes", str)  # type: BasicProperty
+    Password = BasicProperty("password", str)  # type: BasicProperty
+    Schedule = BasicProperty("schedule", str, "Always")  # type: BasicProperty
+    Username = BasicProperty("username", str)  # type: BasicProperty
     USERNAME_PATTERN = r"[\p{Alnum}][ @\w.\s\-]{1, 49}"
 
     def getContactInfo(self):
@@ -130,26 +137,32 @@ class PyUser(User):
         self._user = user
 
     def addContactInfo(self, *args):
+        # type: (Any) -> None
         print(self, args)
 
     def addRole(self, role):
+        # type: (String) -> None
         print(self, role)
 
     def addRoles(self, roles):
+        # type: (List[String]) -> None
         print(self, roles)
 
     def addScheduleAdjustment(self, start, end, available, note):
+        # type: (Date, Date, bool, String) -> None
         print(self, start, end, available, note)
 
     def addScheduleAdjustments(self, scheduleAdjustments):
+        # type: (List[ScheduleAdjustment]) -> None
         print(self, scheduleAdjustments)
 
     def contains(self, prop):
+        # type: (Property) -> bool
         pass
 
     def get(self, propertyName):
-        print(self)
-        return propertyName
+        # type: (Union[Property, String]) -> Any
+        pass
 
     def getContactInfo(self):
         # type: () -> List[ContactInfo]
@@ -159,6 +172,7 @@ class PyUser(User):
         return [ci_email, ci_phone, ci_sms]
 
     def getCount(self):
+        # type: () -> int
         print(self)
         return 1
 
@@ -167,9 +181,11 @@ class PyUser(User):
         pass
 
     def getOrDefault(self, prop):
+        # type: (Property) -> Any
         print(self, prop)
 
     def getOrElse(self, property, value):
+        # type: (Property, Any) -> Any
         pass
 
     def getPath(self):
@@ -181,6 +197,7 @@ class PyUser(User):
         pass
 
     def getProperties(self):
+        # type: () -> List[Property]
         pass
 
     def getRoles(self):
@@ -192,42 +209,55 @@ class PyUser(User):
         pass
 
     def getValues(self):
+        # type: () -> List[PropertyValue]
         pass
 
     def isExtended(self, prop):
+        # type: (Property) -> bool
         pass
 
     def isInherited(self, prop):
+        # type: (Property) -> bool
         pass
 
     def iterator(self):
+        # type: () -> Iterable[Property]
         pass
 
     def merge(self, other, localOnly):
+        # type: (PropertySet, bool) -> None
         pass
 
     def remove(self, prop):
+        # type: (Property) -> None
         pass
 
     def removeContactInfo(self, contactType, value):
+        # type: (String, String) -> None
         pass
 
     def removeRole(self, role):
+        # type: (String) -> None
         pass
 
     def removeScheduleAdjustment(self, start, end, available, note):
+        # type: (Date, Date, bool, String) -> None
         pass
 
     def set(self, *args):
+        # type: (Any) -> None
         pass
 
     def setContactInfo(self, contactInfo):
+        # type: (List[ContactInfo]) -> None
         pass
 
     def setRoles(self, roles):
+        # type: (List[String]) -> None
         pass
 
     def setScheduleAdjustments(self, scheduleAdjustments):
+        # type: (List[ScheduleAdjustment]) -> None
         pass
 
 
