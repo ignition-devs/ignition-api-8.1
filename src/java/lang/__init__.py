@@ -26,9 +26,11 @@ __all__ = [
 import __builtin__ as builtins
 import time
 
-from typing import Any, Union
+from typing import Any, TypeVar, Union
 
 String = Union[str, unicode]
+T = TypeVar("T")
+U = TypeVar("U")
 
 
 class Object(object):
@@ -109,9 +111,11 @@ class CharSequence(object):
 
 class Class(Object):
     def asSubClass(self, clazz):
+        # type: (Class) -> U
         pass
 
     def cast(self, obj):
+        # type: (Object) -> T
         pass
 
 

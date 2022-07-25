@@ -404,8 +404,8 @@ def getWindowNames():
     return "Main Window", "Main Window 1", "Main Window 2"
 
 
-def inputBox(message, defaultText=None):
-    # type: (String, Optional[String]) -> Optional[String]
+def inputBox(message, defaultText=""):
+    # type: (String, String) -> Optional[String]
     """Opens up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
