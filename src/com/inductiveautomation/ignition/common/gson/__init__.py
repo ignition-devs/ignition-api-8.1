@@ -88,7 +88,6 @@ class JsonElement(object):
 
 
 class JsonArray(JsonElement):
-
     def __init__(self, capacity=None):
         # type: (Optional[int]) -> None
         print(capacity)
