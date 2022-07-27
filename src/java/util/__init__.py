@@ -8,7 +8,7 @@ from __future__ import print_function
 
 __all__ = ["Date", "EventObject", "Locale"]
 
-from typing import Any, Optional
+from typing import Optional
 
 from java.lang import Object
 
