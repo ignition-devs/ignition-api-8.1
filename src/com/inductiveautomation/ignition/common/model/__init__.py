@@ -36,9 +36,10 @@ class Version(Object):
         return self.toString()
 
     def _compare(self, that, strict=False):
-        this = self.toTuple(strict)
-        that = that.toTuple(strict)
-        return (this > that) - (this < that)
+        # type: (Version, bool) -> int
+        _this = self.toTuple(strict)
+        _that = that.toTuple(strict)
+        return (_this > _that) - (_this < _that)
 
     def compareTo(self, that):
         # type: (Version) -> Optional[int]

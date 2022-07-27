@@ -1,9 +1,9 @@
 __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 
 from enum import Enum
-from typing import Any
+from typing import Any, Optional, Union
 
-from java.lang import Object
+from java.lang import Object, String
 from java.util import Date
 
 
@@ -12,13 +12,20 @@ class QualifiedValue(object):
     it.
     """
 
+    def derive(self, arg=None):
+        # type: (Union[None, QualityCode, String]) -> QualifiedValue
+        raise NotImplementedError
+
     def getQuality(self):
+        # type: () -> QualityCode
         raise NotImplementedError
 
     def getTimestamp(self):
+        # type: () -> Date
         raise NotImplementedError
 
     def getValue(self):
+        # type: () -> Object
         raise NotImplementedError
 
 
@@ -161,43 +168,62 @@ class QualityCode(Object):
 class BasicQualifiedValue(QualifiedValue, Object):
     """The basic implementation of QualifiedValue."""
 
-    quality = QualityCode.Bad_Stale  # type: QualityCode
-    timestamp = Date()  # type: Date
-    value = None  # type: Any
+    _quality = QualityCode.Bad_Stale  # type: QualityCode
+    _timestamp = Date()  # type: Date
+    _value = None  # type: Object
 
-    def __init__(self, *arg):
+    def __init__(self, *args):
+        # type: (Any) -> None
+        pass
+
+    def clone(self):
+        # type: () -> BasicQualifiedValue
+        pass
+
+    def derive(self, arg=None):
+        # type: (Union[None, QualityCode, String]) -> QualifiedValue
         pass
 
     @staticmethod
     def fromObject(obj):
+        # type: (Object) -> QualifiedValue
         pass
 
     def getQuality(self):
-        return self.quality
+        # type: () -> QualityCode
+        return self._quality
 
     def getTimestamp(self):
-        return self.timestamp
+        # type: () -> Date
+        return self._timestamp
 
     def getValue(self):
-        return self.value
+        # type: () -> Object
+        return self._value
 
     def setQuality(self, code):
-        self.quality = code
+        # type: (QualityCode) -> None
+        self._quality = code
 
     def setTimestamp(self, timestamp):
-        self.timestamp = timestamp
+        # type: (Date) -> None
+        self._timestamp = timestamp
 
     def setValue(self, value):
-        self.value = value
+        # type: (Object) -> None
+        self._value = value
 
     @staticmethod
     def unwrap(obj):
+        # type: (Object) -> Object
         pass
 
     @staticmethod
     def updateTimestamp(copy):
+        # type: (QualifiedValue) -> QualifiedValue
         pass
 
     @staticmethod
     def valueOf(obj):
+        # type: (Object) -> Object
         pass

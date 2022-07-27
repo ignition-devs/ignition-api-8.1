@@ -37,6 +37,7 @@ import __builtin__ as builtins
 
 from typing import Any, Dict, List, Optional
 
+from com.inductiveautomation.ignition.common.gson import JsonObject
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
 from java.lang import String
 
@@ -175,8 +176,8 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
     """Closes a popup View.
 
     Args:
-        id: The unique identifier for the the popup, given to the popup
-            when first opened. If given an empty string, then the most
+        id: The unique identifier for the popup, given to the popup when
+            first opened. If given an empty string, then the most
             recently focused popup will be closed.
         sessionId: Identifier of the Session to target. If omitted, the
             current Session will be used automatically. When targeting a
@@ -271,7 +272,7 @@ def getSessionInfo(
         A list of objects (PyJsonObjectAdapter).
     """
     builtins.print(usernameFilter, projectFilter)
-    return [PyJsonObjectAdapter(None)]
+    return [PyJsonObjectAdapter(JsonObject())]
 
 
 def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):

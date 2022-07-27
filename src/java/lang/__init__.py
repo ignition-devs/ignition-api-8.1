@@ -26,7 +26,7 @@ __all__ = [
 import __builtin__ as builtins
 import time
 
-from typing import Any, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 
 String = Union[str, unicode]
 T = TypeVar("T")
@@ -175,6 +175,7 @@ class StackTraceElement(Object):
 
 class StringBuffer(Object, CharSequence):
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def append(self, *args):
@@ -376,7 +377,7 @@ class Throwable(Object, builtins.Exception):
     """
 
     def __init__(self, message=None, cause=None):
-        # type: (str, Throwable) -> None
+        # type: (Optional[str], Optional[Throwable]) -> None
         self._cause = cause
         self._message = message
         builtins.Exception.__init__(self, message)
@@ -413,7 +414,7 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def initCause(self, cause=None):
-        # type: (Throwable) -> None
+        # type: (Optional[Throwable]) -> None
         pass
 
     @property
@@ -445,7 +446,7 @@ class Exception(Throwable):
     """
 
     def __init__(self, message=None, cause=None):
-        # type: (str, Throwable) -> None
+        # type: (Optional[str], Optional[Throwable]) -> None
         super(Exception, self).__init__(message, cause)
 
 
@@ -461,7 +462,7 @@ class RuntimeException(Exception):
     """
 
     def __init__(self, message=None, cause=None):
-        # type: (str, Throwable) -> None
+        # type: (Optional[str], Optional[Throwable]) -> None
         super(RuntimeException, self).__init__(message, cause)
 
 
@@ -471,7 +472,7 @@ class IllegalArgumentException(RuntimeException):
     """
 
     def __init__(self, message=None, cause=None):
-        # type: (str, Throwable) -> None
+        # type: (Optional[str], Optional[Throwable]) -> None
         super(IllegalArgumentException, self).__init__(message, cause)
 
 
@@ -481,7 +482,7 @@ class NullPointerException(RuntimeException):
     """
 
     def __init__(self, message=None, cause=None):
-        # type: (str, Throwable) -> None
+        # type: (Optional[str], Optional[Throwable]) -> None
         super(NullPointerException, self).__init__(message, cause)
 
 
@@ -500,4 +501,5 @@ class Thread(Object):
 
     @staticmethod
     def sleep(millis):
+        # type: (long) -> None
         time.sleep(millis // 1000)

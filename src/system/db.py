@@ -158,7 +158,7 @@ def addDatasource(
     Args:
         jdbcDriver: The name of the JDBC driver configuration to use.
             Available options are based off the JDBC driver
-            configurations on the the Gateway.
+            configurations on the Gateway.
         name: The datasource name.
         description: Description of the datasource. Optional.
         connectUrl: Default is the connect URL for JDBC driver.
@@ -558,7 +558,7 @@ def runPrepQuery(
             statement with placeholders (?) denoting where the arguments
             go.
         args: A list of arguments. Will be used in order to match each
-            each placeholder (?) found in the query.
+            placeholder (?) found in the query.
         database: The name of the database connection to execute
             against. If omitted or "", the project's default database
             connection will be used.

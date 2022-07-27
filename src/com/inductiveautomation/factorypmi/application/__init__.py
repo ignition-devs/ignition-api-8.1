@@ -70,6 +70,7 @@ class FPMIWindow(JInternalFrame):
 
     def __init__(self, name):
         # type: (String) -> None
+        super(FPMIWindow, self).__init__()
         self.name = name
 
     def getPath(self):

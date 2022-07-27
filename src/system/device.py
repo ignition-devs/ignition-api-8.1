@@ -40,7 +40,7 @@ def addDevice(
 
     Args:
         deviceType: The device driver type.
-        deviceName: The name that will be given to the the new device
+        deviceName: The name that will be given to the new device
             connection.
         deviceProps: A dictionary of device connection properties and
             values. Each deviceType has different properties, but most

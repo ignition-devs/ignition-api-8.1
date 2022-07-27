@@ -37,7 +37,7 @@ def copyEquipment(
     passiveAddress,  # type: String
     passivePort,  # type: int
     deviceId,  # type: int
-    dbTablePrefix=None,  # type: String
+    dbTablePrefix=None,  # type: Optional[String]
     description=None,  # type: Optional[String]
 ):
     # type: (...) -> None

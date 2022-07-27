@@ -23,13 +23,13 @@ from javax.swing.text import JTextComponent
 
 class Icon(object):
     def getIconHeight(self):
-        pass
+        raise NotImplementedError
 
     def getIconWidth(self):
-        pass
+        raise NotImplementedError
 
     def paintIcon(self, c, g, x, y):
-        pass
+        raise NotImplementedError
 
 
 class JComponent(Container):
@@ -37,7 +37,9 @@ class JComponent(Container):
     containers.
     """
 
-    pass
+    def __init__(self):
+        # type: () -> None
+        pass
 
 
 class JFrame(Frame):
@@ -45,7 +47,9 @@ class JFrame(Frame):
     JFC/Swing component architecture.
     """
 
-    pass
+    def __init__(self, *args):
+        # type: (Any) -> None
+        pass
 
 
 class JInternalFrame(JComponent):
@@ -54,14 +58,26 @@ class JInternalFrame(JComponent):
     resizing, title display, and support for a menu bar.
     """
 
-    pass
+    def __init__(
+        self,
+        title=None,  # type: Optional[String]
+        resizable=None,  # type: Optional[bool]
+        closable=None,  # type: Optional[bool]
+        maximizable=None,  # type: Optional[bool]
+        iconifiable=None,  # type: Optional[bool]
+    ):
+        # type: (...) -> None
+        super(JInternalFrame, self).__init__()
+        print(title, resizable, closable, maximizable, iconifiable)
 
 
 class JLabel(JComponent):
     """A display area for a short text string or an image, or both."""
 
     def __init__(self, *args):
-        pass
+        # type: (Any) -> None
+        super(JLabel, self).__init__()
+        print(args)
 
 
 class JLayeredPane(JComponent):
@@ -74,7 +90,8 @@ class JLayeredPane(JComponent):
     POPUP_LAYER = 300
 
     def __init__(self):
-        pass
+        # type: () -> None
+        super(JLayeredPane, self).__init__()
 
     def getComponentCountInLayer(self, layer):
         pass
@@ -94,6 +111,7 @@ class JLayeredPane(JComponent):
 
 class JDesktopPane(JLayeredPane):
     def __init__(self):
+        # type: () -> None
         super(JDesktopPane, self).__init__()
 
     def getAllFrames(self):
@@ -221,9 +239,10 @@ class JOptionPane(JComponent):
 
 
 class JPanel(JComponent):
-    """JPanel is a generic lightweight container."""
-
-    pass
+    def __init__(self, *args):
+        # type: (Any) -> None
+        super(JPanel, self).__init__()
+        print(args)
 
 
 class JToolTip(JComponent):
@@ -247,6 +266,11 @@ class JPopupMenu(JComponent):
     anywhere else you want a menu to appear. For example, when the user
     right-clicks in a specified area.
     """
+
+    def __init__(self, label=None):
+        # type: (Optional[String]) -> None
+        super(JPopupMenu, self).__init__()
+        print(label)
 
     def addAncestorListener(self, listener):
         pass
@@ -277,4 +301,5 @@ class JTextField(JTextComponent):
     """
 
     def __init__(self, *args):
+        # type: (Any) -> None
         pass

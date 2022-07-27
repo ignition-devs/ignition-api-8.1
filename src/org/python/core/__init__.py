@@ -215,7 +215,7 @@ class PyObject(Object):
         pass
 
     def __iter__(self):
-        # type: () -> Iterable
+        # type: () -> Iterable[PyObject]
         pass
 
     def __iternext__(self):
@@ -566,11 +566,11 @@ class PyObject(Object):
         pass
 
     def asInt(self, index=None):
-        # type: (int) -> int
+        # type: (Optional[int]) -> int
         pass
 
     def asIterable(self):
-        # type: () -> Iterable
+        # type: () -> Iterable[PyObject]
         pass
 
     def asLong(self, index=None):
@@ -851,7 +851,8 @@ class PyCell(PyObject):
     ob_ref = None  # type: PyObject
 
     def __init__(self):
-        super(PyCell, self).__init__(self.TYPE)
+        # type: () -> None
+        super(PyCell, self).__init__()
 
     def getCellContents(self):
         # type: () -> PyObject
@@ -977,7 +978,8 @@ class PyFrame(PyObject):
     tracefunc = None  # type: TraceFunction
 
     def __init__(self, *args):
-        super(PyFrame, self).__init__(self.TYPE)
+        # type: (Any) -> None
+        super(PyFrame, self).__init__()
         print(args)
 
     def checkGeneratorInput(self):

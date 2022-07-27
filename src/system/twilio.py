@@ -15,7 +15,7 @@ __all__ = [
     "sendSms",
 ]
 
-from typing import List, Sequence
+from typing import List
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import String
@@ -44,7 +44,7 @@ def getAccountsDataset():
 
 
 def getPhoneNumbers(accountName):
-    # type: (String) -> Sequence
+    # type: (String) -> List[String]
     """Returns a list of outgoing phone numbers for a Twilio account.
 
     Note that these numbers are supplied by Twilio, and are not defined
@@ -56,7 +56,7 @@ def getPhoneNumbers(accountName):
     Returns:
         A list of phone numbers for the given Twilio account.
     """
-    phoneNumbers = []
+    phoneNumbers = []  # type: List[String]
     if accountName == "Jenny":
         phoneNumbers.append("+12058675309")
     return phoneNumbers

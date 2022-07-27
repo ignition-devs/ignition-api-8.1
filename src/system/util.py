@@ -477,7 +477,7 @@ def getVersion():
 
 
 def invokeAsynchronous(
-    function,  # type: Callable
+    function,  # type: Callable[..., Any]
     args=None,  # type: Optional[Iterable[Any]]
     kwargs=None,  # type: Optional[Dict[String, Any]]
     description=None,  # type: Optional[String]

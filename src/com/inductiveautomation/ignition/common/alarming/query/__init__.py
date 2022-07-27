@@ -1,5 +1,7 @@
 __all__ = ["AlarmQueryResult", "AlarmQueryResultImpl"]
 
+from typing import Any
+
 from com.inductiveautomation.ignition.common.alarming import PyAlarmEvent
 
 
@@ -24,6 +26,7 @@ class AlarmQueryResult(object):
 
 class AlarmQueryResultImpl(AlarmQueryResult):
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def __iter__(self):

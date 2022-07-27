@@ -211,32 +211,50 @@ class HolidayModel(Object):
 
 
 class ScheduleAdjustment(Object):
-    def __init__(self):
-        pass
+    _start = None  # type: Date
+    _end = None  # type: Date
+    _available = None  # type: bool
+    _note = None  # type: String
+
+    def __init__(self, start, end, available, note):
+        # type: (Date, Date, bool, String) -> None
+        self._start = start
+        self._end = end
+        self._available = available
+        self._note = note
 
     def contains(self, timestamp):
+        # type: (long) -> bool
         pass
 
     def getEnd(self):
-        pass
+        # type: () -> Date
+        return self._end
 
     def getNote(self):
-        pass
+        # type: () -> String
+        return self._note
 
     def getStart(self):
-        pass
+        # type: () -> Date
+        return self._start
 
     def isAvailable(self):
-        pass
+        # type: () -> bool
+        return self._available
 
     def setAvailable(self, available):
-        pass
+        # type: (bool) -> None
+        self._available = available
 
     def setEnd(self, end):
-        pass
+        # type: (Date) -> None
+        self._end = end
 
-    def setNoe(self, note):
-        pass
+    def setNote(self, note):
+        # type: (String) -> None
+        self._note = note
 
     def setStart(self, start):
-        pass
+        # type: (Date) -> None
+        self._start = start

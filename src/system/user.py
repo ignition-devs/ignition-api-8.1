@@ -156,8 +156,7 @@ def createScheduleAdjustment(startDate, endDate, isAvailable, note):
     Returns:
         A ScheduleAdjustment object that can be added to a user.
     """
-    print(startDate, endDate, isAvailable, note)
-    return ScheduleAdjustment()
+    return ScheduleAdjustment(startDate, endDate, isAvailable, note)
 
 
 def editHoliday(holidayName, holiday):
