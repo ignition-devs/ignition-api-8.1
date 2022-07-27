@@ -6,7 +6,9 @@ __all__ = [
     "MathIllegalNumberException",
 ]
 
-from java.lang import IllegalArgumentException
+from typing import Any
+
+from java.lang import IllegalArgumentException, String
 
 
 class MathIllegalArgumentException(IllegalArgumentException):
@@ -17,6 +19,7 @@ class MathIllegalArgumentException(IllegalArgumentException):
     """
 
     def __init__(self, pattern, *args):
+        # type: (String, Any) -> None
         print(pattern, args)
         super(MathIllegalArgumentException, self).__init__()
 
@@ -42,6 +45,7 @@ class DimensionMismatchException(MathIllegalNumberException):
     """Exception to be thrown when two dimensions differ."""
 
     def __init__(self, *args):
+        # type: (Any) -> None
         super(DimensionMismatchException, self).__init__("", *args)
 
     def getDimension(self):

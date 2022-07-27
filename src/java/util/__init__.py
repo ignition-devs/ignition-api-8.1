@@ -71,15 +71,27 @@ class EventObject(Object):
     source = None  # type: Object
 
     def __init__(self, source):
+        # type: (Object) -> None
         self.source = source
 
     def getSource(self):
         return self.source
 
 
-class ClassProperty(property):
-    def __get__(self, cls, owner):
-        return classmethod(self.fget).__get__(None, owner)()
+class classproperty(object):  # pylint: disable=invalid-name
+    """Decorator that converts a method with a single cls argument into
+    a property that can be accessed directly from the class.
+    """
+
+    def __init__(self, method=None):
+        self.fget = method
+
+    def __get__(self, instance, cls=None):
+        return self.fget(cls)
+
+    def getter(self, method):
+        self.fget = method
+        return self
 
 
 class Locale(Object):
@@ -113,86 +125,86 @@ class Locale(Object):
             ret += "_{}".format(self.variant)
         return unicode(ret)
 
-    @ClassProperty
+    @classproperty
     def CANADA(self):
         return Locale("en", "CA")
 
-    @ClassProperty
+    @classproperty
     def CANADA_FRENCH(self):
         return Locale("fr", "CA")
 
-    @ClassProperty
+    @classproperty
     def CHINA(self):
         return Locale("zh", "CN")
 
-    @ClassProperty
+    @classproperty
     def CHINESE(self):
         return Locale("zh")
 
-    @ClassProperty
+    @classproperty
     def ENGLISH(self):
         return Locale("en")
 
-    @ClassProperty
+    @classproperty
     def FRANCE(self):
         return Locale("fr", "FR")
 
-    @ClassProperty
+    @classproperty
     def FRENCH(self):
         return Locale("fr")
 
-    @ClassProperty
+    @classproperty
     def GERMAN(self):
         return Locale("de")
 
-    @ClassProperty
+    @classproperty
     def GERMANY(self):
         return Locale("de", "DE")
 
-    @ClassProperty
+    @classproperty
     def ITALIAN(self):
         return Locale("it")
 
-    @ClassProperty
+    @classproperty
     def ITALY(self):
         return Locale("it", "IT")
 
-    @ClassProperty
+    @classproperty
     def JAPAN(self):
         return Locale("ja", "JP")
 
-    @ClassProperty
+    @classproperty
     def JAPANESE(self):
         return Locale("ja")
 
-    @ClassProperty
+    @classproperty
     def KOREA(self):
         return Locale("ko", "KR")
 
-    @ClassProperty
+    @classproperty
     def KOREAN(self):
         return Locale("ko")
 
-    @ClassProperty
+    @classproperty
     def PRC(self):
         return self.CHINA
 
-    @ClassProperty
+    @classproperty
     def SIMPLIFIED_CHINESE(self):
         return self.CHINA
 
-    @ClassProperty
+    @classproperty
     def TAIWAN(self):
         return Locale("zh", "TW")
 
-    @ClassProperty
+    @classproperty
     def TRADITIONAL_CHINESE(self):
         return Locale("zh", "TW")
 
-    @ClassProperty
+    @classproperty
     def UK(self):
         return Locale("en", "GB")
 
-    @ClassProperty
+    @classproperty
     def US(self):
         return Locale("en", "US")

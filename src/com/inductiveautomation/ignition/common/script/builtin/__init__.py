@@ -6,6 +6,7 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model.values import QualityCode
+from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
 from java.lang import Class, Object, String
@@ -15,7 +16,10 @@ from org.python.core import PyObject
 
 class AbstractOPCUtilities(Object):
     def browseServer(self, opcServer, nodeId):
-        return [AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, None, self.__class__)]
+        # type: (String, String) -> List[AbstractOPCUtilities.PyOPCTag]
+        return [
+            AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, "", BrowseElementType())
+        ]
 
     def getServers(self):
         pass
@@ -48,6 +52,7 @@ class AbstractOPCUtilities(Object):
         _serverName = None
 
         def __init__(self, serverName, nodeId, displayName, elementType):
+            # type: (String, String, String, BrowseElementType) -> None
             self._serverName = serverName
             self._nodeId = nodeId
             self._displayName = displayName

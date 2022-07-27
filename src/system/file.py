@@ -64,7 +64,7 @@ def getTempFile(extension):
     """
     suffix = ".{}".format(extension)
     with tempfile.NamedTemporaryFile(suffix=suffix) as temp:
-        return temp.name
+        return unicode(temp.name)
 
 
 def openFile(extension=None, defaultLocation=None):
@@ -166,7 +166,7 @@ def readFileAsString(filepath, encoding="UTF-8"):
         The contents of the file as a string.
     """
     with io.open(filepath, "r", encoding=encoding) as f:
-        return f.read()
+        return unicode(f.read())
 
 
 def saveFile(

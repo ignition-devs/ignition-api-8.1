@@ -70,6 +70,7 @@ class FilterOutputStream(OutputStream):
     _out = OutputStream()
 
     def __init__(self, out):
+        # type: (OutputStream) -> None
         self._out = out
 
 

@@ -2,10 +2,10 @@ from __future__ import print_function
 
 __all__ = ["Result", "Results"]
 
-from typing import Optional
+from typing import Any, List, Optional
 
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from java.lang import Object
+from java.lang import Object, String
 
 
 class Result(object):
@@ -32,9 +32,14 @@ class Results(Object):
     browse.
     """
 
+    _continuationPoint = None  # type: Optional[String]
+    _resultQuality = None  # type: QualityCode
+    _results = None  # type: List[Any]
+
     def __init__(self, *args):
+        # type: (Any) -> None
         print(args)
-        self._continuationPoint = ""
+        self._continuationPoint = None
         self._resultQuality = QualityCode.Good
         self._results = []
         self._totalAvailableResults = 0

@@ -5,7 +5,7 @@ __all__ = [
     "ServerBrowseElement",
 ]
 
-from typing import List
+from typing import Any, List
 
 from java.lang import Enum, Object
 
@@ -29,6 +29,7 @@ class OPCBrowseElement(object):
 
 class BasicOPCBrowseElement(Object, OPCBrowseElement):
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def getDataType(self):

@@ -2,6 +2,8 @@ from __future__ import print_function
 
 __all__ = ["SerialScriptModule"]
 
+from typing import Any
+
 from java.lang import Object
 
 
@@ -13,7 +15,8 @@ class SerialScriptModule(Object):
         pass
 
     class PortManager(object):
-        def __init__(self):
+        def __init__(self, *args):
+            # type: (Any) -> None
             pass
 
         def __enter__(self):

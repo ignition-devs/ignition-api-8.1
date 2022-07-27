@@ -1,6 +1,6 @@
 __all__ = ["ToStringStyle"]
 
-from typing import Any, Union
+from typing import Any
 
 from java.lang import Object, String, StringBuffer
 

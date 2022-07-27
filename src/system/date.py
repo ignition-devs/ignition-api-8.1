@@ -235,7 +235,7 @@ def format(date, format="yyyy-MM-dd HH:mm:ss"):
     Jan-Dec, MMMM will give you January-December.
 
     Note:
-        The functions above are based off the the Java class
+        The functions above are based off the Java class
         `SimpleDateFormat` internally. The functions will accept any
         valid format string for that class.
 

@@ -4,6 +4,8 @@ from __future__ import print_function
 
 __all__ = ["InetSocketAddress", "Socket", "SocketAddress"]
 
+from typing import Any
+
 from java.lang import Object
 
 
@@ -144,11 +146,13 @@ class Socket(Object):
 
 class SocketAddress(Object):
     def __init__(self):
+        # type: () -> None
         pass
 
 
 class InetSocketAddress(SocketAddress):
     def __init__(self, *args):
+        # type: (Any) -> None
         print(args)
         super(InetSocketAddress, self).__init__()
 

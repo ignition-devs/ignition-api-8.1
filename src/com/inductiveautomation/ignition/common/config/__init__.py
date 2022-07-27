@@ -6,7 +6,7 @@ __all__ = [
     "PropertyValue",
 ]
 
-from typing import Any, List, Sequence, Type, TypeVar, Union
+from typing import Any, Iterable, List, TypeVar, Union
 
 from java.beans import PropertyChangeListener
 from java.lang import Class, Object, String
@@ -16,7 +16,7 @@ T = TypeVar("T")
 
 class Property(object):
     def getDefaultValue(self):
-        # type: () -> T
+        # type: () -> Any
         raise NotImplementedError
 
     def getName(self):
@@ -53,11 +53,12 @@ class PropertySet(object):
 
 class BasicProperty(Property, Object):
     _name = None  # type: String
-    _clazz = None  # type: Type
+    _clazz = None  # type: Any
     _defaultValue = None  # type: Any
     _hcode = None  # type: int
 
     def __init__(self, *args):
+        # type: (Any) -> None
         if not args:
             self._hcode = 0
         elif len(args) == 2:
@@ -75,7 +76,7 @@ class BasicProperty(Property, Object):
         pass
 
     def getDefaultValue(self):
-        # type: () -> T
+        # type: () -> Any
         return self._defaultValue
 
     def getName(self):
@@ -165,7 +166,7 @@ class BasicPropertySet(Object):
         pass
 
     def iterator(self):
-        # type: () -> Sequence[PropertyValue]
+        # type: () -> Iterable[PropertyValue]
         pass
 
     @staticmethod

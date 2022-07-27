@@ -1,8 +1,53 @@
-__all__ = ["ShelvedPath"]
+from __future__ import print_function
+
+__all__ = ["EventProperty", "EventPropertyType", "ShelvedPath"]
+
+from typing import Any, List
 
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
-from java.lang import Object
+from com.inductiveautomation.ignition.common.config import Property
+from java.lang import Class, Enum, Object, String
 from java.util import Date
+
+
+class EventProperty(Object):
+    @staticmethod
+    def create(prop, type):
+        # type: (Property, EventPropertyType) -> EventProperty
+        pass
+
+    @staticmethod
+    def createDynamic(prop, isConfig):
+        # type: (Property, bool) -> EventProperty
+        pass
+
+    @staticmethod
+    def createStatic(prop, isConfig):
+        # type: (Property, bool) -> EventProperty
+        pass
+
+    def getDefaultValue(self):
+        # type: () -> Object
+        pass
+
+    def getName(self):
+        # type: () -> String
+        pass
+
+    def getPropertyType(self):
+        # type: () -> EventPropertyType
+        pass
+
+    def getType(self):
+        # type: () -> Class
+        pass
+
+
+class EventPropertyType(Enum):
+    @staticmethod
+    def values():
+        # type: () -> List[EventPropertyType]
+        pass
 
 
 class ShelvedPath(Object):
@@ -11,12 +56,9 @@ class ShelvedPath(Object):
     path.
     """
 
-    def __init__(self, path=None, user=None, expiration=None, shelveTime=None):
-        # type: (Path, QualifiedPath, long, Date) -> None
-        self._path = path
-        self._user = user
-        self._expiration = expiration
-        self._shelveTime = shelveTime
+    def __init__(self, *args):
+        # type: (Any) -> None
+        print(args)
 
     def getExpiration(self):
         # type: () -> Date
