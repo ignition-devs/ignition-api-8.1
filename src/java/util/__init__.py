@@ -8,7 +8,7 @@ from __future__ import print_function
 
 __all__ = ["Date", "EventObject", "Locale"]
 
-from typing import Optional
+from typing import Any, Optional
 
 from java.lang import Object
 
@@ -78,20 +78,9 @@ class EventObject(Object):
         return self.source
 
 
-class classproperty(object):  # pylint: disable=invalid-name
-    """Decorator that converts a method with a single cls argument into
-    a property that can be accessed directly from the class.
-    """
-
-    def __init__(self, method=None):
-        self.fget = method
-
-    def __get__(self, instance, cls=None):
-        return self.fget(cls)
-
-    def getter(self, method):
-        self.fget = method
-        return self
+class classproperty(property):  # pylint: disable=invalid-name
+    def __get__(self, cls, owner):
+        return classmethod(self.fget).__get__(None, owner)()
 
 
 class Locale(Object):
