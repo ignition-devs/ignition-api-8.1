@@ -7,6 +7,13 @@ interfaces.
 from __future__ import print_function
 
 __all__ = [
+    "ACCL_CONSTANT",
+    "ACCL_EASE",
+    "ACCL_FAST_TO_SLOW",
+    "ACCL_NONE",
+    "ACCL_SLOW_TO_FAST",
+    "COORD_DESIGNER",
+    "COORD_SCREEN",
     "chooseColor",
     "closeDesktop",
     "color",
