@@ -7,6 +7,13 @@ devices.
 from __future__ import print_function
 
 __all__ = [
+    "CLOSE",
+    "LATCH_OFF",
+    "LATCH_ON",
+    "NUL",
+    "PULSE_OFF",
+    "PULSE_ON",
+    "TRIP",
     "directOperateAnalog",
     "directOperateBinary",
     "freezeAnalogs",
