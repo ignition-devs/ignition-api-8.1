@@ -1,4 +1,17 @@
-## Unreleased
+## v8.1.19 (2022-07-29)
+
+### Feat
+
+- **system**: add new perspective and tag functions (#44)
+- **system**: add constants to __all__ (#43)
+- improve type hints (#39)
+- **ia**: add type hints to all PyUser functions (Sourcery refactored) (#38)
+- **system**: add db constants to __all__ (#36)
+
+### Fix
+
+- **java**: rollback change on classproperty (#42)
+- improve type hinting (#41)
 
 ### Refactor
 
