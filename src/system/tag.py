@@ -18,6 +18,7 @@ __all__ = [
     "importTags",
     "isOverlaysEnabled",
     "move",
+    "query",
     "queryAnnotations",
     "queryTagCalculations",
     "queryTagDensity",
@@ -348,6 +349,32 @@ def move(tags, destination, collisionPolicy="o"):
     """
     print(tags, destination, collisionPolicy)
     return [QualityCode() for _ in tags]
+
+
+def query(
+    provider,  # type: String
+    query,  # type: Dict[String, Any]
+    limit=None,  # type: Optional[int]
+    continuationPoint=None,  # type: Optional[Any]
+):
+    # type: (...) -> BasicDataset
+    """Queries a Tag Provider to produce a list of tags that meet the
+    specified criteria.
+
+    Args:
+        provider: The Tag Provider to query.
+        query: A JSON document that specifies the query conditions.
+        limit: Maximum results to return. If more results are possible,
+            the result will have a continuation point set. Optional.
+        continuationPoint: The Tag ID of a previously returned
+            continuation point, to continue the associated query from
+            that point. Optional.
+
+    Returns:
+        A dataset representing the results of the query.
+    """
+    print(provider, query, limit, continuationPoint)
+    return BasicDataset()
 
 
 def queryAnnotations(
