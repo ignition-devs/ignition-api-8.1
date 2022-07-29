@@ -7,6 +7,7 @@ Perspective Session from a Python script.
 from __future__ import print_function
 
 __all__ = [
+    "alterDock",
     "alterLogging",
     "authenticationChallenge",
     "closeDock",
@@ -42,6 +43,32 @@ from com.inductiveautomation.ignition.common.script.adapters import PyJsonObject
 from java.lang import String
 
 
+def alterDock(
+    dockId,  # type: String
+    config=None,  # type: Optional[Dict[String, Any]]
+    sessionId="current_session",  # type: String
+    pageId="current_page",  # type: String
+):
+    # type: (...) -> None
+    """Changes configuration of a specified dock on a Perspective Page.
+
+    Args:
+        dockId: The ID of the dock to be altered. If no such dock exists
+            on the current page with the given ID, a warning will be
+            logged to the console.
+        config: The new configuration for the dock. All properties are
+            optional, and any properties not specified will remain
+            unchanged. Optional.
+        sessionId: Identifier of the Session to target. If omitted, the
+            current Session will be used automatically. When targeting a
+            different Session, then the pageId parameter must be
+            included in the call. Optional.
+        pageId: Identifier of the Page to target. If omitted, the
+            current Page will be used automatically. Optional.
+    """
+    builtins.print(dockId, config, sessionId, pageId)
+
+
 def alterLogging(
     remoteLoggingEnabled=False,  # type: bool
     level="info",  # type: String
@@ -58,7 +85,7 @@ def alterLogging(
     Args:
         remoteLoggingEnabled: Will enable remote logging if True. Remote
             logging will send log events from the Session to the Gateway
-            under the perspective.client logger if the meet the
+            under the `perspective.client` logger if they meet the
             remoteLevel logging level requirement. Optional.
         level: The desired Session logging level. Possible values are:
             all, trace, debug, info, warn, error, fatal, off. The
@@ -195,7 +222,7 @@ def closeSession(message=None, sessionId="current_session"):
     current Session if no ID is provided.
 
     If a message is provided, it is displayed on the page when the
-    Session closes. Otherwise the default message (set in the Project
+    Session closes. Otherwise, the default message (set in the Project
     Properties) is displayed.
 
     Args:
@@ -265,7 +292,7 @@ def getSessionInfo(
     Gateway, and some Session props (id and userAgent).
 
     Args:
-        usernameFilter: A filter based on logged in user. Optional.
+        usernameFilter: A filter based on logged-in user. Optional.
         projectFilter: A filter based on the project name. Optional.
 
     Returns:
