@@ -10,6 +10,7 @@ __all__ = ["Date", "EventObject", "Locale"]
 
 from typing import Optional
 
+from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Object
 
 
@@ -78,11 +79,6 @@ class EventObject(Object):
         return self.source
 
 
-class classproperty(property):  # pylint: disable=invalid-name
-    def __get__(self, cls, owner):
-        return classmethod(self.fget).__get__(None, owner)()
-
-
 class Locale(Object):
     """A Locale object represents a specific geographical, political, or
     cultural region. An operation that requires a Locale to perform its
@@ -116,84 +112,105 @@ class Locale(Object):
 
     @classproperty
     def CANADA(self):
+        # type: () -> Locale
         return Locale("en", "CA")
 
     @classproperty
     def CANADA_FRENCH(self):
+        # type: () -> Locale
         return Locale("fr", "CA")
 
     @classproperty
     def CHINA(self):
+        # type: () -> Locale
         return Locale("zh", "CN")
 
     @classproperty
     def CHINESE(self):
+        # type: () -> Locale
         return Locale("zh")
 
     @classproperty
     def ENGLISH(self):
+        # type: () -> Locale
         return Locale("en")
 
     @classproperty
     def FRANCE(self):
+        # type: () -> Locale
         return Locale("fr", "FR")
 
     @classproperty
     def FRENCH(self):
+        # type: () -> Locale
         return Locale("fr")
 
     @classproperty
     def GERMAN(self):
+        # type: () -> Locale
         return Locale("de")
 
     @classproperty
     def GERMANY(self):
+        # type: () -> Locale
         return Locale("de", "DE")
 
     @classproperty
     def ITALIAN(self):
+        # type: () -> Locale
         return Locale("it")
 
     @classproperty
     def ITALY(self):
+        # type: () -> Locale
         return Locale("it", "IT")
 
     @classproperty
     def JAPAN(self):
+        # type: () -> Locale
         return Locale("ja", "JP")
 
     @classproperty
     def JAPANESE(self):
+        # type: () -> Locale
         return Locale("ja")
 
     @classproperty
     def KOREA(self):
+        # type: () -> Locale
         return Locale("ko", "KR")
 
     @classproperty
     def KOREAN(self):
+        # type: () -> Locale
         return Locale("ko")
 
     @classproperty
     def PRC(self):
+        # type: () -> Locale
         return self.CHINA
 
     @classproperty
     def SIMPLIFIED_CHINESE(self):
+        # type: () -> Locale
         return self.CHINA
 
     @classproperty
     def TAIWAN(self):
+        # type: () -> Locale
         return Locale("zh", "TW")
 
     @classproperty
     def TRADITIONAL_CHINESE(self):
+        # type: () -> Locale
         return Locale("zh", "TW")
 
     @classproperty
     def UK(self):
+        # type: () -> Locale
         return Locale("en", "GB")
 
     @classproperty
     def US(self):
+        # type: () -> Locale
         return Locale("en", "US")
