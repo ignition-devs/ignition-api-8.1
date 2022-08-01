@@ -1,8 +1,9 @@
 __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 
 from enum import Enum
-from typing import Any, Optional, Union
+from typing import Any, Union
 
+from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Object, String
 from java.util import Date
 
@@ -168,13 +169,81 @@ class QualityCode(Object):
 class BasicQualifiedValue(QualifiedValue, Object):
     """The basic implementation of QualifiedValue."""
 
-    _quality = QualityCode.Bad_Stale  # type: QualityCode
-    _timestamp = Date()  # type: Date
-    _value = None  # type: Object
+    quality = None  # type: QualityCode
+    timestamp = None  # type: Date
+    value = None  # type: Object
 
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        print(args)
+        self.quality = QualityCode.Bad_Stale
+        self.timestamp = Date()
+        self.value = Object()
+
+    @classproperty
+    def BAD(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad)
+
+    @classproperty
+    def CONFIG_ERROR(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Error_Configuration)
+
+    @classproperty
+    def DISABLED(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_Disabled)
+
+    @classproperty
+    def EXPRESSION_EVAL_ERROR(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Error_ExpressionEval)
+
+    @classproperty
+    def INITIAL_VALUE(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Uncertain_InitialValue)
+
+    @classproperty
+    def NOT_CONNECTED(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_NotConnected)
+
+    @classproperty
+    def NOT_FOUND(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_NotFound)
+
+    @classproperty
+    def REFERENCE_NOT_FOUND(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_ReferenceNotFound)
+
+    @classproperty
+    def STALE(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_Stale)
+
+    @classproperty
+    def TRANSFORM_ERROR(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad)
+
+    @classproperty
+    def TYPE_CONVERSION(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Error_TypeConversion)
+
+    @classproperty
+    def UNKNOWN(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Uncertain)
+
+    @classproperty
+    def UNSUPPORTED(self):
+        # type: () -> BasicQualifiedValue
+        return BasicQualifiedValue(None, QualityCode.Bad_Unsupported)
 
     def clone(self):
         # type: () -> BasicQualifiedValue
@@ -191,27 +260,27 @@ class BasicQualifiedValue(QualifiedValue, Object):
 
     def getQuality(self):
         # type: () -> QualityCode
-        return self._quality
+        return self.quality
 
     def getTimestamp(self):
         # type: () -> Date
-        return self._timestamp
+        return self.timestamp
 
     def getValue(self):
         # type: () -> Object
-        return self._value
+        return self.value
 
     def setQuality(self, code):
         # type: (QualityCode) -> None
-        self._quality = code
+        self.quality = code
 
     def setTimestamp(self, timestamp):
         # type: (Date) -> None
-        self._timestamp = timestamp
+        self.timestamp = timestamp
 
     def setValue(self, value):
         # type: (Object) -> None
-        self._value = value
+        self.value = value
 
     @staticmethod
     def unwrap(obj):
