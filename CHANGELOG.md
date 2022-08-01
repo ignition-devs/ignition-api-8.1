@@ -1,3 +1,13 @@
+## v8.1.19.post1 (2022-08-01)
+
+### Fix
+
+- **ia**: make class' properties accessible (#48)
+
+### Refactor
+
+- **java**: move classproperty class (#46)
+
 ## v8.1.19 (2022-07-29)
 
 ### Feat
