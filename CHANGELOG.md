@@ -1,3 +1,9 @@
+## v8.1.19.post2 (2022-08-02)
+
+### Fix
+
+- **system**: fix args and return type of tag.query (#49)
+
 ## v8.1.19.post1 (2022-08-01)
 
 ### Fix
