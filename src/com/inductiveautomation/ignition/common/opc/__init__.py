@@ -1,29 +1,46 @@
 __all__ = [
     "BasicOPCBrowseElement",
+    "BasicServerNodeId",
     "BrowseElementType",
     "OPCBrowseElement",
     "ServerBrowseElement",
+    "ServerNodeId",
 ]
 
 from typing import Any, List
 
-from java.lang import Enum, Object
+from java.lang import Class, Enum, Object, String
 
 
 class OPCBrowseElement(object):
     def getDataType(self):
+        # type: () -> Class
         raise NotImplementedError
 
     def getDescription(self):
+        # type: () -> String
         raise NotImplementedError
 
     def getDisplayName(self):
+        # type: () -> String
         raise NotImplementedError
 
     def getElementType(self):
+        # type: () -> BrowseElementType
         raise NotImplementedError
 
     def getServerNodeId(self):
+        # type: () -> ServerNodeId
+        raise NotImplementedError
+
+
+class ServerNodeId(object):
+    def getNodeId(self):
+        # type: () -> String
+        raise NotImplementedError
+
+    def getServerName(self):
+        # type: () -> String
         raise NotImplementedError
 
 
@@ -33,22 +50,54 @@ class BasicOPCBrowseElement(Object, OPCBrowseElement):
         pass
 
     def getDataType(self):
+        # type: () -> Class
         pass
 
     def getDescription(self):
+        # type: () -> String
         pass
 
     def getDisplayName(self):
+        # type: () -> String
         pass
 
     def getElementType(self):
+        # type: () -> BrowseElementType
         pass
 
     def getServerNodeId(self):
+        # type: () -> ServerNodeId
         pass
 
 
+class BasicServerNodeId(Object, ServerNodeId):
+    nodeId = None  # type: String
+    serverName = None  # type: String
+
+    def __init__(self, serverName, nodeId):
+        # type: (String, String) -> None
+        self.serverName = serverName
+        self.nodeId = nodeId
+
+    def getNodeId(self):
+        # type: () -> String
+        return self.nodeId
+
+    def getServerName(self):
+        # type: () -> String
+        return self.serverName
+
+
 class BrowseElementType(Enum):
+    DATAVARIABLE = None  # type: BrowseElementType
+    DEVICE = None  # type: BrowseElementType
+    FOLDER = None  # type: BrowseElementType
+    METHOD = None  # type: BrowseElementType
+    OBJECT = None  # type: BrowseElementType
+    PROPERTY = None  # type: BrowseElementType
+    SERVER = None  # type: BrowseElementType
+    VIEW = None  # type: BrowseElementType
+
     def isSubscribable(self):
         # type: () -> bool
         pass
@@ -60,22 +109,28 @@ class BrowseElementType(Enum):
 
 
 class ServerBrowseElement(Object, OPCBrowseElement):
-    _serverName = None
+    nodeId = None  # type: ServerNodeId
 
     def __init__(self, serverName):
-        self._serverName = serverName
+        # type: (String) -> None
+        self.nodeId = BasicServerNodeId(serverName, "")
 
     def getDataType(self):
+        # type: () -> Class
         pass
 
     def getDescription(self):
-        pass
+        # type: () -> String
+        return ""
 
     def getDisplayName(self):
+        # type: () -> String
         pass
 
     def getElementType(self):
-        pass
+        # type: () -> BrowseElementType
+        return BrowseElementType.SERVER
 
     def getServerNodeId(self):
-        pass
+        # type: () -> ServerNodeId
+        return self.nodeId

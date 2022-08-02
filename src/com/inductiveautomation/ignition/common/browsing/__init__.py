@@ -2,10 +2,10 @@ from __future__ import print_function
 
 __all__ = ["Result", "Results"]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Sequence
 
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from java.lang import Object, String
+from java.lang import Object
 
 
 class Result(object):
@@ -32,50 +32,61 @@ class Results(Object):
     browse.
     """
 
-    _continuationPoint = None  # type: Optional[String]
-    _resultQuality = None  # type: QualityCode
-    _results = None  # type: List[Any]
+    continuationPoint = None  # type: Optional[str]
+    resultQuality = None  # type: QualityCode
+    results = None  # type: Sequence[Any]
+    totalAvailableResults = None  # type: int
 
     def __init__(self, *args):
         # type: (Any) -> None
         print(args)
-        self._continuationPoint = None
-        self._resultQuality = QualityCode.Good
-        self._results = []
-        self._totalAvailableResults = 0
+        self.continuationPoint = None
+        self.resultQuality = QualityCode.Good
+        self.results = []
+        self.totalAvailableResults = 0
 
     @staticmethod
     def error(result):
+        # type: (Results) -> Results
         return Results(result)
 
     def getContinuationPoint(self):
-        return self._continuationPoint
+        # type: () -> Optional[str]
+        return self.continuationPoint
 
     def getResultQuality(self):
-        return self._resultQuality
+        # type: () -> QualityCode
+        return self.resultQuality
 
     def getResults(self):
-        return self._results
+        # type: () -> Sequence[Any]
+        return self.results
 
     def getReturnedSize(self):
-        return 0 if self._results is None else len(self._results)
+        # type: () -> int
+        return 0 if self.results is None else len(self.results)
 
     def getTotalAvailableSize(self):
-        return self._totalAvailableResults
+        # type: () -> int
+        return self.totalAvailableResults
 
     @staticmethod
     def of(results):
+        # type: (List[Any]) -> Results
         return Results(results)
 
     def setContinuationPoint(self, continuationPoint=None):
         # type: (Optional[str]) -> None
-        self._continuationPoint = continuationPoint
+        self.continuationPoint = continuationPoint
 
     def setResultQuality(self, value):
-        self._resultQuality = value
+        # type: (QualityCode) -> None
+        self.resultQuality = value
 
     def setResults(self, results):
-        self._results = results
+        # type: (List[Any]) -> None
+        self.results = results
 
     def setTotalAvailableResults(self, totalAvailableResults):
-        self._totalAvailableResults = totalAvailableResults
+        # type: (int) -> None
+        self.totalAvailableResults = totalAvailableResults
