@@ -5,7 +5,7 @@ __all__ = ["Result", "Results"]
 from typing import Any, List, Optional, Sequence
 
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from java.lang import Object
+from java.lang import Object, String
 
 
 class Result(object):
@@ -32,7 +32,7 @@ class Results(Object):
     browse.
     """
 
-    continuationPoint = None  # type: Optional[str]
+    continuationPoint = None  # type: Optional[String]
     resultQuality = None  # type: QualityCode
     results = None  # type: Sequence[Any]
     totalAvailableResults = None  # type: int
@@ -51,7 +51,7 @@ class Results(Object):
         return Results(result)
 
     def getContinuationPoint(self):
-        # type: () -> Optional[str]
+        # type: () -> Optional[String]
         return self.continuationPoint
 
     def getResultQuality(self):
@@ -76,7 +76,7 @@ class Results(Object):
         return Results(results)
 
     def setContinuationPoint(self, continuationPoint=None):
-        # type: (Optional[str]) -> None
+        # type: (Optional[String]) -> None
         self.continuationPoint = continuationPoint
 
     def setResultQuality(self, value):

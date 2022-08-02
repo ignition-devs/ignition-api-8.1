@@ -355,7 +355,7 @@ def query(
     provider=None,  # type: Optional[String]
     query=None,  # type: Optional[Dict[String, Any]]
     limit=None,  # type: Optional[int]
-    continuation=None,  # type: Optional[Any]
+    continuation=None,  # type: Optional[String]
 ):
     # type: (...) -> Results
     """Queries a Tag Provider to produce a list of tags that meet the
