@@ -36,11 +36,11 @@ class Dataset(object):
         raise NotImplementedError
 
     def getColumnName(self, col):
-        # type: (int) -> str
+        # type: (int) -> String
         raise NotImplementedError
 
     def getColumnNames(self):
-        # type: () -> List[str]
+        # type: () -> List[String]
         raise NotImplementedError
 
     def getColumnType(self, col):
@@ -107,11 +107,11 @@ class AbstractDataset(Dataset):
         pass
 
     def getColumnName(self, col):
-        # type: (int) -> str
+        # type: (int) -> String
         pass
 
     def getColumnNames(self):
-        # type: () -> List[str]
+        # type: () -> List[String]
         pass
 
     def getColumnType(self, col):
