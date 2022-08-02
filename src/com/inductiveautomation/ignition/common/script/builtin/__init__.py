@@ -219,11 +219,11 @@ class DatasetUtilities(Object):
             pass
 
         def getColumnName(self, col):
-            # type: (int) -> str
+            # type: (int) -> String
             pass
 
         def getColumnNames(self):
-            # type: () -> List[str]
+            # type: () -> List[String]
             pass
 
         def getColumnType(self, col):
