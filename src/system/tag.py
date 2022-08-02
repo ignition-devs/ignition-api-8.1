@@ -362,8 +362,9 @@ def query(
     specified criteria.
 
     Args:
-        provider: The Tag Provider to query.
+        provider: The Tag Provider to query. Optional.
         query: A JSON document that specifies the query conditions.
+            Optional.
         limit: Maximum results to return. If more results are possible,
             the result will have a continuation point set. Optional.
         continuation: The Tag ID of a previously returned
