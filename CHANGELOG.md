@@ -1,3 +1,13 @@
+## v8.1.19.post3 (2022-08-02)
+
+### Fix
+
+- **ia**: change the return type of dataset columns (#50)
+
+### Refactor
+
+- use java.lang.String for continuation/continuationPoint
+
 ## v8.1.19.post2 (2022-08-02)
 
 ### Fix
