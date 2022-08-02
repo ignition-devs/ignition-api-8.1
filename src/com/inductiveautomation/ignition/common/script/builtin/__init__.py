@@ -46,17 +46,17 @@ class AbstractOPCUtilities(Object):
         pass
 
     class PyOPCTag(PyObject):
-        _displayName = None
-        _elementType = None
-        _nodeId = None
-        _serverName = None
+        displayName = None  # type: String
+        elementType = None  # type: BrowseElementType
+        nodeId = None  # type: String
+        serverName = None  # type: String
 
         def __init__(self, serverName, nodeId, displayName, elementType):
             # type: (String, String, String, BrowseElementType) -> None
-            self._serverName = serverName
-            self._nodeId = nodeId
-            self._displayName = displayName
-            self._elementType = elementType
+            self.serverName = serverName
+            self.nodeId = nodeId
+            self.displayName = displayName
+            self.elementType = elementType
             super(AbstractOPCUtilities.PyOPCTag, self).__init__()
 
         def __findattr_ex__(self, name):
@@ -64,16 +64,20 @@ class AbstractOPCUtilities(Object):
             pass
 
         def getDisplayName(self):
-            return self._displayName
+            # type: () -> String
+            return self.displayName
 
         def getElementType(self):
-            return self._elementType
+            # type: () -> BrowseElementType
+            return self.elementType
 
         def getNodeId(self):
-            return self._nodeId
+            # type: () -> String
+            return self.nodeId
 
         def getServerName(self):
-            return self._serverName
+            # type: () -> String
+            return self.serverName
 
 
 class DatasetUtilities(Object):

@@ -175,23 +175,27 @@ class CompositeScheduleModel(AbstractScheduleModel):
 
 
 class HolidayModel(Object):
+    date = None  # type: Date
+    name = None  # type: String
+    repeatAnnually = None  # type: bool
+
     def __init__(self, name, date, repeatAnnually):
         # type: (String, Date, bool) -> None
-        self._name = name
-        self._date = date
-        self._repeatAnnually = repeatAnnually
+        self.name = name
+        self.date = date
+        self.repeatAnnually = repeatAnnually
 
     def getDate(self):
         # type: () -> Date
-        return self._date
+        return self.date
 
     def getName(self):
         # type: () -> String
-        return self._name
+        return self.name
 
     def isRepeatAnnually(self):
         # type: () -> bool
-        return self._repeatAnnually
+        return self.repeatAnnually
 
     def set(self, that):
         # type: (HolidayModel) -> None
@@ -199,29 +203,29 @@ class HolidayModel(Object):
 
     def setDate(self, date):
         # type: (Date) -> None
-        self._date = date
+        self.date = date
 
     def setName(self, name):
         # type: (String) -> None
-        self._name = name
+        self.name = name
 
     def setRepeatAnnually(self, repeatAnnually):
         # type: (bool) -> None
-        self._repeatAnnually = repeatAnnually
+        self.repeatAnnually = repeatAnnually
 
 
 class ScheduleAdjustment(Object):
-    _start = None  # type: Date
-    _end = None  # type: Date
-    _available = None  # type: bool
-    _note = None  # type: String
+    start = None  # type: Date
+    end = None  # type: Date
+    available = None  # type: bool
+    note = None  # type: String
 
     def __init__(self, start, end, available, note):
         # type: (Date, Date, bool, String) -> None
-        self._start = start
-        self._end = end
-        self._available = available
-        self._note = note
+        self.start = start
+        self.end = end
+        self.available = available
+        self.note = note
 
     def contains(self, timestamp):
         # type: (long) -> bool
@@ -229,32 +233,32 @@ class ScheduleAdjustment(Object):
 
     def getEnd(self):
         # type: () -> Date
-        return self._end
+        return self.end
 
     def getNote(self):
         # type: () -> String
-        return self._note
+        return self.note
 
     def getStart(self):
         # type: () -> Date
-        return self._start
+        return self.start
 
     def isAvailable(self):
         # type: () -> bool
-        return self._available
+        return self.available
 
     def setAvailable(self, available):
         # type: (bool) -> None
-        self._available = available
+        self.available = available
 
     def setEnd(self, end):
         # type: (Date) -> None
-        self._end = end
+        self.end = end
 
     def setNote(self, note):
         # type: (String) -> None
-        self._note = note
+        self.note = note
 
     def setStart(self, start):
         # type: (Date) -> None
-        self._start = start
+        self.start = start

@@ -188,12 +188,12 @@ class Locale(Object):
     @classproperty
     def PRC(self):
         # type: () -> Locale
-        return self.CHINA
+        return Locale("zh", "CN")
 
     @classproperty
     def SIMPLIFIED_CHINESE(self):
         # type: () -> Locale
-        return self.CHINA
+        return Locale("zh", "CN")
 
     @classproperty
     def TAIWAN(self):
