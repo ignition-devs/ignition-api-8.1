@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtilities"]
 
-from typing import Any, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model.values import QualityCode
@@ -333,9 +333,15 @@ class DatasetUtilities(Object):
 
 
 class SProcCall(Object):
-    def __init__(self):
-        # type: () -> None
-        pass
+    callFinished = False  # type: bool
+    datasource = ""  # type: String
+    params = None  # type: Dict[SProcCall.SProcArgKey, SProcCall.SProcArg]
+    procedureName = None  # type: String
+    resultset = None  # type: Dataset
+    returnParam = None  # type: SProcCall.SProcArg
+    skipAudit = None  # type: bool
+    txId = None  # type: String
+    updateCount = None  # type: int
 
     def getDataSource(self):
         # type: () -> str
@@ -395,6 +401,11 @@ class SProcCall(Object):
         pass
 
     class SProcArg(Object):
+        outParam = False  # type: bool
+        inParam = False  # type: bool
+        paramType = None  # type: int
+        value = None  # type: Object
+
         def getParamType(self):
             # type: () -> int
             pass
@@ -416,6 +427,9 @@ class SProcCall(Object):
             pass
 
     class SProcArgKey(Object):
+        index = -1  # type: int
+        name = None  # type: String
+
         def getParamIndex(self):
             pass
 
