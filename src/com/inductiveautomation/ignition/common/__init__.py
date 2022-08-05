@@ -13,7 +13,7 @@ class Dataset(object):
     """A dataset is a collection of values arranged in a structured
     format.
 
-    Most datasets are two dimensional -- they can be viewed as a table
+    Most datasets are two-dimensional -- they can be viewed as a table
     with rows and columns being the two dimensions. Values in a dataset
     are usually accessed by specifying one index for each dimension of
     data (row and column for tables).
@@ -25,50 +25,140 @@ class Dataset(object):
 
     def getColumnAsList(self, col):
         # type: (int) -> List[Any]
+        """Returns the column at the specified index as a list.
+
+        Args:
+            col: The column index. Zero-indexed.
+
+        Returns:
+            The column at the specified index as a list.
+        """
         pass
 
     def getColumnCount(self):
         # type: () -> int
+        """Returns the number of columns in the dataset.
+
+        Returns:
+            The number of columns in the dataset.
+        """
         raise NotImplementedError
 
-    def getColumnIndex(self, name):
-        # type: (str) -> int
+    def getColumnIndex(self, colName):
+        # type: (String) -> int
+        """Returns the index of the column with the name colName.
+
+        Args:
+            colName: The name of the column.
+
+        Returns:
+            The index of the column with the name colName.
+        """
         raise NotImplementedError
 
     def getColumnName(self, col):
         # type: (int) -> String
+        """Returns the name of the column at the index colIndex.
+
+        Args:
+            col: The column number. Zero-indexed.
+
+        Returns:
+            The name of the column at the index colIndex.
+        """
         raise NotImplementedError
 
     def getColumnNames(self):
         # type: () -> List[String]
+        """Returns a list with the names of all the columns.
+
+        Returns:
+            A list with the names of all the columns.
+        """
         raise NotImplementedError
 
     def getColumnType(self, col):
         # type: (int) -> Class
+        """Returns the type of the column at the index.
+
+        Args:
+            col: The column number. Zero-indexed.
+
+        Returns:
+            The type of the column at the index.
+        """
         raise NotImplementedError
 
     def getColumnTypes(self):
         # type: () -> List[Class]
+        """Returns a list with the types of all the columns.
+
+        Returns:
+            A list with the types of all the columns.
+        """
         raise NotImplementedError
 
     def getPrimitiveValueAt(self, row, col):
         # type: (int, int) -> float
+        """If the given column is a numeric type or a Date, then the
+        value will be returned as a double.
+
+        Args:
+            row: The row index. Zero-based index.
+            col: The column index. Zero-based index.
+
+        Raises:
+            IllegalArgumentException: if the value at row, col is not a
+                number or Date.
+            UnsupportedOperationException: If the Dataset implementation
+                declines to implement this operation.
+        """
         raise NotImplementedError
 
     def getQualityAt(self, row, col):
         # type: (int, int) -> QualityCode
+        """Returns the quality of the value at the given location.
+
+        Args:
+            row: The row index. Zero-based index.
+            col: The column index. Zero-based index.
+
+        Raises:
+            ArrayIndexOutOfBoundsException: If the given row, col is out
+                of range and hasQualityData() returns true.
+        """
         raise NotImplementedError
 
     def getRowCount(self):
         # type: () -> int
+        """Returns the number of rows in the dataset.
+
+        Returns:
+            The number of rows in the dataset.
+        """
         raise NotImplementedError
 
     def getValueAt(self, row, col):
         # type: (int, Union[int, String]) -> Any
+        """Returns the value at the specified row index and column name
+        or index.
+
+        Args:
+            row: The row number. Zero-indexed.
+            col: The column number (zero-indexed) or name.
+
+        Returns:
+            The value found at the row and column.
+        """
         raise NotImplementedError
 
     def hasQualityData(self):
         # type: () -> bool
+        """Whether this dataset has any quality data to report.
+
+        Returns:
+            Whether this dataset has any quality data to report.
+        """
         pass
 
 
@@ -100,42 +190,119 @@ class AbstractDataset(Dataset):
 
     def getColumnCount(self):
         # type: () -> int
+        """Returns the number of columns in the dataset.
+
+        Returns:
+            The number of columns in the dataset.
+        """
         pass
 
-    def getColumnIndex(self, name):
-        # type: (str) -> int
+    def getColumnIndex(self, colName):
+        # type: (String) -> int
+        """Returns the index of the column with the name colName.
+
+        Args:
+            colName: The name of the column.
+
+        Returns:
+            The index of the column with the name colName.
+        """
         pass
 
     def getColumnName(self, col):
         # type: (int) -> String
+        """Returns the name of the column at the index colIndex.
+
+        Args:
+            col: The column number. Zero-indexed.
+
+        Returns:
+            The name of the column at the index colIndex.
+        """
         pass
 
     def getColumnNames(self):
         # type: () -> List[String]
+        """Returns a list with the names of all the columns.
+
+        Returns:
+            A list with the names of all the columns.
+        """
         pass
 
     def getColumnType(self, col):
         # type: (int) -> Class
+        """Returns the type of the column at the index.
+
+        Args:
+            col: The column number. Zero-indexed.
+
+        Returns:
+            The type of the column at the index.
+        """
         pass
 
     def getColumnTypes(self):
         # type: () -> List[Class]
+        """Returns a list with the types of all the columns.
+
+        Returns:
+            A list with the types of all the columns.
+        """
         pass
 
     def getPrimitiveValueAt(self, row, col):
         # type: (int, int) -> float
+        """If the given column is a numeric type or a Date, then the
+        value will be returned as a double.
+
+        Args:
+            row: The row index. Zero-based index.
+            col: The column index. Zero-based index.
+
+        Raises:
+            IllegalArgumentException: if the value at row, col is not a
+                number or Date.
+            UnsupportedOperationException: If the Dataset implementation
+                declines to implement this operation.
+        """
         pass
 
     def getQualityAt(self, row, col):
         # type: (int, int) -> QualityCode
+        """Returns the quality of the value at the given location.
+
+        Args:
+            row: The row index. Zero-based index.
+            col: The column index. Zero-based index.
+
+        Raises:
+            ArrayIndexOutOfBoundsException: If the given row, col is out
+                of range and hasQualityData() returns true.
+        """
         pass
 
     def getRowCount(self):
         # type: () -> int
+        """Returns the number of rows in the dataset.
+
+        Returns:
+            The number of rows in the dataset.
+        """
         pass
 
     def getValueAt(self, row, col):
         # type: (int, Union[int, String]) -> Any
+        """Returns the value at the specified row index and column name
+        or index.
+
+        Args:
+            row: The row number. Zero-indexed.
+            col: The column number (zero-indexed) or name.
+
+        Returns:
+            The value found at the row and column.
+        """
         pass
 
     def setColumnNames(self, arg):
