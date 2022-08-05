@@ -35,7 +35,7 @@ import os.path
 
 from typing import Any, Dict, List, Optional, Type, Union
 
-from com.inductiveautomation.ignition.common import BasicDataset
+from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
 from java.lang import String
 from java.util import Date, Locale
@@ -585,13 +585,13 @@ def toExcel(
 
 
 def toPyDataSet(dataset):
-    # type: (BasicDataset) -> PyDataSet
+    # type: (Dataset) -> PyDataSet
     """This function converts from a normal DataSet to a PyDataSet,
     which is a wrapper class which makes working with datasets more
     Python-esque.
 
     Args:
-        dataset: A DataSet object to convert into a PyDataSet.
+        dataset: A Dataset object to convert into a PyDataSet.
 
     Returns:
         The newly created PyDataSet.
