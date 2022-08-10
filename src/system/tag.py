@@ -100,8 +100,12 @@ def browseHistoricalTags(
     return Results()
 
 
-def configure(basePath, tags, collisionPolicy="o"):
-    # type: (String, Any, String) -> List[QualityCode]
+def configure(
+    basePath,  # type: String
+    tags,  # type: List[Dict[String, Any]]
+    collisionPolicy="o",  # type: String
+):
+    # type: (...) -> List[QualityCode]
     """Creates Tags from a given list of Python dictionaries or from a
     JSON source string.
 
