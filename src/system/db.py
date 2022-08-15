@@ -91,7 +91,6 @@ from javax.swing import JComponent
 
 PyDataSet = DatasetUtilities.PyDataSet
 
-
 # Type codes
 # These are codes defined by the JDBC specification.
 BIT = -7

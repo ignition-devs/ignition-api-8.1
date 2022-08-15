@@ -64,7 +64,6 @@ from java.lang import String
 PortManager = SerialScriptModule.PortManager
 SerialConfigurator = SerialScriptModule.SerialConfigurator
 
-
 # Bit rate constants.
 BIT_RATE_110 = 110
 BIT_RATE_150 = 150
