@@ -6,8 +6,6 @@ __all__ = [
     "ScheduleAdjustment",
 ]
 
-from typing import Union
-
 from java.lang import Object, String
 from java.util import Date
 

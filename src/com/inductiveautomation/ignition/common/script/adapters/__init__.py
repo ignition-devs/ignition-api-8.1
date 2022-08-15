@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["PyJsonObjectAdapter"]
 
-from typing import Any, List, Optional
+from typing import List, Optional
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from java.lang import Object, String
