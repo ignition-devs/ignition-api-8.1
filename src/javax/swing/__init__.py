@@ -14,7 +14,7 @@ __all__ = [
     "JTextField",
 ]
 
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional
 
 from java.awt import Container, Frame
 from java.lang import String
