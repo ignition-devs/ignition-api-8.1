@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 from enum import Enum
-from typing import Any, Iterable, List, Optional, Tuple, Union
+from typing import Any, Iterable, Iterator, List, Optional, Tuple, Union
 
 from java.io import PrintWriter
 from java.lang import Class, Object, RuntimeException, String, StringBuilder, Throwable
@@ -215,7 +215,7 @@ class PyObject(Object):
         pass
 
     def __iter__(self):
-        # type: () -> Iterable[PyObject]
+        # type: () -> Iterator[PyObject]
         pass
 
     def __iternext__(self):
