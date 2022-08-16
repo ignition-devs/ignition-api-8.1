@@ -1,5 +1,6 @@
 __all__ = [
     "Channel",
+    "FileChannel",
     "SelectableChannel",
     "SelectionKey",
     "Selector",
@@ -8,14 +9,15 @@ __all__ = [
 
 from typing import Any, Optional, Set, TypeVar, Union
 
-from java.io import Closeable
-from java.lang import Object
+from java.lang import AutoCloseable, Object
+from java.nio import ByteBuffer, MappedByteBuffer
+from java.nio.file import Path
 from java.util.function import Consumer
 
 T = TypeVar("T")
 
 
-class Channel(Closeable):
+class Channel(AutoCloseable):
     def close(self):
         # type: () -> None
         pass
@@ -25,7 +27,118 @@ class Channel(Closeable):
         pass
 
 
-class SelectableChannel(Object, Closeable):
+class ReadableByteChannel(Channel):
+    def read(self, dst):
+        # type: (ByteBuffer) -> int
+        pass
+
+
+class WriteableByteChannel(Channel):
+    def write(self, src):
+        # type: (ByteBuffer) -> int
+        pass
+
+
+class FileChannel(Object, Channel):
+    def force(self, metaData):
+        # type: (bool) -> None
+        pass
+
+    def lock(self):
+        # type: () -> FileLock
+        pass
+
+    def map(self, mode, position, size):
+        # type: (FileChannel.MapMode, long, long) -> MappedByteBuffer
+        raise NotImplementedError
+
+    @staticmethod
+    def open(path, *args):
+        # type: (Path, Any) -> FileChannel
+        pass
+
+    def position(self, newPosition=None):
+        # type: (Optional[long]) -> Union[FileChannel, long]
+        pass
+
+    def read(self, *args):
+        # type: (Any) -> Union[int, long]
+        pass
+
+    def size(self):
+        # type: () -> long
+        pass
+
+    def transferFrom(self, src, position, count):
+        # type: (ReadableByteChannel, long, long) -> long
+        pass
+
+    def transferTo(self, position, count, target):
+        # type: (long, long, WriteableByteChannel) -> long
+        pass
+
+    def truncate(self, size):
+        # type: (long) -> FileChannel
+        pass
+
+    def tryLock(
+        self,
+        position=None,  # type: Optional[long]
+        size=None,  # type: Optional[long]
+        shared=None,  # type: Optional[bool]
+    ):
+        # type: (...) -> FileLock
+        pass
+
+    def write(self, *args):
+        # type: (Any) -> Union[int, long]
+        pass
+
+    class MapMode(Object):
+        PRIVATE = None  # type: FileChannel.MapMode
+        READ_ONLY = None  # type: FileChannel.MapMode
+        READ_WRITE = None  # type: FileChannel.MapMode
+
+
+class FileLock(Object, AutoCloseable):
+    def acquiredBy(self):
+        # type: () -> Channel
+        pass
+
+    def channel(self):
+        # type: () -> FileChannel
+        pass
+
+    def close(self):
+        # type: () -> None
+        pass
+
+    def isShared(self):
+        # type: () -> bool
+        pass
+
+    def isValid(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def overlaps(self, position, size):
+        # type: (long, long) -> bool
+        pass
+
+    def position(self):
+        # type: () -> long
+        pass
+
+    def release(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def size(self):
+        # type: () -> long
+        pass
+
+
+class SelectableChannel(Object, AutoCloseable):
     def close(self):
         # type: () -> None
         pass
@@ -126,7 +239,7 @@ class SelectionKey(Object):
         pass
 
 
-class Selector(Object, Closeable):
+class Selector(Object, AutoCloseable):
     def close(self):
         # type: () -> None
         pass
