@@ -33,31 +33,18 @@ class Icon(object):
 
 
 class JComponent(Container):
-    """The base class for all Swing components except top-level
-    containers.
-    """
-
     def __init__(self):
         # type: () -> None
         pass
 
 
 class JFrame(Frame):
-    """An extended version of java.awt.Frame that adds support for the
-    JFC/Swing component architecture.
-    """
-
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        super(JFrame, self).__init__(*args)
 
 
 class JInternalFrame(JComponent):
-    """A lightweight object that provides many of the features of a
-    native frame, including dragging, closing, becoming an icon,
-    resizing, title display, and support for a menu bar.
-    """
-
     def __init__(
         self,
         title=None,  # type: Optional[String]

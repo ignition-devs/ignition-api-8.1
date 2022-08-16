@@ -50,14 +50,6 @@ class Image(Object):
         # type: () -> float
         pass
 
-    def getHeight(self, observer):
-        # type: (ImageObserver) -> int
-        pass
-
-    def getWidth(self, observer):
-        # type: (ImageObserver) -> int
-        pass
-
     def setAccelerationPriority(self, priority):
         # type: (float) -> None
         pass
