@@ -9,6 +9,7 @@ from __future__ import print_function
 __all__ = [
     "Closeable",
     "DataOutputStream",
+    "File",
     "FileDescriptor",
     "FileOutputStream",
     "FilterOutputStream",
@@ -22,7 +23,7 @@ __all__ = [
 
 from typing import Any, Union
 
-from java.lang import Appendable, AutoCloseable, CharSequence, Object
+from java.lang import Appendable, AutoCloseable, CharSequence, Object, String
 
 
 class Closeable(AutoCloseable):
@@ -31,43 +32,68 @@ class Closeable(AutoCloseable):
         raise NotImplementedError
 
 
+class Flushable(object):
+    def flush(self):
+        # type: () -> None
+        raise NotImplementedError
+
+
+class File(Object):
+    pathSeparator = None  # type: String
+    pathSeparatorChar = None  # type: String
+    separator = None  # type: String
+    separatorChar = None  # type: String
+
+    def __init__(self, *args):
+        # type: (Any) -> None
+        pass
+
+
 class FileDescriptor(Object):
     def sync(self):
+        # type: () -> None
         pass
 
     def valid(self):
+        # type: () -> bool
         pass
 
 
-class OutputStream(Object):
+class OutputStream(Object, Closeable, Flushable):
     def close(self):
+        # type: () -> None
         pass
 
     def flush(self):
+        # type: () -> None
         pass
 
     @staticmethod
     def nullOutputStream():
-        return OutputStream()
+        # type: () -> OutputStream
+        pass
 
     def write(self, *args):
+        # type: (Any) -> None
         pass
 
 
 class FileOutputStream(OutputStream):
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def getChannel(self):
+        # type: () -> Any
         pass
 
     def getFD(self):
-        print(self)
-        return FileDescriptor()
+        # type: () -> FileDescriptor
+        pass
 
 
 class FilterOutputStream(OutputStream):
-    _out = OutputStream()
+    _out = None  # type: OutputStream
 
     def __init__(self, out):
         # type: (OutputStream) -> None
@@ -76,46 +102,58 @@ class FilterOutputStream(OutputStream):
 
 class DataOutputStream(FilterOutputStream):
     out = None  # type: OutputStream
-    written = 0  # type: int
 
     def __init__(self, out):
+        # type: (OutputStream) -> None
         self.out = out
         super(DataOutputStream, self).__init__(out)
 
     def size(self):
+        # type: () -> int
         pass
 
     def writeBoolean(self, v):
+        # type: (bool) -> None
         pass
 
     def writeByte(self, v):
+        # type: (int) -> None
         pass
 
     def writeBytes(self, s):
+        # type: (String) -> None
         pass
 
     def writeChar(self, v):
+        # type: (int) -> None
         pass
 
     def writeChars(self, s):
+        # type: (String) -> None
         pass
 
     def writeDouble(self, v):
+        # type: (float) -> None
         pass
 
     def writeFloat(self, v):
+        # type: (float) -> None
         pass
 
     def writeInt(self, v):
+        # type: (int) -> None
         pass
 
     def writeLong(self, v):
+        # type: (long) -> None
         pass
 
     def writeShort(self, v):
+        # type: (int) -> None
         pass
 
     def writeUTF(self, s):
+        # type: (String) -> None
         pass
 
 
@@ -123,71 +161,79 @@ class PrintStream(FilterOutputStream):
     _out = OutputStream()
 
     def __init__(self, *args):
+        # type: (Any) -> None
         print(args)
         super(PrintStream, self).__init__(self._out)
 
     def append(self, *args):
+        # type: (Any) -> PrintStream
         pass
 
     def checkError(self):
-        pass
-
-    def clearError(self):
+        # type: () -> bool
         pass
 
     def format(self, *args):
+        # type: (Any) -> PrintStream
         pass
 
     def print(self, arg):
+        # type: (Any) -> None
         pass
 
     def printf(self, *args):
+        # type: (Any) -> None
         pass
 
     def println(self, arg):
+        # type: (Any) -> None
         pass
 
-    def setError(self):
-        pass
 
-
-class Flushable(object):
-    def flush(self):
-        raise NotImplementedError
-
-
-class InputStream(Object):
+class InputStream(Object, Closeable):
     def available(self):
+        # type: () -> int
         pass
 
     def close(self):
+        # type: () -> None
         pass
 
     def mark(self, readlimit):
+        # type: (int) -> None
         pass
 
     def markSupported(self):
+        # type: () -> bool
         pass
 
-    def nullInputStream(self):
+    @staticmethod
+    def nullInputStream():
+        # type: () -> InputStream
         pass
 
     def read(self, *args):
+        # type: (Any) -> int
         pass
 
     def readAllBytes(self):
+        # type: () -> bytearray
         pass
 
     def readNBytes(self, *args):
+        # type: (Any) -> int
         pass
 
     def reset(self):
+        # type: () -> None
         pass
 
     def skip(self, n):
+        # type: (long) -> long
         pass
 
     def transferTo(self, out):
+        # type: (OutputStream) -> long
         pass
 
 

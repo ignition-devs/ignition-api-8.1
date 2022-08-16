@@ -121,18 +121,24 @@ class Class(Object):
 
 class Enum(Object):
     def compareTo(self, o):
+        # type: (Enum) -> int
         pass
 
     def getDeclaringClass(self):
+        # type: () -> Class
         pass
 
     def name(self):
+        # type: () -> String
         pass
 
     def ordinal(self):
+        # type: () -> int
         pass
 
-    def valueOf(self, enumType, name):
+    @staticmethod
+    def valueOf(enumType, name):
+        # type: (Class, String) -> Enum
         pass
 
 
