@@ -1,0 +1,3 @@
+mypy[python2]<0.980
+pylint
+types-enum34
