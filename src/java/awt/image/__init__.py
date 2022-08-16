@@ -1,24 +1,10 @@
 from __future__ import print_function
 
-__all__ = ["BufferedImage", "ImageObserver"]
+__all__ = ["BufferedImage"]
 
 from typing import Any
 
 from java.awt import Image
-
-
-class ImageObserver(object):
-    def imageUpdate(
-        self,
-        img,  # type: Image
-        infoflags,  # type: int
-        x,  # type: int
-        y,  # type: int
-        width,  # type: int
-        height,  # type: int
-    ):
-        # type: (...) -> bool
-        raise NotImplementedError
 
 
 class BufferedImage(Image):

@@ -12,7 +12,6 @@ __all__ = [
 
 from typing import Any, Optional
 
-from java.awt.image import ImageObserver
 from java.lang import Object
 
 
@@ -22,7 +21,7 @@ class Color(Object):
         print(args)
 
 
-class Component(Object, ImageObserver):
+class Component(Object):
     def imageUpdate(
         self,
         img,  # type: Image
