@@ -29,6 +29,10 @@ class OPCBrowseElement(object):
         # type: () -> BrowseElementType
         raise NotImplementedError
 
+    def getNodeId(self):
+        # type: () -> String
+        raise NotImplementedError
+
     def getServerNodeId(self):
         # type: () -> ServerNodeId
         raise NotImplementedError
@@ -63,6 +67,10 @@ class BasicOPCBrowseElement(Object, OPCBrowseElement):
 
     def getElementType(self):
         # type: () -> BrowseElementType
+        pass
+
+    def getNodeId(self):
+        # type: () -> String
         pass
 
     def getServerNodeId(self):
@@ -130,6 +138,10 @@ class ServerBrowseElement(Object, OPCBrowseElement):
     def getElementType(self):
         # type: () -> BrowseElementType
         return BrowseElementType.SERVER
+
+    def getNodeId(self):
+        # type: () -> String
+        return self.getServerNodeId().getNodeId()
 
     def getServerNodeId(self):
         # type: () -> ServerNodeId

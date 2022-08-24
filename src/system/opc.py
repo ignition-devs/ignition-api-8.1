@@ -60,7 +60,7 @@ def browseServer(
 ):
     # type: (...) -> List[Union[BasicOPCBrowseElement, PyOPCTag]]
     """When called from a Vision Client, returns a list of
-    OPCBrowseElement objects for the given Server. Otherwise returns a
+    OPCBrowseElement objects for the given Server. Otherwise, returns a
     list of PyOPCTag.
 
     Args:
