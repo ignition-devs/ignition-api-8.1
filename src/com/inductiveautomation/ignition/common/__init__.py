@@ -1,6 +1,13 @@
 from __future__ import print_function
 
-__all__ = ["AbstractDataset", "BasicDataset", "Dataset", "Path", "QualifiedPath"]
+__all__ = [
+    "AbstractDataset",
+    "BasicDataset",
+    "Dataset",
+    "JsonPath",
+    "Path",
+    "QualifiedPath",
+]
 
 from typing import Any, List, Optional, Union
 
@@ -325,24 +332,85 @@ class BasicDataset(AbstractDataset):
         super(BasicDataset, self).__init__([""], [Class()])
 
     def columnContainsNulls(self, col):
+        # type: (int) -> bool
         pass
 
     def datasetContainsNulls(self):
+        # type: () -> bool
         pass
 
     def getData(self):
+        # type: () -> Any
         pass
 
     def setAllDirectly(self, columnNames, columnTypes, data):
+        # type: (List[String], List[Class], Any) -> None
         pass
 
     def setDataDirectly(self, arg):
+        # type: (Any) -> None
         pass
 
     def setFromXML(self, columnNames, columnTypes, encodedData, rowCount):
+        # type: (List[String], List[Class], String, int) -> None
         pass
 
     def setValueAt(self, row, col, value):
+        # type: (int, int, Any) -> None
+        pass
+
+
+class JsonPath(Object):
+    ROOT = None  # type: JsonPath
+
+    def createChildPath(self, arg):
+        # type: (Union[JsonPath, int, String]) -> JsonPath
+        pass
+
+    def getAsLinkedList(self):
+        # type: () -> Any
+        pass
+
+    def getDepth(self):
+        # type: () -> int
+        pass
+
+    def getKey(self):
+        # type: () -> Object
+        pass
+
+    def getParent(self):
+        # type: () -> JsonPath
+        pass
+
+    def getPathElements(self):
+        # type: () -> List[JsonPath]
+        pass
+
+    def getSubPath(self, startingDepth):
+        # type: (int) -> JsonPath
+        pass
+
+    def isAncestorOf(self, element):
+        # type: (JsonPath) -> bool
+        pass
+
+    def isRelatedTo(self, other):
+        # type: (JsonPath) -> bool
+        pass
+
+    def isRoot(self):
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def isValidIdentifier(test):
+        # type: (String) -> bool
+        pass
+
+    @staticmethod
+    def parse(path):
+        # type: (String) -> String
         pass
 
 
