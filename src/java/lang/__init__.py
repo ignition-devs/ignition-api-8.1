@@ -14,6 +14,7 @@ __all__ = [
     "IllegalArgumentException",
     "NullPointerException",
     "Object",
+    "Runnable",
     "RuntimeException",
     "StackTraceElement",
     "String",
@@ -106,6 +107,12 @@ class CharSequence(object):
 
     def toString(self):
         # type: () -> String
+        raise NotImplementedError
+
+
+class Runnable(object):
+    def run(self):
+        # type: () -> None
         raise NotImplementedError
 
 

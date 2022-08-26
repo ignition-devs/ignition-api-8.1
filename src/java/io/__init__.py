@@ -18,6 +18,7 @@ __all__ = [
     "OutputStream",
     "PrintStream",
     "PrintWriter",
+    "Reader",
     "Writer",
 ]
 
@@ -234,6 +235,45 @@ class InputStream(Object, Closeable):
 
     def transferTo(self, out):
         # type: (OutputStream) -> long
+        pass
+
+
+class Reader(Object, AutoCloseable):
+    def close(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def mark(self, readAheadLimit):
+        # type: (int) -> None
+        pass
+
+    def markSupported(self):
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def nullReader():
+        # type: () -> Reader
+        pass
+
+    def read(self, *args):
+        # type: (Any) -> int
+        pass
+
+    def ready(self):
+        # type: () -> bool
+        pass
+
+    def reset(self):
+        # type: () -> None
+        pass
+
+    def skip(self, n):
+        # type: (long) -> long
+        pass
+
+    def transferTo(self, out):
+        # type: (Writer) -> long
         pass
 
 
