@@ -6,12 +6,85 @@ bit array).
 
 from __future__ import print_function
 
-__all__ = ["Date", "EventObject", "Locale"]
+__all__ = ["Comparator", "Date", "EventObject", "Locale", "UUID"]
 
-from typing import Optional
+from typing import Any, Optional, TypeVar
 
 from dev.thecesrom.utils.decorators import classproperty
-from java.lang import Object
+from java.lang import Object, String
+from java.util.function import Function, ToDoubleFunction, ToIntFunction, ToLongFunction
+
+T = TypeVar("T")
+
+
+class Comparator(object):
+    def compare(self, o1, o2):
+        # type: (T, T) -> int
+        raise NotImplementedError
+
+    @staticmethod
+    def comparing(keyExtractor, keyComparator):
+        # type: (Function, Comparator) -> Comparator
+        pass
+
+    @staticmethod
+    def comparingDouble(keyExtractor):
+        # type: (ToDoubleFunction) -> Comparator
+        pass
+
+    @staticmethod
+    def comparingInt(keyExtractor):
+        # type: (ToIntFunction) -> Comparator
+        pass
+
+    @staticmethod
+    def comparingLong(keyExtractor):
+        # type: (ToLongFunction) -> Comparator
+        pass
+
+    def equals(self, obj):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    @staticmethod
+    def naturalOrder():
+        # type: () -> Comparator
+        pass
+
+    @staticmethod
+    def nullsFirst(comparator):
+        # type: (Comparator) -> Comparator
+        pass
+
+    @staticmethod
+    def nullsLast(comparator):
+        # type: (Comparator) -> Comparator
+        pass
+
+    def reversed(self):
+        # type: () -> Comparator
+        pass
+
+    @staticmethod
+    def reverseOrder():
+        # type: () -> Comparator
+        pass
+
+    def thenComparing(self, *args):
+        # type: (Any) -> Comparator
+        pass
+
+    def thenComparingDouble(self, keyExtractor):
+        # type: (ToDoubleFunction) -> Comparator
+        pass
+
+    def thenComparingInt(self, keyExtractor):
+        # type: (ToIntFunction) -> Comparator
+        pass
+
+    def thenComparingLong(self, keyExtractor):
+        # type: (ToLongFunction) -> Comparator
+        pass
 
 
 class Date(Object):
@@ -22,22 +95,6 @@ class Date(Object):
     def __init__(self, date=None):
         # type: (Optional[long]) -> None
         print(self, date)
-
-    def __cmp__(self, other):
-        # type: (Date) -> bool
-        pass
-
-    def __ge__(self, other):
-        # type: (Date) -> bool
-        pass
-
-    def __gt__(self, other):
-        # type: (Date) -> bool
-        pass
-
-    def __lt__(self, other):
-        # type: (Date) -> bool
-        pass
 
     def after(self, when):
         # type: (Date) -> bool
@@ -214,3 +271,57 @@ class Locale(Object):
     def US(self):
         # type: () -> Locale
         return Locale("en", "US")
+
+
+class UUID(Object):
+    def __init__(self, mostSigBits, leastSigBits):
+        # type: (long, long) -> None
+        self._leastSigbits = leastSigBits
+        self._mostSigBits = mostSigBits
+
+    def clockSequence(self):
+        # type: () -> int
+        pass
+
+    def compareTo(self, val):
+        # type: (UUID) -> int
+        pass
+
+    @staticmethod
+    def fromString(name):
+        # type: (String) -> UUID
+        pass
+
+    def getLeastSignificantBits(self):
+        # type: () -> long
+        return self._leastSigbits
+
+    def getMostSignificantBits(self):
+        # type: () -> long
+        return self._mostSigBits
+
+    @staticmethod
+    def nameUUIDFromBytes(name):
+        # type: (bytearray) -> UUID
+        pass
+
+    def node(self):
+        # type: () -> long
+        pass
+
+    @staticmethod
+    def randomUUID():
+        # type: () -> UUID
+        pass
+
+    def timestamp(self):
+        # type: () -> long
+        pass
+
+    def variant(self):
+        # type: () -> int
+        pass
+
+    def version(self):
+        # type: () -> int
+        pass

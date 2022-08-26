@@ -13,6 +13,7 @@ __all__ = [
     "Exception",
     "IllegalArgumentException",
     "NullPointerException",
+    "Number",
     "Object",
     "Runnable",
     "RuntimeException",
@@ -39,6 +40,22 @@ class Object(object):
     Object as a superclass. All objects, including arrays, implement the
     methods of this class.
     """
+
+    def __cmp__(self, other):
+        # type: (Object) -> bool
+        pass
+
+    def __ge__(self, other):
+        # type: (Object) -> bool
+        pass
+
+    def __gt__(self, other):
+        # type: (Object) -> bool
+        pass
+
+    def __lt__(self, other):
+        # type: (Object) -> bool
+        pass
 
     def equals(self, obj):
         # type: (Object) -> bool
@@ -146,6 +163,32 @@ class Enum(Object):
     @staticmethod
     def valueOf(enumType, name):
         # type: (Class, String) -> Enum
+        pass
+
+
+class Number(Object):
+    def byteValue(self):
+        # type: () -> int
+        pass
+
+    def doubleValue(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def floatValue(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def intValue(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def longValue(self):
+        # type: () -> long
+        raise NotImplementedError
+
+    def shortValue(self):
+        # type: () -> int
         pass
 
 

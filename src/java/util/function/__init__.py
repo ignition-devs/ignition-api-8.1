@@ -1,4 +1,11 @@
-__all__ = ["Consumer", "Function", "Predicate"]
+__all__ = [
+    "Consumer",
+    "Function",
+    "Predicate",
+    "ToDoubleFunction",
+    "ToIntFunction",
+    "ToLongFunction",
+]
 
 from typing import TypeVar
 
@@ -49,4 +56,22 @@ class Predicate(object):
 
     def test(self, t):
         # type: (T) -> bool
+        raise NotImplementedError
+
+
+class ToDoubleFunction(object):
+    def applyAsDouble(self, value):
+        # type: (T) -> object
+        raise NotImplementedError
+
+
+class ToIntFunction(object):
+    def applyAsInt(self, value):
+        # type: (T) -> object
+        raise NotImplementedError
+
+
+class ToLongFunction(object):
+    def applyAsLong(self, value):
+        # type: (T) -> object
         raise NotImplementedError
