@@ -55,6 +55,10 @@ class DataQuality(Object):
         # type: () -> bool
         pass
 
+    def toString(self, locale=None):
+        # type: (Optional[Locale]) -> String
+        pass
+
     @staticmethod
     def valueOf(name):
         # type: (str) -> DataQuality
