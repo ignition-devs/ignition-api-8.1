@@ -99,6 +99,10 @@ class JSONArray(Object):
         # type: (JSONArray) -> JSONObject
         pass
 
+    def toString(self, indentFactor=None):
+        # type: (Optional[int]) -> String
+        pass
+
     def write(self, writer):
         # type: (Writer) -> Writer
         pass
@@ -254,6 +258,10 @@ class JSONObject(Object):
 
     def toJSONArray(self, names):
         # type: (JSONArray) -> JSONArray
+        pass
+
+    def toString(self, indentFactor=None):
+        # type: (Optional[int]) -> String
         pass
 
     @staticmethod
