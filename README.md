@@ -101,7 +101,7 @@ This project consists of the following packages:
 
 #### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.19/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.20/index.html>.
 
 #### java/javax
 
@@ -110,6 +110,10 @@ These packages include supporting Java classes and interfaces. For more informat
 #### org.apache
 
 This package includes supporting classes and interfaces from Apache Commons Math API. For more information, see documentation here: <https://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/index.html>
+
+#### org.json
+
+This package includes supporting classes and interfaces from the Inductive Automation's `org.json` package, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.20/org/json/package-summary.html>
 
 #### org.python
 

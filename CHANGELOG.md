@@ -1,3 +1,25 @@
+## v8.1.20 (2022-08-26)
+
+### Feat
+
+- add toString implementation (#73)
+- **ia**: add TypeUtilities under ignition.common (#72)
+- **ia**: add PerspectiveModule class (#71)
+- **ia**: implement ignition.common.BrowseElement (#70)
+- **ia**: add getNodeId() to OPCBrowseElement (#69)
+- **java**: improve typing (#63)
+- **java**: add functions to awt classes (#62)
+- **java**: add type hints to Socket functions (#56)
+
+### Refactor
+
+- return Iterator from iter methods (#61)
+- **system**: change type for `tags` argument (#57)
+
+### Perf
+
+- remove unused imports (#59)
+
 ## v8.1.19.post4 (2022-08-05)
 
 ### Feat
@@ -56,13 +78,13 @@
 
 ## v8.1.18.post2 (2022-07-09)
 
-### Refactor
-
-- use java.lang.String (#30)
-
 ### Fix
 
 - **java**: add typing to Java code (#29)
+
+### Refactor
+
+- use java.lang.String (#30)
 
 ## v8.1.18.post1 (2022-07-05)
 
@@ -99,15 +121,15 @@
 
 - **system**: add version argument to httpClient (#16)
 
+### Fix
+
+- **ci**: fix `ci.yml` (#5)
+
 ### Refactor
 
 - improve Version comparison logic (#11)
 - Sourcery refactored main branch (#1)
 - change parent class to Java `Object`
-
-### Fix
-
-- **ci**: fix `ci.yml` (#5)
 
 ## v8.1.15 (2022-03-02)
 
@@ -125,6 +147,15 @@
 
 ## v8.1.13 (2021-12-22)
 
+### BREAKING CHANGE
+
+- `system.util.beep()` will print "Beep!" when called
+regardless of platform
+
+### Feat
+
+- simplify `beep` code
+
 ### Refactor
 
 - move `String` alias to `java.util`
@@ -132,15 +163,6 @@
 - integrate minor changes
 - rename argument from pageID to pageId
 - change return type to `unicode`
-
-### Feat
-
-- simplify `beep` code
-
-### BREAKING CHANGE
-
-- `system.util.beep()` will print "Beep!" when called
-regardless of platform
 
 ## v8.1.12.post3 (2021-11-29)
 
@@ -158,17 +180,17 @@ regardless of platform
 
 ## v8.1.12 (2021-11-23)
 
-### Feat
-
-- add type hints on all system functions
-- improve `date.format`
-- add symbols to `format` to cover most cases
-
 ### BREAKING CHANGE
 
 - * Python versions below or above 2.7.18 are not supported
 * `system.date` and Java's Date are no longer using `datetime` functions
 * remove deprecated functions from `system.tag`
+
+### Feat
+
+- add type hints on all system functions
+- improve `date.format`
+- add symbols to `format` to cover most cases
 
 ## v8.1.11 (2021-10-20)
 
@@ -192,16 +214,16 @@ regardless of platform
 - add fields and implement more methods
 - return instance of BasicDataset
 
+### Fix
+
+- PyUser now returns an instance of User
+
 ### Refactor
 
 - informal interfaces
 - return instance of implementing classes
 - switch to informal interfaces
 - turn fields into properties
-
-### Fix
-
-- PyUser now returns an instance of User
 
 ## v8.1.10.post5 (2021-09-24)
 
@@ -228,15 +250,15 @@ regardless of platform
 - add `com` package to `pip` release
 - **setup**: disallow installation on Python 3
 
+### Fix
+
+- move `WindowUtilities` to the correct package
+
 ### Refactor
 
 - improve code quality
 - improve code quality
 - add `com` package
-
-### Fix
-
-- move `WindowUtilities` to the correct package
 
 ## v8.1.10 (2021-09-09)
 
@@ -271,16 +293,16 @@ regardless of platform
 
 ## v8.1.5-fix (2021-05-11)
 
-### Fix
-
-- add missing parameter to…
-- correct typo in docstring
-
 ### Feat
 
 - **pre-commit**: update black 21.5b0 -> 21.5b1
 - **pre-commit**: update flake8 3.9.1 -> 3.9.2
 - **pre-commit**: update black 21.4b2 -> 21.5b0
+
+### Fix
+
+- add missing parameter to…
+- correct typo in docstring
 
 ## v8.1.5 (2021-04-28)
 
