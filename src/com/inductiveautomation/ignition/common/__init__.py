@@ -4,16 +4,32 @@ __all__ = [
     "AbstractDataset",
     "BasicDataset",
     "Dataset",
+    "JsonElement",
     "JsonPath",
     "Path",
     "QualifiedPath",
+    "TypeUtilities",
 ]
 
-from typing import Any, List, Optional, Union
+from typing import Any, List, Optional, TypeVar, Union
 
-from com.inductiveautomation.ignition.common.model.values import QualityCode
-from com.inductiveautomation.ignition.common.sqltags.model.types import DataQuality
-from java.lang import Class, Object, String
+from com.inductiveautomation.ignition.common.document import DocumentElement
+from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
+from com.inductiveautomation.ignition.common.model.values import (
+    QualifiedValue,
+    QualityCode,
+)
+from com.inductiveautomation.ignition.common.sqltags.model.types import (
+    DataQuality,
+    DataType,
+)
+from java.awt import Color
+from java.lang import Class, Number, Object, String
+from java.util import UUID, Comparator, Date, Locale
+from org.json import JSONObject
+from org.python.core import PyObject
+
+T = TypeVar("T")
 
 
 class Dataset(object):
@@ -441,3 +457,308 @@ class QualifiedPath(Object):
 
     def getFirstPathComponentId(self):
         pass
+
+
+class TypeUtilities(Object):
+    DATE_FORMAT_STRING = "yyyyMMdd.HHmmssSSSZ"  # type: String
+    NULL_SAFE_CASE_INSENSITIVE_ORDER = None  # type: Comparator
+
+    @staticmethod
+    def anyEqual(value, *args):
+        # type: (T, T) -> bool
+        pass
+
+    @staticmethod
+    def coerce(value, destType):
+        # type: (Object, Class) -> Object
+        pass
+
+    @staticmethod
+    def coerceForLocale(value, target, valueLocale):
+        # type: (Object, Class, Locale) -> Object
+        pass
+
+    @staticmethod
+    def coerceGeneric(value, destType):
+        # type: (Object, Class) -> T
+        pass
+
+    @staticmethod
+    def coerceLocaleSafe(str, type):
+        # type: (String, Class) -> Object
+        pass
+
+    @staticmethod
+    def coerceNullSafe(value, destType):
+        # type: (Object, Class) -> Object
+        pass
+
+    @staticmethod
+    def coerceNumberForLocale(value, destType, locale):
+        # type: (Object, Class, Locale) -> Object
+        pass
+
+    @staticmethod
+    def coerceNumberNullSafe(value, destType, locale):
+        # type: (Object, Class, Locale) -> Object
+        pass
+
+    @staticmethod
+    def colorToHex(c):
+        # type: (Color) -> String
+        pass
+
+    @staticmethod
+    def compareInts(foo, bar):
+        # type: (int, int) -> int
+        pass
+
+    @staticmethod
+    def compareNullHigh(c1, c2):
+        # type: (T, T) -> T
+        pass
+
+    @staticmethod
+    def compareNullLow(c1, c2):
+        # type: (T, T) -> T
+        pass
+
+    @staticmethod
+    def datasetFromJSON(json):
+        # type: (JSONObject) -> Dataset
+        pass
+
+    @staticmethod
+    def datasetFromJsonString(jsonStr):
+        # type: (String) -> Dataset
+        pass
+
+    @staticmethod
+    def datasetToGson(data, gson=None):
+        # type: (Dataset, Optional[Gson]) -> JsonElement
+        pass
+
+    @staticmethod
+    def datasetToJSON(data):
+        # type: (Dataset) -> JSONObject
+        pass
+
+    @staticmethod
+    def deepEquals(o1, o2, checkArrayTypes):
+        # type: (Object, Object, bool) -> bool
+        pass
+
+    @staticmethod
+    def equalsIgnoreCase(o1, o2):
+        # type: (Object, Object) -> bool
+        pass
+
+    @staticmethod
+    def fromString(value, dest, locale):
+        # type: (String, Class, Locale) -> Object
+        pass
+
+    @staticmethod
+    def getColorFromString(color):
+        # type: (String) -> Color
+        pass
+
+    @staticmethod
+    def getFirstOrNull(list_):
+        # type: (List[T]) -> T
+        pass
+
+    @staticmethod
+    def getInitValueForClass(c):
+        # type: (Class) -> Object
+        pass
+
+    @staticmethod
+    def getLastNameComponent(name):
+        # type: (String) -> String
+        pass
+
+    @staticmethod
+    def getPrimitiveType(c):
+        # type: (Class) -> Object
+        pass
+
+    @staticmethod
+    def getWrapperType(c):
+        # type: (Class) -> Class
+        pass
+
+    @staticmethod
+    def gsonToPy(element):
+        # type: (JsonElement) -> PyObject
+        pass
+
+    @staticmethod
+    def hasPrimitiveType(c):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def hasValueChanged(
+        currentValue,  # type: QualifiedValue
+        previousValue,  # type: QualifiedValue
+        expectedType,  # type: DataType
+        deadband,  # type: float
+    ):
+        # type: (...) -> bool
+        pass
+
+    @staticmethod
+    def isAssignable(dest, source):
+        # type: (Class, Class) -> bool
+        pass
+
+    @staticmethod
+    def isBoolean(clazz):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def isDirectlyAssignable(dest, source):
+        # type: (Class, Class) -> bool
+        pass
+
+    @staticmethod
+    def isFractional(clazz):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def isNullOrEmpty(s):
+        # type: (String) -> bool
+        return not s
+
+    @staticmethod
+    def isNumber(clazz):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def isPrimitive(clazz):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def isProperNumber(clazz):
+        # type: (Class) -> bool
+        pass
+
+    @staticmethod
+    def neq(o1, o2):
+        # type: (Object, Object) -> bool
+        pass
+
+    @staticmethod
+    def pyToGson(pyObject, customGson=None):
+        # type: (PyObject, Optional[Gson]) -> JsonElement
+        pass
+
+    @staticmethod
+    def pyToJava(pyObject):
+        # type: (PyObject) -> Object
+        pass
+
+    @staticmethod
+    def setArrayValue(arrayValue, newVal, pos):
+        # type: (Object, Object, int) -> QualityCode
+        pass
+
+    @staticmethod
+    def setClassInitializer(init):
+        # type: (TypeUtilities.ClassInitializer) -> None
+        pass
+
+    @staticmethod
+    def toBool(value):
+        # type: (Object) -> bool
+        pass
+
+    @staticmethod
+    def toByteArray(uuid):
+        # type: (UUID) -> bytearray
+        pass
+
+    @staticmethod
+    def toColor(color):
+        # type: (Object) -> Color
+        pass
+
+    @staticmethod
+    def toDataset(value):
+        # type: (Object) -> Dataset
+        pass
+
+    @staticmethod
+    def toDate(value):
+        # type: (Object) -> Date
+        pass
+
+    @staticmethod
+    def toDocument(value):
+        # type: (Object) -> DocumentElement
+        pass
+
+    @staticmethod
+    def toDouble(value):
+        # type: (Object) -> float
+        pass
+
+    @staticmethod
+    def toEnum(enumType, value):
+        # type: (Class, String) -> T
+        pass
+
+    @staticmethod
+    def toFloat(value):
+        # type: (Object) -> float
+        pass
+
+    @staticmethod
+    def toInteger(value):
+        # type: (Object) -> int
+        pass
+
+    @staticmethod
+    def toLong(value):
+        # type: (Object) -> long
+        pass
+
+    @staticmethod
+    def toNumber(value, locale=None):
+        # type: (Object, Optional[Locale]) -> Number
+        pass
+
+    @staticmethod
+    def toShort(value):
+        # type: (Object) -> int
+        pass
+
+    @staticmethod
+    def toStr(value):
+        # type: (Object) -> String
+        pass
+
+    @staticmethod
+    def toStringLocalized(value, locale=None):
+        # type: (Object, Optional[Locale]) -> String
+        pass
+
+    @staticmethod
+    def toStringOnlyNumberLocalized(value, locale):
+        # type: (Object, Locale) -> String
+        pass
+
+    @staticmethod
+    def toUUID(barr):
+        # type: (bytearray) -> UUID
+        pass
+
+    class ClassInitializer(object):
+        def createNew(self, claz):
+            # type: (Class) -> Object
+            pass

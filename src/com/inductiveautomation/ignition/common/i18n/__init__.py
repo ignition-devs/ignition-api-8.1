@@ -43,7 +43,3 @@ class LocalizedString(Object):
     def setParams(self, params):
         # type: (List[Object]) -> None
         pass
-
-    def toString(self, locale=None):
-        # type: (Optional[Locale]) -> String
-        pass

@@ -58,10 +58,6 @@ class PyObject(Object):
         # type: (Any, Any) -> PyObject
         pass
 
-    def __cmp__(self, other):
-        # type: (PyObject) -> int
-        pass
-
     def __coerce__(self, pyo):
         # type: (PyObject) -> PyObject
         pass
@@ -122,10 +118,6 @@ class PyObject(Object):
         # type: (PyObject) -> PyObject
         pass
 
-    def __ge__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
     def __get__(self, obj, type):
         # type: (PyObject, PyObject) -> PyObject
         pass
@@ -144,10 +136,6 @@ class PyObject(Object):
 
     def __getslice__(self, start, stop, step=None):
         # type: (PyObject, PyObject, Optional[PyObject]) -> None
-        pass
-
-    def __gt__(self, other):
-        # type: (PyObject) -> PyObject
         pass
 
     def __hex__(self):
@@ -238,10 +226,6 @@ class PyObject(Object):
         pass
 
     def __lshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __lt__(self, other):
         # type: (PyObject) -> PyObject
         pass
 
