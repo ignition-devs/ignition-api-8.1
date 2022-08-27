@@ -41,7 +41,6 @@ from java.lang import String
 from java.util import Date, Locale
 
 ColType = Union[Date, float, int, str, unicode]
-PyDataSet = DatasetUtilities.PyDataSet
 
 
 def addColumn(
@@ -585,7 +584,7 @@ def toExcel(
 
 
 def toPyDataSet(dataset):
-    # type: (Dataset) -> PyDataSet
+    # type: (Dataset) -> DatasetUtilities.PyDataSet
     """This function converts from a normal DataSet to a PyDataSet,
     which is a wrapper class which makes working with datasets more
     Python-esque.
@@ -597,7 +596,7 @@ def toPyDataSet(dataset):
         The newly created PyDataSet.
     """
     print(dataset)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def updateRow(dataset, rowIndex, changes):

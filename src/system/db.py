@@ -89,8 +89,6 @@ from java.lang import String
 from java.util import Date
 from javax.swing import JComponent
 
-PyDataSet = DatasetUtilities.PyDataSet
-
 # Type codes
 # These are codes defined by the JDBC specification.
 BIT = -7
@@ -527,7 +525,7 @@ def runPrepQuery(
     database="",  # type: String
     tx=None,  # type: Optional[String]
 ):
-    # type: (...) -> PyDataSet
+    # type: (...) -> DatasetUtilities.PyDataSet
     """Runs a prepared statement against the database, returning the
     results in a PyDataSet.
 
@@ -568,7 +566,7 @@ def runPrepQuery(
         The results of the query as a PyDataSet.
     """
     print(query, args, database, tx)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def runPrepUpdate(
@@ -627,8 +625,12 @@ def runPrepUpdate(
     return 1
 
 
-def runQuery(query, database="", tx=None):
-    # type: (String, Optional[String], Optional[String]) -> PyDataSet
+def runQuery(
+    query,  # type: String
+    database="",  # type: String
+    tx=None,  # type: Optional[String]
+):
+    # type: (...) -> DatasetUtilities.PyDataSet
     """Runs a SQL query, usually a SELECT query, against a database,
     returning the results as a dataset.
 
@@ -649,7 +651,7 @@ def runQuery(query, database="", tx=None):
         The results of the query as a PyDataSet.
     """
     print(query, database, tx)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def runSFNamedQuery(*args):
