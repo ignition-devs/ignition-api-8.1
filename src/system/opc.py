@@ -31,7 +31,7 @@ from com.inductiveautomation.ignition.common.script.builtin import AbstractOPCUt
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBrowseTag
 from java.lang import String
 
-PyOPCTag = AbstractOPCUtilities.PyOPCTag
+BrowseServerResult = List[Union[BasicOPCBrowseElement, AbstractOPCUtilities.PyOPCTag]]
 
 
 def browse(opcServer, device, folderPath, opcItemPath):
@@ -58,7 +58,7 @@ def browseServer(
     opcServer,  # type: String
     nodeId,  # type: String
 ):
-    # type: (...) -> List[Union[BasicOPCBrowseElement, PyOPCTag]]
+    # type: (...) -> BrowseServerResult
     """When called from a Vision Client, returns a list of
     OPCBrowseElement objects for the given Server. Otherwise, returns a
     list of PyOPCTag.

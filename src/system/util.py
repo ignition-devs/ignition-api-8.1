@@ -77,9 +77,6 @@ from java.awt import Toolkit
 from java.lang import String, Thread
 from java.util import Date
 
-PyDataSet = DatasetUtilities.PyDataSet
-RequestImpl = SystemUtilities.RequestImpl
-
 APPLET_FLAG = 16
 CLIENT_FLAG = 4
 DESIGNER_FLAG = 1
@@ -437,8 +434,11 @@ def getReadTimeout():
     return 60000
 
 
-def getSessionInfo(usernameFilter=None, projectFilter=None):
-    # type: (Optional[String], Optional[String]) -> PyDataSet
+def getSessionInfo(
+    usernameFilter=None,  # type: Optional[String]
+    projectFilter=None,  # type: Optional[String]
+):
+    # type: (...) -> DatasetUtilities.PyDataSet
     """Returns a PyDataSet holding information about all of the open
     Designer Sessions and Vision Clients.
 
@@ -455,7 +455,7 @@ def getSessionInfo(usernameFilter=None, projectFilter=None):
         A dataset representing the Gateway's current sessions.
     """
     print(usernameFilter, projectFilter)
-    return PyDataSet()
+    return DatasetUtilities.PyDataSet()
 
 
 def getSystemFlags():
@@ -853,7 +853,7 @@ def sendRequestAsync(
     onSuccess=None,  # type: Optional[Callable[..., Any]]
     onError=None,  # type: Optional[Callable[..., Any]]
 ):
-    # type: (...) -> RequestImpl
+    # type: (...) -> SystemUtilities.RequestImpl
     """This function sends a message to the Gateway and expects a
     response.
 
@@ -899,7 +899,7 @@ def sendRequestAsync(
         onSuccess,
         onError,
     )
-    return RequestImpl(1000)
+    return SystemUtilities.RequestImpl(1000)
 
 
 def setConnectTimeout(connectTimeout):

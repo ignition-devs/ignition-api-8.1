@@ -14,8 +14,6 @@ from java.awt import Component
 from java.awt.image import BufferedImage
 from java.lang import String
 
-JythonPrintJob = PrintUtilities.JythonPrintJob
-
 LANDSCAPE = 0
 PORTRAIT = 1
 
@@ -38,7 +36,7 @@ def createImage(component):
 
 
 def createPrintJob(component):
-    # type: (Component) -> JythonPrintJob
+    # type: (Component) -> PrintUtilities.JythonPrintJob
     """Provides a general printing facility for printing the contents of
     a window or component to a printer.
 
@@ -55,7 +53,7 @@ def createPrintJob(component):
         the print job, use .print().
     """
     print(component)
-    return JythonPrintJob()
+    return PrintUtilities.JythonPrintJob()
 
 
 def printToImage(component, filename=None):

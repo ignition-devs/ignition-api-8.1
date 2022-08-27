@@ -61,9 +61,6 @@ from typing import Any, List, Optional
 from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
 from java.lang import String
 
-PortManager = SerialScriptModule.PortManager
-SerialConfigurator = SerialScriptModule.SerialConfigurator
-
 # Bit rate constants.
 BIT_RATE_110 = 110
 BIT_RATE_150 = 150
@@ -134,7 +131,7 @@ def configureSerialPort(
     parity=None,  # type: Optional[int]
     stopBits=None,  # type: Optional[int]
 ):
-    # type: (...) -> SerialConfigurator
+    # type: (...) -> SerialScriptModule.SerialConfigurator
     """Configure a serial port for use in a later call.
 
     This only needs to be done once unless the configuration has changed
@@ -180,7 +177,7 @@ def configureSerialPort(
         parity,
         stopBits,
     )
-    return SerialConfigurator()
+    return SerialScriptModule.SerialConfigurator()
 
 
 def openSerialPort(port):
@@ -204,7 +201,7 @@ def port(
     parity=None,  # type: Optional[int]
     stopBits=None,  # type: Optional[int]
 ):
-    # type: (...) -> PortManager
+    # type: (...) -> SerialScriptModule.PortManager
     """Returns a context manager wrapping a serial port, allowing the
     rest of the system to interact with that port.
 
@@ -262,7 +259,7 @@ def port(
         parity,
         stopBits,
     )
-    return PortManager()
+    return SerialScriptModule.PortManager()
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
