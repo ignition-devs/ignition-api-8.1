@@ -6,6 +6,9 @@ The following functions give you access to interact with Ignition Tags.
 from __future__ import print_function
 
 __all__ = [
+    "DEFAULT_TIMEOUT_MILLIS",
+    "LEGACY_DEFAULT_TIMEOUT_MILLIS",
+    "TAG_PATH",
     "browse",
     "browseHistoricalTags",
     "configure",
@@ -47,6 +50,10 @@ from com.inductiveautomation.ignition.common.sqltags.history.annotations import 
 )
 from java.lang import String
 from java.util import Date
+
+DEFAULT_TIMEOUT_MILLIS = 45000
+LEGACY_DEFAULT_TIMEOUT_MILLIS = 45000
+TAG_PATH = None  # type: Any
 
 
 def browse(path, filter=None):

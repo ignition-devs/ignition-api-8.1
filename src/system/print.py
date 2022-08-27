@@ -5,7 +5,7 @@ The following functions allow you to send to a printer.
 
 from __future__ import print_function
 
-__all__ = ["createImage", "createPrintJob", "printToImage"]
+__all__ = ["LANDSCAPE", "PORTRAIT", "createImage", "createPrintJob", "printToImage"]
 
 from typing import Optional
 
@@ -15,6 +15,9 @@ from java.awt.image import BufferedImage
 from java.lang import String
 
 JythonPrintJob = PrintUtilities.JythonPrintJob
+
+LANDSCAPE = 0
+PORTRAIT = 1
 
 
 def createImage(component):

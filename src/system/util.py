@@ -7,6 +7,14 @@ Client data, as well as interact with other various systems.
 from __future__ import print_function
 
 __all__ = [
+    "APPLET_FLAG",
+    "CLIENT_FLAG",
+    "DESIGNER_FLAG",
+    "FULLSCREEN_FLAG",
+    "MOBILE_FLAG",
+    "PREVIEW_FLAG",
+    "SSL_FLAG",
+    "WEBSTART_FLAG",
     "audit",
     "beep",
     "execute",
@@ -71,6 +79,15 @@ from java.util import Date
 
 PyDataSet = DatasetUtilities.PyDataSet
 RequestImpl = SystemUtilities.RequestImpl
+
+APPLET_FLAG = 16
+CLIENT_FLAG = 4
+DESIGNER_FLAG = 1
+FULLSCREEN_FLAG = 32
+MOBILE_FLAG = 128
+PREVIEW_FLAG = 2
+SSL_FLAG = 64
+WEBSTART_FLAG = 8
 
 
 def audit(
