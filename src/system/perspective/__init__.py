@@ -36,7 +36,7 @@ __all__ = [
 
 import __builtin__ as builtins
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
@@ -500,7 +500,7 @@ def openPopup(
     view,  # type: String
     params=None,  # type: Optional[Dict[String, Any]]
     title="",  # type: String
-    position=None,  # type: Optional[Dict[String, int]]
+    position=None,  # type: Optional[Dict[String, Union[int, String]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
@@ -694,7 +694,7 @@ def togglePopup(
     view,  # type: String
     params,  # type: Optional[Dict[String, Any]]
     title="",  # type: String
-    position=None,  # type: Optional[Dict[String, int]]
+    position=None,  # type: Optional[Dict[String, Union[int, String]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
