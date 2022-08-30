@@ -9,8 +9,9 @@ from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from java.lang import Class, Object, String
+from java.lang import Class
 from java.lang import Exception as JavaException
+from java.lang import Object, String
 from java.util import Locale
 from org.python.core import PyFunction, PyObject
 from org.slf4j import Logger

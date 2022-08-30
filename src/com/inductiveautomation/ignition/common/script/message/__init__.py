@@ -1,7 +1,7 @@
 __all__ = ["Request", "RequestWatcher"]
 
-from java.lang import Object
 from java.lang import Exception as JavaException
+from java.lang import Object
 from org.python.core import PyFunction
 
 
@@ -21,7 +21,7 @@ class Request(RequestWatcher):
         pass
 
     def cancel(self):
-            # type: () -> None
+        # type: () -> None
         raise NotImplementedError
 
     def compose(self, *args):
@@ -29,17 +29,17 @@ class Request(RequestWatcher):
         pass
 
     def get(self):
-            # type: () -> Object
+        # type: () -> Object
         raise NotImplementedError
 
     def getError(self):
-            # type: () -> JavaException
+        # type: () -> JavaException
         raise NotImplementedError
 
     def onError(self, func):
-            # type: (PyFunction) -> None
+        # type: (PyFunction) -> None
         raise NotImplementedError
 
     def onSuccess(self, func):
-            # type: (PyFunction) -> None
+        # type: (PyFunction) -> None
         raise NotImplementedError
