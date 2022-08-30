@@ -1,3 +1,9 @@
+## v8.1.20.post3 (2022-08-30)
+
+### Feat
+
+- **ia**: add ApplicationScope class (#82)
+
 ## v8.1.20.post2 (2022-08-30)
 
 ### Feat
