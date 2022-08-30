@@ -1,4 +1,4 @@
-__all__ = ["Version"]
+__all__ = ["ApplicationScope", "Version"]
 
 import re
 
@@ -6,6 +6,95 @@ from typing import Any, Optional, Tuple, Union
 
 from java.io import InputStream
 from java.lang import IllegalArgumentException, Object, String
+
+
+class ApplicationScope(Object):
+    ALL = 7
+    CLIENT = 4
+    DESIGNER = 2
+    GATEWAY = 1
+    NONE = 0
+
+    @staticmethod
+    def getGlobalScope():
+        # type: () -> int
+        """Returns the scope of this jvm, wherever it may be.
+
+        Returns:
+            The scope of this JVM, wherever it may be.
+
+        """
+        return -1
+
+    @staticmethod
+    def getScopePrefix():
+        # type: () -> String
+        """Returns the current jvm's scope prefix, for use in thread
+        names.
+
+        Returns:
+            The current JVM's scope prefix, for use in thread names.
+        """
+        return "designer"
+
+    @staticmethod
+    def init(globalScope):
+        # type: (int) -> None
+        pass
+
+    @staticmethod
+    def isClient(scope):
+        # type: (int) -> bool
+        pass
+
+    @staticmethod
+    def isDesigner(scope):
+        # type: (int) -> bool
+        pass
+
+    @staticmethod
+    def isGateway(scope):
+        # type: (int) -> bool
+        pass
+
+    @staticmethod
+    def parseScope(s):
+        # type: (String) -> int
+        """Returns a bitmask representing application scope for strings
+        like:
+
+            "C"= client
+            "DC"= designer or client
+            "G"= gateway
+            "N"=none
+            "A"=all
+
+        Args:
+            s: The scope.
+
+        Returns:
+            The scope's int value.
+        """
+        pass
+
+    @staticmethod
+    def toCode(scope):
+        # type: (int) -> String
+        """Turns a scope int into the various scope codes:
+
+            "C"= client
+            "DC"= designer or client
+            "G"= gateway
+            "N"=none
+            "A"=all
+
+        Args:
+            scope: The scope's int value.
+
+        Returns:
+            The scope code.
+        """
+        pass
 
 
 class Version(Object):

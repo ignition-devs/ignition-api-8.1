@@ -1,4 +1,4 @@
-from typing import Any, Generic, Iterator, List, TypeVar, Union
+from typing import Any, Iterator, List, TypeVar, Union
 
 from java.lang import Class, Enum, Object, String
 
