@@ -2,16 +2,19 @@ from __future__ import print_function
 
 __all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtilities"]
 
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from java.lang import Class, Object, String
+from java.lang import Class
+from java.lang import Exception as JavaException
+from java.lang import Object, String
 from java.util import Locale
-from org.python.core import PyObject
+from org.python.core import PyFunction, PyObject
+from org.slf4j import Logger
 
 
 class AbstractOPCUtilities(Object):
@@ -60,7 +63,7 @@ class AbstractOPCUtilities(Object):
             super(AbstractOPCUtilities.PyOPCTag, self).__init__()
 
         def __findattr_ex__(self, name):
-            # type: (str) -> PyObject
+            # type: (String) -> PyObject
             pass
 
         def getDisplayName(self):
@@ -164,7 +167,7 @@ class DatasetUtilities(Object):
     @staticmethod
     def sort(
         ds,  # type: BasicDataset
-        keyColumn,  # type: Union[int, str]
+        keyColumn,  # type: Union[int, String]
         ascending=None,  # type: Optional[bool]
         naturalOrdering=None,  # type: Optional[bool]
     ):
@@ -344,16 +347,16 @@ class SProcCall(Object):
     updateCount = None  # type: int
 
     def getDataSource(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getOutParamValue(self, param):
-        # type: (Union[int, str]) -> Any
+        # type: (Union[int, String]) -> Any
         print(self, param)
         return 0
 
     def getProcedureName(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getResultSet(self):
@@ -367,7 +370,7 @@ class SProcCall(Object):
         return 0
 
     def getTxId(self):
-        # type: () -> str
+        # type: () -> String
         return "transaction_id"
 
     def getUpdateCount(self):
@@ -381,11 +384,11 @@ class SProcCall(Object):
         return False
 
     def registerInParam(self, param, typeCode, value):
-        # type: (Union[int, str], int, Any) -> None
+        # type: (Union[int, String], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        # type: (Union[int, str], int) -> None
+        # type: (Union[int, String], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
@@ -415,15 +418,19 @@ class SProcCall(Object):
             pass
 
         def isInParam(self):
+            # type: () -> bool
             pass
 
         def isOutParam(self):
+            # type: () -> bool
             pass
 
         def setParamType(self, paramType):
+            # type: (int) -> None
             pass
 
         def setValue(self, value):
+            # type: (Object) -> None
             pass
 
     class SProcArgKey(Object):
@@ -431,22 +438,27 @@ class SProcCall(Object):
         name = None  # type: String
 
         def getParamIndex(self):
+            # type: () -> int
             pass
 
         def getParamName(self):
+            # type: () -> String
             pass
 
         def isNamedParam(self):
+            # type: () -> bool
             pass
 
 
 class SystemUtilities(Object):
     @staticmethod
     def logger(loggerName):
+        # type: (String) -> Logger
         pass
 
     @staticmethod
     def parseTranslateArguments(*args, **kwargs):
+        # type: (PyObject, String) -> Tuple[String, String, bool]
         pass
 
     class RequestImpl(Object, Request):
@@ -456,32 +468,38 @@ class SystemUtilities(Object):
             # type: (int) -> None
             self.timeout = timeout
 
-        def checkTimeout(self):
+        def cancel(self):
+            # type: () -> None
             pass
 
-        def dispatchFunc(self):
+        def checkTimeout(self):
+            # type: () -> None
             pass
 
         def finishExceptionally(self, e):
+            # type: (JavaException) -> None
             pass
 
         def finishSuccessfully(self, value):
-            pass
-
-        def getLongId(self):
-            pass
-
-        def cancel(self):
+            # type: (Object) -> None
             pass
 
         def get(self):
+            # type: () -> Object
             pass
 
         def getError(self):
+            # type: () -> JavaException
+            pass
+
+        def getLongId(self):
+            # type: () -> long
             pass
 
         def onError(self, func):
+            # type: (PyFunction) -> None
             pass
 
         def onSuccess(self, func):
+            # type: (PyFunction) -> None
             pass

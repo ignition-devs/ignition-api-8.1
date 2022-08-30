@@ -13,6 +13,7 @@ __all__ = [
     "PyDescriptor",
     "PyException",
     "PyFrame",
+    "PyFunction",
     "PyMethodDescr",
     "PyNewWrapper",
     "PyObject",
@@ -1053,6 +1054,12 @@ class PyFrame(PyObject):
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
         pass
+
+
+class PyFunction(PyObject):
+    def __init__(self, *args):
+        print(args)
+        super(PyFunction, self).__init__()
 
 
 class PyMethodDescr(PyDescriptor):
