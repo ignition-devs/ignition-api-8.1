@@ -1,3 +1,17 @@
+## v8.1.20.post2 (2022-08-30)
+
+### Feat
+
+- **system**: add missing `system` constants (#77)
+
+### Fix
+
+- **ia**: accept unicode arg in SProcCall functions (#80)
+
+### Refactor
+
+- **system**: remove class aliases (#78)
+
 ## v8.1.20.post1 (2022-08-26)
 
 ### Fix
