@@ -28,7 +28,7 @@ __all__ = [
 import __builtin__ as builtins
 import time
 
-from typing import Any, Optional, TypeVar, Union
+from typing import Any, List, Optional, TypeVar, Union
 
 String = Union[str, unicode]
 T = TypeVar("T")
@@ -194,6 +194,7 @@ class Number(Object):
 
 class StackTraceElement(Object):
     def __init__(self, *args):
+        # type: (Any) -> None
         pass
 
     def getClassLoaderName(self):
@@ -235,6 +236,7 @@ class StringBuffer(Object, CharSequence):
         pass
 
     def append(self, *args):
+        # type: (Any) -> StringBuffer
         pass
 
     def appendCodePoint(self, codePoint):
@@ -286,6 +288,7 @@ class StringBuffer(Object, CharSequence):
         pass
 
     def insert(self, *args):
+        # type: (Any) -> StringBuffer
         pass
 
     def lastIndexOf(self, string, fromIndex=0):
@@ -464,9 +467,11 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def getStackTrace(self):
+        # type: () -> List[StackTraceElement]
         pass
 
     def getSuppressed(self):
+        # type: () -> List[Throwable]
         pass
 
     def initCause(self, cause=None):
@@ -479,9 +484,11 @@ class Throwable(Object, builtins.Exception):
         return "message"
 
     def printStackTrace(self, *args):
+        # type: (Any) -> None
         pass
 
     def setStackTrace(self, stackTrace):
+        # type: (List[StackTraceElement]) -> None
         pass
 
     def toString(self):

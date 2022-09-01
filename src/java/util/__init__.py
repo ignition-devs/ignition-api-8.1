@@ -126,14 +126,15 @@ class EventObject(Object):
     Event in question initially occurred upon.
     """
 
-    source = None  # type: Object
+    _source = None  # type: Object
 
     def __init__(self, source):
         # type: (Object) -> None
-        self.source = source
+        self._source = source
 
     def getSource(self):
-        return self.source
+        # type: () -> Object
+        return self._source
 
 
 class Locale(Object):
