@@ -24,7 +24,7 @@ import socket
 from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
-from java.lang import String
+from java.lang import IllegalArgumentException, String
 
 
 def getExternalIpAddress():
@@ -333,9 +333,57 @@ def openURL(url, useApplet=False):
     print(url, useApplet)
 
 
-def sendEmail(
-    smtp,  # type: String
+def _sendEmail(
+    smtpSettings,  # type: String
     fromAddr,  # type: String
+    subject=None,  # type: Optional[String]
+    body=None,  # type: Optional[String]
+    html=False,  # type: bool
+    to=None,  # type: Optional[List[String]]
+    attachmentNames=None,  # type: Optional[List[object]]
+    attachmentData=None,  # type: Optional[List[object]]
+    timeout=300000,  # type: int
+    username=None,  # type: Optional[String]
+    password=None,  # type: Optional[String]
+    priority="3",  # type: String
+    cc=None,  # type: Optional[List[String]]
+    bcc=None,  # type: Optional[List[String]]
+    retries=0,  # type: int
+    replyTo=None,  # type: Optional[List[String]]
+):
+    # type: (...) -> None
+    _to = [] if to is None else to
+    _cc = [] if cc is None else cc
+    _bcc = [] if bcc is None else bcc
+    recipients = _to + _cc + _bcc
+    if smtpSettings and fromAddr and len(recipients) > 0:
+        print(
+            smtpSettings,
+            fromAddr,
+            subject,
+            body,
+            html,
+            to,
+            attachmentNames,
+            attachmentData,
+            timeout,
+            username,
+            password,
+            priority,
+            cc,
+            bcc,
+            retries,
+            replyTo,
+        )
+    else:
+        raise IllegalArgumentException(
+            "Cannot send email without SMTP host, from address and recipient list."
+        )
+
+
+def sendEmail(
+    smtp=None,  # type: Optional[String]
+    fromAddr="",  # type: String
     subject=None,  # type: Optional[String]
     body=None,  # type: Optional[String]
     html=False,  # type: bool
@@ -397,22 +445,37 @@ def sendEmail(
             reply to. If omitted, this defaults to the from address.
             Optional.
     """
-    print(
-        smtp,
-        fromAddr,
-        subject,
-        body,
-        html,
-        to,
-        attachmentNames,
-        attachmentData,
-        timeout,
-        username,
-        password,
-        priority,
-        smtpProfile,
-        cc,
-        bcc,
-        retries,
-        replyTo,
-    )
+    if not smtpProfile:
+        _sendEmail(
+            smtp,
+            fromAddr,
+            subject,
+            body,
+            html,
+            to,
+            attachmentNames,
+            attachmentData,
+            timeout,
+            username,
+            password,
+            priority,
+            retries=retries,
+            replyTo=replyTo,
+        )
+    else:
+        _sendEmail(
+            smtpProfile,
+            fromAddr,
+            subject,
+            body,
+            html,
+            to,
+            attachmentNames,
+            attachmentData,
+            timeout,
+            priority=priority,
+            cc=cc,
+            bcc=bcc,
+            retries=retries,
+            replyTo=replyTo,
+        )
