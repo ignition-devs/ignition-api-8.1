@@ -334,7 +334,7 @@ def openURL(url, useApplet=False):
 
 
 def _sendEmail(
-    smtpSettings,  # type: String
+    smtpSettings,  # type: Optional[String]
     fromAddr,  # type: String
     subject=None,  # type: Optional[String]
     body=None,  # type: Optional[String]
