@@ -9,9 +9,9 @@ __all__ = [
     "Path",
     "Paths",
     "StandardCopyOption",
-    "Watchable",
     "WatchEvent",
     "WatchKey",
+    "Watchable",
 ]
 
 from typing import Any, Iterator, List, Optional, Set, TypeVar, Union
