@@ -14,6 +14,7 @@ __all__ = [
     "FileOutputStream",
     "FilterOutputStream",
     "Flushable",
+    "IOException",
     "InputStream",
     "OutputStream",
     "PrintStream",
@@ -24,7 +25,7 @@ __all__ = [
 
 from typing import Any, Union
 
-from java.lang import Appendable, AutoCloseable, CharSequence, Object, String
+from java.lang import Appendable, AutoCloseable, CharSequence, Exception, Object, String
 
 
 class Closeable(AutoCloseable):
@@ -236,6 +237,11 @@ class InputStream(Object, Closeable):
     def transferTo(self, out):
         # type: (OutputStream) -> long
         pass
+
+
+class IOException(Exception):
+    def __init__(self, message=None, cause=None):
+        super(IOException, self).__init__(message, cause)
 
 
 class Reader(Object, AutoCloseable):
