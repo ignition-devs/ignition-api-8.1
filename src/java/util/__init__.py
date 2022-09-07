@@ -6,14 +6,29 @@ bit array).
 
 from __future__ import print_function
 
-__all__ = ["Comparator", "Date", "EventObject", "Locale", "UUID"]
+__all__ = [
+    "Comparator",
+    "Date",
+    "EventObject",
+    "Iterator",
+    "Locale",
+    "Spliterator",
+    "UUID",
+]
 
 from typing import Any, Optional, TypeVar
 
 from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Object, String
-from java.util.function import Function, ToDoubleFunction, ToIntFunction, ToLongFunction
+from java.util.function import (
+    Consumer,
+    Function,
+    ToDoubleFunction,
+    ToIntFunction,
+    ToLongFunction,
+)
 
+E = TypeVar("E")
 T = TypeVar("T")
 
 
@@ -85,6 +100,67 @@ class Comparator(object):
     def thenComparingLong(self, keyExtractor):
         # type: (ToLongFunction) -> Comparator
         pass
+
+
+class Iterator(object):
+    def forEachRemaining(self, action):
+        # type: (Consumer) -> None
+        pass
+
+    def hasNext(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def next(self):
+        # type: () -> E
+        raise NotImplementedError
+
+    def remove(self):
+        # type: () -> bool
+        pass
+
+
+class Spliterator(object):
+    CONCURRENT = None  # type: int
+    DISTINCT = None  # type: int
+    IMMUTABLE = None  # type: int
+    NONNULL = None  # type: int
+    ORDERED = None  # type: int
+    SIZED = None  # type: int
+    SORTED = None  # type: int
+    SUBSIZED = None  # type: int
+
+    def characteristics(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def estimateSize(self):
+        # type: () -> long
+        raise NotImplementedError
+
+    def forEachRemaining(self, action):
+        # type: (Consumer) -> None
+        pass
+
+    def getComparator(self):
+        # type: () -> Comparator
+        pass
+
+    def getExactSizeIfKnown(self):
+        # type: () -> long
+        pass
+
+    def hasCharacteristics(self, characteristics):
+        # type: (int) -> bool
+        pass
+
+    def tryAdvance(self, action):
+        # type: (Consumer) -> bool
+        raise NotImplementedError
+
+    def trySplit(self):
+        # type: () -> Spliterator
+        raise NotImplementedError
 
 
 class Date(Object):

@@ -1,4 +1,5 @@
 __all__ = [
+    "BiPredicate",
     "Consumer",
     "Function",
     "Predicate",
@@ -13,6 +14,17 @@ from java.lang import Object
 
 R = TypeVar("R")
 T = TypeVar("T")
+U = TypeVar("U")
+
+
+class BiPredicate(object):
+    def negate(self):
+        # type: () -> BiPredicate
+        pass
+
+    def test(self, t, u):
+        # type: (T, U) -> bool
+        pass
 
 
 class Consumer(object):
@@ -22,7 +34,7 @@ class Consumer(object):
 
     def andThen(self, after):
         # type: (Consumer) -> Consumer
-        raise NotImplementedError
+        pass
 
 
 class Function(object):

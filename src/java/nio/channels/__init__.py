@@ -1,6 +1,7 @@
 __all__ = [
     "Channel",
     "FileChannel",
+    "SeekableByteChannel",
     "SelectableChannel",
     "SelectionKey",
     "Selector",
@@ -11,7 +12,6 @@ from typing import Any, Optional, Set, TypeVar, Union
 
 from java.lang import AutoCloseable, Object
 from java.nio import ByteBuffer, MappedByteBuffer
-from java.nio.file import Path
 from java.util.function import Consumer
 
 T = TypeVar("T")
@@ -53,8 +53,8 @@ class FileChannel(Object, Channel):
         raise NotImplementedError
 
     @staticmethod
-    def open(path, *args):
-        # type: (Path, Any) -> FileChannel
+    def open(*args):
+        # type: (*Any) -> FileChannel
         pass
 
     def position(self, newPosition=None):
@@ -135,6 +135,20 @@ class FileLock(Object, AutoCloseable):
 
     def size(self):
         # type: () -> long
+        pass
+
+
+class SeekableByteChannel(ReadableByteChannel, WriteableByteChannel):
+    def position(self, newPosition=None):
+        # type: (Optional[long]) -> Union[long, SeekableByteChannel]
+        pass
+
+    def size(self):
+        # type: () -> long
+        pass
+
+    def truncate(self, size):
+        # type: (long) -> SeekableByteChannel
         pass
 
 
