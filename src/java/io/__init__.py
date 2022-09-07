@@ -7,6 +7,8 @@ this package will cause a NullPointerException to be thrown.
 from __future__ import print_function
 
 __all__ = [
+    "BufferedReader",
+    "BufferedWriter",
     "Closeable",
     "DataOutputStream",
     "File",
@@ -23,9 +25,17 @@ __all__ = [
     "Writer",
 ]
 
-from typing import Any, Union
+from typing import Any, Optional, Union
 
-from java.lang import Appendable, AutoCloseable, CharSequence, Exception, Object, String
+from java.lang import (
+    Appendable,
+    AutoCloseable,
+    CharSequence,
+    Exception,
+    Object,
+    String,
+    Throwable,
+)
 
 
 class Closeable(AutoCloseable):
@@ -241,6 +251,7 @@ class InputStream(Object, Closeable):
 
 class IOException(Exception):
     def __init__(self, message=None, cause=None):
+        # type: (Optional[str], Optional[Throwable]) -> None
         super(IOException, self).__init__(message, cause)
 
 
@@ -283,6 +294,16 @@ class Reader(Object, AutoCloseable):
         pass
 
 
+class BufferedReader(Reader):
+    def __init__(self, in_, sz=None):
+        # type: (Reader, Optional[int]) -> None
+        print(in_, sz)
+
+    def close(self):
+        # type: () -> None
+        pass
+
+
 class Writer(Object, Appendable, Closeable, Flushable):
     def append(self, c_csq, start=0, end=-1):
         # type: (Union[CharSequence, str], int, int) -> Writer
@@ -304,6 +325,12 @@ class Writer(Object, Appendable, Closeable, Flushable):
     def write(self, *args):
         # type: (Any) -> None
         pass
+
+
+class BufferedWriter(Writer):
+    def __init__(self, out, sz=None):
+        # type: (Writer, Optional[int]) -> None
+        print(out, sz)
 
 
 class PrintWriter(Writer):
