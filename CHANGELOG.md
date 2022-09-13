@@ -1,3 +1,15 @@
+## v8.1.20.post4 (2022-09-13)
+
+### Feat
+
+- **java**: add java.nio Files and Paths (#90)
+- **java**: add java.io.IOException (#89)
+- **java**: add type hints to all java and javax classes and methods (#83)
+
+### Fix
+
+- **system**: set smtp keyword argument as optional (#86)
+
 ## v8.1.20.post3 (2022-08-30)
 
 ### Feat
