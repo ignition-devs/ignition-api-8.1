@@ -1,9 +1,21 @@
-__all__ = ["LocalizedString"]
+__all__ = ["LocaleUtils", "LocalizedString"]
 
 from typing import Any, List, Optional
 
 from java.lang import Object, String
 from java.util import Locale
+
+
+class LocaleUtils(Object):
+    @staticmethod
+    def getAvailableLocales(andRegionalVariants):
+        # type: (bool) -> List[Locale]
+        pass
+
+    @staticmethod
+    def parseLocale(locale):
+        # type: (String) -> Optional[Locale]
+        pass
 
 
 class LocalizedString(Object):
