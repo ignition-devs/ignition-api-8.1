@@ -1,3 +1,10 @@
+## v8.1.20.post5 (2022-09-21)
+
+### Feat
+
+- **ia**: add LocaleUtils (#94)
+- **java**: add java.text.SimpleDateFormat class (#93)
+
 ## v8.1.20.post4 (2022-09-13)
 
 ### Feat
