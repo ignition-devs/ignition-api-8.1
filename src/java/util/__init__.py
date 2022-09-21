@@ -7,19 +7,23 @@ bit array).
 from __future__ import print_function
 
 __all__ = [
+    "Calendar",
     "Comparator",
+    "Currency",
     "Date",
     "EventObject",
     "Iterator",
     "Locale",
     "Spliterator",
+    "TimeZone",
     "UUID",
 ]
 
-from typing import Any, Optional, TypeVar
+from typing import Any, Dict, List, Optional, Set, TypeVar, Union
 
 from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Object, String
+from java.time import Instant, ZoneId
 from java.util.function import (
     Consumer,
     Function,
@@ -161,6 +165,225 @@ class Spliterator(object):
     def trySplit(self):
         # type: () -> Spliterator
         raise NotImplementedError
+
+
+class Calendar(Object):
+    ALL_STYLES = None  # type: int
+    AM = None  # type: int
+    AM_PM = None  # type: int
+    APRIL = None  # type: int
+    AUGUST = None  # type: int
+    DATE = None  # type: int
+    DAY_OF_MONTH = None  # type: int
+    DAY_OF_WEEK = None  # type: int
+    DAY_OF_WEEK_IN_MONTH = None  # type: int
+    DAY_OF_YEAR = None  # type: int
+    DECEMBER = None  # type: int
+    DST_OFFSET = None  # type: int
+    ERA = None  # type: int
+    FEBRUARY = None  # type: int
+    FIELD_COUNT = None  # type: int
+    FRIDAY = None  # type: int
+    HOUR = None  # type: int
+    HOUR_OF_DAY = None  # type: int
+    JANUARY = None  # type: int
+    JULY = None  # type: int
+    JUNE = None  # type: int
+    LONG = None  # type: int
+    LONG_FORMAT = None  # type: int
+    LONG_STANDALONE = None  # type: int
+    MARCH = None  # type: int
+    MAY = None  # type: int
+    MILLISECOND = None  # type: int
+    MINUTE = None  # type: int
+    MONDAY = None  # type: int
+    MONTH = None  # type: int
+    NARROW_FORMAT = None  # type: int
+    NARROW_STANDALONE = None  # type: int
+    NOVEMBER = None  # type: int
+    OCTOBER = None  # type: int
+    PM = None  # type: int
+    SATURDAY = None  # type: int
+    SECOND = None  # type: int
+    SEPTEMBER = None  # type: int
+    SHORT = None  # type: int
+    SHORT_FORMAT = None  # type: int
+    SHORT_STANDALONE = None  # type: int
+    SUNDAY = None  # type: int
+    THURSDAY = None  # type: int
+    TUESDAY = None  # type: int
+    UNDECIMBER = None  # type: int
+    WEDNESDAY = None  # type: int
+    WEEK_OF_MONTH = None  # type: int
+    WEEK_OF_YEAR = None  # type: int
+    YEAR = None  # type: int
+    ZONE_OFFSET = None  # type: int
+
+    def add(self, field, amount):
+        # type: (int, int) -> None
+        raise NotImplementedError
+
+    def after(self, when):
+        # type: (Object) -> bool
+        pass
+
+    def before(self, when):
+        # type: (Object) -> bool
+        pass
+
+    def clear(self, field=None):
+        # type: (Optional[int]) -> None
+        pass
+
+    def clone(self):
+        # type: () -> Object
+        pass
+
+    def compareTo(self, anotherCalendar):
+        # type: (Calendar) -> int
+        pass
+
+    def get(self, field):
+        # type: (int) -> int
+        pass
+
+    def getActualMaximum(self, field):
+        # type: (int) -> int
+        pass
+
+    def getActualMinimum(self, field):
+        # type: (int) -> int
+        pass
+
+    @staticmethod
+    def getAvailableCalendarTypes():
+        # type: () -> Set[String]
+        pass
+
+    @staticmethod
+    def getAvailableLocales():
+        # type: () -> List[Locale]
+        pass
+
+    def getCalendarType(self):
+        # type: () -> String
+        pass
+
+    def getDisplayName(self, field, style, locale):
+        # type: (int, int, Locale) -> String
+        pass
+
+    def getDisplayNames(self, field, style, locale):
+        # type: (int, int, Locale) -> Dict[String, int]
+        pass
+
+    def getFirstDayOfWeek(self):
+        # type: () -> int
+        pass
+
+    def getGreatestMinimum(self, field):
+        # type: (int) -> int
+        raise NotImplementedError
+
+    def getInstance(self, *args):
+        # type: (*Any) -> Calendar
+        pass
+
+    def getTimeZone(self):
+        # type: () -> TimeZone
+        pass
+
+    def getWeeksInWeekYear(self):
+        # type: () -> int
+        pass
+
+    def getWeekYear(self):
+        # type: () -> int
+        pass
+
+    def isLenient(self):
+        # type: () -> bool
+        pass
+
+    def isSet(self, field):
+        # type: (int) -> bool
+        pass
+
+    def isWeekDateSUpported(self):
+        # type: () -> bool
+        pass
+
+    def roll(self, field, amount):
+        # type: (int, int) -> None
+        pass
+
+    def set(self, *args):
+        # type: (*int) -> None
+        pass
+
+    def setFirstDayOfWeek(self, value):
+        # type: (int) -> None
+        pass
+
+    def setLenient(self, lenient):
+        # type: (bool) -> None
+        pass
+
+    def setMinimalDaysInFirstWeek(self, value):
+        # type: (int) -> None
+        pass
+
+    def setTime(self, date):
+        # type: (Date) -> None
+        pass
+
+    def setTimeInMillis(self, millis):
+        # type: (long) -> None
+        pass
+
+    def setTimeZone(self, value):
+        # type: (TimeZone) -> None
+        pass
+
+    def setWeekDate(self, weekYear, weekOfYear, dayOfWeek):
+        # type: (int, int, int) -> None
+        pass
+
+    def toInstant(self):
+        # type: () -> Instant
+        pass
+
+
+class Currency(Object):
+    @staticmethod
+    def getAvailableCurrencies():
+        # type: () -> Set[Currency]
+        pass
+
+    def getCurrencyCode(self):
+        # type: () -> String
+        pass
+
+    def getDisplayName(self, locale=None):
+        # type: (Optional[Locale]) -> String
+        pass
+
+    @staticmethod
+    def getInstance(arg):
+        # type: (Union[Locale, String]) -> Currency
+        pass
+
+    def getNumericCode(self):
+        # type: () -> int
+        pass
+
+    def getNumericCodeAsString(self):
+        # type: () -> String
+        pass
+
+    def getSymbol(self, locale=None):
+        # type: (Optional[Locale]) -> String
+        pass
 
 
 class Date(Object):
@@ -348,6 +571,83 @@ class Locale(Object):
     def US(self):
         # type: () -> Locale
         return Locale("en", "US")
+
+
+class TimeZone(Object):
+    LONG = None  # type: int
+    SHORT = None  # type: int
+
+    def clone(self):
+        # type: () -> Object
+        pass
+
+    @staticmethod
+    def getAvailableIDs(rawOffset=None):
+        # type: (Optional[int]) -> List[String]
+        pass
+
+    @staticmethod
+    def getDefault():
+        # type: () -> TimeZone
+        pass
+
+    def getDisplayName(self, *args):
+        # type: (*Any) -> String
+        pass
+
+    def getDSTSavings(self):
+        # type: () -> int
+        pass
+
+    def getID(self):
+        # type: () -> String
+        pass
+
+    def getOffset(self, *args):
+        # type: (*Any) -> int
+        pass
+
+    def getRawOffset(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    @staticmethod
+    def getTimeZone(arg):
+        # type: (Union[String, ZoneId]) -> TimeZone
+        pass
+
+    def hasSameRules(self, other):
+        # type: (TimeZone) -> bool
+        pass
+
+    def isDaylightTime(self, date):
+        # type: (Date) -> bool
+        raise NotImplementedError
+
+    def observesDaylightTime(self):
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def setDefault(zone):
+        # type: (TimeZone) -> None
+        pass
+
+    def setID(self, ID):
+        # type: (String) -> None
+        pass
+
+    def setRawOffset(self, offsetMillis):
+        # type: (int) -> None
+        raise NotImplementedError
+
+    def toZoneId(self):
+        # type: () -> ZoneId
+        pass
+
+    def useDaylightTime(self):
+        # type: () -> bool
+        raise NotImplementedError
 
 
 class UUID(Object):
