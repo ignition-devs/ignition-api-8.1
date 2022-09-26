@@ -34,6 +34,6 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.34.0
+    rev: v2.35.0
     hooks:
       - id: commitizen
