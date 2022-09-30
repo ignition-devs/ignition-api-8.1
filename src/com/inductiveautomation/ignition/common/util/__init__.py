@@ -165,7 +165,7 @@ class LoggerEx(Object):
 
     class Builder(Object):
         def build(self, *args):
-            # type: (Any) -> LoggerEx
+            # type: (*Any) -> LoggerEx
             pass
 
         def eventSystem(self, systemId):

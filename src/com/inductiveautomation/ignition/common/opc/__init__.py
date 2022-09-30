@@ -51,7 +51,7 @@ class ServerNodeId(object):
 
 class BasicOPCBrowseElement(Object, OPCBrowseElement):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def getDataType(self):

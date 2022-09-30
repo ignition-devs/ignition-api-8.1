@@ -21,7 +21,7 @@ class ContactInfo(Object):
     value = ""  # type: String
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         if len(args) == 2:
             self.contactType = args[0]
             self.value = args[1]
@@ -137,7 +137,7 @@ class PyUser(User):
         self._user = user
 
     def addContactInfo(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(self, args)
 
     def addRole(self, role):
@@ -245,7 +245,7 @@ class PyUser(User):
         pass
 
     def set(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def setContactInfo(self, contactInfo):

@@ -39,7 +39,7 @@ class UIResponse(Object):
         pass
 
     def error(self, message, *args):
-        # type: (String, Object) -> None
+        # type: (String, *Object) -> None
         pass
 
     def getErrors(self):
@@ -59,11 +59,11 @@ class UIResponse(Object):
         pass
 
     def info(self, message, *args):
-        # type: (String, Object) -> None
+        # type: (String, *Object) -> None
         pass
 
     def warn(self, message, *args):
-        # type: (String, Object) -> None
+        # type: (String, *Object) -> None
         pass
 
     @staticmethod

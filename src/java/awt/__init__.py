@@ -41,7 +41,7 @@ class AWTEvent(EventObject):
 
 class Color(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
 
 
@@ -61,7 +61,7 @@ class Component(Object):
 
 class Container(Component):
     def add(self, *args):
-        # type: (Any) -> Optional[Component]
+        # type: (*Any) -> Optional[Component]
         pass
 
 
@@ -96,13 +96,13 @@ class Toolkit(Object):
 
 class Window(Container):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
 
 class Frame(Window):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(Frame, self).__init__(*args)
 
 

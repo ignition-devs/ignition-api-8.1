@@ -141,7 +141,7 @@ class JComponent(Container):
 
 class JFrame(Frame):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(JFrame, self).__init__(*args)
 
 
@@ -163,7 +163,7 @@ class JLabel(JComponent):
     """A display area for a short text string or an image, or both."""
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(JLabel, self).__init__()
         print(args)
 
@@ -344,7 +344,7 @@ class JOptionPane(JComponent):
 
 class JPanel(JComponent):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(JPanel, self).__init__()
         print(args)
 
@@ -385,5 +385,5 @@ class JTextField(JTextComponent):
     """
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass

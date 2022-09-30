@@ -16,7 +16,7 @@ class SerialScriptModule(Object):
 
     class PortManager(object):
         def __init__(self, *args):
-            # type: (Any) -> None
+            # type: (*Any) -> None
             pass
 
         def __enter__(self):

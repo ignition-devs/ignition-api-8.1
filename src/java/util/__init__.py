@@ -90,7 +90,7 @@ class Comparator(object):
         pass
 
     def thenComparing(self, *args):
-        # type: (Any) -> Comparator
+        # type: (*Any) -> Comparator
         pass
 
     def thenComparingDouble(self, keyExtractor):

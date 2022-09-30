@@ -56,7 +56,7 @@ class PyObject(Object):
         pass
 
     def __call__(self, *args, **kwargs):
-        # type: (Any, Any) -> PyObject
+        # type: (*Any, **Any) -> PyObject
         pass
 
     def __coerce__(self, pyo):
@@ -335,7 +335,7 @@ class PyObject(Object):
         pass
 
     def __setslice__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def __sub__(self, other):
@@ -371,7 +371,7 @@ class PyObject(Object):
         pass
 
     def _callextra(self, *args, **kwargs):
-        # type: (Any, Any) -> PyObject
+        # type: (*Any, **Any) -> PyObject
         pass
 
     def _cmp(self, o):
@@ -387,11 +387,11 @@ class PyObject(Object):
         pass
 
     def _doget(self, *args):
-        # type: (Any) -> PyObject
+        # type: (*Any) -> PyObject
         pass
 
     def _doset(self, *args):
-        # type: (Any) -> Union[bool, PyObject]
+        # type: (*Any) -> Union[bool, PyObject]
         pass
 
     def _eq(self, o):
@@ -479,11 +479,11 @@ class PyObject(Object):
         pass
 
     def _jcall(self, *args):
-        # type: (Any) -> PyObject
+        # type: (*Any) -> PyObject
         pass
 
     def _jcallexc(self, *args):
-        # type: (Any) -> PyObject
+        # type: (*Any) -> PyObject
         pass
 
     def _jthrow(self, t):
@@ -591,7 +591,7 @@ class PyObject(Object):
         pass
 
     def dispatch__init__(self, *args, **kwargs):
-        # type: (Any, Any) -> None
+        # type: (*Any, **Any) -> None
         pass
 
     def fastGetClass(self):
@@ -623,7 +623,7 @@ class PyObject(Object):
         pass
 
     def invoke(self, *args, **kwargs):
-        # type: (Any, Any) -> PyObject
+        # type: (*Any, **Any) -> PyObject
         pass
 
     def isCallable(self):
@@ -741,7 +741,7 @@ class PyCode(PyObject):
     co_name = None  # type: String
 
     def call(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
 
@@ -963,7 +963,7 @@ class PyFrame(PyObject):
     tracefunc = None  # type: TraceFunction
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(PyFrame, self).__init__()
         print(args)
 
@@ -1071,7 +1071,7 @@ class PyNewWrapper(PyBuiltinMethod):
     for_type = None  # type: PyType
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(PyNewWrapper, self).__init__()
         print(args)
 
@@ -1080,7 +1080,7 @@ class PyNewWrapper(PyBuiltinMethod):
         pass
 
     def new_impl(self, init, subtype, *args, **kwargs):
-        # type: (bool, PyType, Any, Any) -> PyObject
+        # type: (bool, PyType, *Any, **Any) -> PyObject
         raise NotImplementedError
 
     def setWrappedType(self, type_):

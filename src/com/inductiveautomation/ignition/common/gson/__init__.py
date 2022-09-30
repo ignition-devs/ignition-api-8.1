@@ -34,7 +34,7 @@ class TypeAdapterFactory(object):
 
 class FieldAttributes(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def getAnnotation(self, annotation):
@@ -93,7 +93,7 @@ class Gson(Object):
         pass
 
     def fromJson(self, *args):
-        # type: (Any) -> T
+        # type: (*Any) -> T
         pass
 
     def getAdapter(self, TypeToken=None):
@@ -125,7 +125,7 @@ class Gson(Object):
         pass
 
     def toJson(self, *args):
-        # type: (Any) -> Optional[String]
+        # type: (*Any) -> Optional[String]
         pass
 
     def toJsonTree(self, src, typeOfSrc=None):
@@ -135,7 +135,7 @@ class Gson(Object):
 
 class GsonBuilder(object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def addDeserializationExclusionStrategy(self, strategy):
@@ -167,7 +167,7 @@ class GsonBuilder(object):
         pass
 
     def excludeFieldsWithModifiers(self, *args):
-        # type: (int) -> GsonBuilder
+        # type: (*int) -> GsonBuilder
         pass
 
     def generateNonExecutableJson(self):
@@ -199,11 +199,11 @@ class GsonBuilder(object):
         pass
 
     def setDateFormat(self, *args):
-        # type: (Any) -> GsonBuilder
+        # type: (*Any) -> GsonBuilder
         pass
 
     def setExclusionStrategies(self, *args):
-        # type: (ExclusionStrategy) -> GsonBuilder
+        # type: (*ExclusionStrategy) -> GsonBuilder
         pass
 
     def setFieldNamingPolicy(self, namingConvention):

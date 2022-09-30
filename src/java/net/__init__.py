@@ -62,7 +62,7 @@ class InetAddress(Object):
 
     @staticmethod
     def getByAddress(*args):
-        # type: (Any) -> InetAddress
+        # type: (*Any) -> InetAddress
         pass
 
     @staticmethod
@@ -129,7 +129,7 @@ class InetAddress(Object):
         pass
 
     def isReachable(self, *args):
-        # type: (Any) -> bool
+        # type: (*Any) -> bool
         pass
 
     def isSiteLocalAddress(self):
@@ -139,7 +139,7 @@ class InetAddress(Object):
 
 class InetSocketAddress(SocketAddress):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
         super(InetSocketAddress, self).__init__()
 
@@ -197,7 +197,7 @@ class Proxy(Object):
 
 class Socket(Object, Closeable):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def bind(self, bindpoint):

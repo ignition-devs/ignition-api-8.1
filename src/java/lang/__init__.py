@@ -194,7 +194,7 @@ class Number(Object):
 
 class StackTraceElement(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def getClassLoaderName(self):
