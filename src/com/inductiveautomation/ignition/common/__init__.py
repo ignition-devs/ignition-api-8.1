@@ -343,7 +343,7 @@ class AbstractDataset(Dataset):
 
 class BasicDataset(AbstractDataset):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
         super(BasicDataset, self).__init__([""], [Class()])
 

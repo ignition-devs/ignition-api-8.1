@@ -74,7 +74,7 @@ class AlarmEvent(object):
 
 class EventData(BasicPropertySet):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(EventData, self).__init__(*args)
 
     def getTimeStamp(self):

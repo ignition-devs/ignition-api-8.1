@@ -57,7 +57,7 @@ class File(Object):
     separatorChar = None  # type: String
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
 
@@ -86,13 +86,13 @@ class OutputStream(Object, Closeable, Flushable):
         pass
 
     def write(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
 
 class FileOutputStream(OutputStream):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def getChannel(self):
@@ -173,12 +173,12 @@ class PrintStream(FilterOutputStream):
     _out = OutputStream()
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
         super(PrintStream, self).__init__(self._out)
 
     def append(self, *args):
-        # type: (Any) -> PrintStream
+        # type: (*Any) -> PrintStream
         pass
 
     def checkError(self):
@@ -186,7 +186,7 @@ class PrintStream(FilterOutputStream):
         pass
 
     def format(self, *args):
-        # type: (Any) -> PrintStream
+        # type: (*Any) -> PrintStream
         pass
 
     def print(self, arg):
@@ -194,7 +194,7 @@ class PrintStream(FilterOutputStream):
         pass
 
     def printf(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def println(self, arg):
@@ -225,7 +225,7 @@ class InputStream(Object, Closeable):
         pass
 
     def read(self, *args):
-        # type: (Any) -> int
+        # type: (*Any) -> int
         pass
 
     def readAllBytes(self):
@@ -233,7 +233,7 @@ class InputStream(Object, Closeable):
         pass
 
     def readNBytes(self, *args):
-        # type: (Any) -> int
+        # type: (*Any) -> int
         pass
 
     def reset(self):
@@ -274,7 +274,7 @@ class Reader(Object, AutoCloseable):
         pass
 
     def read(self, *args):
-        # type: (Any) -> int
+        # type: (*Any) -> int
         pass
 
     def ready(self):
@@ -323,7 +323,7 @@ class Writer(Object, Appendable, Closeable, Flushable):
         pass
 
     def write(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
 
@@ -335,7 +335,7 @@ class BufferedWriter(Writer):
 
 class PrintWriter(Writer):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def append(self, c_csq, start=0, end=-1):
@@ -347,7 +347,7 @@ class PrintWriter(Writer):
         pass
 
     def format(self, *args):
-        # type: (Any) -> PrintWriter
+        # type: (*Any) -> PrintWriter
         pass
 
     def print(self, arg):
@@ -355,7 +355,7 @@ class PrintWriter(Writer):
         pass
 
     def printf(self, *args):
-        # type: (Any) -> PrintWriter
+        # type: (*Any) -> PrintWriter
         pass
 
     def println(self, arg):
@@ -363,5 +363,5 @@ class PrintWriter(Writer):
         pass
 
     def write(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass

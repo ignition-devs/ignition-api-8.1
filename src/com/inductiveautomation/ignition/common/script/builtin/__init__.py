@@ -458,7 +458,7 @@ class SystemUtilities(Object):
 
     @staticmethod
     def parseTranslateArguments(*args, **kwargs):
-        # type: (PyObject, String) -> Tuple[String, String, bool]
+        # type: (*PyObject, **String) -> Tuple[String, String, bool]
         pass
 
     class RequestImpl(Object, Request):

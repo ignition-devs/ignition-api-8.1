@@ -108,7 +108,7 @@ class QualityCode(Object):
     Uncertain_IncompleteOperation = None  # type: QualityCode
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def derive(self, diagnosticMessage):
@@ -174,7 +174,7 @@ class BasicQualifiedValue(QualifiedValue, Object):
     value = None  # type: Object
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
         self.quality = QualityCode.Bad_Stale
         self.timestamp = Date()

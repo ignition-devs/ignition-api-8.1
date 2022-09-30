@@ -83,7 +83,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def update(self, *args, **kwargs):
-        # type: (PyObject, String) -> None
+        # type: (*PyObject, **String) -> None
         pass
 
     def values(self):

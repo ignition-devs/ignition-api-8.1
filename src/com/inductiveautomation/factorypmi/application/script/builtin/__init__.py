@@ -67,7 +67,7 @@ class INavUtilities(object):
         raise NotImplementedError
 
     def swapWindow(self, *args):
-        # type: (Any) -> PyObject
+        # type: (*Any) -> PyObject
         raise NotImplementedError
 
 
@@ -117,7 +117,7 @@ class NavUtilities(INavUtilities):
         pass
 
     def swapWindow(self, *args):
-        # type: (Any) -> PyObject
+        # type: (*Any) -> PyObject
         pass
 
 

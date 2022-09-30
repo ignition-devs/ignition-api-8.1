@@ -57,7 +57,7 @@ class ShelvedPath(Object):
     """
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         print(args)
 
     def getExpiration(self):

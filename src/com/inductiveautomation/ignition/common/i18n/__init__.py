@@ -20,7 +20,7 @@ class LocaleUtils(Object):
 
 class LocalizedString(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def compareTo(self, other):

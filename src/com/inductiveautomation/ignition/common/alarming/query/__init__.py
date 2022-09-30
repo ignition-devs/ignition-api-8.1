@@ -26,7 +26,7 @@ class AlarmQueryResult(object):
 
 class AlarmQueryResultImpl(AlarmQueryResult):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def __iter__(self):

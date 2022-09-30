@@ -58,7 +58,7 @@ class BasicProperty(Property, Object):
     _hcode = None  # type: int
 
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         if not args:
             self._hcode = 0
         elif len(args) == 2:
@@ -114,11 +114,11 @@ class BasicProperty(Property, Object):
 
 class BasicPropertySet(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def addPropertySet(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def contains(self, prop):
@@ -171,7 +171,7 @@ class BasicPropertySet(Object):
 
     @staticmethod
     def of(*args):
-        # type: (PropertyValue) -> PropertySet
+        # type: (*PropertyValue) -> PropertySet
         pass
 
     def remove(self, prop):
@@ -206,7 +206,7 @@ class BasicPropertySet(Object):
 
 class PropertyValue(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         pass
 
     def getProperty(self):
