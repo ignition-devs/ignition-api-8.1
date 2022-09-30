@@ -6,11 +6,12 @@ __all__ = [
     "ScheduleAdjustment",
 ]
 
+from com.palantir.ptoss.cinch.core import DefaultBindableModel
 from java.lang import Object, String
 from java.util import Date
 
 
-class AbstractScheduleModel(Object):
+class AbstractScheduleModel(DefaultBindableModel):
     def getScheduleForDay(self, cal):
         pass
 
@@ -172,7 +173,7 @@ class CompositeScheduleModel(AbstractScheduleModel):
         pass
 
 
-class HolidayModel(Object):
+class HolidayModel(DefaultBindableModel):
     date = None  # type: Date
     name = None  # type: String
     repeatAnnually = None  # type: bool
@@ -212,7 +213,7 @@ class HolidayModel(Object):
         self.repeatAnnually = repeatAnnually
 
 
-class ScheduleAdjustment(Object):
+class ScheduleAdjustment(DefaultBindableModel):
     start = None  # type: Date
     end = None  # type: Date
     available = None  # type: bool
