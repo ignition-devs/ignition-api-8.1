@@ -18,8 +18,8 @@ __all__ = [
 
 from typing import Dict, List
 
-from com.inductiveautomation.ignition.common.user import PyUser
 from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
+from com.inductiveautomation.ignition.common.user import PyUser
 from java.lang import String
 
 
