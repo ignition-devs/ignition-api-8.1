@@ -31,6 +31,7 @@ __all__ = [
     "getInactivitySeconds",
     "getLocale",
     "getLogger",
+    "getModules",
     "getProjectName",
     "getProperty",
     "getReadTimeout",
@@ -365,6 +366,19 @@ def getLogger(name):
     """
     print(name)
     return LoggerEx()
+
+
+def getModules():
+    # type: () -> BasicDataset
+    """Returns a dataset of information about each installed module.
+    Each row represents a single module.
+
+    Returns:
+        A dataset, where each row represents a module. Contains five
+        columns: Id, Name, Version, State (Running, Faulted, etc), and
+        its current License Status (Trial, Activated, etc.).
+    """
+    return BasicDataset()
 
 
 def getProjectName():
