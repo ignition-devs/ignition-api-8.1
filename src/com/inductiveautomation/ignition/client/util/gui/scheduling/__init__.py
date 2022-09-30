@@ -1,9 +1,9 @@
 __all__ = ["ScheduleModel"]
 
-from java.lang import Object
+from com.palantir.ptoss.cinch.core import DefaultBindableModel
 
 
-class ScheduleModel(Object):
+class ScheduleModel(DefaultBindableModel):
     def deselectDayOfWeek(self, day):
         pass
 

@@ -6,11 +6,20 @@ users from a roster.
 
 from __future__ import print_function
 
-__all__ = ["addUsers", "createRoster", "deleteRoster", "getRosters", "removeUsers"]
+__all__ = [
+    "addUsers",
+    "createRoster",
+    "deleteRoster",
+    "getRoster",
+    "getRosterNames",
+    "getRosters",
+    "removeUsers",
+]
 
 from typing import Dict, List
 
 from com.inductiveautomation.ignition.common.user import PyUser
+from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
 from java.lang import String
 
 
@@ -57,6 +66,30 @@ def deleteRoster(rosterName):
         rosterName: The name of the roster to delete.
     """
     print(rosterName)
+
+
+def getRoster(name):
+    """Returns the roster corresponding to the given name.
+
+    Args:
+        name: The name of the roster to get the RosterModel object from.
+
+    Returns:
+        A RosterModel Object. Call getUsers() to access a list of User
+        objects in the RosterModel.
+    """
+    print(name)
+    return RosterModel()
+
+
+def getRosterNames():
+    # type: () -> List[String]
+    """Returns a list of roster names.
+
+    Returns:
+        A list of Strings representing the roster names
+    """
+    return ["On-Call"]
 
 
 def getRosters():
