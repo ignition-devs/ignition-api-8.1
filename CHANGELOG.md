@@ -1,3 +1,14 @@
+## v8.1.21 (2022-09-30)
+
+### Feat
+
+- **system**: add new roster functions from 8.1.21 (#99)
+- **system**: add util.getModules function (#98)
+
+### Refactor
+
+- use correct typing notation for args and kwargs (#97)
+
 ## v8.1.20.post5 (2022-09-21)
 
 ### Feat

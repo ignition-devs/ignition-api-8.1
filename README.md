@@ -76,7 +76,7 @@ python2 -m pip uninstall ignition-api
 
 ### Downloading from releases
 
-You may also download the code targeted to your desired version from the [releases page](https://github.com/ignition-api/7.9/releases) and add it as a dependency to your scripting project.
+You may also download the code targeted to your desired version from the [releases page](https://github.com/ignition-api/8.1/releases) and add it as a dependency to your scripting project.
 
 #### Using as a dependency in PyCharm
 
@@ -101,7 +101,7 @@ This project consists of the following packages:
 
 #### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.20/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.21/index.html>.
 
 #### java/javax
 
@@ -113,7 +113,7 @@ This package includes supporting classes and interfaces from Apache Commons Math
 
 #### org.json
 
-This package includes supporting classes and interfaces from the Inductive Automation's `org.json` package, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.20/org/json/package-summary.html>
+This package includes supporting classes and interfaces from the Inductive Automation's `org.json` package, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.21/org/json/package-summary.html>
 
 #### org.python
 
