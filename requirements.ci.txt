@@ -1,3 +1,2 @@
-mypy[python2]==0.971
-pylint
-types-enum34
+tox; python_version=='2.7'
+tox-gh; python_version>='3.10'
