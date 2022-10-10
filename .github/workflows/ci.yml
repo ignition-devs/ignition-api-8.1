@@ -25,7 +25,7 @@ jobs:
         python -m pip install --requirement requirements.ci.txt
     - name: Setup test suite
       run: |
-        python -m tox r -vv --notest
+        tox -vv --notest
     - name: Run tests
       run: |
-        python -m tox r -vv
+        tox -vv
