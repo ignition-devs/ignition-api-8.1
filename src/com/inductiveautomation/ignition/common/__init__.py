@@ -11,7 +11,7 @@ __all__ = [
     "TypeUtilities",
 ]
 
-from typing import Any, List, Optional, TypeVar, Union
+from typing import Any, List, Optional, Set, TypeVar, Union
 
 from com.inductiveautomation.ignition.common.document import DocumentElement
 from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
@@ -431,21 +431,27 @@ class JsonPath(Object):
 
 
 class Path(object):
+    SERIALIZATION_WHITELIST = None  # type: Set[Class]
+
     def getLastPathComponent(self):
         # type: () -> str
-        pass
+        raise NotImplementedError
 
     def getParentPath(self):
         # type: () -> Path
-        pass
+        raise NotImplementedError
+
+    def getPathComponent(self, i):
+        # type: (int) -> String
+        raise NotImplementedError
 
     def getPathLength(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def isAncestorOf(self, path):
         # type: (Path) -> bool
-        pass
+        raise NotImplementedError
 
 
 class QualifiedPath(Object):
