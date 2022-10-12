@@ -25,7 +25,7 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
 )
 from java.awt import Color
 from java.lang import Class, Number, Object, String
-from java.util import Comparator, Date, Locale, UUID
+from java.util import UUID, Comparator, Date, Locale
 from org.json import JSONObject
 from org.python.core import PyObject
 
