@@ -4,7 +4,6 @@ __all__ = [
     "AbstractDataset",
     "BasicDataset",
     "Dataset",
-    "JsonElement",
     "JsonPath",
     "Path",
     "QualifiedPath",
@@ -434,7 +433,7 @@ class Path(object):
     SERIALIZATION_WHITELIST = None  # type: Set[Class]
 
     def getLastPathComponent(self):
-        # type: () -> str
+        # type: () -> String
         raise NotImplementedError
 
     def getParentPath(self):

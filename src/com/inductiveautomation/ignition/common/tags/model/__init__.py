@@ -1,3 +1,5 @@
+__all__ = ["TagPath"]
+
 from typing import Union
 
 from com.inductiveautomation.ignition.common import Path
@@ -6,7 +8,7 @@ from java.lang import String
 
 
 class TagPath(Path):
-    def compareTo(self, o):
+    def compareTo(self, that):
         # type: (TagPath) -> int
         pass
 
@@ -19,7 +21,7 @@ class TagPath(Path):
         pass
 
     def getLastPathComponent(self):
-        # type: () -> str
+        # type: () -> String
         pass
 
     def getParentPath(self):

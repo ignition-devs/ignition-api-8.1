@@ -1,3 +1,5 @@
+__all__ = ["TagPathParser"]
+
 from typing import Any, List
 
 from com.inductiveautomation.ignition.common.tags.model import TagPath
