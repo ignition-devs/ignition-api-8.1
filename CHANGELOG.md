@@ -1,3 +1,10 @@
+## v8.1.21.post1 (2022-10-12)
+
+### Feat
+
+- **ia**: add classes implementing TagPath (#107)
+- **ia**: add TagPathParser class (#105)
+
 ## v8.1.21 (2022-09-30)
 
 ### Feat
