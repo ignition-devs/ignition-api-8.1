@@ -8,9 +8,5 @@ requires = [
 [tool.commitizen]
 name = "cz_conventional_commits"
 
-[tool.isort]
-profile = "black"
-py_version = 27
-
 [tool.mypy]
 python_version = 2.7

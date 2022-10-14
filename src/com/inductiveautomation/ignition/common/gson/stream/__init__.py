@@ -1,7 +1,8 @@
 from __future__ import print_function
 
-from enum import Enum
 from typing import Any
+
+from enum import Enum
 
 from java.io import Closeable, Flushable, Reader, Writer
 from java.lang import Object, String
