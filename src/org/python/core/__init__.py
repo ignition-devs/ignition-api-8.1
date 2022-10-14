@@ -24,8 +24,9 @@ __all__ = [
     "Visitproc",
 ]
 
-from enum import Enum
 from typing import Any, Iterable, Iterator, List, Optional, Tuple, Union
+
+from enum import Enum
 
 from java.io import PrintWriter
 from java.lang import Class, Object, RuntimeException, String, StringBuilder, Throwable

@@ -1,7 +1,6 @@
 __all__ = ["ApplicationScope", "Version"]
 
 import re
-
 from typing import Any, Optional, Tuple, Union
 
 from java.io import InputStream

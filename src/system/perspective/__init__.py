@@ -35,7 +35,6 @@ __all__ = [
 ]
 
 import __builtin__ as builtins
-
 from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject

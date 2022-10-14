@@ -21,7 +21,6 @@ __all__ = [
 ]
 
 import getpass
-
 from typing import Optional, Tuple
 
 from java.lang import String

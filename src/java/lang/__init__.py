@@ -27,7 +27,6 @@ __all__ = [
 
 import __builtin__ as builtins
 import time
-
 from typing import Any, List, Optional, TypeVar, Union
 
 String = Union[str, unicode]

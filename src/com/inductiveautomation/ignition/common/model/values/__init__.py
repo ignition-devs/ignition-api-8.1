@@ -1,7 +1,8 @@
 __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 
-from enum import Enum
 from typing import Any, Union
+
+from enum import Enum
 
 from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Object, String
