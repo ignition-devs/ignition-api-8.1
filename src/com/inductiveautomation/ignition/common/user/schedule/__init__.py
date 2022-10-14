@@ -7,7 +7,7 @@ __all__ = [
 ]
 
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from java.lang import Object, String
+from java.lang import String
 from java.util import Date
 
 

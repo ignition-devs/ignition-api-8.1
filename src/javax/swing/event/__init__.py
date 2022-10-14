@@ -1,7 +1,4 @@
-from typing import Any
-
 from java.awt import AWTEvent, Component, Container
-from java.lang import Object
 
 
 class AncestorEvent(AWTEvent):
