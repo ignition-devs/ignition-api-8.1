@@ -210,6 +210,11 @@ class DatasetUtilities(Object):
     class PyDataSet(Dataset, AbstractJythonSequence):
         def __init__(self, ds=None):
             # type: (Optional[Dataset]) -> None
+            print(ds)
+            super(DatasetUtilities.PyDataSet, self).__init__(Class())
+
+        def __add__(self, other):
+            # type: (PyObject) -> PyObject
             pass
 
         def getColumnCount(self):
