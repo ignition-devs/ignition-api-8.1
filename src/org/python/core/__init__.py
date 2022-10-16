@@ -14,9 +14,14 @@ __all__ = [
     "PyException",
     "PyFrame",
     "PyFunction",
+    "PyInteger",
+    "PyList",
     "PyMethodDescr",
     "PyNewWrapper",
     "PyObject",
+    "PySequence",
+    "PySequenceList",
+    "PyString",
     "PyStringMap",
     "PyTraceback",
     "PyType",
@@ -28,6 +33,7 @@ from typing import Any, Iterable, Iterator, List, Optional, Tuple, Union
 
 from enum import Enum
 
+import java.util
 from java.io import PrintWriter
 from java.lang import Class, Object, RuntimeException, String, StringBuilder, Throwable
 from org.python.expose import TypeBuilder
@@ -38,6 +44,7 @@ class PyObject(Object):
     an instance of the class PyObject or one of its subclasses.
     """
 
+    gcMonitorGlobal = None  # type: bool
     TYPE = None  # type: PyType
 
     def __init__(self, objtype=None):
@@ -1059,8 +1066,16 @@ class PyFrame(PyObject):
 
 class PyFunction(PyObject):
     def __init__(self, *args):
+        # type: (*Any) -> None
         print(args)
         super(PyFunction, self).__init__()
+
+
+class PyInteger(PyObject):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        print(args)
+        super(PyInteger, self).__init__()
 
 
 class PyMethodDescr(PyDescriptor):
@@ -1087,6 +1102,242 @@ class PyNewWrapper(PyBuiltinMethod):
     def setWrappedType(self, type_):
         # type: (PyType) -> None
         pass
+
+
+class PySequence(PyObject):
+    pass
+
+
+class PySequenceList(PySequence):
+    def add(self, *args):
+        # type: (*Any) -> Optional[bool]
+        raise NotImplementedError
+
+    def addAll(self, *args):
+        # type: (*Any) -> bool
+        raise NotImplementedError
+
+    def clear(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    def containsAll(self, c):
+        # type: (java.util.Collection) -> bool
+        raise NotImplementedError
+
+    def get(self, index):
+        # type: (int) -> Object
+        raise NotImplementedError
+
+    def getArray(self):
+        # type: () -> List[PyObject]
+        raise NotImplementedError
+
+    def indexOf(self, o):
+        # type: (Object) -> int
+        raise NotImplementedError
+
+    def isEmpty(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def iterator(self):
+        # type: () -> java.util.Iterator
+        raise NotImplementedError
+
+    def lastIndexOf(self, o):
+        # type: (Object) -> int
+        raise NotImplementedError
+
+    def listIterator(self, index=None):
+        # type: (Optional[int]) -> java.util.ListIterator
+        raise NotImplementedError
+
+    def pyadd(self, *args):
+        # type: (*Any) -> Optional[bool]
+        raise NotImplementedError
+
+    def pyget(self, index):
+        # type: (int) -> PyObject
+        raise NotImplementedError
+
+    def pyset(self, index, element):
+        # type: (int, PyObject) -> None
+        raise NotImplementedError
+
+    def refersDirectlyTo(self, ob):
+        # type: (PyObject) -> bool
+        pass
+
+    def remove(self, *args):
+        # type: (*Any) -> Union[bool, None, Object]
+        raise NotImplementedError
+
+    def removeAll(self, c):
+        # type: (java.util.Collection) -> bool
+        raise NotImplementedError
+
+    def retainAll(self, c):
+        # type: (java.util.Collection) -> bool
+        raise NotImplementedError
+
+    def set(self, index, element):
+        # type: (int, Object) -> Object
+        raise NotImplementedError
+
+    def size(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def subList(self, fromIndex, toIndex):
+        # type: (int, int) -> List[PyObject]
+        raise NotImplementedError
+
+    def toArray(self, a=None):
+        # type: (Optional[List[Object]]) -> List[Object]
+        raise NotImplementedError
+
+    def traverse(self, visit, arg):
+        # type: (Visitproc, Object) -> int
+        pass
+
+
+class PyList(PySequenceList):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        print(args)
+        super(PyList, self).__init__()
+
+    def add(self, *args):
+        # type: (*Any) -> Optional[bool]
+        pass
+
+    def addAll(self, *args):
+        # type: (*Any) -> bool
+        pass
+
+    def append(self, o):
+        # type: (PyObject) -> None
+        pass
+
+    def clear(self):
+        # type: () -> None
+        pass
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        pass
+
+    def containsAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def count(self, o):
+        # type: (PyObject) -> int
+        pass
+
+    def extend(self, o):
+        # type: (PyObject) -> None
+        pass
+
+    @staticmethod
+    def fromList(list_):
+        # type: (List[PyObject]) -> PyList
+        pass
+
+    def get(self, index):
+        # type: (int) -> Object
+        pass
+
+    def getArray(self):
+        # type: () -> List[PyObject]
+        pass
+
+    def index(self, o, *args):
+        # type: (PyObject, *int) -> int
+        pass
+
+    def indexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def insert(self, o):
+        # type: (PyObject) -> None
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def iterator(self):
+        # type: () -> java.util.Iterator
+        pass
+
+    def lastIndexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def listIterator(self, index=None):
+        # type: (Optional[int]) -> java.util.ListIterator
+        pass
+
+    def pyadd(self, *args):
+        # type: (*Any) -> Optional[bool]
+        pass
+
+    def pyget(self, index):
+        # type: (int) -> PyObject
+        pass
+
+    def pyset(self, index, element):
+        # type: (int, PyObject) -> None
+        pass
+
+    def remove(self, *args):
+        # type: (*Any) -> Union[bool, None, Object]
+        pass
+
+    def removeAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def retainAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def reverse(self):
+        # type: () -> None
+        pass
+
+    def set(self, index, element):
+        # type: (int, Object) -> Object
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def sort(self, *args):
+        # type: (*PyObject) -> None
+        pass
+
+    def subList(self, fromIndex, toIndex):
+        # type: (int, int) -> List[PyObject]
+        pass
+
+    def toArray(self, a=None):
+        # type: (Optional[List[Object]]) -> List[Object]
+        pass
+
+
+class PyString(PyObject):
+    def __init__(self, *args):
+        print(args)
+        super(PyString, self).__init__()
 
 
 class PyTraceback(PyObject):

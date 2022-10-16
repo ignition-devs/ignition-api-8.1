@@ -171,7 +171,7 @@ enable=c-extension-no-member
 
 # The type of string formatting that logging methods do. `old` means using %
 # formatting, `new` is for `{}` formatting.
-logging-format-style=new
+logging-format-style=old
 
 # Logging modules to check that the string format arguments are in logging
 # function parameter format.
@@ -338,13 +338,13 @@ indent-after-paren=4
 
 # String used as indentation unit. This is usually "    " (4 spaces) or "\t" (1
 # tab).
-indent-string="    "
+indent-string='    '
 
 # Maximum number of characters on a single line.
 max-line-length=88
 
 # Maximum number of lines in a module.
-max-module-lines=1500
+max-module-lines=2000
 
 # Allow the body of a class to be on the same line as the declaration if body
 # contains single statement.

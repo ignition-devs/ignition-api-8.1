@@ -8,11 +8,13 @@ from __future__ import print_function
 
 __all__ = [
     "Calendar",
+    "Collection",
     "Comparator",
     "Currency",
     "Date",
     "EventObject",
     "Iterator",
+    "ListIterator",
     "Locale",
     "Spliterator",
     "TimeZone",
@@ -27,6 +29,8 @@ from java.time import Instant, ZoneId
 from java.util.function import (
     Consumer,
     Function,
+    Predicate,
+    Supplier,
     ToDoubleFunction,
     ToIntFunction,
     ToLongFunction,
@@ -34,6 +38,80 @@ from java.util.function import (
 
 E = TypeVar("E")
 T = TypeVar("T")
+
+
+class Collection(object):
+    def add(self, e):
+        # type: (E) -> bool
+        raise NotImplementedError
+
+    def addAll(self, c):
+        # type: (Collection) -> bool
+        raise NotImplementedError
+
+    def clear(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    def containsAll(self, c):
+        # type: (Collection) -> bool
+        raise NotImplementedError
+
+    def equals(self, o):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    def hashCode(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def isEmpty(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def iterator(self):
+        # type: () -> Iterator
+        raise NotImplementedError
+
+    def parallelStream(self):
+        # type: () -> Stream
+        raise NotImplementedError
+
+    def remove(self, o):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    def removeAll(self, c):
+        # type: (Collection) -> bool
+        raise NotImplementedError
+
+    def removeIf(self, filter):
+        # type: (Predicate) -> bool
+        raise NotImplementedError
+
+    def retainAll(self, v):
+        # type: (Collection) -> bool
+        raise NotImplementedError
+
+    def size(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def spliterator(self):
+        # type: () -> Spliterator
+        raise NotImplementedError
+
+    def stream(self):
+        # type: () -> Stream
+        raise NotImplementedError
+
+    def toArray(self, arg=None):
+        # type: (Optional[Any]) -> List[Object]
+        raise NotImplementedError
 
 
 class Comparator(object):
@@ -124,6 +202,40 @@ class Iterator(object):
         pass
 
 
+class ListIterator(Iterator):
+    def add(self, e):
+        # type: (E) -> None
+        raise NotImplementedError
+
+    def hasNext(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def hasPrevious(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def next(self):
+        # type: () -> E
+        raise NotImplementedError
+
+    def nextIndex(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def previous(self):
+        # type: () -> E
+        raise NotImplementedError
+
+    def previousIndex(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def set(self, e):
+        # type: (E) -> None
+        raise NotImplementedError
+
+
 class Spliterator(object):
     CONCURRENT = None  # type: int
     DISTINCT = None  # type: int
@@ -165,6 +277,56 @@ class Spliterator(object):
     def trySplit(self):
         # type: () -> Spliterator
         raise NotImplementedError
+
+
+class Stream(object):
+    @staticmethod
+    def builder():
+        # type: () -> Builder
+        pass
+
+    @staticmethod
+    def concat(a, b):
+        # type: (Stream, Stream) -> Stream
+        pass
+
+    @staticmethod
+    def empty():
+        # type: () -> Stream
+        pass
+
+    @staticmethod
+    def generate(s):
+        # type: (Supplier) -> Stream
+        pass
+
+    @staticmethod
+    def iterate(*args):
+        # type: (*Any) -> Stream
+        pass
+
+    @staticmethod
+    def of(*args):
+        # type: (*T) -> Stream
+        pass
+
+    @staticmethod
+    def ofNullable(t):
+        # type: (T) -> Stream
+        pass
+
+    class Builder(Consumer):
+        def accept(self, t):
+            # type: (T) -> None
+            raise NotImplementedError
+
+        def add(self, t):
+            # type: (T) -> Stream.Builder
+            pass
+
+        def build(self):
+            # type: () -> Stream
+            raise NotImplementedError
 
 
 class Calendar(Object):

@@ -3,6 +3,7 @@ __all__ = [
     "Consumer",
     "Function",
     "Predicate",
+    "Supplier",
     "ToDoubleFunction",
     "ToIntFunction",
     "ToLongFunction",
@@ -68,6 +69,12 @@ class Predicate(object):
 
     def test(self, t):
         # type: (T) -> bool
+        raise NotImplementedError
+
+
+class Supplier(object):
+    def get(self):
+        # type: () -> T
         raise NotImplementedError
 
 
