@@ -74,12 +74,12 @@ ACCL_CONSTANT = 1
 ACCL_FAST_TO_SLOW = 2
 ACCL_SLOW_TO_FAST = 3
 ACCL_EASE = 4
-COORD_SCREEN = 0
 COORD_DESIGNER = 1
+COORD_SCREEN = 0
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
-    # type: (Color, Optional[String]) -> Color
+    # type: (Color, String) -> Color
     """Prompts the user to pick a color using the default color-chooser
     dialog box.
 
@@ -127,7 +127,7 @@ def color(*args):
 
 
 def confirm(message, title="Confirm", allowCancel=False):
-    # type: (String, Optional[String], Optional[bool]) -> Optional[bool]
+    # type: (String, String, bool) -> Optional[bool]
     """Displays a confirmation dialog box to the user with "Yes", "No"
     options, and a custom message.
 
@@ -219,7 +219,7 @@ def desktop(handle):
 
 
 def errorBox(message, title="Error"):
-    # type: (String, Optional[String]) -> None
+    # type: (String, String) -> None
     """Displays an error-style message box to the user.
 
     Args:

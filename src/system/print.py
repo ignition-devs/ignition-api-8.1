@@ -52,8 +52,7 @@ def createPrintJob(component):
         A print job that can then be customized and started. To start
         the print job, use .print().
     """
-    print(component)
-    return PrintUtilities.JythonPrintJob()
+    return PrintUtilities.JythonPrintJob(component)
 
 
 def printToImage(component, filename=None):

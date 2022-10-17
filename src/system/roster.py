@@ -69,6 +69,7 @@ def deleteRoster(rosterName):
 
 
 def getRoster(name):
+    # type: (String) -> RosterModel
     """Returns the roster corresponding to the given name.
 
     Args:
