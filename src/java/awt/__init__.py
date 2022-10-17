@@ -8,12 +8,14 @@ __all__ = [
     "Frame",
     "Graphics",
     "Image",
+    "Point",
     "Toolkit",
     "Window",
 ]
 
 from typing import Any, Optional
 
+from java.awt.geom import Point2D
 from java.lang import Object, String
 from java.util import EventObject
 
@@ -76,6 +78,39 @@ class Image(Object):
 
     def setAccelerationPriority(self, priority):
         # type: (float) -> None
+        pass
+
+
+class Point(Point2D):
+    x = 0
+    y = 0
+
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        pass
+
+    def getLocation(self):
+        # type: () -> Point
+        pass
+
+    def getX(self):
+        # type: () -> float
+        pass
+
+    def getY(self):
+        # type: () -> float
+        pass
+
+    def move(self, x, y):
+        # type: (int, int) -> None
+        pass
+
+    def setLocation(self, *args):
+        # type: (*Any) -> None
+        pass
+
+    def translate(self, dx, dy):
+        # type: (int, int) -> None
         pass
 
 

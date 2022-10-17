@@ -9,11 +9,13 @@ from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
+from java.io import OutputStream, Writer
 from java.lang import Class
 from java.lang import Exception as JavaException
 from java.lang import Object, String
 from java.util import Locale
-from org.python.core import PyFunction, PyObject
+from org.json import JSONObject
+from org.python.core import PyFunction, PyList, PyObject, PySequence
 from org.slf4j import Logger
 
 
@@ -85,88 +87,113 @@ class AbstractOPCUtilities(Object):
 
 class DatasetUtilities(Object):
     @staticmethod
-    def addColumn(*args):
+    def addColumn(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
         pass
 
     @staticmethod
-    def addRow(*args):
+    def addRow(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
         pass
 
     @staticmethod
-    def addRows(*args):
+    def addRows(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
         pass
 
     @staticmethod
     def appendDataset(ds1, ds2):
+        # type: (Dataset, Dataset) -> Dataset
         pass
 
     @staticmethod
     def clearDataset(ds):
+        # type: (Dataset) -> Dataset
         pass
 
     @staticmethod
     def dataSetToExcel(headerRow, datasets):
+        # type: (bool, List[Object]) -> String
         pass
 
     @staticmethod
     def dataSetToExcelBytes(headerRow, objects, nullsEmpty, sheetNames):
+        # type: (bool, List[Object], bool, List[String]) -> bytearray
         pass
 
     @staticmethod
     def dataSetToExcelStreaming(headerRow, objects, out, nullsEmpty):
+        # type: (bool, List[Object], OutputStream, bool) -> None
         pass
 
     @staticmethod
     def dataSetToHTML(headerRow, ds, title):
+        # type: (bool, Dataset, String) -> String
         pass
 
     @staticmethod
     def dataSetToHTMLStreaming(headerRow, ds, title, fw):
+        # type: (bool, Dataset, String, Writer) -> None
         pass
 
     @staticmethod
     def deleteRow(ds, row):
+        # type: (Dataset, int) -> Dataset
         pass
 
     @staticmethod
     def deleteRows(ds, rows):
+        # type: (Dataset, List[int]) -> Dataset
         pass
 
     @staticmethod
     def filterColumns(dataset, columns):
+        # type: (Dataset, PySequence) -> Dataset
         pass
 
     @staticmethod
     def formatDates(dataset, format, locale=Locale.US):
+        # type: (Dataset, String, Locale) -> Dataset
         pass
 
     @staticmethod
     def fromCSV(csv):
+        # type: (String) -> Dataset
         pass
 
     @staticmethod
     def fromCSVJava(csv):
+        # type: (String) -> Dataset
         pass
 
     @staticmethod
     def getColumnHeaders(ds):
+        # type: (Dataset) -> PyList
         pass
 
     @staticmethod
-    def insertColumn(*args):
+    def insertColumn(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
         pass
 
     @staticmethod
-    def insertRow(*args):
+    def insertRow(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
         pass
 
     @staticmethod
-    def setValue(*args):
+    def setValue(
+        ds,  # type: Dataset
+        row,  # type: int
+        col,  # type: Union[int, String]
+        value,  # type: Union[Object, PyObject]
+    ):
+        # type: (...) -> Dataset
         pass
 
     @staticmethod
     def sort(
-        ds,  # type: BasicDataset
+        ds,  # type: Dataset
         keyColumn,  # type: Union[int, String]
         ascending=None,  # type: Optional[bool]
         naturalOrdering=None,  # type: Optional[bool]
@@ -176,26 +203,32 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def toCSV(*args, **kwargs):
+        # type: (*PyObject, **String) -> String
         pass
 
     @staticmethod
     def toCSVJava(ds, showHeaders, forExport, localized=False):
+        # type: (Dataset, bool, bool, bool) -> String
         pass
 
     @staticmethod
     def toCSVJavaStreaming(ds, showHeaders, forExport, sw, localized):
+        # type: (Dataset, bool, bool, Writer, bool) -> None
         pass
 
     @staticmethod
     def toDataSet(*args):
+        # type: (*Any) -> Dataset
         pass
 
     @staticmethod
     def toExcel(*args, **kwargs):
+        # type: (*PyObject, **String) -> bytearray
         pass
 
     @staticmethod
     def toJSONObject(data):
+        # type: (Dataset) -> JSONObject
         pass
 
     @staticmethod
@@ -205,6 +238,7 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def updateRow(ds, row, changes):
+        # type: (Dataset, int, Dict[String, Any]) -> Dataset
         pass
 
     class PyDataSet(Dataset, AbstractJythonSequence):

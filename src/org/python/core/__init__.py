@@ -24,6 +24,7 @@ __all__ = [
     "PyString",
     "PyStringMap",
     "PyTraceback",
+    "PyTuple",
     "PyType",
     "TraceFunction",
     "Visitproc",
@@ -1360,6 +1361,117 @@ class PyTraceback(PyObject):
 
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
+        pass
+
+
+class PyTuple(PySequenceList):
+    def __init__(self, *args):
+        print(args)
+        super(PyTuple, self).__init__()
+
+    def add(self, *args):
+        # type: (*Any) -> Optional[bool]
+        pass
+
+    def addAll(self, *args):
+        # type: (*Any) -> bool
+        pass
+
+    def clear(self):
+        # type: () -> None
+        pass
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        pass
+
+    def containsAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def count(self, value):
+        # type: (PyObject) -> int
+        pass
+
+    @staticmethod
+    def fromIterable(iterable):
+        # type: (PyObject) -> PyTuple
+        pass
+
+    def get(self, index):
+        # type: (int) -> Object
+        pass
+
+    def getArray(self):
+        # type: () -> List[PyObject]
+        pass
+
+    def index(self, value, *args):
+        # type: (PyObject, *int) -> int
+        pass
+
+    def indexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def iterator(self):
+        # type: () -> java.util.Iterator
+        pass
+
+    def lastIndexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def listIterator(self, index=None):
+        # type: (Optional[int]) -> java.util.ListIterator
+        pass
+
+    def pyadd(self, *args):
+        # type: (*Any) -> Optional[bool]
+        pass
+
+    def pyget(self, index):
+        # type: (int) -> PyObject
+        pass
+
+    def pyset(self, index, element):
+        # type: (int, PyObject) -> None
+        pass
+
+    def remove(self, *args):
+        # type: (*Any) -> Union[bool, None, Object]
+        pass
+
+    def removeAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def retainAll(self, c):
+        # type: (java.util.Collection) -> bool
+        pass
+
+    def set(self, index, element):
+        # type: (int, Object) -> Object
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def subList(self, fromIndex, toIndex):
+        # type: (int, int) -> List[PyObject]
+        pass
+
+    def toArray(self, a=None):
+        # type: (Optional[List[Object]]) -> List[Object]
+        pass
+
+    def tuple___iter__(self):
+        # type: () -> PyObject
         pass
 
 
