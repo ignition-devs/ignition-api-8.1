@@ -4,9 +4,3 @@ requires = [
   "setuptools>=42",
   "wheel",
 ]
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-
-[tool.mypy]
-python_version = 2.7
