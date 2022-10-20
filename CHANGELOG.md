@@ -1,4 +1,12 @@
-## v8.1.21.post1 (2022-10-12)
+## v8.1.21.post2 (2022-10-19)
+
+### Refactor
+
+- improve type hints (#116)
+- **ia**: add type hints to DatasetUtilities and WindowUtilities (#115)
+- **ia**: add type hint to common.script.abc classes (#114)
+
+## v8.1.21.post1 (2022-10-13)
 
 ### Feat
 
