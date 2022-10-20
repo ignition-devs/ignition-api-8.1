@@ -44,6 +44,7 @@ class ComponentEvent(AWTEvent):
     COMPONENT_SHOWN = None  # type: int
 
     def __init__(self, source, id):
+        # type: (Object, int) -> None
         super(ComponentEvent, self).__init__(source, id)
 
     def getComponent(self):

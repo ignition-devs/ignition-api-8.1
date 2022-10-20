@@ -5,7 +5,10 @@ __all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtili
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
-from com.inductiveautomation.ignition.common.model.values import QualityCode
+from com.inductiveautomation.ignition.common.model.values import (
+    QualifiedValue,
+    QualityCode,
+)
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
@@ -26,28 +29,36 @@ class AbstractOPCUtilities(Object):
             AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, "", BrowseElementType())
         ]
 
-    def getServers(self):
+    def getServers(self, *args, **kwargs):
+        # type: (*PyObject, **String) -> List[String]
         pass
 
     def getServerState(self, opcServer):
+        # type: (String) -> String
         pass
 
     def isServerEnabled(self, serverName):
+        # type: (String) -> bool
         pass
 
     def readValue(self, opcServer, itemPath):
+        # type: (String, String) -> QualifiedValue
         pass
 
     def readValues(self, opcServer, itemPaths):
+        # type: (String, List[String]) -> QualifiedValue
         pass
 
     def setServerEnabled(self, serverName, enabled):
+        # type: (String, bool) -> None
         pass
 
     def writeValue(self, *args, **kwargs):
+        # type: (*PyObject, **String) -> QualityCode
         pass
 
     def writeValues(self, *args, **kwargs):
+        # type: (*PyObject, **String) -> List[QualityCode]
         pass
 
     class PyOPCTag(PyObject):
