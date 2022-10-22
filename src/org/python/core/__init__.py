@@ -213,7 +213,7 @@ class PyObject(Object):
         pass
 
     def __iter__(self):
-        # type: () -> Iterator[PyObject]
+        # type: () -> Iterator[Any]
         pass
 
     def __iternext__(self):

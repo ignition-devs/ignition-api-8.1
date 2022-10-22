@@ -11,7 +11,7 @@ __all__ = [
     "MutableJythonSequence",
 ]
 
-from typing import Iterator, Optional, Union
+from typing import Any, Iterator, Optional, Union
 
 from java.lang import Class, String
 from org.python.core import PyInteger, PyList, PyObject, PySequence
@@ -27,7 +27,7 @@ class JythonMap(object):
         raise NotImplementedError
 
     def __iter__(self):
-        # type: () -> PyObject
+        # type: () -> Iterator[Any]
         raise NotImplementedError
 
     def __len__(self):
@@ -73,7 +73,7 @@ class JythonSequence(object):
         raise NotImplementedError
 
     def __iter__(self):
-        # type: () -> Iterator[PyObject]
+        # type: () -> Iterator[Any]
         raise NotImplementedError
 
     def __len__(self):
@@ -141,7 +141,7 @@ class MutableJythonSequence(JythonSequence):
         raise NotImplementedError
 
     def __iter__(self):
-        # type: () -> Iterator[PyObject]
+        # type: () -> Iterator[Any]
         raise NotImplementedError
 
     def __len__(self):
@@ -199,7 +199,7 @@ class AbstractJythonMap(JythonMap):
         pass
 
     def __iter__(self):
-        # type: () -> PyObject
+        # type: () -> Iterator[Any]
         pass
 
     def __len__(self):
