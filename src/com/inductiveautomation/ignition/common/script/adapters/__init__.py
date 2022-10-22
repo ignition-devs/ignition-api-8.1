@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["PyJsonObjectAdapter"]
 
-from typing import List, Optional
+from typing import Any, Iterator, List, Optional
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from java.lang import Object, String
@@ -27,7 +27,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def __iter__(self):
-        # type: () -> PyObject
+        # type: () -> Iterator[Any]
         pass
 
     def __len__(self):
