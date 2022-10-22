@@ -1,3 +1,9 @@
+## v8.1.21.post3 (2022-10-21)
+
+### Fix
+
+- change type hints on __iter__ methods (#119)
+
 ## v8.1.21.post2 (2022-10-19)
 
 ### Refactor
