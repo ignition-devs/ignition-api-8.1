@@ -8,7 +8,7 @@ __all__ = [
 
 from typing import Any
 
-from java.lang import IllegalArgumentException, String
+from java.lang import IllegalArgumentException
 
 
 class MathIllegalArgumentException(IllegalArgumentException):
