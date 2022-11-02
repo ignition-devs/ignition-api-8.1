@@ -102,10 +102,10 @@ class CharSequence(object):
         # type: (int) -> str
         raise NotImplementedError
 
-    def chars(self):
+    def chars(self):  # type: ignore[no-untyped-def]
         pass
 
-    def codePoints(self):
+    def codePoints(self):  # type: ignore[no-untyped-def]
         pass
 
     @staticmethod

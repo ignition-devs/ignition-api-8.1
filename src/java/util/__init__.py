@@ -618,10 +618,10 @@ class Locale(Object):
         self.country = country
         self.variant = variant
 
-    def __repr__(self):
+    def __repr__(self):  # type: ignore[no-untyped-def]
         return "{!r}".format(self.__str__())
 
-    def __str__(self):
+    def __str__(self):  # type: ignore[no-untyped-def]
         ret = self.language
         if self.country:
             ret += "_{}".format(self.country)
