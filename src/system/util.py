@@ -75,7 +75,7 @@ from com.inductiveautomation.ignition.common.script.builtin import (
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from java.awt import Toolkit
 from java.lang import String, Thread
-from java.util import Date
+from java.util import Date, Locale
 
 APPLET_FLAG = 16
 CLIENT_FLAG = 4
@@ -947,7 +947,7 @@ def setConnectionMode(mode):
 
 
 def setLocale(locale):
-    # type: (String) -> None
+    # type: (Union[String, Locale]) -> None
     """Sets the user's current Locale.
 
     Any valid Java locale code (case-insensitive) can be used as a
@@ -955,7 +955,8 @@ def setLocale(locale):
     Translation Manager.
 
     Args:
-        locale: A locale code, such as 'en_US' for US English.
+        locale: A locale code, such as 'en_US' for US English, or a
+            java.util.Locale object.
 
     Raises:
         IllegalArgumentException: If passed an invalid local code.
