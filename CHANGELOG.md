@@ -1,3 +1,13 @@
+## v8.1.22 (2022-11-02)
+
+### Feat
+
+- **system**: allow java.util.Locale objects to be passed in as parameters (#125)
+
+### Refactor
+
+- **org**: update MathIllegalArgumentException __init__ signature (#127)
+
 ## v8.1.21.post3 (2022-10-21)
 
 ### Fix

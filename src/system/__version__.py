@@ -1,6 +1,6 @@
 """Package information."""
 
-__version__ = "8.1.21"
-__build__ = "2022092908"
-__cycle__ = ".post3"
+__version__ = "8.1.22"
+__build__ = "2022110109"
+__cycle__ = ""
 __package_version__ = "{0}{1}".format(__version__, __cycle__)  # type: str
