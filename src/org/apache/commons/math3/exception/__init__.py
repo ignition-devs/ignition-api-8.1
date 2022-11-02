@@ -18,9 +18,9 @@ class MathIllegalArgumentException(IllegalArgumentException):
     semantics of the standard IllegalArgumentException.
     """
 
-    def __init__(self, pattern, *args):
-        # type: (String, *Any) -> None
-        print(pattern, args)
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        print(args)
         super(MathIllegalArgumentException, self).__init__()
 
     def getContext(self):
@@ -46,7 +46,7 @@ class DimensionMismatchException(MathIllegalNumberException):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        super(DimensionMismatchException, self).__init__("", *args)
+        super(DimensionMismatchException, self).__init__(*args)
 
     def getDimension(self):
         pass
