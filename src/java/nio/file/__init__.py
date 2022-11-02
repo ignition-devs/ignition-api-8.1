@@ -57,6 +57,7 @@ class Watchable(object):
 
 class FileStore(Object):
     def getAttribute(self, attribute):
+        # type: (String) -> Object
         raise NotImplementedError
 
     def getBlockSize(self):

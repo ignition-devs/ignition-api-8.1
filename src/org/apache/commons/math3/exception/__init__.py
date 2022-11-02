@@ -8,7 +8,8 @@ __all__ = [
 
 from typing import Any
 
-from java.lang import IllegalArgumentException
+from java.lang import IllegalArgumentException, Number
+from org.apache.commons.math3.exception.util import ExceptionContext
 
 
 class MathIllegalArgumentException(IllegalArgumentException):
@@ -24,6 +25,7 @@ class MathIllegalArgumentException(IllegalArgumentException):
         super(MathIllegalArgumentException, self).__init__()
 
     def getContext(self):
+        # type: () -> ExceptionContext
         pass
 
 
@@ -38,6 +40,7 @@ class MathIllegalNumberException(MathIllegalArgumentException):
     INTEGER_ZERO = 0
 
     def getArgument(self):
+        # type: () -> Number
         pass
 
 
@@ -49,4 +52,5 @@ class DimensionMismatchException(MathIllegalNumberException):
         super(DimensionMismatchException, self).__init__(*args)
 
     def getDimension(self):
+        # type: () -> int
         pass

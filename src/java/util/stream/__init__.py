@@ -92,4 +92,5 @@ class Stream(BaseStream):
             pass
 
         def build(self):
+            # type: () -> Stream
             raise NotImplementedError

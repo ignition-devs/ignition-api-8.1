@@ -217,6 +217,7 @@ class PyObject(Object):
         pass
 
     def __iternext__(self):
+        # type: () -> PyObject
         pass
 
     def __itruediv__(self, other):
@@ -1081,6 +1082,7 @@ class PyInteger(PyObject):
 
 class PyMethodDescr(PyDescriptor):
     def __init__(self, t, func):
+        # type: (PyType, PyBuiltinCallable) -> None
         super(PyMethodDescr, self).__init__(t, func)
 
 
@@ -1337,6 +1339,7 @@ class PyList(PySequenceList):
 
 class PyString(PyObject):
     def __init__(self, *args):
+        # type: (*Any) -> None
         print(args)
         super(PyString, self).__init__()
 
@@ -1366,6 +1369,7 @@ class PyTraceback(PyObject):
 
 class PyTuple(PySequenceList):
     def __init__(self, *args):
+        # type: (*Any) -> None
         print(args)
         super(PyTuple, self).__init__()
 
