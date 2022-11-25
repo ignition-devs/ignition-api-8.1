@@ -39,7 +39,7 @@ class AbstractOPCUtilities(Object):
 
     def isServerEnabled(self, serverName):
         # type: (String) -> bool
-        pass
+        return True
 
     def readValue(self, opcServer, itemPath):
         # type: (String, String) -> QualifiedValue
@@ -469,11 +469,11 @@ class SProcCall(Object):
 
         def isInParam(self):
             # type: () -> bool
-            pass
+            return True
 
         def isOutParam(self):
             # type: () -> bool
-            pass
+            return True
 
         def setParamType(self, paramType):
             # type: (int) -> None
@@ -497,7 +497,7 @@ class SProcCall(Object):
 
         def isNamedParam(self):
             # type: () -> bool
-            pass
+            return True
 
 
 class SystemUtilities(Object):

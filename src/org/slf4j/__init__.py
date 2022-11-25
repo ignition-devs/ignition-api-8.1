@@ -26,19 +26,19 @@ class Logger(object):
 
     def isErrorEnabled(self, marker=None):
         # type: (Optional[Marker]) -> bool
-        pass
+        return True
 
     def isInfoEnabled(self, marker=None):
         # type: (Optional[Marker]) -> bool
-        pass
+        return True
 
     def isTraceEnabled(self, marker=None):
         # type: (Optional[Marker]) -> bool
-        pass
+        return True
 
     def isWarnEnabled(self, marker=None):
         # type: (Optional[Marker]) -> bool
-        pass
+        return True
 
     def trace(self, *args):
         # type: (Any) -> None
@@ -63,7 +63,7 @@ class Marker(object):
 
     def equals(self, o):
         # type: (Any) -> bool
-        pass
+        return True
 
     def getName(self):
         # type: () -> String
@@ -75,7 +75,7 @@ class Marker(object):
 
     def hasReferences(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterable[Marker]
@@ -83,4 +83,4 @@ class Marker(object):
 
     def remove(self, reference):
         # type: (Marker) -> bool
-        pass
+        return True

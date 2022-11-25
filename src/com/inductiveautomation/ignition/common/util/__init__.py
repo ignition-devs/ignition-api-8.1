@@ -88,19 +88,19 @@ class LoggerEx(Object):
 
     def isDebugEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isIdentObjectEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isInfoEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isTraceEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def mdcClose(self):
         # type: () -> None

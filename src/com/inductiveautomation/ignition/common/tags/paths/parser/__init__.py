@@ -26,7 +26,7 @@ class TagPathParser(Object):
     @staticmethod
     def isRelativePath(path):
         # type: (TagPath) -> bool
-        pass
+        return True
 
     @staticmethod
     def parse(*args):

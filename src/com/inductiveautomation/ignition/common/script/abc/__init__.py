@@ -192,7 +192,7 @@ class MutableJythonSequence(JythonSequence):
 class AbstractJythonMap(JythonMap):
     def __contains__(self, pyKey):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def __finditem__(self, key):
         # type: (Union[int, PyObject, String]) -> PyObject
@@ -212,7 +212,7 @@ class AbstractJythonMap(JythonMap):
 
     def has_key(self, pyKey):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def items(self):
         # type: () -> PyList

@@ -240,7 +240,7 @@ class BrowseElementType(Enum):
 
     def isSubscribable(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def values():

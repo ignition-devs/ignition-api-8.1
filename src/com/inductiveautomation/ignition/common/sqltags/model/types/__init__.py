@@ -41,19 +41,19 @@ class DataQuality(Object):
 
     def isDataUsed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isGood(self):
         # type: () -> bool
-        pass
+        return True
 
     def isGoodData(self):
         # type: () -> bool
-        pass
+        return True
 
     def isOpcBadData(self):
         # type: () -> bool
-        pass
+        return False
 
     def toString(self, locale=None):
         # type: (Optional[Locale]) -> String

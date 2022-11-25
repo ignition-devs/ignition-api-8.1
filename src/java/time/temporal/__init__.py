@@ -30,7 +30,7 @@ class TemporalAccessor(object):
 
     def isSupported(self, field):
         # type: (TemporalField) -> bool
-        pass
+        return True
 
     def query(self, query):
         # type: (TemporalQuery) -> R
@@ -119,7 +119,7 @@ class TemporalUnit(object):
 
     def isSupportedBy(self, temporal):
         # type: (Temporal) -> bool
-        pass
+        return True
 
     def getDuration(self):
         # type: () -> Duration
@@ -188,15 +188,15 @@ class ChronoUnit(Enum, TemporalUnit):
 
     def isDateBased(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDurationEstimated(self):
         # type: () -> bool
-        pass
+        return True
 
     def isTimeBased(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def values():
@@ -231,19 +231,19 @@ class ValueRange(Object):
 
     def isFixed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isIntValue(self):
         # type: () -> bool
-        pass
+        return True
 
     def isValidIntValue(self, value):
         # type: (long) -> bool
-        pass
+        return True
 
     def isValidValue(self, value):
         # type: (long) -> bool
-        pass
+        return True
 
     @staticmethod
     def of(*args):

@@ -94,47 +94,47 @@ class InetAddress(Object):
 
     def isAnyLocalAddress(self):
         # type: () -> bool
-        pass
+        return True
 
     def isLinkLocalAddress(self):
         # type: () -> bool
-        pass
+        return True
 
     def isLoopbackAddress(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMCGlobal(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMCLinkLocal(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMCNodeLocal(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMCOrgLocal(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMCSiteLocal(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMulticastAddress(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReachable(self, *args):
         # type: (*Any) -> bool
-        pass
+        return True
 
     def isSiteLocalAddress(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class InetSocketAddress(SocketAddress):
@@ -166,7 +166,7 @@ class InetSocketAddress(SocketAddress):
 
     def isUnresolved(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class Proxy(Object):
@@ -226,7 +226,7 @@ class Socket(Object, Closeable):
 
     def getKeepAlive(self):
         # type: () -> bool
-        pass
+        return True
 
     def getLocalAddress(self):
         # type: () -> InetAddress
@@ -242,7 +242,7 @@ class Socket(Object, Closeable):
 
     def getOOBInline(self):
         # type: () -> bool
-        pass
+        return True
 
     def getOption(self, name):
         # type: (SocketOption) -> T
@@ -266,7 +266,7 @@ class Socket(Object, Closeable):
 
     def getReuseAddress(self):
         # type: () -> bool
-        pass
+        return True
 
     def getSendBufferSize(self):
         # type: () -> int
@@ -282,7 +282,7 @@ class Socket(Object, Closeable):
 
     def getTcpNoDelay(self):
         # type: () -> bool
-        pass
+        return True
 
     def getTrafficClass(self):
         # type: () -> int
@@ -290,23 +290,23 @@ class Socket(Object, Closeable):
 
     def isBound(self):
         # type: () -> bool
-        pass
+        return True
 
     def isClosed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isConnected(self):
         # type: () -> bool
-        pass
+        return True
 
     def isInputShutdown(self):
         # type: () -> bool
-        pass
+        return True
 
     def isOutputShutdown(self):
         # type: () -> bool
-        pass
+        return True
 
     def sendUrgentData(self, data):
         # type: (int) -> None

@@ -155,12 +155,12 @@ class Files(Object):
     @staticmethod
     def deleteIfExists(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def exists(path, *options):
         # type: (Path, *LinkOption) -> bool
-        pass
+        return True
 
     @staticmethod
     def find(start, maxDepth, matcher, *options):
@@ -200,42 +200,42 @@ class Files(Object):
     @staticmethod
     def isDirectory(path, *options):
         # type: (Path, *LinkOption) -> bool
-        pass
+        return True
 
     @staticmethod
     def isExecutable(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isHidden(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isReadable(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isRegularFile(path, *options):
         # type: (Path, *LinkOption) -> bool
-        pass
+        return True
 
     @staticmethod
     def isSameFile(path, path2):
         # type: (Path, Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isSymbolicLink(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isWritable(path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def lines(path, cs=None):
@@ -285,7 +285,7 @@ class Files(Object):
     @staticmethod
     def notExists(path, *options):
         # type: (Path, *LinkOption) -> bool
-        pass
+        return True
 
     @staticmethod
     def probeContentType(path):
@@ -379,15 +379,15 @@ class Path(Watchable):
 
     def endsWith(self, other):
         # type: (Union[Object, Path, String]) -> bool
-        pass
+        return True
 
     def equals(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def getFileName(self):
         # type: () -> Path
-        pass
+        return True
 
     def getName(self, index):
         # type: (int) -> Path
@@ -411,7 +411,7 @@ class Path(Watchable):
 
     def isAbsolute(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterator[Path]
@@ -444,7 +444,7 @@ class Path(Watchable):
 
     def startsWith(self, other):
         # type: (Path) -> bool
-        pass
+        return True
 
     def subpath(self, beginIndex, endIndex):
         # type: (int, int) -> Path

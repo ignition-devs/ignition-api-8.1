@@ -240,7 +240,7 @@ class DateFormat(Format):
 
     def isLenient(self):
         # type: () -> bool
-        pass
+        return True
 
     def parse(self, source):
         # type: (String) -> Date
@@ -416,11 +416,11 @@ class NumberFormat(Format):
 
     def isGroupingUsed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isParseIntegerOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def parse(self, source):
         # type: (String) -> Number

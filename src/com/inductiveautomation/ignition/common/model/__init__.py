@@ -44,17 +44,17 @@ class ApplicationScope(Object):
     @staticmethod
     def isClient(scope):
         # type: (int) -> bool
-        pass
+        return True
 
     @staticmethod
     def isDesigner(scope):
         # type: (int) -> bool
-        pass
+        return True
 
     @staticmethod
     def isGateway(scope):
         # type: (int) -> bool
-        pass
+        return True
 
     @staticmethod
     def parseScope(s):
@@ -135,7 +135,7 @@ class Version(Object):
 
     def exists(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def fromXML(inputStream):

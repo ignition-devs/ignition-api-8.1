@@ -181,7 +181,7 @@ class Dataset(object):
         Returns:
             Whether this dataset has any quality data to report.
         """
-        pass
+        return True
 
 
 class AbstractDataset(Dataset):
@@ -348,11 +348,11 @@ class BasicDataset(AbstractDataset):
 
     def columnContainsNulls(self, col):
         # type: (int) -> bool
-        pass
+        return True
 
     def datasetContainsNulls(self):
         # type: () -> bool
-        pass
+        return True
 
     def getData(self):
         # type: () -> Any
@@ -408,20 +408,20 @@ class JsonPath(Object):
 
     def isAncestorOf(self, element):
         # type: (JsonPath) -> bool
-        pass
+        return True
 
     def isRelatedTo(self, other):
         # type: (JsonPath) -> bool
-        pass
+        return True
 
     def isRoot(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def isValidIdentifier(test):
         # type: (String) -> bool
-        pass
+        return True
 
     @staticmethod
     def parse(path):
@@ -471,7 +471,7 @@ class TypeUtilities(Object):
     @staticmethod
     def anyEqual(value, *args):
         # type: (T, T) -> bool
-        pass
+        return True
 
     @staticmethod
     def coerce(value, destType):
@@ -551,12 +551,12 @@ class TypeUtilities(Object):
     @staticmethod
     def deepEquals(o1, o2, checkArrayTypes):
         # type: (Object, Object, bool) -> bool
-        pass
+        return True
 
     @staticmethod
     def equalsIgnoreCase(o1, o2):
         # type: (Object, Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def fromString(value, dest, locale):
@@ -601,7 +601,7 @@ class TypeUtilities(Object):
     @staticmethod
     def hasPrimitiveType(c):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def hasValueChanged(
@@ -611,27 +611,27 @@ class TypeUtilities(Object):
         deadband,  # type: float
     ):
         # type: (...) -> bool
-        pass
+        return True
 
     @staticmethod
     def isAssignable(dest, source):
         # type: (Class, Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isBoolean(clazz):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isDirectlyAssignable(dest, source):
         # type: (Class, Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isFractional(clazz):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isNullOrEmpty(s):
@@ -641,22 +641,22 @@ class TypeUtilities(Object):
     @staticmethod
     def isNumber(clazz):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isPrimitive(clazz):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def isProperNumber(clazz):
         # type: (Class) -> bool
-        pass
+        return True
 
     @staticmethod
     def neq(o1, o2):
         # type: (Object, Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def pyToGson(pyObject, customGson=None):
@@ -681,7 +681,7 @@ class TypeUtilities(Object):
     @staticmethod
     def toBool(value):
         # type: (Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def toByteArray(uuid):

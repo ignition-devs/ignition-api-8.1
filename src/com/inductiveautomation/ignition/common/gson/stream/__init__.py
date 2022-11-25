@@ -39,15 +39,15 @@ class JsonReader(Object, Closeable):
 
     def hasNext(self):
         # type: () -> bool
-        pass
+        return True
 
     def isLenient(self):
         # type: () -> bool
-        pass
+        return True
 
     def nextBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     def nextDouble(self):
         # type: () -> float
@@ -130,15 +130,15 @@ class JsonWriter(Object, Closeable, Flushable):
 
     def getSerializeNulls(self):
         # type: () -> bool
-        pass
+        return True
 
     def isHtmlSafe(self):
         # type: () -> bool
-        pass
+        return True
 
     def isLenient(self):
         # type: () -> bool
-        pass
+        return True
 
     def jsonValue(self, value):
         # type: (String) -> JsonWriter

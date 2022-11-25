@@ -19,7 +19,7 @@ class Charset(Object):
 
     def canEncode(self):
         # type: () -> bool
-        pass
+        return True
 
     def compareTo(self, that):
         # type: (Charset) -> int
@@ -27,7 +27,7 @@ class Charset(Object):
 
     def contains(self, cs):
         # type: (Charset) -> bool
-        pass
+        return True
 
     def decode(self, bb):
         # type: (ByteBuffer) -> CharBuffer
@@ -53,12 +53,12 @@ class Charset(Object):
 
     def isRegistered(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def isSupported(charsetName):
         # type: (String) -> bool
-        pass
+        return True
 
     def name(self):
         # type: () -> String
@@ -109,23 +109,23 @@ class CoderResult(Object):
 
     def isError(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMalformed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isOverflow(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUnderFlow(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUnmappable(self):
         # type: () -> bool
-        pass
+        return True
 
     def length(self):
         # type: () -> int

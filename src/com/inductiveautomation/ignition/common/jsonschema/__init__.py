@@ -71,7 +71,7 @@ class JsonSchema(BaseJsonValidator):
 
     def acceptsType(self, type):
         # type: (JsonType) -> bool
-        pass
+        return True
 
     def findAncestor(self):
         # type: () -> JsonSchema
@@ -159,15 +159,15 @@ class JsonSchema(BaseJsonValidator):
 
     def hasChildren(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDeprecated(self):
         # type: () -> bool
-        pass
+        return True
 
     def isType(self, type):
         # type: (JsonType) -> bool
-        pass
+        return True
 
     @staticmethod
     def parse(stream):

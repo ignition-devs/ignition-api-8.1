@@ -122,7 +122,7 @@ class PosixFilePermission(Enum):
 class UserPrincipal(Principal):
     def equals(self, another):
         # type: (Object) -> bool
-        pass
+        return True
 
     def getName(self):
         # type: () -> String

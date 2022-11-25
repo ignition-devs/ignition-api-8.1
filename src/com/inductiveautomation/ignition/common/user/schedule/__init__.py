@@ -228,7 +228,7 @@ class ScheduleAdjustment(DefaultBindableModel):
 
     def contains(self, timestamp):
         # type: (long) -> bool
-        pass
+        return True
 
     def getEnd(self):
         # type: () -> Date

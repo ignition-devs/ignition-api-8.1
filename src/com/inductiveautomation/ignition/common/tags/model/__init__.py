@@ -46,7 +46,7 @@ class TagPath(Path):
 
     def isAncestorOf(self, path):
         # type: (Path) -> bool
-        pass
+        return True
 
     def toStringFull(self):
         # type: () -> String

@@ -47,7 +47,7 @@ class Buffer(Object):
 
     def hasRemaining(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
@@ -183,15 +183,15 @@ class ByteBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (ByteBuffer) -> int
@@ -289,15 +289,15 @@ class CharBuffer(Buffer, Appendable, CharSequence):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def length(self):
         # type: () -> int
@@ -365,15 +365,15 @@ class DoubleBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (DoubleBuffer) -> int
@@ -429,15 +429,15 @@ class FloatBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (FloatBuffer) -> int
@@ -493,15 +493,15 @@ class IntBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (IntBuffer) -> int
@@ -557,15 +557,15 @@ class LongBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (LongBuffer) -> int
@@ -621,15 +621,15 @@ class ShortBuffer(Buffer):
 
     def hasArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDirect(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadOnly(self):
         # type: () -> bool
-        pass
+        return True
 
     def mismatch(self, that):
         # type: (ShortBuffer) -> int
@@ -660,7 +660,7 @@ class MappedByteBuffer(ByteBuffer):
 
     def isLoaded(self):
         # type: () -> bool
-        pass
+        return True
 
     def load(self):
         # type: () -> MappedByteBuffer

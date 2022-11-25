@@ -24,7 +24,7 @@ class Channel(AutoCloseable):
 
     def isOpen(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class ReadableByteChannel(Channel):
@@ -115,7 +115,7 @@ class FileLock(Object, AutoCloseable):
 
     def isShared(self):
         # type: () -> bool
-        pass
+        return True
 
     def isValid(self):
         # type: () -> bool
@@ -123,7 +123,7 @@ class FileLock(Object, AutoCloseable):
 
     def overlaps(self, position, size):
         # type: (long, long) -> bool
-        pass
+        return True
 
     def position(self):
         # type: () -> long
@@ -167,11 +167,11 @@ class SelectableChannel(Object, AutoCloseable):
 
     def isBlocking(self):
         # type: () -> bool
-        pass
+        return True
 
     def isRegistered(self):
         # type: () -> bool
-        pass
+        return True
 
     def keyFor(self, sel):
         # type: (Selector) -> SelectionKey
@@ -226,31 +226,31 @@ class SelectionKey(Object):
 
     def isAcceptable(self):
         # type: () -> bool
-        pass
+        return True
 
     def isConnectable(self):
         # type: () -> bool
-        pass
+        return True
 
     def isReadable(self):
         # type: () -> bool
-        pass
+        return True
 
     def isValid(self):
         # type: () -> bool
-        pass
+        return True
 
     def isWriteable(self):
         # type: () -> bool
-        pass
+        return True
 
     def readyOps(self):
         # type: () -> int
-        pass
+        return True
 
     def selector(self):
         # type: () -> Selector
-        pass
+        return True
 
 
 class Selector(Object, AutoCloseable):
@@ -260,7 +260,7 @@ class Selector(Object, AutoCloseable):
 
     def isOpen(self):
         # type: () -> bool
-        pass
+        return True
 
     def keys(self):
         # type: () -> Set[SelectionKey]
@@ -299,11 +299,11 @@ class SocketChannel(SelectableChannel):
 
     def connect(self, remote):
         # type: (Any) -> bool
-        pass
+        return True
 
     def finishConnect(self):
         # type: () -> bool
-        pass
+        return True
 
     def getLocalAddress(self):
         # type: () -> Any
@@ -315,11 +315,11 @@ class SocketChannel(SelectableChannel):
 
     def isConnected(self):
         # type: () -> bool
-        pass
+        return True
 
     def isConnectionPending(self):
         # type: () -> bool
-        pass
+        return True
 
     def open(self, remote=None):
         # type: (Optional[Any]) -> SocketChannel

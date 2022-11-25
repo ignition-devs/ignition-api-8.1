@@ -78,11 +78,11 @@ class FieldAttributes(Object):
 
     def hasModifier(self, modifier):
         # type: (int) -> bool
-        pass
+        return True
 
     def isSynthetic(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class FieldNamingPolicy(Enum, FieldNamingStrategy):
@@ -121,7 +121,7 @@ class Gson(Object):
 
     def htmlSafe(self):
         # type: () -> bool
-        pass
+        return True
 
     def newBuilder(self):
         # type: () -> GsonBuilder
@@ -137,7 +137,7 @@ class Gson(Object):
 
     def serializeNulls(self):
         # type: () -> bool
-        pass
+        return True
 
     def toJson(self, *args):
         # type: (*Any) -> Optional[String]
@@ -309,19 +309,19 @@ class JsonElement(object):
 
     def isJsonArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isJsonObject(self):
         # type: () -> bool
-        pass
+        return True
 
     def isJsonPrimitive(self):
         # type: () -> bool
-        pass
+        return True
 
     def isJsonNull(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class JsonArray(JsonElement):
@@ -339,7 +339,7 @@ class JsonArray(JsonElement):
 
     def contains(self, element):
         # type: (JsonElement) -> bool
-        pass
+        return True
 
     def get(self, i):
         # type: (int) -> JsonElement
@@ -355,7 +355,7 @@ class JsonArray(JsonElement):
 
     def getAsBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     def getAsByte(self):
         # type: () -> Any
@@ -405,7 +405,7 @@ class JsonArray(JsonElement):
 class JsonNull(JsonElement):
     def equals(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def getAsBigDecimal(self):
         # type: () -> float
@@ -417,7 +417,7 @@ class JsonNull(JsonElement):
 
     def getAsBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     def getAsByte(self):
         # type: () -> Any
@@ -483,7 +483,7 @@ class JsonObject(JsonElement):
 
     def getAsBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     def getAsByte(self):
         # type: () -> Any
@@ -519,7 +519,7 @@ class JsonObject(JsonElement):
 
     def has(self, memberName):
         # type: (String) -> bool
-        pass
+        return True
 
     def remove(self, property):
         # type: (String) -> JsonElement
@@ -537,7 +537,7 @@ class JsonPrimitive(JsonElement):
 
     def equals(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def getAsBigDecimal(self):
         # type: () -> float
@@ -549,7 +549,7 @@ class JsonPrimitive(JsonElement):
 
     def getAsBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     def getAsByte(self):
         # type: () -> Any
@@ -589,21 +589,21 @@ class JsonPrimitive(JsonElement):
 
     def isBoolean(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def isPrimitiveOrString(target):
         # type: (Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def isIntegral(primitive):
         # type: (JsonPrimitive) -> bool
-        pass
+        return True
 
     def isString(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class LongSerializationPolicy(object):

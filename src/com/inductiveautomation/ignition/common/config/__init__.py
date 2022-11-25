@@ -123,7 +123,7 @@ class BasicPropertySet(Object):
 
     def contains(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def get(self, prop):
         # type: (Property) -> T
@@ -159,11 +159,11 @@ class BasicPropertySet(Object):
 
     def isExtended(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def isInherited(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterable[PropertyValue]

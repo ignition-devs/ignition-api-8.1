@@ -42,23 +42,23 @@ class Object(object):
 
     def __cmp__(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def __ge__(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def __gt__(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def __lt__(self, other):
         # type: (Object) -> bool
-        pass
+        return True
 
     def equals(self, obj):
         # type: (Object) -> bool
-        pass
+        return True
 
     def getClass(self):
         # type: () -> Class
@@ -226,7 +226,7 @@ class StackTraceElement(Object):
 
     def isNativeMethod(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class StringBuffer(Object, CharSequence):
