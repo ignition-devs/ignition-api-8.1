@@ -129,27 +129,27 @@ class QualityCode(Object):
 
     def isBad(self):
         # type: () -> bool
-        pass
+        return True
 
     def isBadOrError(self):
         # type: () -> bool
-        pass
+        return True
 
     def isError(self):
         # type: () -> bool
-        pass
+        return True
 
     def isGood(self):
         # type: () -> bool
-        pass
+        return True
 
     def isNotGood(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUncertain(self):
         # type: () -> bool
-        pass
+        return True
 
     class Level(Object):
         def __init__(self):

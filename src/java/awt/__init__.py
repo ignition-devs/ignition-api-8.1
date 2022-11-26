@@ -58,7 +58,7 @@ class Component(Object):
         height,  # type: int
     ):
         # type: (...) -> bool
-        pass
+        return True
 
 
 class Container(Component):

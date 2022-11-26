@@ -17,7 +17,7 @@ class Principal(object):
 
     def implies(self, subject):
         # type: (Subject) -> bool
-        pass
+        return True
 
     def toString(self):
         # type: () -> String

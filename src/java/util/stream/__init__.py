@@ -56,7 +56,7 @@ class Stream(BaseStream):
 
     def isParallel(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterator

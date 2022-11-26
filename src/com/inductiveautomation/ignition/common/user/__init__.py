@@ -158,7 +158,7 @@ class PyUser(User):
 
     def contains(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def get(self, propertyName):
         # type: (Union[Property, String]) -> Any
@@ -214,11 +214,11 @@ class PyUser(User):
 
     def isExtended(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def isInherited(self, prop):
         # type: (Property) -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterable[Property]

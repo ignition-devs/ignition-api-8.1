@@ -82,7 +82,7 @@ class PyObject(Object):
 
     def __contains__(self, o):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def __delete__(self, obj):
         # type: (PyObject) -> None
@@ -622,15 +622,15 @@ class PyObject(Object):
 
     def implementsDescrDelete(self):
         # type: () -> bool
-        pass
+        return True
 
     def implementsDescrGet(self):
         # type: () -> bool
-        pass
+        return True
 
     def implementsDescrSet(self):
         # type: () -> bool
-        pass
+        return True
 
     def invoke(self, *args, **kwargs):
         # type: (*Any, **Any) -> PyObject
@@ -638,31 +638,31 @@ class PyObject(Object):
 
     def isCallable(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDataDescr(self):
         # type: () -> bool
-        pass
+        return True
 
     def isIndex(self):
         # type: () -> bool
-        pass
+        return True
 
     def isInteger(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMappingType(self):
         # type: () -> bool
-        pass
+        return True
 
     def isNumberType(self):
         # type: () -> bool
-        pass
+        return True
 
     def isSequenceType(self):
         # type: () -> bool
-        pass
+        return True
 
     def noAttributeError(self, name):
         # type: (String) -> None
@@ -703,7 +703,7 @@ class CodeFlag(Enum):
 
     def isFlagBitSetIn(self, flags):
         # type: (int) -> bool
-        pass
+        return True
 
     @staticmethod
     def valueOf(name):
@@ -740,7 +740,7 @@ class CompilerFlags(Object):
 
     def isFlagSet(self, flag):
         # type: (CodeFlag) -> bool
-        pass
+        return True
 
     def toBits(self):
         # type: () -> int
@@ -774,7 +774,7 @@ class PyBaseCode(PyCode):
 
     def hasFreevars(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class PyBuiltinCallable(PyObject):
@@ -835,7 +835,7 @@ class PyBuiltinMethod(PyBuiltinCallable):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
@@ -855,7 +855,7 @@ class PyCell(PyObject):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
@@ -890,7 +890,7 @@ class PyDescriptor(PyObject, PyBuiltinCallable.Info):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
@@ -929,11 +929,11 @@ class PyException(RuntimeException):
 
     def isExceptionClass(self, obj):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def match(self, exc):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def normalize(self):
         # type: () -> None
@@ -941,7 +941,7 @@ class PyException(RuntimeException):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def super__printStackTrace(self, w):
         # type: (PrintWriter) -> None
@@ -1035,7 +1035,7 @@ class PyFrame(PyObject):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def setderef(self, index, value):
         # type: (int, PyObject) -> None
@@ -1174,7 +1174,7 @@ class PySequenceList(PySequence):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def remove(self, *args):
         # type: (*Any) -> Union[bool, None, Object]
@@ -1221,7 +1221,7 @@ class PyList(PySequenceList):
 
     def addAll(self, *args):
         # type: (*Any) -> bool
-        pass
+        return True
 
     def append(self, o):
         # type: (PyObject) -> None
@@ -1233,11 +1233,11 @@ class PyList(PySequenceList):
 
     def contains(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def count(self, o):
         # type: (PyObject) -> int
@@ -1274,7 +1274,7 @@ class PyList(PySequenceList):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> java.util.Iterator
@@ -1306,11 +1306,11 @@ class PyList(PySequenceList):
 
     def removeAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def retainAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def reverse(self):
         # type: () -> None
@@ -1360,7 +1360,7 @@ class PyTraceback(PyObject):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def traverse(self, visit, arg):
         # type: (Visitproc, Object) -> int
@@ -1379,7 +1379,7 @@ class PyTuple(PySequenceList):
 
     def addAll(self, *args):
         # type: (*Any) -> bool
-        pass
+        return True
 
     def clear(self):
         # type: () -> None
@@ -1387,11 +1387,11 @@ class PyTuple(PySequenceList):
 
     def contains(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def count(self, value):
         # type: (PyObject) -> int
@@ -1420,7 +1420,7 @@ class PyTuple(PySequenceList):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> java.util.Iterator
@@ -1452,11 +1452,11 @@ class PyTuple(PySequenceList):
 
     def removeAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def retainAll(self, c):
         # type: (java.util.Collection) -> bool
-        pass
+        return True
 
     def set(self, index, element):
         # type: (int, Object) -> Object
@@ -1504,7 +1504,7 @@ class PyType(PyObject):
     @staticmethod
     def ensureBootstrapped():
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def ensureDoc(arg):
@@ -1575,7 +1575,7 @@ class PyType(PyObject):
 
     def isSubType(self, supertype):
         # type: (PyType) -> bool
-        pass
+        return True
 
     def lookup_where(self, name, where):
         # type: (String, List[PyObject]) -> PyObject
@@ -1587,7 +1587,7 @@ class PyType(PyObject):
 
     def needsFinalizer(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def newType(
@@ -1614,7 +1614,7 @@ class PyType(PyObject):
 
     def refersDirectlyTo(self, ob):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def removeMethod(self, meth):
         # type: (PyBuiltinMethod) -> None
@@ -1654,7 +1654,7 @@ class PyType(PyObject):
 
     def type___instancecheck__(self, inst):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def type___le__(self, other):
         # type: (PyObject) -> PyObject
@@ -1670,7 +1670,7 @@ class PyType(PyObject):
 
     def type___subclasscheck__(self, inst):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def type___subclasses__(self):
         # type: () -> PyObject

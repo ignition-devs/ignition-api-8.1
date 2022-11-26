@@ -68,7 +68,7 @@ class FileDescriptor(Object):
 
     def valid(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class OutputStream(Object, Closeable, Flushable):
@@ -183,7 +183,7 @@ class PrintStream(FilterOutputStream):
 
     def checkError(self):
         # type: () -> bool
-        pass
+        return True
 
     def format(self, *args):
         # type: (*Any) -> PrintStream
@@ -217,7 +217,7 @@ class InputStream(Object, Closeable):
 
     def markSupported(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def nullInputStream():
@@ -266,7 +266,7 @@ class Reader(Object, AutoCloseable):
 
     def markSupported(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def nullReader():
@@ -279,7 +279,7 @@ class Reader(Object, AutoCloseable):
 
     def ready(self):
         # type: () -> bool
-        pass
+        return True
 
     def reset(self):
         # type: () -> None
@@ -344,7 +344,7 @@ class PrintWriter(Writer):
 
     def checkError(self):
         # type: () -> bool
-        pass
+        return True
 
     def format(self, *args):
         # type: (*Any) -> PrintWriter

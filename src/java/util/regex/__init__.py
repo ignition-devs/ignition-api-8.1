@@ -40,7 +40,7 @@ class Matcher(Object, MatchResult):
 
     def find(self, start=None):
         # type: (Optional[int]) -> bool
-        pass
+        return True
 
     def group(self, group=None):
         # type: (Optional[Union[int, String]]) -> String
@@ -52,23 +52,23 @@ class Matcher(Object, MatchResult):
 
     def hasAnchoringBounds(self):
         # type: () -> bool
-        pass
+        return True
 
     def hasTransparentBounds(self):
         # type: () -> bool
-        pass
+        return True
 
     def hitEnd(self):
         # type: () -> bool
-        pass
+        return True
 
     def lookingAt(self):
         # type: () -> bool
-        pass
+        return True
 
     def matches(self):
         # type: () -> bool
-        pass
+        return True
 
     def pattern(self):
         # type: () -> Pattern
@@ -101,7 +101,7 @@ class Matcher(Object, MatchResult):
 
     def requireEnd(self):
         # type: () -> bool
-        pass
+        return True
 
     def reset(self, input=None):
         # type: (Optional[CharSequence]) -> Matcher
@@ -167,7 +167,7 @@ class Pattern(Object):
     @staticmethod
     def matches(regex, input):
         # type: (String, CharSequence) -> bool
-        pass
+        return True
 
     def pattern(self):
         # type: () -> String

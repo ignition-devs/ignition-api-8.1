@@ -4,7 +4,7 @@ from java.lang import Object
 class Animator(Object):
     def cancel(self):
         # type: () -> bool
-        pass
+        return True
 
     def pause(self):
         # type: () -> None

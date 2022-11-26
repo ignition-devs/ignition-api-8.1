@@ -48,7 +48,7 @@ class PyJsonObjectAdapter(Object):
 
     def has_key(self, key):
         # type: (PyObject) -> bool
-        pass
+        return True
 
     def items(self):
         # type: () -> List[PyObject]

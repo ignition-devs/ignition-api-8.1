@@ -197,11 +197,11 @@ class PrintUtilities(Object):
 
         def isFitToPage(self):
             # type: () -> bool
-            pass
+            return True
 
         def isShowPrintDialog(self):
             # type: () -> bool
-            pass
+            return True
 
         def setBottomMargin(self, bottomMargin):
             # type: (float) -> None
@@ -370,7 +370,7 @@ class WindowUtilities(Object):
 
     def isTouchscreenModeEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def messageBox(self, message, title="Information"):
         # type: (String, String) -> None

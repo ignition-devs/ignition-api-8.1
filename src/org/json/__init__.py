@@ -17,7 +17,7 @@ class JSONArray(Object):
 
     def getBoolean(self, index):
         # type: (int) -> bool
-        pass
+        return True
 
     def getDouble(self, index):
         # type: (int) -> float
@@ -45,7 +45,7 @@ class JSONArray(Object):
 
     def isNull(self, index):
         # type: (int) -> bool
-        pass
+        return True
 
     def join(self, separator):
         # type: (String) -> String
@@ -61,7 +61,7 @@ class JSONArray(Object):
 
     def optBoolean(self, index, defaultValue=None):
         # type: (int, Optional[bool]) -> bool
-        pass
+        return True
 
     def optDouble(self, index, defaultValue=None):
         # type: (int, Optional[float]) -> float
@@ -134,7 +134,7 @@ class JSONObject(Object):
 
     def getBoolean(self, key):
         # type: (String) -> bool
-        pass
+        return True
 
     def getDouble(self, key):
         # type: (String) -> float
@@ -167,7 +167,7 @@ class JSONObject(Object):
 
     def has(self, key):
         # type: (String) -> bool
-        pass
+        return True
 
     def increment(self, key):
         # type: (String) -> JSONObject
@@ -175,7 +175,7 @@ class JSONObject(Object):
 
     def isNull(self, key):
         # type: (String) -> bool
-        pass
+        return True
 
     def keys(self):
         # type: () -> Iterator[String]
@@ -200,7 +200,7 @@ class JSONObject(Object):
 
     def optBoolean(self, key, defaultValue=None):
         # type: (String, Optional[bool]) -> bool
-        pass
+        return True
 
     def optDouble(self, key, defaultValue=None):
         # type: (String, Optional[float]) -> float

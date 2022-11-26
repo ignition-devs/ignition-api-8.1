@@ -131,7 +131,7 @@ class JComponent(Container):
     @staticmethod
     def isLightweightComponent(c):
         # type: (Component) -> bool
-        pass
+        return True
 
     @staticmethod
     def setDefaultLocale(l):

@@ -86,4 +86,4 @@ class ShelvedPath(Object):
 
     def isExpired(self):
         # type: () -> bool
-        pass
+        return True

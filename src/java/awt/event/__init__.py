@@ -94,27 +94,27 @@ class InputEvent(ComponentEvent):
 
     def isAltDown(self):
         # type: () -> bool
-        pass
+        return True
 
     def isAltGraphDown(self):
         # type: () -> bool
-        pass
+        return True
 
     def isConsumed(self):
         # type: () -> bool
-        pass
+        return True
 
     def isControlDown(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMetaDown(self):
         # type: () -> bool
-        pass
+        return True
 
     def isShiftDown(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class MouseEvent(InputEvent):
@@ -177,7 +177,7 @@ class MouseEvent(InputEvent):
 
     def isPopupTrigger(self):
         # type: () -> bool
-        pass
+        return True
 
     def translatePoint(self, x, y):
         # type: (int, int) -> None

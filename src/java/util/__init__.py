@@ -199,7 +199,7 @@ class Iterator(object):
 
     def remove(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class ListIterator(Iterator):
@@ -268,7 +268,7 @@ class Spliterator(object):
 
     def hasCharacteristics(self, characteristics):
         # type: (int) -> bool
-        pass
+        return True
 
     def tryAdvance(self, action):
         # type: (Consumer) -> bool
@@ -387,11 +387,11 @@ class Calendar(Object):
 
     def after(self, when):
         # type: (Object) -> bool
-        pass
+        return True
 
     def before(self, when):
         # type: (Object) -> bool
-        pass
+        return True
 
     def clear(self, field=None):
         # type: (Optional[int]) -> None
@@ -465,15 +465,15 @@ class Calendar(Object):
 
     def isLenient(self):
         # type: () -> bool
-        pass
+        return True
 
     def isSet(self, field):
         # type: (int) -> bool
-        pass
+        return True
 
     def isWeekDateSUpported(self):
         # type: () -> bool
-        pass
+        return True
 
     def roll(self, field, amount):
         # type: (int, int) -> None
@@ -559,11 +559,11 @@ class Date(Object):
 
     def after(self, when):
         # type: (Date) -> bool
-        pass
+        return True
 
     def before(self, when):
         # type: (Date) -> bool
-        pass
+        return True
 
     def compareTo(self, anotherDate):
         # type: (Date) -> int
@@ -780,7 +780,7 @@ class TimeZone(Object):
 
     def hasSameRules(self, other):
         # type: (TimeZone) -> bool
-        pass
+        return True
 
     def isDaylightTime(self, date):
         # type: (Date) -> bool
@@ -788,7 +788,7 @@ class TimeZone(Object):
 
     def observesDaylightTime(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def setDefault(zone):

@@ -18,7 +18,7 @@ class RequestWatcher(object):
 class Request(RequestWatcher):
     def block(self):
         # type: () -> bool
-        pass
+        return True
 
     def cancel(self):
         # type: () -> None

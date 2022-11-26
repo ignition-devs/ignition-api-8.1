@@ -9,7 +9,7 @@ class ComponentUI(Object):
 
     def contains(self, c, x, y):
         # type: (Component, int, int) -> bool
-        pass
+        return True
 
     def paint(self, g, c):
         # type: (Graphics, Component) -> None

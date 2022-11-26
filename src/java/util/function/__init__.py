@@ -25,7 +25,7 @@ class BiPredicate(object):
 
     def test(self, t, u):
         # type: (T, U) -> bool
-        pass
+        return True
 
 
 class Consumer(object):
