@@ -246,11 +246,11 @@ class SelectionKey(Object):
 
     def readyOps(self):
         # type: () -> int
-        return True
+        pass
 
     def selector(self):
         # type: () -> Selector
-        return True
+        pass
 
 
 class Selector(Object, AutoCloseable):

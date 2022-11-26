@@ -387,7 +387,7 @@ class Path(Watchable):
 
     def getFileName(self):
         # type: () -> Path
-        return True
+        pass
 
     def getName(self, index):
         # type: (int) -> Path
