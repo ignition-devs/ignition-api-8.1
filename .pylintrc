@@ -59,7 +59,7 @@ ignore-patterns=^\.#
 # (useful for modules/projects where namespaces are manipulated during runtime
 # and thus existing member attributes cannot be deduced by static analysis). It
 # supports qualified module names, as well as Unix pattern matching.
-ignored-modules=__builtin__,com,java,javax,system
+ignored-modules=__builtin__
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -156,10 +156,10 @@ disable=consider-using-f-string,
         super-with-arguments,
         too-many-ancestors,
         unnecessary-pass,
+        unused-argument,
         useless-object-inheritance,
         useless-super-delegation,
         wrong-import-order,
-		unused-argument
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
