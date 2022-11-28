@@ -111,7 +111,7 @@ class Gson(Object):
         # type: (*Any) -> T
         pass
 
-    def getAdapter(self, TypeToken=None):
+    def getAdapter(self, type=None):
         # type: (TypeToken) -> TypeAdapter
         pass
 
