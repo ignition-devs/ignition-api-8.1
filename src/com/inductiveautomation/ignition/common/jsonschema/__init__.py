@@ -129,7 +129,7 @@ class JsonSchema(BaseJsonValidator):
         # type: () -> ItemsValidator
         pass
 
-    def getRefSchemaNode(self, String=None):
+    def getRefSchemaNode(self, ref=None):
         # type: (String) -> JsonElement
         pass
 
