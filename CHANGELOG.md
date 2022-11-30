@@ -1,3 +1,13 @@
+## v8.1.22.post1 (2022-11-29)
+
+### Fix
+
+- update default boolean returns (#130)
+
+### Refactor
+
+- **ci**: run on ubuntu-20.04 (#129)
+
 ## v8.1.22 (2022-11-02)
 
 ### Feat
