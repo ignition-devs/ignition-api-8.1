@@ -10,7 +10,6 @@
 [![Imports: flake8](https://img.shields.io/badge/%20imports-flake8-%231674b1?style=flat&labelColor=ef8336)](https://flake8.pycqa.org/en/latest/)
 [![Imports: pydocstyle](https://img.shields.io/badge/%20imports-pydocstyle-%231674b1?style=flat&labelColor=ef8336)](https://www.pydocstyle.org/en/stable/)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/PyCQA/pylint)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/ignition-api/8.1/main.svg)](https://results.pre-commit.ci/latest/github/ignition-api/8.1/main)
 [![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-api/8.1/discussions)
 
 ignition-api is a Python package that allows developers to get code completion for Ignition Scripting API scripting functions in their IDE of choice.
