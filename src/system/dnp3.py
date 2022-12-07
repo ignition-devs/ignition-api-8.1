@@ -26,9 +26,11 @@ __all__ = [
 
 from typing import List, Optional, Union
 
-# Constants
 from java.lang import String
 
+Number = Union[float, int]
+
+# Constants
 NUL = 0
 PULSE_ON = 1
 PULSE_OFF = 2
@@ -41,7 +43,7 @@ TRIP = 2
 def directOperateAnalog(
     deviceName,  # type: String
     index,  # type: int
-    value,  # type: Union[float, int]
+    value,  # type: Number
     variation=None,  # type: Optional[int]
 ):
     # type: (...) -> int
@@ -159,7 +161,7 @@ def freezeCountersAtTime(deviceName, absoluteTime, intervalTime, indexes):
 def selectOperateAnalog(
     deviceName,  # type: String
     index,  # type: int
-    value,  # type: Union[float, int]
+    value,  # type: Number
     variation=None,  # type: Optional[int]
 ):
     # type: (...) -> int

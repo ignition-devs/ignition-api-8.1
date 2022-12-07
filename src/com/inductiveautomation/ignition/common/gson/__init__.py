@@ -22,6 +22,7 @@ from com.inductiveautomation.ignition.common.gson.stream import JsonReader, Json
 from java.io import Reader, Writer
 from java.lang import Class, Enum, Object, String
 
+Number = Union[float, int, long]
 T = TypeVar("T")
 
 
@@ -300,7 +301,7 @@ class JsonElement(object):
         raise NotImplementedError
 
     def getAsNumber(self):
-        # type: () -> Union[float, int, long]
+        # type: () -> Number
         raise NotImplementedError
 
     def getAsShort(self):
@@ -382,7 +383,7 @@ class JsonArray(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Union[float, int, long]
+        # type: () -> Number
         pass
 
     def getAsShort(self):
@@ -444,7 +445,7 @@ class JsonNull(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Union[float, int, long]
+        # type: () -> Number
         pass
 
     def getAsShort(self):
@@ -510,7 +511,7 @@ class JsonObject(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Union[float, int, long]
+        # type: () -> Number
         pass
 
     def getAsShort(self):
@@ -576,7 +577,7 @@ class JsonPrimitive(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Union[float, int, long]
+        # type: () -> Number
         pass
 
     def getAsShort(self):
