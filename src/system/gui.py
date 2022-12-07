@@ -68,6 +68,8 @@ from javax.swing import (
     JTextField,
 )
 
+Number = Union[float, int]
+
 # Constants
 ACCL_NONE = 0
 ACCL_CONSTANT = 1
@@ -580,11 +582,11 @@ def setTouchscreenModeEnabled(enabled):
 
 
 def showNumericKeypad(
-    initialValue,  # type: Union[float, int]
+    initialValue,  # type: Number
     fontSize=None,  # type: Optional[int]
     usePasswordMode=False,  # type: bool
 ):
-    # type: (...) -> Union[float, int]
+    # type: (...) -> Number
     """Displays a modal on-screen numeric keypad, allowing for arbitrary
     numeric entry using the mouse, or a finger on a touchscreen monitor.
 
