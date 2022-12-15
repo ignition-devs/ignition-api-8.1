@@ -1,3 +1,9 @@
+## v8.1.23 (2022-12-14)
+
+### Fix
+
+- create Number type alias (#136)
+
 ## v8.1.22.post1 (2022-11-29)
 
 ### Fix
