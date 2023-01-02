@@ -16,7 +16,7 @@ repos:
     hooks:
       - id: flake8
   - repo: https://github.com/PyCQA/pydocstyle
-    rev: 6.1.1
+    rev: 6.2.0
     hooks:
       - id: pydocstyle
         exclude: ^(src/com/|src/dev/|src/java/|src/javax/|src/org/)
@@ -28,6 +28,6 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.38.0
+    rev: v2.39.1
     hooks:
       - id: commitizen
