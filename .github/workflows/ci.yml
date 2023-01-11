@@ -15,9 +15,9 @@ jobs:
         include:
           - python-version: '2.7'
             tox-env: install
-          - python-version: '3.10'
+          - python-version: '3.11'
             tox-env: lint
-          - python-version: '3.10'
+          - python-version: '3.11'
             tox-env: typecheck
     steps:
     - uses: actions/checkout@v3
