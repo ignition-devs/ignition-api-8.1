@@ -1,3 +1,13 @@
+## v8.1.24 (2023-01-13)
+
+### Feat
+
+- **system**: add vision module (#149)
+
+### Refactor
+
+- **ci**: simplify ci workflow (#147)
+
 ## v8.1.23 (2022-12-14)
 
 ### Fix
