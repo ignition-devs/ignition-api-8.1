@@ -1,25 +1,35 @@
-ignore: []
+version: "1"
 
-refactor:
-  include: []
-  skip:
+ignore:
+  - .git
+  - venv
+  - .venv
+  - env
+  - .env
+  - .tox
+
+rule_settings:
+  enable:
+    - default
+  disable:
     - use-fstring-for-formatting
   rule_types:
     - refactoring
     - suggestion
     - comment
-  python_version: '3.9'
+  python_version: "3.10"
 
 metrics:
   quality_threshold: 25.0
+
+github:
+  labels: []
+  ignore_labels:
+    - sourcery-ignore
+  request_review: author
+  sourcery_branch: sourcery/{base_branch}
 
 clone_detection:
   min_lines: 3
   min_duplicates: 2
   identical_clones_only: false
-
-github:
-  labels: []
-  ignore_labels: [sourcery-ignore]
-  request_review: author
-  sourcery_branch: sourcery/{base_branch}
