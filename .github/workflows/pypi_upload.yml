@@ -6,27 +6,29 @@ on:
       - published
 
 env:
-  PYTHON_VERSION: 2.7
+  PYTHON_VERSION: "2.7"
 
 jobs:
   upload:
     runs-on: ubuntu-20.04
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: Set up Python ${{ env.PYTHON_VERSION }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Cache pip
-        id: cache-pip
+      - name: Cache Python
+        id: cache-python
         uses: actions/cache@v3
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip
+          path: ${{ env.pythonLocation }}
+          key: py${{ env.PYTHON_VERSION }}-${{ hashFiles('setup.cfg', '**/__version__.py') }}
           restore-keys: |
-            ${{ runner.os }}-pip
+            py${{ env.PYTHON_VERSION }}-
 
       - name: Install dependencies
         run: |
