@@ -1,0 +1,4 @@
+[pydocstyle]
+convention = google
+add_ignore = D205, D415
+match_dir = [^\(com,dev,java,org)].*
