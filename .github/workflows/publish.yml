@@ -7,7 +7,7 @@ on:
 
 jobs:
   main:
-    uses: thecesrom/workflows/.github/workflows/pypi-upload.yml@v0.1.0
+    uses: thecesrom/workflows/.github/workflows/pypi-upload.yml@v1.1.1
     with:
       image: ubuntu-20.04
       python-version: "2.7"
