@@ -355,7 +355,7 @@ class BasicDataset(AbstractDataset):
         return True
 
     def getData(self):
-        # type: () -> Any
+        # type: () -> List[Object]
         pass
 
     def setAllDirectly(self, columnNames, columnTypes, data):
