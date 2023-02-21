@@ -7,6 +7,7 @@ bit array).
 from __future__ import print_function
 
 __all__ = [
+    "Arrays",
     "Calendar",
     "Collection",
     "Comparator",
@@ -21,10 +22,10 @@ __all__ = [
     "UUID",
 ]
 
-from typing import Any, Dict, List, Optional, Set, TypeVar, Union
+from typing import Any, Dict, Iterable, List, Optional, Set, TypeVar, Union
 
 from dev.thecesrom.utils.decorators import classproperty
-from java.lang import Object, String
+from java.lang import Class, Object, String
 from java.time import Instant, ZoneId
 from java.util.function import (
     Consumer,
@@ -327,6 +328,103 @@ class Stream(object):
         def build(self):
             # type: () -> Stream
             raise NotImplementedError
+
+
+class Arrays(object):
+    @staticmethod
+    def asList(a):
+        # type: (Any) -> List[Any]
+        pass
+
+    @staticmethod
+    def binarySearch(*args, **kwargs):
+        # type: (*Any, **Any) -> int
+        pass
+
+    @staticmethod
+    def compare(*args, **kwargs):
+        # type: (*Any, **Any) -> int
+        pass
+
+    @staticmethod
+    def compareUnsigned(*args, **kwargs):
+        # type: (*Any, **Any) -> int
+        pass
+
+    @staticmethod
+    def copyOf(original, newLength, newType=None):
+        # type: (List[Any], int, Optional[Class]) -> List[Any]
+        pass
+
+    @staticmethod
+    def copyOfRange(original, from_, to, newType=None):
+        # type: (List[Any], int, int, Optional[Class]) -> List[Any]
+        pass
+
+    @staticmethod
+    def deepEquals(a1, a2):
+        # type: (List[Object], List[Object]) -> bool
+        pass
+
+    @staticmethod
+    def equals(*args, **kwargs):
+        # type: (*Any, **Any) -> bool
+        pass
+
+    @staticmethod
+    def fill(a, *args):
+        # type: (List[Any], *Any) -> None
+        pass
+
+    @staticmethod
+    def hashCode(a):
+        # type: (Iterable) -> int
+        pass
+
+    @staticmethod
+    def mismatch(*args, **kwargs):
+        # type: (*Any, **Any) -> int
+        pass
+
+    @staticmethod
+    def parallelPrefix(*args, **kwargs):
+        # type: (*Any, **Any) -> None
+        pass
+
+    @staticmethod
+    def parallelSetAll(*args, **kwargs):
+        # type: (*Any, **Any) -> None
+        pass
+
+    @staticmethod
+    def parallelSort(*args, **kwargs):
+        # type: (*Any, **Any) -> None
+        pass
+
+    @staticmethod
+    def setAll(*args, **kwargs):
+        # type: (*Any, **Any) -> None
+        pass
+
+    @staticmethod
+    def sort(*args, **kwargs):
+        # type: (*Any, **Any) -> None
+        pass
+
+    @staticmethod
+    def spliterator(array, startInclusive=None, endExclusive=None):
+        # type: (Iterable, Optional[int], Optional[int]) -> Spliterator
+        pass
+
+    @staticmethod
+    def stream(array, startInclusive=None, endExclusive=None):
+        # type: (Iterable, Optional[int], Optional[int]) -> Stream
+        pass
+
+    @staticmethod
+    def toString(a):
+        # type: (Iterable) -> String
+        pass
 
 
 class Calendar(Object):
