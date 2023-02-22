@@ -7,8 +7,8 @@ class JTextComponent(Container):
 
     _text = "Text"  # type: String
 
-    def getText(self):
-        # type: () -> String
+    def getText(self, *args):
+        # type: (*int) -> String
         return self._text
 
     def setText(self, t):

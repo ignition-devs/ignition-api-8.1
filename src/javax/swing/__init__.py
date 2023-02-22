@@ -15,6 +15,7 @@ __all__ = [
     "JTextField",
 ]
 
+import warnings
 from typing import Any, List, Optional
 
 from java.awt import Component, Container, Frame, Graphics
@@ -413,7 +414,14 @@ class JPasswordField(JTextField):
 
     def getPassword(self):
         # type: () -> List[String]
-        pass
+        return ["p", "a", "s", "s", "w", "o", "r", "d"]
+
+    def getText(self, *args):
+        # type: (*int) -> String
+        warnings.warn(
+            "As of Java 2 platform v1.2, replaced by getPassword.", DeprecationWarning
+        )
+        return "password"
 
     def getUIClassID(self):
         # type: () -> String
