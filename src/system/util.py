@@ -501,7 +501,7 @@ def getVersion():
         The currently running Ignition version number, as a Version
         object.
     """
-    major, minor, rev = [int(i) for i in version.__version__.split(".")]
+    major, minor, rev = tuple(map(int, version.__version__.split(".")[:3]))
     build = int(version.__build__)
     return Version(major=major, minor=minor, rev=rev, build=build)
 
