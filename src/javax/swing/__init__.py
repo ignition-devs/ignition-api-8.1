@@ -10,6 +10,7 @@ __all__ = [
     "JLayeredPane",
     "JOptionPane",
     "JPanel",
+    "JPasswordField",
     "JPopupMenu",
     "JTextField",
 ]
@@ -386,4 +387,42 @@ class JTextField(JTextComponent):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        pass
+
+
+class JPasswordField(JTextField):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(JPasswordField, self).__init__(*args)
+
+    def copy(self):
+        # type: () -> None
+        pass
+
+    def cut(self):
+        # type: () -> None
+        pass
+
+    def echoCharIsSet(self):
+        # type: () -> bool
+        pass
+
+    def getEchoChar(self):
+        # type: () -> String
+        pass
+
+    def getPassword(self):
+        # type: () -> List[String]
+        pass
+
+    def getUIClassID(self):
+        # type: () -> String
+        pass
+
+    def setEchoChar(self, c):
+        # type: (String) -> None
+        pass
+
+    def updateUI(self):
+        # type: () -> None
         pass
