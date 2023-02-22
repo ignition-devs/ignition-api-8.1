@@ -5,9 +5,12 @@ __all__ = [
     "Color",
     "Component",
     "Container",
+    "Dimension",
     "Frame",
     "Graphics",
+    "GridLayout",
     "Image",
+    "LayoutManager",
     "Point",
     "Toolkit",
     "Window",
@@ -15,9 +18,31 @@ __all__ = [
 
 from typing import Any, Optional
 
-from java.awt.geom import Point2D
+from java.awt.geom import Dimension2D, Point2D
 from java.lang import Object, String
 from java.util import EventObject
+
+
+class LayoutManager(object):
+    def addLayoutComponent(self, name, comp):
+        # type: (String, Component) -> None
+        raise NotImplementedError
+
+    def layoutContainer(self, parent):
+        # type: (Container) -> None
+        raise NotImplementedError
+
+    def minimumLayoutSize(self, parent):
+        # type: (Container) -> Dimension
+        raise NotImplementedError
+
+    def preferredLayoutSize(self, parent):
+        # type: (Container) -> Dimension
+        raise NotImplementedError
+
+    def removeLayoutComponent(self, comp):
+        # type: (Component) -> None
+        raise NotImplementedError
 
 
 class AWTEvent(EventObject):
@@ -64,6 +89,31 @@ class Component(Object):
 class Container(Component):
     def add(self, *args):
         # type: (*Any) -> Optional[Component]
+        pass
+
+
+class Dimension(Dimension2D):
+    height = None  # type: int
+    width = None  # type: int
+
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        pass
+
+    def getHeight(self):
+        # type: () -> float
+        pass
+
+    def getSize(self):
+        # type: () -> Dimension
+        pass
+
+    def getWidth(self):
+        # type: () -> float
+        pass
+
+    def setSize(self, *args):
+        # type: (*Any) -> None
         pass
 
 
@@ -145,3 +195,67 @@ class Graphics(Object):
     def create(self):
         # type: () -> Graphics
         raise NotImplementedError
+
+
+class GridLayout(Object, LayoutManager):
+    def __init__(
+        self,
+        rows=None,  # type: Optional[int]
+        cols=None,  # type: Optional[int]
+        hgap=None,  # type: Optional[int]
+        vgap=None,  # type: Optional[int]
+    ):
+        # type: (...) -> None
+        print(rows, cols, hgap, vgap)
+
+    def addLayoutComponent(self, name, comp):
+        # type: (String, Component) -> None
+        pass
+
+    def getColumns(self):
+        # type: () -> int
+        pass
+
+    def getHgap(self):
+        # type: () -> int
+        pass
+
+    def getRows(self):
+        # type: () -> int
+        pass
+
+    def getVgap(self):
+        # type: () -> int
+        pass
+
+    def layoutContainer(self, parent):
+        # type: (Container) -> None
+        pass
+
+    def minimumLayoutSize(self, parent):
+        # type: (Container) -> Dimension
+        pass
+
+    def preferredLayoutSize(self, parent):
+        # type: (Container) -> Dimension
+        pass
+
+    def removeLayoutComponent(self, comp):
+        # type: (Component) -> None
+        pass
+
+    def setColumns(self, cols):
+        # type: (int) -> None
+        pass
+
+    def setHgap(self, hgap):
+        # type: (int) -> None
+        pass
+
+    def setRows(self, rows):
+        # type: (int) -> None
+        pass
+
+    def setVgap(self, vgap):
+        # type: (int) -> None
+        pass

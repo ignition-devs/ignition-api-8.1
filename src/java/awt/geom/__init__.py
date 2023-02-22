@@ -5,6 +5,20 @@ from typing import Any
 from java.lang import Object
 
 
+class Dimension2D(Object):
+    def getHeight(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def getWidth(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def setSize(self, *args):
+        # type: (*Any) -> None
+        raise NotImplementedError
+
+
 class Point2D(Object):
     def clone(self):
         # type: () -> Object
