@@ -2,6 +2,6 @@
 commitizen:
   name: cz_conventional_commits
   tag_format: v$version
-  version: 8.1.25.post1
+  version: 8.1.24.post2
   version_files:
   - src/system/__version__.py
