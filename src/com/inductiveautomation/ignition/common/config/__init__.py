@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = [
     "BasicProperty",
     "BasicPropertySet",
@@ -59,6 +61,7 @@ class BasicProperty(Property, Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(BasicProperty, self).__init__()
         if not args:
             self._hcode = 0
         elif len(args) == 2:
@@ -115,7 +118,7 @@ class BasicProperty(Property, Object):
 class BasicPropertySet(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(BasicPropertySet, self).__init__()
 
     def addPropertySet(self, *args):
         # type: (*Any) -> None
@@ -207,7 +210,8 @@ class BasicPropertySet(Object):
 class PropertyValue(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(PropertyValue, self).__init__()
+        print(args)
 
     def getProperty(self):
         # type: () -> Property

@@ -40,6 +40,10 @@ class Object(object):
     methods of this class.
     """
 
+    def __init__(self):
+        # type: () -> None
+        super(Object, self).__init__()
+
     def __cmp__(self, other):
         # type: (Object) -> bool
         return True
@@ -194,7 +198,8 @@ class Number(Object):
 class StackTraceElement(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(StackTraceElement, self).__init__()
+        print(args)
 
     def getClassLoaderName(self):
         # type: () -> str
@@ -232,7 +237,8 @@ class StackTraceElement(Object):
 class StringBuffer(Object, CharSequence):
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        super(StringBuffer, self).__init__()
+        print(args)
 
     def append(self, *args):
         # type: (Any) -> StringBuffer
@@ -334,7 +340,8 @@ class StringBuffer(Object, CharSequence):
 class StringBuilder(Object, CharSequence):
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        super(StringBuilder, self).__init__()
+        print(args)
 
     def append(self, *args):
         # type: (Any) -> StringBuilder
@@ -436,6 +443,7 @@ class Throwable(Object, builtins.Exception):
 
     def __init__(self, message=None, cause=None):
         # type: (Optional[str], Optional[Throwable]) -> None
+        super(Throwable, self).__init__()
         self._cause = cause
         self._message = message
         builtins.Exception.__init__(self, message)

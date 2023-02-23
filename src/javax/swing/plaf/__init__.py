@@ -5,7 +5,7 @@ from java.lang import Object
 class ComponentUI(Object):
     def __init__(self):
         # type: () -> None
-        pass
+        super(ComponentUI, self).__init__()
 
     def contains(self, c, x, y):
         # type: (Component, int, int) -> bool
@@ -23,4 +23,4 @@ class ComponentUI(Object):
 class DesktopPaneUI(ComponentUI):
     def __init__(self):
         # type: () -> None
-        pass
+        super(DesktopPaneUI, self).__init__()

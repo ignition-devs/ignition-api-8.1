@@ -10,4 +10,5 @@ from java.awt import Image
 class BufferedImage(Image):
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(BufferedImage, self).__init__()
         print(args)

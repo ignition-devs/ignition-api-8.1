@@ -20,7 +20,7 @@ class JsonValidator(object):
 class BaseJsonValidator(Object, JsonValidator):
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        super(BaseJsonValidator, self).__init__()
 
     def asInt(self, element):
         # type: (JsonElement) -> int

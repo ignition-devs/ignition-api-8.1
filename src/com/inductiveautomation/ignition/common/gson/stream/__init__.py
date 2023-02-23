@@ -11,6 +11,7 @@ from java.lang import Object, String
 class JsonReader(Object, Closeable):
     def __init__(self, in_):
         # type: (Reader) -> None
+        super(JsonReader, self).__init__()
         print(in_)
 
     def beginArray(self):
@@ -102,6 +103,7 @@ class JsonToken(Enum):
 class JsonWriter(Object, Closeable, Flushable):
     def __init__(self, out):
         # type: (Writer) -> None
+        super(JsonWriter, self).__init__()
         print(out)
 
     def beginArray(self):

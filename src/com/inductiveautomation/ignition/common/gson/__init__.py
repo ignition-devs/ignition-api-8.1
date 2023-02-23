@@ -51,7 +51,8 @@ class TypeAdapterFactory(object):
 class FieldAttributes(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(FieldAttributes, self).__init__()
+        print(args)
 
     def getAnnotation(self, annotation):
         # type: (Class) -> T

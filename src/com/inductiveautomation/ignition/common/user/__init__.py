@@ -22,6 +22,7 @@ class ContactInfo(Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(ContactInfo, self).__init__()
         if len(args) == 2:
             self.contactType = args[0]
             self.value = args[1]
@@ -268,6 +269,7 @@ class UserSourceMeta(Object):
 
     def __init__(self, name, description, type_):
         # type: (String, String, String) -> None
+        super(UserSourceMeta, self).__init__()
         self.name = name
         self.description = description
         self.type = type_

@@ -5,11 +5,11 @@ from java.lang import Object
 
 class DocumentElement(Object):
     def __init__(self, *args):
-        # type: (Any) -> None
-        pass
+        # type: (*Any) -> None
+        super(DocumentElement, self).__init__()
 
 
 class Document(DocumentElement):
     def __init__(self, *args):
-        # type: (Any) -> None
+        # type: (*Any) -> None
         super(Document, self).__init__(*args)

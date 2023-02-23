@@ -25,7 +25,7 @@ T = TypeVar("T")
 class SocketAddress(Object):
     def __init__(self):
         # type: () -> None
-        pass
+        super(SocketAddress, self).__init__()
 
 
 class FileNameMap(object):
@@ -140,8 +140,8 @@ class InetAddress(Object):
 class InetSocketAddress(SocketAddress):
     def __init__(self, *args):
         # type: (*Any) -> None
-        print(args)
         super(InetSocketAddress, self).__init__()
+        print(args)
 
     @staticmethod
     def createUnresolved(host, port):
@@ -174,6 +174,7 @@ class Proxy(Object):
 
     def __init__(self, type_, sa):
         # type: (Proxy.Type, SocketAddress) -> None
+        super(Proxy, self).__init__()
         print(type_, sa)
 
     def address(self):
@@ -198,7 +199,8 @@ class Proxy(Object):
 class Socket(Object, Closeable):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(Socket, self).__init__()
+        print(args)
 
     def bind(self, bindpoint):
         # type: (SocketAddress) -> None
@@ -377,4 +379,4 @@ class Socket(Object, Closeable):
 class SocketImpl(Object):
     def __init__(self):
         # type: () -> None
-        pass
+        super(SocketImpl, self).__init__()

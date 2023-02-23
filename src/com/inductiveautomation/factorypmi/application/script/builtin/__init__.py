@@ -129,6 +129,7 @@ class NavUtilities(INavUtilities):
 class PrintUtilities(Object):
     def __init__(self, app):
         # type: (Any) -> None
+        super(PrintUtilities, self).__init__()
         print(self, app)
 
     def createImage(self, c):
@@ -148,7 +149,8 @@ class PrintUtilities(Object):
     class ComponentPrinter(Object):
         def __init__(self, c, fit, zoom):
             # type: (Component, bool, float) -> None
-            pass
+            super(PrintUtilities.ComponentPrinter, self).__init__()
+            print(c, fit, zoom)
 
         def print(self, g, pageFormat, pageIndex):
             # type: (Graphics, PageFormat, int) -> int
@@ -157,7 +159,8 @@ class PrintUtilities(Object):
     class JythonPrintJob(Object):
         def __init__(self, c):
             # type: (Component) -> None
-            pass
+            super(PrintUtilities.JythonPrintJob, self).__init__()
+            print(c)
 
         def getBottomMargin(self):
             # type: () -> float

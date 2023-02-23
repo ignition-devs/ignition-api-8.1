@@ -12,6 +12,7 @@ from org.python.core import PyObject
 class PyJsonObjectAdapter(Object):
     def __init__(self, obj):
         # type: (JsonObject) -> None
+        super(PyJsonObjectAdapter, self).__init__()
         print(self, obj)
 
     def __delitem__(self, key):

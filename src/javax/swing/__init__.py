@@ -111,7 +111,7 @@ class JComponent(Container):
 
     def __init__(self):
         # type: () -> None
-        pass
+        super(JComponent, self).__init__()
 
     def addAncestorListener(self, listener):
         # type: (AncestorListener) -> None
@@ -388,7 +388,7 @@ class JTextField(JTextComponent):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(JTextField, self).__init__()
 
 
 class JPasswordField(JTextField):

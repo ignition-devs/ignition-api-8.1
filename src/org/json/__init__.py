@@ -9,6 +9,7 @@ from java.lang import Number, Object, String
 class JSONArray(Object):
     def __init__(self, arg=None):
         # type: (Any) -> None
+        super(JSONArray, self).__init__()
         print(arg)
 
     def get(self, index):
@@ -113,7 +114,8 @@ class JSONObject(Object):
 
     def __init__(self, *args):
         # type: (Any) -> None
-        pass
+        super(JSONObject, self).__init__()
+        print(args)
 
     def accumulate(self, key, value):
         # type: (String, Object) -> JSONObject

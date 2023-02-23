@@ -9,7 +9,7 @@ from java.lang import Object
 
 class SerialScriptModule(Object):
     def __init__(self):
-        pass
+        super(SerialScriptModule, self).__init__()
 
     def setTrialExpired(self, arg):
         pass
