@@ -1,6 +1,5 @@
 ---
 commitizen:
-  annotated_tag: true
   name: cz_conventional_commits
   tag_format: v$version
   update_changelog_on_bump: true
