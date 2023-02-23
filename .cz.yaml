@@ -1,10 +1,9 @@
 ---
 commitizen:
+  annotated_tag: true
   name: cz_conventional_commits
   tag_format: v$version
-  annotated_tag: true
-  version: 8.1.24.post3
+  update_changelog_on_bump: true
+  version: 8.1.25.post2
   version_files:
   - src/system/__version__.py
-  update_changelog_on_bump: true
-  
