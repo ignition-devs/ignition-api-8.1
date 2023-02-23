@@ -125,7 +125,8 @@ class AttributedCharacterIterator(CharacterIterator):
 class FieldPosition(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(FieldPosition, self).__init__()
+        print(args)
 
     def getBeginIndex(self):
         # type: () -> int
@@ -266,6 +267,7 @@ class DateFormat(Format):
 class DateFormatSymbols(Object):
     def __init__(self, locale=None):
         # type: (Optional[Locale]) -> None
+        super(DateFormatSymbols, self).__init__()
         print(locale)
 
     def clone(self):
@@ -475,6 +477,7 @@ class NumberFormat(Format):
 class ParsePosition(Object):
     def __init__(self, index):
         # type: (int) -> None
+        super(ParsePosition, self).__init__()
         print(index)
 
     def getErrorIndex(self):
@@ -501,6 +504,7 @@ class SimpleDateFormat(DateFormat):
         arg=None,  # type: Union[DateFormatSymbols, Locale, None]
     ):
         # type: (...) -> None
+        super(SimpleDateFormat, self).__init__()
         print(pattern, arg)
 
     def applyLocalizedPattern(self, pattern):

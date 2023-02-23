@@ -50,6 +50,7 @@ class Point2D(Object):
 
         def __init__(self, x=0.0, y=0.0):
             # type: (float, float) -> None
+            super(Point2D.Double, self).__init__()
             self.x = x
             self.y = y
 
@@ -84,6 +85,7 @@ class Point2D(Object):
 
         def __init__(self, x=0.0, y=0.0):
             # type: (float, float) -> None
+            super(Point2D.Float, self).__init__()
             self.x = x
             self.y = y
 

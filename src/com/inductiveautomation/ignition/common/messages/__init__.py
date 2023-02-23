@@ -32,6 +32,7 @@ class UIResponse(Object):
 
     def __init__(self, locale):
         # type: (Locale) -> None
+        super(UIResponse, self).__init__()
         self.locale = locale
 
     def attempt(self, method):

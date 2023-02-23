@@ -69,6 +69,7 @@ class AWTEvent(EventObject):
 class Color(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(Color, self).__init__()
         print(args)
 
 
@@ -98,7 +99,8 @@ class Dimension(Dimension2D):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(Dimension, self).__init__()
+        print(args)
 
     def getHeight(self):
         # type: () -> float
@@ -137,7 +139,8 @@ class Point(Point2D):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(Point, self).__init__()
+        print(args)
 
     def getLocation(self):
         # type: () -> Point
@@ -167,7 +170,7 @@ class Point(Point2D):
 class Toolkit(Object):
     def __init__(self):
         # type: () -> None
-        pass
+        super(Toolkit, self).__init__()
 
     def beep(self):
         # type: () -> None
@@ -182,7 +185,7 @@ class Toolkit(Object):
 class Window(Container):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(Window, self).__init__()
 
 
 class Frame(Window):
@@ -206,6 +209,7 @@ class GridLayout(Object, LayoutManager):
         vgap=None,  # type: Optional[int]
     ):
         # type: (...) -> None
+        super(GridLayout, self).__init__()
         print(rows, cols, hgap, vgap)
 
     def addLayoutComponent(self, name, comp):

@@ -27,6 +27,7 @@ class BrowseTag(Object):
         valueSource,  # type: str
         dataType,  # type: DataType
     ):
+        super(BrowseTag, self).__init__()
         self.name = name
         self.path = path
         self.fullPath = fullPath
@@ -89,6 +90,7 @@ class OPCBrowseTag(Object):
         opcItemPath=None,  # type: Optional[str]
     ):
         # type: (...) -> None
+        super(OPCBrowseTag, self).__init__()
         self._opcServer = opcServer
         self._type = type_
         self._displayName = displayName

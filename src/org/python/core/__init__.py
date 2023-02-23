@@ -50,6 +50,7 @@ class PyObject(Object):
 
     def __init__(self, objtype=None):
         # type: (Optional[PyType]) -> None
+        super(PyObject, self).__init__()
         print(objtype)
 
     def __abs__(self):
@@ -727,6 +728,7 @@ class CompilerFlags(Object):
 
     def __init__(self, co_flags=None):
         # type: (Optional[int]) -> None
+        super(CompilerFlags, self).__init__()
         print(co_flags)
 
     def combine(self, flags):

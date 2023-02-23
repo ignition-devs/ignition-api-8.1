@@ -29,6 +29,7 @@ class BasicTagPath(AbstractTagPath):
         prop=None,  # type: Optional[Property]
     ):
         # type: (...) -> None
+        super(BasicTagPath, self).__init__()
         print(source, pathParts, prop)
 
     @staticmethod
@@ -55,10 +56,12 @@ class BasicTagPath(AbstractTagPath):
 class PropertyAlteredTagPath(AbstractTagPath):
     def __init__(self, path, prop):
         # type: (TagPath, Property) -> None
+        super(PropertyAlteredTagPath, self).__init__()
         print(path, prop)
 
 
 class SourceAlteredTagPath(AbstractTagPath):
     def __init__(self, path, source):
         # type: (TagPath, String) -> None
+        super(SourceAlteredTagPath, self).__init__()
         print(path, source)

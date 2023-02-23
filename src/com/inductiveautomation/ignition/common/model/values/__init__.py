@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 
 from typing import Any, Union
@@ -110,7 +112,8 @@ class QualityCode(Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(QualityCode, self).__init__()
+        print(args)
 
     def derive(self, diagnosticMessage):
         pass
@@ -153,7 +156,7 @@ class QualityCode(Object):
 
     class Level(Object):
         def __init__(self):
-            pass
+            super(QualityCode.Level, self).__init__()
 
         def code(self, userCode):
             pass
@@ -176,6 +179,7 @@ class BasicQualifiedValue(QualifiedValue, Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(BasicQualifiedValue, self).__init__()
         print(args)
         self.quality = QualityCode.Bad_Stale
         self.timestamp = Date()

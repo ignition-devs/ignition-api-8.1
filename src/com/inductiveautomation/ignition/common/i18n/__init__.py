@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["LocaleUtils", "LocalizedString"]
 
 from typing import Any, List, Optional
@@ -21,7 +23,8 @@ class LocaleUtils(Object):
 class LocalizedString(Object):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(LocalizedString, self).__init__()
+        print(args)
 
     def compareTo(self, other):
         # type: (LocalizedString) -> int

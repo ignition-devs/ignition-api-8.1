@@ -180,6 +180,7 @@ class HolidayModel(DefaultBindableModel):
 
     def __init__(self, name, date, repeatAnnually):
         # type: (String, Date, bool) -> None
+        super(HolidayModel, self).__init__()
         self.name = name
         self.date = date
         self.repeatAnnually = repeatAnnually
@@ -221,6 +222,7 @@ class ScheduleAdjustment(DefaultBindableModel):
 
     def __init__(self, start, end, available, note):
         # type: (Date, Date, bool, String) -> None
+        super(ScheduleAdjustment, self).__init__()
         self.start = start
         self.end = end
         self.available = available

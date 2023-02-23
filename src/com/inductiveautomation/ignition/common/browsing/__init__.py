@@ -39,6 +39,7 @@ class Results(Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(Results, self).__init__()
         print(args)
         self.continuationPoint = None
         self.resultQuality = QualityCode.Good

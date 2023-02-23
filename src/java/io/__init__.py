@@ -58,7 +58,8 @@ class File(Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(File, self).__init__()
+        print(args)
 
 
 class FileDescriptor(Object):
@@ -93,7 +94,8 @@ class OutputStream(Object, Closeable, Flushable):
 class FileOutputStream(OutputStream):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(FileOutputStream, self).__init__()
+        print(args)
 
     def getChannel(self):
         # type: () -> Any
@@ -109,6 +111,7 @@ class FilterOutputStream(OutputStream):
 
     def __init__(self, out):
         # type: (OutputStream) -> None
+        super(FilterOutputStream, self).__init__()
         self._out = out
 
 
@@ -297,6 +300,7 @@ class Reader(Object, AutoCloseable):
 class BufferedReader(Reader):
     def __init__(self, in_, sz=None):
         # type: (Reader, Optional[int]) -> None
+        super(BufferedReader, self).__init__()
         print(in_, sz)
 
     def close(self):
@@ -330,13 +334,15 @@ class Writer(Object, Appendable, Closeable, Flushable):
 class BufferedWriter(Writer):
     def __init__(self, out, sz=None):
         # type: (Writer, Optional[int]) -> None
+        super(BufferedWriter, self).__init__()
         print(out, sz)
 
 
 class PrintWriter(Writer):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(PrintWriter, self).__init__()
+        print(args)
 
     def append(self, c_csq, start=0, end=-1):
         # type: (Union[CharSequence, str], int, int) -> PrintWriter

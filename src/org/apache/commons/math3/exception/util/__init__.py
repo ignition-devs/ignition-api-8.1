@@ -1,3 +1,7 @@
+from __future__ import print_function
+
+__all__ = ["ExceptionContext"]
+
 from typing import Any, Optional, Set
 
 from java.lang import Object, String, Throwable
@@ -7,7 +11,8 @@ from java.util import Locale
 class ExceptionContext(Object):
     def __init__(self, throwable):
         # type: (Throwable) -> None
-        pass
+        super(ExceptionContext, self).__init__()
+        print(throwable)
 
     def addMessage(self, pattern, *args):
         # type: (String, *Any) -> None

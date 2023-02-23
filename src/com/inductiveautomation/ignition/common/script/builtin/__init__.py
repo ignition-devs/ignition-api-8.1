@@ -516,6 +516,7 @@ class SystemUtilities(Object):
 
         def __init__(self, timeout):
             # type: (int) -> None
+            super(SystemUtilities.RequestImpl, self).__init__()
             self.timeout = timeout
 
         def cancel(self):

@@ -58,6 +58,7 @@ class ShelvedPath(Object):
 
     def __init__(self, *args):
         # type: (*Any) -> None
+        super(ShelvedPath, self).__init__()
         print(args)
 
     def getExpiration(self):

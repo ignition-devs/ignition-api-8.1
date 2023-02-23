@@ -108,6 +108,7 @@ class Version(Object):
 
     def __init__(self, major=0, minor=0, rev=0, build=0, beta=0, rc=0):
         # type: (int, int, int, int, int, int) -> None
+        super(Version, self).__init__()
         self.major = major
         self.minor = minor
         self.rev = rev

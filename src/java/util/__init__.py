@@ -653,6 +653,7 @@ class Date(Object):
 
     def __init__(self, date=None):
         # type: (Optional[long]) -> None
+        super(Date, self).__init__()
         print(self, date)
 
     def after(self, when):
@@ -689,6 +690,7 @@ class EventObject(Object):
 
     def __init__(self, source):
         # type: (Object) -> None
+        super(EventObject, self).__init__()
         self._source = source
 
     def getSource(self):
@@ -712,6 +714,7 @@ class Locale(Object):
 
     def __init__(self, language, country=None, variant=None):
         # type: (str, Optional[str], Optional[str]) -> None
+        super(Locale, self).__init__()
         self.language = language
         self.country = country
         self.variant = variant
@@ -913,6 +916,7 @@ class TimeZone(Object):
 class UUID(Object):
     def __init__(self, mostSigBits, leastSigBits):
         # type: (long, long) -> None
+        super(UUID, self).__init__()
         self._leastSigbits = leastSigBits
         self._mostSigBits = mostSigBits
 

@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = [
     "BasicOPCBrowseElement",
     "BasicServerNodeId",
@@ -52,7 +54,8 @@ class ServerNodeId(object):
 class BasicOPCBrowseElement(Object, OPCBrowseElement):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(BasicOPCBrowseElement, self).__init__()
+        print(args)
 
     def getDataType(self):
         # type: () -> Class
@@ -85,6 +88,7 @@ class BasicServerNodeId(Object, ServerNodeId):
 
     def __init__(self, serverName, nodeId):
         # type: (String, String) -> None
+        super(BasicServerNodeId, self).__init__()
         self.serverName = serverName
         self.nodeId = nodeId
 
@@ -110,6 +114,7 @@ class BrowseElement(Object):
 
     def __init__(self, itemType=None):
         # type: (Optional[int]) -> None
+        super(BrowseElement, self).__init__()
         self._itemType = itemType
         self._properties = {0: BrowseElement.PropertyElement(0, "", "")}
 
@@ -211,6 +216,7 @@ class BrowseElement(Object):
 
         def __init__(self, id_, name, value):
             # type: (int, String, String) -> None
+            super(BrowseElement.PropertyElement, self).__init__()
             self.id = id_
             self.name = name
             self.value = value
@@ -253,6 +259,7 @@ class ServerBrowseElement(Object, OPCBrowseElement):
 
     def __init__(self, serverName):
         # type: (String) -> None
+        super(ServerBrowseElement, self).__init__()
         self.nodeId = BasicServerNodeId(serverName, "")
 
     def getDataType(self):
