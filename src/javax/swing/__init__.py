@@ -413,7 +413,8 @@ class JPasswordField(JTextField):
         # type: () -> AnyStr
         pass
 
-    def getPassword(self):  # type: ignore[no-untyped-def]
+    def getPassword(self):
+        # type: () -> Any
         return array.array("c", "password")
 
     def getText(self, *args):
