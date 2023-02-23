@@ -10,17 +10,17 @@ __all__ = ["addConnection", "callMethod", "removeConnection"]
 
 from typing import Any, Dict, List, Tuple
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def addConnection(
-    name,  # type: String
-    description,  # type: String
-    discoveryUrl,  # type: String
-    endpointUrl,  # type: String
-    securityPolicy,  # type: String
-    securityMode,  # type: String
-    settings,  # type: Dict[String, Any]
+    name,  # type: AnyStr
+    description,  # type: AnyStr
+    discoveryUrl,  # type: AnyStr
+    endpointUrl,  # type: AnyStr
+    securityPolicy,  # type: AnyStr
+    securityMode,  # type: AnyStr
+    settings,  # type: Dict[AnyStr, Any]
 ):
     # type: (...) -> None
     """Adds a new OPC UA connection.
@@ -47,10 +47,10 @@ def addConnection(
 
 
 def callMethod(
-    connectionName,  # type: String
-    objectId,  # type: String
-    methodId,  # type: String
-    inputs,  # type: List[String]
+    connectionName,  # type: AnyStr
+    objectId,  # type: AnyStr
+    methodId,  # type: AnyStr
+    inputs,  # type: List[AnyStr]
 ):
     # type: (...) -> Tuple[Any, Any, Any]
     """Calls a method in an OPC UA Server.
@@ -79,7 +79,7 @@ def callMethod(
 
 
 def removeConnection(name):
-    # type: (String) -> bool
+    # type: (AnyStr) -> bool
     """Removes an OPC UA Connection.
 
     Args:

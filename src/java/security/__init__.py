@@ -1,4 +1,7 @@
-from java.lang import Object, String
+__all__ = ["Principal"]
+
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from javax.security.auth import Subject
 
 
@@ -8,7 +11,7 @@ class Principal(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def hashCode(self):
@@ -20,5 +23,5 @@ class Principal(object):
         return True
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError

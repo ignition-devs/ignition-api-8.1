@@ -3,7 +3,8 @@ __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 from typing import List
 
 from com.inductiveautomation.ignition.common.functional import FragileRunnable
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from java.util import Locale
 from java.util.function import Consumer
 
@@ -25,10 +26,10 @@ class MessageReceiver(object):
 
 
 class UIResponse(Object):
-    errors = []  # type: List[String]
-    infos = []  # type: List[String]
+    errors = []  # type: List[AnyStr]
+    infos = []  # type: List[AnyStr]
     locale = None  # type: Locale
-    warns = []  # type: List[String]
+    warns = []  # type: List[AnyStr]
 
     def __init__(self, locale):
         # type: (Locale) -> None
@@ -40,15 +41,15 @@ class UIResponse(Object):
         pass
 
     def error(self, message, *args):
-        # type: (String, *Object) -> None
+        # type: (AnyStr, *Object) -> None
         pass
 
     def getErrors(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getInfos(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getLocale(self):
@@ -56,15 +57,15 @@ class UIResponse(Object):
         return self.locale
 
     def getWarns(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def info(self, message, *args):
-        # type: (String, *Object) -> None
+        # type: (AnyStr, *Object) -> None
         pass
 
     def warn(self, message, *args):
-        # type: (String, *Object) -> None
+        # type: (AnyStr, *Object) -> None
         pass
 
     @staticmethod

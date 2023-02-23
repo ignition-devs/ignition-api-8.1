@@ -12,11 +12,12 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
 from com.inductiveautomation.ignition.common.model.values import QualityCode
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import Color, Component, Graphics
 from java.awt.event import ActionEvent, ComponentEvent, MouseEvent
 from java.awt.image import BufferedImage
 from java.awt.print import PageFormat
-from java.lang import Number, Object, String
+from java.lang import Number, Object
 from java.util import EventObject
 from javax.swing import JComponent, JFrame, JPopupMenu
 from org.python.core import PyObject, PySequence, PyTuple
@@ -28,7 +29,7 @@ class INavUtilities(object):
     """
 
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, String]) -> None
+        # type: (Union[FPMIWindow, AnyStr]) -> None
         raise NotImplementedError
 
     def closeParentWindow(self, event):
@@ -36,11 +37,11 @@ class INavUtilities(object):
         raise NotImplementedError
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, String]) -> None
+        # type: (Union[FPMIWindow, AnyStr]) -> None
         raise NotImplementedError
 
     def getCurrentWindow(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def goBack(self):
@@ -56,19 +57,19 @@ class INavUtilities(object):
         raise NotImplementedError
 
     def openWindow(self, path, params=None):
-        # type: (String, Optional[Dict[String, Any]]) -> PyObject
+        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
         raise NotImplementedError
 
     def openWindowImpl(self, path, params, openAdditional):
-        # type: (String, Dict[String, Any], bool) -> PyObject
+        # type: (AnyStr, Dict[AnyStr, Any], bool) -> PyObject
         raise NotImplementedError
 
     def openWindowInstance(self, path, params=None):
-        # type: (String, Optional[Dict[String, Any]]) -> PyObject
+        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
         raise NotImplementedError
 
     def swapTo(self, name, params):
-        # type: (String, Dict[String, Any]) -> PyObject
+        # type: (AnyStr, Dict[AnyStr, Any]) -> PyObject
         raise NotImplementedError
 
     def swapWindow(self, *args):
@@ -78,7 +79,7 @@ class INavUtilities(object):
 
 class NavUtilities(INavUtilities):
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, String]) -> None
+        # type: (Union[FPMIWindow, AnyStr]) -> None
         pass
 
     def closeParentWindow(self, event):
@@ -86,11 +87,11 @@ class NavUtilities(INavUtilities):
         pass
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, String]) -> None
+        # type: (Union[FPMIWindow, AnyStr]) -> None
         pass
 
     def getCurrentWindow(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def goBack(self):
@@ -106,19 +107,19 @@ class NavUtilities(INavUtilities):
         pass
 
     def openWindow(self, path, params=None):
-        # type: (String, Optional[Dict[String, Any]]) -> PyObject
+        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
         pass
 
     def openWindowImpl(self, path, params, openAdditional):
-        # type: (String, Dict[String, Any], bool) -> PyObject
+        # type: (AnyStr, Dict[AnyStr, Any], bool) -> PyObject
         pass
 
     def openWindowInstance(self, path, params=None):
-        # type: (String, Optional[Dict[String, Any]]) -> PyObject
+        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
         pass
 
     def swapTo(self, name, params):
-        # type: (String, Dict[String, Any]) -> PyObject
+        # type: (AnyStr, Dict[AnyStr, Any]) -> PyObject
         pass
 
     def swapWindow(self, *args):
@@ -183,7 +184,7 @@ class PrintUtilities(Object):
             pass
 
         def getPrinterName(self):
-            # type: () -> String
+            # type: () -> AnyStr
             pass
 
         def getRightMargin(self):
@@ -235,7 +236,7 @@ class PrintUtilities(Object):
             pass
 
         def setPrinterName(self, printerName):
-            # type: (String) -> None
+            # type: (AnyStr) -> None
             pass
 
         def setRightMargin(self, rightMargin):
@@ -267,11 +268,11 @@ class WindowUtilities(Object):
     COORD_SCREEN = 0
 
     def chooseColor(self, initialColor, dialogTitle="Choose Color"):
-        # type: (Color, Optional[String]) -> Color
+        # type: (Color, Optional[AnyStr]) -> Color
         pass
 
     def closeDesktop(self, handle):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     @staticmethod
@@ -281,8 +282,8 @@ class WindowUtilities(Object):
 
     def confirm(
         self,
-        message,  # type: String
-        title="Confirm",  # type: String
+        message,  # type: AnyStr
+        title="Confirm",  # type: AnyStr
         allowCancel=False,  # type: bool
     ):
         # type: (...) -> Optional[bool]
@@ -304,11 +305,11 @@ class WindowUtilities(Object):
         pass
 
     def desktop(self, arg):
-        # type: (Union[int, String]) -> WindowUtilities
+        # type: (Union[int, AnyStr]) -> WindowUtilities
         pass
 
     def errorBox(self, message, title="Error"):
-        # type: (String, Optional[String]) -> None
+        # type: (AnyStr, Optional[AnyStr]) -> None
         pass
 
     @staticmethod
@@ -317,11 +318,11 @@ class WindowUtilities(Object):
         pass
 
     def findWindow(self, path):
-        # type: (String) -> List[PyComponentWrapper]
+        # type: (AnyStr) -> List[PyComponentWrapper]
         pass
 
     def getCurrentDesktop(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getDesktopHandles(self):
@@ -342,7 +343,7 @@ class WindowUtilities(Object):
         pass
 
     def getQuality(self, comp, propertyName):
-        # type: (JComponent, String) -> QualityCode
+        # type: (JComponent, AnyStr) -> QualityCode
         pass
 
     def getScreenIndex(self):
@@ -356,11 +357,11 @@ class WindowUtilities(Object):
 
     @staticmethod
     def getSibling(event, name):
-        # type: (EventObject, String) -> PyObject
+        # type: (EventObject, AnyStr) -> PyObject
         pass
 
     def getWindow(self, name):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass
 
     def getWindowNames(self):
@@ -368,7 +369,7 @@ class WindowUtilities(Object):
         pass
 
     def inputBox(self, message, defaultTxt=""):
-        # type: (String, String) -> Optional[String]
+        # type: (AnyStr, AnyStr) -> Optional[AnyStr]
         pass
 
     def isTouchscreenModeEnabled(self):
@@ -376,11 +377,11 @@ class WindowUtilities(Object):
         return True
 
     def messageBox(self, message, title="Information"):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         pass
 
     def openDesktop(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> JFrame
+        # type: (*PyObject, **AnyStr) -> JFrame
         pass
 
     def openDiagnostics(self):
@@ -389,11 +390,11 @@ class WindowUtilities(Object):
 
     def passwordBox(
         self,
-        message,  # type:String
-        title="Password",  # type: String
-        echoChar="*",  # type: String
+        message,  # type:AnyStr
+        title="Password",  # type: AnyStr
+        echoChar="*",  # type: AnyStr
     ):
-        # type: (...) -> Optional[String]
+        # type: (...) -> Optional[AnyStr]
         pass
 
     def setTouchScreenModeEnabled(self, b):
@@ -410,15 +411,15 @@ class WindowUtilities(Object):
         pass
 
     def showTouchscreenKeyboard(self, initialText, fontSize=None, password=None):
-        # type: (String, Optional[int], Optional[bool]) -> String
+        # type: (AnyStr, Optional[int], Optional[bool]) -> AnyStr
         pass
 
     def transform(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> PyObject
+        # type: (*PyObject, **AnyStr) -> PyObject
         pass
 
     def warningBox(self, message, title="Warning"):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         pass
 
     class JyPopupMenu(JPopupMenu):
@@ -427,7 +428,7 @@ class WindowUtilities(Object):
             pass
 
         def addJyFunction(self, name, fun):
-            # type: (String, PyObject) -> None
+            # type: (AnyStr, PyObject) -> None
             pass
 
         def show(self, me, *args):

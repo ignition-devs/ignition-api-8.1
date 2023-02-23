@@ -23,12 +23,12 @@ __all__ = [
 import getpass
 from typing import Optional, Tuple
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import EventObject
 
 
 def getRoles():
-    # type: () -> Tuple[String, ...]
+    # type: () -> Tuple[AnyStr, ...]
     """Finds the roles that the currently logged in user has, returns
     them as a Python tuple of strings.
 
@@ -40,12 +40,12 @@ def getRoles():
 
 
 def getUserRoles(
-    username,  # type: String
-    password,  # type: String
-    authProfile="",  # type: String
+    username,  # type: AnyStr
+    password,  # type: AnyStr
+    authProfile="",  # type: AnyStr
     timeout=60000,  # type: int
 ):
-    # type: (...) -> Optional[Tuple[String, ...]]
+    # type: (...) -> Optional[Tuple[AnyStr, ...]]
     """Fetches the roles for a user from the Gateway.
 
     This may not be the currently logged in user. Requires the password
@@ -71,7 +71,7 @@ def getUserRoles(
 
 
 def getUsername():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the currently logged-in username.
 
     Returns:
@@ -113,7 +113,7 @@ def logout():
 
 
 def switchUser(username, password, event, hideError=False):
-    # type: (String, String, EventObject, Optional[bool]) -> bool
+    # type: (AnyStr, AnyStr, EventObject, Optional[bool]) -> bool
     """Attempts to switch the current user on the fly.
 
     If the given username and password fail, this function will return
@@ -149,7 +149,7 @@ def unlockScreen():
 
 
 def validateUser(username, password, authProfile="", timeout=60000):
-    # type: (String, String, Optional[String], Optional[int]) -> bool
+    # type: (AnyStr, AnyStr, Optional[AnyStr], Optional[int]) -> bool
     """Tests credentials (username and password) against an
     authentication profile.
 

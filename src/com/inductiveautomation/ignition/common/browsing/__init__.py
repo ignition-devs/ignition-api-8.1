@@ -5,7 +5,8 @@ __all__ = ["Result", "Results"]
 from typing import Any, List, Optional, Sequence
 
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 
 
 class Result(object):
@@ -32,7 +33,7 @@ class Results(Object):
     browse.
     """
 
-    continuationPoint = None  # type: Optional[String]
+    continuationPoint = None  # type: Optional[AnyStr]
     resultQuality = None  # type: QualityCode
     results = None  # type: Sequence[Any]
     totalAvailableResults = None  # type: int
@@ -52,7 +53,7 @@ class Results(Object):
         return Results(result)
 
     def getContinuationPoint(self):
-        # type: () -> Optional[String]
+        # type: () -> Optional[AnyStr]
         return self.continuationPoint
 
     def getResultQuality(self):
@@ -77,7 +78,7 @@ class Results(Object):
         return Results(results)
 
     def setContinuationPoint(self, continuationPoint=None):
-        # type: (Optional[String]) -> None
+        # type: (Optional[AnyStr]) -> None
         self.continuationPoint = continuationPoint
 
     def setResultQuality(self, value):

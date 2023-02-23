@@ -4,8 +4,9 @@ from typing import Any
 
 from enum import Enum
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import Closeable, Flushable, Reader, Writer
-from java.lang import Object, String
+from java.lang import Object
 
 
 class JsonReader(Object, Closeable):
@@ -35,7 +36,7 @@ class JsonReader(Object, Closeable):
         pass
 
     def getPath(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def hasNext(self):
@@ -63,7 +64,7 @@ class JsonReader(Object, Closeable):
         pass
 
     def nextName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def nextNull(self):
@@ -71,7 +72,7 @@ class JsonReader(Object, Closeable):
         pass
 
     def nextString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def peek(self):
@@ -143,11 +144,11 @@ class JsonWriter(Object, Closeable, Flushable):
         return True
 
     def jsonValue(self, value):
-        # type: (String) -> JsonWriter
+        # type: (AnyStr) -> JsonWriter
         pass
 
     def name(self, name):
-        # type: (String) -> JsonWriter
+        # type: (AnyStr) -> JsonWriter
         pass
 
     def setHtmlSafe(self, htmlSafe):
@@ -155,7 +156,7 @@ class JsonWriter(Object, Closeable, Flushable):
         pass
 
     def setIndent(self, indent):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setLenient(self, lenient):

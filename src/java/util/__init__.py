@@ -24,8 +24,9 @@ __all__ = [
 
 from typing import Any, Dict, Iterable, List, Optional, Set, TypeVar, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from dev.thecesrom.utils.decorators import classproperty
-from java.lang import Class, Object, String
+from java.lang import Class, Object
 from java.time import Instant, ZoneId
 from java.util.function import (
     Consumer,
@@ -423,7 +424,7 @@ class Arrays(object):
 
     @staticmethod
     def toString(a):
-        # type: (Iterable) -> String
+        # type: (Iterable) -> AnyStr
         pass
 
 
@@ -517,7 +518,7 @@ class Calendar(Object):
 
     @staticmethod
     def getAvailableCalendarTypes():
-        # type: () -> Set[String]
+        # type: () -> Set[AnyStr]
         pass
 
     @staticmethod
@@ -526,15 +527,15 @@ class Calendar(Object):
         pass
 
     def getCalendarType(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getDisplayName(self, field, style, locale):
-        # type: (int, int, Locale) -> String
+        # type: (int, int, Locale) -> AnyStr
         pass
 
     def getDisplayNames(self, field, style, locale):
-        # type: (int, int, Locale) -> Dict[String, int]
+        # type: (int, int, Locale) -> Dict[AnyStr, int]
         pass
 
     def getFirstDayOfWeek(self):
@@ -621,16 +622,16 @@ class Currency(Object):
         pass
 
     def getCurrencyCode(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getDisplayName(self, locale=None):
-        # type: (Optional[Locale]) -> String
+        # type: (Optional[Locale]) -> AnyStr
         pass
 
     @staticmethod
     def getInstance(arg):
-        # type: (Union[Locale, String]) -> Currency
+        # type: (Union[Locale, AnyStr]) -> Currency
         pass
 
     def getNumericCode(self):
@@ -638,11 +639,11 @@ class Currency(Object):
         pass
 
     def getNumericCodeAsString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getSymbol(self, locale=None):
-        # type: (Optional[Locale]) -> String
+        # type: (Optional[Locale]) -> AnyStr
         pass
 
 
@@ -846,7 +847,7 @@ class TimeZone(Object):
 
     @staticmethod
     def getAvailableIDs(rawOffset=None):
-        # type: (Optional[int]) -> List[String]
+        # type: (Optional[int]) -> List[AnyStr]
         pass
 
     @staticmethod
@@ -855,7 +856,7 @@ class TimeZone(Object):
         pass
 
     def getDisplayName(self, *args):
-        # type: (*Any) -> String
+        # type: (*Any) -> AnyStr
         pass
 
     def getDSTSavings(self):
@@ -863,7 +864,7 @@ class TimeZone(Object):
         pass
 
     def getID(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getOffset(self, *args):
@@ -876,7 +877,7 @@ class TimeZone(Object):
 
     @staticmethod
     def getTimeZone(arg):
-        # type: (Union[String, ZoneId]) -> TimeZone
+        # type: (Union[AnyStr, ZoneId]) -> TimeZone
         pass
 
     def hasSameRules(self, other):
@@ -897,7 +898,7 @@ class TimeZone(Object):
         pass
 
     def setID(self, ID):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setRawOffset(self, offsetMillis):
@@ -930,7 +931,7 @@ class UUID(Object):
 
     @staticmethod
     def fromString(name):
-        # type: (String) -> UUID
+        # type: (AnyStr) -> UUID
         pass
 
     def getLeastSignificantBits(self):

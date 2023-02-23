@@ -2,19 +2,20 @@ __all__ = ["Charset", "CharsetDecoder", "CharsetEncoder", "CoderResult"]
 
 from typing import Dict, Optional, Set, Union
 
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from java.nio import ByteBuffer, CharBuffer
 from java.util import Locale
 
 
 class Charset(Object):
     def aliases(self):
-        # type: () -> Set[String]
+        # type: () -> Set[AnyStr]
         pass
 
     @staticmethod
     def availableCharsets():
-        # type: () -> Dict[String, Charset]
+        # type: () -> Dict[AnyStr, Charset]
         pass
 
     def canEncode(self):
@@ -39,16 +40,16 @@ class Charset(Object):
         pass
 
     def displayName(self, locale):
-        # type: (Optional[Locale]) -> String
+        # type: (Optional[Locale]) -> AnyStr
         pass
 
     def encode(self, arg):
-        # type: (Union[Charset, String]) -> ByteBuffer
+        # type: (Union[Charset, AnyStr]) -> ByteBuffer
         pass
 
     @staticmethod
     def forName(charsetName):
-        # type: (String) -> Charset
+        # type: (AnyStr) -> Charset
         pass
 
     def isRegistered(self):
@@ -57,11 +58,11 @@ class Charset(Object):
 
     @staticmethod
     def isSupported(charsetName):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     def name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def newDecoder(self):

@@ -35,8 +35,9 @@ from typing import Any, Iterable, Iterator, List, Optional, Tuple, Union
 from enum import Enum
 
 import java.util
+from dev.thecesrom.helper.types import AnyStr
 from java.io import PrintWriter
-from java.lang import Class, Object, RuntimeException, String, StringBuilder, Throwable
+from java.lang import Class, Object, RuntimeException, StringBuilder, Throwable
 from org.python.expose import TypeBuilder
 
 
@@ -574,15 +575,15 @@ class PyObject(Object):
         pass
 
     def asName(self, arg):
-        # type: (Union[int, PyObject]) -> String
+        # type: (Union[int, PyObject]) -> AnyStr
         pass
 
     def asString(self, index=None):
-        # type: (Optional[int]) -> String
+        # type: (Optional[int]) -> AnyStr
         pass
 
     def asStringOrNull(self, index=None):
-        # type: (Optional[int]) -> String
+        # type: (Optional[int]) -> AnyStr
         pass
 
     def bit_length(self):
@@ -666,7 +667,7 @@ class PyObject(Object):
         return True
 
     def noAttributeError(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     @staticmethod
@@ -675,7 +676,7 @@ class PyObject(Object):
         pass
 
     def readonlyAttributeError(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setDict(self, newDict):
@@ -708,7 +709,7 @@ class CodeFlag(Enum):
 
     @staticmethod
     def valueOf(name):
-        # type: (String) -> CodeFlag
+        # type: (AnyStr) -> CodeFlag
         pass
 
     @staticmethod
@@ -719,7 +720,7 @@ class CodeFlag(Enum):
 
 class CompilerFlags(Object):
     dont_imply_dedent = None  # type: bool
-    encoding = None  # type: String
+    encoding = None  # type: AnyStr
     only_ast = None  # type: bool
     PyCF_DONT_IMPLY_DEDENT = 512  # type: int
     PyCF_ONLY_AST = 1024  # type: int
@@ -750,7 +751,7 @@ class CompilerFlags(Object):
 
 
 class PyCode(PyObject):
-    co_name = None  # type: String
+    co_name = None  # type: AnyStr
 
     def call(self, *args):
         # type: (*Any) -> None
@@ -759,13 +760,13 @@ class PyCode(PyObject):
 
 class PyBaseCode(PyCode):
     co_argcount = None  # type: int
-    co_cellvars = None  # type: List[String]
-    co_filename = None  # type: String
+    co_cellvars = None  # type: List[AnyStr]
+    co_filename = None  # type: AnyStr
     co_firstlineno = None  # type: int
     co_flags = None  # type: CompilerFlags
-    co_freevars = None  # type: List[String]
+    co_freevars = None  # type: List[AnyStr]
     co_nlocals = None  # type: int
-    co_varnames = None  # type: List[String]
+    co_varnames = None  # type: List[AnyStr]
     jy_npurecell = None  # type: int
     varargs = None  # type: bool
     varkwargs = None  # type: bool
@@ -789,7 +790,7 @@ class PyBuiltinCallable(PyObject):
         pass
 
     def getDoc(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getModule(self):
@@ -818,7 +819,7 @@ class PyBuiltinCallable(PyObject):
             raise NotImplementedError
 
         def getName(self):
-            # type: () -> String
+            # type: () -> AnyStr
             raise NotImplementedError
 
         def unexpectedCall(self, nargs, keywords):
@@ -871,7 +872,7 @@ class PyDescriptor(PyObject, PyBuiltinCallable.Info):
         print(func)
 
     def getDoc(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getMaxargs(self):
@@ -883,7 +884,7 @@ class PyDescriptor(PyObject, PyBuiltinCallable.Info):
         pass
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getObjClass(self):
@@ -906,12 +907,12 @@ class PyDescriptor(PyObject, PyBuiltinCallable.Info):
 class PyException(RuntimeException):
     traceback = None  # type: Optional[PyTraceback]
     type = None  # type: Optional[PyObject]
-    value = None  # type: Optional[Union[PyObject, String]]
+    value = None  # type: Optional[Union[PyObject, AnyStr]]
 
     def __init__(
         self,
         type_=None,  # type: Optional[PyObject]
-        value=None,  # type: Optional[Union[PyObject, String]]
+        value=None,  # type: Optional[Union[PyObject, AnyStr]]
         traceback=None,  # type: Optional[PyTraceback]
     ):
         # type: (...) -> None
@@ -926,7 +927,7 @@ class PyException(RuntimeException):
         pass
 
     def exceptionClassName(self, obj):
-        # type: (PyObject) -> String
+        # type: (PyObject) -> AnyStr
         pass
 
     def isExceptionClass(self, obj):
@@ -984,11 +985,11 @@ class PyFrame(PyObject):
         pass
 
     def delglobal(self, index):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def dellocal(self, index):
-        # type: (Union[int, String]) -> None
+        # type: (Union[int, AnyStr]) -> None
         pass
 
     def delTrace(self):
@@ -1012,7 +1013,7 @@ class PyFrame(PyObject):
         pass
 
     def getglobal(self, index):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass
 
     def getLine(self):
@@ -1028,7 +1029,7 @@ class PyFrame(PyObject):
         pass
 
     def getname(self, index):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass
 
     def getTrace(self):
@@ -1044,7 +1045,7 @@ class PyFrame(PyObject):
         pass
 
     def setglobal(self, index, value):
-        # type: (String, PyObject) -> None
+        # type: (AnyStr, PyObject) -> None
         pass
 
     def setline(self, line):
@@ -1052,7 +1053,7 @@ class PyFrame(PyObject):
         pass
 
     def setlocal(self, index, value):
-        # type: (Union[int, String], PyObject) -> None
+        # type: (Union[int, AnyStr], PyObject) -> None
         pass
 
     def setTrace(self, trace):
@@ -1357,7 +1358,7 @@ class PyTraceback(PyObject):
         print(next, frame)
 
     def dumpStack(self, buf=None):
-        # type: (Optional[StringBuilder]) -> Optional[String]
+        # type: (Optional[StringBuilder]) -> Optional[AnyStr]
         pass
 
     def refersDirectlyTo(self, ob):
@@ -1492,7 +1493,7 @@ class PyType(PyObject):
         pass
 
     def compatibleForAssignment(self, other, attribute):
-        # type: (PyType, String) -> None
+        # type: (PyType, AnyStr) -> None
         pass
 
     def delBases(self):
@@ -1519,7 +1520,7 @@ class PyType(PyObject):
         pass
 
     def fastGetName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     @staticmethod
@@ -1556,7 +1557,7 @@ class PyType(PyObject):
         pass
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getNumSlots(self):
@@ -1580,11 +1581,11 @@ class PyType(PyObject):
         return True
 
     def lookup_where(self, name, where):
-        # type: (String, List[PyObject]) -> PyObject
+        # type: (AnyStr, List[PyObject]) -> PyObject
         pass
 
     def lookup(self, name):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass
 
     def needsFinalizer(self):
@@ -1595,7 +1596,7 @@ class PyType(PyObject):
     def newType(
         new_,  # type: PyNewWrapper
         metatype,  # type: PyType
-        name,  # type: String
+        name,  # type: AnyStr
         bases,  # type: Tuple[Any, ...]
         dict_,  # type: PyObject
     ):
@@ -1631,11 +1632,11 @@ class PyType(PyObject):
         pass
 
     def setName(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def super_lookup(self, ref, name):
-        # type: (PyType, String) -> PyObject
+        # type: (PyType, AnyStr) -> PyObject
         pass
 
     def traverse(self, visit, arg):

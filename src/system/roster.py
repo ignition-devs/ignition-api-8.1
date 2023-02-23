@@ -20,11 +20,11 @@ from typing import Dict, List
 
 from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
 from com.inductiveautomation.ignition.common.user import PyUser
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def addUsers(rosterName, users):
-    # type: (String, List[PyUser]) -> None
+    # type: (AnyStr, List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
@@ -42,7 +42,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -59,7 +59,7 @@ def createRoster(name, description):
 
 
 def deleteRoster(rosterName):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Deletes a roster with the given name.
 
     Args:
@@ -69,7 +69,7 @@ def deleteRoster(rosterName):
 
 
 def getRoster(name):
-    # type: (String) -> RosterModel
+    # type: (AnyStr) -> RosterModel
     """Returns the roster corresponding to the given name.
 
     Args:
@@ -84,7 +84,7 @@ def getRoster(name):
 
 
 def getRosterNames():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Returns a list of roster names.
 
     Returns:
@@ -94,7 +94,7 @@ def getRosterNames():
 
 
 def getRosters():
-    # type: () -> Dict[String, List[String]]
+    # type: () -> Dict[AnyStr, List[AnyStr]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -111,7 +111,7 @@ def getRosters():
 
 
 def removeUsers(rosterName, users):
-    # type: (String, List[PyUser]) -> None
+    # type: (AnyStr, List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:

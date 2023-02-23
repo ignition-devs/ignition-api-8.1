@@ -12,10 +12,11 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
+from dev.thecesrom.helper.types import AnyStr
 from java.io import OutputStream, Writer
 from java.lang import Class
 from java.lang import Exception as JavaException
-from java.lang import Object, String
+from java.lang import Object
 from java.util import Locale
 from org.json import JSONObject
 from org.python.core import PyFunction, PyList, PyObject, PySequence
@@ -24,51 +25,51 @@ from org.slf4j import Logger
 
 class AbstractOPCUtilities(Object):
     def browseServer(self, opcServer, nodeId):
-        # type: (String, String) -> List[AbstractOPCUtilities.PyOPCTag]
+        # type: (AnyStr, AnyStr) -> List[AbstractOPCUtilities.PyOPCTag]
         return [
             AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, "", BrowseElementType())
         ]
 
     def getServers(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> List[String]
+        # type: (*PyObject, **AnyStr) -> List[AnyStr]
         pass
 
     def getServerState(self, opcServer):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def isServerEnabled(self, serverName):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     def readValue(self, opcServer, itemPath):
-        # type: (String, String) -> QualifiedValue
+        # type: (AnyStr, AnyStr) -> QualifiedValue
         pass
 
     def readValues(self, opcServer, itemPaths):
-        # type: (String, List[String]) -> QualifiedValue
+        # type: (AnyStr, List[AnyStr]) -> QualifiedValue
         pass
 
     def setServerEnabled(self, serverName, enabled):
-        # type: (String, bool) -> None
+        # type: (AnyStr, bool) -> None
         pass
 
     def writeValue(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> QualityCode
+        # type: (*PyObject, **AnyStr) -> QualityCode
         pass
 
     def writeValues(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> List[QualityCode]
+        # type: (*PyObject, **AnyStr) -> List[QualityCode]
         pass
 
     class PyOPCTag(PyObject):
-        displayName = None  # type: String
+        displayName = None  # type: AnyStr
         elementType = None  # type: BrowseElementType
-        nodeId = None  # type: String
-        serverName = None  # type: String
+        nodeId = None  # type: AnyStr
+        serverName = None  # type: AnyStr
 
         def __init__(self, serverName, nodeId, displayName, elementType):
-            # type: (String, String, String, BrowseElementType) -> None
+            # type: (AnyStr, AnyStr, AnyStr, BrowseElementType) -> None
             self.serverName = serverName
             self.nodeId = nodeId
             self.displayName = displayName
@@ -76,11 +77,11 @@ class AbstractOPCUtilities(Object):
             super(AbstractOPCUtilities.PyOPCTag, self).__init__()
 
         def __findattr_ex__(self, name):
-            # type: (String) -> PyObject
+            # type: (AnyStr) -> PyObject
             pass
 
         def getDisplayName(self):
-            # type: () -> String
+            # type: () -> AnyStr
             return self.displayName
 
         def getElementType(self):
@@ -88,11 +89,11 @@ class AbstractOPCUtilities(Object):
             return self.elementType
 
         def getNodeId(self):
-            # type: () -> String
+            # type: () -> AnyStr
             return self.nodeId
 
         def getServerName(self):
-            # type: () -> String
+            # type: () -> AnyStr
             return self.serverName
 
 
@@ -124,12 +125,12 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def dataSetToExcel(headerRow, datasets):
-        # type: (bool, List[Object]) -> String
+        # type: (bool, List[Object]) -> AnyStr
         pass
 
     @staticmethod
     def dataSetToExcelBytes(headerRow, objects, nullsEmpty, sheetNames):
-        # type: (bool, List[Object], bool, List[String]) -> bytearray
+        # type: (bool, List[Object], bool, List[AnyStr]) -> bytearray
         pass
 
     @staticmethod
@@ -139,12 +140,12 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def dataSetToHTML(headerRow, ds, title):
-        # type: (bool, Dataset, String) -> String
+        # type: (bool, Dataset, AnyStr) -> AnyStr
         pass
 
     @staticmethod
     def dataSetToHTMLStreaming(headerRow, ds, title, fw):
-        # type: (bool, Dataset, String, Writer) -> None
+        # type: (bool, Dataset, AnyStr, Writer) -> None
         pass
 
     @staticmethod
@@ -164,17 +165,17 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def formatDates(dataset, format, locale=Locale.US):
-        # type: (Dataset, String, Locale) -> Dataset
+        # type: (Dataset, AnyStr, Locale) -> Dataset
         pass
 
     @staticmethod
     def fromCSV(csv):
-        # type: (String) -> Dataset
+        # type: (AnyStr) -> Dataset
         pass
 
     @staticmethod
     def fromCSVJava(csv):
-        # type: (String) -> Dataset
+        # type: (AnyStr) -> Dataset
         pass
 
     @staticmethod
@@ -196,7 +197,7 @@ class DatasetUtilities(Object):
     def setValue(
         ds,  # type: Dataset
         row,  # type: int
-        col,  # type: Union[int, String]
+        col,  # type: Union[int, AnyStr]
         value,  # type: Union[Object, PyObject]
     ):
         # type: (...) -> Dataset
@@ -205,7 +206,7 @@ class DatasetUtilities(Object):
     @staticmethod
     def sort(
         ds,  # type: Dataset
-        keyColumn,  # type: Union[int, String]
+        keyColumn,  # type: Union[int, AnyStr]
         ascending=None,  # type: Optional[bool]
         naturalOrdering=None,  # type: Optional[bool]
     ):
@@ -214,12 +215,12 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def toCSV(*args, **kwargs):
-        # type: (*PyObject, **String) -> String
+        # type: (*PyObject, **AnyStr) -> AnyStr
         pass
 
     @staticmethod
     def toCSVJava(ds, showHeaders, forExport, localized=False):
-        # type: (Dataset, bool, bool, bool) -> String
+        # type: (Dataset, bool, bool, bool) -> AnyStr
         pass
 
     @staticmethod
@@ -234,7 +235,7 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def toExcel(*args, **kwargs):
-        # type: (*PyObject, **String) -> bytearray
+        # type: (*PyObject, **AnyStr) -> bytearray
         pass
 
     @staticmethod
@@ -249,7 +250,7 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def updateRow(ds, row, changes):
-        # type: (Dataset, int, Dict[String, Any]) -> Dataset
+        # type: (Dataset, int, Dict[AnyStr, Any]) -> Dataset
         pass
 
     class PyDataSet(Dataset, AbstractJythonSequence):
@@ -272,7 +273,7 @@ class DatasetUtilities(Object):
             pass
 
         def getColumnIndex(self, colName):
-            # type: (String) -> int
+            # type: (AnyStr) -> int
             """Returns the index of the column with the name colName.
 
             Args:
@@ -284,7 +285,7 @@ class DatasetUtilities(Object):
             pass
 
         def getColumnName(self, col):
-            # type: (int) -> String
+            # type: (int) -> AnyStr
             """Returns the name of the column at the index colIndex.
 
             Args:
@@ -296,7 +297,7 @@ class DatasetUtilities(Object):
             pass
 
         def getColumnNames(self):
-            # type: () -> List[String]
+            # type: () -> List[AnyStr]
             """Returns a list with the names of all the columns.
 
             Returns:
@@ -366,7 +367,7 @@ class DatasetUtilities(Object):
             pass
 
         def getValueAt(self, row, col):
-            # type: (int, Union[int, String]) -> Any
+            # type: (int, Union[int, AnyStr]) -> Any
             """Returns the value at the specified row index and column
             name or index.
 
@@ -387,26 +388,26 @@ class DatasetUtilities(Object):
 
 class SProcCall(Object):
     callFinished = False  # type: bool
-    datasource = ""  # type: String
+    datasource = ""  # type: AnyStr
     params = None  # type: Dict[SProcCall.SProcArgKey, SProcCall.SProcArg]
-    procedureName = None  # type: String
+    procedureName = None  # type: AnyStr
     resultset = None  # type: Dataset
     returnParam = None  # type: SProcCall.SProcArg
     skipAudit = None  # type: bool
-    txId = None  # type: String
+    txId = None  # type: AnyStr
     updateCount = None  # type: int
 
     def getDataSource(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getOutParamValue(self, param):
-        # type: (Union[int, String]) -> Any
+        # type: (Union[int, AnyStr]) -> Any
         print(self, param)
         return 0
 
     def getProcedureName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getResultSet(self):
@@ -420,7 +421,7 @@ class SProcCall(Object):
         return 0
 
     def getTxId(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return "transaction_id"
 
     def getUpdateCount(self):
@@ -434,11 +435,11 @@ class SProcCall(Object):
         return False
 
     def registerInParam(self, param, typeCode, value):
-        # type: (Union[int, String], int, Any) -> None
+        # type: (Union[int, AnyStr], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        # type: (Union[int, String], int) -> None
+        # type: (Union[int, AnyStr], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
@@ -450,7 +451,7 @@ class SProcCall(Object):
         pass
 
     def setTxId(self, txId):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     class SProcArg(Object):
@@ -485,14 +486,14 @@ class SProcCall(Object):
 
     class SProcArgKey(Object):
         index = -1  # type: int
-        name = None  # type: String
+        name = None  # type: AnyStr
 
         def getParamIndex(self):
             # type: () -> int
             pass
 
         def getParamName(self):
-            # type: () -> String
+            # type: () -> AnyStr
             pass
 
         def isNamedParam(self):
@@ -503,12 +504,12 @@ class SProcCall(Object):
 class SystemUtilities(Object):
     @staticmethod
     def logger(loggerName):
-        # type: (String) -> Logger
+        # type: (AnyStr) -> Logger
         pass
 
     @staticmethod
     def parseTranslateArguments(*args, **kwargs):
-        # type: (*PyObject, **String) -> Tuple[String, String, bool]
+        # type: (*PyObject, **AnyStr) -> Tuple[AnyStr, AnyStr, bool]
         pass
 
     class RequestImpl(Object, Request):

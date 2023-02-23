@@ -23,11 +23,12 @@ import socket
 from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
-from java.lang import IllegalArgumentException, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import IllegalArgumentException
 
 
 def getExternalIpAddress():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the client's IP address, as it is detected by the
     Gateway.
 
@@ -47,7 +48,7 @@ def getExternalIpAddress():
 
 
 def getHostName():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the host name of the computer that the script was ran
     on.
 
@@ -63,7 +64,7 @@ def getHostName():
 
 
 def getIpAddress():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the IP address of the computer that the script was ran
     on.
 
@@ -74,7 +75,7 @@ def getIpAddress():
 
 
 def getRemoteServers(runningOnly=True):
-    # type: (Optional[bool]) -> List[String]
+    # type: (Optional[bool]) -> List[AnyStr]
     """This function returns a List of Gateway Network servers that are
     visible from the local Gateway.
 
@@ -94,12 +95,12 @@ def getRemoteServers(runningOnly=True):
 def httpClient(
     timeout=60000,  # type: int
     bypass_cert_validation=False,  # type: bool
-    username=None,  # type: Optional[String]
-    password=None,  # type: Optional[String]
-    proxy=None,  # type: Optional[String]
-    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: String
-    redirect_policy="NORMAL",  # type: String
-    version="HTTP_2",  # type: String
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    proxy=None,  # type: Optional[AnyStr]
+    cookie_policy="ACCEPT_ORIGINAL_SERVER",  # type: AnyStr
+    redirect_policy="NORMAL",  # type: AnyStr
+    version="HTTP_2",  # type: AnyStr
     customizer=None,  # type: Optional[Callable[..., Any]]
 ):
     # type: (...) -> JythonHttpClient
@@ -167,16 +168,16 @@ def httpClient(
 
 
 def httpDelete(
-    url,  # type: String
-    contentType=None,  # type: Optional[String]
+    url,  # type: AnyStr
+    contentType=None,  # type: Optional[AnyStr]
     connectTimeout=10000,  # type: int
     readTimeout=60000,  # type: int
-    username=None,  # type: Optional[String]
-    password=None,  # type: Optional[String]
-    headerValues=None,  # type: Optional[Dict[String, String]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
     bypassCertValidation=True,  # type: bool
 ):
-    # type: (...) -> String
+    # type: (...) -> AnyStr
     """Performs an HTTP DELETE to the given URL.
 
     Args:
@@ -215,17 +216,17 @@ def httpDelete(
 
 
 def httpGet(
-    url,  # type: String
+    url,  # type: AnyStr
     connectTimeout=10000,  # type: int
     readTimeout=60000,  # type: int
-    username=None,  # type: Optional[String]
-    password=None,  # type: Optional[String]
-    headerValues=None,  # type: Optional[Dict[String, String]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    headerValues=None,  # type: Optional[Dict[AnyStr, AnyStr]]
     bypassCertValidation=None,  # type: Optional[bool]
     useCaches=True,  # type: bool
     throwOnError=True,  # type: bool
 ):
-    # type: (...) -> String
+    # type: (...) -> AnyStr
     """Retrieves the document at the given URL using the HTTP GET
     protocol.
 
@@ -276,7 +277,7 @@ def httpGet(
 
 
 def httpPost(url, *args, **kwargs):
-    # type: (String, *Any, **Any) -> String
+    # type: (AnyStr, *Any, **Any) -> AnyStr
     """Retrieves the document at the given URL using the HTTP POST
     protocol.
 
@@ -299,7 +300,7 @@ def httpPost(url, *args, **kwargs):
 
 
 def httpPut(url, *args, **kwargs):
-    # type: (String, *Any, **Any) -> String
+    # type: (AnyStr, *Any, **Any) -> AnyStr
     """Performs an HTTP PUT to the given URL.
 
     Encodes the given dictionary of parameters using
@@ -318,7 +319,7 @@ def httpPut(url, *args, **kwargs):
 
 
 def openURL(url, useApplet=False):
-    # type: (String, Optional[bool]) -> None
+    # type: (AnyStr, Optional[bool]) -> None
     """Opens the given URL or URI scheme outside of the currently
     running Client in whatever application the host operating system
     deems appropriate.
@@ -333,22 +334,22 @@ def openURL(url, useApplet=False):
 
 
 def _sendEmail(
-    smtpSettings,  # type: Optional[String]
-    fromAddr,  # type: String
-    subject=None,  # type: Optional[String]
-    body=None,  # type: Optional[String]
+    smtpSettings,  # type: Optional[AnyStr]
+    fromAddr,  # type: AnyStr
+    subject=None,  # type: Optional[AnyStr]
+    body=None,  # type: Optional[AnyStr]
     html=False,  # type: bool
-    to=None,  # type: Optional[List[String]]
+    to=None,  # type: Optional[List[AnyStr]]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
     timeout=300000,  # type: int
-    username=None,  # type: Optional[String]
-    password=None,  # type: Optional[String]
-    priority="3",  # type: String
-    cc=None,  # type: Optional[List[String]]
-    bcc=None,  # type: Optional[List[String]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    priority="3",  # type: AnyStr
+    cc=None,  # type: Optional[List[AnyStr]]
+    bcc=None,  # type: Optional[List[AnyStr]]
     retries=0,  # type: int
-    replyTo=None,  # type: Optional[List[String]]
+    replyTo=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> None
     _to = [] if to is None else to
@@ -381,23 +382,23 @@ def _sendEmail(
 
 
 def sendEmail(
-    smtp=None,  # type: Optional[String]
-    fromAddr="",  # type: String
-    subject=None,  # type: Optional[String]
-    body=None,  # type: Optional[String]
+    smtp=None,  # type: Optional[AnyStr]
+    fromAddr="",  # type: AnyStr
+    subject=None,  # type: Optional[AnyStr]
+    body=None,  # type: Optional[AnyStr]
     html=False,  # type: bool
-    to=None,  # type: Optional[List[String]]
+    to=None,  # type: Optional[List[AnyStr]]
     attachmentNames=None,  # type: Optional[List[object]]
     attachmentData=None,  # type: Optional[List[object]]
     timeout=300000,  # type: int
-    username=None,  # type: Optional[String]
-    password=None,  # type: Optional[String]
-    priority="3",  # type: String
-    smtpProfile=None,  # type: Optional[String]
-    cc=None,  # type: Optional[List[String]]
-    bcc=None,  # type: Optional[List[String]]
+    username=None,  # type: Optional[AnyStr]
+    password=None,  # type: Optional[AnyStr]
+    priority="3",  # type: AnyStr
+    smtpProfile=None,  # type: Optional[AnyStr]
+    cc=None,  # type: Optional[List[AnyStr]]
+    bcc=None,  # type: Optional[List[AnyStr]]
     retries=0,  # type: int
-    replyTo=None,  # type: Optional[List[String]]
+    replyTo=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> None
     """Sends an email through the given SMTP server.

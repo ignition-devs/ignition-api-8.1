@@ -11,7 +11,8 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 
 
 class AbstractTagPath(Object, TagPath):
@@ -24,8 +25,8 @@ class AbstractTagPath(Object, TagPath):
 class BasicTagPath(AbstractTagPath):
     def __init__(
         self,
-        source,  # type: String
-        pathParts=None,  # type: Optional[List[String]]
+        source,  # type: AnyStr
+        pathParts=None,  # type: Optional[List[AnyStr]]
         prop=None,  # type: Optional[Property]
     ):
         # type: (...) -> None
@@ -34,7 +35,7 @@ class BasicTagPath(AbstractTagPath):
 
     @staticmethod
     def append(root, arg):
-        # type: (TagPath, Union[String, TagPath]) -> TagPath
+        # type: (TagPath, Union[AnyStr, TagPath]) -> TagPath
         pass
 
     @staticmethod
@@ -62,6 +63,6 @@ class PropertyAlteredTagPath(AbstractTagPath):
 
 class SourceAlteredTagPath(AbstractTagPath):
     def __init__(self, path, source):
-        # type: (TagPath, String) -> None
+        # type: (TagPath, AnyStr) -> None
         super(SourceAlteredTagPath, self).__init__()
         print(path, source)

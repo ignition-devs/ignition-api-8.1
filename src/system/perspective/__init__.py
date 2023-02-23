@@ -39,14 +39,14 @@ from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def alterDock(
-    dockId,  # type: String
-    config=None,  # type: Optional[Dict[String, Any]]
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    dockId,  # type: AnyStr
+    config=None,  # type: Optional[Dict[AnyStr, Any]]
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
 ):
     # type: (...) -> None
     """Changes configuration of a specified dock on a Perspective Page.
@@ -70,10 +70,10 @@ def alterDock(
 
 def alterLogging(
     remoteLoggingEnabled=False,  # type: bool
-    level="info",  # type: String
-    remoteLoggingLevel="warn",  # type: String
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    level="info",  # type: AnyStr
+    remoteLoggingLevel="warn",  # type: AnyStr
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
 ):
     # type: (...) -> None
     """Changes Perspective Session logging attributes and levels.
@@ -103,13 +103,13 @@ def alterLogging(
 
 
 def authenticationChallenge(
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
-    idp="",  # type: String
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
+    idp="",  # type: AnyStr
     forceAuth=False,  # type: bool
     timeout=2,  # type: int
-    payload=None,  # type: Optional[Dict[String, Any]]
-    framing="self",  # type: String
+    payload=None,  # type: Optional[Dict[AnyStr, Any]]
+    framing="self",  # type: AnyStr
 ):
     # type: (...) -> None
     """Triggers an authentication challenge action.
@@ -153,7 +153,7 @@ def authenticationChallenge(
 
 
 def closeDock(id, sessionId="current_session", pageId="current_page"):
-    # type: (String, String, String) -> None
+    # type: (AnyStr, AnyStr, AnyStr) -> None
     """Closes a docked view.
 
     Args:
@@ -171,9 +171,9 @@ def closeDock(id, sessionId="current_session", pageId="current_page"):
 
 
 def closePage(
-    message=None,  # type: Optional[String]
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    message=None,  # type: Optional[AnyStr]
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
 ):
     # type: (...) -> None
     """Closes the page with the given page id or the current page if no
@@ -198,7 +198,7 @@ def closePage(
 
 
 def closePopup(id, sessionId="current_session", pageId="current_page"):
-    # type: (String, String, String) -> None
+    # type: (AnyStr, AnyStr, AnyStr) -> None
     """Closes a popup View.
 
     Args:
@@ -216,7 +216,7 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
 
 
 def closeSession(message=None, sessionId="current_session"):
-    # type: (Optional[String], String) -> None
+    # type: (Optional[AnyStr], AnyStr) -> None
     """Closes the Perspective Session with the given Session ID or the
     current Session if no ID is provided.
 
@@ -235,19 +235,19 @@ def closeSession(message=None, sessionId="current_session"):
 
 
 def download(
-    filename,  # type: String
+    filename,  # type: AnyStr
     data,  # type: Any
-    contentType=None,  # type: Optional[String]
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    contentType=None,  # type: Optional[AnyStr]
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
 ):
     # type: (...) -> None
     """Downloads data from the gateway to a device running a Session.
 
     Args:
         filename: Suggested name for the downloaded file.
-        data: The data to be downloaded. May be a String, a byte[], or
-            an InputStream. Strings will be written with in "utf-8"
+        data: The data to be downloaded. It may be a string, a byte[],
+            or an InputStream. Strings will be written with in "utf-8"
             encoding.
         contentType: Value for the "Content-Type" header. Example:
             "text/plain; charset=utf-8". Optional.
@@ -262,7 +262,7 @@ def download(
 
 
 def getProjectInfo():
-    # type: () -> Dict[String, Any]
+    # type: () -> Dict[AnyStr, Any]
     """Returns a dictionary of meta data from a Perspective Project.
 
     Returns:
@@ -280,8 +280,8 @@ def getProjectInfo():
 
 
 def getSessionInfo(
-    usernameFilter=None,  # type: Optional[String]
-    projectFilter=None,  # type: Optional[String]
+    usernameFilter=None,  # type: Optional[AnyStr]
+    projectFilter=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> List[PyJsonObjectAdapter]
     """Returns information about one or more Perspective Sessions.
@@ -302,7 +302,7 @@ def getSessionInfo(
 
 
 def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
-    # type: (bool, List[String], String) -> bool
+    # type: (bool, List[AnyStr], AnyStr) -> bool
     """Checks if the user in the current Session is authorized against a
     target collection of security levels.
 
@@ -327,7 +327,7 @@ def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
 
 
 def login(sessionId="current_session", pageId="current_page", forceAuth=False):
-    # type: (String, String, bool) -> None
+    # type: (AnyStr, AnyStr, bool) -> None
     """Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP).
 
@@ -361,9 +361,9 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
 
 
 def logout(
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
-    message="default message",  # type: String
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
+    message="default message",  # type: AnyStr
 ):
     # type: (...) -> None
     """Triggers a logout event, which will log the user out.
@@ -387,12 +387,12 @@ def logout(
 
 
 def navigate(
-    page,  # type: String
-    url=None,  # type: Optional[String]
-    view=None,  # type: Optional[String]
-    params=None,  # type: Optional[Dict[String, String]]
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    page,  # type: AnyStr
+    url=None,  # type: Optional[AnyStr]
+    view=None,  # type: Optional[AnyStr]
+    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
     newTab=False,  # type: bool
 ):
     # type: (...) -> None
@@ -436,7 +436,7 @@ def navigate(
 
 
 def navigateBack(sessionId="current_session", pageId="current_page"):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "back" function.
@@ -451,7 +451,7 @@ def navigateBack(sessionId="current_session", pageId="current_page"):
 
 
 def navigateForward(sessionId="current_session", pageId="current_page"):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "forward" function.
@@ -468,10 +468,10 @@ def navigateForward(sessionId="current_session", pageId="current_page"):
 
 
 def openDock(
-    id,  # type: String
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
-    params=None,  # type: Optional[Dict[String, String]]
+    id,  # type: AnyStr
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
+    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
 ):
     # type: (...) -> None
     """Opens a docked View.
@@ -495,18 +495,18 @@ def openDock(
 
 
 def openPopup(
-    id,  # type: String
-    view,  # type: String
-    params=None,  # type: Optional[Dict[String, Any]]
-    title="",  # type: String
-    position=None,  # type: Optional[Dict[String, Union[int, String]]]
+    id,  # type: AnyStr
+    view,  # type: AnyStr
+    params=None,  # type: Optional[Dict[AnyStr, Any]]
+    title="",  # type: AnyStr
+    position=None,  # type: Optional[Dict[AnyStr, Union[int, AnyStr]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
     modal=False,  # type: bool
     overlayDismiss=False,  # type: bool
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
     viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
@@ -565,10 +565,10 @@ def openPopup(
 
 
 def print(
-    message,  # type: String
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
-    destination="client",  # type: String
+    message,  # type: AnyStr
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
+    destination="client",  # type: AnyStr
 ):
     # type: (...) -> None
     """Sends print statements to the scripting console when in the
@@ -594,7 +594,7 @@ def print(
 
 
 def refresh(sessionId="current_session", pageId="current_page"):
-    # type: (Optional[String], Optional[String]) -> None
+    # type: (Optional[AnyStr], Optional[AnyStr]) -> None
     """Triggers a refresh of the page.
 
     Note:
@@ -614,11 +614,11 @@ def refresh(sessionId="current_session", pageId="current_page"):
 
 
 def sendMessage(
-    messageType,  # type: String
-    payload,  # type: Dict[String, String]
-    scope="page",  # type: String
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    messageType,  # type: AnyStr
+    payload,  # type: Dict[AnyStr, AnyStr]
+    scope="page",  # type: AnyStr
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
 ):
     # type: (...) -> None
     """Send a message to a message handler within the same Session.
@@ -643,7 +643,7 @@ def sendMessage(
 
 
 def setTheme(name, sessionId="current_session", pageId="current_page"):
-    # type: (String, Optional[String], Optional[String]) -> None
+    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
     """Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
@@ -664,10 +664,10 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
 
 
 def toggleDock(
-    id,  # type: String
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
-    params=None,  # type: Optional[Dict[String, String]]
+    id,  # type: AnyStr
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
+    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
 ):
     # type: (...) -> None
     """Toggles a docked View.
@@ -689,18 +689,18 @@ def toggleDock(
 
 
 def togglePopup(
-    id,  # type: String
-    view,  # type: String
-    params,  # type: Optional[Dict[String, Any]]
-    title="",  # type: String
-    position=None,  # type: Optional[Dict[String, Union[int, String]]]
+    id,  # type: AnyStr
+    view,  # type: AnyStr
+    params,  # type: Optional[Dict[AnyStr, Any]]
+    title="",  # type: AnyStr
+    position=None,  # type: Optional[Dict[AnyStr, Union[int, AnyStr]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
     modal=False,  # type: bool
     overlayDismiss=False,  # type: bool
-    sessionId="current_session",  # type: String
-    pageId="current_page",  # type: String
+    sessionId="current_session",  # type: AnyStr
+    pageId="current_page",  # type: AnyStr
     viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
@@ -762,7 +762,7 @@ def togglePopup(
 
 
 def vibrateDevice(duration, sessionId="current_session"):
-    # type: (int, Optional[String]) -> None
+    # type: (int, Optional[AnyStr]) -> None
     """When called from the Perspective App, will cause the
     device to vibrate for the specified number of milliseconds.
 

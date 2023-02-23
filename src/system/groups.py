@@ -10,11 +10,11 @@ __all__ = ["loadFromFile", "removeGroups"]
 
 from typing import List
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def loadFromFile(filePath, projectName, mode):
-    # type: (String, String, int) -> None
+    # type: (AnyStr, AnyStr, int) -> None
     """Loads a transaction group configuration from an xml export, into
     the specified project (creating the project if necessary).
 
@@ -35,7 +35,7 @@ def loadFromFile(filePath, projectName, mode):
 
 
 def removeGroups(projectName, paths):
-    # type: (String, List[String]) -> None
+    # type: (AnyStr, List[AnyStr]) -> None
     """Removes the specified groups from the project.
 
     The group paths are "Folder/Path/To/GroupName", separated by forward

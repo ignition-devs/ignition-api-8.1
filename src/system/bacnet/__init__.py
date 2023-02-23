@@ -18,12 +18,12 @@ __all__ = [
 
 from typing import Any, List, Optional
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from system.bacnet.enumerated import ObjectType, PropertyIdentifier
 
 
 def readRaw(
-    deviceName,  # type: String
+    deviceName,  # type: AnyStr
     objectType,  # type: ObjectType
     objectId,  # type: int
     propertyId,  # type: PropertyIdentifier
@@ -51,7 +51,7 @@ def readRaw(
 
 
 def synchronizeTime(deviceName):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Notifies the remote device of the correct current time, which is
     the system time (factoring in timezone and DST) of the server
     Ignition is running on.
@@ -64,7 +64,7 @@ def synchronizeTime(deviceName):
 
 
 def synchronizeTimeUtc(deviceName):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Notifies the remote device of the correct current time in UTC.
 
     Args:
@@ -75,7 +75,7 @@ def synchronizeTimeUtc(deviceName):
 
 
 def writeRaw(
-    deviceName,  # type: String
+    deviceName,  # type: AnyStr
     objectType,  # type: ObjectType
     objectId,  # type: int
     propertyId,  # type: PropertyIdentifier
@@ -119,7 +119,7 @@ def writeRaw(
 
 
 def writeWithPriority(deviceName, objectType, objectId, value, priority):
-    # type: (String, int, int, Any, int) -> None
+    # type: (AnyStr, int, int, Any, int) -> None
     """Write to the Present_Value attribute of an object with a custom
     priority level.
 

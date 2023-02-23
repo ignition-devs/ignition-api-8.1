@@ -2,7 +2,8 @@ __all__ = ["Clock", "Duration", "Instant", "ZoneId", "ZoneOffset"]
 
 from typing import Dict, Optional, Set
 
-from java.lang import CharSequence, Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import CharSequence, Object
 
 
 class Clock(Object):
@@ -121,21 +122,21 @@ class Instant(Object):
 
 
 class ZoneId(Object):
-    SHORT_IDS = None  # type: Dict[String, String]
+    SHORT_IDS = None  # type: Dict[AnyStr, AnyStr]
 
     @staticmethod
     def getAvailableZoneIds():
-        # type: () -> Set[String]
+        # type: () -> Set[AnyStr]
         pass
 
     @staticmethod
     def of(zoneId, aliasMap=None):
-        # type: (String, Optional[Dict[String, String]]) -> ZoneId
+        # type: (AnyStr, Optional[Dict[AnyStr, AnyStr]]) -> ZoneId
         pass
 
     @staticmethod
     def ofOffset(prefix, offset):
-        # type: (String, ZoneOffset) -> ZoneId
+        # type: (AnyStr, ZoneOffset) -> ZoneId
         pass
 
     @staticmethod
@@ -151,7 +152,7 @@ class ZoneOffset(Object):
 
     @staticmethod
     def of(offsetId):
-        # type: (String) -> ZoneOffset
+        # type: (AnyStr) -> ZoneOffset
         pass
 
     @staticmethod

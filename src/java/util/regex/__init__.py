@@ -1,6 +1,7 @@
 from typing import Any, List, Optional, Union
 
-from java.lang import CharSequence, Object, String, StringBuffer, StringBuilder
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import CharSequence, Object, StringBuffer, StringBuilder
 from java.util.function import Function, Predicate
 
 
@@ -10,7 +11,7 @@ class MatchResult(object):
         raise NotImplementedError
 
     def group(self, group=None):
-        # type: (Optional[int]) -> String
+        # type: (Optional[int]) -> AnyStr
         raise NotImplementedError
 
     def groupCount(self):
@@ -24,7 +25,7 @@ class MatchResult(object):
 
 class Matcher(Object, MatchResult):
     def appendReplacement(self, sb, replacement):
-        # type: (Union[StringBuffer, StringBuilder], String) -> Matcher
+        # type: (Union[StringBuffer, StringBuilder], AnyStr) -> Matcher
         pass
 
     def appendTail(
@@ -43,7 +44,7 @@ class Matcher(Object, MatchResult):
         return True
 
     def group(self, group=None):
-        # type: (Optional[Union[int, String]]) -> String
+        # type: (Optional[Union[int, AnyStr]]) -> AnyStr
         pass
 
     def groupCount(self):
@@ -76,7 +77,7 @@ class Matcher(Object, MatchResult):
 
     @staticmethod
     def quoteReplacement(s):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def region(self, start, end):
@@ -92,11 +93,11 @@ class Matcher(Object, MatchResult):
         pass
 
     def replaceAll(self, arg):
-        # type: (Union[Function, String]) -> String
+        # type: (Union[Function, AnyStr]) -> AnyStr
         pass
 
     def replaceFirst(self, arg):
-        # type: (Union[Function, String]) -> String
+        # type: (Union[Function, AnyStr]) -> AnyStr
         pass
 
     def requireEnd(self):
@@ -153,7 +154,7 @@ class Pattern(Object):
 
     @staticmethod
     def compile(regex, flags=None):
-        # type: (String, Optional[int]) -> Pattern
+        # type: (AnyStr, Optional[int]) -> Pattern
         pass
 
     def flags(self):
@@ -166,20 +167,20 @@ class Pattern(Object):
 
     @staticmethod
     def matches(regex, input):
-        # type: (String, CharSequence) -> bool
+        # type: (AnyStr, CharSequence) -> bool
         return True
 
     def pattern(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     @staticmethod
     def quote(s):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def split(self, input, limit=None):
-        # type: (CharSequence, Optional[int]) -> List[String]
+        # type: (CharSequence, Optional[int]) -> List[AnyStr]
         pass
 
     def splitAsStream(self, input):

@@ -4,7 +4,8 @@ __all__ = ["ExceptionContext"]
 
 from typing import Any, Optional, Set
 
-from java.lang import Object, String, Throwable
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object, Throwable
 from java.util import Locale
 
 
@@ -15,19 +16,19 @@ class ExceptionContext(Object):
         print(throwable)
 
     def addMessage(self, pattern, *args):
-        # type: (String, *Any) -> None
+        # type: (AnyStr, *Any) -> None
         pass
 
     def getKeys(self):
-        # type: () -> Set[String]
+        # type: () -> Set[AnyStr]
         pass
 
     def getLocalizedMessage(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getMessage(self, locale=None, separator=None):
-        # type: (Optional[Locale], Optional[String]) -> String
+        # type: (Optional[Locale], Optional[AnyStr]) -> AnyStr
         pass
 
     def getThrowable(self):
@@ -35,9 +36,9 @@ class ExceptionContext(Object):
         pass
 
     def getValue(self, key):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setValue(self, key, value):
-        # type: (String, Object) -> None
+        # type: (AnyStr, Object) -> None
         pass

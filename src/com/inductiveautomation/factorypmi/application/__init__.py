@@ -3,7 +3,7 @@ from __future__ import print_function
 __all__ = ["FPMIApp", "FPMIWindow", "VisionDesktop"]
 
 from com.inductiveautomation.ignition.client.model import ClientContext
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from javax.swing import JDesktopPane, JInternalFrame
 
 
@@ -11,7 +11,7 @@ class VisionDesktop(JDesktopPane):
     PRIMARY_DESKTOP_HANDLE = "Primary"
 
     def __init__(self, clientContext, handle=""):
-        # type: (ClientContext, String) -> None
+        # type: (ClientContext, AnyStr) -> None
         super(VisionDesktop, self).__init__()
         print(clientContext, handle)
 
@@ -65,11 +65,11 @@ class FPMIWindow(JInternalFrame):
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
-    name = ""  # type: String
+    name = ""  # type: AnyStr
     _path = "Path/To/Window"
 
     def __init__(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         super(FPMIWindow, self).__init__()
         self.name = name
 

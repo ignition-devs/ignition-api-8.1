@@ -36,7 +36,7 @@ from typing import Any, Dict, List, Optional, Type, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date, Locale
 
 ColType = Union[Date, float, int, str, unicode]
@@ -46,7 +46,7 @@ def addColumn(
     dataset,  # type: BasicDataset
     colIndex,  # type: int
     col,  # type: List[Any]
-    colName,  # type: String
+    colName,  # type: AnyStr
     colType,  # type: Type[ColType]
 ):
     # type: (...) -> BasicDataset
@@ -195,7 +195,7 @@ def clearDataset(dataset):
 
 
 def dataSetToHTML(showHeaders, dataset, title):
-    # type: (bool, BasicDataset, String) -> String
+    # type: (bool, BasicDataset, AnyStr) -> AnyStr
     """Formats the contents of a dataset as an HTML page, returning the
     results as a string.
 
@@ -278,7 +278,7 @@ def deleteRows(dataset, rowIndices):
 
 
 def exportCSV(filename, showHeaders, dataset):
-    # type: (String, bool, BasicDataset) -> String
+    # type: (AnyStr, bool, BasicDataset) -> AnyStr
     """Exports the contents of a dataset as a CSV file, prompting the
     user to save the file to disk.
 
@@ -300,7 +300,7 @@ def exportCSV(filename, showHeaders, dataset):
 
 
 def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
-    # type: (String, bool, List[BasicDataset], bool) -> String
+    # type: (AnyStr, bool, List[BasicDataset], bool) -> AnyStr
     """Exports the contents of a dataset as an Excel spreadsheet,
     prompting the user to save the file to disk.
 
@@ -328,7 +328,7 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
 
 
 def exportHTML(filename, showHeaders, dataset, title):
-    # type: (String, bool, BasicDataset, String) -> String
+    # type: (AnyStr, bool, BasicDataset, AnyStr) -> AnyStr
     """Exports the contents of a dataset to an HTML page.
 
     Prompts the user to save the file to disk.
@@ -350,7 +350,7 @@ def exportHTML(filename, showHeaders, dataset, title):
 
 def filterColumns(
     dataset,  # type: BasicDataset
-    columns,  # type: Union[List[String], List[int]]
+    columns,  # type: Union[List[AnyStr], List[int]]
 ):
     # type: (...) -> BasicDataset
     """Takes a dataset and returns a view of the dataset containing only
@@ -376,7 +376,7 @@ def filterColumns(
 
 
 def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
-    # type: (BasicDataset, String, Optional[Locale]) -> BasicDataset
+    # type: (BasicDataset, AnyStr, Optional[Locale]) -> BasicDataset
     """Returns a new dataset with Date columns as strings formatted
     according to the dateFormat specified.
 
@@ -402,7 +402,7 @@ def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
 
 
 def fromCSV(csv):
-    # type: (String) -> BasicDataset
+    # type: (AnyStr) -> BasicDataset
     """Converts a dataset stored in a CSV formatted string to a dataset
     that can be immediately assignable to a dataset property in your
     project.
@@ -422,7 +422,7 @@ def fromCSV(csv):
 
 
 def getColumnHeaders(dataset):
-    # type: (BasicDataset) -> List[String]
+    # type: (BasicDataset) -> List[AnyStr]
     """Takes in a dataset and returns the headers as a python list.
 
     Args:
@@ -436,7 +436,7 @@ def getColumnHeaders(dataset):
 
 
 def setValue(dataset, rowIndex, columnName, value):
-    # type: (BasicDataset, int, String, Any) -> BasicDataset
+    # type: (BasicDataset, int, AnyStr, Any) -> BasicDataset
     """Takes a dataset and returns a new dataset with a one value
     altered.
 
@@ -465,7 +465,7 @@ def setValue(dataset, rowIndex, columnName, value):
 
 def sort(
     dataset,  # type: BasicDataset
-    keyColumn,  # type: Union[String, int]
+    keyColumn,  # type: Union[AnyStr, int]
     ascending=True,  # type: bool
 ):
     # type: (...) -> BasicDataset
@@ -502,7 +502,7 @@ def toCSV(
     forExport=False,  # type: bool
     localized=False,  # type: bool
 ):
-    # type: (...) -> String
+    # type: (...) -> AnyStr
     """Formats the contents of a dataset as CSV (comma separated
     values), returning the resulting CSV as a string.
 
@@ -552,7 +552,7 @@ def toExcel(
     showHeaders,  # type: bool
     dataset,  # type: List[BasicDataset]
     nullsEmpty=False,  # type: bool
-    sheetNames=None,  # type: Optional[List[String]]
+    sheetNames=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> Any
     """Formats the contents of one or more datasets as an Excel
@@ -599,7 +599,7 @@ def toPyDataSet(dataset):
 
 
 def updateRow(dataset, rowIndex, changes):
-    # type: (BasicDataset, int, Dict[String, Any]) -> BasicDataset
+    # type: (BasicDataset, int, Dict[AnyStr, Any]) -> BasicDataset
     """Takes a dataset and returns a new dataset with a one row altered.
 
     To alter the row, this function takes a Python dictionary to

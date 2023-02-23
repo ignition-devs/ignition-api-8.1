@@ -11,7 +11,8 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, TypeVar
 
-from java.lang import Enum, Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Enum, Object
 from java.time import Duration
 from java.time.format import ResolverStyle
 from java.util import Locale
@@ -57,7 +58,7 @@ class TemporalField(object):
         raise NotImplementedError
 
     def getDisplayName(self, locale):
-        # type: (Locale) -> String
+        # type: (Locale) -> AnyStr
         pass
 
     def getFrom(self, temporal):
@@ -98,7 +99,7 @@ class TemporalField(object):
         pass
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
 
@@ -138,7 +139,7 @@ class TemporalUnit(object):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
 

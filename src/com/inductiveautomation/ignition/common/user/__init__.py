@@ -12,13 +12,14 @@ from com.inductiveautomation.ignition.common.config import (
     PropertyValue,
 )
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from java.util import Date
 
 
 class ContactInfo(Object):
-    contactType = ""  # type: String
-    value = ""  # type: String
+    contactType = ""  # type: AnyStr
+    value = ""  # type: AnyStr
 
     def __init__(self, *args):
         # type: (*Any) -> None
@@ -28,19 +29,19 @@ class ContactInfo(Object):
             self.value = args[1]
 
     def getContactType(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.contactType
 
     def getValue(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.value
 
     def setContactType(self, contactType):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         self.contactType = contactType
 
     def setValue(self, value):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         self.value = value
 
 
@@ -69,11 +70,11 @@ class User(object):
         raise NotImplementedError
 
     def getProfileName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getRoles(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         raise NotImplementedError
 
     def getScheduleAdjustments(self):
@@ -84,15 +85,15 @@ class User(object):
 class BasicUser(User):
     contactInfo = None  # type: Optional[List[ContactInfo]]
     id = None  # type: Any
-    profileName = None  # type: String
-    roles = None  # type: List[String]
+    profileName = None  # type: AnyStr
+    roles = None  # type: List[AnyStr]
     scheduleAdjustments = None  # type: List[ScheduleAdjustment]
 
     def __init__(
         self,
-        profileName,  # type: String
+        profileName,  # type: AnyStr
         id_,  # type: Any
-        roles,  # type: List[String]
+        roles,  # type: List[AnyStr]
         contactInfo=None,  # type: Optional[List[ContactInfo]]
     ):
         # type: (...) -> None
@@ -114,11 +115,11 @@ class BasicUser(User):
         pass
 
     def getProfileName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getRoles(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getScheduleAdjustments(self):
@@ -142,15 +143,15 @@ class PyUser(User):
         print(self, args)
 
     def addRole(self, role):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         print(self, role)
 
     def addRoles(self, roles):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         print(self, roles)
 
     def addScheduleAdjustment(self, start, end, available, note):
-        # type: (Date, Date, bool, String) -> None
+        # type: (Date, Date, bool, AnyStr) -> None
         print(self, start, end, available, note)
 
     def addScheduleAdjustments(self, scheduleAdjustments):
@@ -162,7 +163,7 @@ class PyUser(User):
         return True
 
     def get(self, propertyName):
-        # type: (Union[Property, String]) -> Any
+        # type: (Union[Property, AnyStr]) -> Any
         pass
 
     def getContactInfo(self):
@@ -194,7 +195,7 @@ class PyUser(User):
         pass
 
     def getProfileName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getProperties(self):
@@ -202,7 +203,7 @@ class PyUser(User):
         pass
 
     def getRoles(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         return ["Administrator", "Developer"]
 
     def getScheduleAdjustments(self):
@@ -234,15 +235,15 @@ class PyUser(User):
         pass
 
     def removeContactInfo(self, contactType, value):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         pass
 
     def removeRole(self, role):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def removeScheduleAdjustment(self, start, end, available, note):
-        # type: (Date, Date, bool, String) -> None
+        # type: (Date, Date, bool, AnyStr) -> None
         pass
 
     def set(self, *args):
@@ -254,7 +255,7 @@ class PyUser(User):
         pass
 
     def setRoles(self, roles):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setScheduleAdjustments(self, scheduleAdjustments):
@@ -263,25 +264,25 @@ class PyUser(User):
 
 
 class UserSourceMeta(Object):
-    description = None  # type: String
-    name = None  # type: String
-    type = None  # type: String
+    description = None  # type: AnyStr
+    name = None  # type: AnyStr
+    type = None  # type: AnyStr
 
     def __init__(self, name, description, type_):
-        # type: (String, String, String) -> None
+        # type: (AnyStr, AnyStr, AnyStr) -> None
         super(UserSourceMeta, self).__init__()
         self.name = name
         self.description = description
         self.type = type_
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.name
 
     def getDescription(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.description
 
     def getType(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.type

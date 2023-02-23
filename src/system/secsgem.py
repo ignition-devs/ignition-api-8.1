@@ -24,21 +24,21 @@ __all__ = [
 from typing import Any, Dict, List, Optional, Tuple
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date
 
 
 def copyEquipment(
-    equipmentSource,  # type: String
-    newEquipmentName,  # type: String
+    equipmentSource,  # type: AnyStr
+    newEquipmentName,  # type: AnyStr
     enabled,  # type: bool
-    activeAddress,  # type: String
+    activeAddress,  # type: AnyStr
     activePort,  # type: int
-    passiveAddress,  # type: String
+    passiveAddress,  # type: AnyStr
     passivePort,  # type: int
     deviceId,  # type: int
-    dbTablePrefix=None,  # type: Optional[String]
-    description=None,  # type: Optional[String]
+    dbTablePrefix=None,  # type: Optional[AnyStr]
+    description=None,  # type: Optional[AnyStr]
 ):
     # type: (...) -> None
     """Creates a copy of an equipment connection.
@@ -92,7 +92,7 @@ def copyEquipment(
 
 
 def deleteToolProgram(ppid):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Deletes a process program from the Gateway.
 
     Args:
@@ -103,14 +103,14 @@ def deleteToolProgram(ppid):
 
 
 def enableDisableEquipment(enable, names):
-    # type: (bool, Tuple[String, ...]) -> List[unicode]
+    # type: (bool, Tuple[AnyStr, ...]) -> List[unicode]
     """Enables or disables a Tuple of equipment connections from a
     script.
 
     Args:
         enable: Set to True to enable equipment connections, or set to
             False to disable them.
-        names: A Tuple of Strings. Each String should match an Equipment
+        names: A Tuple of Strings. Each string should match an Equipment
             Connection configured on the Gateway. If this parameter
             contains the name of an Equipment Connection that does not
             exist, then a message will be included in the List returned
@@ -129,7 +129,7 @@ def enableDisableEquipment(enable, names):
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
-    # type: (int, String, Optional[int], Optional[int]) -> Any
+    # type: (int, AnyStr, Optional[int], Optional[int]) -> Any
     """Attempts to retrieve a response message from the Gateway.
 
     The transaction id from the sent message is used to retrieve the
@@ -158,7 +158,7 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
 
 
 def getToolProgram(ppid):
-    # type: (String) -> Dict[String, Any]
+    # type: (AnyStr) -> Dict[AnyStr, Any]
     """Returns a process program from the Gateway that was previously
     sent by a a tool in an S7F3 message.
 
@@ -192,7 +192,7 @@ def getToolProgramDataset():
 
 
 def sendRequest(streamFunction, reply, body, equipment):
-    # type: (String, bool, Any, String) -> int
+    # type: (AnyStr, bool, Any, AnyStr) -> int
     """Sends a JSON-formatted SECS message to a tool.
 
     An equipment connection must be configured for the tool in the
@@ -217,7 +217,7 @@ def sendRequest(streamFunction, reply, body, equipment):
 
 
 def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
-    # type: (int, int, String, Any, String) -> None
+    # type: (int, int, AnyStr, Any, AnyStr) -> None
     """Sends a JSON-formatted SECS response message to a message sent by
     a tool.
 
@@ -245,7 +245,7 @@ def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
 
 
 def startSimEventRun(simulatorName, eventRunName):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Starts a configured simulator event run in the Gateway.
 
     Note, that this function only works with the simulators that come

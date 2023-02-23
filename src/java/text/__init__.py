@@ -14,7 +14,8 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Set, Union
 
-from java.lang import Number, Object, String, StringBuffer
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Number, Object, StringBuffer
 from java.math import RoundingMode
 from java.util import Calendar, Currency, Date, Locale, TimeZone
 
@@ -163,7 +164,7 @@ class Format(Object):
         pass
 
     def parseObject(self, source, pos=None):
-        # type: (String, Optional[ParsePosition]) -> Object
+        # type: (AnyStr, Optional[ParsePosition]) -> Object
         pass
 
     class Field(AttributedCharacterIterator.Attribute):
@@ -199,7 +200,7 @@ class DateFormat(Format):
         date,  # type: Union[Date, Object]
         toAppendTo=None,  # type: Optional[StringBuffer]
         pos=None,  # type: Optional[FieldPosition]
-    ):  # type: (...) -> Union[String, StringBuffer]
+    ):  # type: (...) -> Union[AnyStr, StringBuffer]
         pass
 
     @staticmethod
@@ -244,7 +245,7 @@ class DateFormat(Format):
         return True
 
     def parse(self, source):
-        # type: (String) -> Date
+        # type: (AnyStr) -> Date
         pass
 
     def setCalendar(self, newCalendar):
@@ -275,7 +276,7 @@ class DateFormatSymbols(Object):
         pass
 
     def getAmPmStrings(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     @staticmethod
@@ -284,7 +285,7 @@ class DateFormatSymbols(Object):
         pass
 
     def getEras(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     @staticmethod
@@ -293,59 +294,59 @@ class DateFormatSymbols(Object):
         pass
 
     def getLocalPatternChars(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getMonths(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getShortMonths(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getShortWeekdays(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getWeekdays(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def getZoneStrings(self):
-        # type: () -> List[List[String]]
+        # type: () -> List[List[AnyStr]]
         pass
 
     def setAmPmStrings(self, newAmpms):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setEras(self, newEras):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setLocalPatternChars(self, newLocalPatternChars):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setMonths(self, newMonths):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setShortMonths(self, newShortMonths):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setShortWeekdays(self, newShortWeekdays):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setWeekdays(self, newWeekdays):
-        # type: (List[String]) -> None
+        # type: (List[AnyStr]) -> None
         pass
 
     def setZoneStrings(self, newZoneStrings):
-        # type: (List[List[String]]) -> None
+        # type: (List[List[AnyStr]]) -> None
         pass
 
 
@@ -359,7 +360,7 @@ class NumberFormat(Format):
         toAppendTo=None,  # type: Optional[StringBuffer]
         pos=None,  # type: Optional[FieldPosition]
     ):
-        # type: (...) -> Union[String, StringBuffer]
+        # type: (...) -> Union[AnyStr, StringBuffer]
         raise NotImplementedError
 
     @staticmethod
@@ -425,7 +426,7 @@ class NumberFormat(Format):
         return True
 
     def parse(self, source):
-        # type: (String) -> Number
+        # type: (AnyStr) -> Number
         pass
 
     def setCurrency(self, currency):
@@ -500,7 +501,7 @@ class ParsePosition(Object):
 class SimpleDateFormat(DateFormat):
     def __init__(
         self,
-        pattern=None,  # type: Optional[String]
+        pattern=None,  # type: Optional[AnyStr]
         arg=None,  # type: Union[DateFormatSymbols, Locale, None]
     ):
         # type: (...) -> None
@@ -508,11 +509,11 @@ class SimpleDateFormat(DateFormat):
         print(pattern, arg)
 
     def applyLocalizedPattern(self, pattern):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def applyPattern(self, pattern):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def get2DigitYearStart(self):
@@ -532,9 +533,9 @@ class SimpleDateFormat(DateFormat):
         pass
 
     def toLocalizedPattern(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def toPattern(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass

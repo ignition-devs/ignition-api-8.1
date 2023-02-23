@@ -22,11 +22,11 @@ from typing import Any, Dict, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.sfc.api import PyChartScope
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def cancelChart(instanceId):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Cancels the execution of a running chart instance.
 
     Any running steps will be told to stop, and the chart will enter
@@ -43,7 +43,7 @@ def cancelChart(instanceId):
 
 
 def getRunningCharts(chartPath=None):
-    # type: (Optional[String]) -> BasicDataset
+    # type: (Optional[AnyStr]) -> BasicDataset
     """Retrieves information about running charts.
 
     Can search all running charts, or be filtered charts at a specific
@@ -63,7 +63,7 @@ def getRunningCharts(chartPath=None):
 
 
 def getVariables(instanceId):
-    # type: (String) -> PyChartScope
+    # type: (AnyStr) -> PyChartScope
     """Get the variables in a chart instance's scope.
 
     Commonly used to check the value of a Chart Parameter, or determine
@@ -81,7 +81,7 @@ def getVariables(instanceId):
 
 
 def pauseChart(instanceId):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Pauses a running chart instance.
 
     Any running steps will be told to pause, and the chart will enter
@@ -98,7 +98,7 @@ def pauseChart(instanceId):
 
 
 def redundantCheckpoint(instanceId):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Synchronizes chart and step variables of the specified chart
     instance across a redundant cluster, allowing the chart instance to
     continue where it left off if a redundant failover occurs.
@@ -110,7 +110,7 @@ def redundantCheckpoint(instanceId):
 
 
 def resumeChart(instanceId):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Resumes a chart that was paused.
 
     Steps which were previously paused will be resumed, and chart will
@@ -127,7 +127,7 @@ def resumeChart(instanceId):
 
 
 def setVariable(instanceId, stepId, variableName, variableValue):
-    # type: (String, String, String, Any) -> None
+    # type: (AnyStr, AnyStr, AnyStr, Any) -> None
     """Sets a variable inside a currently running chart.
 
     Args:
@@ -141,7 +141,7 @@ def setVariable(instanceId, stepId, variableName, variableValue):
 
 
 def setVariables(instanceId, stepId, variableMap):
-    # type: (String, String, Dict[String, Any]) -> None
+    # type: (AnyStr, AnyStr, Dict[AnyStr, Any]) -> None
     """Sets any number of variables inside a currently running chart.
 
     Args:
@@ -155,7 +155,7 @@ def setVariables(instanceId, stepId, variableMap):
 
 
 def startChart(projectName, chartPath, arguments):
-    # type: (String, String, Dict[String, Any]) -> String
+    # type: (AnyStr, AnyStr, Dict[AnyStr, Any]) -> AnyStr
     """Starts a new instance of a chart.
 
     The chart must be set to "Callable" execution mode.

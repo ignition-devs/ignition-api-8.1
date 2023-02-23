@@ -10,8 +10,9 @@ __all__ = [
 
 from typing import Any, Iterable, List, TypeVar, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from java.beans import PropertyChangeListener
-from java.lang import Class, Object, String
+from java.lang import Class, Object
 
 T = TypeVar("T")
 
@@ -22,7 +23,7 @@ class Property(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getType(self):
@@ -54,7 +55,7 @@ class PropertySet(object):
 
 
 class BasicProperty(Property, Object):
-    _name = None  # type: String
+    _name = None  # type: AnyStr
     _clazz = None  # type: Any
     _defaultValue = None  # type: Any
     _hcode = None  # type: int
@@ -83,7 +84,7 @@ class BasicProperty(Property, Object):
         return self._defaultValue
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self._name
 
     def getType(self):
@@ -107,11 +108,11 @@ class BasicProperty(Property, Object):
         pass
 
     def setName(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setName_(self, name):
-        # type: (String) -> BasicProperty
+        # type: (AnyStr) -> BasicProperty
         pass
 
 

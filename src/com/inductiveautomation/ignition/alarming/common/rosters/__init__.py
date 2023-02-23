@@ -2,16 +2,16 @@ from typing import List
 
 from com.inductiveautomation.ignition.common.user import User
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 class RosterModel(DefaultBindableModel):
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getUsers(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         pass
 
     def set(self, that):
@@ -19,7 +19,7 @@ class RosterModel(DefaultBindableModel):
         pass
 
     def setName(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setUsers(self, users):

@@ -15,8 +15,9 @@ __all__ = [
 
 from typing import Any, List, Optional, Set, TypeVar
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import Closeable, InputStream, OutputStream
-from java.lang import Class, Enum, Object, String
+from java.lang import Class, Enum, Object
 from java.nio.channels import SocketChannel
 
 T = TypeVar("T")
@@ -30,7 +31,7 @@ class SocketAddress(Object):
 
 class FileNameMap(object):
     def getContentTypeFor(self, fileName):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         raise NotImplementedError
 
 
@@ -42,7 +43,7 @@ class SocketImplFactory(object):
 
 class SocketOption(object):
     def name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def type(self):
@@ -57,7 +58,7 @@ class InetAddress(Object):
 
     @staticmethod
     def getAllByName(host):
-        # type: (String) -> List[InetAddress]
+        # type: (AnyStr) -> List[InetAddress]
         pass
 
     @staticmethod
@@ -67,19 +68,19 @@ class InetAddress(Object):
 
     @staticmethod
     def getByName(host):
-        # type: (String) -> InetAddress
+        # type: (AnyStr) -> InetAddress
         pass
 
     def getCanonicalHostName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getHostAddress(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getHostName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     @staticmethod
@@ -145,7 +146,7 @@ class InetSocketAddress(SocketAddress):
 
     @staticmethod
     def createUnresolved(host, port):
-        # type: (String, int) -> InetSocketAddress
+        # type: (AnyStr, int) -> InetSocketAddress
         return InetSocketAddress(host, port)
 
     def getAddress(self):
@@ -153,11 +154,11 @@ class InetSocketAddress(SocketAddress):
         pass
 
     def getHostname(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getHostString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getPort(self):

@@ -6,7 +6,8 @@ from typing import Any, List
 
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property
-from java.lang import Class, Enum, Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Class, Enum, Object
 from java.util import Date
 
 
@@ -31,7 +32,7 @@ class EventProperty(Object):
         pass
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getPropertyType(self):

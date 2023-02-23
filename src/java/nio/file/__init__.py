@@ -16,8 +16,9 @@ __all__ = [
 
 from typing import Any, Iterator, List, Optional, Set, TypeVar, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import BufferedReader, BufferedWriter, InputStream, OutputStream
-from java.lang import AutoCloseable, CharSequence, Class, Enum, Object, String
+from java.lang import AutoCloseable, CharSequence, Class, Enum, Object
 from java.nio.channels import SeekableByteChannel
 from java.nio.charset import Charset
 from java.nio.file.attribute import (
@@ -57,7 +58,7 @@ class Watchable(object):
 
 class FileStore(Object):
     def getAttribute(self, attribute):
-        # type: (String) -> Object
+        # type: (AnyStr) -> Object
         raise NotImplementedError
 
     def getBlockSize(self):
@@ -85,7 +86,7 @@ class FileStore(Object):
         raise NotImplementedError
 
     def name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def supportsFileAttributeView(self, type):
@@ -93,7 +94,7 @@ class FileStore(Object):
         raise NotImplementedError
 
     def type(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
 
@@ -169,7 +170,7 @@ class Files(Object):
 
     @staticmethod
     def getAttribute(path, attribute, *options):
-        # type: (Path, String, *LinkOption) -> Object
+        # type: (Path, AnyStr, *LinkOption) -> Object
         pass
 
     @staticmethod
@@ -289,7 +290,7 @@ class Files(Object):
 
     @staticmethod
     def probeContentType(path):
-        # type: (Path) -> String
+        # type: (Path) -> AnyStr
         pass
 
     @staticmethod
@@ -299,7 +300,7 @@ class Files(Object):
 
     @staticmethod
     def readAllLines(path, cs=None):
-        # type: (Path, Optional[Charset]) -> List[String]
+        # type: (Path, Optional[Charset]) -> List[AnyStr]
         pass
 
     @staticmethod
@@ -309,7 +310,7 @@ class Files(Object):
 
     @staticmethod
     def readString(path, cs=None):
-        # type: (Path, Optional[Charset]) -> String
+        # type: (Path, Optional[Charset]) -> AnyStr
         pass
 
     @staticmethod
@@ -319,7 +320,7 @@ class Files(Object):
 
     @staticmethod
     def setAttribute(path, attribute, value, *options):
-        # type: (Path, String, Object, *LinkOption) -> Path
+        # type: (Path, AnyStr, Object, *LinkOption) -> Path
         pass
 
     @staticmethod
@@ -378,7 +379,7 @@ class Path(Watchable):
         pass
 
     def endsWith(self, other):
-        # type: (Union[Object, Path, String]) -> bool
+        # type: (Union[Object, Path, AnyStr]) -> bool
         return True
 
     def equals(self, other):
@@ -435,7 +436,7 @@ class Path(Watchable):
         pass
 
     def resolve(self, other):
-        # type: (Union[Path, String]) -> Path
+        # type: (Union[Path, AnyStr]) -> Path
         pass
 
     def resolveSibling(self, other):
@@ -463,7 +464,7 @@ class Path(Watchable):
         pass
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def toUri(self):
@@ -504,7 +505,7 @@ class WatchEvent(object):
 
     class Kind(object):
         def name(self):
-            # type: () -> String
+            # type: () -> AnyStr
             raise NotImplementedError
 
         def type(self):
@@ -513,7 +514,7 @@ class WatchEvent(object):
 
     class Modifier(object):
         def name(self):
-            # type: () -> String
+            # type: () -> AnyStr
             raise NotImplementedError
 
 

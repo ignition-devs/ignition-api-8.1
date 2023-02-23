@@ -16,15 +16,16 @@ __all__ = [
 from typing import Any, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import IllegalArgumentException, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import IllegalArgumentException
 
 
 def executeAndDistribute(
-    path,  # type: String
-    project="project",  # type: String
-    parameters=None,  # type: Optional[Dict[String, int]]
-    action=None,  # type: Optional[String]
-    actionSettings=None,  # type: Optional[Dict[String, Any]]
+    path,  # type: AnyStr
+    project="project",  # type: AnyStr
+    parameters=None,  # type: Optional[Dict[AnyStr, int]]
+    action=None,  # type: Optional[AnyStr]
+    actionSettings=None,  # type: Optional[Dict[AnyStr, Any]]
 ):
     # type: (...) -> None
     """Executes and distributes a report.
@@ -64,10 +65,10 @@ def executeAndDistribute(
 
 
 def executeReport(
-    path,  # type: String
-    project="project",  # type: String
-    parameters=None,  # type: Optional[Dict[String, int]]
-    fileType="pdf",  # type: String
+    path,  # type: AnyStr
+    project="project",  # type: AnyStr
+    parameters=None,  # type: Optional[Dict[AnyStr, int]]
+    fileType="pdf",  # type: AnyStr
 ):
     # type: (...) -> Any
     """Immediately executes an existing report and returns a byte[] of
@@ -107,7 +108,7 @@ def executeReport(
 
 
 def getReportNamesAsDataset(project="project", includeReportName=True):
-    # type: (Optional[String], Optional[bool]) -> BasicDataset
+    # type: (Optional[AnyStr], Optional[bool]) -> BasicDataset
     """Gets a data of all reports for a project.
 
     Args:
@@ -133,7 +134,7 @@ def getReportNamesAsDataset(project="project", includeReportName=True):
 
 
 def getReportNamesAsList(project="project"):
-    # type: (Optional[String]) -> List[String]
+    # type: (Optional[AnyStr]) -> List[AnyStr]
     """Gets a list of all reports for a project.
 
     Args:

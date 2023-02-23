@@ -2,8 +2,9 @@ __all__ = ["LoggerEx"]
 
 from typing import Any, Optional, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import Closeable
-from java.lang import AutoCloseable, Class, Object, String, Throwable
+from java.lang import AutoCloseable, Class, Object, Throwable
 from org.apache.commons.lang3.builder import ToStringStyle
 from org.slf4j import Logger
 
@@ -19,39 +20,39 @@ class LoggerEx(Object):
     DEFAULT_TO_STRING_STYLE = None  # type: ToStringStyle
 
     def createSubLogger(self, arg):
-        # type: (Union[Class, String]) -> LoggerEx
+        # type: (Union[Class, AnyStr]) -> LoggerEx
         pass
 
     def debug(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def debugDuration(self, message):
-        # type: (String) -> Closeable
+        # type: (AnyStr) -> Closeable
         pass
 
     def debugEvent(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def debugf(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def error(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def errorEvent(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def errorf(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def fatal(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def getIdentObject(self):
@@ -63,7 +64,7 @@ class LoggerEx(Object):
         pass
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getToStringStyle(self):
@@ -71,19 +72,19 @@ class LoggerEx(Object):
         pass
 
     def info(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def infoDuration(self, message):
-        # type: (String) -> Closeable
+        # type: (AnyStr) -> Closeable
         pass
 
     def infoEvent(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def infof(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def isDebugEnabled(self):
@@ -107,15 +108,15 @@ class LoggerEx(Object):
         pass
 
     def mdcPut(self, key, value):
-        # type: (String, String) -> None
+        # type: (AnyStr, AnyStr) -> None
         pass
 
     def mdcPutCloseable(self, key, value):
-        # type: (String, String) -> LoggerEx.MDCCloseable
+        # type: (AnyStr, AnyStr) -> LoggerEx.MDCCloseable
         pass
 
     def mdcRemove(self, key):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def mdcSet(self):
@@ -136,31 +137,31 @@ class LoggerEx(Object):
         pass
 
     def trace(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def traceDuration(self, message):
-        # type: (String) -> Closeable
+        # type: (AnyStr) -> Closeable
         pass
 
     def traceEvent(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def tracef(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def warn(self, message, t=None):
-        # type: (String, Optional[Throwable]) -> None
+        # type: (AnyStr, Optional[Throwable]) -> None
         pass
 
     def warnEvent(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     def warnf(self, message, *args):
-        # type: (String, Any) -> None
+        # type: (AnyStr, Any) -> None
         pass
 
     class Builder(Object):

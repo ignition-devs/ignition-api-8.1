@@ -3,19 +3,20 @@ __all__ = ["TagPathParser"]
 from typing import Any, List
 
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 
 
 class TagPathParser(Object):
-    PARENT_RELATIVE = None  # type: String
-    PATH_SEPARATOR = None  # type: String
-    PROPERTY_SEPARATOR = None  # type: String
-    RELATIVE_DIR_UP = None  # type: String
-    ROOT_RELATIVE = None  # type: String
+    PARENT_RELATIVE = None  # type: AnyStr
+    PATH_SEPARATOR = None  # type: AnyStr
+    PROPERTY_SEPARATOR = None  # type: AnyStr
+    RELATIVE_DIR_UP = None  # type: AnyStr
+    ROOT_RELATIVE = None  # type: AnyStr
 
     @staticmethod
     def chopPath(string):
-        # type: (String) -> List[String]
+        # type: (AnyStr) -> List[AnyStr]
         pass
 
     @staticmethod

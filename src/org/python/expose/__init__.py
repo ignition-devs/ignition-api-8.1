@@ -1,6 +1,9 @@
+__all__ = ["TypeBuilder"]
+
 from typing import Any
 
-from java.lang import Class, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Class
 
 
 class TypeBuilder(object):
@@ -13,7 +16,7 @@ class TypeBuilder(object):
         raise NotImplementedError
 
     def getDoc(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getIsBaseType(self):
@@ -21,7 +24,7 @@ class TypeBuilder(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getTypeClass(self):
