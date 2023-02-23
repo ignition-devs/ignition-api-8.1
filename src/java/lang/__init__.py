@@ -237,9 +237,9 @@ class StackTraceElement(Object):
 
 
 class String(unicode):
-    def __init__(self, *args):
-        super(String, self).__init__()
+    def __new__(cls, value, *args):
         print(args)
+        return unicode.__new__(cls, value)
 
     def charAt(self, index):
         # type: (int) -> unicode
