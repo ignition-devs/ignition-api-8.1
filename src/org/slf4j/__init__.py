@@ -2,7 +2,7 @@ __all__ = ["Logger", "Marker"]
 
 from typing import Any, Iterable, Optional, Union
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 class Logger(object):
@@ -17,7 +17,7 @@ class Logger(object):
         pass
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def info(self, *args):
@@ -58,7 +58,7 @@ class Marker(object):
         raise NotImplementedError
 
     def contains(self, arg):
-        # type: (Union[Marker, String]) -> bool
+        # type: (Union[Marker, AnyStr]) -> bool
         raise NotImplementedError
 
     def equals(self, o):
@@ -66,7 +66,7 @@ class Marker(object):
         return True
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def hashCode(self):

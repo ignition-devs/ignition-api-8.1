@@ -27,13 +27,13 @@ __all__ = [
 
 from typing import Any, Optional, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from java.lang import (
     Appendable,
     AutoCloseable,
     CharSequence,
     Exception,
     Object,
-    String,
     Throwable,
 )
 
@@ -51,10 +51,10 @@ class Flushable(object):
 
 
 class File(Object):
-    pathSeparator = None  # type: String
-    pathSeparatorChar = None  # type: String
-    separator = None  # type: String
-    separatorChar = None  # type: String
+    pathSeparator = None  # type: AnyStr
+    pathSeparatorChar = None  # type: AnyStr
+    separator = None  # type: AnyStr
+    separatorChar = None  # type: AnyStr
 
     def __init__(self, *args):
         # type: (*Any) -> None
@@ -136,7 +136,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeBytes(self, s):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def writeChar(self, v):
@@ -144,7 +144,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeChars(self, s):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def writeDouble(self, v):
@@ -168,7 +168,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeUTF(self, s):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
 

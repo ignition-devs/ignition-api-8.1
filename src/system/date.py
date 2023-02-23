@@ -55,7 +55,7 @@ from datetime import datetime
 from time import localtime, mktime
 from typing import Optional
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date, Locale
 
 
@@ -223,7 +223,7 @@ def daysBetween(date_1, date_2):
 
 
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
-    # type: (Date, String) -> unicode
+    # type: (Date, AnyStr) -> unicode
     """Returns the given date as a string, formatted according to a
     pattern.
 
@@ -495,7 +495,7 @@ def getSecond(date):
 
 
 def getTimezone():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the ID of the current timezone.
 
     Returns:
@@ -718,7 +718,7 @@ def now():
 
 
 def parse(dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH):
-    # type: (String, Optional[String], Optional[Locale]) -> Date
+    # type: (AnyStr, Optional[AnyStr], Optional[Locale]) -> Date
     """Attempts to parse a string and create a Date.
 
     Causes ParseException if the date dateString parameter is in an

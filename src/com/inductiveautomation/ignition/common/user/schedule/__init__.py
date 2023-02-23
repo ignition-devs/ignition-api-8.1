@@ -7,7 +7,7 @@ __all__ = [
 ]
 
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date
 
 
@@ -175,11 +175,11 @@ class CompositeScheduleModel(AbstractScheduleModel):
 
 class HolidayModel(DefaultBindableModel):
     date = None  # type: Date
-    name = None  # type: String
+    name = None  # type: AnyStr
     repeatAnnually = None  # type: bool
 
     def __init__(self, name, date, repeatAnnually):
-        # type: (String, Date, bool) -> None
+        # type: (AnyStr, Date, bool) -> None
         super(HolidayModel, self).__init__()
         self.name = name
         self.date = date
@@ -190,7 +190,7 @@ class HolidayModel(DefaultBindableModel):
         return self.date
 
     def getName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.name
 
     def isRepeatAnnually(self):
@@ -206,7 +206,7 @@ class HolidayModel(DefaultBindableModel):
         self.date = date
 
     def setName(self, name):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         self.name = name
 
     def setRepeatAnnually(self, repeatAnnually):
@@ -218,10 +218,10 @@ class ScheduleAdjustment(DefaultBindableModel):
     start = None  # type: Date
     end = None  # type: Date
     available = None  # type: bool
-    note = None  # type: String
+    note = None  # type: AnyStr
 
     def __init__(self, start, end, available, note):
-        # type: (Date, Date, bool, String) -> None
+        # type: (Date, Date, bool, AnyStr) -> None
         super(ScheduleAdjustment, self).__init__()
         self.start = start
         self.end = end
@@ -237,7 +237,7 @@ class ScheduleAdjustment(DefaultBindableModel):
         return self.end
 
     def getNote(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return self.note
 
     def getStart(self):
@@ -257,7 +257,7 @@ class ScheduleAdjustment(DefaultBindableModel):
         self.end = end
 
     def setNote(self, note):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         self.note = note
 
     def setStart(self, start):

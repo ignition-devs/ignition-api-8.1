@@ -5,7 +5,8 @@ __all__ = ["PyJsonObjectAdapter"]
 from typing import Any, Iterator, List, Optional
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from org.python.core import PyObject
 
 
@@ -20,7 +21,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def __findattr_ex__(self, name):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass
 
     def __finditem__(self, key):
@@ -84,7 +85,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def update(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> None
+        # type: (*PyObject, **AnyStr) -> None
         pass
 
     def values(self):

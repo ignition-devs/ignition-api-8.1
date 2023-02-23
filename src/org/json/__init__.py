@@ -2,8 +2,9 @@ from __future__ import print_function
 
 from typing import Any, Iterator, List, Optional
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import Writer
-from java.lang import Number, Object, String
+from java.lang import Number, Object
 
 
 class JSONArray(Object):
@@ -41,7 +42,7 @@ class JSONArray(Object):
         pass
 
     def getString(self, index):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         pass
 
     def isNull(self, index):
@@ -49,7 +50,7 @@ class JSONArray(Object):
         return True
 
     def join(self, separator):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def length(self):
@@ -85,7 +86,7 @@ class JSONArray(Object):
         pass
 
     def optString(self, index, defaultValue=None):
-        # type: (int, Optional[String]) -> String
+        # type: (int, Optional[AnyStr]) -> AnyStr
         pass
 
     def put(self, index, value):
@@ -101,7 +102,7 @@ class JSONArray(Object):
         pass
 
     def toString(self, indentFactor=None):
-        # type: (Optional[int]) -> String
+        # type: (Optional[int]) -> AnyStr
         pass
 
     def write(self, writer):
@@ -118,69 +119,69 @@ class JSONObject(Object):
         print(args)
 
     def accumulate(self, key, value):
-        # type: (String, Object) -> JSONObject
+        # type: (AnyStr, Object) -> JSONObject
         pass
 
     def append(self, key, value):
-        # type: (String, Object) -> JSONObject
+        # type: (AnyStr, Object) -> JSONObject
         pass
 
     @staticmethod
     def doubleToString(d):
-        # type: (float) -> String
+        # type: (float) -> AnyStr
         pass
 
     def get(self, key):
-        # type: (String) -> Object
+        # type: (AnyStr) -> Object
         pass
 
     def getBoolean(self, key):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     def getDouble(self, key):
-        # type: (String) -> float
+        # type: (AnyStr) -> float
         pass
 
     def getInt(self, key):
-        # type: (String) -> int
+        # type: (AnyStr) -> int
         pass
 
     def getJSONArray(self, key):
-        # type: (String) -> JSONArray
+        # type: (AnyStr) -> JSONArray
         pass
 
     def getJSONObject(self, key):
-        # type: (String) -> JSONObject
+        # type: (AnyStr) -> JSONObject
         pass
 
     def getLong(self, key):
-        # type: (String) -> long
+        # type: (AnyStr) -> long
         pass
 
     @staticmethod
     def getNames(arg):
-        # type: (JSONObject) -> List[String]
+        # type: (JSONObject) -> List[AnyStr]
         pass
 
     def getString(self, key):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def has(self, key):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     def increment(self, key):
-        # type: (String) -> JSONObject
+        # type: (AnyStr) -> JSONObject
         pass
 
     def isNull(self, key):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     def keys(self):
-        # type: () -> Iterator[String]
+        # type: () -> Iterator[AnyStr]
         pass
 
     def length(self):
@@ -193,69 +194,69 @@ class JSONObject(Object):
 
     @staticmethod
     def numberToString(n):
-        # type: (Number) -> String
+        # type: (Number) -> AnyStr
         pass
 
     def opt(self, key):
-        # type: (String) -> Object
+        # type: (AnyStr) -> Object
         pass
 
     def optBoolean(self, key, defaultValue=None):
-        # type: (String, Optional[bool]) -> bool
+        # type: (AnyStr, Optional[bool]) -> bool
         return True
 
     def optDouble(self, key, defaultValue=None):
-        # type: (String, Optional[float]) -> float
+        # type: (AnyStr, Optional[float]) -> float
         pass
 
     def optInt(self, key, defaultValue=None):
-        # type: (String, Optional[int]) -> int
+        # type: (AnyStr, Optional[int]) -> int
         pass
 
     def optJSONArray(self, key):
-        # type: (String) -> JSONArray
+        # type: (AnyStr) -> JSONArray
         pass
 
     def optJSONObject(self, key):
-        # type: (String) -> JSONObject
+        # type: (AnyStr) -> JSONObject
         pass
 
     def optLong(self, key, defaultValue=None):
-        # type: (String, Optional[long]) -> long
+        # type: (AnyStr, Optional[long]) -> long
         pass
 
     def optString(self, key, defaultValue=None):
-        # type: (String, Optional[String]) -> String
+        # type: (AnyStr, Optional[AnyStr]) -> AnyStr
         pass
 
     def put(self, key, value):
-        # type: (String, Any) -> JSONObject
+        # type: (AnyStr, Any) -> JSONObject
         pass
 
     def putOnce(self, key, value):
-        # type: (String, Object) -> JSONObject
+        # type: (AnyStr, Object) -> JSONObject
         pass
 
     def putOpt(self, key, value):
-        # type: (String, Object) -> JSONObject
+        # type: (AnyStr, Object) -> JSONObject
         pass
 
     @staticmethod
     def quote(string):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     def remove(self, key):
-        # type: (String) -> Object
+        # type: (AnyStr) -> Object
         pass
 
     def sortedKeys(self):
-        # type: () -> Iterator[String]
+        # type: () -> Iterator[AnyStr]
         pass
 
     @staticmethod
     def stringToValue(s):
-        # type: (String) -> Object
+        # type: (AnyStr) -> Object
         pass
 
     def toJSONArray(self, names):
@@ -263,12 +264,12 @@ class JSONObject(Object):
         pass
 
     def toString(self, indentFactor=None):
-        # type: (Optional[int]) -> String
+        # type: (Optional[int]) -> AnyStr
         pass
 
     @staticmethod
     def valueToString(value):
-        # type: (Object) -> String
+        # type: (Object) -> AnyStr
         pass
 
     @staticmethod

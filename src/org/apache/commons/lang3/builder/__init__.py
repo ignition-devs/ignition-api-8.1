@@ -2,7 +2,8 @@ __all__ = ["ToStringStyle"]
 
 from typing import Any
 
-from java.lang import Object, String, StringBuffer
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object, StringBuffer
 
 
 class ToStringStyle(Object):
@@ -15,7 +16,7 @@ class ToStringStyle(Object):
     SIMPLE_STYLE = None  # type: ToStringStyle
 
     def append(self, buffer, fieldName, *args):
-        # type: (StringBuffer, String, Any) -> None
+        # type: (StringBuffer, AnyStr, Any) -> None
         pass
 
     def appendEnd(self, buffer, obj):
@@ -27,9 +28,9 @@ class ToStringStyle(Object):
         pass
 
     def appendSuper(self, buffer, superToString):
-        # type: (StringBuffer, String) -> None
+        # type: (StringBuffer, AnyStr) -> None
         pass
 
     def appendToString(self, buffer, toString):
-        # type: (StringBuffer, String) -> None
+        # type: (StringBuffer, AnyStr) -> None
         pass

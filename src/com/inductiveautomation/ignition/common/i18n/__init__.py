@@ -4,7 +4,8 @@ __all__ = ["LocaleUtils", "LocalizedString"]
 
 from typing import Any, List, Optional
 
-from java.lang import Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from java.util import Locale
 
 
@@ -16,7 +17,7 @@ class LocaleUtils(Object):
 
     @staticmethod
     def parseLocale(locale):
-        # type: (String) -> Optional[Locale]
+        # type: (AnyStr) -> Optional[Locale]
         pass
 
 
@@ -32,15 +33,15 @@ class LocalizedString(Object):
 
     @staticmethod
     def createRaw(stringVal):
-        # type: (String) -> LocalizedString
+        # type: (AnyStr) -> LocalizedString
         pass
 
     def getDefaultVal(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getKey(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getParams(self):
@@ -48,11 +49,11 @@ class LocalizedString(Object):
         pass
 
     def setDefaultVal(self, defaultVal):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setKey(self, key):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def setParams(self, params):
@@ -60,5 +61,5 @@ class LocalizedString(Object):
         pass
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> String
+        # type: (Optional[Locale]) -> AnyStr
         pass

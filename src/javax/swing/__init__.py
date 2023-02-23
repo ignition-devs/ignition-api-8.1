@@ -15,11 +15,12 @@ __all__ = [
     "JTextField",
 ]
 
+import array
 import warnings
 from typing import Any, List, Optional
 
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import Component, Container, Frame, Graphics
-from java.lang import String
 from java.util import Locale
 from javax.swing.event import AncestorListener
 from javax.swing.plaf import DesktopPaneUI
@@ -103,7 +104,7 @@ class Icon(object):
 
 
 class JComponent(Container):
-    TOOL_TIP_TEXT_KEY = None  # type: String
+    TOOL_TIP_TEXT_KEY = None  # type: AnyStr
     UNDEFINED_CONDITION = None  # type: int
     WHEN_ANCESTOR_OF_FOCUSED_COMPONENT = None  # type: int
     WHEN_FOCUSED = None  # type: int
@@ -150,7 +151,7 @@ class JFrame(Frame):
 class JInternalFrame(JComponent):
     def __init__(
         self,
-        title=None,  # type: Optional[String]
+        title=None,  # type: Optional[AnyStr]
         resizable=None,  # type: Optional[bool]
         closable=None,  # type: Optional[bool]
         maximizable=None,  # type: Optional[bool]
@@ -237,7 +238,7 @@ class JDesktopPane(JLayeredPane):
         pass
 
     def getUIClassID(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def updateUI(self):
@@ -277,7 +278,7 @@ class JOptionPane(JComponent):
     def showConfirmDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[String]
+        title=None,  # type: Optional[AnyStr]
         optionType=None,  # type: Optional[int]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
@@ -290,13 +291,13 @@ class JOptionPane(JComponent):
     def showInputDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[String]
+        title=None,  # type: Optional[AnyStr]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
         selectionValues=None,  # type: Optional[List[Any]]
         initialSelectionValue=None,  # type: Optional[Any]
     ):
-        # type: (...) -> String
+        # type: (...) -> AnyStr
         print(
             parentComponent,
             message,
@@ -312,7 +313,7 @@ class JOptionPane(JComponent):
     def showMessageDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[String]
+        title=None,  # type: Optional[AnyStr]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
     ):
@@ -323,7 +324,7 @@ class JOptionPane(JComponent):
     def showOptionDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[String]
+        title=None,  # type: Optional[AnyStr]
         optionType=None,  # type: Optional[int]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
@@ -361,7 +362,7 @@ class JToolTip(JComponent):
         pass
 
     def getTipText(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
 
@@ -376,7 +377,7 @@ class JPopupMenu(JComponent):
     """
 
     def __init__(self, label=None):
-        # type: (Optional[String]) -> None
+        # type: (Optional[AnyStr]) -> None
         super(JPopupMenu, self).__init__()
         print(label)
 
@@ -409,26 +410,26 @@ class JPasswordField(JTextField):
         pass
 
     def getEchoChar(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
-    def getPassword(self):
-        # type: () -> List[String]
-        return ["p", "a", "s", "s", "w", "o", "r", "d"]
+    def getPassword(self):  # type: ignore[no-untyped-def]
+        return array.array("c", "password")
 
     def getText(self, *args):
-        # type: (*int) -> String
+        # type: (*int) -> unicode
         warnings.warn(
-            "As of Java 2 platform v1.2, replaced by getPassword.", DeprecationWarning
+            "As of Java 2 platform v1.2, replaced by getPassword.",
+            DeprecationWarning,
         )
-        return "password"
+        return unicode("password")
 
     def getUIClassID(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def setEchoChar(self, c):
-        # type: (String) -> None
+        # type: (AnyStr) -> None
         pass
 
     def updateUI(self):

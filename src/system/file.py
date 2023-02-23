@@ -21,11 +21,11 @@ import os.path
 import tempfile
 from typing import Any, List, Optional
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def fileExists(filepath):
-    # type: (String) -> bool
+    # type: (AnyStr) -> bool
     """Checks to see if a file or folder at a given path exists.
 
     Note:
@@ -43,7 +43,7 @@ def fileExists(filepath):
 
 
 def getTempFile(extension):
-    # type: (String) -> String
+    # type: (AnyStr) -> AnyStr
     """Creates a new temp file on the host machine with a certain
     extension, returning the path to the file.
 
@@ -67,7 +67,7 @@ def getTempFile(extension):
 
 
 def openFile(extension=None, defaultLocation=None):
-    # type: (Optional[String], Optional[String]) -> Optional[String]
+    # type: (Optional[AnyStr], Optional[AnyStr]) -> Optional[AnyStr]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file to open.
 
@@ -89,10 +89,10 @@ def openFile(extension=None, defaultLocation=None):
 
 
 def openFiles(
-    extension=None,  # type: Optional[String]
-    defaultLocation=None,  # type: Optional[String]
+    extension=None,  # type: Optional[AnyStr]
+    defaultLocation=None,  # type: Optional[AnyStr]
 ):
-    # type: (...) -> Optional[List[String]]
+    # type: (...) -> Optional[List[AnyStr]]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file or files to open.
 
@@ -114,7 +114,7 @@ def openFiles(
 
 
 def readFileAsBytes(filepath):
-    # type: (String) -> Any
+    # type: (AnyStr) -> Any
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as an array of bytes. Commonly this array of bytes
@@ -141,7 +141,7 @@ def readFileAsBytes(filepath):
 
 
 def readFileAsString(filepath, encoding="UTF-8"):
-    # type: (String, Optional[String]) -> String
+    # type: (AnyStr, Optional[AnyStr]) -> AnyStr
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as a string. Common things to do with this string
@@ -169,11 +169,11 @@ def readFileAsString(filepath, encoding="UTF-8"):
 
 
 def saveFile(
-    filename,  # type: String
-    extension=None,  # type: Optional[String]
-    typeDesc=None,  # type: Optional[String]
+    filename,  # type: AnyStr
+    extension=None,  # type: Optional[AnyStr]
+    typeDesc=None,  # type: Optional[AnyStr]
 ):
-    # type: (...) -> Optional[String]
+    # type: (...) -> Optional[AnyStr]
     """Prompts the user to save a new file named filename.
 
     The optional extension and typeDesc arguments can be added to be
@@ -197,10 +197,10 @@ def saveFile(
 
 
 def writeFile(
-    filepath,  # type: String
+    filepath,  # type: AnyStr
     data,  # type: Any
     append=False,  # type: bool
-    encoding="UTF-8",  # type: String
+    encoding="UTF-8",  # type: AnyStr
 ):
     # type: (...) -> None
     """Writes the given data to the file at file path filename.

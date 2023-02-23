@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["PyComponentWrapper"]
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from org.python.core import PyObject
 
 
@@ -12,5 +12,5 @@ class PyComponentWrapper(PyObject):
         super(PyComponentWrapper, self).__init__()
 
     def wrapMethod(self, name):
-        # type: (String) -> PyObject
+        # type: (AnyStr) -> PyObject
         pass

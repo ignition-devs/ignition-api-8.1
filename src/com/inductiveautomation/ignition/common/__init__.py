@@ -22,8 +22,9 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
     DataQuality,
     DataType,
 )
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import Color
-from java.lang import Class, Number, Object, String
+from java.lang import Class, Number, Object
 from java.util import UUID, Comparator, Date, Locale
 from org.json import JSONObject
 from org.python.core import PyObject
@@ -67,7 +68,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getColumnIndex(self, colName):
-        # type: (String) -> int
+        # type: (AnyStr) -> int
         """Returns the index of the column with the name colName.
 
         Args:
@@ -79,7 +80,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getColumnName(self, col):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         """Returns the name of the column at the index colIndex.
 
         Args:
@@ -91,7 +92,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getColumnNames(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         """Returns a list with the names of all the columns.
 
         Returns:
@@ -161,7 +162,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getValueAt(self, row, col):
-        # type: (int, Union[int, String]) -> Any
+        # type: (int, Union[int, AnyStr]) -> Any
         """Returns the value at the specified row index and column name
         or index.
 
@@ -185,14 +186,14 @@ class Dataset(object):
 
 
 class AbstractDataset(Dataset):
-    _columnNames = None  # type: List[String]
-    _columnNamesLowercase = None  # type: List[String]
+    _columnNames = None  # type: List[AnyStr]
+    _columnNamesLowercase = None  # type: List[AnyStr]
     _columnTypes = None  # type: List[Class]
     _qualityCodes = None  # type: Optional[List[List[QualityCode]]]
 
     def __init__(
         self,
-        columnNames,  # type: List[String]
+        columnNames,  # type: List[AnyStr]
         columnTypes,  # type: List[Class]
         qualityCodes=None,  # type: Optional[List[List[QualityCode]]]
     ):
@@ -220,7 +221,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getColumnIndex(self, colName):
-        # type: (String) -> int
+        # type: (AnyStr) -> int
         """Returns the index of the column with the name colName.
 
         Args:
@@ -232,7 +233,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getColumnName(self, col):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         """Returns the name of the column at the index colIndex.
 
         Args:
@@ -244,7 +245,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getColumnNames(self):
-        # type: () -> List[String]
+        # type: () -> List[AnyStr]
         """Returns a list with the names of all the columns.
 
         Returns:
@@ -314,7 +315,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getValueAt(self, row, col):
-        # type: (int, Union[int, String]) -> Any
+        # type: (int, Union[int, AnyStr]) -> Any
         """Returns the value at the specified row index and column name
         or index.
 
@@ -359,7 +360,7 @@ class BasicDataset(AbstractDataset):
         pass
 
     def setAllDirectly(self, columnNames, columnTypes, data):
-        # type: (List[String], List[Class], Any) -> None
+        # type: (List[AnyStr], List[Class], Any) -> None
         pass
 
     def setDataDirectly(self, arg):
@@ -367,7 +368,7 @@ class BasicDataset(AbstractDataset):
         pass
 
     def setFromXML(self, columnNames, columnTypes, encodedData, rowCount):
-        # type: (List[String], List[Class], String, int) -> None
+        # type: (List[AnyStr], List[Class], AnyStr, int) -> None
         pass
 
     def setValueAt(self, row, col, value):
@@ -379,7 +380,7 @@ class JsonPath(Object):
     ROOT = None  # type: JsonPath
 
     def createChildPath(self, arg):
-        # type: (Union[JsonPath, int, String]) -> JsonPath
+        # type: (Union[JsonPath, int, AnyStr]) -> JsonPath
         pass
 
     def getAsLinkedList(self):
@@ -420,12 +421,12 @@ class JsonPath(Object):
 
     @staticmethod
     def isValidIdentifier(test):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return True
 
     @staticmethod
     def parse(path):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
 
@@ -433,7 +434,7 @@ class Path(object):
     SERIALIZATION_WHITELIST = None  # type: Set[Class]
 
     def getLastPathComponent(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getParentPath(self):
@@ -441,7 +442,7 @@ class Path(object):
         raise NotImplementedError
 
     def getPathComponent(self, i):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         raise NotImplementedError
 
     def getPathLength(self):
@@ -465,7 +466,7 @@ class QualifiedPath(Object):
 
 
 class TypeUtilities(Object):
-    DATE_FORMAT_STRING = "yyyyMMdd.HHmmssSSSZ"  # type: String
+    DATE_FORMAT_STRING = "yyyyMMdd.HHmmssSSSZ"  # type: AnyStr
     NULL_SAFE_CASE_INSENSITIVE_ORDER = None  # type: Comparator
 
     @staticmethod
@@ -490,7 +491,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def coerceLocaleSafe(str, type):
-        # type: (String, Class) -> Object
+        # type: (AnyStr, Class) -> Object
         pass
 
     @staticmethod
@@ -510,7 +511,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def colorToHex(c):
-        # type: (Color) -> String
+        # type: (Color) -> AnyStr
         pass
 
     @staticmethod
@@ -535,7 +536,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def datasetFromJsonString(jsonStr):
-        # type: (String) -> Dataset
+        # type: (AnyStr) -> Dataset
         pass
 
     @staticmethod
@@ -560,12 +561,12 @@ class TypeUtilities(Object):
 
     @staticmethod
     def fromString(value, dest, locale):
-        # type: (String, Class, Locale) -> Object
+        # type: (AnyStr, Class, Locale) -> Object
         pass
 
     @staticmethod
     def getColorFromString(color):
-        # type: (String) -> Color
+        # type: (AnyStr) -> Color
         pass
 
     @staticmethod
@@ -580,7 +581,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def getLastNameComponent(name):
-        # type: (String) -> String
+        # type: (AnyStr) -> AnyStr
         pass
 
     @staticmethod
@@ -635,7 +636,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def isNullOrEmpty(s):
-        # type: (String) -> bool
+        # type: (AnyStr) -> bool
         return not s
 
     @staticmethod
@@ -715,7 +716,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def toEnum(enumType, value):
-        # type: (Class, String) -> T
+        # type: (Class, AnyStr) -> T
         pass
 
     @staticmethod
@@ -745,17 +746,17 @@ class TypeUtilities(Object):
 
     @staticmethod
     def toStr(value):
-        # type: (Object) -> String
+        # type: (Object) -> AnyStr
         pass
 
     @staticmethod
     def toStringLocalized(value, locale=None):
-        # type: (Object, Optional[Locale]) -> String
+        # type: (Object, Optional[Locale]) -> AnyStr
         pass
 
     @staticmethod
     def toStringOnlyNumberLocalized(value, locale):
-        # type: (Object, Locale) -> String
+        # type: (Object, Locale) -> AnyStr
         pass
 
     @staticmethod

@@ -54,8 +54,8 @@ from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import Color
-from java.lang import String
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject
 from javax.swing import (
@@ -81,7 +81,7 @@ COORD_SCREEN = 0
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
-    # type: (Color, String) -> Color
+    # type: (Color, AnyStr) -> Color
     """Prompts the user to pick a color using the default color-chooser
     dialog box.
 
@@ -99,7 +99,7 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
 
 
 def closeDesktop(handle):
-    # type: (String) -> None
+    # type: (AnyStr) -> None
     """Allows you to close any of the open desktops associated with the
     current client.
 
@@ -129,7 +129,7 @@ def color(*args):
 
 
 def confirm(message, title="Confirm", allowCancel=False):
-    # type: (String, String, bool) -> Optional[bool]
+    # type: (AnyStr, AnyStr, bool) -> Optional[bool]
     """Displays a confirmation dialog box to the user with "Yes", "No"
     options, and a custom message.
 
@@ -186,7 +186,7 @@ def convertPointToScreen(x, y, event):
 
 
 def createPopupMenu(itemNames, itemFunctions):
-    # type: (List[String], List[Callable[..., Any]]) -> JPopupMenu
+    # type: (List[AnyStr], List[Callable[..., Any]]) -> JPopupMenu
     """Creates a new popup menu, which can then be shown over a
     component on a mouse event.
 
@@ -202,7 +202,7 @@ def createPopupMenu(itemNames, itemFunctions):
 
 
 def desktop(handle):
-    # type: (String) -> WindowUtilities
+    # type: (AnyStr) -> WindowUtilities
     """Allows for invoking system.gui functions on a specific desktop.
 
     Args:
@@ -221,7 +221,7 @@ def desktop(handle):
 
 
 def errorBox(message, title="Error"):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Displays an error-style message box to the user.
 
     Args:
@@ -232,7 +232,7 @@ def errorBox(message, title="Error"):
 
 
 def findWindow(path):
-    # type: (String) -> List[FPMIWindow]
+    # type: (AnyStr) -> List[FPMIWindow]
     """Finds and returns a list of windows with the given path.
 
     If the window is not open, an empty list will be returned. Useful
@@ -251,7 +251,7 @@ def findWindow(path):
 
 
 def getCurrentDesktop():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the handle of the desktop this function was called from.
 
     Commonly used with the system.gui.desktop and system.nav.desktop
@@ -264,7 +264,7 @@ def getCurrentDesktop():
 
 
 def getDesktopHandles():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Gets a list of all secondary handles of the open desktops
     associated with the current client.
 
@@ -283,7 +283,7 @@ def getDesktopHandles():
 
 
 def getOpenedWindowNames():
-    # type: () -> Tuple[String, ...]
+    # type: () -> Tuple[AnyStr, ...]
     """Finds all of the currently open windows and returns a tuple of
     their paths.
 
@@ -322,7 +322,7 @@ def getParentWindow(event):
 
 
 def getQuality(component, propertyName):
-    # type: (JComponent, String) -> int
+    # type: (JComponent, AnyStr) -> int
     """Returns the data quality for the property of the given component
     as an integer.
 
@@ -354,7 +354,7 @@ def getScreenIndex():
 
 
 def getScreens():
-    # type: () -> List[Tuple[String, int, int]]
+    # type: () -> List[Tuple[AnyStr, int, int]]
     """Get a list of all the monitors on the computer this client is
     open on.
 
@@ -368,7 +368,7 @@ def getScreens():
 
 
 def getSibling(event, name):
-    # type: (EventObject, String) -> FPMIWindow
+    # type: (EventObject, AnyStr) -> FPMIWindow
     """Given a component event object, looks up a sibling component.
 
     Shortcut for event.source.parent.getComponent("siblingName"). If no
@@ -386,7 +386,7 @@ def getSibling(event, name):
 
 
 def getWindow(name):
-    # type: (String) -> FPMIWindow
+    # type: (AnyStr) -> FPMIWindow
     """Finds a reference to an open window with the given name.
 
     Throws a ValueError if the named window is not open or not found.
@@ -402,7 +402,7 @@ def getWindow(name):
 
 
 def getWindowNames():
-    # type: () -> Tuple[String, ...]
+    # type: () -> Tuple[AnyStr, ...]
     """Returns a list of the paths of all windows in the current
     project, sorted alphabetically.
 
@@ -414,7 +414,7 @@ def getWindowNames():
 
 
 def inputBox(message, defaultText=""):
-    # type: (String, String) -> Optional[String]
+    # type: (AnyStr, AnyStr) -> Optional[AnyStr]
     """Opens up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -467,7 +467,7 @@ def isTouchscreenModeEnabled():
 
 
 def messageBox(message, title="Information"):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -479,13 +479,13 @@ def messageBox(message, title="Information"):
 
 def openDesktop(
     screen=0,  # type: int
-    handle=None,  # type: Optional[String]
-    title=None,  # type: Optional[String]
+    handle=None,  # type: Optional[AnyStr]
+    title=None,  # type: Optional[AnyStr]
     width=None,  # type: Optional[int]
     height=None,  # type: Optional[int]
     x=0,  # type: int
     y=0,  # type: int
-    windows=None,  # type: Optional[List[String]]
+    windows=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> JFrame
     """Creates an additional Desktop in a new frame.
@@ -533,11 +533,11 @@ def openDiagnostics():
 
 
 def passwordBox(
-    message,  # type:String
-    title="Password",  # type: String
-    echoChar="*",  # type: String
+    message,  # type:AnyStr
+    title="Password",  # type: AnyStr
+    echoChar="*",  # type: AnyStr
 ):
-    # type: (...) -> Optional[String]
+    # type: (...) -> Optional[AnyStr]
     """Pops up a special input box that uses a password field, so the
     text isn't echoed back in clear-text to the user.
 
@@ -605,7 +605,7 @@ def showNumericKeypad(
 
 
 def showTouchscreenKeyboard(initialText, fontSize=None, passwordMode=False):
-    # type: (String, Optional[int], Optional[bool]) -> String
+    # type: (AnyStr, Optional[int], Optional[bool]) -> AnyStr
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor.
 
@@ -694,7 +694,7 @@ def transform(
 
 
 def warningBox(message, title="Warning"):
-    # type: (String, String) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Displays a message to the user in a warning style popup dialog.
 
     Args:

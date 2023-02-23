@@ -4,7 +4,7 @@ from typing import Any, Iterator, List
 
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.alarming import AlarmEvent, PyAlarmEvent
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 class AlarmQueryResult(object):
@@ -17,7 +17,7 @@ class AlarmQueryResult(object):
     """
 
     def getAssociatedDate(self, uuid):
-        # type: (String) -> Dataset
+        # type: (AnyStr) -> Dataset
         raise NotImplementedError
 
     def getDataSet(self):
@@ -25,7 +25,7 @@ class AlarmQueryResult(object):
         raise NotImplementedError
 
     def getEvent(self, uuid):
-        # type: (String) -> AlarmEvent
+        # type: (AnyStr) -> AlarmEvent
         raise NotImplementedError
 
 
@@ -44,7 +44,7 @@ class AlarmQueryResultImpl(AlarmQueryResult):
         pass
 
     def getAssociatedDate(self, uuid):
-        # type: (String) -> Dataset
+        # type: (AnyStr) -> Dataset
         pass
 
     def getDataSet(self):
@@ -52,5 +52,5 @@ class AlarmQueryResultImpl(AlarmQueryResult):
         pass
 
     def getEvent(self, uuid):
-        # type: (String) -> AlarmEvent
+        # type: (AnyStr) -> AlarmEvent
         pass

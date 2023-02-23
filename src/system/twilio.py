@@ -18,11 +18,11 @@ __all__ = [
 from typing import List
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def getAccounts():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Return a list of Twilio accounts that have been configured in the
     Gateway.
 
@@ -44,7 +44,7 @@ def getAccountsDataset():
 
 
 def getPhoneNumbers(accountName):
-    # type: (String) -> List[String]
+    # type: (AnyStr) -> List[AnyStr]
     """Returns a list of outgoing phone numbers for a Twilio account.
 
     Note that these numbers are supplied by Twilio, and are not defined
@@ -56,14 +56,14 @@ def getPhoneNumbers(accountName):
     Returns:
         A list of phone numbers for the given Twilio account.
     """
-    phoneNumbers = []  # type: List[String]
+    phoneNumbers = []  # type: List[AnyStr]
     if accountName == "Jenny":
         phoneNumbers.append("+12058675309")
     return phoneNumbers
 
 
 def getPhoneNumbersDataset(accountName):
-    # type: (String) -> BasicDataset
+    # type: (AnyStr) -> BasicDataset
     """Return a list of outgoing phone numbers for a Twilio account as a
     single-column Dataset.
 
@@ -82,7 +82,7 @@ def getPhoneNumbersDataset(accountName):
 
 
 def sendSms(accountName, fromNumber, toNumber, message):
-    # type: (String, String, String, String) -> None
+    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> None
     """Sends an SMS message.
 
     Args:

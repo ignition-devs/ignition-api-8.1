@@ -18,14 +18,15 @@ __all__ = [
 
 from typing import Any, Optional
 
+from dev.thecesrom.helper.types import AnyStr
 from java.awt.geom import Dimension2D, Point2D
-from java.lang import Object, String
+from java.lang import Object
 from java.util import EventObject
 
 
 class LayoutManager(object):
     def addLayoutComponent(self, name, comp):
-        # type: (String, Component) -> None
+        # type: (AnyStr, Component) -> None
         raise NotImplementedError
 
     def layoutContainer(self, parent):
@@ -58,7 +59,7 @@ class AWTEvent(EventObject):
         return self._id
 
     def paramString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def setSource(self, newSource):
@@ -213,7 +214,7 @@ class GridLayout(Object, LayoutManager):
         print(rows, cols, hgap, vgap)
 
     def addLayoutComponent(self, name, comp):
-        # type: (String, Component) -> None
+        # type: (AnyStr, Component) -> None
         pass
 
     def getColumns(self):

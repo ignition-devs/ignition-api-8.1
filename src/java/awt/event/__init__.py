@@ -4,8 +4,9 @@ __all__ = ["ActionEvent", "ComponentEvent", "MouseEvent"]
 
 from typing import Any
 
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import AWTEvent, Component, Point
-from java.lang import Object, String
+from java.lang import Object
 
 
 class ActionEvent(AWTEvent):
@@ -23,7 +24,7 @@ class ActionEvent(AWTEvent):
         super(ActionEvent, self).__init__(source, id)
 
     def getActionCommand(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getModifiers(self):
@@ -85,7 +86,7 @@ class InputEvent(ComponentEvent):
 
     @staticmethod
     def getModifiersExText(modifiers):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         pass
 
     def getWhen(self):
@@ -152,7 +153,7 @@ class MouseEvent(InputEvent):
 
     @staticmethod
     def getMouseModifiersText(modifiers):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         pass
 
     def getPoint(self):

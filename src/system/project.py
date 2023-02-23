@@ -10,11 +10,11 @@ __all__ = ["getProjectName", "getProjectNames"]
 
 from typing import List
 
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 def getProjectName():
-    # type: () -> String
+    # type: () -> AnyStr
     """Returns the name of the project where the function was called
     from.
 
@@ -37,7 +37,7 @@ def getProjectName():
 
 
 def getProjectNames():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Returns an unsorted collection of strings, where each string
     represents the name of a project on the Gateway.
 

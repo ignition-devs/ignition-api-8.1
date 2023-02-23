@@ -10,9 +10,9 @@ __all__ = ["LANDSCAPE", "PORTRAIT", "createImage", "createPrintJob", "printToIma
 from typing import Optional
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
+from dev.thecesrom.helper.types import AnyStr
 from java.awt import Component
 from java.awt.image import BufferedImage
-from java.lang import String
 
 LANDSCAPE = 0
 PORTRAIT = 1
@@ -56,7 +56,7 @@ def createPrintJob(component):
 
 
 def printToImage(component, filename=None):
-    # type: (Component, Optional[String]) -> None
+    # type: (Component, Optional[AnyStr]) -> None
     """This function prints the given component (such as a graph,
     container, entire window, etc.) to an image file, and saves the file
     where ever the operating system deems appropriate.

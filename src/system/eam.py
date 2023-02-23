@@ -12,12 +12,12 @@ from typing import List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date, Locale
 
 
 def getGroups():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Returns the names of the defined agent organizational groups in
     the Gateway.
 
@@ -34,8 +34,8 @@ def getGroups():
 
 
 def queryAgentHistory(
-    groupIds=None,  # type: Optional[List[String]]
-    agentIds=None,  # type: Optional[List[String]]
+    groupIds=None,  # type: Optional[List[AnyStr]]
+    agentIds=None,  # type: Optional[List[AnyStr]]
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
     limit=100,  # type: int
@@ -72,8 +72,8 @@ def queryAgentHistory(
 
 
 def queryAgentStatus(
-    groupIds=None,  # type: Optional[List[String]]
-    agentIds=None,  # type: Optional[List[String]]
+    groupIds=None,  # type: Optional[List[AnyStr]]
+    agentIds=None,  # type: Optional[List[AnyStr]]
     isConnected=True,  # type: bool
 ):
     # type: (...) -> BasicDataset
@@ -109,7 +109,7 @@ def queryAgentStatus(
 
 
 def runTask(taskname):
-    # type: (String) -> UIResponse
+    # type: (AnyStr) -> UIResponse
     """Takes the name of a task as an argument as a string (must be
     configured on the Controller before hand), attempts to execute the
     task.

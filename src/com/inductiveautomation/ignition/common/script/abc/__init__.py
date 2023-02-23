@@ -13,7 +13,8 @@ __all__ = [
 
 from typing import Any, Iterator, Optional, Union
 
-from java.lang import Class, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Class
 from org.python.core import PyInteger, PyList, PyObject, PySequence
 
 
@@ -23,7 +24,7 @@ class JythonMap(object):
         raise NotImplementedError
 
     def __finditem__(self, key):
-        # type: (Union[int, PyObject, String]) -> PyObject
+        # type: (Union[int, PyObject, AnyStr]) -> PyObject
         raise NotImplementedError
 
     def __iter__(self):
@@ -123,7 +124,7 @@ class MutableJythonMap(object):
         raise NotImplementedError
 
     def update(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> None
+        # type: (*PyObject, **AnyStr) -> None
         raise NotImplementedError
 
 
@@ -185,7 +186,7 @@ class MutableJythonSequence(JythonSequence):
         raise NotImplementedError
 
     def sort(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> None
+        # type: (*PyObject, **AnyStr) -> None
         raise NotImplementedError
 
 
@@ -195,7 +196,7 @@ class AbstractJythonMap(JythonMap):
         return True
 
     def __finditem__(self, key):
-        # type: (Union[int, PyObject, String]) -> PyObject
+        # type: (Union[int, PyObject, AnyStr]) -> PyObject
         pass
 
     def __iter__(self):
@@ -292,7 +293,7 @@ class AbstractMutableJythonMap(MutableJythonMap):
         pass
 
     def update(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> None
+        # type: (*PyObject, **AnyStr) -> None
         raise NotImplementedError
 
 
@@ -322,5 +323,5 @@ class AbstractMutableJythonSequence(AbstractJythonSequence, MutableJythonSequenc
         raise NotImplementedError
 
     def sort(self, *args, **kwargs):
-        # type: (*PyObject, **String) -> None
+        # type: (*PyObject, **AnyStr) -> None
         pass

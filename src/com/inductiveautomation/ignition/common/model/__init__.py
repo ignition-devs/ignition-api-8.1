@@ -3,8 +3,9 @@ __all__ = ["ApplicationScope", "Version"]
 import re
 from typing import Any, Optional, Tuple, Union
 
+from dev.thecesrom.helper.types import AnyStr
 from java.io import InputStream
-from java.lang import IllegalArgumentException, Object, String
+from java.lang import IllegalArgumentException, Object
 
 
 class ApplicationScope(Object):
@@ -27,7 +28,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def getScopePrefix():
-        # type: () -> String
+        # type: () -> AnyStr
         """Returns the current jvm's scope prefix, for use in thread
         names.
 
@@ -58,7 +59,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def parseScope(s):
-        # type: (String) -> int
+        # type: (AnyStr) -> int
         """Returns a bitmask representing application scope for strings
         like:
 
@@ -78,7 +79,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def toCode(scope):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         """Turns a scope int into the various scope codes:
 
             "C"= client
@@ -184,14 +185,14 @@ class Version(Object):
         return self.dev
 
     def isFutureVersion(self, arg):
-        # type: (Union[Version, String]) -> bool
+        # type: (Union[Version, AnyStr]) -> bool
         cls = type(self)
         if isinstance(arg, basestring):
             that = self.parse(arg)
         elif isinstance(arg, cls):
             that = arg
         else:
-            raise TypeError("isFutureVersion(): 1st arg can't be coerced to String.")
+            raise TypeError("isFutureVersion(): 1st arg can't be coerced to AnyStr.")
 
         return self._compare(that) == -1
 
@@ -201,7 +202,7 @@ class Version(Object):
 
     @staticmethod
     def parse(s):
-        # type: (String) -> Version
+        # type: (AnyStr) -> Version
         sem_ver = [int(i) for i in re.findall(r"-?\d+", s)]
         if len(sem_ver) < 3:
             raise IllegalArgumentException('Invalid version: "{}"'.format(s))

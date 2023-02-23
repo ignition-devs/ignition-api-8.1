@@ -26,10 +26,12 @@ __all__ = [
 ]
 
 import __builtin__ as builtins
+import array
 import time
 from typing import Any, List, Optional, TypeVar, Union
 
-String = Union[str, unicode]
+from dev.thecesrom.helper.types import AnyStr
+
 T = TypeVar("T")
 U = TypeVar("U")
 
@@ -70,7 +72,7 @@ class Object(object):
 
     def hashCode(self):
         # type: () -> int
-        pass
+        return hash(self)
 
     def notify(self):
         # type: () -> None
@@ -81,7 +83,7 @@ class Object(object):
         pass
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return repr(self)
 
     def wait(self, timeoutMillis=0, nanos=0):
@@ -126,7 +128,7 @@ class CharSequence(object):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         raise NotImplementedError
 
 
@@ -156,7 +158,7 @@ class Enum(Object):
         pass
 
     def name(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def ordinal(self):
@@ -165,7 +167,7 @@ class Enum(Object):
 
     @staticmethod
     def valueOf(enumType, name):
-        # type: (Class, String) -> Enum
+        # type: (Class, AnyStr) -> Enum
         pass
 
 
@@ -232,6 +234,197 @@ class StackTraceElement(Object):
     def isNativeMethod(self):
         # type: () -> bool
         return True
+
+
+class String(unicode):
+    def __new__(cls, value, *args):
+        print(args)
+        return unicode.__new__(cls, value)
+
+    def charAt(self, index):
+        # type: (int) -> unicode
+        pass
+
+    def chars(self):  # type: ignore[no-untyped-def]
+        pass
+
+    def codePointAt(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointBefore(self, index):
+        # type: (int) -> int
+        pass
+
+    def codePointCount(self, beginIndex, endIndex):
+        # type: (int, int) -> int
+        pass
+
+    def codePoints(self):  # type: ignore[no-untyped-def]
+        pass
+
+    @staticmethod
+    def compare(cs1, cs2):
+        # type: (CharSequence, CharSequence) -> int
+        pass
+
+    def compareTo(self, anotherString):
+        # type: (String) -> int
+        pass
+
+    def compareToIgnoreCase(self, arg):
+        # type: (String) -> int
+        pass
+
+    def concat(self, arg):
+        # type: (String) -> String
+        pass
+
+    def contains(self, arg):
+        # type: (String) -> bool
+        pass
+
+    def contentEquals(self, arg):
+        # type: (Union[CharSequence, StringBuffer]) -> bool
+        pass
+
+    @staticmethod
+    def copyValueOf(*args):
+        # type: (*Any) -> String
+        pass
+
+    def endsWith(self, suffix):
+        # type: (String) -> bool
+        return self.endswith(suffix)
+
+    def equals(self, anObject):
+        # type: (Object) -> bool
+        pass
+
+    def equalsIgnoreCase(self, anotherString):
+        # type: (String) -> bool
+        pass
+
+    def getBytes(self, *args):
+        # type: (*Any) -> Optional[object]
+        return array.array("b", self)
+
+    def getChars(self, srcBegin, srcEnd, dst, dstBegin):
+        # type: (int, int, object, int) -> None
+        pass
+
+    def getClass(self):
+        # type: () -> Class
+        pass
+
+    def hashCode(self):
+        # type: () -> int
+        return hash(self)
+
+    def indexOf(self, arg, fromIndex=None):
+        # type: (Union[int, String], Optional[int]) -> int
+        pass
+
+    def intern(self):
+        # type: () -> String
+        pass
+
+    def isBlank(self):
+        # type: () -> bool
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def lastIndexOf(self, arg, fromIndex=None):
+        # type: (Union[int, String], Optional[int]) -> int
+        pass
+
+    def length(self):
+        # type: () -> int
+        return len(self)
+
+    def lines(self):  # type: ignore[no-untyped-def]
+        pass
+
+    def matches(self, regex):
+        # type: (String) -> bool
+        pass
+
+    def notify(self):
+        # type: () -> None
+        pass
+
+    def notifyAll(self):
+        # type: () -> None
+        pass
+
+    def offsetByCodePoints(self, index, codePointOffset):
+        # type: (int, int) -> int
+        pass
+
+    def regionMatches(self, *args):
+        # type: (*Any) -> bool
+        pass
+
+    def repeat(self, count):
+        # type: (int) -> String
+        pass
+
+    def replaceAll(self, regex, replacement):
+        # type: (String, String) -> String
+        pass
+
+    def replaceFirst(self, regex, replacement):
+        # type: (String, String) -> String
+        pass
+
+    def startsWith(self, prefix, offset=0):
+        # type: (String, int) -> bool
+        return self.startswith(prefix, offset)
+
+    def stripLeading(self):
+        # type: () -> String
+        pass
+
+    def stripTrailing(self):
+        # type: () -> String
+        pass
+
+    def subSequence(self, start, end):
+        # type: (int, int) -> CharSequence
+        pass
+
+    def substring(self, beginIndex, endIndex=None):
+        # type: (int, Optional[int]) -> String
+        pass
+
+    def toCharArray(self):
+        # type: () -> object
+        return array.array("c", self)
+
+    def toLowerCase(self, locale=None):
+        # type: (Optional[Any]) -> String
+        print(locale)
+        return String(self.lower())
+
+    def toString(self):
+        # type: () -> unicode
+        return unicode(self)
+
+    def toUpperCase(self):
+        # type: () -> String
+        return String(self.upper())
+
+    @staticmethod
+    def valueOf(*args):
+        # type: (*Any) -> String
+        pass
+
+    def wait(self, timeoutMillis=0, nanos=0):
+        # type: (long, int) -> None
+        pass
 
 
 class StringBuffer(Object, CharSequence):
@@ -388,7 +581,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def indexOf(self, str_, fromIndex=0):
-        # type: (String, int) -> int
+        # type: (AnyStr, int) -> int
         pass
 
     def insert(self, *args):
@@ -396,7 +589,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def lastIndexOf(self, str_, fromIndex=0):
-        # type: (String, int) -> int
+        # type: (AnyStr, int) -> int
         pass
 
     def length(self):
@@ -428,7 +621,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def substring(self, start, end=-1):
-        # type: (int, int) -> String
+        # type: (int, int) -> AnyStr
         pass
 
     def trimToSize(self):
@@ -499,7 +692,7 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def toString(self):
-        # type: () -> String
+        # type: () -> AnyStr
         return "A short description of this throwable."
 
 

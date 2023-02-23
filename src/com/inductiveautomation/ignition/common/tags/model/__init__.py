@@ -4,7 +4,7 @@ from typing import Union
 
 from com.inductiveautomation.ignition.common import Path
 from com.inductiveautomation.ignition.common.config import Property
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 
 
 class TagPath(Path):
@@ -13,15 +13,15 @@ class TagPath(Path):
         pass
 
     def getChildPath(self, arg):
-        # type: (Union[Property, String]) -> TagPath
+        # type: (Union[Property, AnyStr]) -> TagPath
         pass
 
     def getItemName(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getLastPathComponent(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def getParentPath(self):
@@ -29,7 +29,7 @@ class TagPath(Path):
         pass
 
     def getPathComponent(self, i):
-        # type: (int) -> String
+        # type: (int) -> AnyStr
         pass
 
     def getPathLength(self):
@@ -41,7 +41,7 @@ class TagPath(Path):
         pass
 
     def getSource(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def isAncestorOf(self, path):
@@ -49,9 +49,9 @@ class TagPath(Path):
         return True
 
     def toStringFull(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass
 
     def toStringPartial(self):
-        # type: () -> String
+        # type: () -> AnyStr
         pass

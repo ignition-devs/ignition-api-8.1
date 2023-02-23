@@ -6,8 +6,9 @@ from typing import Any, Union
 
 from enum import Enum
 
+from dev.thecesrom.helper.types import AnyStr
 from dev.thecesrom.utils.decorators import classproperty
-from java.lang import Object, String
+from java.lang import Object
 from java.util import Date
 
 
@@ -17,7 +18,7 @@ class QualifiedValue(object):
     """
 
     def derive(self, arg=None):
-        # type: (Union[None, QualityCode, String]) -> QualifiedValue
+        # type: (Union[None, QualityCode, AnyStr]) -> QualifiedValue
         raise NotImplementedError
 
     def getQuality(self):
@@ -255,7 +256,7 @@ class BasicQualifiedValue(QualifiedValue, Object):
         pass
 
     def derive(self, arg=None):
-        # type: (Union[None, QualityCode, String]) -> QualifiedValue
+        # type: (Union[None, QualityCode, AnyStr]) -> QualifiedValue
         pass
 
     @staticmethod

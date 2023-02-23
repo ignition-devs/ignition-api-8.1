@@ -25,12 +25,12 @@ from typing import Any, List
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.sqltags.history import AggregateInfo
-from java.lang import String
+from dev.thecesrom.helper.types import AnyStr
 from java.util import Date
 
 
 def browse(root):
-    # type: (String) -> List[Results]
+    # type: (AnyStr) -> List[Results]
     """Performs a browse at the given root.
 
     Args:
@@ -44,7 +44,7 @@ def browse(root):
 
 
 def getAggregates(serverName):
-    # type: (String) -> List[AggregateInfo]
+    # type: (AnyStr) -> List[AggregateInfo]
     """Will query the Server for aggregates that it supports.
 
     Args:
@@ -59,7 +59,7 @@ def getAggregates(serverName):
 
 
 def getAttributes(serverName):
-    # type: (String) -> List[AggregateInfo]
+    # type: (AnyStr) -> List[AggregateInfo]
     """Queries the given Server for the item attributes that are
     available with system.opchda.readAttributes().
 
@@ -75,7 +75,7 @@ def getAttributes(serverName):
 
 
 def getServers():
-    # type: () -> List[String]
+    # type: () -> List[AnyStr]
     """Returns a list of the OPC-HDA servers configured on the system.
 
     This call will return all configured and enabled servers, including
@@ -88,7 +88,7 @@ def getServers():
 
 
 def insert(serverName, itemId, value, date, quality):
-    # type: (String, String, Any, Any, int) -> QualityCode
+    # type: (AnyStr, AnyStr, Any, Any, int) -> QualityCode
     """Insert values on the OPC-HDA Server if the given item ID does not
     exist.
 
@@ -107,7 +107,7 @@ def insert(serverName, itemId, value, date, quality):
 
 
 def insertReplace(serverName, itemId, value, date, quality):
-    # type: (String, String, Any, Date, int) -> QualityCode
+    # type: (AnyStr, AnyStr, Any, Date, int) -> QualityCode
     """Will insert values on the OPC-HDA Server, or replace them if they
     already exist.
 
@@ -126,7 +126,7 @@ def insertReplace(serverName, itemId, value, date, quality):
 
 
 def isServerAvailable(serverName):
-    # type: (String) -> bool
+    # type: (AnyStr) -> bool
     """Checks to see if the specified OPC-HDA Server is defined,
     enabled, and connected.
 
@@ -142,7 +142,7 @@ def isServerAvailable(serverName):
 
 
 def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
-    # type: (String, String, String, Date, Date) -> List[Any]
+    # type: (AnyStr, AnyStr, AnyStr, Date, Date) -> List[Any]
     """Reads the specified attributes for the given item over a time
     range.
 
@@ -171,8 +171,8 @@ def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
 
 
 def readProcessed(
-    serverName,  # type: String
-    itemIds,  # type: List[String]
+    serverName,  # type: AnyStr
+    itemIds,  # type: List[AnyStr]
     startDate,  # type: Date
     endDate,  # type: Date
     resampleIntervalMS,  # type: int
@@ -216,8 +216,8 @@ def readProcessed(
 
 
 def readRaw(
-    serverName,  # type: String
-    itemIds,  # type: List[String]
+    serverName,  # type: AnyStr
+    itemIds,  # type: List[AnyStr]
     startDate,  # type: Date
     endDate,  # type: Date
     maxValues,  # type: int
@@ -249,7 +249,7 @@ def readRaw(
 
 
 def replace(serverName, itemId, value, date, quality):
-    # type: (String, String, Any, Date, int) -> QualityCode
+    # type: (AnyStr, AnyStr, Any, Date, int) -> QualityCode
     """Replaces values on the OPC-HDA Server if the given item ID
     exists.
 

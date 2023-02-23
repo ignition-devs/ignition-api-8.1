@@ -4,7 +4,8 @@ from typing import List, Optional
 
 from com.inductiveautomation.ignition.common.i18n import LocalizedString
 from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
-from java.lang import Enum, Object, String
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Enum, Object
 from java.util import Locale
 
 
@@ -56,7 +57,7 @@ class DataQuality(Object):
         return False
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> String
+        # type: (Optional[Locale]) -> AnyStr
         pass
 
     @staticmethod

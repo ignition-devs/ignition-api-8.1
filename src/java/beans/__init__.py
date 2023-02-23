@@ -1,10 +1,13 @@
-from java.lang import Object, String
+__all__ = ["PropertyChangeEvent", "PropertyChangeListener"]
+
+from dev.thecesrom.helper.types import AnyStr
+from java.lang import Object
 from java.util import EventObject
 
 
 class PropertyChangeEvent(EventObject):
     def __init__(self, source, propertyName, oldValue, newValue):
-        # type: (Object, String, Object, Object) -> None
+        # type: (Object, AnyStr, Object, Object) -> None
         super(PropertyChangeEvent, self).__init__(source)
         self._newValue = newValue
         self._oldValue = oldValue
