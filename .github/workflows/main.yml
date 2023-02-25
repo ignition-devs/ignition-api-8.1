@@ -9,7 +9,6 @@ on:
 
 jobs:
   test:
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@v1.2.2
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@v2.0.1
     with:
-      image: ubuntu-20.04
       pre-commit: true
