@@ -701,12 +701,13 @@ class EventObject(Object):
 
 class Locale(Object):
     """A Locale object represents a specific geographical, political, or
-    cultural region. An operation that requires a Locale to perform its
-    task is called locale-sensitive and uses the Locale to tailor
-    information for the user. For example, displaying a number is a
-    locale-sensitive operation; the number should be formatted according
-    to the customs and conventions of the user's native country, region,
-    or culture.
+    cultural region.
+
+    An operation that requires a Locale to perform its task is called
+    locale-sensitive and uses the Locale to tailor information for the
+    user. For example, displaying a number is a locale-sensitive
+    operation; the number should be formatted according to the customs
+    and conventions of the user's native country, region, or culture.
     """
 
     country = None  # type: Optional[str]

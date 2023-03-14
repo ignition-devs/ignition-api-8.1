@@ -75,8 +75,8 @@ def directOperateBinary(
     offTime=None,  # type: Optional[int]
 ):
     # type: (...) -> int
-    """Issues a Direct-Operate command for digital control operations
-    at binary output points (CROB).
+    """Issues a Direct-Operate command for digital control operations at
+    binary output points (CROB).
 
     Args:
         deviceName: The name of the DNP3 device driver.

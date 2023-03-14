@@ -254,6 +254,7 @@ class PrintUtilities(Object):
 
 class WindowUtilities(Object):
     """These are the scripting functions mounted at system.gui.*.
+
     Changes to this class must be made carefully, as some of the true
     implementations actually reside in the subclass,
     WindowUtilitiesForDesktop.

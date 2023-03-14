@@ -248,8 +248,9 @@ class JDesktopPane(JLayeredPane):
 
 class JOptionPane(JComponent):
     """JOptionPane makes it easy to pop up a standard dialog box that
-    prompts users for a value or informs them of something. For
-    information about using JOptionPane, see How to Make Dialogs, a
+    prompts users for a value or informs them of something.
+
+    For information about using JOptionPane, see How to Make Dialogs, a
     section in The Java Tutorial.
     """
 
@@ -368,12 +369,13 @@ class JToolTip(JComponent):
 
 class JPopupMenu(JComponent):
     """An implementation of a popup menu -- a small window that pops up
-    and displays a series of choices. A JPopupMenu is used for the menu
-    that appears when the user selects an item on the menu bar. It is
-    also used for "pull-right" menu that appears when the selects a menu
-    item that activates it. Finally, a JPopupMenu can also be used
-    anywhere else you want a menu to appear. For example, when the user
-    right-clicks in a specified area.
+    and displays a series of choices.
+
+    A JPopupMenu is used for the menu that appears when the user selects
+    an item on the menu bar. It is also used for "pull-right" menu that
+    appears when the selects a menu item that activates it. Finally, a
+    JPopupMenu can also be used anywhere else you want a menu to appear.
+    For example, when the user right-clicks in a specified area.
     """
 
     def __init__(self, label=None):
