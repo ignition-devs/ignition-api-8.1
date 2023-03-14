@@ -167,9 +167,9 @@ def confirm(message, title="Confirm", allowCancel=False):
 
 def convertPointToScreen(x, y, event):
     # type: (int, int, EventObject) -> Tuple[int, int]
-    """Converts a pair of coordinates that are relative to
-    the upper-left corner of some component to be relative to the
-    upper-left corner of the entire screen.
+    """Converts a pair of coordinates that are relative to the upper-
+    left corner of some component to be relative to the upper-left
+    corner of the entire screen.
 
     Args:
         x: The X-coordinate, relative to the component that fired the

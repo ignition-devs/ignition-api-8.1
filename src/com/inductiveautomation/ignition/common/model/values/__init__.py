@@ -36,7 +36,8 @@ class QualifiedValue(object):
 
 class Quality(object):
     """Needed for gateway network interop with v7, but otherwise not
-    used."""
+    used.
+    """
 
     def getDescription(self):
         pass

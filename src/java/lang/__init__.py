@@ -37,9 +37,10 @@ U = TypeVar("U")
 
 
 class Object(object):
-    """Class Object is the root of the class hierarchy. Every class has
-    Object as a superclass. All objects, including arrays, implement the
-    methods of this class.
+    """Class Object is the root of the class hierarchy.
+
+    Every class has Object as a superclass. All objects, including
+    arrays, implement the methods of this class.
     """
 
     def __init__(self):

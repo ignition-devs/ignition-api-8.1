@@ -22,7 +22,6 @@ class ApplicationScope(Object):
 
         Returns:
             The scope of this JVM, wherever it may be.
-
         """
         return -1
 

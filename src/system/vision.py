@@ -1,4 +1,4 @@
-"""Vision Functions
+"""Vision Functions.
 
 The following function will allow you to update your Vision Client
 project using scripting.

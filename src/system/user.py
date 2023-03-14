@@ -360,8 +360,8 @@ def getScheduledUsers(userSource, date=Date()):
 
 def getSchedules():
     # type: () -> List[AbstractScheduleModel]
-    """Returns a sequence of all available schedule models, which can
-    be used to return configuration information on the schedule, such as
+    """Returns a sequence of all available schedule models, which can be
+    used to return configuration information on the schedule, such as
     time for each day of the week.
 
     Returns:

@@ -49,8 +49,7 @@ def getExternalIpAddress():
 
 def getHostName():
     # type: () -> AnyStr
-    """Returns the host name of the computer that the script was ran
-    on.
+    """Returns the host name of the computer that the script was ran on.
 
     When run in the Gateway scope, returns the Gateway hostname. When
     run in the Client scope, returns the Client hostname. On Windows,

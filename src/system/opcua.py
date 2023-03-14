@@ -72,7 +72,6 @@ def callMethod(
             1: A list of StatusCode objects corresponding to each
                 input argument
             2: A list of output values
-
     """
     print(connectionName, objectId, methodId, inputs)
     return None, None, None

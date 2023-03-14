@@ -763,8 +763,8 @@ def togglePopup(
 
 def vibrateDevice(duration, sessionId="current_session"):
     # type: (int, Optional[AnyStr]) -> None
-    """When called from the Perspective App, will cause the
-    device to vibrate for the specified number of milliseconds.
+    """When called from the Perspective App, will cause the device to
+    vibrate for the specified number of milliseconds.
 
     Note:
         iOS vibration duration is fixed. This function will cause an iOS
