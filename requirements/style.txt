@@ -1,5 +1,0 @@
-black
-flake8==5.0.4
-isort
-pydocstyle
-sort-all
