@@ -34,22 +34,22 @@ __all__ = [
 import os.path
 from typing import Any, Dict, List, Optional, Type, Union
 
-from com.inductiveautomation.ignition.common import BasicDataset, Dataset
+from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
-from dev.thecesrom.helper.types import AnyStr
+from dev.thecesrom.helper.types import AnyNum, AnyStr
 from java.util import Date, Locale
 
-ColType = Union[Date, float, int, str, unicode]
+ColType = Union[AnyNum, AnyStr, Date]
 
 
 def addColumn(
-    dataset,  # type: BasicDataset
+    dataset,  # type: Dataset
     colIndex,  # type: int
     col,  # type: List[Any]
     colName,  # type: AnyStr
     colType,  # type: Type[ColType]
 ):
-    # type: (...) -> BasicDataset
+    # type: (...) -> Dataset
     """Takes a dataset and returns a new dataset with a new column added
     or inserted into it.
 
@@ -82,11 +82,11 @@ def addColumn(
         A new dataset with the new column inserted or appended.
     """
     print(dataset, colIndex, col, colName, colType)
-    return BasicDataset()
+    return Dataset()
 
 
 def addRow(dataset, rowIndex, row):
-    # type: (BasicDataset, int, List[Any]) -> BasicDataset
+    # type: (Dataset, int, List[Any]) -> Dataset
     """Takes a dataset and returns a new dataset with a new row added or
     inserted into it.
 
@@ -115,11 +115,11 @@ def addRow(dataset, rowIndex, row):
         A new dataset with the new row inserted or appended.
     """
     print(dataset, rowIndex, row)
-    return BasicDataset()
+    return Dataset()
 
 
 def addRows(dataset, rowIndex, rows):
-    # type: (BasicDataset, int, List[List[Any]]) -> BasicDataset
+    # type: (Dataset, int, List[List[Any]]) -> Dataset
     """Takes a dataset and returns a new dataset with a new row added or
     inserted into it.
 
@@ -149,11 +149,11 @@ def addRows(dataset, rowIndex, rows):
         A new dataset with the new row inserted or appended.
     """
     print(dataset, rowIndex, rows)
-    return BasicDataset()
+    return Dataset()
 
 
 def appendDataset(dataset1, dataset2):
-    # type: (BasicDataset, BasicDataset) -> BasicDataset
+    # type: (Dataset, Dataset) -> Dataset
     """Takes two different datasets and returns a new dataset with the
     second dataset appended to the first.
 
@@ -170,11 +170,11 @@ def appendDataset(dataset1, dataset2):
         datasets.
     """
     print(dataset1, dataset2)
-    return BasicDataset()
+    return Dataset()
 
 
 def clearDataset(dataset):
-    # type: (BasicDataset) -> BasicDataset
+    # type: (Dataset) -> Dataset
     """Takes a dataset and returns a new dataset with all of the same
     column names, but all of the rows deleted.
 
@@ -191,11 +191,11 @@ def clearDataset(dataset):
         A new dataset with no data.
     """
     print(dataset)
-    return BasicDataset()
+    return Dataset()
 
 
 def dataSetToHTML(showHeaders, dataset, title):
-    # type: (bool, BasicDataset, AnyStr) -> AnyStr
+    # type: (bool, Dataset, AnyStr) -> AnyStr
     """Formats the contents of a dataset as an HTML page, returning the
     results as a string.
 
@@ -215,7 +215,7 @@ def dataSetToHTML(showHeaders, dataset, title):
 
 
 def deleteRow(dataset, rowIndex):
-    # type: (BasicDataset, int) -> BasicDataset
+    # type: (Dataset, int) -> Dataset
     """Takes a dataset and returns a new dataset with a row removed.
 
     Note:
@@ -242,11 +242,11 @@ def deleteRow(dataset, rowIndex):
     if rowIndex < 0:
         raise IndexError("Error")
 
-    return BasicDataset()
+    return Dataset()
 
 
 def deleteRows(dataset, rowIndices):
-    # type: (BasicDataset, List[int]) -> BasicDataset
+    # type: (Dataset, List[int]) -> Dataset
     """Takes a dataset and returns a new dataset with one or more rows
     removed.
 
@@ -274,11 +274,11 @@ def deleteRows(dataset, rowIndices):
     if -1 in rowIndices:
         raise IndexError("Error")
 
-    return BasicDataset()
+    return Dataset()
 
 
 def exportCSV(filename, showHeaders, dataset):
-    # type: (AnyStr, bool, BasicDataset) -> AnyStr
+    # type: (AnyStr, bool, Dataset) -> AnyStr
     """Exports the contents of a dataset as a CSV file, prompting the
     user to save the file to disk.
 
@@ -300,7 +300,7 @@ def exportCSV(filename, showHeaders, dataset):
 
 
 def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
-    # type: (AnyStr, bool, List[BasicDataset], bool) -> AnyStr
+    # type: (AnyStr, bool, List[Dataset], bool) -> AnyStr
     """Exports the contents of a dataset as an Excel spreadsheet,
     prompting the user to save the file to disk.
 
@@ -328,7 +328,7 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
 
 
 def exportHTML(filename, showHeaders, dataset, title):
-    # type: (AnyStr, bool, BasicDataset, AnyStr) -> AnyStr
+    # type: (AnyStr, bool, Dataset, AnyStr) -> AnyStr
     """Exports the contents of a dataset to an HTML page.
 
     Prompts the user to save the file to disk.
@@ -349,10 +349,10 @@ def exportHTML(filename, showHeaders, dataset, title):
 
 
 def filterColumns(
-    dataset,  # type: BasicDataset
+    dataset,  # type: Dataset
     columns,  # type: Union[List[AnyStr], List[int]]
 ):
-    # type: (...) -> BasicDataset
+    # type: (...) -> Dataset
     """Takes a dataset and returns a view of the dataset containing only
     the columns found within the given list of columns.
 
@@ -372,11 +372,11 @@ def filterColumns(
         A new dataset containing the filtered columns.
     """
     print(dataset, columns)
-    return BasicDataset()
+    return Dataset()
 
 
 def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
-    # type: (BasicDataset, AnyStr, Optional[Locale]) -> BasicDataset
+    # type: (Dataset, AnyStr, Optional[Locale]) -> Dataset
     """Returns a new dataset with Date columns as strings formatted
     according to the dateFormat specified.
 
@@ -398,11 +398,11 @@ def formatDates(dataset, dateFormat, locale=Locale.ENGLISH):
         A new dataset, containing the formatted dates.
     """
     print(dataset, dateFormat, locale)
-    return BasicDataset()
+    return Dataset()
 
 
 def fromCSV(csv):
-    # type: (AnyStr) -> BasicDataset
+    # type: (AnyStr) -> Dataset
     """Converts a dataset stored in a CSV formatted string to a dataset
     that can be immediately assignable to a dataset property in your
     project.
@@ -418,11 +418,11 @@ def fromCSV(csv):
         A new dataset.
     """
     print(csv)
-    return BasicDataset()
+    return Dataset()
 
 
 def getColumnHeaders(dataset):
-    # type: (BasicDataset) -> List[AnyStr]
+    # type: (Dataset) -> List[AnyStr]
     """Takes in a dataset and returns the headers as a python list.
 
     Args:
@@ -436,7 +436,7 @@ def getColumnHeaders(dataset):
 
 
 def setValue(dataset, rowIndex, columnName, value):
-    # type: (BasicDataset, int, AnyStr, Any) -> BasicDataset
+    # type: (Dataset, int, AnyStr, Any) -> Dataset
     """Takes a dataset and returns a new dataset with a one value
     altered.
 
@@ -460,15 +460,15 @@ def setValue(dataset, rowIndex, columnName, value):
          A new dataset, with the new value set at the given location.
     """
     print(dataset, rowIndex, columnName, value)
-    return BasicDataset()
+    return Dataset()
 
 
 def sort(
-    dataset,  # type: BasicDataset
+    dataset,  # type: Dataset
     keyColumn,  # type: Union[AnyStr, int]
     ascending=True,  # type: bool
 ):
-    # type: (...) -> BasicDataset
+    # type: (...) -> Dataset
     """Takes a dataset and returns a sorted version of dataset.
 
     The sort order is determined by a single column. This works on
@@ -493,11 +493,11 @@ def sort(
         A new sorted dataset.
     """
     print(dataset, keyColumn, ascending)
-    return BasicDataset()
+    return Dataset()
 
 
 def toCSV(
-    dataset,  # type: BasicDataset
+    dataset,  # type: Dataset
     showHeaders=True,  # type: bool
     forExport=False,  # type: bool
     localized=False,  # type: bool
@@ -529,7 +529,7 @@ def toCSV(
 
 
 def toDataSet(*args):
-    # type: (*Any) -> BasicDataset
+    # type: (*Any) -> Dataset
     """This function is used to convert PyDataSets to DataSets, and to
     create new datasets from raw Python lists.
 
@@ -545,12 +545,12 @@ def toDataSet(*args):
         The newly created dataset.
     """
     print(args)
-    return BasicDataset()
+    return Dataset()
 
 
 def toExcel(
     showHeaders,  # type: bool
-    dataset,  # type: List[BasicDataset]
+    dataset,  # type: List[Dataset]
     nullsEmpty=False,  # type: bool
     sheetNames=None,  # type: Optional[List[AnyStr]]
 ):
@@ -599,7 +599,7 @@ def toPyDataSet(dataset):
 
 
 def updateRow(dataset, rowIndex, changes):
-    # type: (BasicDataset, int, Dict[AnyStr, Any]) -> BasicDataset
+    # type: (Dataset, int, Dict[AnyStr, Any]) -> Dataset
     """Takes a dataset and returns a new dataset with a one row altered.
 
     To alter the row, this function takes a Python dictionary to
@@ -626,4 +626,4 @@ def updateRow(dataset, rowIndex, changes):
          according to the values in the dictionary.
     """
     print(dataset, rowIndex, changes)
-    return BasicDataset()
+    return Dataset()
