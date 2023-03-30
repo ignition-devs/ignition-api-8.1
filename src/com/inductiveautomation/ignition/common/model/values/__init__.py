@@ -2,13 +2,12 @@ from __future__ import print_function
 
 __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 
-from typing import Any, Union
+from typing import Any, Iterable, Union
 
-from enum import Enum
-
+from com.inductiveautomation.ignition.common.gson import JsonObject
 from dev.thecesrom.helper.types import AnyStr
 from dev.thecesrom.utils.decorators import classproperty
-from java.lang import Object
+from java.lang import Enum, Object
 from java.util import Date
 
 
@@ -40,18 +39,23 @@ class Quality(object):
     """
 
     def getDescription(self):
-        pass
+        # type: () -> AnyStr
+        raise NotImplementedError
 
     def getLevel(self):
+        # type: () -> Quality.Level
         pass
 
     def getName(self):
-        pass
+        # type: () -> AnyStr
+        raise NotImplementedError
 
     def getQualityCode(self):
+        # type: () -> QualityCode
         pass
 
     def isGood(self):
+        # type: () -> bool
         pass
 
     class Level(Enum):
@@ -59,7 +63,9 @@ class Quality(object):
         Good = 192
         Unknown = 256
 
-        def values(self):
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Quality.Level]
             pass
 
 
@@ -118,18 +124,33 @@ class QualityCode(Object):
         print(args)
 
     def derive(self, diagnosticMessage):
+        # type: (AnyStr) -> QualityCode
         pass
 
     def getCode(self):
+        # type: () -> int
+        pass
+
+    @staticmethod
+    def getCodeName(code):
+        # type: (Union[int, QualityCode]) -> AnyStr
+        pass
+
+    @staticmethod
+    def getCodesJson():
+        # type: () -> JsonObject
         pass
 
     def getDiagnosticMessage(self):
+        # type: () -> AnyStr
         pass
 
     def getLevel(self):
+        # type: () -> QualityCode.Level
         pass
 
     def getName(self):
+        # type: () -> AnyStr
         pass
 
     def isBad(self):
@@ -156,19 +177,14 @@ class QualityCode(Object):
         # type: () -> bool
         return True
 
-    class Level(Object):
-        def __init__(self):
-            super(QualityCode.Level, self).__init__()
-
+    class Level(Enum):
         def code(self, userCode):
-            pass
-
-        @staticmethod
-        def valueOf(name):
+            # type: (int) -> int
             pass
 
         @staticmethod
         def values():
+            # type: () -> Iterable[QualityCode.Level]
             pass
 
 

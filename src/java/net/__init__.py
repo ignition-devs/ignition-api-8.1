@@ -3,30 +3,68 @@
 from __future__ import print_function
 
 __all__ = [
+    "CookieHandler",
+    "CookieManager",
+    "CookiePolicy",
+    "CookieStore",
+    "FileNameMap",
+    "HttpCookie",
     "InetAddress",
     "InetSocketAddress",
+    "Proxy",
     "Socket",
     "SocketAddress",
     "SocketChannel",
     "SocketImpl",
     "SocketImplFactory",
     "SocketOption",
+    "URI",
 ]
 
-from typing import Any, List, Optional, Set, TypeVar
+from typing import Any, List, Mapping, Optional, Set
 
 from dev.thecesrom.helper.types import AnyStr
 from java.io import Closeable, InputStream, OutputStream
 from java.lang import Class, Enum, Object
 from java.nio.channels import SocketChannel
 
-T = TypeVar("T")
-
 
 class SocketAddress(Object):
     def __init__(self):
         # type: () -> None
         super(SocketAddress, self).__init__()
+
+
+class CookiePolicy(object):
+    def shouldAccept(self, uri, cookie):
+        # type: (URI, HttpCookie) -> bool
+        raise NotImplementedError
+
+
+class CookieStore(object):
+    def add(self, uri, cookie):
+        # type: (URI, HttpCookie) -> None
+        raise NotImplementedError
+
+    def get(self, uri):
+        # type: (URI) -> List[HttpCookie]
+        raise NotImplementedError
+
+    def getCookies(self):
+        # type: () -> List[HttpCookie]
+        raise NotImplementedError
+
+    def getURIs(self):
+        # type: () -> List[URI]
+        raise NotImplementedError
+
+    def remove(self, uri, cookie):
+        # type: (URI, HttpCookie) -> bool
+        raise NotImplementedError
+
+    def removeAll(self):
+        # type: () -> bool
+        raise NotImplementedError
 
 
 class FileNameMap(object):
@@ -49,6 +87,76 @@ class SocketOption(object):
     def type(self):
         # type: () -> Class
         raise NotImplementedError
+
+
+class CookieHandler(Object):
+    def __init__(self):
+        # type: () -> None
+        super(CookieHandler, self).__init__()
+
+    def get(
+        self,
+        uri,  # type: URI
+        requestHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+    ):
+        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        raise NotImplementedError
+
+    @staticmethod
+    def getDefault():
+        # type: () -> CookieHandler
+        pass
+
+    def put(
+        self,
+        uri,  # type: URI
+        responseHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+    ):
+        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        raise NotImplementedError
+
+    @staticmethod
+    def setDefault(cHandler):
+        # type: (CookieHandler) -> None
+        pass
+
+
+class CookieManager(CookieHandler):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(CookieManager, self).__init__()
+        print(args)
+
+    def get(
+        self,
+        uri,  # type: URI
+        requestHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+    ):
+        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        pass
+
+    def getCookieStore(self):
+        # type: () -> CookieStore
+        pass
+
+    def put(
+        self,
+        uri,  # type: URI
+        responseHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+    ):
+        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        pass
+
+    def setCookiePolicy(self, cookiePolicy):
+        # type: (CookiePolicy) -> None
+        pass
+
+
+class HttpCookie(Object):
+    def __init__(self, name, value):
+        # type: (AnyStr, AnyStr) -> None
+        super(HttpCookie, self).__init__()
+        print(name, value)
 
 
 class InetAddress(Object):
@@ -248,7 +356,7 @@ class Socket(Object, Closeable):
         return True
 
     def getOption(self, name):
-        # type: (SocketOption) -> T
+        # type: (SocketOption) -> Any
         pass
 
     def getOutputStream(self):
@@ -324,7 +432,7 @@ class Socket(Object, Closeable):
         pass
 
     def setOption(self, name, value):
-        # type: (SocketOption, T) -> Socket
+        # type: (SocketOption, Any) -> Socket
         pass
 
     def setPerformancePreferences(self, connectionTime, latency, bandwidth):
@@ -381,3 +489,10 @@ class SocketImpl(Object):
     def __init__(self):
         # type: () -> None
         super(SocketImpl, self).__init__()
+
+
+class URI(Object):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(URI, self).__init__()
+        print(args)

@@ -9,15 +9,13 @@ __all__ = [
     "UserPrincipal",
 ]
 
-from typing import List, TypeVar
+from typing import Any, List
 
 from dev.thecesrom.helper.types import AnyStr
 from java.lang import Enum, Object
 from java.security import Principal
 from java.time import Instant
 from java.util.concurrent import TimeUnit
-
-T = TypeVar("T")
 
 
 class AttributeView(object):
@@ -70,7 +68,7 @@ class FileAttribute(object):
         pass
 
     def value(self):
-        # type: () -> T
+        # type: () -> Any
         pass
 
 

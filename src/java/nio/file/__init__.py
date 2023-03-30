@@ -14,7 +14,7 @@ __all__ = [
     "Watchable",
 ]
 
-from typing import Any, Iterator, List, Optional, Set, TypeVar, Union
+from typing import Any, Iterator, List, Optional, Set, Union
 
 from dev.thecesrom.helper.types import AnyStr
 from java.io import BufferedReader, BufferedWriter, InputStream, OutputStream
@@ -32,8 +32,6 @@ from java.nio.file.attribute import (
 )
 from java.util.function import BiPredicate
 from java.util.stream import Stream
-
-T = TypeVar("T")
 
 
 class CopyOption(object):
@@ -492,7 +490,7 @@ class StandardCopyOption(Enum, CopyOption, OpenOption):
 
 class WatchEvent(object):
     def context(self):
-        # type: () -> T
+        # type: () -> Any
         raise NotImplementedError
 
     def count(self):

@@ -12,7 +12,9 @@ __all__ = [
     "JPanel",
     "JPasswordField",
     "JPopupMenu",
+    "JRootPane",
     "JTextField",
+    "RootPaneContainer",
 ]
 
 import array
@@ -100,6 +102,36 @@ class Icon(object):
 
     def paintIcon(self, c, g, x, y):
         # type: (Component, Graphics, int, int) -> None
+        raise NotImplementedError
+
+
+class RootPaneContainer(object):
+    def getContentPane(self):
+        # type: () -> Container
+        raise NotImplementedError
+
+    def getGlassPane(self):
+        # type: () -> Component
+        raise NotImplementedError
+
+    def getLayeredPane(self):
+        # type: () -> JLayeredPane
+        raise NotImplementedError
+
+    def getRootPane(self):
+        # type: () -> JRootPane
+        raise NotImplementedError
+
+    def setContentPane(self, contentPane):
+        # type: (Container) -> None
+        raise NotImplementedError
+
+    def setGlassPane(self, glassPane):
+        # type: (Component) -> None
+        raise NotImplementedError
+
+    def setLayeredPane(self, rootPane):
+        # type: (JLayeredPane) -> None
         raise NotImplementedError
 
 
@@ -382,6 +414,16 @@ class JPopupMenu(JComponent):
         # type: (Optional[AnyStr]) -> None
         super(JPopupMenu, self).__init__()
         print(label)
+
+
+class JRootPane(JComponent):
+    """A lightweight container used behind the scenes by JFrame,
+    JDialog, JWindow, JApplet, and JInternalFrame.
+    """
+
+    def __init__(self):
+        # type: () -> None
+        super(JRootPane, self).__init__()
 
 
 class JTextField(JTextComponent):

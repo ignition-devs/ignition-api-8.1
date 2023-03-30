@@ -1,9 +1,9 @@
 __all__ = ["PyChartScope"]
 
-from java.lang import Object
+from org.python.core import PyObject
 
 
-class PyChartScope(Object):
+class PyChartScope(PyObject):
     """This class represents any "scope" in the SFC system, and is
     fundamentally just an observable dictionary.
 
@@ -12,11 +12,6 @@ class PyChartScope(Object):
     dictionaries assigned to it as PyChartScopes as well.
     """
 
-    def __set__(self, instance, value):
-        pass
-
-    def __setattr__(self, key, value):
-        pass
-
-    def __setitem__(self, key, value):
-        pass
+    def __init__(self):
+        # type: () -> None
+        super(PyChartScope, self).__init__()

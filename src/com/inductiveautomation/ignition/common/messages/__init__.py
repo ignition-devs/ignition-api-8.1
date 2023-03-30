@@ -1,6 +1,6 @@
 __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 
-from typing import List
+from typing import Any, List
 
 from com.inductiveautomation.ignition.common.functional import FragileRunnable
 from dev.thecesrom.helper.types import AnyStr
@@ -11,17 +11,21 @@ from java.util.function import Consumer
 
 class MessageInterface(object):
     def addMessageReceiver(self, protocol, rcv):
+        # type: (AnyStr, MessageReceiver) -> None
         raise NotImplementedError
 
     def sendCall(self, protocol, scope, msg):
+        # type: (AnyStr, int, Any) -> Any
         raise NotImplementedError
 
     def sendMessage(self, protocol, scope, msg):
+        # type: (AnyStr, int, Any) -> None
         raise NotImplementedError
 
 
 class MessageReceiver(object):
     def receiveCall(self, msg):
+        # type: (Any) -> Any
         raise NotImplementedError
 
 

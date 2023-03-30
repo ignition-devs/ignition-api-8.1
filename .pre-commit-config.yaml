@@ -24,7 +24,7 @@ repos:
     rev: 6.3.0
     hooks:
       - id: pydocstyle
-        exclude: ^(src/com/|src/dev/|src/java/|src/javax/|src/org/)
+        exclude: ^(src/ch/|src/com/|src/dev/|src/java/|src/javax/|src/org/)
   - repo: local
     hooks:
       - id: pylint

@@ -9,15 +9,13 @@ __all__ = [
     "ValueRange",
 ]
 
-from typing import Any, Dict, List, Optional, TypeVar
+from typing import Any, Dict, List, Optional
 
 from dev.thecesrom.helper.types import AnyStr
 from java.lang import Enum, Object
 from java.time import Duration
 from java.time.format import ResolverStyle
 from java.util import Locale
-
-R = TypeVar("R")
 
 
 class TemporalAccessor(object):
@@ -34,7 +32,7 @@ class TemporalAccessor(object):
         return True
 
     def query(self, query):
-        # type: (TemporalQuery) -> R
+        # type: (TemporalQuery) -> Any
         pass
 
     def range(self, field):
@@ -50,7 +48,7 @@ class TemporalAdjuster(object):
 
 class TemporalField(object):
     def adjustInto(self, temporal, newValue):
-        # type: (R, long) -> Temporal
+        # type: (Any, long) -> Temporal
         raise NotImplementedError
 
     def getBaseUnit(self):
@@ -105,7 +103,7 @@ class TemporalField(object):
 
 class TemporalQuery(object):
     def queryFrom(self, temporal):
-        # type: (TemporalAccessor) -> R
+        # type: (TemporalAccessor) -> Any
         raise NotImplementedError
 
 

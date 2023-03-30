@@ -6,6 +6,10 @@ from dev.thecesrom.helper.types import AnyStr
 
 
 class RosterModel(DefaultBindableModel):
+    def __init__(self):
+        # type: () -> None
+        super(RosterModel, self).__init__()
+
     def getName(self):
         # type: () -> AnyStr
         pass

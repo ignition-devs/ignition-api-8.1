@@ -48,13 +48,13 @@ __all__ = [
     "warningBox",
 ]
 
-from typing import Any, Callable, List, Optional, Tuple, Union
+from typing import Any, Callable, List, Optional, Tuple
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.thecesrom.helper.types import AnyNum, AnyStr
 from java.awt import Color
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject
@@ -67,8 +67,6 @@ from javax.swing import (
     JPopupMenu,
     JTextField,
 )
-
-Number = Union[float, int]
 
 # Constants
 ACCL_NONE = 0
@@ -582,11 +580,11 @@ def setTouchscreenModeEnabled(enabled):
 
 
 def showNumericKeypad(
-    initialValue,  # type: Number
+    initialValue,  # type: AnyNum
     fontSize=None,  # type: Optional[int]
     usePasswordMode=False,  # type: bool
 ):
-    # type: (...) -> Number
+    # type: (...) -> AnyNum
     """Displays a modal on-screen numeric keypad, allowing for arbitrary
     numeric entry using the mouse, or a finger on a touchscreen monitor.
 

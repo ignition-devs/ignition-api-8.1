@@ -1,13 +1,10 @@
-__all__ = ["BaseStream", "Stream"]
+__all__ = ["BaseStream", "Collector", "Stream"]
 
-from typing import TypeVar
+from typing import Any, Iterable, Set
 
-from java.lang import AutoCloseable, Runnable
+from java.lang import AutoCloseable, Enum, Runnable
 from java.util import Iterator, Spliterator
-from java.util.function import Consumer
-
-S = TypeVar("S")
-T = TypeVar("T")
+from java.util.function import BiConsumer, BinaryOperator, Consumer, Function, Supplier
 
 
 class BaseStream(AutoCloseable):
@@ -24,15 +21,15 @@ class BaseStream(AutoCloseable):
         raise NotImplementedError
 
     def onClose(self, closeHandler):
-        # type: (Runnable) -> S
+        # type: (Runnable) -> Any
         raise NotImplementedError
 
     def parallel(self):
-        # type: () -> S
+        # type: () -> Any
         raise NotImplementedError
 
     def sequential(self):
-        # type: () -> S
+        # type: () -> Any
         raise NotImplementedError
 
     def spliterator(self):
@@ -40,8 +37,41 @@ class BaseStream(AutoCloseable):
         raise NotImplementedError
 
     def unordered(self):
-        # type: () -> S
+        # type: () -> Any
         raise NotImplementedError
+
+
+class Collector(object):
+    def accumulator(self):
+        # type: () -> BiConsumer
+        pass
+
+    def characteristic(self):
+        # type: () -> Set[Collector.Characteristics]
+        pass
+
+    def combiner(self):
+        # type: () -> BinaryOperator
+        pass
+
+    def finisher(self):
+        # type: () -> Function
+        pass
+
+    @staticmethod
+    def of(*args):
+        # type: (*Any) -> Collector
+        pass
+
+    def supplier(self):
+        # type: () -> Supplier
+        pass
+
+    class Characteristics(Enum):
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Collector.Characteristics]
+            pass
 
 
 class Stream(BaseStream):
@@ -63,15 +93,15 @@ class Stream(BaseStream):
         pass
 
     def onClose(self, closeHandler):
-        # type: (Runnable) -> S
+        # type: (Runnable) -> Any
         pass
 
     def parallel(self):
-        # type: () -> S
+        # type: () -> Any
         pass
 
     def sequential(self):
-        # type: () -> S
+        # type: () -> Any
         pass
 
     def spliterator(self):
@@ -79,16 +109,16 @@ class Stream(BaseStream):
         pass
 
     def unordered(self):
-        # type: () -> S
+        # type: () -> Any
         pass
 
     class Builder(Consumer):
         def accept(self, t):
-            # type: (T) -> None
+            # type: (Any) -> None
             raise NotImplementedError
 
         def add(self, t):
-            # type: (T) -> Stream.Builder
+            # type: (Any) -> Stream.Builder
             pass
 
         def build(self):

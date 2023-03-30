@@ -8,23 +8,24 @@ __all__ = [
     "Gson",
     "GsonBuilder",
     "JsonArray",
+    "JsonDeserializationContext",
     "JsonElement",
+    "JsonObject",
     "JsonPrimitive",
+    "JsonSerializationContext",
     "LongSerializationPolicy",
     "TypeAdapter",
     "TypeAdapterFactory",
 ]
 
-from typing import Any, Iterable, Optional, TypeVar, Union
+from typing import Any, Iterable, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson.reflect import TypeToken
 from com.inductiveautomation.ignition.common.gson.stream import JsonReader, JsonWriter
-from dev.thecesrom.helper.types import AnyStr
+from dev.thecesrom.helper.types import AnyNum, AnyStr
 from java.io import Reader, Writer
 from java.lang import Class, Enum, Object
-
-Number = Union[float, int, long]
-T = TypeVar("T")
+from java.lang.reflect import Type
 
 
 class ExclusionStrategy(object):
@@ -43,6 +44,18 @@ class FieldNamingStrategy(object):
         raise NotImplementedError
 
 
+class JsonDeserializationContext(object):
+    def deserialize(self, var1, var2):
+        # type: (JsonElement, Type) -> Any
+        raise NotImplementedError
+
+
+class JsonSerializationContext(object):
+    def serialize(self, var1, var2=None):
+        # type: (Object, Optional[Type]) -> JsonElement
+        raise NotImplementedError
+
+
 class TypeAdapterFactory(object):
     def create(self, gson, token):
         # type: (Gson, TypeToken) -> TypeAdapter
@@ -56,7 +69,7 @@ class FieldAttributes(Object):
         print(args)
 
     def getAnnotation(self, annotation):
-        # type: (Class) -> T
+        # type: (Class) -> Any
         pass
 
     def getAnnotations(self):
@@ -111,11 +124,11 @@ class Gson(Object):
         pass
 
     def fromJson(self, *args):
-        # type: (*Any) -> T
+        # type: (*Any) -> Any
         pass
 
     def getAdapter(self, type=None):
-        # type: (TypeToken) -> TypeAdapter
+        # type: (Optional[TypeToken]) -> TypeAdapter
         pass
 
     def getDelegateAdapter(self, skipPast, type):
@@ -303,7 +316,7 @@ class JsonElement(object):
         raise NotImplementedError
 
     def getAsNumber(self):
-        # type: () -> Number
+        # type: () -> AnyNum
         raise NotImplementedError
 
     def getAsShort(self):
@@ -385,7 +398,7 @@ class JsonArray(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Number
+        # type: () -> AnyNum
         pass
 
     def getAsShort(self):
@@ -447,7 +460,7 @@ class JsonNull(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Number
+        # type: () -> AnyNum
         pass
 
     def getAsShort(self):
@@ -513,7 +526,7 @@ class JsonObject(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Number
+        # type: () -> AnyNum
         pass
 
     def getAsShort(self):
@@ -579,7 +592,7 @@ class JsonPrimitive(JsonElement):
         pass
 
     def getAsNumber(self):
-        # type: () -> Number
+        # type: () -> AnyNum
         pass
 
     def getAsShort(self):
@@ -620,11 +633,11 @@ class LongSerializationPolicy(object):
 
 class TypeAdapter(object):
     def fromJson(self, arg):
-        # type: (Union[Reader, AnyStr]) -> T
+        # type: (Union[Reader, AnyStr]) -> Any
         pass
 
     def fromJsonTree(self, jsonTree):
-        # type: (JsonElement) -> T
+        # type: (JsonElement) -> Any
         pass
 
     def nullSafe(self):
@@ -632,16 +645,17 @@ class TypeAdapter(object):
         pass
 
     def read(self, reader):
-        # type: (JsonReader) -> T
+        # type: (JsonReader) -> Any
         raise NotImplementedError
 
     def toJson(self, out, value):
-        # type: (Writer, T) -> Optional[AnyStr]
+        # type: (Writer, Any) -> Optional[AnyStr]
         pass
 
     def toJsonTree(self, value):
-        # type: (T) -> JsonElement
+        # type: (Any) -> JsonElement
         pass
 
-    def write(self, *args):
+    def write(self, var1, var2):
+        # type: (JsonWriter, Any) -> None
         raise NotImplementedError

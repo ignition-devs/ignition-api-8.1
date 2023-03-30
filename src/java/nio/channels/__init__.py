@@ -8,13 +8,11 @@ __all__ = [
     "SocketChannel",
 ]
 
-from typing import Any, Optional, Set, TypeVar, Union
+from typing import Any, Optional, Set, Union
 
 from java.lang import AutoCloseable, Object
 from java.nio import ByteBuffer, MappedByteBuffer
 from java.util.function import Consumer
-
-T = TypeVar("T")
 
 
 class Channel(AutoCloseable):
@@ -330,7 +328,7 @@ class SocketChannel(SelectableChannel):
         pass
 
     def setOption(self, name, value):
-        # type: (Any, T) -> SocketChannel
+        # type: (Any, Any) -> SocketChannel
         pass
 
     def shutdownInput(self):

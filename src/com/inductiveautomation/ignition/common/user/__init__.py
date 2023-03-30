@@ -1,6 +1,13 @@
 from __future__ import print_function
 
-__all__ = ["BasicUser", "ContactInfo", "PyUser", "User", "UserSourceMeta"]
+__all__ = [
+    "AuthenticatedUser",
+    "BasicUser",
+    "ContactInfo",
+    "PyUser",
+    "User",
+    "UserSourceMeta",
+]
 
 from typing import Any, Iterable, List, Optional, Union
 
@@ -15,34 +22,6 @@ from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjust
 from dev.thecesrom.helper.types import AnyStr
 from java.lang import Object
 from java.util import Date
-
-
-class ContactInfo(Object):
-    contactType = ""  # type: AnyStr
-    value = ""  # type: AnyStr
-
-    def __init__(self, *args):
-        # type: (*Any) -> None
-        super(ContactInfo, self).__init__()
-        if len(args) == 2:
-            self.contactType = args[0]
-            self.value = args[1]
-
-    def getContactType(self):
-        # type: () -> AnyStr
-        return self.contactType
-
-    def getValue(self):
-        # type: () -> AnyStr
-        return self.value
-
-    def setContactType(self, contactType):
-        # type: (AnyStr) -> None
-        self.contactType = contactType
-
-    def setValue(self, value):
-        # type: (AnyStr) -> None
-        self.value = value
 
 
 class User(object):
@@ -80,6 +59,62 @@ class User(object):
     def getScheduleAdjustments(self):
         # type: () -> List[ScheduleAdjustment]
         raise NotImplementedError
+
+
+class AuthenticatedUser(User):
+    SecurityZones = None  # type: Property
+
+    def getContactInfo(self):
+        # type: () -> List[ContactInfo]
+        pass
+
+    def getId(self):
+        # type: () -> Any
+        pass
+
+    def getPath(self):
+        # type: () -> QualifiedPath
+        pass
+
+    def getProfileName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getRoles(self):
+        # type: () -> List[AnyStr]
+        pass
+
+    def getScheduleAdjustments(self):
+        # type: () -> List[ScheduleAdjustment]
+        pass
+
+
+class ContactInfo(Object):
+    contactType = ""  # type: AnyStr
+    value = ""  # type: AnyStr
+
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(ContactInfo, self).__init__()
+        if len(args) == 2:
+            self.contactType = args[0]
+            self.value = args[1]
+
+    def getContactType(self):
+        # type: () -> AnyStr
+        return self.contactType
+
+    def getValue(self):
+        # type: () -> AnyStr
+        return self.value
+
+    def setContactType(self, contactType):
+        # type: (AnyStr) -> None
+        self.contactType = contactType
+
+    def setValue(self, value):
+        # type: (AnyStr) -> None
+        self.value = value
 
 
 class BasicUser(User):
