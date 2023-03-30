@@ -1,5 +1,8 @@
 __all__ = [
+    "BiConsumer",
+    "BiFunction",
     "BiPredicate",
+    "BinaryOperator",
     "Consumer",
     "Function",
     "Predicate",
@@ -9,13 +12,29 @@ __all__ = [
     "ToLongFunction",
 ]
 
-from typing import TypeVar
+from typing import Any
 
 from java.lang import Object
 
-R = TypeVar("R")
-T = TypeVar("T")
-U = TypeVar("U")
+
+class BiConsumer(object):
+    def accept(self, t, u):
+        # type: (Any, Any) -> None
+        raise NotImplementedError
+
+    def andThen(self, after):
+        # type: (BiConsumer) -> BiConsumer
+        pass
+
+
+class BiFunction(object):
+    def andThen(self, after):
+        # type: (Function) -> BiFunction
+        pass
+
+    def apply(self, t, u):
+        # type: (Any, Any) -> Any
+        raise NotImplementedError
 
 
 class BiPredicate(object):
@@ -24,13 +43,29 @@ class BiPredicate(object):
         pass
 
     def test(self, t, u):
-        # type: (T, U) -> bool
+        # type: (Any, Any) -> bool
         return True
+
+
+class BinaryOperator(BiFunction):
+    def apply(self, t, u):
+        # type: (Any, Any) -> Any
+        raise NotImplementedError
+
+    @staticmethod
+    def maxBy(comparator):
+        # type: (Any) -> BinaryOperator
+        pass
+
+    @staticmethod
+    def minBy(comparator):
+        # type: (Any) -> BinaryOperator
+        pass
 
 
 class Consumer(object):
     def accept(self, t):
-        # type: (T) -> None
+        # type: (Any) -> None
         raise NotImplementedError
 
     def andThen(self, after):
@@ -44,7 +79,7 @@ class Function(object):
         pass
 
     def apply(self, t):
-        # type: (T) -> R
+        # type: (Any) -> Any
         raise NotImplementedError
 
     def compose(self, before):
@@ -68,29 +103,29 @@ class Predicate(object):
         pass
 
     def test(self, t):
-        # type: (T) -> bool
+        # type: (Any) -> bool
         raise NotImplementedError
 
 
 class Supplier(object):
     def get(self):
-        # type: () -> T
+        # type: () -> Any
         raise NotImplementedError
 
 
 class ToDoubleFunction(object):
     def applyAsDouble(self, value):
-        # type: (T) -> object
+        # type: (Any) -> object
         raise NotImplementedError
 
 
 class ToIntFunction(object):
     def applyAsInt(self, value):
-        # type: (T) -> object
+        # type: (Any) -> object
         raise NotImplementedError
 
 
 class ToLongFunction(object):
     def applyAsLong(self, value):
-        # type: (T) -> object
+        # type: (Any) -> object
         raise NotImplementedError

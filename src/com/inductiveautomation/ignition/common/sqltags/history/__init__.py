@@ -1,5 +1,8 @@
 __all__ = ["Aggregate", "AggregateInfo"]
 
+from typing import Any
+
+from dev.thecesrom.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -22,21 +25,32 @@ class Aggregate(object):
     """
 
     def getDesc(self):
+        # type: () -> AnyStr
         raise NotImplementedError
 
     def getId(self):
+        # type: () -> int
         raise NotImplementedError
 
     def getName(self):
+        # type: () -> AnyStr
         raise NotImplementedError
 
 
 class AggregateInfo(Object, Aggregate):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(AggregateInfo, self).__init__()
+        print(args)
+
     def getDesc(self):
+        # type: () -> AnyStr
         pass
 
     def getId(self):
+        # type: () -> int
         pass
 
     def getName(self):
+        # type: () -> AnyStr
         pass

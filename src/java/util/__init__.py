@@ -7,28 +7,34 @@ bit array).
 from __future__ import print_function
 
 __all__ = [
+    "AbstractCollection",
+    "AbstractMap",
     "Arrays",
     "Calendar",
     "Collection",
     "Comparator",
     "Currency",
     "Date",
+    "Enumeration",
     "EventObject",
+    "HashMap",
     "Iterator",
     "ListIterator",
     "Locale",
+    "Properties",
     "Spliterator",
     "TimeZone",
     "UUID",
 ]
 
-from typing import Any, Dict, Iterable, List, Optional, Set, TypeVar, Union
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Union
 
 from dev.thecesrom.helper.types import AnyStr
 from dev.thecesrom.utils.decorators import classproperty
 from java.lang import Class, Object
 from java.time import Instant, ZoneId
 from java.util.function import (
+    BiFunction,
     Consumer,
     Function,
     Predicate,
@@ -38,13 +44,10 @@ from java.util.function import (
     ToLongFunction,
 )
 
-E = TypeVar("E")
-T = TypeVar("T")
-
 
 class Collection(object):
     def add(self, e):
-        # type: (E) -> bool
+        # type: (Any) -> bool
         raise NotImplementedError
 
     def addAll(self, c):
@@ -67,6 +70,10 @@ class Collection(object):
         # type: (Object) -> bool
         raise NotImplementedError
 
+    def forEach(self, action):
+        # type: (Consumer) -> None
+        pass
+
     def hashCode(self):
         # type: () -> int
         raise NotImplementedError
@@ -81,7 +88,7 @@ class Collection(object):
 
     def parallelStream(self):
         # type: () -> Stream
-        raise NotImplementedError
+        pass
 
     def remove(self, o):
         # type: (Object) -> bool
@@ -93,7 +100,7 @@ class Collection(object):
 
     def removeIf(self, filter):
         # type: (Predicate) -> bool
-        raise NotImplementedError
+        pass
 
     def retainAll(self, v):
         # type: (Collection) -> bool
@@ -105,20 +112,20 @@ class Collection(object):
 
     def spliterator(self):
         # type: () -> Spliterator
-        raise NotImplementedError
+        pass
 
     def stream(self):
         # type: () -> Stream
-        raise NotImplementedError
+        pass
 
     def toArray(self, arg=None):
         # type: (Optional[Any]) -> List[Object]
-        raise NotImplementedError
+        pass
 
 
 class Comparator(object):
     def compare(self, o1, o2):
-        # type: (T, T) -> int
+        # type: (Any, Any) -> int
         raise NotImplementedError
 
     @staticmethod
@@ -186,6 +193,20 @@ class Comparator(object):
         pass
 
 
+class Enumeration(object):
+    def asIterator(self):
+        # type: () -> Iterator
+        pass
+
+    def hasMoreElements(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def nextElement(self):
+        # type: () -> Any
+        raise NotImplementedError
+
+
 class Iterator(object):
     def forEachRemaining(self, action):
         # type: (Consumer) -> None
@@ -196,7 +217,7 @@ class Iterator(object):
         raise NotImplementedError
 
     def next(self):
-        # type: () -> E
+        # type: () -> Any
         raise NotImplementedError
 
     def remove(self):
@@ -206,7 +227,7 @@ class Iterator(object):
 
 class ListIterator(Iterator):
     def add(self, e):
-        # type: (E) -> None
+        # type: (Any) -> None
         raise NotImplementedError
 
     def hasNext(self):
@@ -218,7 +239,7 @@ class ListIterator(Iterator):
         raise NotImplementedError
 
     def next(self):
-        # type: () -> E
+        # type: () -> Any
         raise NotImplementedError
 
     def nextIndex(self):
@@ -226,7 +247,7 @@ class ListIterator(Iterator):
         raise NotImplementedError
 
     def previous(self):
-        # type: () -> E
+        # type: () -> Any
         raise NotImplementedError
 
     def previousIndex(self):
@@ -234,8 +255,141 @@ class ListIterator(Iterator):
         raise NotImplementedError
 
     def set(self, e):
-        # type: (E) -> None
+        # type: (Any) -> None
         raise NotImplementedError
+
+
+class Map(object):
+    def clear(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def compute(self, key, remappingFuntion):
+        # type: (Any, BiFunction) -> Any
+        pass
+
+    def computeIfAbsent(self, key, mappingFuntion):
+        # type: (Any, BiFunction) -> Any
+        pass
+
+    def computeIfPresent(self, key, remappingFuntion):
+        # type: (Any, BiFunction) -> Any
+        pass
+
+    def containsKey(self, key):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    def containsValue(self, value):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
+    @staticmethod
+    def copyOf(map):
+        # type: (Map) -> Map
+        pass
+
+    @staticmethod
+    def entry(k, v):
+        # type: (Any, Any) -> Map.Entry
+        pass
+
+    def entrySet(self):
+        # type: () -> Set[Map.Entry]
+        raise NotImplementedError
+
+    def forEach(self, action):
+        # type: (BiFunction) -> None
+        pass
+
+    def get(self, key):
+        # type: (Object) -> Any
+        raise NotImplementedError
+
+    def getOrDefault(self, key, defaultValue):
+        # type: (Object, Any) -> Any
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def keySet(self):
+        # type: () -> Set[Any]
+        raise NotImplementedError
+
+    def merge(self, key, value, remappingFunction):
+        # type: (Any, Any, BiFunction) -> Any
+        pass
+
+    @staticmethod
+    def of(*args):
+        # type: (*Any) -> Map
+        pass
+
+    @staticmethod
+    def ofEntries(*entries):
+        # type: (*Map.Entry) -> Map
+        pass
+
+    def put(self, key, value):
+        # type: (Any, Any) -> Any
+        raise NotImplementedError
+
+    def putAll(self, m):
+        # type: (Mapping[Any, Any]) -> None
+        raise NotImplementedError
+
+    def putIfAbsent(self, key, value):
+        # type: (Any, Any) -> Any
+        pass
+
+    def remove(self, key):
+        # type: (Object) -> Any
+        pass
+
+    def replace(self, *args):
+        # type: (*Any) -> Union[Any, bool]
+        pass
+
+    def replaceAll(self, function):
+        # type: (BiFunction) -> None
+        pass
+
+    def size(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def values(self):
+        # type: () -> Collection
+        raise NotImplementedError
+
+    class Entry(object):
+        @staticmethod
+        def comparingByKey(cmp=None):
+            # type: (Optional[Comparator]) -> Any
+            pass
+
+        @staticmethod
+        def comparingByValue(cmp=None):
+            # type: (Optional[Comparator]) -> Any
+            pass
+
+        def getKey(self):
+            # type: () -> Any
+            raise NotImplementedError
+
+        def getValue(self):
+            # type: () -> Any
+            raise NotImplementedError
+
+        def hashCode(self):
+            # type: () -> int
+            raise NotImplementedError
+
+        def setValue(self, value):
+            # type: (Any) -> Any
+            raise NotImplementedError
 
 
 class Spliterator(object):
@@ -309,21 +463,21 @@ class Stream(object):
 
     @staticmethod
     def of(*args):
-        # type: (*T) -> Stream
+        # type: (*Any) -> Stream
         pass
 
     @staticmethod
     def ofNullable(t):
-        # type: (T) -> Stream
+        # type: (Any) -> Stream
         pass
 
     class Builder(Consumer):
         def accept(self, t):
-            # type: (T) -> None
+            # type: (Any) -> None
             raise NotImplementedError
 
         def add(self, t):
-            # type: (T) -> Stream.Builder
+            # type: (Any) -> Stream.Builder
             pass
 
         def build(self):
@@ -331,7 +485,7 @@ class Stream(object):
             raise NotImplementedError
 
 
-class Arrays(object):
+class Arrays(Object):
     @staticmethod
     def asList(a):
         # type: (Any) -> List[Any]
@@ -378,11 +532,6 @@ class Arrays(object):
         pass
 
     @staticmethod
-    def hashCode(a):
-        # type: (Iterable) -> int
-        pass
-
-    @staticmethod
     def mismatch(*args, **kwargs):
         # type: (*Any, **Any) -> int
         pass
@@ -413,18 +562,113 @@ class Arrays(object):
         pass
 
     @staticmethod
-    def spliterator(array, startInclusive=None, endExclusive=None):
-        # type: (Iterable, Optional[int], Optional[int]) -> Spliterator
+    def spliterator(
+        array,  # type: Iterable[Any]
+        startInclusive=None,  # type: Optional[int]
+        endExclusive=None,  # type: Optional[int]
+    ):
+        # type: (...) -> Spliterator
         pass
 
     @staticmethod
     def stream(array, startInclusive=None, endExclusive=None):
-        # type: (Iterable, Optional[int], Optional[int]) -> Stream
+        # type: (Iterable[Any], Optional[int], Optional[int]) -> Stream
         pass
 
-    @staticmethod
-    def toString(a):
-        # type: (Iterable) -> AnyStr
+
+class AbstractCollection(Object, Collection):
+    def add(self, e):
+        # type: (Any) -> bool
+        pass
+
+    def addAll(self, c):
+        # type: (Collection) -> bool
+        pass
+
+    def clear(self):
+        # type: () -> None
+        pass
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        pass
+
+    def containsAll(self, c):
+        # type: (Collection) -> bool
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def iterator(self):
+        # type: () -> Iterator
+        pass
+
+    def remove(self, o):
+        # type: (Object) -> bool
+        pass
+
+    def removeAll(self, c):
+        # type: (Collection) -> bool
+        pass
+
+    def retainAll(self, v):
+        # type: (Collection) -> bool
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+
+class AbstractMap(Object, Map):
+    def clear(self):
+        # type: () -> None
+        pass
+
+    def containsKey(self, key):
+        # type: (Object) -> bool
+        pass
+
+    def containsValue(self, value):
+        # type: (Object) -> bool
+        pass
+
+    def entrySet(self):
+        # type: () -> Set[Map.Entry]
+        raise NotImplementedError
+
+    def get(self, key):
+        # type: (Object) -> Any
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def keySet(self):
+        # type: () -> Set[Any]
+        pass
+
+    def put(self, key, value):
+        # type: (Any, Any) -> Any
+        pass
+
+    def putAll(self, m):
+        # type: (Mapping[Any, Any]) -> None
+        pass
+
+    def remove(self, key):
+        # type: (Object) -> Any
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def values(self):
+        # type: () -> Collection
         pass
 
 
@@ -678,6 +922,40 @@ class Date(Object):
         pass
 
 
+class Dictionary(Object):
+    def __init__(self):
+        # type: () -> None
+        super(Dictionary, self).__init__()
+
+    def elements(self):
+        # type: () -> Enumeration
+        raise NotImplementedError
+
+    def get(self, key):
+        # type: (Object) -> Any
+        raise NotImplementedError
+
+    def isEmpty(self):
+        # type: () -> bool
+        raise NotImplementedError
+
+    def keys(self):
+        # type: () -> Enumeration
+        raise NotImplementedError
+
+    def put(self, key, value):
+        # type: (Any, Any) -> Any
+        raise NotImplementedError
+
+    def remove(self, key):
+        # type: (Object) -> Any
+        raise NotImplementedError
+
+    def size(self):
+        # type: () -> int
+        raise NotImplementedError
+
+
 class EventObject(Object):
     """The root class from which all event state objects shall be
     derived.
@@ -697,6 +975,88 @@ class EventObject(Object):
     def getSource(self):
         # type: () -> Object
         return self._source
+
+
+class HashMap(AbstractMap, Map):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(HashMap, self).__init__()
+        print(args)
+
+    def entrySet(self):
+        # type: () -> Set[Map.Entry]
+        pass
+
+
+class Hashtable(Dictionary, Map):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(Hashtable, self).__init__()
+        print(args)
+
+    def clear(self):
+        # type: () -> None
+        pass
+
+    def clone(self):
+        # type: () -> Object
+        pass
+
+    def contains(self, value):
+        # type: (Object) -> bool
+        pass
+
+    def containsKey(self, key):
+        # type: (Object) -> bool
+        pass
+
+    def containsValue(self, value):
+        # type: (Object) -> bool
+        pass
+
+    def elements(self):
+        # type: () -> Enumeration
+        pass
+
+    def entrySet(self):
+        # type: () -> Set[Map.Entry]
+        pass
+
+    def get(self, key):
+        # type: (Object) -> Any
+        pass
+
+    def isEmpty(self):
+        # type: () -> bool
+        pass
+
+    def keySet(self):
+        # type: () -> Set[Any]
+        pass
+
+    def keys(self):
+        # type: () -> Enumeration
+        pass
+
+    def put(self, key, value):
+        # type: (Any, Any) -> Any
+        pass
+
+    def putAll(self, m):
+        # type: (Mapping[Any, Any]) -> None
+        pass
+
+    def remove(self, key):
+        # type: (Object) -> Any
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def values(self):
+        # type: () -> Collection
+        pass
 
 
 class Locale(Object):
@@ -721,16 +1081,18 @@ class Locale(Object):
         self.country = country
         self.variant = variant
 
-    def __repr__(self):  # type: ignore[no-untyped-def]
+    def __repr__(self):
+        # type: () -> str
         return "{!r}".format(self.__str__())
 
-    def __str__(self):  # type: ignore[no-untyped-def]
+    def __str__(self):
+        # type: () -> str
         ret = self.language
         if self.country:
             ret += "_{}".format(self.country)
         if self.variant:
             ret += "_{}".format(self.variant)
-        return unicode(ret)
+        return ret
 
     @classproperty
     def CANADA(self):
@@ -838,9 +1200,19 @@ class Locale(Object):
         return Locale("en", "US")
 
 
+class Properties(Hashtable):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(Properties, self).__init__()
+
+
 class TimeZone(Object):
     LONG = None  # type: int
     SHORT = None  # type: int
+
+    def __init__(self):
+        # type: () -> None
+        super(TimeZone, self).__init__()
 
     def clone(self):
         # type: () -> Object

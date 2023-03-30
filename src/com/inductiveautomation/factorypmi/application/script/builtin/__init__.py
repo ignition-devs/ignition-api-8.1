@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 __all__ = [
+    "ClientDatasetUtilities",
+    "ClientSystemUtilities",
     "INavUtilities",
     "NavUtilities",
     "PrintUtilities",
@@ -9,7 +11,7 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from com.inductiveautomation.factorypmi.application import FPMIWindow
+from com.inductiveautomation.factorypmi.application import FPMIApp, FPMIWindow
 from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from dev.thecesrom.helper.types import AnyStr
@@ -75,6 +77,19 @@ class INavUtilities(object):
     def swapWindow(self, *args):
         # type: (*Any) -> PyObject
         raise NotImplementedError
+
+
+class ClientDatasetUtilities(Object):
+    def __init__(self, app):
+        # type: (FPMIApp) -> None
+        super(ClientDatasetUtilities, self).__init__()
+        print(app)
+
+
+class ClientSystemUtilities(Object):
+    def __init__(self):
+        # type: () -> None
+        super(ClientSystemUtilities, self).__init__()
 
 
 class NavUtilities(INavUtilities):

@@ -6,15 +6,15 @@ __all__ = [
     "Property",
     "PropertySet",
     "PropertyValue",
+    "PropertyValueSource",
 ]
 
-from typing import Any, Iterable, List, TypeVar, Union
+from typing import Any, Iterable, List, Union
 
 from dev.thecesrom.helper.types import AnyStr
 from java.beans import PropertyChangeListener
 from java.lang import Class, Object
-
-T = TypeVar("T")
+from java.util import Collection
 
 
 class Property(object):
@@ -52,6 +52,36 @@ class PropertySet(object):
     def newExtension(self):
         # type: () -> PropertySet
         raise NotImplementedError
+
+
+class PropertyValueSource(object):
+    def contains(self, prop):
+        # type: (Property) -> bool
+        raise NotImplementedError
+
+    def get(self, prop):
+        # type: (Property) -> Any
+        raise NotImplementedError
+
+    def getNonNull(self, *args):
+        # type: (*Any) -> Any
+        pass
+
+    def getOrDefault(self, prop):
+        # type: (Property) -> Any
+        raise NotImplementedError
+
+    def getOrElse(self, prop):
+        # type: (Property) -> Any
+        raise NotImplementedError
+
+    def getProperties(self):
+        # type: () -> Collection
+        raise NotImplementedError
+
+    def getValues(self):
+        # type: () -> List[PropertyValue]
+        pass
 
 
 class BasicProperty(Property, Object):
@@ -130,7 +160,7 @@ class BasicPropertySet(Object):
         return True
 
     def get(self, prop):
-        # type: (Property) -> T
+        # type: (Property) -> Any
         pass
 
     def getCount(self):
@@ -142,11 +172,11 @@ class BasicPropertySet(Object):
         pass
 
     def getOrDefault(self, prop):
-        # type: (Property) -> T
+        # type: (Property) -> Any
         pass
 
     def getOrElse(self, prop, value):
-        # type: (Property, T) -> T
+        # type: (Property, Any) -> Any
         pass
 
     def getProperties(self):
@@ -187,7 +217,7 @@ class BasicPropertySet(Object):
         pass
 
     def set(self, prop, value):
-        # type: (Union[Property, PropertyValue], T) -> None
+        # type: (Union[Property, PropertyValue], Any) -> None
         pass
 
     def setDirect(self, prop, value):
@@ -204,7 +234,7 @@ class BasicPropertySet(Object):
             pass
 
         def set(self, prop, value):
-            # type: (Property, T) -> BasicPropertySet.Builder
+            # type: (Property, Any) -> BasicPropertySet.Builder
             pass
 
 

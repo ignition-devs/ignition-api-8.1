@@ -133,6 +133,7 @@ def select(deviceName, mapParams, value):
 
 
 def writeFile(deviceName, localFilePath, remoteFilePath):
+    # type: (AnyStr, AnyStr, AnyStr) -> None
     """This function uploads a file from a  local path to the configured
     IEC 61850 device remote path.
 

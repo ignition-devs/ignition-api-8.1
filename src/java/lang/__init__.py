@@ -9,6 +9,7 @@ __all__ = [
     "AutoCloseable",
     "CharSequence",
     "Class",
+    "Comparable",
     "Enum",
     "Exception",
     "IllegalArgumentException",
@@ -28,12 +29,10 @@ __all__ = [
 import __builtin__ as builtins
 import array
 import time
-from typing import Any, List, Optional, TypeVar, Union
+from typing import Any, List, Optional, Union
 
 from dev.thecesrom.helper.types import AnyStr
-
-T = TypeVar("T")
-U = TypeVar("U")
+from java.lang.reflect import Type
 
 
 class Object(object):
@@ -133,19 +132,29 @@ class CharSequence(object):
         raise NotImplementedError
 
 
+class Comparable(object):
+    def compareTo(self, o):
+        # type: (Any) -> int
+        raise NotImplementedError
+
+
 class Runnable(object):
     def run(self):
         # type: () -> None
         raise NotImplementedError
 
 
-class Class(Object):
+class Class(Object, Type):
     def asSubClass(self, clazz):
-        # type: (Class) -> U
+        # type: (Class) -> Any
         pass
 
     def cast(self, obj):
-        # type: (Object) -> T
+        # type: (Object) -> Any
+        pass
+
+    def getTypeName(self):
+        # type: () -> AnyStr
         pass
 
 
@@ -238,9 +247,14 @@ class StackTraceElement(Object):
 
 
 class String(unicode):
-    def __new__(cls, value, *args):
+    def __new__(cls, *args):
+        # type: (Any, *Any) -> Any
         print(args)
-        return unicode.__new__(cls, value)
+        return super(String, cls).__new__(cls, *args)
+
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(String, self).__init__(*args)
 
     def charAt(self, index):
         # type: (int) -> unicode

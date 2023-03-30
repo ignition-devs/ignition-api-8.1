@@ -1,11 +1,58 @@
-__all__ = ["ApplicationScope", "Version"]
+__all__ = ["ApplicationScope", "CommonContext", "EdgeEdition", "Version"]
 
 import re
-from typing import Any, Optional, Tuple, Union
+from typing import Any, Iterable, List, Optional, Tuple, Union
 
+from com.google.common.eventbus import EventBus
+from com.inductiveautomation.ignition.common.expressions import FunctionFactory
+from com.inductiveautomation.ignition.common.licensing import LicenseState
+from com.inductiveautomation.ignition.common.logging import LogFilterSettings
+from com.inductiveautomation.ignition.common.script import ScriptManager
+from com.inductiveautomation.ignition.common.tags.model import TagManager
+from com.inductiveautomation.ignition.common.xmlserialization.deserialization import (
+    XMLDeserializer,
+)
 from dev.thecesrom.helper.types import AnyStr
 from java.io import InputStream
-from java.lang import IllegalArgumentException, Object
+from java.lang import Enum, IllegalArgumentException, Object, String
+
+
+class CommonContext(object):
+    def createDeserializer(self):
+        # type: () -> XMLDeserializer
+        raise NotImplementedError
+
+    def getEdgeEditions(self):
+        # type: () -> List[EdgeEdition]
+        raise NotImplementedError
+
+    def getEventBus(self):
+        # type: () -> EventBus
+        raise NotImplementedError
+
+    def getExpressionFunctionFactory(self):
+        # type: () -> FunctionFactory
+        raise NotImplementedError
+
+    def getLicenseState(self, moduleId):
+        # type: (AnyStr) -> LicenseState
+        raise NotImplementedError
+
+    def getLoggingManager(self):
+        # type: () -> LogFilterSettings
+        raise NotImplementedError
+
+    def getModule(self, id_):
+        # type: (AnyStr) -> Object
+        raise NotImplementedError
+
+    def getScriptManager(self):
+        # type: () -> ScriptManager
+        raise NotImplementedError
+
+    def getTagManager(self):
+        # type: () -> TagManager
+        raise NotImplementedError
 
 
 class ApplicationScope(Object):
@@ -93,6 +140,23 @@ class ApplicationScope(Object):
         Returns:
             The scope code.
         """
+        pass
+
+
+class EdgeEdition(Enum):
+    @staticmethod
+    def create(edgeFlags):
+        # type: (List[String]) -> List[EdgeEdition]
+        pass
+
+    @staticmethod
+    def getAllEditions():
+        # type: () -> List[EdgeEdition]
+        pass
+
+    @staticmethod
+    def values():
+        # type: () -> Iterable[EdgeEdition]
         pass
 
 

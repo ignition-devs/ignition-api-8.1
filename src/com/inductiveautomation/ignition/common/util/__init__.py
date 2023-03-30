@@ -1,10 +1,13 @@
-__all__ = ["LoggerEx"]
+from __future__ import print_function
 
-from typing import Any, Optional, Union
+__all__ = ["LoggerEx", "Platform", "Timeline", "TimelineList"]
+
+from typing import Any, Iterable, List, Optional, Union
 
 from dev.thecesrom.helper.types import AnyStr
 from java.io import Closeable
-from java.lang import AutoCloseable, Class, Object, Throwable
+from java.lang import AutoCloseable, Class, Comparable, Enum, Object, Throwable
+from java.util import Date
 from org.apache.commons.lang3.builder import ToStringStyle
 from org.slf4j import Logger
 
@@ -188,4 +191,203 @@ class LoggerEx(Object):
     class MDCCloseable(Object, AutoCloseable):
         def close(self):
             # type: () -> None
+            pass
+
+
+class Platform(Object):
+    LINUX_AARCH64 = None  # type: Platform
+    LINUX_ARM = None  # type: Platform
+    LINUX_X64 = None  # type: Platform
+    LINUX_X86 = None  # type: Platform
+    OSX_X64 = None  # type: Platform
+    OSX_X86 = None  # type: Platform
+    WINDOWS_X64 = None  # type: Platform
+    WINDOWS_X86 = None  # type: Platform
+
+    def __init__(
+        self,
+        operatingSystem,  # type: Platform.OperatingSystem
+        architecture,  # type: Platform.Architecture
+    ):
+        # type: (...) -> None
+        super(Platform, self).__init__()
+        self._operatingSystem = operatingSystem
+        self._architecture = architecture
+
+    def getArchitecture(self):
+        # type: () -> Platform.Architecture
+        return self._architecture
+
+    @staticmethod
+    def getCurrent():
+        # type: () -> Platform
+        pass
+
+    def getOperatingSystem(self):
+        # type: () -> Platform.OperatingSystem
+        return self._operatingSystem
+
+    class Architecture(Enum):
+        @staticmethod
+        def fromString(s):
+            # type: (AnyStr) -> Platform.Architecture
+            pass
+
+        def getSignatures(self):
+            # type: () -> Iterable[AnyStr]
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Platform.Architecture]
+            pass
+
+    class OperatingSystem(Enum):
+        @staticmethod
+        def fromString(s):
+            # type: (AnyStr) -> Platform.OperatingSystem
+            pass
+
+        def getSignatures(self):
+            # type: () -> Iterable[AnyStr]
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Platform.OperatingSystem]
+            pass
+
+
+class TimelineList(Object):
+    def __init__(self):
+        # type: () -> None
+        super(TimelineList, self).__init__()
+
+    def add(self, *args):
+        # type: (*Any) -> None
+        pass
+
+    def covered(self, time):
+        # type: (long) -> bool
+        pass
+
+    def get(self, time):
+        # type: (long) -> Any
+        pass
+
+    def getClosest(self, time):
+        # type: (long) -> Any
+        pass
+
+    def getSegment(self, *args):
+        # type: (*Any) -> TimelineList.TimeSegment
+        pass
+
+    def getSegments(self, *args):
+        # type: (*Any) -> List[TimelineList.TimeSegment]
+        pass
+
+    def mergeSegments(self):
+        # type: () -> None
+        pass
+
+    def nextEvent(self, time, allowRollover=None):
+        # type: (long, Optional[bool]) -> bool
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def sort(self):
+        # type: () -> None
+        pass
+
+    class TimeSegment(Object, Comparable):
+        def __init__(self, *args):
+            # type: (*Any) -> None
+            super(TimelineList.TimeSegment, self).__init__()
+            print(args)
+
+        def compareTo(self, o):
+            # type: (Any) -> int
+            pass
+
+        def contains(self, time):
+            # type: (long) -> bool
+            pass
+
+        def endsBefore(self, time):
+            # type: (long) -> bool
+            pass
+
+        def getDuration(self):
+            # type: () -> long
+            pass
+
+        def getEnd(self):
+            # type: () -> long
+            pass
+
+        def getStart(self):
+            # type: () -> long
+            pass
+
+        def getValue(self):
+            # type: () -> Any
+            pass
+
+        def setEnd(self, end):
+            # type: (long) -> None
+            pass
+
+        def setStart(self, start):
+            # type: (long) -> None
+            pass
+
+        def setStartAfter(self, start):
+            # type: (long) -> None
+            pass
+
+
+class Timeline(TimelineList):
+    def __init__(self, style=None):
+        # type: (Optional[Timeline.TimelineStyle]) -> None
+        super(Timeline, self).__init__()
+        self._style = style
+
+    def addSegment(self, start, end):
+        # type: (long, long) -> None
+        pass
+
+    @staticmethod
+    def createParser(style):
+        # type: (Timeline.TimelineStyle) -> Timeline.TimelineParser
+        pass
+
+    def getStyle(self):
+        # type: () -> Timeline.TimelineStyle
+        pass
+
+    def invert(self):
+        # type: () -> Timeline
+        pass
+
+    class TimelineParser(object):
+        def parse(self, input):
+            # type: (AnyStr) -> Timeline
+            raise NotImplementedError
+
+    class TimelineStyle(Enum):
+        def toDateForStyle(self, value):
+            # type: (long) -> Date
+            pass
+
+        def toLongForStyle(self, dateMillis):
+            # type: (Union[Date, long]) -> long
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Timeline.TimelineStyle]
             pass

@@ -10,6 +10,10 @@ class Binding(object):
 
 
 class DefaultBindableModel(Object):
+    def __init__(self):
+        # type: () -> None
+        super(DefaultBindableModel, self).__init__()
+
     def bind(self, toBind):
         # type: (Binding) -> None
         pass

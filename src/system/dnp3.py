@@ -24,11 +24,9 @@ __all__ = [
     "selectOperateBinary",
 ]
 
-from typing import List, Optional, Union
+from typing import List, Optional
 
-from dev.thecesrom.helper.types import AnyStr
-
-Number = Union[float, int]
+from dev.thecesrom.helper.types import AnyNum, AnyStr
 
 # Constants
 NUL = 0
@@ -43,7 +41,7 @@ TRIP = 2
 def directOperateAnalog(
     deviceName,  # type: AnyStr
     index,  # type: int
-    value,  # type: Number
+    value,  # type: AnyNum
     variation=None,  # type: Optional[int]
 ):
     # type: (...) -> int
@@ -161,7 +159,7 @@ def freezeCountersAtTime(deviceName, absoluteTime, intervalTime, indexes):
 def selectOperateAnalog(
     deviceName,  # type: AnyStr
     index,  # type: int
-    value,  # type: Number
+    value,  # type: AnyNum
     variation=None,  # type: Optional[int]
 ):
     # type: (...) -> int

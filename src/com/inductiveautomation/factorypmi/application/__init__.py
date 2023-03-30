@@ -2,8 +2,14 @@ from __future__ import print_function
 
 __all__ = ["FPMIApp", "FPMIWindow", "VisionDesktop"]
 
-from com.inductiveautomation.ignition.client.model import ClientContext
+from typing import Any, List, Union
+
+from com.inductiveautomation.factorypmi.application.components import BasicContainer
+from com.inductiveautomation.ignition.client.model import ClientContext, DesktopListener
+from com.inductiveautomation.ignition.common.project.resource import ResourcePath
+from com.inductiveautomation.ignition.common.script import ScriptManager
 from dev.thecesrom.helper.types import AnyStr
+from java.util import TimeZone
 from javax.swing import JDesktopPane, JInternalFrame
 
 
@@ -15,22 +21,32 @@ class VisionDesktop(JDesktopPane):
         super(VisionDesktop, self).__init__()
         print(clientContext, handle)
 
+    def addDesktopListener(self, arg):
+        # type: (DesktopListener) -> None
+        pass
+
     def getAdapterContext(self):
+        # type: () -> Any
         pass
 
     def getHandle(self):
+        # type: () -> AnyStr
         pass
 
     def getOpenedWindows(self):
+        # type: () -> List[FPMIWindow]
         pass
 
     def getPath(self, window):
+        # type: (FPMIWindow) -> AnyStr
         pass
 
     def getScriptManager(self):
+        # type: () -> ScriptManager
         pass
 
     def getWindow(self, arg):
+        # type: (Union[AnyStr, ResourcePath]) -> FPMIWindow
         pass
 
 
@@ -39,15 +55,19 @@ class FPMIApp(VisionDesktop):
     TIMEZONE_GATEWAY = "America/Tijuana"
 
     def getDefaultTimeZone(self):
+        # type: () -> AnyStr
         pass
 
     def getLastActivity(self):
+        # type: () -> long
         pass
 
     def shutdownDesigner(self):
+        # type: () -> None
         pass
 
     def startupDesigner(self, gatewayTimeZone):
+        # type: (TimeZone) -> None
         pass
 
 
@@ -74,7 +94,9 @@ class FPMIWindow(JInternalFrame):
         self.name = name
 
     def getPath(self):
+        # type: () -> AnyStr
         return self._path
 
     def getRootContainer(self):
+        # type: () -> BasicContainer
         pass

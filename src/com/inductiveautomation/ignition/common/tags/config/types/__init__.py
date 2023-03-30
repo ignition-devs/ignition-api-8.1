@@ -1,12 +1,20 @@
+from typing import Iterable
+
+from dev.thecesrom.helper.types import AnyStr
 from java.lang import Enum
 
 
 class TagObjectType(Enum):
-    def fromString(self, value):
+    @staticmethod
+    def fromString(value):
+        # type: (AnyStr) -> TagObjectType
         pass
 
     def isComplexTag(self):
+        # type: () -> bool
         pass
 
-    def values(self):
+    @staticmethod
+    def values():
+        # type: () -> Iterable[TagObjectType]
         pass

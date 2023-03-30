@@ -7,10 +7,11 @@ __all__ = [
     "JsonPath",
     "Path",
     "QualifiedPath",
+    "StringPath",
     "TypeUtilities",
 ]
 
-from typing import Any, List, Optional, Set, TypeVar, Union
+from typing import Any, Iterable, List, Optional, Set, Union
 
 from com.inductiveautomation.ignition.common.document import DocumentElement
 from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
@@ -24,12 +25,10 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
 )
 from dev.thecesrom.helper.types import AnyStr
 from java.awt import Color
-from java.lang import Class, Number, Object
+from java.lang import Class, Comparable, Number, Object
 from java.util import UUID, Comparator, Date, Locale
 from org.json import JSONObject
 from org.python.core import PyObject
-
-T = TypeVar("T")
 
 
 class Dataset(object):
@@ -455,23 +454,112 @@ class Path(object):
 
 
 class QualifiedPath(Object):
-    def extend(self, id_, value):
+    def __init__(self):
+        # type: () -> None
+        super(QualifiedPath, self).__init__()
+
+
+class StringPath(Object, Path, Comparable):
+    PATH_RELATIVE = None  # type: AnyStr
+    PATH_RELATIVE_UP = None  # type: AnyStr
+    PATH_SEPARATOR = None  # type: AnyStr
+    ROOT = None  # type: StringPath
+
+    def __init__(self, *parts):
+        # type: (*AnyStr) -> None
+        super(StringPath, self).__init__()
+        print(parts)
+
+    def caseSensitive(self):
+        # type: () -> StringPath.CaseSensitiveStringPath
         pass
 
-    def getFirstPathComponent(self):
+    def compareTo(self, o):
+        # type: (Any) -> int
         pass
 
-    def getFirstPathComponentId(self):
+    @staticmethod
+    def extend(parent, *args):
+        # type: (StringPath, *Any) -> StringPath
         pass
+
+    def getChildPath(self, *pathParts):
+        # type: (*AnyStr) -> StringPath
+        pass
+
+    def getLastPathComponent(self):
+        # type: () -> AnyStr
+        pass
+
+    def getParentPath(self):
+        # type: () -> StringPath
+        pass
+
+    def getParts(self):
+        # type: () -> Iterable[AnyStr]
+        pass
+
+    def getPathComponent(self, i):
+        # type: (int) -> AnyStr
+        pass
+
+    def getPathLength(self):
+        # type: () -> int
+        pass
+
+    def isAncestorOf(self, path):
+        # type: (Path) -> bool
+        pass
+
+    @staticmethod
+    def isRelative(path):
+        # type: (StringPath) -> bool
+        pass
+
+    def isRoot(self):
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def makeRelative(toRelative, root):
+        # type: (StringPath, StringPath) -> StringPath
+        pass
+
+    @staticmethod
+    def of(*parts):
+        # type: (*AnyStr) -> StringPath
+        pass
+
+    @staticmethod
+    def removeRelative(relative, root):
+        # type: (StringPath, StringPath) -> StringPath
+        pass
+
+    def subPath(self, start=None, length=None):
+        # type: (Optional[int], Optional[int]) -> StringPath
+        pass
+
+    class CaseSensitiveStringPath(Object, Comparable):
+        def compareTo(self, o):
+            # type: (Any) -> int
+            pass
+
+        def isAncestorOf(self, child):
+            # type: (Path) -> bool
+            pass
 
 
 class TypeUtilities(Object):
     DATE_FORMAT_STRING = "yyyyMMdd.HHmmssSSSZ"  # type: AnyStr
     NULL_SAFE_CASE_INSENSITIVE_ORDER = None  # type: Comparator
 
+    def __init__(self):
+        # type: () -> None
+        super(TypeUtilities, self).__init__()
+
     @staticmethod
     def anyEqual(value, *args):
-        # type: (T, T) -> bool
+        # type: (Any, Any) -> bool
         return True
 
     @staticmethod
@@ -486,7 +574,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def coerceGeneric(value, destType):
-        # type: (Object, Class) -> T
+        # type: (Object, Class) -> Any
         pass
 
     @staticmethod
@@ -521,12 +609,12 @@ class TypeUtilities(Object):
 
     @staticmethod
     def compareNullHigh(c1, c2):
-        # type: (T, T) -> T
+        # type: (Any, Any) -> Any
         pass
 
     @staticmethod
     def compareNullLow(c1, c2):
-        # type: (T, T) -> T
+        # type: (Any, Any) -> Any
         pass
 
     @staticmethod
@@ -571,7 +659,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def getFirstOrNull(list_):
-        # type: (List[T]) -> T
+        # type: (List[Any]) -> Any
         pass
 
     @staticmethod
@@ -716,7 +804,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def toEnum(enumType, value):
-        # type: (Class, AnyStr) -> T
+        # type: (Class, AnyStr) -> Any
         pass
 
     @staticmethod

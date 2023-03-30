@@ -1,11 +1,11 @@
-__all__ = ["DataQuality", "DataType"]
+__all__ = ["DataQuality", "DataType", "DataTypeClass"]
 
-from typing import List, Optional
+from typing import Iterable, List, Optional
 
 from com.inductiveautomation.ignition.common.i18n import LocalizedString
 from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
 from dev.thecesrom.helper.types import AnyStr
-from java.lang import Enum, Object
+from java.lang import Class, Enum, Object
 from java.util import Locale
 
 
@@ -82,38 +82,61 @@ class DataQuality(Object):
 
 
 class DataType(Enum):
-    def fromIntValue(self, val):
+    @staticmethod
+    def fromIntValue(val):
+        # type: (int) -> DataType
         pass
 
     def getComponentDataType(self):
+        # type: () -> DataType
         pass
 
     def getIntValue(self):
+        # type: () -> int
         pass
 
     def getJavaType(self):
+        # type: () -> Class
         pass
 
     def getTypeClass(self):
+        # type: () -> DataTypeClass
         pass
 
-    def getTypeForClass(self, clazz):
+    @staticmethod
+    def getTypeForClass(clazz):
+        # type: (Class) -> DataType
         pass
 
-    def getTypeForValue(self, val):
+    @staticmethod
+    def getTypeForValue(val):
+        # type: (int) -> DataType
         pass
 
     def isArray(self):
+        # type: () -> bool
         pass
 
     def isFloatingPoint(self):
+        # type: () -> bool
         pass
 
     def isNumeric(self):
+        # type: () -> bool
         pass
 
     def legacyDataType(self):
+        # type: () -> DataType
         pass
 
-    def values(self):
+    @staticmethod
+    def values():
+        # type: () -> Iterable[DataType]
+        pass
+
+
+class DataTypeClass(Enum):
+    @staticmethod
+    def values():
+        # type: () -> Iterable[DataTypeClass]
         pass

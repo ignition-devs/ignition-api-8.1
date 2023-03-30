@@ -23,6 +23,7 @@ __all__ = [
     "PySequenceList",
     "PyString",
     "PyStringMap",
+    "PySystemState",
     "PyTraceback",
     "PyTuple",
     "PyType",
@@ -30,7 +31,7 @@ __all__ = [
     "Visitproc",
 ]
 
-from typing import Any, Iterable, Iterator, List, Optional, Tuple, Union
+from typing import Any, Iterable, Iterator, List, Mapping, Optional, Tuple, Union
 
 from enum import Enum
 
@@ -1340,11 +1341,192 @@ class PyList(PySequenceList):
         pass
 
 
+class PyModule(PyObject):
+    pass
+
+
 class PyString(PyObject):
     def __init__(self, *args):
         # type: (*Any) -> None
         print(args)
         super(PyString, self).__init__()
+
+
+class PySystemState(PyObject):
+    def argv(self):
+        # type: () -> PyList
+        pass
+
+    @staticmethod
+    def builtin_module_names():
+        # type: () -> PyTuple
+        pass
+
+    def builtins(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def byteorder():
+        # type: () -> PyString
+        pass
+
+    @staticmethod
+    def copyright():
+        # type: () -> PyObject
+        pass
+
+    def dont_write_bytecode(self):
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def exec_prefix():
+        # type: () -> PyObject
+        pass
+
+    def executable(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def flags():
+        # type: () -> Class
+        pass
+
+    @staticmethod
+    def float_info():
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def float_repr_style():
+        # type: () -> PyString
+        pass
+
+    @staticmethod
+    def hexversion():
+        # type: () -> int
+        pass
+
+    def last_traceback(self):
+        # type: () -> PyObject
+        pass
+
+    def last_type(self):
+        # type: () -> PyObject
+        pass
+
+    def last_value(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def long_info():
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def maxint():
+        # type: () -> int
+        pass
+
+    @staticmethod
+    def maxsize():
+        # type: () -> int
+        pass
+
+    @staticmethod
+    def maxunicode():
+        # type: () -> int
+        pass
+
+    def meta_path(self):
+        # type: () -> PyList
+        pass
+
+    @staticmethod
+    def minint():
+        # type: () -> int
+        pass
+
+    def modules(self):
+        # type: () -> PyObject
+        pass
+
+    def modules_reloading(self):
+        # type: () -> Mapping[AnyStr, PyModule]
+        pass
+
+    def path(self):
+        # type: () -> PyList
+        pass
+
+    def path_hooks(self):
+        # type: () -> PyList
+        pass
+
+    def path_importer_cache(self):
+        # type: () -> PyObject
+        pass
+
+    def platform(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def prefix():
+        # type: () -> PyObject
+        pass
+
+    def ps1(self):
+        # type: () -> PyObject
+        pass
+
+    def ps2(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def py3kwarning():
+        # type: () -> bool
+        pass
+
+    @staticmethod
+    def registry():
+        # type: () -> java.util.Properties
+        pass
+
+    def stderr(self):
+        # type: () -> PyObject
+        pass
+
+    def stdin(self):
+        # type: () -> PyObject
+        pass
+
+    def stdout(self):
+        # type: () -> PyObject
+        pass
+
+    @staticmethod
+    def subversion():
+        # type: () -> PyTuple
+        pass
+
+    @staticmethod
+    def version():
+        # type: () -> PyString
+        pass
+
+    @staticmethod
+    def version_info():
+        # type: () -> PyVersionInfo
+        pass
+
+    def warnoptions(self):
+        # type: () -> PyList
+        pass
 
 
 class PyTraceback(PyObject):
@@ -1696,6 +1878,10 @@ class TraceFunction(Object):
     def traceReturn(self, frame, ret):
         # type: (PyFrame, PyObject) -> TraceFunction
         raise NotImplementedError
+
+
+class PyVersionInfo(PyTuple):
+    pass
 
 
 class Visitproc(object):
