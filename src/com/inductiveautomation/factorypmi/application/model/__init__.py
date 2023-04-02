@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["TemplateManager"]
+
 from com.inductiveautomation.ignition.client.model import ClientContext
 from java.lang import Object
 

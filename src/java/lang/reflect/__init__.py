@@ -1,3 +1,5 @@
+__all__ = ["Type"]
+
 from dev.thecesrom.helper.types import AnyStr
 
 

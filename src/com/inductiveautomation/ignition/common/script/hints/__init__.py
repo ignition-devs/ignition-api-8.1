@@ -1,3 +1,5 @@
+__all__ = ["ScriptFunctionHint"]
+
 from typing import Mapping
 
 from dev.thecesrom.helper.types import AnyStr

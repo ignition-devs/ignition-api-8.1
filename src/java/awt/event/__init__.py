@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-__all__ = ["ActionEvent", "ComponentEvent", "MouseEvent"]
+__all__ = ["ActionEvent", "ComponentEvent", "InputEvent", "MouseEvent"]
 
 from typing import Any
 

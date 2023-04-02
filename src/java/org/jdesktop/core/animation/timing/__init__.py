@@ -1,3 +1,5 @@
+__all__ = ["Animator"]
+
 from java.lang import Object
 
 

@@ -1,5 +1,12 @@
 from __future__ import print_function
 
+__all__ = [
+    "AttributesMap",
+    "DeserializationContext",
+    "DeserializationHandler",
+    "XMLDeserializer",
+]
+
 from typing import Any, Iterable, List, Mapping, Optional
 
 from com.inductiveautomation.ignition.common.xmlserialization import (

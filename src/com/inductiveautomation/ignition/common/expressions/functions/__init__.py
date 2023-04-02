@@ -1,3 +1,5 @@
+__all__ = ["Function"]
+
 from typing import Any, Iterable
 
 from com.inductiveautomation.ignition.common.binding import InteractionListener

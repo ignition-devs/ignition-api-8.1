@@ -1,3 +1,5 @@
+__all__ = ["Level"]
+
 from typing import Iterable
 
 from java.lang import Enum

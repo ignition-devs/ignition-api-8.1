@@ -1,3 +1,5 @@
+__all__ = ["PerspectiveModule"]
+
 from typing import Optional
 
 from com.inductiveautomation.ignition.common.gson import Gson, JsonObject

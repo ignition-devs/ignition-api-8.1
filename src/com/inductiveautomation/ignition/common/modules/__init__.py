@@ -1,3 +1,5 @@
+__all__ = ["ModuleInfo"]
+
 from typing import List, Mapping, Optional
 
 from com.inductiveautomation.ignition.common.licensing import LicenseState

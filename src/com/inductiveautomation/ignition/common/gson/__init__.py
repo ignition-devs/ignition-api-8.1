@@ -10,6 +10,7 @@ __all__ = [
     "JsonArray",
     "JsonDeserializationContext",
     "JsonElement",
+    "JsonNull",
     "JsonObject",
     "JsonPrimitive",
     "JsonSerializationContext",

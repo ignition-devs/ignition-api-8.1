@@ -1,3 +1,5 @@
+__all__ = ["HttpClient", "HttpResponse"]
+
 from java.lang import Object
 
 

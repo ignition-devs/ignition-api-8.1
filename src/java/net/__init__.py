@@ -14,7 +14,6 @@ __all__ = [
     "Proxy",
     "Socket",
     "SocketAddress",
-    "SocketChannel",
     "SocketImpl",
     "SocketImplFactory",
     "SocketOption",

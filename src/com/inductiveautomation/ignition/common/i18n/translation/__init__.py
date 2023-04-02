@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["TranslationMap"]
+
 from typing import Union
 
 from dev.thecesrom.helper.types import AnyStr

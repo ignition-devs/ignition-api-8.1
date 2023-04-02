@@ -1,3 +1,5 @@
+__all__ = ["EqualityDelegate"]
+
 from typing import Any
 
 

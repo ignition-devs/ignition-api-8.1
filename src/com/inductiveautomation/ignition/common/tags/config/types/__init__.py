@@ -1,3 +1,5 @@
+__all__ = ["TagObjectType"]
+
 from typing import Iterable
 
 from dev.thecesrom.helper.types import AnyStr

@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 __all__ = [
+    "DesktopManager",
     "Icon",
     "JComponent",
     "JDesktopPane",
@@ -14,6 +15,7 @@ __all__ = [
     "JPopupMenu",
     "JRootPane",
     "JTextField",
+    "JToolTip",
     "RootPaneContainer",
 ]
 

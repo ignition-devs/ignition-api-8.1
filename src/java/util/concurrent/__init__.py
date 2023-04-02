@@ -1,4 +1,4 @@
-__all__ = ["CompletableFuture", "ScheduledFuture", "TimeUnit"]
+__all__ = ["CompletableFuture", "Delayed", "Future", "ScheduledFuture", "TimeUnit"]
 
 from typing import Any, List, Optional
 

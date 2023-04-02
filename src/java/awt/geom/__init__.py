@@ -1,4 +1,4 @@
-__all__ = ["Point2D"]
+__all__ = ["Dimension2D", "Point2D"]
 
 from typing import Any
 
