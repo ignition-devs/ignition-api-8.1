@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["JSONArray", "JSONObject"]
+
 from typing import Any, Iterator, List, Optional
 
 from dev.thecesrom.helper.types import AnyStr

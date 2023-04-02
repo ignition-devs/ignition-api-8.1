@@ -1,3 +1,5 @@
+__all__ = ["Document", "DocumentElement"]
+
 from typing import Any
 
 from java.lang import Object

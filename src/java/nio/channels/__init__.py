@@ -1,11 +1,14 @@
 __all__ = [
     "Channel",
     "FileChannel",
+    "FileLock",
+    "ReadableByteChannel",
     "SeekableByteChannel",
     "SelectableChannel",
     "SelectionKey",
     "Selector",
     "SocketChannel",
+    "WriteableByteChannel",
 ]
 
 from typing import Any, Optional, Set, Union

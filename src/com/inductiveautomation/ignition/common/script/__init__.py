@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["ScriptFunction", "ScriptManager"]
+
 from copy import PyStringMap
 from typing import Any, List, Mapping, Optional, Set
 

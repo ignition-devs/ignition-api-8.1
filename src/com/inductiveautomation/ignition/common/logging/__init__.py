@@ -1,3 +1,5 @@
+__all__ = ["Level", "LogFilterSettings"]
+
 from typing import Iterable, Mapping
 
 import ch.qos.logback.classic

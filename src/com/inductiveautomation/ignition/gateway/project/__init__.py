@@ -1,3 +1,5 @@
+__all__ = ["ResourceFilter"]
+
 from typing import List, Union
 
 from com.inductiveautomation.ignition.common.project.resource import (

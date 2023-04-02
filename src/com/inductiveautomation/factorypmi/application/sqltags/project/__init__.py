@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["ProjectTagManager"]
+
 from typing import Any
 
 from java.lang import Object

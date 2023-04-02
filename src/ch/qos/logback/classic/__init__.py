@@ -1,3 +1,5 @@
+__all__ = ["Level"]
+
 from typing import Any
 
 import org.slf4j.event

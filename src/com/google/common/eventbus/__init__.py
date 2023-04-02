@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["EventBus"]
+
 from typing import Any
 
 from dev.thecesrom.helper.types import AnyStr

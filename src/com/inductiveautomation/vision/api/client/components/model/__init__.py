@@ -1,5 +1,7 @@
 from __future__ import print_function
 
+__all__ = ["AbstractVisionPanel"]
+
 from typing import Optional
 
 from java.awt import LayoutManager

@@ -1,3 +1,5 @@
+__all__ = ["ComponentUI", "DesktopPaneUI"]
+
 from java.awt import Component, Graphics
 from java.lang import Object
 

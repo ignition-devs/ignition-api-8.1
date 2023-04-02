@@ -1,3 +1,5 @@
+__all__ = ["RosterModel"]
+
 from typing import List
 
 from com.inductiveautomation.ignition.common.user import User

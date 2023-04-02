@@ -1,3 +1,5 @@
+__all__ = ["TypeToken"]
+
 from typing import Any
 
 from java.lang import Object

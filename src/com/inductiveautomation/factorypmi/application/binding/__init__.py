@@ -1,3 +1,5 @@
+__all__ = ["VisionClientContext"]
+
 from com.inductiveautomation.factorypmi.application import VisionDesktop
 from com.inductiveautomation.factorypmi.application.model import TemplateManager
 from com.inductiveautomation.factorypmi.application.script.builtin import (

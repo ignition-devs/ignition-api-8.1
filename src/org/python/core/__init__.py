@@ -17,6 +17,7 @@ __all__ = [
     "PyInteger",
     "PyList",
     "PyMethodDescr",
+    "PyModule",
     "PyNewWrapper",
     "PyObject",
     "PySequence",
@@ -27,6 +28,7 @@ __all__ = [
     "PyTraceback",
     "PyTuple",
     "PyType",
+    "PyVersionInfo",
     "TraceFunction",
     "Visitproc",
 ]
