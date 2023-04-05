@@ -1,3 +1,14 @@
+## v8.1.26.post1 (2023-04-04)
+
+### Feat
+
+- **system**: add missing print functions from 8.1.22 (#190)
+
+### Refactor
+
+- **system**: fix types and return types (#189)
+- **system**: return AttributeInfo and RadResult (#188)
+
 ## v8.1.26 (2023-03-26)
 
 ## v8.1.25.post5 (2023-03-20)
