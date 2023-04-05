@@ -484,7 +484,7 @@ def getSystemFlags():
     currently active.
 
     Examples:
-        A full screen client launched from the gateway webpage with no
+        A full-screen client launched from the gateway webpage with no
         SSL will have a value of 44 (Fullscreen flag + Webstart Flag +
         Client Flag).
 
@@ -698,7 +698,7 @@ def retarget(
     project,  # type: AnyStr
     addresses=None,  # type: Optional[Union[AnyStr, List[AnyStr]]]
     params=None,  # type: Optional[Dict[AnyStr, Any]]
-    windows=None,  # type: Optional[AnyStr]
+    windows=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> None
     """This function allows you to programmatically 'retarget' the

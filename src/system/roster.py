@@ -16,7 +16,7 @@ __all__ = [
     "removeUsers",
 ]
 
-from typing import Dict, List
+from typing import Dict, List, Union
 
 from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
 from com.inductiveautomation.ignition.common.user import PyUser
@@ -42,7 +42,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (AnyStr, Union[AnyStr, None]) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 

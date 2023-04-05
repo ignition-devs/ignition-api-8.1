@@ -28,7 +28,7 @@ from java.util import Date
 
 
 def acknowledge(alarmIds, notes, username=None):
-    # type: (List[AnyStr], AnyStr, Optional[AnyStr]) -> None
+    # type: (List[AnyStr], AnyStr, Optional[AnyStr]) -> List[AnyStr]
     """Acknowledges any number of alarms, specified by their event ids.
 
     The event id is generated for an alarm when it becomes active, and
@@ -48,8 +48,13 @@ def acknowledge(alarmIds, notes, username=None):
             acknowledged alarm event. If set to None, then an Ack Note
             note will not be assigned to the alarm event.
         username: The user that acknowledged the alarm.
+
+    Returns:
+        List of alarm event ids (UUIDs) that were unable to be
+        acknowledged successfully.
     """
     print(alarmIds, notes, username)
+    return alarmIds
 
 
 def cancel(alarmIds):

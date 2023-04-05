@@ -50,7 +50,7 @@ def callMethod(
     connectionName,  # type: AnyStr
     objectId,  # type: AnyStr
     methodId,  # type: AnyStr
-    inputs,  # type: List[AnyStr]
+    inputs,  # type: List[Any]
 ):
     # type: (...) -> Tuple[Any, Any, Any]
     """Calls a method in an OPC UA Server.
