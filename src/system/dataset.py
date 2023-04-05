@@ -74,7 +74,7 @@ def addColumn(
         col: A Python sequence representing the data for the new column.
             Its length must equal the number of rows in the dataset.
         colName: The name of the column.
-        colType: The type of the of the column. The type can be a Python
+        colType: The type of the column. The type can be a Python
             builtin type, such as str, int, float, or a Java class, such
             as java.util.Date.
 
@@ -299,8 +299,13 @@ def exportCSV(filename, showHeaders, dataset):
     return os.path.expanduser("~")
 
 
-def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
-    # type: (AnyStr, bool, List[Dataset], bool) -> AnyStr
+def exportExcel(
+    filename,  # type: AnyStr
+    showHeaders,  # type: bool
+    dataset,  # type: Union[Dataset, List[Dataset]]
+    nullsEmpty=False,  # type: bool
+):
+    # type: (...) -> AnyStr
     """Exports the contents of a dataset as an Excel spreadsheet,
     prompting the user to save the file to disk.
 
@@ -313,8 +318,9 @@ def exportExcel(filename, showHeaders, dataset, nullsEmpty=False):
         filename: A suggested filename to save as.
         showHeaders: If True, the spreadsheet will include a header
             row.
-        dataset: A sequence of datasets, one for each sheet in the
-            resulting workbook.
+        dataset: Either a single dataset, or a list of datasets. When
+            passing a list, each element represents a single sheet in
+            the resulting workbook.
         nullsEmpty: If True, the spreadsheet will leave cells with NULL
             values empty, instead of allowing Excel to provide a default
             value like 0. Defaults to False. Optional.
@@ -435,8 +441,8 @@ def getColumnHeaders(dataset):
     return ["column1", "column2"]
 
 
-def setValue(dataset, rowIndex, columnName, value):
-    # type: (Dataset, int, AnyStr, Any) -> Dataset
+def setValue(dataset, rowIndex, columnNameOrIndex, value):
+    # type: (Dataset, int, Union[AnyStr, int], Any) -> Dataset
     """Takes a dataset and returns a new dataset with a one value
     altered.
 
@@ -452,14 +458,15 @@ def setValue(dataset, rowIndex, columnName, value):
             dataset.
         rowIndex: The index of the row to set the value at (starting at
             0).
-        columnName: The name of the column to set the value at. Case
-            insensitive.
+        columnNameOrIndex: The name of the column to set the value at,
+            or the index of the column to set the value at (starting at
+            0).
         value: The new value for the specified row/column.
 
     Returns:
          A new dataset, with the new value set at the given location.
     """
-    print(dataset, rowIndex, columnName, value)
+    print(dataset, rowIndex, columnNameOrIndex, value)
     return Dataset()
 
 
@@ -467,6 +474,7 @@ def sort(
     dataset,  # type: Dataset
     keyColumn,  # type: Union[AnyStr, int]
     ascending=True,  # type: bool
+    naturalOrdering=True,  # type: bool
 ):
     # type: (...) -> Dataset
     """Takes a dataset and returns a sorted version of dataset.
@@ -488,11 +496,15 @@ def sort(
         keyColumn: The index or column name to sort on.
         ascending: True for ascending order, False for descending order.
             If omitted, ascending order will be used. Optional.
+        naturalOrdering: True for natural ordering, False for
+            alphabetical ordering. Ignored if the sort column is a
+            directly sortable data type. If omitted, defaults to True
+            (natural ordering). Optional.
 
     Returns:
         A new sorted dataset.
     """
-    print(dataset, keyColumn, ascending)
+    print(dataset, keyColumn, ascending, naturalOrdering)
     return Dataset()
 
 

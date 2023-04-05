@@ -53,7 +53,7 @@ __all__ = [
 
 from datetime import datetime
 from time import localtime, mktime
-from typing import Optional
+from typing import Optional, Union
 
 from dev.thecesrom.helper.types import AnyStr
 from java.util import Date, Locale
@@ -718,7 +718,7 @@ def now():
 
 
 def parse(dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH):
-    # type: (AnyStr, Optional[AnyStr], Optional[Locale]) -> Date
+    # type: (AnyStr, AnyStr, Union[AnyStr, Locale, None]) -> Date
     """Attempts to parse a string and create a Date.
 
     Causes ParseException if the date dateString parameter is in an

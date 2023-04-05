@@ -213,7 +213,7 @@ def deleteAnnotations(paths, storageIds):
         annotation will have been deleted.
     """
     print(paths, storageIds)
-    return [BasicQualifiedValue()]
+    return [BasicQualifiedValue() for _ in paths]
 
 
 def deleteTags(tagPaths):
@@ -250,12 +250,12 @@ def exists(tagPath):
 
 
 def exportTags(
-    filePath,  # type: AnyStr
-    tagPaths,  # type: List[AnyStr]
+    filePath=None,  # type: Optional[AnyStr]
+    tagPaths=None,  # type: Optional[List[AnyStr]]
     recursive=True,  # type: bool
     exportType="json",  # type: AnyStr
 ):
-    # type: (...) -> None
+    # type: (...) -> Optional[AnyStr]
     """Exports Tags to a file on a local file system.
 
     The term "local file system" refers to the scope in which the script
@@ -272,8 +272,12 @@ def exportTags(
             including Tags in child folders. Defaults to True. Optional.
         exportType: The type of file that will be exported. Set to
             "json" or "xml". Defaults to "json". Optional.
+
+    Returns:
+        None or if ``filePath`` is omitted, the tag export as a string.
     """
     print(filePath, tagPaths, recursive, exportType)
+    return None if filePath is None else ""
 
 
 def getConfiguration(basePath, recursive=False):
@@ -296,8 +300,25 @@ def getConfiguration(basePath, recursive=False):
          A List of Tag dictionaries. Nested Tags are placed in a list
          marked as "tags" in the dictionary.
     """
-    print(basePath, recursive)
-    return [{}]
+    return (
+        [
+            {
+                "tags": [
+                    {
+                        "path": "New Tag",
+                        "tagType": "AtomicTag",
+                        "name": "New Tag",
+                        "valueSource": "memory",
+                    }
+                ],
+                "path": basePath,
+                "tagType": "Folder",
+                "name": "Test",
+            }
+        ]
+        if recursive
+        else [{"path": basePath, "tagType": "Folder", "name": "Test"}]
+    )
 
 
 def importTags(filePath, basePath, collisionPolicy="o"):
@@ -336,7 +357,7 @@ def isOverlaysEnabled():
 
 
 def move(tags, destination, collisionPolicy="o"):
-    # type: (AnyStr, AnyStr, AnyStr) -> List[QualityCode]
+    # type: (List[AnyStr], AnyStr, AnyStr) -> List[QualityCode]
     """Moves Tags or Folders to a new destination.
 
     The new destination can be a separate Tag provider. If interested in
@@ -347,7 +368,7 @@ def move(tags, destination, collisionPolicy="o"):
         tags: A List of Tag paths to move.
         destination: The destination to move the Tags to. The
             destination Tag provider must be specified: i.e.,
-            [default]Folder/myTag
+            ``[default]Folder/myTag``.
         collisionPolicy: The action to take when a Tag or folder with
             the same path and name is encountered. Possible values
             include: "a" Abort and throw an exception, "o" Overwrite and
@@ -403,7 +424,7 @@ def queryAnnotations(
         paths: A list of Tag paths to query. The paths are equivalent to
             what would be used ofr a Tag history query, and should
             specify the source provider as well. For example,
-            "[HistoryProvider/Gateway:Provider]Path/To/Tag".
+            ``"[HistoryProvider/Gateway:Provider]Path/To/Tag"``.
         startTime: The start of the time range. If not defined, defaults
             to 12 hours ago. Optional.
         endTime: The end of time range. If not defined, defaults to
@@ -417,7 +438,7 @@ def queryAnnotations(
         A list of Annotation objects that match the query criteria.
     """
     print(paths, startTime, endTime, types)
-    return [Annotation()]
+    return [Annotation() for _ in paths]
 
 
 def queryTagCalculations(
@@ -773,7 +794,7 @@ def storeAnnotations(
         paths: A list of Tag paths to store for. The paths are
             equivalent to what would be used for a Tag history query,
             and should specify the source provider as well. For example,
-            "[HistoryProvider/Gateway:Provider]Path/To/Tag". This
+            ``"[HistoryProvider/Gateway:Provider]Path/To/Tag"``. This
             parameter is required, even if storage ids are included,
             because it is used to identify the underlying storage
             provider.
