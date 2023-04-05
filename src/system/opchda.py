@@ -25,6 +25,7 @@ from typing import Any, List
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.sqltags.history import AggregateInfo
+from com.inductiveautomation.opccom.hda import AttributeInfo, ReadResult
 from dev.thecesrom.helper.types import AnyStr
 from java.util import Date
 
@@ -59,7 +60,7 @@ def getAggregates(serverName):
 
 
 def getAttributes(serverName):
-    # type: (AnyStr) -> List[AggregateInfo]
+    # type: (AnyStr) -> List[AttributeInfo]
     """Queries the given Server for the item attributes that are
     available with system.opchda.readAttributes().
 
@@ -71,7 +72,7 @@ def getAttributes(serverName):
         'name', and 'desc' properties defined.
     """
     print(serverName)
-    return [AggregateInfo()]
+    return [AttributeInfo()]
 
 
 def getServers():
@@ -141,8 +142,14 @@ def isServerAvailable(serverName):
     return True
 
 
-def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
-    # type: (AnyStr, AnyStr, AnyStr, Date, Date) -> List[Any]
+def readAttributes(
+    serverName,  # type: AnyStr
+    itemId,  # type: AnyStr
+    attributeIds,  # type: List[AnyStr]
+    startDate,  # type: Date
+    endDate,  # type: Date
+):
+    # type: (...) -> List[ReadResult]
     """Reads the specified attributes for the given item over a time
     range.
 
@@ -167,7 +174,7 @@ def readAttributes(serverName, itemId, attributeIds, startDate, endDate):
         itself a list of QualifiedValues.
     """
     print(serverName, itemId, attributeIds, startDate, endDate)
-    return []
+    return [ReadResult() for _ in attributeIds]
 
 
 def readProcessed(
@@ -178,7 +185,7 @@ def readProcessed(
     resampleIntervalMS,  # type: int
     aggregates,  # type: List[Any]
 ):
-    # type: (...) -> List[Any]
+    # type: (...) -> List[ReadResult]
     """Reads processed values from the OPC-HDA Server.
 
     Processed values are calculated values, based on the aggregate
@@ -212,7 +219,7 @@ def readProcessed(
         resampleIntervalMS,
         aggregates,
     )
-    return []
+    return [ReadResult() for _ in itemIds]
 
 
 def readRaw(
@@ -245,7 +252,7 @@ def readRaw(
         itself a list of QualifiedValues.
     """
     print(serverName, itemIds, startDate, endDate, maxValues, boundingValues)
-    return []
+    return [ReadResult() for _ in itemIds]
 
 
 def replace(serverName, itemId, value, date, quality):
