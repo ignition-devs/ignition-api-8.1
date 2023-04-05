@@ -5,9 +5,17 @@ The following functions allow you to send to a printer.
 
 from __future__ import print_function
 
-__all__ = ["LANDSCAPE", "PORTRAIT", "createImage", "createPrintJob", "printToImage"]
+__all__ = [
+    "LANDSCAPE",
+    "PORTRAIT",
+    "createImage",
+    "createPrintJob",
+    "getDefaultPrinterName",
+    "getPrinterNames",
+    "printToImage",
+]
 
-from typing import Optional
+from typing import List, Optional
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 from dev.thecesrom.helper.types import AnyStr
@@ -53,6 +61,29 @@ def createPrintJob(component):
         the print job, use .print().
     """
     return PrintUtilities.JythonPrintJob(component)
+
+
+def getDefaultPrinterName():
+    # type: () -> Optional[unicode]
+    """Obtains the local default printer.
+
+    Returns:
+        A string that represents the default printer. Returns null if
+        there is no default printer.
+    """
+    return unicode("Default Printer")
+
+
+def getPrinterNames():
+    # type: () -> List[unicode]
+    """Lists the available local printers.
+
+    Returns:
+        A list of strings that contain the names of local printers.
+        Returns an empty list if there are no available local printers.
+    """
+    printer = getDefaultPrinterName()
+    return [] if printer is None else [printer]
 
 
 def printToImage(component, filename=None):

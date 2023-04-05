@@ -594,7 +594,7 @@ def print(
 
 
 def refresh(sessionId="current_session", pageId="current_page"):
-    # type: (Optional[AnyStr], Optional[AnyStr]) -> None
+    # type: (AnyStr, AnyStr) -> None
     """Triggers a refresh of the page.
 
     Note:
@@ -643,7 +643,7 @@ def sendMessage(
 
 
 def setTheme(name, sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    # type: (AnyStr, AnyStr, AnyStr) -> None
     """Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
@@ -762,7 +762,7 @@ def togglePopup(
 
 
 def vibrateDevice(duration, sessionId="current_session"):
-    # type: (int, Optional[AnyStr]) -> None
+    # type: (int, AnyStr) -> None
     """When called from the Perspective App, will cause the device to
     vibrate for the specified number of milliseconds.
 
