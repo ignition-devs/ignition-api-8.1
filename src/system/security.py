@@ -91,7 +91,7 @@ def isScreenLocked():
 
 
 def lockScreen(obscure=False):
-    # type: (Optional[bool]) -> None
+    # type: (bool) -> None
     """Used to put a running Client in lock-screen mode.
 
     The screen can be unlocked by the user with the proper credentials,
@@ -113,7 +113,7 @@ def logout():
 
 
 def switchUser(username, password, event, hideError=False):
-    # type: (AnyStr, AnyStr, EventObject, Optional[bool]) -> bool
+    # type: (AnyStr, AnyStr, EventObject, bool) -> bool
     """Attempts to switch the current user on the fly.
 
     If the given username and password fail, this function will return
@@ -149,7 +149,7 @@ def unlockScreen():
 
 
 def validateUser(username, password, authProfile="", timeout=60000):
-    # type: (AnyStr, AnyStr, Optional[AnyStr], Optional[int]) -> bool
+    # type: (AnyStr, AnyStr, AnyStr, int) -> bool
     """Tests credentials (username and password) against an
     authentication profile.
 

@@ -129,7 +129,7 @@ def enableDisableEquipment(enable, names):
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
-    # type: (int, AnyStr, Optional[int], Optional[int]) -> Any
+    # type: (int, AnyStr, int, int) -> Any
     """Attempts to retrieve a response message from the Gateway.
 
     The transaction id from the sent message is used to retrieve the

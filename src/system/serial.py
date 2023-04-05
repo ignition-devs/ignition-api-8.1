@@ -377,14 +377,15 @@ def sendBreak(port, millis):
     print(port, millis)
 
 
-def write(port, toWrite, encoding="utf-8"):
-    # type: (AnyStr, AnyStr, Optional[AnyStr]) -> None
+def write(port, toWrite, timeout=5000, encoding="utf-8"):
+    # type: (AnyStr, AnyStr, int, Optional[AnyStr]) -> None
     """Write a string to a serial port using the platforms default
     character encoding.
 
     Args:
         port: The previously configured serial port to use.
         toWrite: The string to write.
+        timeout: Timeout in milliseconds. Default is 5,000. Optional.
         encoding: Encoding to use when constructing the string. Defaults
             to the platform's default character set. Optional.
     """

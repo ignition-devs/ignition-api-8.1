@@ -108,7 +108,7 @@ def executeReport(
 
 
 def getReportNamesAsDataset(project="project", includeReportName=True):
-    # type: (Optional[AnyStr], Optional[bool]) -> BasicDataset
+    # type: (Optional[AnyStr], bool) -> BasicDataset
     """Gets a data of all reports for a project.
 
     Args:
