@@ -15,14 +15,6 @@ from typing import Any, Iterable, List, Optional, Set, Union
 
 from com.inductiveautomation.ignition.common.document import DocumentElement
 from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
-from com.inductiveautomation.ignition.common.model.values import (
-    QualifiedValue,
-    QualityCode,
-)
-from com.inductiveautomation.ignition.common.sqltags.model.types import (
-    DataQuality,
-    DataType,
-)
 from dev.thecesrom.helper.types import AnyStr
 from java.awt import Color
 from java.lang import Class, Comparable, Number, Object
@@ -138,7 +130,7 @@ class Dataset(object):
         raise NotImplementedError
 
     def getQualityAt(self, row, col):
-        # type: (int, int) -> QualityCode
+        # type: (int, int) -> Any
         """Returns the quality of the value at the given location.
 
         Args:
@@ -188,13 +180,13 @@ class AbstractDataset(Dataset):
     _columnNames = None  # type: List[AnyStr]
     _columnNamesLowercase = None  # type: List[AnyStr]
     _columnTypes = None  # type: List[Class]
-    _qualityCodes = None  # type: Optional[List[List[QualityCode]]]
+    _qualityCodes = None  # type: Optional[List[List[Any]]]
 
     def __init__(
         self,
         columnNames,  # type: List[AnyStr]
         columnTypes,  # type: List[Class]
-        qualityCodes=None,  # type: Optional[List[List[QualityCode]]]
+        qualityCodes=None,  # type: Optional[List[List[Any]]]
     ):
         # type: (...) -> None
         self._columnNames = columnNames
@@ -203,11 +195,11 @@ class AbstractDataset(Dataset):
 
     @staticmethod
     def convertToQualityCodes(dataQualities):
-        # type: (List[List[DataQuality]]) -> List[List[QualityCode]]
+        # type: (List[List[Any]]) -> List[List[Any]]
         pass
 
     def getBulkQualityCodes(self):
-        # type: () -> List[List[QualityCode]]
+        # type: () -> List[List[Any]]
         pass
 
     def getColumnCount(self):
@@ -291,7 +283,7 @@ class AbstractDataset(Dataset):
         pass
 
     def getQualityAt(self, row, col):
-        # type: (int, int) -> QualityCode
+        # type: (int, int) -> Any
         """Returns the quality of the value at the given location.
 
         Args:
@@ -694,9 +686,9 @@ class TypeUtilities(Object):
 
     @staticmethod
     def hasValueChanged(
-        currentValue,  # type: QualifiedValue
-        previousValue,  # type: QualifiedValue
-        expectedType,  # type: DataType
+        currentValue,  # type: Any
+        previousValue,  # type: Any
+        expectedType,  # type: Any
         deadband,  # type: float
     ):
         # type: (...) -> bool
@@ -759,7 +751,7 @@ class TypeUtilities(Object):
 
     @staticmethod
     def setArrayValue(arrayValue, newVal, pos):
-        # type: (Object, Object, int) -> QualityCode
+        # type: (Object, Object, int) -> Any
         pass
 
     @staticmethod
