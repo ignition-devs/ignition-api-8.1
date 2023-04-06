@@ -1,5 +1,3 @@
-# flake8: noqa
-# pylint: disable=line-too-long
 from __future__ import print_function
 
 from typing import Any, List
