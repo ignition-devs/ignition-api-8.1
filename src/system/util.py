@@ -88,6 +88,9 @@ SSL_FLAG = 64
 WEBSTART_FLAG = 8
 
 
+globals = {}  # type: Dict[AnyStr, Any]
+
+
 def audit(
     action=None,  # type: Optional[AnyStr]
     actionValue=None,  # type: Optional[AnyStr]
@@ -323,7 +326,7 @@ def getGlobals():
     Returns:
         The global namespace, as a dictionary.
     """
-    return {}
+    return globals
 
 
 def getInactivitySeconds():
