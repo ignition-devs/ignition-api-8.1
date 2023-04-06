@@ -903,7 +903,7 @@ class Date(Object):
     def __init__(self, date=None):
         # type: (Optional[long]) -> None
         super(Date, self).__init__()
-        print(self, date)
+        self._date = date
 
     def after(self, when):
         # type: (Date) -> bool
