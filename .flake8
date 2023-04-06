@@ -2,4 +2,4 @@
 ignore = E741, F821
 max-complexity = 10
 max-doc-length = 72
-max-line-length = 88
+max-line-length = 120

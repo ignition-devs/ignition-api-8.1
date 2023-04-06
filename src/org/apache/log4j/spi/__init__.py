@@ -12,8 +12,8 @@ __all__ = [
 
 from typing import Any, Optional
 
-import java.lang
 from dev.thecesrom.helper.types import AnyStr
+from java.lang import Exception, Object
 from java.util import Enumeration
 
 
@@ -31,7 +31,7 @@ class ErrorHandler(OptionHandler):
     def error(
         self,
         message,  # type: AnyStr
-        e=None,  # type: Optional[java.lang.Exception]
+        e=None,  # type: Optional[Exception]
         errorCode=None,  # type: Optional[int]
         event=None,  # type: Optional[LoggingEvent]
     ):
@@ -117,7 +117,7 @@ class LoggerRepository(object):
         raise NotImplementedError
 
 
-class Filter(java.lang.Object, OptionHandler):
+class Filter(Object, OptionHandler):
     def activateOptions(self):
         # type: () -> None
         pass
@@ -135,7 +135,7 @@ class Filter(java.lang.Object, OptionHandler):
         pass
 
 
-class LoggingEvent(java.lang.Object):
+class LoggingEvent(Object):
     categoryName = None  # type: AnyStr
     fqnOfCategoryClass = None  # type: AnyStr
     level = None  # type: Any

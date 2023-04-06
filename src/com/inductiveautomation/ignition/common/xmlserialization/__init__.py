@@ -4,17 +4,17 @@ __all__ = ["ClassNameResolver", "SerializationException"]
 
 from typing import Any
 
-import java.lang
 from dev.thecesrom.helper.types import AnyStr
+from java.lang import Class, Exception, Object
 
 
-class ClassNameResolver(java.lang.Object):
+class ClassNameResolver(Object):
     def __init__(self):
         # type: () -> None
         super(ClassNameResolver, self).__init__()
 
     def addAlias(self, clazz, alias):
-        # type: (java.lang.Class, AnyStr) -> None
+        # type: (Class, AnyStr) -> None
         pass
 
     def addDefaults(self):
@@ -26,7 +26,7 @@ class ClassNameResolver(java.lang.Object):
         pass
 
     def classForName(self, name):
-        # type: (AnyStr) -> java.lang.Class
+        # type: (AnyStr) -> Class
         pass
 
     def createBasic(self):
@@ -34,11 +34,11 @@ class ClassNameResolver(java.lang.Object):
         pass
 
     def getName(self, clazz):
-        # type: (java.lang.Class) -> AnyStr
+        # type: (Class) -> AnyStr
         pass
 
 
-class SerializationException(java.lang.Exception):
+class SerializationException(Exception):
     def __init__(self, *args):
         # type: (*Any) -> None
         super(SerializationException, self).__init__()

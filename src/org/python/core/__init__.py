@@ -37,10 +37,12 @@ from typing import Any, Iterable, Iterator, List, Mapping, Optional, Tuple, Unio
 
 from enum import Enum
 
-import java.util
 from dev.thecesrom.helper.types import AnyStr
 from java.io import PrintWriter
 from java.lang import Class, Object, RuntimeException, StringBuilder, Throwable
+from java.util import Collection
+from java.util import Iterator as JIterator
+from java.util import ListIterator, Properties
 from org.python.expose import TypeBuilder
 
 
@@ -1135,7 +1137,7 @@ class PySequenceList(PySequence):
         raise NotImplementedError
 
     def containsAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         raise NotImplementedError
 
     def get(self, index):
@@ -1155,7 +1157,7 @@ class PySequenceList(PySequence):
         raise NotImplementedError
 
     def iterator(self):
-        # type: () -> java.util.Iterator
+        # type: () -> JIterator
         raise NotImplementedError
 
     def lastIndexOf(self, o):
@@ -1163,7 +1165,7 @@ class PySequenceList(PySequence):
         raise NotImplementedError
 
     def listIterator(self, index=None):
-        # type: (Optional[int]) -> java.util.ListIterator
+        # type: (Optional[int]) -> ListIterator
         raise NotImplementedError
 
     def pyadd(self, *args):
@@ -1187,11 +1189,11 @@ class PySequenceList(PySequence):
         raise NotImplementedError
 
     def removeAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         raise NotImplementedError
 
     def retainAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         raise NotImplementedError
 
     def set(self, index, element):
@@ -1242,7 +1244,7 @@ class PyList(PySequenceList):
         return True
 
     def containsAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def count(self, o):
@@ -1283,7 +1285,7 @@ class PyList(PySequenceList):
         return True
 
     def iterator(self):
-        # type: () -> java.util.Iterator
+        # type: () -> JIterator
         pass
 
     def lastIndexOf(self, o):
@@ -1291,7 +1293,7 @@ class PyList(PySequenceList):
         pass
 
     def listIterator(self, index=None):
-        # type: (Optional[int]) -> java.util.ListIterator
+        # type: (Optional[int]) -> ListIterator
         pass
 
     def pyadd(self, *args):
@@ -1311,11 +1313,11 @@ class PyList(PySequenceList):
         pass
 
     def removeAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def retainAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def reverse(self):
@@ -1496,7 +1498,7 @@ class PySystemState(PyObject):
 
     @staticmethod
     def registry():
-        # type: () -> java.util.Properties
+        # type: () -> Properties
         pass
 
     def stderr(self):
@@ -1577,7 +1579,7 @@ class PyTuple(PySequenceList):
         return True
 
     def containsAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def count(self, value):
@@ -1610,7 +1612,7 @@ class PyTuple(PySequenceList):
         return True
 
     def iterator(self):
-        # type: () -> java.util.Iterator
+        # type: () -> JIterator
         pass
 
     def lastIndexOf(self, o):
@@ -1618,7 +1620,7 @@ class PyTuple(PySequenceList):
         pass
 
     def listIterator(self, index=None):
-        # type: (Optional[int]) -> java.util.ListIterator
+        # type: (Optional[int]) -> ListIterator
         pass
 
     def pyadd(self, *args):
@@ -1638,11 +1640,11 @@ class PyTuple(PySequenceList):
         pass
 
     def removeAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def retainAll(self, c):
-        # type: (java.util.Collection) -> bool
+        # type: (Collection) -> bool
         return True
 
     def set(self, index, element):
