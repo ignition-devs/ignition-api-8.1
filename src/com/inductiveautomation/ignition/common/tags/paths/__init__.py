@@ -16,9 +16,41 @@ from java.lang import Object
 
 
 class AbstractTagPath(Object, TagPath):
+    def __init__(self):
+        # type: () -> None
+        super(AbstractTagPath, self).__init__()
+
     @staticmethod
     def compareNullLow(c1, c2):
         # type: (Property, Property) -> int
+        pass
+
+    def getChildPath(self, nextId):
+        # type: (AnyStr) -> TagPath
+        pass
+
+    def getItemName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getParentPath(self):
+        # type: () -> TagPath
+        pass
+
+    def getProperty(self):
+        # type: () -> Property
+        pass
+
+    def getSource(self):
+        # type: () -> AnyStr
+        pass
+
+    def toStringFull(self):
+        # type: () -> AnyStr
+        pass
+
+    def toStringPartial(self):
+        # type: () -> AnyStr
         pass
 
 

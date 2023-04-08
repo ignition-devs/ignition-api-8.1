@@ -1,6 +1,6 @@
 __all__ = ["SecurityContext", "TagManager", "TagPath"]
 
-from typing import Any, Optional, Union
+from typing import Any, Optional
 
 from com.inductiveautomation.ignition.common import Path
 from com.inductiveautomation.ignition.common.browsing import BrowseFilter
@@ -12,7 +12,7 @@ from com.inductiveautomation.ignition.common.gson import (
 )
 from com.inductiveautomation.ignition.common.user import AuthenticatedUser
 from dev.thecesrom.helper.types import AnyStr
-from java.lang import Object
+from java.lang import Comparable, Object
 from java.lang.reflect import Type
 
 
@@ -62,26 +62,26 @@ class SecurityContext(Object):
             pass
 
 
-class TagPath(Path):
-    def compareTo(self, that):
+class TagPath(Path, Comparable):
+    def compareTo(self, o):
         # type: (TagPath) -> int
         pass
 
-    def getChildPath(self, arg):
-        # type: (Union[Property, AnyStr]) -> TagPath
-        pass
+    def getChildPath(self, nextId):
+        # type: (AnyStr) -> TagPath
+        raise NotImplementedError
 
     def getItemName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getLastPathComponent(self):
         # type: () -> AnyStr
         pass
 
     def getParentPath(self):
-        # type: () -> Path
-        pass
+        # type: () -> TagPath
+        raise NotImplementedError
 
     def getPathComponent(self, i):
         # type: (int) -> AnyStr
@@ -93,11 +93,11 @@ class TagPath(Path):
 
     def getProperty(self):
         # type: () -> Property
-        pass
+        raise NotImplementedError
 
     def getSource(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def isAncestorOf(self, path):
         # type: (Path) -> bool
@@ -105,8 +105,8 @@ class TagPath(Path):
 
     def toStringFull(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def toStringPartial(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
