@@ -17,6 +17,7 @@ from java.lang import Object
 
 class AbstractTagPath(Object, TagPath):
     def __init__(self):
+        # type: () -> None
         super(AbstractTagPath, self).__init__()
 
     @staticmethod
