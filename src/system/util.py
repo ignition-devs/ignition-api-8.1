@@ -38,6 +38,7 @@ __all__ = [
     "getSessionInfo",
     "getSystemFlags",
     "getVersion",
+    "globals",
     "invokeAsynchronous",
     "invokeLater",
     "jsonDecode",

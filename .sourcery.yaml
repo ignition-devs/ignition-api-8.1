@@ -12,6 +12,7 @@ rule_settings:
   enable:
     - default
   disable:
+    - avoid-builtin-shadow
     - use-fstring-for-formatting
   rule_types:
     - refactoring
