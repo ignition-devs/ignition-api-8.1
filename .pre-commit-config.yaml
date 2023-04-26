@@ -12,7 +12,7 @@ repos:
     hooks:
       - id: isort
   - repo: https://github.com/PyCQA/docformatter
-    rev: v1.5.1
+    rev: v1.6.3
     hooks:
       - id: docformatter
         args: [--in-place, --wrap-summaries=72, --close-quotes-on-newline]
@@ -33,6 +33,6 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.42.1
+    rev: 3.1.0
     hooks:
       - id: commitizen
