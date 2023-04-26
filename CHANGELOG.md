@@ -1,3 +1,25 @@
+## v8.1.27 (2023-04-25)
+
+### Refactor
+
+- **ia**: set TagPath as an interface (#195)
+
+## v8.1.26.post2 (2023-04-06)
+
+### Feat
+
+- **system**: add system.utils.globals dictionary (#194)
+- **system**: add missing print functions from 8.1.22 (#190)
+
+### Fix
+
+- **ia**: solve cyclic import error (#193)
+
+### Refactor
+
+- **system**: fix types and return types (#189)
+- **system**: return AttributeInfo and ReadResult (#188)
+
 ## v8.1.26.post2 (2023-04-06)
 
 ### Feat
