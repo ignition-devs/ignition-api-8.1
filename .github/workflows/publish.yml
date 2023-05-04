@@ -7,6 +7,6 @@ on:
 
 jobs:
   main:
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v2.2.0
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v3.0.0
     secrets:
       pypi-token: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
