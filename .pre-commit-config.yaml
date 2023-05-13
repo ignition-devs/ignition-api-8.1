@@ -33,6 +33,6 @@ repos:
         language: system
         types: [python]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.2.1
+    rev: 3.2.2
     hooks:
       - id: commitizen
