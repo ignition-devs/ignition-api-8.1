@@ -6,7 +6,7 @@ through scripting.
 
 from __future__ import print_function
 
-__all__ = ["getProjectName", "getProjectNames"]
+__all__ = ["getProjectName", "getProjectNames", "requestScan"]
 
 from typing import List
 
@@ -52,3 +52,18 @@ def getProjectNames():
          the Gateway.
     """
     return ["MyProject", "DisabledProject"]
+
+
+def requestScan(timeout=10):
+    # type: (int) -> None
+    """Requests a manual scan of the projects directory in order to
+    refresh projects and their resources. If a scan is currently
+    running, this method has no effect and will return when the in-
+    progress scan has finished. This function blocks the current thread
+    until a scan has completed.
+
+    Args:
+        timeout: The amount of time, in seconds, to block the current
+            thread before timing out. Default is 10 seconds. Optional.
+    """
+    print(timeout)
