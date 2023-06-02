@@ -1,3 +1,10 @@
+## v8.1.28 (2023-06-02)
+
+### Feat
+
+- **system**: add system.vision.getKeyboardLayouts (#209)
+- **system**: add system.project.requestScan (#208)
+
 ## v8.1.27 (2023-04-25)
 
 ### Refactor
