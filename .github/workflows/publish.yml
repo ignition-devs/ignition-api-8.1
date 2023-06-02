@@ -6,7 +6,10 @@ on:
       - published
 
 jobs:
-  main:
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v4.0.1
-    secrets:
-      password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
+  pypi-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: python2-pypi-upload
+        uses: coatl-dev/action-pypi-upload@v0.2.0
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
