@@ -9,6 +9,9 @@ jobs:
   pypi-publish:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
       - name: python2-pypi-upload
         uses: coatl-dev/action-pypi-upload@v0.2.0
         with:
