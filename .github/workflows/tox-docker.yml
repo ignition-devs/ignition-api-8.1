@@ -35,7 +35,7 @@ jobs:
 
       - name: Set PIP_CACHE_DIR
         run: |
-          echo "PIP_CACHE_DIR=$(GITHUB_WORKSPACE)/pip-cache" >> $GITHUB_ENV
+          echo "PIP_CACHE_DIR='$GITHUB_WORKSPACE/pip-cache'" >> $GITHUB_ENV
 
       - name: Cache pip
         id: cache-pip
