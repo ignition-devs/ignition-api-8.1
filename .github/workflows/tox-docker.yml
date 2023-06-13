@@ -1,0 +1,65 @@
+on:
+  workflow_call:
+    inputs:
+      image:
+        description: >-
+          The type of machine to run the job on. Options: ubuntu-20.04,
+          ubuntu-22.04, ubuntu-latest.
+        required: false
+        type: string
+        default: ubuntu-latest
+      pre-commit:
+        required: false
+        type: boolean
+        default: false
+      timeout:
+        description: >-
+          The maximum number of minutes to let a job run before GitHub
+          automatically cancels it.
+        required: false
+        type: number
+        default: 15
+
+jobs:
+  tox:
+    runs-on: ${{ inputs.image }}
+    env:
+      PIP_CACHE_DIR: $GITHUB_WORKSPACE/pip-cache
+    container: coatldev/six:latest
+    timeout-minutes: ${{ inputs.timeout }}
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip tox
+
+      - name: Set PY
+        run: |
+          echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+
+      - name: Cache pip
+        id: cache-pip
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.PIP_CACHE_DIR }}
+          key: py-${{ env.PY }}-${{ inputs.image }}
+
+      - name: Cache pre-commit
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pre-commit
+          key: pre-commit-${{ env.PY }}-${{ inputs.image }}-${{ hashFiles('.pre-commit-config.yaml') }}
+        if: ${{ inputs.pre-commit }}
+
+      - name: Cache tox
+        id: cache-tox
+        uses: actions/cache@v3
+        with:
+          path: .tox
+          key: tox-${{ env.PY }}-${{ inputs.image }}-${{ hashFiles('tox.ini') }}
+
+      - name: Run tests
+        run: |
+          tox
