@@ -23,8 +23,6 @@ on:
 jobs:
   tox:
     runs-on: ${{ inputs.image }}
-    env:
-      PIP_CACHE_DIR: $GITHUB_WORKSPACE/pip-cache
     container: coatldev/six:latest
     timeout-minutes: ${{ inputs.timeout }}
     steps:
@@ -34,6 +32,10 @@ jobs:
       - name: Set PY
         run: |
           echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
+
+      - name: Set PIP_CACHE_DIR
+        run: |
+          echo "PIP_CACHE_DIR=$(GITHUB_WORKSPACE)/pip-cache" >> $GITHUB_ENV
 
       - name: Cache pip
         id: cache-pip
