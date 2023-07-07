@@ -12,16 +12,24 @@ class RosterModel(DefaultBindableModel):
         # type: () -> None
         super(RosterModel, self).__init__()
 
+    def getDescription(self):
+        # type: () -> AnyStr
+        pass
+
     def getName(self):
         # type: () -> AnyStr
         pass
 
     def getUsers(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[User]
         pass
 
     def set(self, that):
         # type: (RosterModel) -> None
+        pass
+
+    def setDescription(self, description):
+        # type: (AnyStr) -> None
         pass
 
     def setName(self, name):
