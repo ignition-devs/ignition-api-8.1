@@ -494,7 +494,7 @@ def rollbackTransaction(tx):
 
 
 def runNamedQuery(*args):
-    # type: (*Any) -> Any
+    # type: (*Any) -> DatasetUtilities.PyDataSet
     """Runs a named query and returns the results.
 
     Note that the number of parameters in the function is determined by
@@ -517,6 +517,7 @@ def runNamedQuery(*args):
         the datatype of the value returned by a Scalar Query.
     """
     print(args)
+    return DatasetUtilities.PyDataSet()
 
 
 def runPrepQuery(
