@@ -1,9 +1,8 @@
 __all__ = ["SecurityContext", "TagManager", "TagPath"]
 
-from typing import Any, Optional
+from typing import TYPE_CHECKING, Any, Optional
 
 from com.inductiveautomation.ignition.common import Path
-from com.inductiveautomation.ignition.common.browsing import BrowseFilter
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.gson import (
     JsonDeserializationContext,
@@ -14,6 +13,9 @@ from com.inductiveautomation.ignition.common.user import AuthenticatedUser
 from dev.thecesrom.helper.types import AnyStr
 from java.lang import Comparable, Object
 from java.lang.reflect import Type
+
+if TYPE_CHECKING:
+    from com.inductiveautomation.ignition.common.browsing import BrowseFilter
 
 
 class TagManager(object):
