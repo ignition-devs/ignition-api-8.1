@@ -180,8 +180,8 @@ def addDatasource(
     )
 
 
-def beginNamedQueryTransaction(*args):
-    # type: (*Any) -> AnyStr
+def beginNamedQueryTransaction(*args, **kwargs):
+    # type: (*Any, **Any) -> AnyStr
     """Begins a new database transaction using Named Queries.
 
     Database transactions are used to execute multiple queries in an
@@ -212,13 +212,14 @@ def beginNamedQueryTransaction(*args):
 
     Args:
         *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
 
     Returns:
          The new transaction ID. You'll use this ID as the "tx" argument
          for all other calls to have them execute against this
          transaction.
     """
-    print(args)
+    print(args, kwargs)
     return "transaction_id"
 
 
@@ -283,8 +284,8 @@ def clearAllNamedQueryCaches(project=None):
     print(project)
 
 
-def clearNamedQueryCache(*args):
-    # type: (*AnyStr) -> None
+def clearNamedQueryCache(*args, **kwargs):
+    # type: (*AnyStr, **AnyStr) -> None
     """This clears the cache of a Named Query.
 
     If called from the Shared Scope (i.e., Tag Event Scripts, Alarm
@@ -299,8 +300,9 @@ def clearNamedQueryCache(*args):
 
     Args:
         *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
     """
-    print(args)
+    print(args, kwargs)
 
 
 def closeTransaction(tx):
@@ -493,8 +495,8 @@ def rollbackTransaction(tx):
     print(tx)
 
 
-def runNamedQuery(*args):
-    # type: (*Any) -> DatasetUtilities.PyDataSet
+def runNamedQuery(*args, **kwargs):
+    # type: (*Any, **Any) -> DatasetUtilities.PyDataSet
     """Runs a named query and returns the results.
 
     Note that the number of parameters in the function is determined by
@@ -508,6 +510,7 @@ def runNamedQuery(*args):
 
     Args:
         *args: Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
 
     Returns:
         The results of the query. The exact object returned depends on
@@ -516,7 +519,7 @@ def runNamedQuery(*args):
         rows affected when set to Update Query, or an object matching
         the datatype of the value returned by a Scalar Query.
     """
-    print(args)
+    print(args, kwargs)
     return DatasetUtilities.PyDataSet()
 
 
@@ -655,8 +658,8 @@ def runQuery(
     return DatasetUtilities.PyDataSet()
 
 
-def runSFNamedQuery(*args):
-    # type: (*Any) -> bool
+def runSFNamedQuery(*args, **kwargs):
+    # type: (*Any, **Any) -> bool
     """Runs a named query that goes through the Store and Forward
     system.
 
@@ -671,11 +674,12 @@ def runSFNamedQuery(*args):
 
     Args:
         *args : Variable length argument list.
+        **kwargs: Arbitrary keyword arguments.
 
     Returns:
         True if successfully sent to the Store and Forward system.
     """
-    print(args)
+    print(args, kwargs)
     return True
 
 
