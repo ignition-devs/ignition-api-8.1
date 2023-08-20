@@ -1,3 +1,15 @@
+## v8.1.31 (2023-08-20)
+
+### Refactor
+
+- **system**: add kwargs to named query functions (#225)
+
+## v8.1.30.post1 (2023-07-29)
+
+### Fix
+
+- **system**: solve system.tag import error (#223)
+
 ## v8.1.30.post1 (2023-07-29)
 
 ### Fix
