@@ -3,7 +3,7 @@
 <!--- Badges --->
 ![GitHub last commit (8.1)](https://img.shields.io/github/last-commit/ignition-api/8.1/main)
 [![GitHub contributors](https://img.shields.io/github/contributors/ignition-api/8.1)](https://github.com/ignition-api/8.1/graphs/contributors)
-[![Downloads](https://pepy.tech/badge/ignition-api)](https://pepy.tech/project/ignition-api)
+[![Downloads](https://static.pepy.tech/badge/ignition-api)](https://pepy.tech/project/ignition-api)
 [![Sourcery](https://img.shields.io/badge/Sourcery-enabled-brightgreen)](https://sourcery.ai)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?style=flat-square&logo=pre-commit&logoColor=white)](https://pre-commit.com/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
