@@ -1,0 +1,2 @@
+class Codec(object):
+    pass

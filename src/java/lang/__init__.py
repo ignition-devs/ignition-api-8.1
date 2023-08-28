@@ -322,6 +322,7 @@ class String(unicode):
 
     def getBytes(self, *args):
         # type: (*Any) -> Optional[object]
+        print(args)
         return array.array("b", self)
 
     def getChars(self, srcBegin, srcEnd, dst, dstBegin):
