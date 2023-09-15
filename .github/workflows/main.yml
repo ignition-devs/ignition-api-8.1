@@ -9,6 +9,6 @@ on:
 
 jobs:
   test:
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
     with:
       pre-commit: true
