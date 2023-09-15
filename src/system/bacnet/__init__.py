@@ -10,9 +10,11 @@ __all__ = [
     "enumerated",
     "enums",
     "readRaw",
+    "readRawMultiple",
     "synchronizeTime",
     "synchronizeTimeUtc",
     "writeRaw",
+    "writeRawMultiple",
     "writeWithPriority",
 ]
 
@@ -50,6 +52,34 @@ def readRaw(
     return [0]
 
 
+def readRawMultiple(
+    deviceName,  # type: AnyStr
+    objectTypes,  # type: List[ObjectType]
+    objectIds,  # type: List[int]
+    propertyIds,  # type: List[PropertyIdentifier]
+):
+    # type: (...) -> List[Any]
+    """This function is the bulk version of system.bacnet.readRaw to
+    allow multiple object/property combinations to be read
+    simultaneously from a single request.
+
+    Args:
+        deviceName: The name of the configured BACnet/IP device instance
+            to read from.
+        objectTypes: The numeric ids of the objectType of the object
+            instances being read from.
+        objectIds: The object instance number to read.
+        propertyIds: The PropertyIdentifier of the object instance being
+            read.
+
+    Returns:
+        A list of Encodable objects corresponding to the properties
+        being read.
+    """
+    print(deviceName, objectTypes, objectIds, propertyIds)
+    return []
+
+
 def synchronizeTime(deviceName):
     # type: (AnyStr) -> None
     """Notifies the remote device of the correct current time, which is
@@ -80,8 +110,8 @@ def writeRaw(
     objectId,  # type: int
     propertyId,  # type: PropertyIdentifier
     value,  # type: Any
-    priority,  # type: int
-    propertyArrayIndex,  # type: int
+    priority=8,  # type: int
+    propertyArrayIndex=None,  # type: Optional[int]
 ):
     # type: (...) -> None
     """Write to any BACnet object not explicitly supported by the BACnet
@@ -115,6 +145,51 @@ def writeRaw(
         value,
         priority,
         propertyArrayIndex,
+    )
+
+
+def writeRawMultiple(
+    deviceName,  # type: AnyStr
+    objectTypes,  # type: List[ObjectType]
+    objectIds,  # type: List[int]
+    propertyIds,  # type: List[PropertyIdentifier]
+    values,  # type: List[Any]
+    priorities=None,  # type: Optional[List[int]]
+    propertyArrayIndices=None,  # type: Optional[List[int]]
+):
+    # type: (...) -> None
+    """This function is the bulk version of system.bacnet.writeRaw by
+    writing properties to objects provided equal-length lists of object
+    types, object instance numbers, property IDs, values, priorities,
+    and property array indices.
+
+    Args:
+        deviceName: Name of the configured BACnet/IP device instance to
+            write from.
+        objectTypes: A list of ObjectType(s) for the object instance
+            being written to.
+        objectIds: A list of object instance numbers to write to.
+        propertyIds: A list of PropertyIdentifier(s) for the object
+            instances being written to.
+        values: A list of values to write.
+        priorities: An optional list of priority levels to use when
+            writing to commandable properties. All elements must be in
+            the range [1..16]. Defaults to 8 for all properties when
+            this parameter is omitted.
+        propertyArrayIndices: An optional list of array indices
+            corresponding to array properties being written. None should
+            be specified as an element when writing to the entire array
+            property or if the property is not an array. Defaults to a
+            list of None when this parameter is omitted.
+    """
+    print(
+        deviceName,
+        objectTypes,
+        objectIds,
+        propertyIds,
+        values,
+        priorities,
+        propertyArrayIndices,
     )
 
 
