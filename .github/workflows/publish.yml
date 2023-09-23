@@ -6,11 +6,30 @@ on:
       - published
 
 jobs:
+  pre-commit:
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v6
+    with:
+      skip-hooks: 'pylint'
+
+  pylint:
+    needs: pre-commit
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v6
+
+  tox:
+    needs:
+      - pre-commit
+      - pylint
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
+
   pypi-publish:
+    needs:
+      - pre-commit
+      - pylint
+      - tox
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: python2-pypi-upload
         uses: coatl-dev/action-pypi-upload@v1
