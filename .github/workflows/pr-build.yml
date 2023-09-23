@@ -1,0 +1,16 @@
+name: pr-build
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src
+      - pyproject.toml
+      - requirements.txt
+      - setup.cfg
+      - tox.ini
+
+jobs:
+  tox:
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
