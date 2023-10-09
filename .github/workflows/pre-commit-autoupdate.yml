@@ -2,8 +2,8 @@ name: pre-commit-autoupdate
 
 on:
   schedule:
-    # Monday at 10:00 PST
-    - cron: '0 18 * * 1'
+    # Monday at 12:00 PST
+    - cron: '0 20 * * 1'
 
 jobs:
   pre-commit-autoupdate:
@@ -16,4 +16,5 @@ jobs:
         uses: coatl-dev/action-pre-commit-autoupdate@v0
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          skip-hooks: 'pylint'
           skip-repos: 'flake8'
