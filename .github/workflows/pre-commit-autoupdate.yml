@@ -1,10 +1,10 @@
 name: pre-commit-autoupdate
 
 on:
-  workflow_dispatch:
   schedule:
     # Monday at 12:00 PST
     - cron: '0 20 * * 1'
+  workflow_dispatch:
 
 jobs:
   pre-commit-autoupdate:
@@ -17,5 +17,8 @@ jobs:
         uses: coatl-dev/action-pre-commit-autoupdate@v0
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          gpg-sign: 'yes'
+          gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
           skip-hooks: 'pylint'
           skip-repos: 'flake8'
