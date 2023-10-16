@@ -14,10 +14,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Update pre-commit hooks
-        uses: coatl-dev/action-pre-commit-autoupdate@v0
+        uses: coatl-dev/actions/pre-commit-autoupdate@coatl
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
-          gpg-sign: 'yes'
           gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
           gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
           skip-hooks: 'pylint'
