@@ -19,5 +19,4 @@ jobs:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
           gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
           gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
-          skip-hooks: 'pylint'
           skip-repos: 'flake8'
