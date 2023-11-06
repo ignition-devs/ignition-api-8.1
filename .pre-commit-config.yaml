@@ -32,7 +32,3 @@ repos:
         entry: pylint
         language: system
         types: [python]
-  - repo: https://github.com/commitizen-tools/commitizen
-    rev: 3.12.0
-    hooks:
-      - id: commitizen
