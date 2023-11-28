@@ -1,0 +1,21 @@
+name: pip-compile-upgrade
+
+on:
+  schedule:
+    - cron: '0 20 28 * *'
+  workflow_dispatch:
+
+jobs:
+  pip-compile-upgrade:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: coatl-dev-pip-compile-upgrade
+        uses: coatl-dev/actions/pip-compile-upgrade@coatl
+        with:
+          path: requirements.txt
+          gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+          gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
