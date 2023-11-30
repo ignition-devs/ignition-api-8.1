@@ -142,7 +142,9 @@ def queryJournal(
     defined=None,  # type: Optional[List[AnyStr]]
     includeData=None,  # type: Optional[bool]
     includeSystem=None,  # type: Optional[bool]
+    includeShelved=None,  # type: Optional[bool]
     isSystem=None,  # type: Optional[bool]
+    provider=None,  # type: Optional[List[AnyStr]]
 ):
     # type: (...) -> AlarmQueryResultImpl
     """Queries the specified journal for historical alarm events.
@@ -199,8 +201,12 @@ def queryJournal(
             the AlarmQueryResult object. Optional.
         includeSystem: Specifies whether system events are included in
             the return. Optional.
+        includeShelved: A flag indicating whether shelved events should
+            be included in the results. Defaults to false. Optional.
         isSystem: Specifies whether the returned event must or must not
             be a system event. Optional.
+        provider: A list of tag providers to include in the query.
+            Omitting this parameter will query all providers. Optional.
 
     Returns:
         The AlarmQueryResult object is functionally a list of AlarmEvent
@@ -220,7 +226,9 @@ def queryJournal(
         defined,
         includeData,
         includeSystem,
+        includeShelved,
         isSystem,
+        provider,
     )
     return AlarmQueryResultImpl()
 
