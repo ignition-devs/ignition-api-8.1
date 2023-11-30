@@ -1,3 +1,9 @@
+## v8.1.34 (2023-11-29)
+
+### Feat
+
+- **system**: add includeShelved parameter to alarm.queryJournal (#248)
+
 ## v8.1.33 (2023-10-20)
 
 ## v8.1.32 (2023-09-15)
