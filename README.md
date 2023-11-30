@@ -101,7 +101,7 @@ This project consists of the following packages:
 
 #### com.inductiveautomation
 
-This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.33/index.html>.
+This package includes supporting Inductive Automation's classes and interfaces. For more information, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.34/index.html>.
 
 #### java/javax
 
@@ -113,11 +113,11 @@ This package includes supporting classes and interfaces from Apache Commons Math
 
 #### org.json
 
-This package includes supporting classes and interfaces from the Inductive Automation's `org.json` package, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.33/org/json/package-summary.html>
+This package includes supporting classes and interfaces from the Inductive Automation's `org.json` package, see documentation here: <https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.34/org/json/package-summary.html>
 
 #### org.python
 
-This package includes supporting Jython classes and interfaces. For more information, see documentation here: <https://www.javadoc.io/doc/org.python/jython-standalone/2.7.2/index.html>.
+This package includes supporting Jython classes and interfaces. For more information, see documentation here: <https://www.javadoc.io/doc/org.python/jython-standalone/2.7.3/index.html>.
 
 #### org.slf4j
 
