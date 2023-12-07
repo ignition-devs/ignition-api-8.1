@@ -1,3 +1,9 @@
+## v8.1.35 (2023-12-07)
+
+### Fix
+
+- patch remote tag provider issue in 8.1.34 (#249)
+
 ## v8.1.34 (2023-11-29)
 
 ### Feat
