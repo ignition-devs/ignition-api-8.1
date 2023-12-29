@@ -29,7 +29,7 @@ __all__ = [
 
 from typing import Any, Optional, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import (
     Appendable,
     AutoCloseable,

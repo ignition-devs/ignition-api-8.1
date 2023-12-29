@@ -23,7 +23,7 @@ from typing import Any, Iterable, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson.reflect import TypeToken
 from com.inductiveautomation.ignition.common.gson.stream import JsonReader, JsonWriter
-from dev.thecesrom.helper.types import AnyNum, AnyStr
+from dev.coatl.helper.types import AnyNum, AnyStr
 from java.io import Reader, Writer
 from java.lang import Class, Enum, Object
 from java.lang.reflect import Type

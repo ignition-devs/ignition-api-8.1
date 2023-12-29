@@ -2,7 +2,7 @@ __all__ = ["Logger", "Marker"]
 
 from typing import Any, Iterable, Optional, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 class Logger(object):

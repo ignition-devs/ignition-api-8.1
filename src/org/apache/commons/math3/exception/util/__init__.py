@@ -4,7 +4,7 @@ __all__ = ["ExceptionContext"]
 
 from typing import Any, Optional, Set
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object, Throwable
 from java.util import Locale
 

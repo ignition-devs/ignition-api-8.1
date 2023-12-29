@@ -10,7 +10,7 @@ from com.inductiveautomation.ignition.common.project.resource import (
     ResourceSignature,
 )
 from com.inductiveautomation.ignition.gateway.project import ResourceFilter
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 
 

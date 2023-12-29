@@ -30,7 +30,7 @@ __all__ = [
 import __builtin__ as builtins
 from typing import List
 
-from dev.thecesrom.helper.types import AnyNum
+from dev.coatl.helper.types import AnyNum
 from org.apache.commons.math3.exception import DimensionMismatchException
 
 

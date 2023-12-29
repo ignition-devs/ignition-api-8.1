@@ -1,6 +1,6 @@
 __all__ = ["JTextComponent"]
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Container
 
 

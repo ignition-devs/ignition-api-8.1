@@ -12,7 +12,7 @@ from com.inductiveautomation.ignition.common.tags.model import TagManager
 from com.inductiveautomation.ignition.common.xmlserialization.deserialization import (
     XMLDeserializer,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.io import InputStream
 from java.lang import Enum, IllegalArgumentException, Object, String
 

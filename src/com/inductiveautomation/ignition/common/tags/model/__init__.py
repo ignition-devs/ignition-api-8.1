@@ -10,7 +10,7 @@ from com.inductiveautomation.ignition.common.gson import (
     JsonSerializationContext,
 )
 from com.inductiveautomation.ignition.common.user import AuthenticatedUser
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Object
 from java.lang.reflect import Type
 

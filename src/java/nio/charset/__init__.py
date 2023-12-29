@@ -2,7 +2,7 @@ __all__ = ["Charset", "CharsetDecoder", "CharsetEncoder", "CoderResult"]
 
 from typing import Dict, Optional, Set, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.nio import ByteBuffer, CharBuffer
 from java.util import Locale

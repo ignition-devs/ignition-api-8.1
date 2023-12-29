@@ -6,7 +6,7 @@ from typing import Any, Union
 
 from com.inductiveautomation.ignition.common import QualifiedPath
 from com.inductiveautomation.ignition.common.gson import JsonElement
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import Date
 

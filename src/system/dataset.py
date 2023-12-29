@@ -36,7 +36,7 @@ from typing import Any, Dict, List, Optional, Type, Union
 
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
-from dev.thecesrom.helper.types import AnyNum, AnyStr
+from dev.coatl.helper.types import AnyNum, AnyStr
 from java.util import Date, Locale
 
 ColType = Union[AnyNum, AnyStr, Date]

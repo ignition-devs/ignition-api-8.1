@@ -19,7 +19,7 @@ from com.inductiveautomation.ignition.common.config import (
     PropertyValue,
 )
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import Date
 

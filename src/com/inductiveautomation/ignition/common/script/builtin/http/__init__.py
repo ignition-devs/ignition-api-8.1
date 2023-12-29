@@ -5,7 +5,7 @@ __all__ = ["CookieManager", "JythonHttpClient", "Promise", "Response"]
 from typing import Any, Optional
 
 from com.inductiveautomation.ignition.common.gson import Gson
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.net import CookieManager as JCookieManager
 from java.net.http import HttpClient, HttpResponse

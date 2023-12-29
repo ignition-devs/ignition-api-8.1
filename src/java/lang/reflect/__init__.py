@@ -1,6 +1,6 @@
 __all__ = ["Type"]
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 class Type(object):

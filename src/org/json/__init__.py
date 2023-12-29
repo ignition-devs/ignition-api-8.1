@@ -4,7 +4,7 @@ __all__ = ["JSONArray", "JSONObject"]
 
 from typing import Any, Iterator, List, Optional
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.io import Writer
 from java.lang import Number, Object
 

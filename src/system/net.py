@@ -23,7 +23,7 @@ import socket
 from typing import Any, Callable, Dict, List, Optional
 
 from com.inductiveautomation.ignition.common.script.builtin.http import JythonHttpClient
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import IllegalArgumentException
 
 

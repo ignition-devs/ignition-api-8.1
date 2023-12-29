@@ -8,7 +8,7 @@ from com.inductiveautomation.factorypmi.application.components import BasicConta
 from com.inductiveautomation.ignition.client.model import ClientContext, DesktopListener
 from com.inductiveautomation.ignition.common.project.resource import ResourcePath
 from com.inductiveautomation.ignition.common.script import ScriptManager
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import TimeZone
 from javax.swing import JDesktopPane, JInternalFrame
 

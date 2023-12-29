@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from com.inductiveautomation.factorypmi.application import FPMIApp, FPMIWindow
 from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Color, Component, Graphics
 from java.awt.event import ActionEvent, ComponentEvent, MouseEvent
 from java.awt.image import BufferedImage

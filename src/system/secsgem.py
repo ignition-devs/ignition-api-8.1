@@ -24,7 +24,7 @@ __all__ = [
 from typing import Any, Dict, List, Optional, Tuple
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date
 
 

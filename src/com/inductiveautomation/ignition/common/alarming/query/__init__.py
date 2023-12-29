@@ -4,7 +4,7 @@ from typing import Any, Iterator, List
 
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.alarming import AlarmEvent, PyAlarmEvent
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 class AlarmQueryResult(object):

@@ -6,7 +6,7 @@ __all__ = ["BSONObject", "BsonDocument", "BsonValue", "Document"]
 
 from typing import TYPE_CHECKING, Any, Set, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Object
 from java.util import Collection, Date, Map
 from org.bson.codecs.configuration import CodecRegistry

@@ -12,7 +12,7 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
     DataType,
     DataTypeClass,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

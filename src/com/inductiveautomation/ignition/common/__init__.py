@@ -15,7 +15,7 @@ from typing import Any, Iterable, List, Optional, Set, Union
 
 from com.inductiveautomation.ignition.common.document import DocumentElement
 from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Color
 from java.lang import Class, Comparable, Number, Object
 from java.util import UUID, Comparator, Date, Locale

@@ -3,7 +3,7 @@ __all__ = ["Level"]
 from typing import Any
 
 import org.slf4j.event
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

@@ -4,7 +4,7 @@ from typing import List
 
 from com.inductiveautomation.ignition.common.user import User
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 class RosterModel(DefaultBindableModel):

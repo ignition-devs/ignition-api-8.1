@@ -11,7 +11,7 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

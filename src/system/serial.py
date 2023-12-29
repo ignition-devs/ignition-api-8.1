@@ -59,7 +59,7 @@ __all__ = [
 from typing import Any, List, Optional
 
 from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 # Bit rate constants.
 BIT_RATE_110 = 110

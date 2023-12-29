@@ -7,7 +7,7 @@ from typing import Any, Iterable, List, Mapping, Optional, Sequence
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property, PropertyValueSource
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

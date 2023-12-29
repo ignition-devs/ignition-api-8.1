@@ -46,7 +46,7 @@ from com.inductiveautomation.ignition.common.user.schedule import (
     HolidayModel,
     ScheduleAdjustment,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date, Locale
 
 

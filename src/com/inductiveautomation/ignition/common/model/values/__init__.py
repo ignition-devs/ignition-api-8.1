@@ -5,8 +5,8 @@ __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 from typing import Any, Iterable, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
-from dev.thecesrom.helper.types import AnyStr
-from dev.thecesrom.utils.decorators import classproperty
+from dev.coatl.helper.types import AnyStr
+from dev.coatl.utils.decorators import classproperty
 from java.lang import Enum, Object
 from java.util import Date
 

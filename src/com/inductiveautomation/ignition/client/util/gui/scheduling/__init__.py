@@ -3,7 +3,7 @@ __all__ = ["ScheduleModel"]
 from typing import Iterable
 
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
 
 

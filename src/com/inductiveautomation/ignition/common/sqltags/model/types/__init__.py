@@ -4,7 +4,7 @@ from typing import Iterable, List, Optional
 
 from com.inductiveautomation.ignition.common.i18n import LocalizedString
 from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object
 from java.util import Locale
 

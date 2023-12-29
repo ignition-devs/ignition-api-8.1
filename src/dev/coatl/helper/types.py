@@ -1,4 +1,4 @@
-"""Types module."""
+"""coatl.dev types module."""
 
 __all__ = ["AnyNum", "AnyStr"]
 

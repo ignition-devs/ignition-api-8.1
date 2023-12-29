@@ -39,7 +39,7 @@ from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 def alterDock(
