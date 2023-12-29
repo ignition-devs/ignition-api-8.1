@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 
 from com.inductiveautomation.ignition.common import JsonPath
 from com.inductiveautomation.ignition.common.gson import JsonArray, JsonElement
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.io import InputStream
 from java.lang import Enum, Object
 from java.util.regex import Pattern

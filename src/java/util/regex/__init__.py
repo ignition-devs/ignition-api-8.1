@@ -2,7 +2,7 @@ __all__ = ["MatchResult", "Matcher", "Pattern"]
 
 from typing import Any, List, Optional, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import CharSequence, Object, StringBuffer, StringBuilder
 from java.util.function import Function, Predicate
 

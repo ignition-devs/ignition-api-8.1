@@ -12,7 +12,7 @@ __all__ = [
 
 from typing import Any, Optional
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Exception, Object
 from java.util import Enumeration
 

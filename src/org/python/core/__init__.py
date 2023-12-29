@@ -37,7 +37,7 @@ from typing import Any, Iterable, Iterator, List, Mapping, Optional, Tuple, Unio
 
 from enum import Enum
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.io import PrintWriter
 from java.lang import Class, Object, RuntimeException, StringBuilder, Throwable
 from java.util import Collection

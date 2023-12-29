@@ -1,4 +1,4 @@
-"""thecesrom.dev utils decorators."""
+"""coatl.dev utils decorators."""
 
 
 class classproperty(property):  # pylint: disable=invalid-name

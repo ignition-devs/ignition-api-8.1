@@ -20,7 +20,7 @@ from typing import Dict, List, Union
 
 from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
 from com.inductiveautomation.ignition.common.user import PyUser
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 def addUsers(rosterName, users):

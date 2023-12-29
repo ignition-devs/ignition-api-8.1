@@ -4,7 +4,7 @@ __all__ = ["TranslationMap"]
 
 from typing import Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import HashMap
 
 

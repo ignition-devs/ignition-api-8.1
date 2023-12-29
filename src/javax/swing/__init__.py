@@ -23,7 +23,7 @@ import array
 import warnings
 from typing import Any, List, Optional
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Component, Container, Frame, Graphics
 from java.util import Locale
 from javax.swing.event import AncestorListener

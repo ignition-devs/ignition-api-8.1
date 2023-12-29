@@ -14,7 +14,7 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Set, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Number, Object, StringBuffer
 from java.math import RoundingMode
 from java.util import Calendar, Currency, Date, Locale, TimeZone

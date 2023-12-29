@@ -5,7 +5,7 @@ from typing import List, Mapping, Optional
 from com.inductiveautomation.ignition.common.licensing import LicenseState
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.util import Platform
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

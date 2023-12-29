@@ -85,7 +85,7 @@ from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
     SProcCall,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date
 from javax.swing import JComponent
 

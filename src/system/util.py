@@ -74,7 +74,7 @@ from com.inductiveautomation.ignition.common.script.builtin import (
     SystemUtilities,
 )
 from com.inductiveautomation.ignition.common.util import LoggerEx
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Toolkit
 from java.lang import Thread
 from java.util import Date, Locale

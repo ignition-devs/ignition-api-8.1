@@ -20,7 +20,7 @@ __all__ = [
 from typing import Any, Dict, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 def addDevice(

@@ -18,7 +18,7 @@ __all__ = [
 from typing import List, Optional
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt import Component
 from java.awt.image import BufferedImage
 

@@ -10,7 +10,7 @@ __all__ = ["loadFromFile", "removeGroups"]
 
 from typing import List
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 def loadFromFile(filePath, projectName, mode):

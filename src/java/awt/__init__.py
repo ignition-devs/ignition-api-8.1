@@ -18,7 +18,7 @@ __all__ = [
 
 from typing import Any, Optional
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.awt.geom import Dimension2D, Point2D
 from java.lang import Object
 from java.util import EventObject

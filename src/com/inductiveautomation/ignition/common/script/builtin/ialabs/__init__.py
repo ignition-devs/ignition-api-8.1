@@ -7,7 +7,7 @@ from typing import Optional
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.sqltags.model.types import DataType
 from com.inductiveautomation.ignition.common.tags.config.types import TagObjectType
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Object
 
 

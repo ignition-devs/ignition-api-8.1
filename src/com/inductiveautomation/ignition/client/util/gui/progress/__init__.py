@@ -6,7 +6,7 @@ from com.inductiveautomation.ignition.common.gui.progress import (
     TaskProgressListener,
     TaskProgressState,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util.concurrent import CompletableFuture
 from java.util.function import Consumer

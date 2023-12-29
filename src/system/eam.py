@@ -12,7 +12,7 @@ from typing import List, Optional
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date, Locale
 
 

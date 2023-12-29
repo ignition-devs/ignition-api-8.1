@@ -48,7 +48,7 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
     Annotation,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date
 
 DEFAULT_TIMEOUT_MILLIS = 45000

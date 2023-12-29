@@ -12,7 +12,7 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object, StringBuilder
 
 

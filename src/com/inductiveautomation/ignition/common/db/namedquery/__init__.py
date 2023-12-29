@@ -2,7 +2,7 @@ __all__ = ["NamedQuery", "NamedQueryManager"]
 
 from typing import Any, Mapping, Optional, Set
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

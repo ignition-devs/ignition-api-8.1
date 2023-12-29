@@ -16,7 +16,7 @@ from com.inductiveautomation.ignition.common.xmlserialization import (
 from com.inductiveautomation.ignition.common.xmlserialization.serialization import (
     XMLSerializer,
 )
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.io import InputStream, Reader
 from java.lang import Class, Object
 

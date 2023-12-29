@@ -10,7 +10,7 @@ __all__ = ["getProjectName", "getProjectNames", "requestScan"]
 
 from typing import List
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 
 def getProjectName():

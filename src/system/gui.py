@@ -54,7 +54,7 @@ from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
-from dev.thecesrom.helper.types import AnyNum, AnyStr
+from dev.coatl.helper.types import AnyNum, AnyStr
 from java.awt import Color
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject

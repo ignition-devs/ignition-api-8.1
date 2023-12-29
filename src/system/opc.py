@@ -29,7 +29,7 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BasicOPCBrowseElement
 from com.inductiveautomation.ignition.common.script.builtin import AbstractOPCUtilities
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBrowseTag
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 
 BrowseServerResult = List[Union[BasicOPCBrowseElement, AbstractOPCUtilities.PyOPCTag]]
 

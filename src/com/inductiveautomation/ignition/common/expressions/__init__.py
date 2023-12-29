@@ -5,7 +5,7 @@ from typing import Any, Iterable, Set
 from com.inductiveautomation.ignition.common.binding import InteractionListener
 from com.inductiveautomation.ignition.common.expressions.functions import Function
 from com.inductiveautomation.ignition.common.model.values import QualifiedValue
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class
 
 

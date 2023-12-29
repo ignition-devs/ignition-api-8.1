@@ -4,7 +4,7 @@ __all__ = ["Aggregate", "AggregateInfo"]
 
 from typing import Any
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 

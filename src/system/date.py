@@ -55,7 +55,7 @@ from datetime import datetime
 from time import localtime, mktime
 from typing import Optional, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.util import Date, Locale
 
 

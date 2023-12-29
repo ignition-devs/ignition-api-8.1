@@ -31,7 +31,7 @@ import array
 import time
 from typing import Any, List, Optional, Union
 
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang.reflect import Type
 
 

@@ -6,7 +6,7 @@ from typing import Any, List
 
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object
 from java.util import Date
 

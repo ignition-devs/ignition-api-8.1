@@ -5,7 +5,7 @@ from typing import Optional
 from com.inductiveautomation.ignition.common.gson import Gson, JsonObject
 from com.inductiveautomation.ignition.common.jsonschema import JsonSchema
 from com.inductiveautomation.ignition.common.util import LoggerEx
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util.function import Consumer
 

@@ -6,7 +6,7 @@ from typing import Any, Iterator
 
 from com.inductiveautomation.ignition.common import QualifiedPath, StringPath
 from com.inductiveautomation.ignition.common.config import BasicPropertySet
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import UUID
 from org.python.core import PyObject

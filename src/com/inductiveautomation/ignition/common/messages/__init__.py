@@ -3,7 +3,7 @@ __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 from typing import Any, List
 
 from com.inductiveautomation.ignition.common.functional import FragileRunnable
-from dev.thecesrom.helper.types import AnyStr
+from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import Locale
 from java.util.function import Consumer
