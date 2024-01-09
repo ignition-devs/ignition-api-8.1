@@ -7,7 +7,7 @@ on:
 
 jobs:
   pip-compile-upgrade:
-    uses: coatl-dev/workflows/.github/workflows/pip-compile-upgrade.yml@coatl
+    uses: coatl-dev/workflows/.github/workflows/pip-compile-upgrade.yml@v2
     with:
       path: requirements.txt
     secrets:
