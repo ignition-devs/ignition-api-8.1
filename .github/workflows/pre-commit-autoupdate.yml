@@ -2,21 +2,15 @@ name: pre-commit-autoupdate
 
 on:
   schedule:
-    # Monday at 12:00 PST
     - cron: '0 20 * * 1'
   workflow_dispatch:
 
 jobs:
   pre-commit-autoupdate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Update pre-commit hooks
-        uses: coatl-dev/actions/pre-commit-autoupdate@coatl
-        with:
-          gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
-          gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
-          gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
-          skip-repos: 'flake8'
+    uses: coatl-dev/workflows/.github/workflows/pre-commit-autoupdate.yml@coatl
+    with:
+      skip-repos: 'flake8'
+    secrets:
+      gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
+      gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+      gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
