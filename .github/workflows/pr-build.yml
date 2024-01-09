@@ -13,4 +13,4 @@ on:
 
 jobs:
   tox:
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@coatl
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v2
