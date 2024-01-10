@@ -1,3 +1,9 @@
+## v8.1.36 (2024-01-09)
+
+### Refactor
+
+- **dev**: rename thecesrom to coatl (#253)
+
 ## v8.1.35 (2023-12-07)
 
 ### Fix
