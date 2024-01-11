@@ -16,6 +16,7 @@ __all__ = [
     "NullPointerException",
     "Number",
     "Object",
+    "Readable",
     "Runnable",
     "RuntimeException",
     "StackTraceElement",
@@ -29,10 +30,13 @@ __all__ = [
 import __builtin__ as builtins
 import array
 import time
-from typing import Any, List, Optional, Union
+from typing import TYPE_CHECKING, Any, List, Optional, Union
 
 from dev.coatl.helper.types import AnyStr
 from java.lang.reflect import Type
+
+if TYPE_CHECKING:
+    from java.nio import CharBuffer
 
 
 class Object(object):
@@ -135,6 +139,12 @@ class CharSequence(object):
 class Comparable(object):
     def compareTo(self, o):
         # type: (Any) -> int
+        raise NotImplementedError
+
+
+class Readable(object):
+    def read(self, cb):
+        # type: (CharBuffer) -> int
         raise NotImplementedError
 
 
