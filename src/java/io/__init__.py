@@ -20,6 +20,7 @@ __all__ = [
     "Flushable",
     "IOException",
     "InputStream",
+    "InputStreamReader",
     "OutputStream",
     "PrintStream",
     "PrintWriter",
@@ -36,8 +37,10 @@ from java.lang import (
     CharSequence,
     Exception,
     Object,
+    Readable,
     Throwable,
 )
+from java.nio.charset import Charset, CharsetDecoder
 
 
 class Closeable(AutoCloseable):
@@ -260,10 +263,15 @@ class IOException(Exception):
         super(IOException, self).__init__(message, cause)
 
 
-class Reader(Object, AutoCloseable):
+class Reader(Object, Readable, Closeable):
+    def __init__(self, lock=None):
+        # type: (Optional[Object]) -> None
+        print(lock)
+        super(Reader, self).__init__()
+
     def close(self):
         # type: () -> None
-        raise NotImplementedError
+        pass
 
     def mark(self, readAheadLimit):
         # type: (int) -> None
@@ -305,8 +313,19 @@ class BufferedReader(Reader):
         super(BufferedReader, self).__init__()
         print(in_, sz)
 
-    def close(self):
-        # type: () -> None
+
+class InputStreamReader(Reader):
+    def __init__(
+        self,
+        in_,  # type: InputStream
+        arg=None,  # type: Optional[Union[AnyStr, Charset, CharsetDecoder]]
+    ):
+        # type: (...) -> None
+        super(InputStreamReader, self).__init__()
+        print(in_, arg)
+
+    def getEncoding(self):
+        # type: () -> AnyStr
         pass
 
 
