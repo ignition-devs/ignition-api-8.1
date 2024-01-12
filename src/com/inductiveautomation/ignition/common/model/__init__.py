@@ -1,10 +1,9 @@
 __all__ = ["ApplicationScope", "CommonContext", "EdgeEdition", "Version"]
 
 import re
-from typing import Any, Iterable, List, Optional, Tuple, Union
+from typing import TYPE_CHECKING, Any, Iterable, List, Optional, Tuple, Union
 
 from com.google.common.eventbus import EventBus
-from com.inductiveautomation.ignition.common.expressions import FunctionFactory
 from com.inductiveautomation.ignition.common.licensing import LicenseState
 from com.inductiveautomation.ignition.common.logging import LogFilterSettings
 from com.inductiveautomation.ignition.common.script import ScriptManager
@@ -15,6 +14,9 @@ from com.inductiveautomation.ignition.common.xmlserialization.deserialization im
 from dev.coatl.helper.types import AnyStr
 from java.io import InputStream
 from java.lang import Enum, IllegalArgumentException, Object, String
+
+if TYPE_CHECKING:
+    from com.inductiveautomation.ignition.common.expressions import FunctionFactory
 
 
 class CommonContext(object):
