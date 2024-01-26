@@ -1,4 +1,5 @@
 """Contains classes implementing various BSON types."""
+
 from __future__ import print_function
 
 __all__ = [
