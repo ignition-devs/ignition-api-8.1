@@ -1,3 +1,21 @@
+## v8.1.37 (2024-02-01)
+
+## v8.1.36.post2 (2024-01-11)
+
+### Fix
+
+- **system**: fix issue when importing system.gui and system.nav (#258)
+
+## v8.1.36.post1 (2024-01-11)
+
+### Feat
+
+- **java**: add io.InputStreamReader and supporting classes (#257)
+
+### Refactor
+
+- **system**: change db.runNamedQuery return type to Any (#256)
+
 ## v8.1.36.post2 (2024-01-11)
 
 ### Fix
