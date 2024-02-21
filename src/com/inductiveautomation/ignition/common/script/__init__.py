@@ -2,7 +2,6 @@ from __future__ import print_function
 
 __all__ = ["ScriptFunction", "ScriptManager"]
 
-from copy import PyStringMap
 from typing import Any, List, Mapping, Optional, Set
 
 from com.codahale.metrics import Timer
@@ -11,7 +10,7 @@ from dev.coatl.helper.types import AnyStr
 from java.io import OutputStream
 from java.lang import Class, Object
 from java.util import UUID
-from org.python.core import PyObject, PySystemState
+from org.python.core import PyObject, PyStringMap, PySystemState
 
 
 class ScriptFunction(object):

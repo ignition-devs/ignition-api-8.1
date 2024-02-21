@@ -7,26 +7,26 @@ on:
 
 jobs:
   pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v3
     with:
       skip-hooks: 'pylint'
 
   pylint:
     needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v3
 
   tox:
     needs:
       - pre-commit
       - pylint
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v3
 
   pypi-publish:
     needs:
       - pre-commit
       - pylint
       - tox
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v3
     with:
       python-version: '2.7'
     secrets:
