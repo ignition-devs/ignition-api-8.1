@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-from copy import PyStringMap
+from copy import PyStringMap  # pylint: disable=no-name-in-module
 
 __all__ = [
     "CodeFlag",

@@ -7,7 +7,7 @@ on:
 
 jobs:
   pre-commit-autoupdate:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit-autoupdate.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/pre-commit-autoupdate.yml@v3
     with:
       skip-repos: 'flake8'
     secrets:

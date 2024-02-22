@@ -13,4 +13,6 @@ on:
 
 jobs:
   tox:
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v2
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v3
+    with:
+      python-version: '3.12'
