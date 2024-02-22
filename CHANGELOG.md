@@ -1,3 +1,9 @@
+## v8.1.37.post1 (2024-02-21)
+
+### Refactor
+
+- **ia**: import PyStringMap from org.python.core (#262)
+
 ## v8.1.37 (2024-02-01)
 
 ## v8.1.36.post2 (2024-01-11)
