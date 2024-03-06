@@ -3,7 +3,7 @@ gpg_sign = true
 name = "cz_conventional_commits"
 tag_format = "v$version"
 version_scheme = "pep440"
-version = "8.1.37.post1"
+version = "8.1.38"
 update_changelog_on_bump = true
 version_files = [
     "setup.cfg:version",
