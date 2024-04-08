@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'src/**'
+      - 'tests/**'
       - pyproject.toml
       - requirements.txt
       - setup.cfg
