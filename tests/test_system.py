@@ -1,65 +1,51 @@
-# pylint: skip-file
 import importlib
+import pkgutil
 import sys
+import unittest
 
-import pytest
-
-_MODULES = sys.modules.keys()
-
-_SYSTEM_MODULES = [
-    "system.alarm",
-    "system.bacnet",
-    "system.bacnet.enumerated",
-    "system.bacnet.enums",
-    "system.dataset",
-    "system.date",
-    "system.db",
-    "system.dnp3",
-    "system.eam",
-    "system.file",
-    "system.groups",
-    "system.gui",
-    "system.iec61850",
-    "system.math",
-    "system.mongodb",
-    "system.mongodb.types",
-    "system.nav",
-    "system.net",
-    "system.opc",
-    "system.opchda",
-    "system.opcua",
-    "system.perspective",
-    "system.perspective.workstation",
-    "system.project",
-    "system.report",
-    "system.roster",
-    "system.secsgem",
-    "system.security",
-    "system.serial",
-    "system.sfc",
-    "system.tag",
-    "system.twilio",
-    "system.user",
-    "system.util",
-    "system.vision",
-]
+_SYS_MODULES = sys.modules.keys()
+_MODULES = []
 
 
 def _cleanup():
     for module in sys.modules.keys():
-        if module not in _MODULES:
+        if module not in _SYS_MODULES:
             sys.modules.pop(module)
 
 
-@pytest.mark.parametrize("test_module", _SYSTEM_MODULES)
-def test_system(test_module):
-    try:
-        imported_module = importlib.import_module(test_module)
-    except ImportError:
-        assert False, "Failed to import module: {0}".format(test_module)
+def _create_import_test(module_name):
+    def test(self):
+        self.assertModuleAvailable(module_name)
 
-    assert imported_module is not None, "Module {0} is None after import.".format(
-        test_module
-    )
+    return test
 
-    _cleanup()
+
+def _discover_modules(package):
+    for _, name, is_pkg in pkgutil.walk_packages(["src/{}".format(package)]):
+        if is_pkg:
+            _module = "{}.{}".format(package, name)
+            _MODULES.append(_module)
+            _discover_modules("{}/{}".format(package, name))
+        else:
+            _module = "{}.{}".format(package, name)
+            _MODULES.append(_module.replace("/", "."))
+    return _MODULES
+
+
+class TestPackageImports(unittest.TestCase):
+    modules_to_test = _discover_modules("system")
+
+    for module_name in modules_to_test:
+        test_name = "test_import_{}".format(module_name)
+        locals()[test_name] = _create_import_test(module_name)
+        _cleanup()
+
+    def assertModuleAvailable(self, module_name):
+        try:
+            importlib.import_module(module_name)
+        except ImportError:
+            self.fail("Failed to import module: {}".format(module_name))
+
+
+if __name__ == "__main__":
+    unittest.main()
