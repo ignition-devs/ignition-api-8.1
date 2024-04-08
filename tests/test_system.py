@@ -1,3 +1,4 @@
+# pylint: skip-file
 import importlib
 import pkgutil
 import sys
@@ -22,12 +23,11 @@ def _create_import_test(module_name):
 
 def _discover_modules(package):
     for _, name, is_pkg in pkgutil.walk_packages(["src/{}".format(package)]):
+        _module = "{}.{}".format(package, name)
         if is_pkg:
-            _module = "{}.{}".format(package, name)
             _MODULES.append(_module)
             _discover_modules("{}/{}".format(package, name))
         else:
-            _module = "{}.{}".format(package, name)
             _MODULES.append(_module.replace("/", "."))
     return _MODULES
 
