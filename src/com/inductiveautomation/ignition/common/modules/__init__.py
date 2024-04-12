@@ -88,19 +88,19 @@ class ModuleInfo(Object):
 
     def isFree(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMakerEditionCompatible(self):
         # type: () -> bool
-        pass
+        return True
 
     def isSelfSigned(self):
         # type: () -> bool
-        pass
+        return True
 
     def isTrialMode(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def newBuilder():
@@ -249,7 +249,7 @@ class ModuleInfo(Object):
 
         def isNativeLib(self):
             # type: () -> bool
-            pass
+            return True
 
         def isRequiredArchitecture(self, arch):
             # type: (Platform.Architecture) -> bool

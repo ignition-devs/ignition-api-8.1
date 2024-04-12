@@ -1382,7 +1382,7 @@ class PySystemState(PyObject):
 
     def dont_write_bytecode(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def exec_prefix():
@@ -1494,7 +1494,7 @@ class PySystemState(PyObject):
     @staticmethod
     def py3kwarning():
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def registry():

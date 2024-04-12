@@ -56,7 +56,7 @@ class Quality(object):
 
     def isGood(self):
         # type: () -> bool
-        pass
+        return True
 
     class Level(Enum):
         Bad = 512

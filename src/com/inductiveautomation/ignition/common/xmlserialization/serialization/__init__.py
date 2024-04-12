@@ -53,7 +53,7 @@ class Element(Object):
 
     def isSkipRefTracking(self):
         # type: () -> bool
-        pass
+        return True
 
     def setAttribute(self, *args):
         # type: (*Any) -> None

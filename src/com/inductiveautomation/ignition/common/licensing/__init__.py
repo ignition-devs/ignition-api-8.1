@@ -40,7 +40,7 @@ class LicenseDetails(object):
 
     def isPlatformDetails(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class LicenseState(object):

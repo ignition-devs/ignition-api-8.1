@@ -59,15 +59,15 @@ class Annotation(Object):
 
     def hasStorageId(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDeleted(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUpdated(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def newBuilder():

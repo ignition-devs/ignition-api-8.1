@@ -14,7 +14,7 @@ class TagObjectType(Enum):
 
     def isComplexTag(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def values():

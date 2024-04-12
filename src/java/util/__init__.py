@@ -603,7 +603,7 @@ class AbstractCollection(Object, Collection):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def iterator(self):
         # type: () -> Iterator
@@ -649,7 +649,7 @@ class AbstractMap(Object, Map):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def keySet(self):
         # type: () -> Set[Any]
@@ -1032,7 +1032,7 @@ class Hashtable(Dictionary, Map):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def keySet(self):
         # type: () -> Set[Any]

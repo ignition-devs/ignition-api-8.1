@@ -80,11 +80,11 @@ class TaskProgressState(Object, ProgressListener):
 
     def isFinished(self):
         # type: () -> bool
-        pass
+        return True
 
     def isIndeterminant(self):
         # type: () -> bool
-        pass
+        return True
 
     def setFinished(self, finished):
         # type: (bool) -> None

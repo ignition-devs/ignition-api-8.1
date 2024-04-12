@@ -105,7 +105,7 @@ class ProjectResource(object):
 
     def isModuleFolder(self):
         # type: () -> bool
-        pass
+        return True
 
     def isOverridable(self):
         # type: () -> bool
@@ -113,7 +113,7 @@ class ProjectResource(object):
 
     def isResourceTypeFolder(self):
         # type: () -> bool
-        pass
+        return True
 
     def isRestricted(self):
         # type: () -> bool
@@ -121,7 +121,7 @@ class ProjectResource(object):
 
     def isSingletonResource(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def newBuilder():
@@ -309,7 +309,7 @@ class ResourcePath(Object, Comparable):
 
     def isResourceTypeFolder(self):
         # type: () -> bool
-        pass
+        return True
 
 
 class ResourceSignature(Object):

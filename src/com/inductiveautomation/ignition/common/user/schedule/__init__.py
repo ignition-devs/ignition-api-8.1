@@ -117,51 +117,51 @@ class BasicScheduleModel(AbstractScheduleModel):
 
     def isAllDays(self):
         # type: () -> bool
-        pass
+        return True
 
     def isFriday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMonday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isObserveHolidays(self):
         # type: () -> bool
-        pass
+        return True
 
     def isRepeating(self):
         # type: () -> bool
-        pass
+        return True
 
     def isSaturday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isSunday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isThursday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isTuesday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUseDays(self):
         # type: () -> bool
-        pass
+        return True
 
     def isWednesday(self):
         # type: () -> bool
-        pass
+        return True
 
     def isWeekDays(self):
         # type: () -> bool
-        pass
+        return True
 
     def set(self, that):
         # type: (BasicScheduleModel) -> None
@@ -276,7 +276,7 @@ class CompositeScheduleModel(AbstractScheduleModel):
 
     def isObserveHolidays(self):
         # type: () -> bool
-        pass
+        return True
 
     def setObserveHolidays(self, observeHolidays):
         # type: (bool) -> None
