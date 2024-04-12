@@ -1,3 +1,9 @@
+## v8.1.39 (2024-04-12)
+
+### Refactor
+
+- update default boolean returns (#267)
+
 ## v8.1.38 (2024-03-06)
 
 ## v8.1.37.post1 (2024-02-21)
