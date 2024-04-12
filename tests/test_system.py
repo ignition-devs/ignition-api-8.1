@@ -1,44 +1,58 @@
-# pylint: skip-file
 import importlib
-import pkgutil
+import os
 import sys
 import unittest
 
 _SYS_MODULES = sys.modules.keys()
-_MODULES = []
 
 
-def _cleanup():
-    for module in sys.modules.keys():
-        if module not in _SYS_MODULES:
-            sys.modules.pop(module)
+def find_modules_in_path(path):
+    modules = []
+
+    # Walk through the directory structure recursively
+    for root, _, files in os.walk(path):
+        # Iterate over each file in the current directory
+        for file in files:
+            # Construct the module name relative to the specified path
+            module_path = os.path.relpath(os.path.join(root, file), path)
+
+            # Convert path separators to dots to form the module name
+            module_name = os.path.splitext(module_path.replace(os.sep, "."))[0]
+
+            # Append the module name to the list
+            _module = "{}.{}".format(
+                path.replace("src/", "").replace("/", "."),
+                module_name.replace(".__init__", ""),
+            )
+            modules.append(_module)
+
+    return modules
 
 
-def _create_import_test(module_name):
+def create_import_test(module_name):
     def test(self):
         self.assertModuleAvailable(module_name)
 
     return test
 
 
-def _discover_modules(package):
-    for _, name, is_pkg in pkgutil.walk_packages(["src/{}".format(package)]):
-        _module = "{}.{}".format(package, name)
-        if is_pkg:
-            _MODULES.append(_module)
-            _discover_modules("{}/{}".format(package, name))
-        else:
-            _MODULES.append(_module.replace("/", "."))
-    return _MODULES
+def discover_all_modules_in_path(path):
+    return list(find_modules_in_path(path))
+
+
+def pop_imported_modules():
+    for module in sys.modules.keys():
+        if module not in _SYS_MODULES:
+            sys.modules.pop(module)
 
 
 class TestPackageImports(unittest.TestCase):
-    modules_to_test = _discover_modules("system")
+    modules_to_test = discover_all_modules_in_path("src/system")
 
     for module_name in modules_to_test:
         test_name = "test_import_{}".format(module_name)
-        locals()[test_name] = _create_import_test(module_name)
-        _cleanup()
+        locals()[test_name] = create_import_test(module_name)
+        pop_imported_modules()
 
     def assertModuleAvailable(self, module_name):
         try:
