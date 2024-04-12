@@ -195,15 +195,15 @@ class PyAlarmEvent(AlarmEvent):
 
     def isAcked(self):
         # type: () -> bool
-        pass
+        return True
 
     def isCleared(self):
         # type: () -> bool
-        pass
+        return True
 
     def isShelved(self):
         # type: () -> bool
-        pass
+        return True
 
     def set(self, property, value):
         # type: (AnyStr, Object) -> None

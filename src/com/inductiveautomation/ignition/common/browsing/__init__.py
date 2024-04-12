@@ -88,11 +88,11 @@ class BrowseFilter(Object):
 
     def isEmptyFilter(self):
         # type: () -> bool
-        pass
+        return True
 
     def isRecursive(self):
         # type: () -> bool
-        pass
+        return True
 
     def setAllowedTypes(self, allowedTypes):
         # type: (Iterable[AnyStr]) -> BrowseFilter

@@ -133,7 +133,7 @@ class JythonHttpClient(Object):
 class Promise(Object):
     def cancel(self):
         # type: () -> bool
-        pass
+        return True
 
     def get(self, *args, **kwargs):
         # type: (*PyObject, **AnyStr) -> Any
@@ -149,7 +149,7 @@ class Promise(Object):
 
     def isDone(self):
         # type: () -> bool
-        pass
+        return True
 
     def then(self, callback):
         # type: (PyObject) -> Promise

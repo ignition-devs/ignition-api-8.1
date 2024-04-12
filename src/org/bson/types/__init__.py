@@ -129,19 +129,19 @@ class Decimal128(Object):
 
     def isFinite(self):
         # type: () -> bool
-        pass
+        return True
 
     def isInfinite(self):
         # type: () -> bool
-        pass
+        return True
 
     def isNaN(self):
         # type: () -> bool
-        pass
+        return True
 
     def isNegative(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def parse(value):

@@ -510,7 +510,7 @@ class StringPath(Object, Path, Comparable):
 
     def isRoot(self):
         # type: () -> bool
-        pass
+        return True
 
     @staticmethod
     def makeRelative(toRelative, root):

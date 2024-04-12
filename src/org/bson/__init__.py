@@ -118,7 +118,7 @@ class Document(Object):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def keySet(self):
         # type: () -> Set[AnyStr]

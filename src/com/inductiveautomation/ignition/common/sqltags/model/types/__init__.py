@@ -115,15 +115,15 @@ class DataType(Enum):
 
     def isArray(self):
         # type: () -> bool
-        pass
+        return True
 
     def isFloatingPoint(self):
         # type: () -> bool
-        pass
+        return True
 
     def isNumeric(self):
         # type: () -> bool
-        pass
+        return True
 
     def legacyDataType(self):
         # type: () -> DataType

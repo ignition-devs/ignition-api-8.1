@@ -85,7 +85,7 @@ class Category(Object):
 
     def getAdditivity(self):
         # type: () -> bool
-        pass
+        return True
 
     def getAllAppenders(self):
         # type: () -> Enumeration
@@ -167,7 +167,7 @@ class Logger(Category):
 
     def isTraceEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def trace(self, message, t=None):
         # type: (AnyStr, Optional[Throwable]) -> None

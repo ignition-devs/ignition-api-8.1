@@ -320,11 +320,11 @@ class LaunchManifest(Object):
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def isUseSsl(self):
         # type: () -> bool
-        pass
+        return True
 
     def newDiffAction(self, context):
         # type: (LaunchContextImpl) -> Any
@@ -349,7 +349,7 @@ class LaunchManifest(Object):
 
     def useCondensedDialogFont(self):
         # type: () -> bool
-        pass
+        return True
 
     class Jar(Object):
         def __init__(self, name, crc32, length):

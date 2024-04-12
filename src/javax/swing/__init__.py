@@ -453,7 +453,7 @@ class JPasswordField(JTextField):
 
     def echoCharIsSet(self):
         # type: () -> bool
-        pass
+        return True
 
     def getEchoChar(self):
         # type: () -> AnyStr

@@ -34,7 +34,7 @@ class ScheduleModel(DefaultBindableModel):
 
     def isAlldays(self):
         # type: () -> bool
-        pass
+        return True
 
     def isDaySelected(self, day):
         # type: (ScheduleModel.DayOfWeek) -> bool
@@ -42,19 +42,19 @@ class ScheduleModel(DefaultBindableModel):
 
     def isEveryHourEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isEveryMinuteEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isHourEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def isMinuteEnabled(self):
         # type: () -> bool
-        pass
+        return True
 
     def selectDayOfWeek(self, day):
         # type: (ScheduleModel.DayOfWeek) -> None

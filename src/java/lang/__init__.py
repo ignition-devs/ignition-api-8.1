@@ -357,11 +357,11 @@ class String(unicode):
 
     def isBlank(self):
         # type: () -> bool
-        pass
+        return True
 
     def isEmpty(self):
         # type: () -> bool
-        pass
+        return True
 
     def lastIndexOf(self, arg, fromIndex=None):
         # type: (Union[int, String], Optional[int]) -> int
