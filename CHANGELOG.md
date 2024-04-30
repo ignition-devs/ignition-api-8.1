@@ -1,3 +1,9 @@
+## v8.1.39.post1 (2024-04-30)
+
+### Feat
+
+- **java**: add all Calendar methods (#271)
+
 ## v8.1.39 (2024-04-12)
 
 ### Refactor
