@@ -1,0 +1,18 @@
+{
+  "name": "ignition-api-8.1",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/python/2/bin/python"
+      }
+    }
+  },
+  "onCreateCommand": "pre-commit install && pre-commit install --hook-type commit-msg"
+}
