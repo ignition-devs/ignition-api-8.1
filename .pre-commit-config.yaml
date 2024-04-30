@@ -33,3 +33,7 @@ repos:
         language: system
         files: ^src/
         types: [python]
+  - repo: https://github.com/coatl-dev/hadolint-coatl
+    rev: 2.12.0.3
+    hooks:
+      - id: hadolint
