@@ -794,8 +794,33 @@ class Calendar(Object):
         # type: (int) -> int
         raise NotImplementedError
 
-    def getInstance(self, *args):
+    @staticmethod
+    def getInstance(*args):
         # type: (*Any) -> Calendar
+        pass
+
+    def getLeastMaximum(self, field):
+        # type: (int) -> int
+        raise NotImplementedError
+
+    def getMaximum(self, field):
+        # type: (int) -> int
+        raise NotImplementedError
+
+    def getMinimalDaysInFirstWeek(self):
+        # type: () -> int
+        pass
+
+    def getMinimum(self, field):
+        # type: (int) -> int
+        raise NotImplementedError
+
+    def getTime(self):
+        # type: () -> Date
+        pass
+
+    def getTimeInMillis(self):
+        # type: () -> long
         pass
 
     def getTimeZone(self):
