@@ -2,16 +2,60 @@ name: pip-compile-upgrade
 
 on:
   schedule:
-    - cron: '0 20 14/28 * *'
+    - cron: '0 20 * * 1'
   workflow_dispatch:
 
 jobs:
   pip-compile-upgrade:
-    uses: coatl-dev/workflows/.github/workflows/pip-compile-upgrade.yml@v3
-    with:
-      path: requirements.txt
-      python-version: '2.7'
-    secrets:
-      gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
-      gpg-sign-passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
-      gpg-sign-private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: pip-compile-dev-requirements
+        uses: coatl-dev/actions/pip-compile@v3
+        with:
+          path: requirements/dev.txt
+          python-version: '2.7'
+
+      - name: pip-compile-build-requirements
+        uses: coatl-dev/actions/pip-compile@v3
+        with:
+          path: requirements/build.txt
+          python-version: '3.12'
+
+      - name: Detect changes
+        id: git-diff
+        uses: coatl-dev/actions/simple-git-diff@v3
+
+      - name: Import GPG key
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        id: gpg-import
+        uses: coatl-dev/actions/gpg-import@v3
+        with:
+          passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
+          private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
+
+      - name: Build commit message
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        run: |
+          echo "chore(requirements): pip-compile upgrade" > "$RUNNER_TEMP/commit.txt"
+          {
+              echo ""
+              echo "updates:"
+              git status --porcelain | awk 'match($1, "M") {print "  - " $2}'
+          } >> "$RUNNER_TEMP/commit.txt"
+
+      - name: Commit and push changes
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        run: |
+          git checkout -B coatl-dev-pip-compile-upgrade
+          git add -u
+          git commit --file="${RUNNER_TEMP}/commit.txt"
+          git push --force --set-upstream origin coatl-dev-pip-compile-upgrade
+
+      - name: Create pull request
+        if: ${{ steps.git-diff.outputs.diff == 'true' }}
+        uses: coatl-dev/actions/pr-create@v3
+        with:
+          gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
