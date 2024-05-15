@@ -1,3 +1,15 @@
+## v8.1.40 (2024-05-15)
+
+### Feat
+
+- bump to 8.1.40 (#277)
+
+## v8.1.39.post1 (2024-04-30)
+
+### Feat
+
+- **java**: add all Calendar methods (#271)
+
 ## v8.1.39.post1 (2024-04-30)
 
 ### Feat
