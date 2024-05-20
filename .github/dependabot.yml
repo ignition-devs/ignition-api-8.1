@@ -7,5 +7,5 @@ updates:
       interval: "weekly"
     labels: ["dependencies"]
     commit-message:
+      prefix: "ci"
       include: scope
-      prefix: "ci(deps)"
