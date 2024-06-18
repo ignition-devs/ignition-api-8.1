@@ -5,6 +5,7 @@ on:
     branches:
       - main
     paths:
+      - '.github/workflows/pr-build.yml'
       - 'src/**'
       - 'tests/**'
       - pyproject.toml
@@ -14,6 +15,4 @@ on:
 
 jobs:
   tox:
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v3
-    with:
-      python-version: '3.12'
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v4
