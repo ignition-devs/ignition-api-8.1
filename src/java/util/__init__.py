@@ -8,7 +8,9 @@ from __future__ import print_function
 
 __all__ = [
     "AbstractCollection",
+    "AbstractList",
     "AbstractMap",
+    "ArrayList",
     "Arrays",
     "Calendar",
     "Collection",
@@ -50,6 +52,14 @@ from java.util.function import (
 
 
 class Collection(object):
+    def __getitem__(self, key):
+        # type: (Union[int, Any]) -> Any
+        pass
+
+    def __len__(self):
+        # type: () -> int
+        pass
+
     def add(self, e):
         # type: (Any) -> bool
         raise NotImplementedError
@@ -626,6 +636,28 @@ class AbstractCollection(Object, Collection):
         pass
 
 
+class AbstractList(AbstractCollection):
+    def indexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def lastIndexOf(self, o):
+        # type: (Object) -> int
+        pass
+
+    def listIterator(self, index=None):
+        # type: (Optional[int]) -> ListIterator
+        pass
+
+    def set(self, index, element):
+        # type: (int, Any) -> Any
+        pass
+
+    def subList(self, fromIndex, toIndex):
+        # type: (int, int) -> List[Any]
+        pass
+
+
 class AbstractMap(Object, Map):
     def clear(self):
         # type: () -> None
@@ -673,6 +705,25 @@ class AbstractMap(Object, Map):
 
     def values(self):
         # type: () -> Collection
+        pass
+
+
+class ArrayList(AbstractList):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(ArrayList, self).__init__()
+        print(args)
+
+    def ensureCapacity(self, minCapacity):
+        # type: (int) -> None
+        pass
+
+    def get(self, index):
+        # type: (int) -> Any
+        pass
+
+    def trimToSize(self):
+        # type: () -> None
         pass
 
 
