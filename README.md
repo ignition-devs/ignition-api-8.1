@@ -105,7 +105,7 @@ This project consists of the following packages:
 
 This package includes supporting Inductive Automation's classes and interfaces.
 For more information, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.41/index.html>.
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.42/index.html>.
 
 #### java/javax
 
@@ -123,7 +123,7 @@ API. For more information, see documentation here:
 
 This package includes supporting classes and interfaces from the Inductive
 Automation's `org.json` package, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.41/org/json/package-summary.html>
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.42/org/json/package-summary.html>
 
 #### org.python
 
