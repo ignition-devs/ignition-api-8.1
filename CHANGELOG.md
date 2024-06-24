@@ -1,3 +1,9 @@
+## v8.1.42 (2024-06-24)
+
+### Fix
+
+- **ia**: inherit from java.util.ArrayList (#286)
+
 ## v8.1.41 (2024-05-29)
 
 ### Fix
