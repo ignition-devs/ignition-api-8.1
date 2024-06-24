@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 __all__ = ["AlarmQueryResult", "AlarmQueryResultImpl"]
 
 from typing import Any, Iterator, List
@@ -5,6 +7,7 @@ from typing import Any, Iterator, List
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.alarming import AlarmEvent, PyAlarmEvent
 from dev.coatl.helper.types import AnyStr
+from java.util import ArrayList
 
 
 class AlarmQueryResult(object):
@@ -29,10 +32,11 @@ class AlarmQueryResult(object):
         raise NotImplementedError
 
 
-class AlarmQueryResultImpl(AlarmQueryResult):
+class AlarmQueryResultImpl(AlarmQueryResult, ArrayList):
     def __init__(self, *args):
         # type: (*Any) -> None
-        pass
+        super(AlarmQueryResultImpl, self).__init__()
+        print(args)
 
     def __iter__(self):
         # type: () -> Iterator[PyAlarmEvent]
