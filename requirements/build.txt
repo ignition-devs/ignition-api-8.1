@@ -256,9 +256,9 @@ prompt-toolkit==3.0.36 \
     --hash=sha256:3e163f254bef5a03b146397d7c1963bd3e2812f0964bb9a24e6ec761fd28db63 \
     --hash=sha256:aa64ad242a462c5ff0363a7b9cfe696c20d55d9fc60c11fd8e632d064804d305
     # via questionary
-pylint==3.2.3 \
-    --hash=sha256:02f6c562b215582386068d52a30f520d84fdbcf2a95fc7e855b816060d048b60 \
-    --hash=sha256:b3d7d2708a3e04b4679e02d99e72329a8b7ee8afb8d04110682278781f889fa8
+pylint==3.2.5 \
+    --hash=sha256:32cd6c042b5004b8e857d727708720c54a676d1e22917cf1a2df9b4d4868abd6 \
+    --hash=sha256:e9b7171e242dcc6ebd0aaa7540481d1a72860748a0a7816b8fe6cf6c80a6fe7e
     # via -r requirements/build.in
 pyproject-api==1.7.1 \
     --hash=sha256:2dc1654062c2b27733d8fd4cdda672b22fe8741ef1dde8e3a998a9547b071eeb \
