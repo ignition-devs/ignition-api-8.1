@@ -144,9 +144,9 @@ filelock==3.15.4 \
     # via
     #   tox
     #   virtualenv
-identify==2.5.36 \
-    --hash=sha256:37d93f380f4de590500d9dba7db359d0d3da95ffe7f9de1753faa159e71e7dfa \
-    --hash=sha256:e5e00f54165f9047fbebeb4a560f9acfb8af4c88232be60a488e9b68d122745d
+identify==2.6.0 \
+    --hash=sha256:cb171c685bdc31bcc4c1734698736a7d5b6c8bf2e0c15117f4d469c8640ae5cf \
+    --hash=sha256:e79ae4406387a9d300332b5fd366d8994f1525e8414984e1a59e058b2eda2dd0
     # via pre-commit
 importlib-metadata==7.2.1 \
     --hash=sha256:509ecb2ab77071db5137c655e24ceb3eee66e7bbc6574165d0d114d9fc4bbe68 \
@@ -333,9 +333,9 @@ tomlkit==0.12.5 \
     # via
     #   commitizen
     #   pylint
-tox==4.15.1 \
-    --hash=sha256:53a092527d65e873e39213ebd4bd027a64623320b6b0326136384213f95b7076 \
-    --hash=sha256:f00a5dc4222b358e69694e47e3da0227ac41253509bca9f45aa8f012053e8d9d
+tox==4.16.0 \
+    --hash=sha256:43499656f9949edb681c0f907f86fbfee98677af9919d8b11ae5ad77cb800748 \
+    --hash=sha256:61e101061b977b46cf00093d4319438055290ad0009f84497a07bf2d2d7a06d0
     # via -r requirements/build.in
 virtualenv==20.26.3 \
     --hash=sha256:4c43a2a236279d9ea36a0d76f98d84bd6ca94ac4e0f4a3b9d46d05e10fea542a \
