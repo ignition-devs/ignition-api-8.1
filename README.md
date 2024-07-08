@@ -1,11 +1,9 @@
 # ignition-api 8.1
 
 <!--- Badges --->
-![GitHub last commit (8.1)](https://img.shields.io/github/last-commit/ignition-api/8.1/main)
-[![GitHub contributors](https://img.shields.io/github/contributors/ignition-api/8.1)](https://github.com/ignition-api/8.1/graphs/contributors)
 [![Downloads](https://static.pepy.tech/badge/ignition-api)](https://pepy.tech/project/ignition-api)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-api/8.1/discussions)
+[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/discussions/discussions)
 
 ignition-api is a Python package that allows developers to get code completion
 for Ignition Scripting API scripting functions in their IDE of choice.
@@ -166,11 +164,11 @@ See the [LICENSE].
 This project has adopted the [Microsoft Open Source Code of Conduct].
 
 <!-- Links -->
-[CONTRIBUTING.md]: https://github.com/ignition-api/.github/blob/main/CONTRIBUTING.md#contributing-to-ignition-api
-[CONTRIBUTORS]: https://github.com/ignition-api/8.1/graphs/contributors
-[Discussions]: https://github.com/ignition-api/discussions
+[CONTRIBUTING.md]: ./CONTRIBUTING.md#contributing-to-ignition-api
+[CONTRIBUTORS]: https://github.com/ignition-devs/ignition-api-8.1/graphs/contributors
+[Discussions]: https://github.com/ignition-devs/discussions/discussions
 [Ignition System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [LICENSE]: ./LICENSE
 [Microsoft Open Source Code of Conduct]: https://opensource.microsoft.com/codeofconduct/
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
-[releases]: https://github.com/ignition-api/8.1/releases
+[releases]: https://github.com/ignition-devs/ignition-api-8.1/releases
