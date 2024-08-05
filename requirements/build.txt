@@ -329,9 +329,9 @@ tomlkit==0.13.0 \
     # via
     #   commitizen
     #   pylint
-tox==4.16.0 \
-    --hash=sha256:43499656f9949edb681c0f907f86fbfee98677af9919d8b11ae5ad77cb800748 \
-    --hash=sha256:61e101061b977b46cf00093d4319438055290ad0009f84497a07bf2d2d7a06d0
+tox==4.17.0 \
+    --hash=sha256:82ef41e7e54182e2143daf0b2920d9030c2e1c4291e12091ebad66860c7be7a4 \
+    --hash=sha256:b1e2e1dfbfdc174d9be95ae78ec2c4d2cf4800d4c15571deddb197a2c90d2de6
     # via -r requirements/build.in
 virtualenv==20.26.3 \
     --hash=sha256:4c43a2a236279d9ea36a0d76f98d84bd6ca94ac4e0f4a3b9d46d05e10fea542a \
