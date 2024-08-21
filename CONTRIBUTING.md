@@ -4,11 +4,11 @@ We follow a simple model to make contributing as straightforward as possible. Th
 
 ## Code of Conduct
 
-Help us keep **ignition-api** open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ignition-api/.github/blob/main/CODE_OF_CONDUCT.md).
+Help us keep **ignition-api** open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md).
 
 ## Got a question?
 
-Please join us on or [Discussions](https://github.com/ignition-api/discussions/discussions).
+Please join us on or [Discussions](https://github.com/orgs/ignition-devs/discussions).
 
 ## Found a bug?
 
@@ -16,7 +16,7 @@ If you find a bug or if something is missing in the source code, you can help us
 
 ## Getting ready to contribute
 
-In **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
+For **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
 
 ### Setting up your local environment
 
@@ -49,7 +49,7 @@ In **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 to
 
 ## Pull Requests
 
-In **ignition-api** we use the [GitHub flow](https://guides.github.com/introduction/flow/) as main versioning workflow.
+For **ignition-api** we use the [GitHub flow](https://guides.github.com/introduction/flow/) as main versioning workflow.
 
 1. Fork the repository
 1. Create a new branch from **main** for each feature, fix or improvement, using the following naming convention:
