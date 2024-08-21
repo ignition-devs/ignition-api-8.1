@@ -1,14 +1,11 @@
-FROM coatldev/six:3.12 as devcontainer
+FROM quay.io/ignition-devs/devcontainer-base:python as devcontainer
 
-COPY requirements /tmp/requirements/
+COPY requirements.txt /tmp/requirements.txt
 
 # hadolint ignore=DL3042
 RUN set -eux; \
     \
     python2 -m pip install --requirement \
-        /tmp/requirements/dev.txt; \
-    \
-    python3 -m pip install --requirement \
-        /tmp/requirements/build.txt
+        /tmp/requirements.txt
 
 CMD ["/bin/bash"]
