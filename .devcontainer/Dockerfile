@@ -1,4 +1,4 @@
-FROM quay.io/ignition-devs/devcontainer-base:python as devcontainer
+FROM quay.io/ignition-devs/devcontainer-base:python
 
 COPY requirements.txt /tmp/requirements.txt
 
