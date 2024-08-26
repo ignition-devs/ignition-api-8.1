@@ -1,6 +1,7 @@
 {
   "name": "ignition-api-8.1",
   "build": {
+    "context": "..",
     "dockerfile": "Dockerfile"
   },
   "customizations": {
