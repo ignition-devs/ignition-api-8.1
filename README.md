@@ -2,8 +2,7 @@
 
 <!--- Badges --->
 [![Downloads](https://static.pepy.tech/badge/ignition-api)](https://pepy.tech/project/ignition-api)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Join us on GitHub discussions](https://img.shields.io/badge/github-discussions-informational)](https://github.com/ignition-devs/discussions/discussions)
+[![ignition-api](https://snyk.io//advisor/python/ignition-api/badge.svg)](https://snyk.io//advisor/python/ignition-api)
 
 ignition-api is a Python package that allows developers to get code completion
 for Ignition Scripting API scripting functions in their IDE of choice.
