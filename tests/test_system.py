@@ -10,22 +10,18 @@ _SYS_MODULES = sys.modules.keys()
 def find_modules_in_path(path):
     modules = []
 
-    # Walk through the directory structure recursively
     for root, _, files in os.walk(path):
-        # Iterate over each file in the current directory
         for file in files:
-            # Construct the module name relative to the specified path
-            module_path = os.path.relpath(os.path.join(root, file), path)
+            if file.endswith(".py"):
+                module_path = os.path.relpath(os.path.join(root, file), path)
 
-            # Convert path separators to dots to form the module name
-            module_name = os.path.splitext(module_path.replace(os.sep, "."))[0]
+                module_name = os.path.splitext(module_path.replace(os.sep, "."))[0]
 
-            # Append the module name to the list
-            _module = "{}.{}".format(
-                path.replace("src/", "").replace("/", "."),
-                module_name.replace(".__init__", ""),
-            )
-            modules.append(_module)
+                _module = "{}.{}".format(
+                    path.replace("src/", "").replace("/", "."),
+                    module_name.replace(".__init__", ""),
+                )
+                modules.append(_module)
 
     return modules
 
