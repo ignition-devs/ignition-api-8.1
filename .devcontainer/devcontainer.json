@@ -11,7 +11,7 @@
         "ms-python.vscode-pylance"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/opt/python/2/bin/python"
+        "python.defaultInterpreterPath": "/opt/python/2.7/bin/python"
       }
     }
   },
