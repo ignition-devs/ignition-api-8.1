@@ -19,11 +19,11 @@ class AlarmQueryResult(object):
     dataset.
     """
 
-    def getAssociatedDate(self, uuid):
+    def getAssociatedData(self, uuid):
         # type: (AnyStr) -> Dataset
         raise NotImplementedError
 
-    def getDataSet(self):
+    def getDataset(self):
         # type: () -> Dataset
         raise NotImplementedError
 
@@ -47,11 +47,11 @@ class AlarmQueryResultImpl(AlarmQueryResult, ArrayList):
         # type: (List[AlarmQueryResult]) -> AlarmQueryResult
         pass
 
-    def getAssociatedDate(self, uuid):
+    def getAssociatedData(self, uuid):
         # type: (AnyStr) -> Dataset
         pass
 
-    def getDataSet(self):
+    def getDataset(self):
         # type: () -> Dataset
         pass
 
