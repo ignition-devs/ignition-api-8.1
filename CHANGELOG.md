@@ -1,3 +1,12 @@
+## v8.1.45 (2025-01-08)
+
+## v8.1.44.post1 (2024-11-06)
+
+### Fix
+
+- **ia**: fix AlarmQueryResult method names (#307)
+- #306
+
 ## v8.1.44.post1 (2024-11-06)
 
 ### Fix
