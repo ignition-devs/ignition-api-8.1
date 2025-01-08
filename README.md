@@ -102,7 +102,7 @@ This project consists of the following packages:
 
 This package includes supporting Inductive Automation's classes and interfaces.
 For more information, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.44/index.html>.
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.45/index.html>.
 
 #### java/javax
 
