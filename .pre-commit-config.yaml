@@ -11,8 +11,8 @@ repos:
     rev: 5.13.2
     hooks:
       - id: isort
-  - repo: https://github.com/PyCQA/docformatter
-    rev: v1.7.5
+  - repo: https://github.com/coatl-dev/docformatter
+    rev: v1.7.6
     hooks:
       - id: docformatter
         args: [--in-place, --wrap-summaries=72, --close-quotes-on-newline]
