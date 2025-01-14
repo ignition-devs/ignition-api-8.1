@@ -765,7 +765,7 @@ class ClassCastException(RuntimeException):
     """
 
     def __init__(self, s=None):
-        # type: (Optional[AnyStr]) -> None
+        # type: (Optional[str]) -> None
         super(ClassCastException, self).__init__(s)
 
 
