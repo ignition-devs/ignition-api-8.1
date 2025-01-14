@@ -44,11 +44,11 @@ class BrowseFilter(Object):
 
     def checkNameFilters(self, path):
         # type: (Any) -> bool
-        pass
+        return True
 
     def checkProperties(self, toCheck):
         # type: (PropertyValueSource) -> bool
-        pass
+        return True
 
     def getAllowedTypes(self):
         # type: () -> Iterable[AnyStr]
@@ -157,7 +157,7 @@ class BrowseFilter(Object):
 
         def passes(self, value):
             # type: (AnyStr) -> bool
-            pass
+            return True
 
 
 class Results(Object):

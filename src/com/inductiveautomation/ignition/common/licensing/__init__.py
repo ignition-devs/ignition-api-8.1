@@ -16,7 +16,7 @@ from java.util import Date
 class LicenseDetails(object):
     def checkFlag(self, key):
         # type: (AnyStr) -> bool
-        pass
+        return True
 
     def getExpirationDate(self):
         # type: () -> Date

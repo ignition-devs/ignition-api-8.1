@@ -145,7 +145,7 @@ class Priority(Object):
 
     def isGreaterOrEqual(self, r):
         # type: (Priority) -> bool
-        pass
+        return True
 
     def toInt(self):
         # type: () -> int

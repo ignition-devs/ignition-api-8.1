@@ -20,7 +20,7 @@ class Level(Object):
 
     def isGreaterOrEqual(self, r):
         # type: (Level) -> bool
-        pass
+        return True
 
     def toInt(self):
         # type: () -> int

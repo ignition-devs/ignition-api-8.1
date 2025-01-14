@@ -74,11 +74,11 @@ class Document(Object):
 
     def containsKey(self, key):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsValue(self, value):
         # type: (Object) -> bool
-        pass
+        return True
 
     def entrySet(self):
         # type: () -> Set[Any]
@@ -90,7 +90,7 @@ class Document(Object):
 
     def getBoolean(self, *args):
         # type: (*Any) -> bool
-        pass
+        return True
 
     def getDate(self, key):
         # type: (Object) -> Date

@@ -205,7 +205,7 @@ class ObjectId(Object):
     @staticmethod
     def isValid(hexString):
         # type: (AnyStr) -> bool
-        pass
+        return True
 
     def putToByteBuffer(self, buffer):
         # type: (ByteBuffer) -> None

@@ -49,7 +49,7 @@ class ImmutableList(ImmutableCollection):
 
     def contains(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def copyOf(*args):
@@ -106,7 +106,7 @@ class ImmutableSet(ImmutableCollection):
 
     def contains(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     @staticmethod
     def copyOf(*args):

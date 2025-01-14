@@ -253,11 +253,11 @@ class ModuleInfo(Object):
 
         def isRequiredArchitecture(self, arch):
             # type: (Platform.Architecture) -> bool
-            pass
+            return True
 
         def isRequiredOS(self, os):
             # type: (Platform.OperatingSystem) -> bool
-            pass
+            return True
 
     class LibraryInfo(Object):
         def getName(self):

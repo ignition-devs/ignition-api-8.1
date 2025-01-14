@@ -117,7 +117,7 @@ def color(*args):
     having the RGB[A] channels specified explicitly.
 
     Args:
-        args: Variable-length argument list.
+        *args: Variable length argument list.
 
     Returns:
         The newly created color.
@@ -310,7 +310,7 @@ def getParentWindow(event):
     an event, returning a reference to it.
 
     Args:
-        A component event object.
+        event: A component event object.
 
     Returns:
         The window that contains the component that fired the event.
