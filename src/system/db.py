@@ -520,6 +520,7 @@ def runNamedQuery(*args, **kwargs):
         the datatype of the value returned by a Scalar Query.
     """
     print(args, kwargs)
+    return True
 
 
 def runPrepQuery(
@@ -672,7 +673,7 @@ def runSFNamedQuery(*args, **kwargs):
     system.db.runSFNamedQuery(project, path, params)
 
     Args:
-        *args : Variable length argument list.
+        *args: Variable length argument list.
         **kwargs: Arbitrary keyword arguments.
 
     Returns:
@@ -758,6 +759,7 @@ def runScalarPrepQuery(
          Returns None if no rows were returned.
     """
     print(query, args, database, tx)
+    return 42
 
 
 def runScalarQuery(query, database="", tx=None):
@@ -782,6 +784,7 @@ def runScalarQuery(query, database="", tx=None):
          Returns None if no rows were returned.
     """
     print(query, database, tx)
+    return 42
 
 
 def runUpdateQuery(

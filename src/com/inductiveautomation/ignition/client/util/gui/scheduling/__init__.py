@@ -38,7 +38,7 @@ class ScheduleModel(DefaultBindableModel):
 
     def isDaySelected(self, day):
         # type: (ScheduleModel.DayOfWeek) -> bool
-        pass
+        return True
 
     def isEveryHourEnabled(self):
         # type: () -> bool

@@ -31,7 +31,7 @@ def readRaw(
     propertyId,  # type: PropertyIdentifier
     propertyArrayIndex=None,  # type: Optional[int]
 ):
-    # type: (...) -> List[Any]
+    # type: (...) -> Any
     """Read from any BACnet object not explicitly supported by the
     BACnet driver.
 
@@ -47,9 +47,11 @@ def readRaw(
             from. This parameter is optional and should not be used when
             reading from the entire array or if the property is not an
             array.
+
+    Returns:
+        An Encodable object corresponding to the property being read.
     """
     print(deviceName, objectType, objectId, propertyId, propertyArrayIndex)
-    return [0]
 
 
 def readRawMultiple(
@@ -57,26 +59,33 @@ def readRawMultiple(
     objectTypes,  # type: List[ObjectType]
     objectIds,  # type: List[int]
     propertyIds,  # type: List[PropertyIdentifier]
+    propertyArrayIndices=None,  # type: Optional[List[int]]
 ):
     # type: (...) -> List[Any]
-    """This function is the bulk version of system.bacnet.readRaw to
-    allow multiple object/property combinations to be read
-    simultaneously from a single request.
+    """This function is the bulk version of system.bacnet.readRaw. Reads
+    properties from objects and returns a list of corresponding
+    Encodable objects provided equal-length lists of object types,
+    object instance numbers, property ids, and property array indices.
 
     Args:
         deviceName: The name of the configured BACnet/IP device instance
             to read from.
-        objectTypes: The numeric ids of the objectType of the object
-            instances being read from.
-        objectIds: The object instance number to read.
-        propertyIds: The PropertyIdentifier of the object instance being
-            read.
+        objectTypes: A list of ObjectType(s) for the object instance
+            being read.
+        objectIds: A list of object instance numbers to read.
+        propertyIds: A list of PropertyIdentifier(s) for the object
+            instances being read.
+        propertyArrayIndices: An optional list of array indices
+            corresponding to array properties being read. None should be
+            specified as an element when reading from the entire array
+            property or if the property is not an array. Defaults to a
+            list of None when this parameter is omitted.
 
     Returns:
         A list of Encodable objects corresponding to the properties
         being read.
     """
-    print(deviceName, objectTypes, objectIds, propertyIds)
+    print(deviceName, objectTypes, objectIds, propertyIds, propertyArrayIndices)
     return []
 
 

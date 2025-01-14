@@ -20,7 +20,7 @@ class ResourceFilter(Object):
 
     def apply(self, arg):
         # type: (Union[ProjectResource, ProjectResourceId]) -> bool
-        pass
+        return True
 
     @staticmethod
     def forScope(applicationScope):

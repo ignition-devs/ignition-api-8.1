@@ -114,7 +114,7 @@ class Collection(object):
 
     def removeIf(self, filter):
         # type: (Predicate) -> bool
-        pass
+        return True
 
     def retainAll(self, v):
         # type: (Collection) -> bool
@@ -533,12 +533,12 @@ class Arrays(Object):
     @staticmethod
     def deepEquals(a1, a2):
         # type: (List[Object], List[Object]) -> bool
-        pass
+        return True
 
     @staticmethod
     def equals(*args, **kwargs):
         # type: (*Any, **Any) -> bool
-        pass
+        return True
 
     @staticmethod
     def fill(a, *args):
@@ -593,11 +593,11 @@ class Arrays(Object):
 class AbstractCollection(Object, Collection):
     def add(self, e):
         # type: (Any) -> bool
-        pass
+        return True
 
     def addAll(self, c):
         # type: (Collection) -> bool
-        pass
+        return True
 
     def clear(self):
         # type: () -> None
@@ -605,11 +605,11 @@ class AbstractCollection(Object, Collection):
 
     def contains(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsAll(self, c):
         # type: (Collection) -> bool
-        pass
+        return True
 
     def isEmpty(self):
         # type: () -> bool
@@ -621,15 +621,15 @@ class AbstractCollection(Object, Collection):
 
     def remove(self, o):
         # type: (Object) -> bool
-        pass
+        return True
 
     def removeAll(self, c):
         # type: (Collection) -> bool
-        pass
+        return True
 
     def retainAll(self, v):
         # type: (Collection) -> bool
-        pass
+        return True
 
     def size(self):
         # type: () -> int
@@ -665,11 +665,11 @@ class AbstractMap(Object, Map):
 
     def containsKey(self, key):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsValue(self, value):
         # type: (Object) -> bool
-        pass
+        return True
 
     def entrySet(self):
         # type: () -> Set[Map.Entry]
@@ -1084,15 +1084,15 @@ class Hashtable(Dictionary, Map):
 
     def contains(self, value):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsKey(self, key):
         # type: (Object) -> bool
-        pass
+        return True
 
     def containsValue(self, value):
         # type: (Object) -> bool
-        pass
+        return True
 
     def elements(self):
         # type: () -> Enumeration

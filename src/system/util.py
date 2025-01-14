@@ -76,7 +76,7 @@ from com.inductiveautomation.ignition.common.script.builtin import (
 from com.inductiveautomation.ignition.common.util import LoggerEx
 from dev.coatl.helper.types import AnyStr
 from java.awt import Toolkit
-from java.lang import Thread
+from java.lang import IllegalArgumentException, Thread
 from java.util import Date, Locale
 
 APPLET_FLAG = 16
@@ -859,6 +859,7 @@ def sendRequest(
         remoteServer,
         timeoutSec,
     )
+    return ""
 
 
 def sendRequestAsync(
@@ -966,6 +967,8 @@ def setLocale(locale):
     Raises:
         IllegalArgumentException: If passed an invalid local code.
     """
+    if not locale:
+        raise IllegalArgumentException("Invalid locale code")
     print(locale)
 
 

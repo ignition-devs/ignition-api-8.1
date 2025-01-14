@@ -269,7 +269,7 @@ class TimelineList(Object):
 
     def covered(self, time):
         # type: (long) -> bool
-        pass
+        return True
 
     def get(self, time):
         # type: (long) -> Any
@@ -293,7 +293,7 @@ class TimelineList(Object):
 
     def nextEvent(self, time, allowRollover=None):
         # type: (long, Optional[bool]) -> bool
-        pass
+        return True
 
     def size(self):
         # type: () -> int
@@ -315,11 +315,11 @@ class TimelineList(Object):
 
         def contains(self, time):
             # type: (long) -> bool
-            pass
+            return True
 
         def endsBefore(self, time):
             # type: (long) -> bool
-            pass
+            return True
 
         def getDuration(self):
             # type: () -> long

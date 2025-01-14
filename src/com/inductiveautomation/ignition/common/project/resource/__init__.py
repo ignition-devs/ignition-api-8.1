@@ -301,11 +301,11 @@ class ResourcePath(Object, Comparable):
 
     def isAncestorOf(self, possibleDescendant):
         # type: (ResourcePath) -> bool
-        pass
+        return True
 
     def isParentOf(self, possibleChild):
         # type: (ResourcePath) -> bool
-        pass
+        return True
 
     def isResourceTypeFolder(self):
         # type: () -> bool
@@ -368,7 +368,7 @@ class ResourceType(Object):
 
     def matches(self, op):
         # type: (Any) -> bool
-        pass
+        return True
 
     def rootPath(self):
         # type: () -> ResourcePath

@@ -6,13 +6,16 @@ from __future__ import print_function
 
 __all__ = [
     "Appendable",
+    "ArrayIndexOutOfBoundsException",
     "AutoCloseable",
     "CharSequence",
     "Class",
+    "ClassCastException",
     "Comparable",
     "Enum",
     "Exception",
     "IllegalArgumentException",
+    "IndexOutOfBoundsException",
     "NullPointerException",
     "Number",
     "Object",
@@ -25,6 +28,7 @@ __all__ = [
     "StringBuilder",
     "Thread",
     "Throwable",
+    "UnsupportedOperationException",
 ]
 
 import __builtin__ as builtins
@@ -307,11 +311,11 @@ class String(unicode):
 
     def contains(self, arg):
         # type: (String) -> bool
-        pass
+        return True
 
     def contentEquals(self, arg):
         # type: (Union[CharSequence, StringBuffer]) -> bool
-        pass
+        return True
 
     @staticmethod
     def copyValueOf(*args):
@@ -324,11 +328,11 @@ class String(unicode):
 
     def equals(self, anObject):
         # type: (Object) -> bool
-        pass
+        return True
 
     def equalsIgnoreCase(self, anotherString):
         # type: (String) -> bool
-        pass
+        return True
 
     def getBytes(self, *args):
         # type: (*Any) -> Optional[object]
@@ -376,7 +380,7 @@ class String(unicode):
 
     def matches(self, regex):
         # type: (String) -> bool
-        pass
+        return True
 
     def notify(self):
         # type: () -> None
@@ -392,7 +396,7 @@ class String(unicode):
 
     def regionMatches(self, *args):
         # type: (*Any) -> bool
-        pass
+        return True
 
     def repeat(self, count):
         # type: (int) -> String
@@ -755,6 +759,16 @@ class RuntimeException(Exception):
         super(RuntimeException, self).__init__(message, cause)
 
 
+class ClassCastException(RuntimeException):
+    """Thrown to indicate that the code has attempted to cast an object
+    to a subclass of which it is not an instance.
+    """
+
+    def __init__(self, s=None):
+        # type: (Optional[AnyStr]) -> None
+        super(ClassCastException, self).__init__(s)
+
+
 class IllegalArgumentException(RuntimeException):
     """Thrown to indicate that a method has been passed an illegal or
     inappropriate argument.
@@ -765,6 +779,29 @@ class IllegalArgumentException(RuntimeException):
         super(IllegalArgumentException, self).__init__(message, cause)
 
 
+class IndexOutOfBoundsException(RuntimeException):
+    """Thrown to indicate that an index of some sort (such as to an
+    array, to a string, or to a vector) is out of range.
+    """
+
+    def __init__(self, arg=None):
+        # type: (Optional[Union[int, AnyStr]]) -> None
+        super(IndexOutOfBoundsException, self).__init__()
+
+
+class ArrayIndexOutOfBoundsException(IndexOutOfBoundsException):
+    """Thrown to indicate that an array has been accessed with an
+    illegal index.
+
+    The index is either negative or greater than or equal to the size of
+    the array.
+    """
+
+    def __init__(self, arg=None):
+        # type: (Optional[Union[int, AnyStr]]) -> None
+        super(ArrayIndexOutOfBoundsException, self).__init__(arg)
+
+
 class NullPointerException(RuntimeException):
     """Thrown when an application attempts to use null in a case where
     an object is required.
@@ -773,6 +810,16 @@ class NullPointerException(RuntimeException):
     def __init__(self, message=None, cause=None):
         # type: (Optional[str], Optional[Throwable]) -> None
         super(NullPointerException, self).__init__(message, cause)
+
+
+class UnsupportedOperationException(RuntimeException):
+    """Thrown to indicate that the requested operation is not
+    supported.
+    """
+
+    def __init__(self, message=None, cause=None):
+        # type: (Optional[str], Optional[Throwable]) -> None
+        super(UnsupportedOperationException, self).__init__(message, cause)
 
 
 class Thread(Object):

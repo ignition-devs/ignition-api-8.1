@@ -117,7 +117,7 @@ class XMLSerializationContext(Object):
 
     def safeEquals(self, foo, bar):
         # type: (Object, Object) -> bool
-        pass
+        return True
 
     def serialize(self, obj):
         # type: (Object) -> Element

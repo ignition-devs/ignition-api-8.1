@@ -281,6 +281,10 @@ class DatasetUtilities(Object):
 
             Returns:
                 The index of the column with the name colName.
+
+            Raises:
+                ArrayIndexOutOfBoundsException: If the column isn't
+                    found.
             """
             pass
 
@@ -293,6 +297,10 @@ class DatasetUtilities(Object):
 
             Returns:
                 The name of the column at the index colIndex.
+
+            Raises:
+                ArrayIndexOutOfBoundsException: If the given index is
+                    out of range.
             """
             pass
 
@@ -314,12 +322,17 @@ class DatasetUtilities(Object):
 
             Returns:
                 The type of the column at the index.
+
+            Raises:
+                ArrayIndexOutOfBoundsException: If the given index is
+                    out of range.
             """
             pass
 
         def getColumnTypes(self):
             # type: () -> List[Class]
-            """Returns a list with the types of all the columns.
+            """Returns an unmodifiable list of this dataset's column
+            types, in order.
 
             Returns:
                 A list with the types of all the columns.
@@ -334,6 +347,10 @@ class DatasetUtilities(Object):
             Args:
                 row: The row index. Zero-based index.
                 col: The column index. Zero-based index.
+
+            Returns:
+                If the given column is a numeric type or a Date, then
+                    the value will be returned as a double.
 
             Raises:
                 IllegalArgumentException: if the value at row, col is
@@ -350,6 +367,9 @@ class DatasetUtilities(Object):
             Args:
                 row: The row index. Zero-based index.
                 col: The column index. Zero-based index.
+
+            Returns:
+                The quality of the value at the given location.
 
             Raises:
                 ArrayIndexOutOfBoundsException: If the given row, col is
@@ -377,8 +397,13 @@ class DatasetUtilities(Object):
 
             Returns:
                 The value found at the row and column.
+
+            Raises:
+                ArrayIndexOutOfBoundsException: If the column isn't
+                    found.
             """
-            pass
+            print(row, col)
+            return True
 
         def setData(self, data):
             # type: (Dataset) -> None

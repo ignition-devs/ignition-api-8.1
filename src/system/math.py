@@ -269,6 +269,9 @@ def percentile(values, percentile):
     Returns:
         An estimate of the requested percentile of the input, or NaN if
         the input was empty or null.
+
+    Raises:
+        ValueError: If the percentile is out of bounds.
     """
     print(values, percentile)
     if 0 > percentile > 100:

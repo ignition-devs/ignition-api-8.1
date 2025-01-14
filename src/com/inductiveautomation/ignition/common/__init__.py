@@ -35,6 +35,22 @@ class Dataset(object):
 
     def binarySearch(self, column, key):
         # type: (int, Any) -> int
+        """Performs a binary search on the specified column, looking for
+        the specified key.
+
+        Args:
+            column: The column to search in.
+            key: The key to search for.
+
+        Returns:
+            The index of the key in the column, or a negative number if
+            the key is not found.
+
+        Raises:
+            ClassCastException: If the column is not Comparable.
+            UnsupportedOperationException: If the Dataset implementation
+                declines to implement this operation.
+        """
         pass
 
     def getColumnAsList(self, col):
@@ -55,6 +71,9 @@ class Dataset(object):
 
         Returns:
             The number of columns in the dataset.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -67,6 +86,9 @@ class Dataset(object):
 
         Returns:
             The index of the column with the name colName.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -79,6 +101,9 @@ class Dataset(object):
 
         Returns:
             The name of the column at the index colIndex.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -88,6 +113,9 @@ class Dataset(object):
 
         Returns:
             A list with the names of all the columns.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -100,6 +128,9 @@ class Dataset(object):
 
         Returns:
             The type of the column at the index.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -109,6 +140,9 @@ class Dataset(object):
 
         Returns:
             A list with the types of all the columns.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -121,11 +155,12 @@ class Dataset(object):
             row: The row index. Zero-based index.
             col: The column index. Zero-based index.
 
+        Returns:
+            If the given column is a numeric type or a Date, then
+                the value will be returned as a double.
+
         Raises:
-            IllegalArgumentException: if the value at row, col is not a
-                number or Date.
-            UnsupportedOperationException: If the Dataset implementation
-                declines to implement this operation.
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -137,9 +172,11 @@ class Dataset(object):
             row: The row index. Zero-based index.
             col: The column index. Zero-based index.
 
+        Returns:
+            The quality of the value at the given location.
+
         Raises:
-            ArrayIndexOutOfBoundsException: If the given row, col is out
-                of range and hasQualityData() returns true.
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -149,6 +186,9 @@ class Dataset(object):
 
         Returns:
             The number of rows in the dataset.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -163,6 +203,9 @@ class Dataset(object):
 
         Returns:
             The value found at the row and column.
+
+        Raises:
+            NotImplementedError: If the method is not implemented.
         """
         raise NotImplementedError
 
@@ -274,6 +317,10 @@ class AbstractDataset(Dataset):
             row: The row index. Zero-based index.
             col: The column index. Zero-based index.
 
+        Returns:
+            If the given column is a numeric type or a Date, then
+                the value will be returned as a double.
+
         Raises:
             IllegalArgumentException: if the value at row, col is not a
                 number or Date.
@@ -289,6 +336,9 @@ class AbstractDataset(Dataset):
         Args:
             row: The row index. Zero-based index.
             col: The column index. Zero-based index.
+
+        Returns:
+            The quality of the value at the given location.
 
         Raises:
             ArrayIndexOutOfBoundsException: If the given row, col is out
@@ -501,12 +551,12 @@ class StringPath(Object, Path, Comparable):
 
     def isAncestorOf(self, path):
         # type: (Path) -> bool
-        pass
+        return True
 
     @staticmethod
     def isRelative(path):
         # type: (StringPath) -> bool
-        pass
+        return True
 
     def isRoot(self):
         # type: () -> bool
@@ -538,7 +588,7 @@ class StringPath(Object, Path, Comparable):
 
         def isAncestorOf(self, child):
             # type: (Path) -> bool
-            pass
+            return True
 
 
 class TypeUtilities(Object):

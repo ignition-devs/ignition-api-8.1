@@ -551,7 +551,7 @@ def toDataSet(*args):
     2) system.dataset.toDataSet(headers, data)
 
     Args:
-        args: A variable-length argument list.
+        *args: A variable-length argument list.
 
     Returns:
         The newly created dataset.

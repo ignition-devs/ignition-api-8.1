@@ -226,7 +226,7 @@ class PyAlarmEventImpl(PyAlarmEvent, PyObject):
 
     def contains(self, property):
         # type: (AnyStr) -> bool
-        pass
+        return True
 
     def get(self, property):
         # type: (AnyStr) -> Object
