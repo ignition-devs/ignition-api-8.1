@@ -1,3 +1,9 @@
+## v8.1.45.post1 (2025-01-13)
+
+### Refactor
+
+- **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
+
 ## v8.1.45 (2025-01-08)
 
 ## v8.1.44.post1 (2024-11-06)
