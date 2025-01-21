@@ -1,3 +1,15 @@
+## v8.1.45.post2 (2025-01-20)
+
+### Fix
+
+- **system**: update build version
+
+## v8.1.45.post1 (2025-01-13)
+
+### Refactor
+
+- **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
+
 ## v8.1.45.post1 (2025-01-13)
 
 ### Refactor
