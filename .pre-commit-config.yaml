@@ -8,7 +8,7 @@ repos:
     hooks:
       - id: black
   - repo: https://github.com/PyCQA/isort
-    rev: 5.13.2
+    rev: 6.0.0
     hooks:
       - id: isort
   - repo: https://github.com/coatl-dev/docformatter
@@ -25,15 +25,18 @@ repos:
     hooks:
       - id: pydocstyle
         exclude: ^(src/ch/|src/com/|src/dev/|src/java/|src/javax/|src/org/)
+  - repo: https://github.com/jsh9/pydoclint
+    rev: 0.6.0
+    hooks:
+      - id: pydoclint-flake8
+  - repo: https://github.com/coatl-dev/hadolint-coatl
+    rev: 2.12.1b0
+    hooks:
+      - id: hadolint
   - repo: local
     hooks:
       - id: pylint
         name: pylint
         entry: pylint
         language: system
-        files: ^src/
         types: [python]
-  - repo: https://github.com/coatl-dev/hadolint-coatl
-    rev: 2.12.1b0
-    hooks:
-      - id: hadolint

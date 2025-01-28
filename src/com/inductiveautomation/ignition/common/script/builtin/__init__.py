@@ -14,9 +14,9 @@ from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSeq
 from com.inductiveautomation.ignition.common.script.message import Request
 from dev.coatl.helper.types import AnyStr
 from java.io import OutputStream, Writer
-from java.lang import Class
+from java.lang import ArrayIndexOutOfBoundsException, Class
 from java.lang import Exception as JavaException
-from java.lang import Object
+from java.lang import IllegalArgumentException, Object, UnsupportedOperationException
 from java.util import Locale
 from org.json import JSONObject
 from org.python.core import PyFunction, PyList, PyObject, PySequence
@@ -286,7 +286,9 @@ class DatasetUtilities(Object):
                 ArrayIndexOutOfBoundsException: If the column isn't
                     found.
             """
-            pass
+            if not colName:
+                raise ArrayIndexOutOfBoundsException()
+            return 0
 
         def getColumnName(self, col):
             # type: (int) -> AnyStr
@@ -302,7 +304,9 @@ class DatasetUtilities(Object):
                 ArrayIndexOutOfBoundsException: If the given index is
                     out of range.
             """
-            pass
+            if col == -1:
+                raise ArrayIndexOutOfBoundsException()
+            return "column_name"
 
         def getColumnNames(self):
             # type: () -> List[AnyStr]
@@ -327,7 +331,9 @@ class DatasetUtilities(Object):
                 ArrayIndexOutOfBoundsException: If the given index is
                     out of range.
             """
-            pass
+            if col == -1:
+                raise ArrayIndexOutOfBoundsException()
+            return Class()
 
         def getColumnTypes(self):
             # type: () -> List[Class]
@@ -358,7 +364,11 @@ class DatasetUtilities(Object):
                 UnsupportedOperationException: If the Dataset
                     implementation declines to implement this operation.
             """
-            pass
+            if row == 0 and col == 0:
+                raise IllegalArgumentException()
+            if row == -1 and col == -1:
+                raise UnsupportedOperationException()
+            return 42.0
 
         def getQualityAt(self, row, col):
             # type: (int, int) -> QualityCode
@@ -372,10 +382,12 @@ class DatasetUtilities(Object):
                 The quality of the value at the given location.
 
             Raises:
-                ArrayIndexOutOfBoundsException: If the given row, col is
-                    out of range and hasQualityData() returns true.
+                ArrayIndexOutOfBoundsException: If the column isn't
+                    found.
             """
-            pass
+            if row == -1 and col == -1:
+                raise ArrayIndexOutOfBoundsException()
+            return QualityCode().Good
 
         def getRowCount(self):
             # type: () -> int
@@ -402,6 +414,8 @@ class DatasetUtilities(Object):
                 ArrayIndexOutOfBoundsException: If the column isn't
                     found.
             """
+            if row == 0 and col == 0:
+                raise ArrayIndexOutOfBoundsException()
             print(row, col)
             return True
 

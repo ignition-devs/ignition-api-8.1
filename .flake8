@@ -1,5 +1,10 @@
 [flake8]
-ignore = E741, F821
+ignore = DOC202, E741, F821
 max-complexity = 10
 max-doc-length = 72
 max-line-length = 120
+# pydoclint
+style = google
+arg-type-hints-in-signature = False
+arg-type-hints-in-docstring = False
+check-return-types = False

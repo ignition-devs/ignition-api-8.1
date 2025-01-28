@@ -120,7 +120,7 @@ API. For more information, see documentation here:
 
 This package includes supporting classes and interfaces from the Inductive
 Automation's `org.json` package, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.44/org/json/package-summary.html>
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.45/org/json/package-summary.html>
 
 #### org.python
 
@@ -132,7 +132,7 @@ information, see documentation here:
 
 This package includes supporting classes and interfaces from SLF4J API Module.
 For more information, see documentation here:
-<https://www.javadoc.io/doc/org.slf4j/slf4j-api/1.7.26/overview-summary.html>.
+<https://www.javadoc.io/doc/org.slf4j/slf4j-api/1.7.30/overview-summary.html>.
 
 #### system
 

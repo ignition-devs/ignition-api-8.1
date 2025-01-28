@@ -17,7 +17,16 @@ from com.inductiveautomation.ignition.common.document import DocumentElement
 from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
 from dev.coatl.helper.types import AnyStr
 from java.awt import Color
-from java.lang import Class, Comparable, Number, Object
+from java.lang import (
+    ArrayIndexOutOfBoundsException,
+    Class,
+    ClassCastException,
+    Comparable,
+    IllegalArgumentException,
+    Number,
+    Object,
+    UnsupportedOperationException,
+)
 from java.util import UUID, Comparator, Date, Locale
 from org.json import JSONObject
 from org.python.core import PyObject
@@ -51,7 +60,11 @@ class Dataset(object):
             UnsupportedOperationException: If the Dataset implementation
                 declines to implement this operation.
         """
-        pass
+        if column == 0 and key is None:
+            raise ClassCastException()
+        if column == -1 and key is None:
+            raise UnsupportedOperationException()
+        return 42
 
     def getColumnAsList(self, col):
         # type: (int) -> List[Any]
@@ -327,7 +340,11 @@ class AbstractDataset(Dataset):
             UnsupportedOperationException: If the Dataset implementation
                 declines to implement this operation.
         """
-        pass
+        if row == 0 and col == 0:
+            raise IllegalArgumentException()
+        if row == -1 and col == -1:
+            raise UnsupportedOperationException()
+        return 42.0
 
     def getQualityAt(self, row, col):
         # type: (int, int) -> Any
@@ -344,7 +361,9 @@ class AbstractDataset(Dataset):
             ArrayIndexOutOfBoundsException: If the given row, col is out
                 of range and hasQualityData() returns true.
         """
-        pass
+        if row == -1 and col == -1:
+            raise ArrayIndexOutOfBoundsException()
+        return Object()
 
     def getRowCount(self):
         # type: () -> int
