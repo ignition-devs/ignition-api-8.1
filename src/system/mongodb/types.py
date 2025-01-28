@@ -1,6 +1,8 @@
 """MongoDB Types."""
 
-from org.bson.types import Binary
+from org.bson.types import (
+    Binary,
+)
 from org.bson.types import BSONTimestamp as Timestamp
 from org.bson.types import (
     Code,
