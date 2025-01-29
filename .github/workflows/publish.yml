@@ -14,6 +14,8 @@ jobs:
   pylint:
     needs: pre-commit
     uses: coatl-dev/workflows/.github/workflows/pylint.yml@v4
+    with:
+      path: src
 
   tox:
     needs:
