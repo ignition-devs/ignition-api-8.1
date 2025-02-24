@@ -398,6 +398,15 @@ class DatasetUtilities(Object):
             """
             pass
 
+        def getUnderlyingDataset(self):
+            # type: () -> Dataset
+            """Returns the underlying dataset.
+
+            Returns:
+                The underlying dataset.
+            """
+            return Dataset()
+
         def getValueAt(self, row, col):
             # type: (int, Union[int, AnyStr]) -> Any
             """Returns the value at the specified row index and column
