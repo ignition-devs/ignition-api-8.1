@@ -1,4 +1,4 @@
-__all__ = ["HttpClient", "HttpResponse"]
+__all__ = ["HttpClient", "HttpRequest", "HttpResponse"]
 
 from java.lang import Object
 
@@ -8,4 +8,8 @@ class HttpResponse(object):
 
 
 class HttpClient(Object):
+    pass
+
+
+class HttpRequest(Object):
     pass
