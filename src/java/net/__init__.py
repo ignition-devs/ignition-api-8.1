@@ -18,12 +18,13 @@ __all__ = [
     "SocketImplFactory",
     "SocketOption",
     "URI",
+    "UnknownHostException",
 ]
 
 from typing import Any, List, Mapping, Optional, Set
 
 from dev.coatl.helper.types import AnyStr
-from java.io import Closeable, InputStream, OutputStream
+from java.io import Closeable, InputStream, IOException, OutputStream
 from java.lang import Class, Enum, Object
 from java.nio.channels import SocketChannel
 
@@ -495,3 +496,9 @@ class URI(Object):
         # type: (*Any) -> None
         super(URI, self).__init__()
         print(args)
+
+
+class UnknownHostException(IOException):
+    def __init__(self, message=None):
+        # type: (Optional[str]) -> None
+        super(UnknownHostException, self).__init__(message)

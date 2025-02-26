@@ -12,6 +12,7 @@ __all__ = [
     "AbstractMap",
     "ArrayList",
     "Arrays",
+    "Base64",
     "Calendar",
     "Collection",
     "Comparator",
@@ -33,11 +34,22 @@ __all__ = [
     "UUID",
 ]
 
-from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Union
+from typing import (
+    TYPE_CHECKING,
+    Any,
+    Dict,
+    Iterable,
+    List,
+    Mapping,
+    Optional,
+    Set,
+    Union,
+)
 
 from dev.coatl.helper.types import AnyStr
 from dev.coatl.utils.decorators import classproperty
 from java.lang import Class, Object
+from java.nio import ByteBuffer
 from java.time import Instant, ZoneId
 from java.util.function import (
     BiFunction,
@@ -49,6 +61,9 @@ from java.util.function import (
     ToIntFunction,
     ToLongFunction,
 )
+
+if TYPE_CHECKING:
+    from java.io import InputStream, OutputStream
 
 
 class Collection(object):
@@ -724,6 +739,72 @@ class ArrayList(AbstractList):
 
     def trimToSize(self):
         # type: () -> None
+        pass
+
+
+class Base64(Object):
+    class Decoder(Object):
+        def decode(
+            self,
+            arg,  # type: Union[AnyStr, ByteBuffer, List[int]]
+            dst=None,  # type: Optional[List[int]]
+        ):
+            # type: (...) -> Union[ByteBuffer, int, List[int]]
+            pass
+
+        def wrap(self, is_):
+            # type: (InputStream) -> InputStream
+            pass
+
+    class Encoder(Object):
+        def encode(
+            self,
+            arg,  # type: Union[ByteBuffer, List[int]]
+            dst=None,  # type: Optional[List[int]]
+        ):
+            # type: (...) -> Union[ByteBuffer, int, List[int]]
+            pass
+
+        def encodeToString(self, src):
+            # type: (List[int]) -> AnyStr
+            pass
+
+        def withoutPadding(self):
+            # type: () -> Base64.Encoder
+            pass
+
+        def wrap(self, os):
+            # type: (OutputStream) -> OutputStream
+            pass
+
+    @staticmethod
+    def getDecoder():
+        # type: () -> Base64.Decoder
+        pass
+
+    @staticmethod
+    def getEncoder():
+        # type: () -> Base64.Encoder
+        pass
+
+    @staticmethod
+    def getMimeDecoder():
+        # type: () -> Base64.Decoder
+        pass
+
+    @staticmethod
+    def getMimeEncoder(lineLength=None, lineSeparator=None):
+        # type: (Optional[int], Optional[List[int]]) -> Base64.Encoder
+        pass
+
+    @staticmethod
+    def getUrlDecoder():
+        # type: () -> Base64.Decoder
+        pass
+
+    @staticmethod
+    def getUrlEncoder():
+        # type: () -> Base64.Encoder
         pass
 
 
