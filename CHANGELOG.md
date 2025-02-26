@@ -1,3 +1,27 @@
+## v8.1.45.post4 (2025-02-26)
+
+### Feat
+
+- **java**: add missing classes and arguments (#315)
+
+## v8.1.45.post3 (2025-02-24)
+
+### Fix
+
+- **ia**: add PyDataSet.getUnderlyingDataset function (#314)
+
+## v8.1.45.post2 (2025-01-20)
+
+### Fix
+
+- **system**: update build version
+
+## v8.1.45.post1 (2025-01-13)
+
+### Refactor
+
+- **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
+
 ## v8.1.45.post3 (2025-02-24)
 
 ### Fix
