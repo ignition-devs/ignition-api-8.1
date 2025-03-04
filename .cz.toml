@@ -1,7 +1,7 @@
 [tool.commitizen]
 gpg_sign = true
 name = "cz_conventional_commits"
-tag_format = "v$version"
+tag_format = "$version"
 version_scheme = "pep440"
 version = "8.1.47"
 update_changelog_on_bump = true
