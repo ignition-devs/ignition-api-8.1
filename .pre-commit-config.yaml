@@ -26,7 +26,7 @@ repos:
       - id: pydocstyle
         exclude: ^(src/ch/|src/com/|src/dev/|src/java/|src/javax/|src/org/)
   - repo: https://github.com/jsh9/pydoclint
-    rev: 0.6.4
+    rev: 0.6.5
     hooks:
       - id: pydoclint-flake8
   - repo: https://github.com/coatl-dev/hadolint-coatl
