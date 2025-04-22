@@ -11,6 +11,8 @@ from __future__ import print_function
 __all__ = [
     "BufferedReader",
     "BufferedWriter",
+    "ByteArrayInputStream",
+    "ByteArrayOutputStream",
     "Closeable",
     "DataOutputStream",
     "File",
@@ -93,6 +95,29 @@ class OutputStream(Object, Closeable, Flushable):
 
     def write(self, *args):
         # type: (*Any) -> None
+        pass
+
+
+class ByteArrayOutputStream(OutputStream):
+    def __init__(self, size=0):
+        # type: (int) -> None
+        super(ByteArrayOutputStream, self).__init__()
+        print(size)
+
+    def reset(self):
+        # type: () -> None
+        pass
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def toByteArray(self):
+        # type: () -> bytearray
+        pass
+
+    def writeTo(self, arg):
+        # type: (Union[bytearray, OutputStream]) -> None
         pass
 
 
@@ -255,6 +280,13 @@ class InputStream(Object, Closeable):
     def transferTo(self, out):
         # type: (OutputStream) -> long
         pass
+
+
+class ByteArrayInputStream(InputStream):
+    def __init__(self, buf, offset=0, length=-1):
+        # type: (bytearray, int, int) -> None
+        super(ByteArrayInputStream, self).__init__()
+        print(buf, offset, length)
 
 
 class IOException(Exception):
