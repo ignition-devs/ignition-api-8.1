@@ -1,4 +1,18 @@
-## v8.1.47 (2025-03-03)
+## 8.1.47 (2025-04-22)
+
+### Feat
+
+- **java**: add ByteArray[In|out]putStream classes to io (#320)
+- **java**: add missing classes and arguments (#315)
+
+### Fix
+
+- **ia**: add PyDataSet.getUnderlyingDataset function (#314)
+- **system**: update build version
+
+### Refactor
+
+- **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
 ## v8.1.45.post4 (2025-02-26)
 
