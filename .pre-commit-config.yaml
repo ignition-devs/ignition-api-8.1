@@ -11,7 +11,7 @@ repos:
     rev: 6.0.1
     hooks:
       - id: isort
-  - repo: https://github.com/coatl-dev/docformatter
+  - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.6
     hooks:
       - id: docformatter
