@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - '.github/workflows/pr-build.yml'
-      - 'src/**'
-      - 'tests/**'
+      - .github/workflows/pr-build.yml
+      - src/**
+      - tests/**
       - pyproject.toml
       - requirements.txt
       - setup.cfg
