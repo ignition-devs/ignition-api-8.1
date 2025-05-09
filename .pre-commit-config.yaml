@@ -20,6 +20,11 @@ repos:
     rev: 5.0.4
     hooks:
       - id: flake8
+  - repo: https://github.com/hakancelikdev/unimport
+    rev: 1.2.1
+    hooks:
+      - id: unimport
+        language_version: python3.12
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 6.3.0
     hooks:
