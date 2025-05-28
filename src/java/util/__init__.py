@@ -49,8 +49,6 @@ from typing import (
 from dev.coatl.helper.types import AnyStr
 from dev.coatl.utils.decorators import classproperty
 from java.lang import Class, Object
-from java.nio import ByteBuffer
-from java.time import Instant, ZoneId
 from java.util.function import (
     BiFunction,
     Consumer,
@@ -64,6 +62,8 @@ from java.util.function import (
 
 if TYPE_CHECKING:
     from java.io import InputStream, OutputStream
+    from java.nio import ByteBuffer
+    from java.time import Instant, ZoneId
 
 
 class Collection(object):

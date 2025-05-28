@@ -92,17 +92,26 @@ to your project.
 
 This project consists of the following packages:
 
-- com.inductiveautomation
-- java
-- javax
+- com
+  - codahale
+  - google
+  - [inductiveautomation](#cominductiveautomation)
+  - palantir
+- [java](#javajavax)
+- [javax](#javajavax)
 - org
-- system
+  - [apache](#orgapache)
+  - bson
+  - json
+  - [python](#orgpython)
+  - slf4j
+- [system](#system)
 
 #### com.inductiveautomation
 
 This package includes supporting Inductive Automation's classes and interfaces.
 For more information, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.47/index.html>.
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.48/index.html>.
 
 #### java/javax
 
@@ -112,15 +121,29 @@ information, see documentation here:
 
 #### org.apache
 
+##### org.apache.commons.lang3
+
+This package includes supporting classes and interfaces from Apache Commons Lang
+3.11 API. For more information, see documentation here:
+<https://javadoc.io/doc/org.apache.commons/commons-lang3/3.11/index.html>
+
+##### org.apache.commons.math3
+
 This package includes supporting classes and interfaces from Apache Commons Math
-API. For more information, see documentation here:
+3.6.1 API. For more information, see documentation here:
 <https://commons.apache.org/proper/commons-math/javadocs/api-3.6.1/index.html>
+
+##### org.apache.commons.poi
+
+This package includes supporting classes and interfaces from Apache POI 4.1.2
+API. For more information, see documentation here:
+<https://www.javadoc.io/doc/org.apache.poi/poi/4.1.2/index.html>
 
 #### org.json
 
 This package includes supporting classes and interfaces from the Inductive
 Automation's `org.json` package, see documentation here:
-<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.47/org/json/package-summary.html>
+<https://files.inductiveautomation.com/sdk/javadoc/ignition81/8.1.48/org/json/package-summary.html>
 
 #### org.python
 
@@ -132,7 +155,7 @@ information, see documentation here:
 
 This package includes supporting classes and interfaces from SLF4J API Module.
 For more information, see documentation here:
-<https://www.javadoc.io/doc/org.slf4j/slf4j-api/1.7.30/overview-summary.html>.
+<https://www.javadoc.io/doc/org.slf4j/slf4j-api/2.0.12/index.html>.
 
 #### system
 

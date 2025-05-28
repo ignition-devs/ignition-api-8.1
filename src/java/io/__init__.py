@@ -17,6 +17,7 @@ __all__ = [
     "DataOutputStream",
     "File",
     "FileDescriptor",
+    "FileInputStream",
     "FileOutputStream",
     "FilterOutputStream",
     "Flushable",
@@ -42,6 +43,7 @@ from java.lang import (
     Readable,
     Throwable,
 )
+from java.nio.channels import FileChannel
 from java.nio.charset import Charset, CharsetDecoder
 
 
@@ -287,6 +289,21 @@ class ByteArrayInputStream(InputStream):
         # type: (bytearray, int, int) -> None
         super(ByteArrayInputStream, self).__init__()
         print(buf, offset, length)
+
+
+class FileInputStream(InputStream):
+    def __init__(self, *args):
+        # type: (*Any) -> None
+        super(FileInputStream, self).__init__()
+        print(args)
+
+    def getChannel(self):
+        # type: () -> FileChannel
+        pass
+
+    def getFD(self):
+        # type: () -> FileDescriptor
+        pass
 
 
 class IOException(Exception):
