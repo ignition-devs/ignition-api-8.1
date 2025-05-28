@@ -11,12 +11,10 @@ def find_modules_in_path(path):
     modules = []
 
     for root, _, files in os.walk(path):
-        for file in files:
-            if file.endswith(".py"):
-                module_path = os.path.relpath(os.path.join(root, file), path)
-
+        for file_ in files:
+            if file_.endswith(".py"):
+                module_path = os.path.relpath(os.path.join(root, file_), path)
                 module_name = os.path.splitext(module_path.replace(os.sep, "."))[0]
-
                 _module = "{}.{}".format(
                     path.replace("src/", "").replace("/", "."),
                     module_name.replace(".__init__", ""),
@@ -44,7 +42,7 @@ def pop_imported_modules():
 
 
 class TestPackageImports(unittest.TestCase):
-    modules_to_test = discover_all_modules_in_path("src/system")
+    modules_to_test = discover_all_modules_in_path("src/org/apache")
 
     for module_name in modules_to_test:
         test_name = "test_import_{}".format(module_name)

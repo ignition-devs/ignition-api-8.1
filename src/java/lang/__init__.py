@@ -16,6 +16,7 @@ __all__ = [
     "Exception",
     "IllegalArgumentException",
     "IndexOutOfBoundsException",
+    "Iterable",
     "NullPointerException",
     "Number",
     "Object",
@@ -41,6 +42,8 @@ from java.lang.reflect import Type
 
 if TYPE_CHECKING:
     from java.nio import CharBuffer
+    from java.util import Iterator, Spliterator
+    from java.util.function import Consumer
 
 
 class Object(object):
@@ -144,6 +147,20 @@ class Comparable(object):
     def compareTo(self, o):
         # type: (Any) -> int
         raise NotImplementedError
+
+
+class Iterable(object):
+    def forEach(self, action):
+        # type: (Consumer) -> None
+        pass
+
+    def iterator(self):
+        # type: () -> Iterator
+        pass
+
+    def spliterator(self):
+        # type: () -> Spliterator
+        pass
 
 
 class Readable(object):

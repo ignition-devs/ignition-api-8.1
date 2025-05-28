@@ -1,21 +1,25 @@
 __all__ = [
+    "ChronoField",
     "ChronoUnit",
     "Temporal",
     "TemporalAccessor",
     "TemporalAdjuster",
+    "TemporalAmount",
     "TemporalField",
     "TemporalQuery",
     "TemporalUnit",
     "ValueRange",
 ]
 
-from typing import Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional
 
 from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
-from java.time import Duration
 from java.time.format import ResolverStyle
 from java.util import Locale
+
+if TYPE_CHECKING:
+    from java.time import Duration
 
 
 class TemporalAccessor(object):
@@ -42,6 +46,24 @@ class TemporalAccessor(object):
 
 class TemporalAdjuster(object):
     def adjustInto(self, temporal):
+        # type: (Temporal) -> Temporal
+        pass
+
+
+class TemporalAmount(object):
+    def addTo(self, temporal):
+        # type: (Temporal) -> Temporal
+        raise NotImplementedError
+
+    def get(self, unit):
+        # type: (TemporalUnit) -> long
+        raise NotImplementedError
+
+    def getUnits(self):
+        # type: () -> List[TemporalUnit]
+        raise NotImplementedError
+
+    def subtractFrom(self, temporal):
         # type: (Temporal) -> Temporal
         raise NotImplementedError
 
@@ -153,6 +175,88 @@ class Temporal(TemporalAccessor):
     def until(self, endExclusive, unit):
         # type: (Temporal, TemporalUnit) -> long
         raise NotImplementedError
+
+
+class ChronoField(Enum, TemporalField):
+    ALIGNED_DAY_OF_WEEK_IN_MONTH = None  # type: ChronoField
+    ALIGNED_DAY_OF_WEEK_IN_YEAR = None  # type: ChronoField
+    ALIGNED_WEEK_OF_MONTH = None  # type: ChronoField
+    ALIGNED_WEEK_OF_YEAR = None  # type: ChronoField
+    AMPM_OF_DAY = None  # type: ChronoField
+    CLOCK_HOUR_OF_AMPM = None  # type: ChronoField
+    CLOCK_HOUR_OF_DAY = None  # type: ChronoField
+    DAY_OF_MONTH = None  # type: ChronoField
+    DAY_OF_WEEK = None  # type: ChronoField
+    DAY_OF_YEAR = None  # type: ChronoField
+    EPOCH_DAY = None  # type: ChronoField
+    ERA = None  # type: ChronoField
+    HOUR_OF_AMPM = None  # type: ChronoField
+    HOUR_OF_DAY = None  # type: ChronoField
+    INSTANT_SECONDS = None  # type: ChronoField
+    MICRO_OF_DAY = None  # type: ChronoField
+    MICRO_OF_SECOND = None  # type: ChronoField
+    MILLI_OF_DAY = None  # type: ChronoField
+    MILLI_OF_SECOND = None  # type: ChronoField
+    MINUTE_OF_DAY = None  # type: ChronoField
+    MINUTE_OF_HOUR = None  # type: ChronoField
+    MONTH_OF_YEAR = None  # type: ChronoField
+    NANO_OF_DAY = None  # type: ChronoField
+    NANO_OF_SECOND = None  # type: ChronoField
+    OFFSET_SECONDS = None  # type: ChronoField
+    PROLEPTIC_MONTH = None  # type: ChronoField
+    SECOND_OF_DAY = None  # type: ChronoField
+    SECOND_OF_MINUTE = None  # type: ChronoField
+    YEAR = None  # type: ChronoField
+    YEAR_OF_ERA = None  # type: ChronoField
+
+    def adjustInto(self, temporal, newValue):
+        # type: (Temporal, long) -> Temporal
+        pass
+
+    def checkValidIntValue(self, value):
+        # type: (long) -> int
+        pass
+
+    def checkValidValue(self, value):
+        # type: (long) -> long
+        pass
+
+    def getBaseUnit(self):
+        # type: () -> TemporalUnit
+        pass
+
+    def getFrom(self, temporal):
+        # type: (TemporalAccessor) -> long
+        pass
+
+    def getRangeUnit(self):
+        # type: () -> TemporalUnit
+        pass
+
+    def isDateBased(self):
+        # type: () -> bool
+        return True
+
+    def isSupportedBy(self, temporal):
+        # type: (TemporalAccessor) -> bool
+        return True
+
+    def isTimeBased(self):
+        # type: () -> bool
+        return True
+
+    def range(self):
+        # type: () -> ValueRange
+        pass
+
+    def rangeRefinedBy(self, temporal):
+        # type: (TemporalAccessor) -> ValueRange
+        pass
+
+    @staticmethod
+    def values():
+        # type: () -> List[ChronoField]
+        pass
 
 
 class ChronoUnit(Enum, TemporalUnit):
