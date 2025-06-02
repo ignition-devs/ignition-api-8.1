@@ -24,6 +24,41 @@ from org.slf4j import Logger
 
 
 class AbstractOPCUtilities(Object):
+
+    class PyOPCTag(PyObject):
+        displayName = None  # type: AnyStr
+        elementType = None  # type: BrowseElementType
+        nodeId = None  # type: AnyStr
+        serverName = None  # type: AnyStr
+
+        def __init__(self, serverName, nodeId, displayName, elementType):
+            # type: (AnyStr, AnyStr, AnyStr, BrowseElementType) -> None
+            self.serverName = serverName
+            self.nodeId = nodeId
+            self.displayName = displayName
+            self.elementType = elementType
+            super(AbstractOPCUtilities.PyOPCTag, self).__init__()
+
+        def __findattr_ex__(self, name):
+            # type: (AnyStr) -> PyObject
+            pass
+
+        def getDisplayName(self):
+            # type: () -> AnyStr
+            return self.displayName
+
+        def getElementType(self):
+            # type: () -> BrowseElementType
+            return self.elementType
+
+        def getNodeId(self):
+            # type: () -> AnyStr
+            return self.nodeId
+
+        def getServerName(self):
+            # type: () -> AnyStr
+            return self.serverName
+
     def browseServer(self, opcServer, nodeId):
         # type: (AnyStr, AnyStr) -> List[AbstractOPCUtilities.PyOPCTag]
         return [
@@ -62,206 +97,14 @@ class AbstractOPCUtilities(Object):
         # type: (*PyObject, **AnyStr) -> List[QualityCode]
         pass
 
-    class PyOPCTag(PyObject):
-        displayName = None  # type: AnyStr
-        elementType = None  # type: BrowseElementType
-        nodeId = None  # type: AnyStr
-        serverName = None  # type: AnyStr
-
-        def __init__(self, serverName, nodeId, displayName, elementType):
-            # type: (AnyStr, AnyStr, AnyStr, BrowseElementType) -> None
-            self.serverName = serverName
-            self.nodeId = nodeId
-            self.displayName = displayName
-            self.elementType = elementType
-            super(AbstractOPCUtilities.PyOPCTag, self).__init__()
-
-        def __findattr_ex__(self, name):
-            # type: (AnyStr) -> PyObject
-            pass
-
-        def getDisplayName(self):
-            # type: () -> AnyStr
-            return self.displayName
-
-        def getElementType(self):
-            # type: () -> BrowseElementType
-            return self.elementType
-
-        def getNodeId(self):
-            # type: () -> AnyStr
-            return self.nodeId
-
-        def getServerName(self):
-            # type: () -> AnyStr
-            return self.serverName
-
 
 class DatasetUtilities(Object):
-    @staticmethod
-    def addColumn(ds, *args):
-        # type: (Dataset, *Any) -> Dataset
-        pass
-
-    @staticmethod
-    def addRow(ds, *args):
-        # type: (Dataset, *Any) -> Dataset
-        pass
-
-    @staticmethod
-    def addRows(ds, *args):
-        # type: (Dataset, *Any) -> Dataset
-        pass
-
-    @staticmethod
-    def appendDataset(ds1, ds2):
-        # type: (Dataset, Dataset) -> Dataset
-        pass
-
-    @staticmethod
-    def clearDataset(ds):
-        # type: (Dataset) -> Dataset
-        pass
-
-    @staticmethod
-    def dataSetToExcel(headerRow, datasets):
-        # type: (bool, List[Object]) -> AnyStr
-        pass
-
-    @staticmethod
-    def dataSetToExcelBytes(headerRow, objects, nullsEmpty, sheetNames):
-        # type: (bool, List[Object], bool, List[AnyStr]) -> bytearray
-        pass
-
-    @staticmethod
-    def dataSetToExcelStreaming(headerRow, objects, out, nullsEmpty):
-        # type: (bool, List[Object], OutputStream, bool) -> None
-        pass
-
-    @staticmethod
-    def dataSetToHTML(headerRow, ds, title):
-        # type: (bool, Dataset, AnyStr) -> AnyStr
-        pass
-
-    @staticmethod
-    def dataSetToHTMLStreaming(headerRow, ds, title, fw):
-        # type: (bool, Dataset, AnyStr, Writer) -> None
-        pass
-
-    @staticmethod
-    def deleteRow(ds, row):
-        # type: (Dataset, int) -> Dataset
-        pass
-
-    @staticmethod
-    def deleteRows(ds, rows):
-        # type: (Dataset, List[int]) -> Dataset
-        pass
-
-    @staticmethod
-    def filterColumns(dataset, columns):
-        # type: (Dataset, PySequence) -> Dataset
-        pass
-
-    @staticmethod
-    def formatDates(dataset, format, locale=Locale.US):
-        # type: (Dataset, AnyStr, Locale) -> Dataset
-        pass
-
-    @staticmethod
-    def fromCSV(csv):
-        # type: (AnyStr) -> Dataset
-        pass
-
-    @staticmethod
-    def fromCSVJava(csv):
-        # type: (AnyStr) -> Dataset
-        pass
-
-    @staticmethod
-    def getColumnHeaders(ds):
-        # type: (Dataset) -> PyList
-        pass
-
-    @staticmethod
-    def insertColumn(ds, *args):
-        # type: (Dataset, *Any) -> Dataset
-        pass
-
-    @staticmethod
-    def insertRow(ds, *args):
-        # type: (Dataset, *Any) -> Dataset
-        pass
-
-    @staticmethod
-    def setValue(
-        ds,  # type: Dataset
-        row,  # type: int
-        col,  # type: Union[int, AnyStr]
-        value,  # type: Union[Object, PyObject]
-    ):
-        # type: (...) -> Dataset
-        pass
-
-    @staticmethod
-    def sort(
-        ds,  # type: Dataset
-        keyColumn,  # type: Union[int, AnyStr]
-        ascending=None,  # type: Optional[bool]
-        naturalOrdering=None,  # type: Optional[bool]
-    ):
-        # type: (...) -> BasicDataset
-        pass
-
-    @staticmethod
-    def toCSV(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> AnyStr
-        pass
-
-    @staticmethod
-    def toCSVJava(ds, showHeaders, forExport, localized=False):
-        # type: (Dataset, bool, bool, bool) -> AnyStr
-        pass
-
-    @staticmethod
-    def toCSVJavaStreaming(ds, showHeaders, forExport, sw, localized):
-        # type: (Dataset, bool, bool, Writer, bool) -> None
-        pass
-
-    @staticmethod
-    def toDataSet(*args):
-        # type: (*Any) -> Dataset
-        pass
-
-    @staticmethod
-    def toExcel(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> bytearray
-        pass
-
-    @staticmethod
-    def toJSONObject(data):
-        # type: (Dataset) -> JSONObject
-        pass
-
-    @staticmethod
-    def toPyDataSet(dataset):
-        # type: (Dataset) -> PyDataSet
-        pass
-
-    @staticmethod
-    def updateRow(ds, row, changes):
-        # type: (Dataset, int, Dict[AnyStr, Any]) -> Dataset
-        pass
 
     class PyDataSet(Dataset, AbstractJythonSequence):
         def __init__(self, ds=None):
             # type: (Optional[Dataset]) -> None
             print(ds)
             super(DatasetUtilities.PyDataSet, self).__init__(Class())
-
-        def __add__(self, other):
-            # type: (PyObject) -> PyObject
-            pass
 
         def getColumnCount(self):
             # type: () -> int
@@ -433,8 +276,214 @@ class DatasetUtilities(Object):
             """Used for serialization only."""
             pass
 
+        def __add__(self, other):
+            # type: (PyObject) -> PyObject
+            pass
+
+    @staticmethod
+    def addColumn(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
+        pass
+
+    @staticmethod
+    def addRow(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
+        pass
+
+    @staticmethod
+    def addRows(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
+        pass
+
+    @staticmethod
+    def appendDataset(ds1, ds2):
+        # type: (Dataset, Dataset) -> Dataset
+        pass
+
+    @staticmethod
+    def clearDataset(ds):
+        # type: (Dataset) -> Dataset
+        pass
+
+    @staticmethod
+    def dataSetToExcel(headerRow, datasets):
+        # type: (bool, List[Object]) -> AnyStr
+        pass
+
+    @staticmethod
+    def dataSetToExcelBytes(headerRow, objects, nullsEmpty, sheetNames):
+        # type: (bool, List[Object], bool, List[AnyStr]) -> bytearray
+        pass
+
+    @staticmethod
+    def dataSetToExcelStreaming(headerRow, objects, out, nullsEmpty):
+        # type: (bool, List[Object], OutputStream, bool) -> None
+        pass
+
+    @staticmethod
+    def dataSetToHTML(headerRow, ds, title):
+        # type: (bool, Dataset, AnyStr) -> AnyStr
+        pass
+
+    @staticmethod
+    def dataSetToHTMLStreaming(headerRow, ds, title, fw):
+        # type: (bool, Dataset, AnyStr, Writer) -> None
+        pass
+
+    @staticmethod
+    def deleteRow(ds, row):
+        # type: (Dataset, int) -> Dataset
+        pass
+
+    @staticmethod
+    def deleteRows(ds, rows):
+        # type: (Dataset, List[int]) -> Dataset
+        pass
+
+    @staticmethod
+    def filterColumns(dataset, columns):
+        # type: (Dataset, PySequence) -> Dataset
+        pass
+
+    @staticmethod
+    def formatDates(dataset, format, locale=Locale.US):
+        # type: (Dataset, AnyStr, Locale) -> Dataset
+        pass
+
+    @staticmethod
+    def fromCSV(csv):
+        # type: (AnyStr) -> Dataset
+        pass
+
+    @staticmethod
+    def fromCSVJava(csv):
+        # type: (AnyStr) -> Dataset
+        pass
+
+    @staticmethod
+    def getColumnHeaders(ds):
+        # type: (Dataset) -> PyList
+        pass
+
+    @staticmethod
+    def insertColumn(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
+        pass
+
+    @staticmethod
+    def insertRow(ds, *args):
+        # type: (Dataset, *Any) -> Dataset
+        pass
+
+    @staticmethod
+    def setValue(
+        ds,  # type: Dataset
+        row,  # type: int
+        col,  # type: Union[int, AnyStr]
+        value,  # type: Union[Object, PyObject]
+    ):
+        # type: (...) -> Dataset
+        pass
+
+    @staticmethod
+    def sort(
+        ds,  # type: Dataset
+        keyColumn,  # type: Union[int, AnyStr]
+        ascending=None,  # type: Optional[bool]
+        naturalOrdering=None,  # type: Optional[bool]
+    ):
+        # type: (...) -> BasicDataset
+        pass
+
+    @staticmethod
+    def toCSV(*args, **kwargs):
+        # type: (*PyObject, **AnyStr) -> AnyStr
+        pass
+
+    @staticmethod
+    def toCSVJava(ds, showHeaders, forExport, localized=False):
+        # type: (Dataset, bool, bool, bool) -> AnyStr
+        pass
+
+    @staticmethod
+    def toCSVJavaStreaming(ds, showHeaders, forExport, sw, localized):
+        # type: (Dataset, bool, bool, Writer, bool) -> None
+        pass
+
+    @staticmethod
+    def toDataSet(*args):
+        # type: (*Any) -> Dataset
+        pass
+
+    @staticmethod
+    def toExcel(*args, **kwargs):
+        # type: (*PyObject, **AnyStr) -> bytearray
+        pass
+
+    @staticmethod
+    def toJSONObject(data):
+        # type: (Dataset) -> JSONObject
+        pass
+
+    @staticmethod
+    def toPyDataSet(dataset):
+        # type: (Dataset) -> PyDataSet
+        pass
+
+    @staticmethod
+    def updateRow(ds, row, changes):
+        # type: (Dataset, int, Dict[AnyStr, Any]) -> Dataset
+        pass
+
 
 class SProcCall(Object):
+
+    class SProcArg(Object):
+        outParam = False  # type: bool
+        inParam = False  # type: bool
+        paramType = None  # type: int
+        value = None  # type: Object
+
+        def getParamType(self):
+            # type: () -> int
+            pass
+
+        def getValue(self):
+            # type: () -> Any
+            pass
+
+        def isInParam(self):
+            # type: () -> bool
+            return True
+
+        def isOutParam(self):
+            # type: () -> bool
+            return True
+
+        def setParamType(self, paramType):
+            # type: (int) -> None
+            pass
+
+        def setValue(self, value):
+            # type: (Object) -> None
+            pass
+
+    class SProcArgKey(Object):
+        index = -1  # type: int
+        name = None  # type: AnyStr
+
+        def getParamIndex(self):
+            # type: () -> int
+            pass
+
+        def getParamName(self):
+            # type: () -> AnyStr
+            pass
+
+        def isNamedParam(self):
+            # type: () -> bool
+            return True
+
     callFinished = False  # type: bool
     datasource = ""  # type: AnyStr
     params = None  # type: Dict[SProcCall.SProcArgKey, SProcCall.SProcArg]
@@ -502,63 +551,8 @@ class SProcCall(Object):
         # type: (AnyStr) -> None
         pass
 
-    class SProcArg(Object):
-        outParam = False  # type: bool
-        inParam = False  # type: bool
-        paramType = None  # type: int
-        value = None  # type: Object
-
-        def getParamType(self):
-            # type: () -> int
-            pass
-
-        def getValue(self):
-            # type: () -> Any
-            pass
-
-        def isInParam(self):
-            # type: () -> bool
-            return True
-
-        def isOutParam(self):
-            # type: () -> bool
-            return True
-
-        def setParamType(self, paramType):
-            # type: (int) -> None
-            pass
-
-        def setValue(self, value):
-            # type: (Object) -> None
-            pass
-
-    class SProcArgKey(Object):
-        index = -1  # type: int
-        name = None  # type: AnyStr
-
-        def getParamIndex(self):
-            # type: () -> int
-            pass
-
-        def getParamName(self):
-            # type: () -> AnyStr
-            pass
-
-        def isNamedParam(self):
-            # type: () -> bool
-            return True
-
 
 class SystemUtilities(Object):
-    @staticmethod
-    def logger(loggerName):
-        # type: (AnyStr) -> Logger
-        pass
-
-    @staticmethod
-    def parseTranslateArguments(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Tuple[AnyStr, AnyStr, bool]
-        pass
 
     class RequestImpl(Object, Request):
         timeout = None  # type: int
@@ -603,3 +597,13 @@ class SystemUtilities(Object):
         def onSuccess(self, func):
             # type: (PyFunction) -> None
             pass
+
+    @staticmethod
+    def logger(loggerName):
+        # type: (AnyStr) -> Logger
+        pass
+
+    @staticmethod
+    def parseTranslateArguments(*args, **kwargs):
+        # type: (*PyObject, **AnyStr) -> Tuple[AnyStr, AnyStr, bool]
+        pass

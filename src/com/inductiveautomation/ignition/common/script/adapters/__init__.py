@@ -16,28 +16,12 @@ class PyJsonObjectAdapter(Object):
         super(PyJsonObjectAdapter, self).__init__()
         print(self, obj)
 
-    def __delitem__(self, key):
-        # type: (PyObject) -> None
-        pass
-
     def __findattr_ex__(self, name):
         # type: (AnyStr) -> PyObject
         pass
 
     def __finditem__(self, key):
         # type: (PyObject) -> PyObject
-        pass
-
-    def __iter__(self):
-        # type: () -> Iterator[Any]
-        pass
-
-    def __len__(self):
-        # type: () -> int
-        pass
-
-    def __setitem__(self, key, value):
-        # type: (PyObject, PyObject) -> None
         pass
 
     def clear(self):
@@ -90,4 +74,20 @@ class PyJsonObjectAdapter(Object):
 
     def values(self):
         # type: () -> List[PyObject]
+        pass
+
+    def __setitem__(self, key, value):
+        # type: (PyObject, PyObject) -> None
+        pass
+
+    def __delitem__(self, key):
+        # type: (PyObject) -> None
+        pass
+
+    def __iter__(self):
+        # type: () -> Iterator[Any]
+        pass
+
+    def __len__(self):
+        # type: () -> int
         pass

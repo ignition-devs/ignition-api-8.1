@@ -13,9 +13,6 @@ from org.python.core import PyObject
 
 
 class AlarmEvent(object):
-    def __iter__(self):
-        # type: () -> Iterator[Any]
-        raise NotImplementedError
 
     def acknowledge(self, ackData):
         # type: (EventData) -> None
@@ -97,6 +94,10 @@ class AlarmEvent(object):
         # type: () -> Any
         pass
 
+    def __iter__(self):
+        # type: () -> Iterator[Any]
+        raise NotImplementedError
+
 
 class EventData(BasicPropertySet):
     def __init__(self, *args):
@@ -109,9 +110,6 @@ class EventData(BasicPropertySet):
 
 
 class PyAlarmEvent(AlarmEvent):
-    def __iter__(self):
-        # type: () -> Iterator[Any]
-        pass
 
     def acknowledge(self, ackData):
         # type: (EventData) -> None
@@ -216,6 +214,10 @@ class PyAlarmEvent(AlarmEvent):
     def sourceEvent(self):
         # type: () -> AlarmEvent
         raise NotImplementedError
+
+    def __iter__(self):
+        # type: () -> Iterator[Any]
+        pass
 
 
 class PyAlarmEventImpl(PyAlarmEvent, PyObject):

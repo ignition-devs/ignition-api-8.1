@@ -10,139 +10,6 @@ from java.lang import Object
 
 
 class ModuleInfo(Object):
-    def getCrc(self):
-        # type: () -> long
-        pass
-
-    def getDependencies(self, scope=None):
-        # type: (Optional[int]) -> List[ModuleInfo.ModuleDependency]
-        pass
-
-    def getDescription(self):
-        # type: () -> AnyStr
-        pass
-
-    def getDocumentationRoot(self):
-        # type: () -> AnyStr
-        pass
-
-    def getExports(self):
-        # type: () -> List[ModuleInfo.JarInfo]
-        pass
-
-    def getHooks(self):
-        # type: () -> Mapping[int, AnyStr]
-        pass
-
-    def getId(self):
-        # type: () -> AnyStr
-        pass
-
-    def getInstallPath(self):
-        # type: () -> AnyStr
-        pass
-
-    def getJars(self):
-        # type: () -> List[ModuleInfo.JarInfo]
-        pass
-
-    def getLibsRequired(self):
-        # type: () -> List[ModuleInfo.LibraryInfo]
-        pass
-
-    def getLicenseFile(self):
-        # type: () -> AnyStr
-        pass
-
-    def getLicenseState(self):
-        # type: () -> LicenseState
-        pass
-
-    def getName(self):
-        # type: () -> AnyStr
-        pass
-
-    def getRequiredFrameworkVersion(self):
-        # type: () -> int
-        pass
-
-    def getRequiredIgnitionVersion(self):
-        # type: () -> Version
-        pass
-
-    def getVendorContactInfo(self):
-        # type: () -> AnyStr
-        pass
-
-    def getVendorId(self):
-        # type: () -> int
-        pass
-
-    def getVendorName(self):
-        # type: () -> AnyStr
-        pass
-
-    def getVersion(self):
-        # type: () -> Version
-        pass
-
-    def isFree(self):
-        # type: () -> bool
-        return True
-
-    def isMakerEditionCompatible(self):
-        # type: () -> bool
-        return True
-
-    def isSelfSigned(self):
-        # type: () -> bool
-        return True
-
-    def isTrialMode(self):
-        # type: () -> bool
-        return True
-
-    @staticmethod
-    def newBuilder():
-        # type: () -> ModuleInfo.Builder
-        pass
-
-    def setCrc(self, crc):
-        # type: (long) -> None
-        pass
-
-    def setFree(self):
-        # type: () -> None
-        pass
-
-    def setInstallPath(self, installPath):
-        # type: (AnyStr) -> None
-        pass
-
-    def setLicenseState(self, newState):
-        # type: (LicenseState) -> None
-        pass
-
-    def setMakerEditionCompatible(self):
-        # type: () -> None
-        pass
-
-    def setSelfSigned(self):
-        # type: () -> None
-        pass
-
-    def setVendorInfo(self, vendorId, vendorName, vendorContactInfo):
-        # type: (int, AnyStr, AnyStr) -> None
-        pass
-
-    @staticmethod
-    def setDependencyOrder(list_, scope, reverse):
-        # type: (List[ModuleInfo], int, bool) -> List[ModuleInfo]
-        pass
-
-    def toXML(self):
-        # type: () -> AnyStr
-        pass
 
     class Builder(Object):
         def __init__(self):
@@ -288,3 +155,137 @@ class ModuleInfo(Object):
         def getVersion(self):
             # type: () -> Version
             pass
+
+    def getCrc(self):
+        # type: () -> long
+        pass
+
+    def getDependencies(self, scope=None):
+        # type: (Optional[int]) -> List[ModuleInfo.ModuleDependency]
+        pass
+
+    def getDescription(self):
+        # type: () -> AnyStr
+        pass
+
+    def getDocumentationRoot(self):
+        # type: () -> AnyStr
+        pass
+
+    def getExports(self):
+        # type: () -> List[ModuleInfo.JarInfo]
+        pass
+
+    def getHooks(self):
+        # type: () -> Mapping[int, AnyStr]
+        pass
+
+    def getId(self):
+        # type: () -> AnyStr
+        pass
+
+    def getInstallPath(self):
+        # type: () -> AnyStr
+        pass
+
+    def getJars(self):
+        # type: () -> List[ModuleInfo.JarInfo]
+        pass
+
+    def getLibsRequired(self):
+        # type: () -> List[ModuleInfo.LibraryInfo]
+        pass
+
+    def getLicenseFile(self):
+        # type: () -> AnyStr
+        pass
+
+    def getLicenseState(self):
+        # type: () -> LicenseState
+        pass
+
+    def getName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getRequiredFrameworkVersion(self):
+        # type: () -> int
+        pass
+
+    def getRequiredIgnitionVersion(self):
+        # type: () -> Version
+        pass
+
+    def getVendorContactInfo(self):
+        # type: () -> AnyStr
+        pass
+
+    def getVendorId(self):
+        # type: () -> int
+        pass
+
+    def getVendorName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getVersion(self):
+        # type: () -> Version
+        pass
+
+    def isFree(self):
+        # type: () -> bool
+        return True
+
+    def isMakerEditionCompatible(self):
+        # type: () -> bool
+        return True
+
+    def isSelfSigned(self):
+        # type: () -> bool
+        return True
+
+    def isTrialMode(self):
+        # type: () -> bool
+        return True
+
+    @staticmethod
+    def newBuilder():
+        # type: () -> ModuleInfo.Builder
+        pass
+
+    def setCrc(self, crc):
+        # type: (long) -> None
+        pass
+
+    def setFree(self):
+        # type: () -> None
+        pass
+
+    def setInstallPath(self, installPath):
+        # type: (AnyStr) -> None
+        pass
+
+    def setLicenseState(self, newState):
+        # type: (LicenseState) -> None
+        pass
+
+    def setMakerEditionCompatible(self):
+        # type: () -> None
+        pass
+
+    def setSelfSigned(self):
+        # type: () -> None
+        pass
+
+    def setVendorInfo(self, vendorId, vendorName, vendorContactInfo):
+        # type: (int, AnyStr, AnyStr) -> None
+        pass
+
+    @staticmethod
+    def setDependencyOrder(list_, scope, reverse):
+        # type: (List[ModuleInfo], int, bool) -> List[ModuleInfo]
+        pass
+
+    def toXML(self):
+        # type: () -> AnyStr
+        pass

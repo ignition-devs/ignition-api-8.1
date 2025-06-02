@@ -14,13 +14,6 @@ from java.util.stream import Collector
 
 
 class ImmutableCollection(AbstractCollection):
-    def asList(self):
-        # type: () -> ImmutableList
-        pass
-
-    def contains(self, o):
-        # type: (Object) -> bool
-        raise NotImplementedError
 
     class Builder(Object):
         def add(self, *elements):
@@ -35,8 +28,22 @@ class ImmutableCollection(AbstractCollection):
             # type: () -> ImmutableCollection
             raise NotImplementedError
 
+    def asList(self):
+        # type: () -> ImmutableList
+        pass
+
+    def contains(self, o):
+        # type: (Object) -> bool
+        raise NotImplementedError
+
 
 class ImmutableList(ImmutableCollection):
+
+    class Builder(ImmutableCollection.Builder):
+        def build(self):
+            # type: () -> ImmutableList
+            pass
+
     @staticmethod
     def builder():
         # type: () -> ImmutableList.Builder
@@ -87,13 +94,18 @@ class ImmutableList(ImmutableCollection):
         # type: () -> Collector
         pass
 
-    class Builder(ImmutableCollection.Builder):
-        def build(self):
-            # type: () -> ImmutableList
-            pass
-
 
 class ImmutableSet(ImmutableCollection):
+
+    class Builder(ImmutableCollection.Builder):
+        def __init__(self):
+            # type: () -> None
+            super(ImmutableSet.Builder, self).__init__()
+
+        def build(self):
+            # type: () -> ImmutableSet
+            pass
+
     @staticmethod
     def builder():
         # type: () -> ImmutableSet.Builder
@@ -122,15 +134,6 @@ class ImmutableSet(ImmutableCollection):
     def toImmutableSet():
         # type: () -> Collector
         pass
-
-    class Builder(ImmutableCollection.Builder):
-        def __init__(self):
-            # type: () -> None
-            super(ImmutableSet.Builder, self).__init__()
-
-        def build(self):
-            # type: () -> ImmutableSet
-            pass
 
 
 class UnmodifiableIterator(Object):

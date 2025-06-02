@@ -42,6 +42,13 @@ class BaseStream(AutoCloseable):
 
 
 class Collector(object):
+
+    class Characteristics(Enum):
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Collector.Characteristics]
+            pass
+
     def accumulator(self):
         # type: () -> BiConsumer
         pass
@@ -67,14 +74,22 @@ class Collector(object):
         # type: () -> Supplier
         pass
 
-    class Characteristics(Enum):
-        @staticmethod
-        def values():
-            # type: () -> Iterable[Collector.Characteristics]
-            pass
-
 
 class Stream(BaseStream):
+
+    class Builder(Consumer):
+        def accept(self, t):
+            # type: (Any) -> None
+            raise NotImplementedError
+
+        def add(self, t):
+            # type: (Any) -> Stream.Builder
+            pass
+
+        def build(self):
+            # type: () -> Stream
+            raise NotImplementedError
+
     @staticmethod
     def builder():
         # type: () -> Stream.Builder
@@ -111,16 +126,3 @@ class Stream(BaseStream):
     def unordered(self):
         # type: () -> Any
         pass
-
-    class Builder(Consumer):
-        def accept(self, t):
-            # type: (Any) -> None
-            raise NotImplementedError
-
-        def add(self, t):
-            # type: (Any) -> Stream.Builder
-            pass
-
-        def build(self):
-            # type: () -> Stream
-            raise NotImplementedError

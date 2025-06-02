@@ -38,6 +38,16 @@ class Quality(object):
     used.
     """
 
+    class Level(Enum):
+        Bad = 512
+        Good = 192
+        Unknown = 256
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Quality.Level]
+            pass
+
     def getDescription(self):
         # type: () -> AnyStr
         raise NotImplementedError
@@ -58,21 +68,21 @@ class Quality(object):
         # type: () -> bool
         return True
 
-    class Level(Enum):
-        Bad = 512
-        Good = 192
-        Unknown = 256
-
-        @staticmethod
-        def values():
-            # type: () -> Iterable[Quality.Level]
-            pass
-
 
 class QualityCode(Object):
     """QualityCode contains a 32-bit integer code and optionally a
     diagnostic string.
     """
+
+    class Level(Enum):
+        def code(self, userCode):
+            # type: (int) -> int
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[QualityCode.Level]
+            pass
 
     Bad = None  # type: QualityCode
     Bad_AccessDenied = None  # type: QualityCode
@@ -176,16 +186,6 @@ class QualityCode(Object):
     def isUncertain(self):
         # type: () -> bool
         return True
-
-    class Level(Enum):
-        def code(self, userCode):
-            # type: (int) -> int
-            pass
-
-        @staticmethod
-        def values():
-            # type: () -> Iterable[QualityCode.Level]
-            pass
 
 
 class BasicQualifiedValue(QualifiedValue, Object):

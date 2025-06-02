@@ -103,6 +103,31 @@ class BasicServerNodeId(Object, ServerNodeId):
 
 
 class BrowseElement(Object):
+
+    class PropertyElement(Object):
+        id = None  # type: int
+        name = None  # type: AnyStr
+        value = None  # type: AnyStr
+
+        def __init__(self, id_, name, value):
+            # type: (int, AnyStr, AnyStr) -> None
+            super(BrowseElement.PropertyElement, self).__init__()
+            self.id = id_
+            self.name = name
+            self.value = value
+
+        def getId(self):
+            # type: () -> int
+            return self.id
+
+        def getName(self):
+            # type: () -> AnyStr
+            return self.name
+
+        def getValue(self):
+            # type: () -> AnyStr
+            return self.value
+
     PROP_PROVIDER = 500  # type: int
     PROP_DRIVER = 501  # type: int
     _server = None  # type: AnyStr
@@ -209,30 +234,6 @@ class BrowseElement(Object):
     def toXML(self, out, type_=None, includeProperties=None):
         # type: (StringBuilder, Optional[int], Optional[bool]) -> None
         pass
-
-    class PropertyElement(Object):
-        id = None  # type: int
-        name = None  # type: AnyStr
-        value = None  # type: AnyStr
-
-        def __init__(self, id_, name, value):
-            # type: (int, AnyStr, AnyStr) -> None
-            super(BrowseElement.PropertyElement, self).__init__()
-            self.id = id_
-            self.name = name
-            self.value = value
-
-        def getId(self):
-            # type: () -> int
-            return self.id
-
-        def getName(self):
-            # type: () -> AnyStr
-            return self.name
-
-        def getValue(self):
-            # type: () -> AnyStr
-            return self.value
 
 
 class BrowseElementType(Enum):

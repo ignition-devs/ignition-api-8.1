@@ -12,6 +12,55 @@ from java.util import Date
 
 
 class Annotation(Object):
+
+    class Builder(Object):
+        def build(self):
+            # type: () -> Annotation
+            pass
+
+        def copy(self, ann):
+            # type: (Annotation) -> Annotation.Builder
+            pass
+
+        def data(self, value):
+            # type: (AnyStr) -> Annotation.Builder
+            pass
+
+        def delete(self):
+            # type: () -> Annotation.Builder
+            pass
+
+        def end(self, time):
+            # type: (Date) -> Annotation.Builder
+            pass
+
+        def lastUpdated(self, time):
+            # type: (Date) -> Annotation.Builder
+            pass
+
+        def path(self, path):
+            # type: (QualifiedPath) -> Annotation.Builder
+            pass
+
+        def start(self, time):
+            # type: (Date) -> Annotation.Builder
+            pass
+
+        def storageId(self, id_):
+            # type: (Any) -> Annotation.Builder
+            pass
+
+        def time(self, time):
+            # type: (Date) -> Annotation.Builder
+            pass
+
+        def type(
+            self,
+            arg,  # type: Union[AnnotationType, AnyStr]
+        ):
+            # type: (...) -> Annotation.Builder
+            pass
+
     def __init__(self):
         # type: () -> None
         super(Annotation, self).__init__()
@@ -86,54 +135,6 @@ class Annotation(Object):
     def updatePath(self, path):
         # type: (QualifiedPath) -> None
         pass
-
-    class Builder(Object):
-        def build(self):
-            # type: () -> Annotation
-            pass
-
-        def copy(self, ann):
-            # type: (Annotation) -> Annotation.Builder
-            pass
-
-        def data(self, value):
-            # type: (AnyStr) -> Annotation.Builder
-            pass
-
-        def delete(self):
-            # type: () -> Annotation.Builder
-            pass
-
-        def end(self, time):
-            # type: (Date) -> Annotation.Builder
-            pass
-
-        def lastUpdated(self, time):
-            # type: (Date) -> Annotation.Builder
-            pass
-
-        def path(self, path):
-            # type: (QualifiedPath) -> Annotation.Builder
-            pass
-
-        def start(self, time):
-            # type: (Date) -> Annotation.Builder
-            pass
-
-        def storageId(self, id_):
-            # type: (Any) -> Annotation.Builder
-            pass
-
-        def time(self, time):
-            # type: (Date) -> Annotation.Builder
-            pass
-
-        def type(
-            self,
-            arg,  # type: Union[AnnotationType, AnyStr]
-        ):
-            # type: (...) -> Annotation.Builder
-            pass
 
 
 class AnnotationType(Object):

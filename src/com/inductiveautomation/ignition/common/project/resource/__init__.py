@@ -313,19 +313,6 @@ class ResourcePath(Object, Comparable):
 
 
 class ResourceSignature(Object):
-    def __init__(self, resourceId, signature):
-        # type: (ProjectResourceId, bytearray) -> None
-        super(ResourceSignature, self).__init__()
-        self._resourceId = resourceId
-        self._signature = signature
-
-    def getResourceId(self):
-        # type: () -> ProjectResourceId
-        return self._resourceId
-
-    def getSignature(self):
-        # type: () -> bytearray
-        return self._signature
 
     class GsonAdapter(Object):
         def deserialize(
@@ -345,6 +332,20 @@ class ResourceSignature(Object):
         ):
             # type: (...) -> JsonElement
             pass
+
+    def __init__(self, resourceId, signature):
+        # type: (ProjectResourceId, bytearray) -> None
+        super(ResourceSignature, self).__init__()
+        self._resourceId = resourceId
+        self._signature = signature
+
+    def getResourceId(self):
+        # type: () -> ProjectResourceId
+        return self._resourceId
+
+    def getSignature(self):
+        # type: () -> bytearray
+        return self._signature
 
 
 class ResourceType(Object):

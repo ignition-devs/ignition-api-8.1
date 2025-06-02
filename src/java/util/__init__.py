@@ -67,13 +67,6 @@ if TYPE_CHECKING:
 
 
 class Collection(object):
-    def __getitem__(self, key):
-        # type: (Union[int, Any]) -> Any
-        pass
-
-    def __len__(self):
-        # type: () -> int
-        pass
 
     def add(self, e):
         # type: (Any) -> bool
@@ -149,6 +142,14 @@ class Collection(object):
 
     def toArray(self, arg=None):
         # type: (Optional[Any]) -> List[Object]
+        pass
+
+    def __getitem__(self, key):
+        # type: (Union[int, Any]) -> Any
+        pass
+
+    def __len__(self):
+        # type: () -> int
         pass
 
 
@@ -289,6 +290,34 @@ class ListIterator(Iterator):
 
 
 class Map(object):
+
+    class Entry(object):
+        @staticmethod
+        def comparingByKey(cmp=None):
+            # type: (Optional[Comparator]) -> Any
+            pass
+
+        @staticmethod
+        def comparingByValue(cmp=None):
+            # type: (Optional[Comparator]) -> Any
+            pass
+
+        def getKey(self):
+            # type: () -> Any
+            raise NotImplementedError
+
+        def getValue(self):
+            # type: () -> Any
+            raise NotImplementedError
+
+        def hashCode(self):
+            # type: () -> int
+            raise NotImplementedError
+
+        def setValue(self, value):
+            # type: (Any) -> Any
+            raise NotImplementedError
+
     def clear(self):
         # type: () -> None
         raise NotImplementedError
@@ -393,33 +422,6 @@ class Map(object):
         # type: () -> Collection
         raise NotImplementedError
 
-    class Entry(object):
-        @staticmethod
-        def comparingByKey(cmp=None):
-            # type: (Optional[Comparator]) -> Any
-            pass
-
-        @staticmethod
-        def comparingByValue(cmp=None):
-            # type: (Optional[Comparator]) -> Any
-            pass
-
-        def getKey(self):
-            # type: () -> Any
-            raise NotImplementedError
-
-        def getValue(self):
-            # type: () -> Any
-            raise NotImplementedError
-
-        def hashCode(self):
-            # type: () -> int
-            raise NotImplementedError
-
-        def setValue(self, value):
-            # type: (Any) -> Any
-            raise NotImplementedError
-
 
 class Spliterator(object):
     CONCURRENT = None  # type: int
@@ -465,6 +467,20 @@ class Spliterator(object):
 
 
 class Stream(object):
+
+    class Builder(Consumer):
+        def accept(self, t):
+            # type: (Any) -> None
+            raise NotImplementedError
+
+        def add(self, t):
+            # type: (Any) -> Stream.Builder
+            pass
+
+        def build(self):
+            # type: () -> Stream
+            raise NotImplementedError
+
     @staticmethod
     def builder():
         # type: () -> Builder
@@ -499,19 +515,6 @@ class Stream(object):
     def ofNullable(t):
         # type: (Any) -> Stream
         pass
-
-    class Builder(Consumer):
-        def accept(self, t):
-            # type: (Any) -> None
-            raise NotImplementedError
-
-        def add(self, t):
-            # type: (Any) -> Stream.Builder
-            pass
-
-        def build(self):
-            # type: () -> Stream
-            raise NotImplementedError
 
 
 class Arrays(Object):
@@ -1242,19 +1245,6 @@ class Locale(Object):
         self.country = country
         self.variant = variant
 
-    def __repr__(self):
-        # type: () -> str
-        return "{!r}".format(self.__str__())
-
-    def __str__(self):
-        # type: () -> str
-        ret = self.language
-        if self.country:
-            ret += "_{}".format(self.country)
-        if self.variant:
-            ret += "_{}".format(self.variant)
-        return ret
-
     @classproperty
     def CANADA(self):
         # type: () -> Locale
@@ -1359,6 +1349,19 @@ class Locale(Object):
     def US(self):
         # type: () -> Locale
         return Locale("en", "US")
+
+    def __str__(self):
+        # type: () -> str
+        ret = self.language
+        if self.country:
+            ret += "_{}".format(self.country)
+        if self.variant:
+            ret += "_{}".format(self.variant)
+        return ret
+
+    def __repr__(self):
+        # type: () -> str
+        return "{!r}".format(self.__str__())
 
 
 class Properties(Hashtable):

@@ -8,6 +8,13 @@ from java.lang import Enum
 
 
 class ScheduleModel(DefaultBindableModel):
+
+    class DayOfWeek(Enum):
+        @staticmethod
+        def values():
+            # type: () -> Iterable[ScheduleModel.DayOfWeek]
+            pass
+
     def __init__(self):
         # type: () -> None
         super(ScheduleModel, self).__init__()
@@ -91,9 +98,3 @@ class ScheduleModel(DefaultBindableModel):
     def toCronString(self):
         # type: () -> AnyStr
         pass
-
-    class DayOfWeek(Enum):
-        @staticmethod
-        def values():
-            # type: () -> Iterable[ScheduleModel.DayOfWeek]
-            pass

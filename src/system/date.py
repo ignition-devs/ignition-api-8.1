@@ -222,6 +222,53 @@ def daysBetween(date_1, date_2):
     return 1
 
 
+def isDaylightTime(date=None):
+    # type: (Optional[Date]) -> bool
+    """Checks to see if the current timezone is using Daylight Saving
+    Time during the date specified.
+
+    Args:
+        date: The date you want to check if the current timezone is
+            observing Daylight Saving Time. Uses now() if omitted.
+            Optional.
+
+    Returns:
+        True if date is observing Daylight Saving Time in the
+        current timezone, False otherwise.
+    """
+    print(date)
+    _date = _now()
+    time_tuple = (
+        _date.year,
+        _date.month,
+        _date.day,
+        _date.hour,
+        _date.minute,
+        _date.second,
+        _date.weekday(),
+        0,
+        0,
+    )
+    stamp = mktime(time_tuple)
+    time_tuple = localtime(stamp)
+    return time_tuple.tm_isdst > 0
+
+
+def getTimezoneOffset(date=None):
+    # type: (Optional[Date]) -> float
+    """Returns the current timezone's offset versus UTC for a given
+    instant, taking Daylight Saving Time into account.
+
+    Args:
+        date: The instant in time for which to calculate the offset.
+            Uses now() if omitted. Optional.
+
+    Returns:
+        The timezone offset compared to UTC, in hours.
+    """
+    return -7.0 if isDaylightTime(date) else -8.0
+
+
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
     # type: (Date, AnyStr) -> unicode
     """Returns the given date as a string, formatted according to a
@@ -504,21 +551,6 @@ def getTimezone():
     return "America/Tijuana"
 
 
-def getTimezoneOffset(date=None):
-    # type: (Optional[Date]) -> float
-    """Returns the current timezone's offset versus UTC for a given
-    instant, taking Daylight Saving Time into account.
-
-    Args:
-        date: The instant in time for which to calculate the offset.
-            Uses now() if omitted. Optional.
-
-    Returns:
-        The timezone offset compared to UTC, in hours.
-    """
-    return -7.0 if isDaylightTime(date) else -8.0
-
-
 def getTimezoneRawOffset():
     # type: () -> float
     """Returns the current timezone offset versus UTC, not taking
@@ -607,38 +639,6 @@ def isBetween(target_date, start_date, end_date):
     """
     print(target_date, start_date, end_date)
     return True
-
-
-def isDaylightTime(date=None):
-    # type: (Optional[Date]) -> bool
-    """Checks to see if the current timezone is using Daylight Saving
-    Time during the date specified.
-
-    Args:
-        date: The date you want to check if the current timezone is
-            observing Daylight Saving Time. Uses now() if omitted.
-            Optional.
-
-    Returns:
-        True if date is observing Daylight Saving Time in the
-        current timezone, False otherwise.
-    """
-    print(date)
-    _date = _now()
-    time_tuple = (
-        _date.year,
-        _date.month,
-        _date.day,
-        _date.hour,
-        _date.minute,
-        _date.second,
-        _date.weekday(),
-        0,
-        0,
-    )
-    stamp = mktime(time_tuple)
-    time_tuple = localtime(stamp)
-    return time_tuple.tm_isdst > 0
 
 
 def midnight(date):

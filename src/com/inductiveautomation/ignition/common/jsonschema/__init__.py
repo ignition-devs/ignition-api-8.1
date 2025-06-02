@@ -210,29 +210,6 @@ class JsonType(Enum):
 
 
 class ValidationMessage(Object):
-    def getCode(self):
-        # type: () -> AnyStr
-        pass
-
-    def getMessage(self):
-        # type: () -> AnyStr
-        pass
-
-    def getPath(self):
-        # type: () -> AnyStr
-        pass
-
-    def getType(self):
-        # type: () -> AnyStr
-        pass
-
-    def setArguments(self, *args):
-        # type: (AnyStr) -> None
-        pass
-
-    def setType(self, type):
-        # type: (AnyStr) -> None
-        pass
 
     class Builder(Object):
         def arguments(self, *args):
@@ -258,6 +235,30 @@ class ValidationMessage(Object):
         def type(self, type):
             # type: (AnyStr) -> ValidationMessage.Builder
             pass
+
+    def getCode(self):
+        # type: () -> AnyStr
+        pass
+
+    def getMessage(self):
+        # type: () -> AnyStr
+        pass
+
+    def getPath(self):
+        # type: () -> AnyStr
+        pass
+
+    def getType(self):
+        # type: () -> AnyStr
+        pass
+
+    def setArguments(self, *args):
+        # type: (AnyStr) -> None
+        pass
+
+    def setType(self, type):
+        # type: (AnyStr) -> None
+        pass
 
 
 class TypeValidator(BaseJsonValidator):
