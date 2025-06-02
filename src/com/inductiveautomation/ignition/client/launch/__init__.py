@@ -19,6 +19,12 @@ from javax.swing import JComponent, JPanel, RootPaneContainer
 
 
 class LaunchContext(object):
+
+    class WritableProject(object):
+        def write(self, stream):
+            # type: (OutputStream) -> None
+            raise NotImplementedError
+
     def getAttribute(self, key, defaultValue=None):
         # type: (AnyStr, Optional[Any]) -> Any
         raise NotImplementedError
@@ -111,13 +117,15 @@ class LaunchContext(object):
         # type: (LaunchContext.WritableProject) -> None
         raise NotImplementedError
 
-    class WritableProject(object):
-        def write(self, stream):
-            # type: (OutputStream) -> None
-            raise NotImplementedError
-
 
 class LaunchParent(object):
+
+    class LaunchFlavor(Enum):
+        @staticmethod
+        def values():
+            # type: () -> Iterable[LaunchParent.LaunchFlavor]
+            pass
+
     def getLaunchFlavor(self):
         # type: () -> LaunchParent.LaunchFlavor
         raise NotImplementedError
@@ -143,12 +151,6 @@ class LaunchParent(object):
     def setContent(self, context, app):
         # type: (LaunchContext, LaunchableApp) -> None
         raise NotImplementedError
-
-    class LaunchFlavor(Enum):
-        @staticmethod
-        def values():
-            # type: () -> Iterable[LaunchParent.LaunchFlavor]
-            pass
 
 
 class GatewayAddress(Object):
@@ -281,6 +283,50 @@ class LaunchContextImpl(Object, LaunchContext):
 
 
 class LaunchManifest(Object):
+
+    class Jar(Object):
+        def __init__(self, name, crc32, length):
+            # type: (AnyStr, long, long) -> None
+            super(LaunchManifest.Jar, self).__init__()
+            self._name = name
+            self._crc32 = crc32
+            self._length = length
+
+        def getCrc32(self):
+            # type: () -> long
+            return self._crc32
+
+        def getLength(self):
+            # type: () -> long
+            return self._length
+
+        def getName(self):
+            # type: () -> AnyStr
+            return self._name
+
+    class Module(Object):
+        def __init__(self, name, build):
+            # type: (AnyStr, int) -> None
+            super(LaunchManifest.Module, self).__init__()
+            self._name = name
+            self._build = build
+
+        def addJar(self, file):
+            # type: (LaunchManifest.Jar) -> None
+            pass
+
+        def getBuild(self):
+            # type: () -> int
+            return self._build
+
+        def getJarFiles(self):
+            # type: () -> List[LaunchManifest.Jar]
+            pass
+
+        def getName(self):
+            # type: () -> AnyStr
+            return self._name
+
     def __init__(self, *args):
         # type: (*Any) -> None
         super(LaunchManifest, self).__init__()
@@ -350,49 +396,6 @@ class LaunchManifest(Object):
     def useCondensedDialogFont(self):
         # type: () -> bool
         return True
-
-    class Jar(Object):
-        def __init__(self, name, crc32, length):
-            # type: (AnyStr, long, long) -> None
-            super(LaunchManifest.Jar, self).__init__()
-            self._name = name
-            self._crc32 = crc32
-            self._length = length
-
-        def getCrc32(self):
-            # type: () -> long
-            return self._crc32
-
-        def getLength(self):
-            # type: () -> long
-            return self._length
-
-        def getName(self):
-            # type: () -> AnyStr
-            return self._name
-
-    class Module(Object):
-        def __init__(self, name, build):
-            # type: (AnyStr, int) -> None
-            super(LaunchManifest.Module, self).__init__()
-            self._name = name
-            self._build = build
-
-        def addJar(self, file):
-            # type: (LaunchManifest.Jar) -> None
-            pass
-
-        def getBuild(self):
-            # type: () -> int
-            return self._build
-
-        def getJarFiles(self):
-            # type: () -> List[LaunchManifest.Jar]
-            pass
-
-        def getName(self):
-            # type: () -> AnyStr
-            return self._name
 
 
 class LaunchableApp(JPanel):

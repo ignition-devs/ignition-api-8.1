@@ -30,6 +30,44 @@ class Result(object):
 
 
 class BrowseFilter(Object):
+
+    class FilterPropertyValue(Object):
+        property = None  # type: Property
+        value = None  # type: Object
+
+        def __init__(self, property, value):
+            # type: (Property, Object) -> None
+            super(BrowseFilter.FilterPropertyValue, self).__init__()
+            self.property = property
+            self.value = value
+
+    class Meta(Object):
+        addFolderOverrides = None  # type: bool
+
+        def __init__(self, addFolderOverrides):
+            # type: (bool) -> None
+            super(BrowseFilter.Meta, self).__init__()
+            self.addFolderOverrides = addFolderOverrides
+
+    class NameFilter(Object):
+        def __init__(self, typeId, *filters):
+            # type: (AnyStr, *AnyStr) -> None
+            super(BrowseFilter.NameFilter, self).__init__()
+            self._typeId = typeId
+            self._filters = filters
+
+        def getFilters(self):
+            # type: () -> Iterable[AnyStr]
+            return self._filters
+
+        def getTypeId(self):
+            # type: () -> AnyStr
+            return self._typeId
+
+        def passes(self, value):
+            # type: (AnyStr) -> bool
+            return True
+
     def addExcludeProperty(self, property, value):
         # type: (Property, Object) -> None
         pass
@@ -121,43 +159,6 @@ class BrowseFilter(Object):
     def setRecursive(self, recursive):
         # type: (bool) -> BrowseFilter
         pass
-
-    class FilterPropertyValue(Object):
-        property = None  # type: Property
-        value = None  # type: Object
-
-        def __init__(self, property, value):
-            # type: (Property, Object) -> None
-            super(BrowseFilter.FilterPropertyValue, self).__init__()
-            self.property = property
-            self.value = value
-
-    class Meta(Object):
-        addFolderOverrides = None  # type: bool
-
-        def __init__(self, addFolderOverrides):
-            # type: (bool) -> None
-            super(BrowseFilter.Meta, self).__init__()
-            self.addFolderOverrides = addFolderOverrides
-
-    class NameFilter(Object):
-        def __init__(self, typeId, *filters):
-            # type: (AnyStr, *AnyStr) -> None
-            super(BrowseFilter.NameFilter, self).__init__()
-            self._typeId = typeId
-            self._filters = filters
-
-        def getFilters(self):
-            # type: () -> Iterable[AnyStr]
-            return self._filters
-
-        def getTypeId(self):
-            # type: () -> AnyStr
-            return self._typeId
-
-        def passes(self, value):
-            # type: (AnyStr) -> bool
-            return True
 
 
 class Results(Object):

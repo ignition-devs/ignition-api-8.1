@@ -3,6 +3,10 @@ repos:
     rev: v1.3.0
     hooks:
       - id: sort-all
+  - repo: https://github.com/bwhmather/ssort
+    rev: 0.14.0
+    hooks:
+      - id: ssort
   - repo: https://github.com/psf/black
     rev: 25.1.0
     hooks:
@@ -38,6 +42,12 @@ repos:
     rev: 2.12.1b0
     hooks:
       - id: hadolint
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.8.2
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        stages: [pre-push]
   - repo: local
     hooks:
       - id: pylint

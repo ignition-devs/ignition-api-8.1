@@ -143,24 +143,6 @@ class NavUtilities(INavUtilities):
 
 
 class PrintUtilities(Object):
-    def __init__(self, app):
-        # type: (Any) -> None
-        super(PrintUtilities, self).__init__()
-        print(self, app)
-
-    def createImage(self, c):
-        # type: (Component) -> BufferedImage
-        print(self, c)
-        width = height = imageType = 1
-        return BufferedImage(width, height, imageType)
-
-    def createPrintJob(self, c):
-        # type: (Component) -> PrintUtilities.JythonPrintJob
-        pass
-
-    def printToImage(self, c, fileName=None):
-        # type: (Component, Optional[str]) -> None
-        pass
 
     class ComponentPrinter(Object):
         def __init__(self, c, fit, zoom):
@@ -266,6 +248,25 @@ class PrintUtilities(Object):
             # type: (float) -> None
             pass
 
+    def __init__(self, app):
+        # type: (Any) -> None
+        super(PrintUtilities, self).__init__()
+        print(self, app)
+
+    def createImage(self, c):
+        # type: (Component) -> BufferedImage
+        print(self, c)
+        width = height = imageType = 1
+        return BufferedImage(width, height, imageType)
+
+    def createPrintJob(self, c):
+        # type: (Component) -> PrintUtilities.JythonPrintJob
+        pass
+
+    def printToImage(self, c, fileName=None):
+        # type: (Component, Optional[str]) -> None
+        pass
+
 
 class WindowUtilities(Object):
     """These are the scripting functions mounted at system.gui.*.
@@ -274,6 +275,28 @@ class WindowUtilities(Object):
     implementations actually reside in the subclass,
     WindowUtilitiesForDesktop.
     """
+
+    class JyPopupMenu(JPopupMenu):
+        def actionPerformed(self, e):
+            # type: (ActionEvent) -> None
+            pass
+
+        def addJyFunction(self, name, fun):
+            # type: (AnyStr, PyObject) -> None
+            pass
+
+        def show(self, me, *args):
+            # type: (Union[ComponentEvent, MouseEvent], *int) -> None
+            pass
+
+    class PopupContext(Object):
+        def endPopup(self):
+            # type: () -> None
+            pass
+
+        def startPopup(self):
+            # type: () -> None
+            pass
 
     ACCL_NONE = 0
     ACCL_CONSTANT = 1
@@ -437,25 +460,3 @@ class WindowUtilities(Object):
     def warningBox(self, message, title="Warning"):
         # type: (AnyStr, AnyStr) -> None
         pass
-
-    class JyPopupMenu(JPopupMenu):
-        def actionPerformed(self, e):
-            # type: (ActionEvent) -> None
-            pass
-
-        def addJyFunction(self, name, fun):
-            # type: (AnyStr, PyObject) -> None
-            pass
-
-        def show(self, me, *args):
-            # type: (Union[ComponentEvent, MouseEvent], *int) -> None
-            pass
-
-    class PopupContext(Object):
-        def endPopup(self):
-            # type: () -> None
-            pass
-
-        def startPopup(self):
-            # type: () -> None
-            pass

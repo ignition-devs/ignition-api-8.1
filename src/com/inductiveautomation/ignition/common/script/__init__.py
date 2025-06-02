@@ -20,6 +20,12 @@ class ScriptFunction(object):
 
 
 class ScriptManager(Object):
+
+    class ExecutionInfo(Object):
+        description = None  # type: AnyStr
+        startTime = None  # type: long
+        threadId = None  # type: long
+
     def __init__(self, contextName, pathToExternalLibs):
         # type: (AnyStr, AnyStr) -> None
         super(ScriptManager, self).__init__()
@@ -153,8 +159,3 @@ class ScriptManager(Object):
     def validatePackageName(self, newName):
         # type: (AnyStr) -> None
         pass
-
-    class ExecutionInfo(Object):
-        description = None  # type: AnyStr
-        startTime = None  # type: long
-        threadId = None  # type: long

@@ -30,15 +30,6 @@ class TagManager(object):
 
 
 class SecurityContext(Object):
-    @staticmethod
-    def emptyContext():
-        # type: () -> SecurityContext
-        pass
-
-    @staticmethod
-    def fromAuthenticatedUser(user):
-        # type: (AuthenticatedUser) -> SecurityContext
-        pass
 
     class GsonAdapter(Object):
         def __init__(self):
@@ -62,6 +53,16 @@ class SecurityContext(Object):
         ):
             # type: (...) -> JsonElement
             pass
+
+    @staticmethod
+    def emptyContext():
+        # type: () -> SecurityContext
+        pass
+
+    @staticmethod
+    def fromAuthenticatedUser(user):
+        # type: (AuthenticatedUser) -> SecurityContext
+        pass
 
 
 class TagPath(Path, Comparable):

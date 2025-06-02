@@ -12,6 +12,24 @@ from java.lang import Object
 
 
 class ResourceFilter(Object):
+
+    class Builder(Object):
+        def addResourceType(self, resourceType):
+            # type: (ResourceType) -> ResourceFilter.Builder
+            pass
+
+        def addResourceTypes(self, resourceTypes):
+            # type: (List[ResourceType]) -> ResourceFilter.Builder
+            pass
+
+        def build(self):
+            # type: () -> ResourceFilter
+            pass
+
+        def setApplicationScope(self, applicationScope):
+            # type: (Union[AnyStr, int]) -> ResourceFilter.Builder
+            pass
+
     def __init__(self, applicationScope, resourceTypes):
         # type: (int, List[ResourceType]) -> None
         super(ResourceFilter, self).__init__()
@@ -39,20 +57,3 @@ class ResourceFilter(Object):
     def newBuilder():
         # type: () -> ResourceFilter.Builder
         pass
-
-    class Builder(Object):
-        def addResourceType(self, resourceType):
-            # type: (ResourceType) -> ResourceFilter.Builder
-            pass
-
-        def addResourceTypes(self, resourceTypes):
-            # type: (List[ResourceType]) -> ResourceFilter.Builder
-            pass
-
-        def build(self):
-            # type: () -> ResourceFilter
-            pass
-
-        def setApplicationScope(self, applicationScope):
-            # type: (Union[AnyStr, int]) -> ResourceFilter.Builder
-            pass

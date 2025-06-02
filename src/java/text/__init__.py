@@ -65,6 +65,12 @@ class CharacterIterator(object):
 
 
 class AttributedCharacterIterator(CharacterIterator):
+
+    class Attribute(Object):
+        INPUT_METHOD_SEGMENT = None  # type: AttributedCharacterIterator.Attribute
+        LANGUAGE = None  # type: AttributedCharacterIterator.Attribute
+        READING = None  # type: AttributedCharacterIterator.Attribute
+
     def clone(self):
         # type: () -> str
         raise NotImplementedError
@@ -117,11 +123,6 @@ class AttributedCharacterIterator(CharacterIterator):
         # type: (int) -> str
         raise NotImplementedError
 
-    class Attribute(Object):
-        INPUT_METHOD_SEGMENT = None  # type: AttributedCharacterIterator.Attribute
-        LANGUAGE = None  # type: AttributedCharacterIterator.Attribute
-        READING = None  # type: AttributedCharacterIterator.Attribute
-
 
 class FieldPosition(Object):
     def __init__(self, *args):
@@ -155,6 +156,10 @@ class FieldPosition(Object):
 
 
 class Format(Object):
+
+    class Field(AttributedCharacterIterator.Attribute):
+        pass
+
     def clone(self):
         # type: () -> Object
         pass
@@ -165,9 +170,6 @@ class Format(Object):
 
     def parseObject(self, source, pos=None):
         # type: (AnyStr, Optional[ParsePosition]) -> Object
-        pass
-
-    class Field(AttributedCharacterIterator.Attribute):
         pass
 
 
@@ -351,6 +353,20 @@ class DateFormatSymbols(Object):
 
 
 class NumberFormat(Format):
+
+    class Field(Format.Field):
+        CURRENCY = None  # type: NumberFormat.Field
+        DECIMAL_SEPARATOR = None  # type: NumberFormat.Field
+        EXPONENT = None  # type: NumberFormat.Field
+        EXPONENT_SIGN = None  # type: NumberFormat.Field
+        EXPONENT_SYMBOL = None  # type: NumberFormat.Field
+        FRACTION = None  # type: NumberFormat.Field
+        GROUPING_SEPARATOR = None  # type: NumberFormat.Field
+        INTEGER = None  # type: NumberFormat.Field
+        PERCENT = None  # type: NumberFormat.Field
+        PERMILLE = None  # type: NumberFormat.Field
+        SIGN = None  # type: NumberFormat.Field
+
     FRACTION_FIELD = None  # type: int
     INTEGER_FIELD = None  # type: int
 
@@ -460,19 +476,6 @@ class NumberFormat(Format):
     def setRoundingMode(self, roundingMode):
         # type: (RoundingMode) -> None
         pass
-
-    class Field(Format.Field):
-        CURRENCY = None  # type: NumberFormat.Field
-        DECIMAL_SEPARATOR = None  # type: NumberFormat.Field
-        EXPONENT = None  # type: NumberFormat.Field
-        EXPONENT_SIGN = None  # type: NumberFormat.Field
-        EXPONENT_SYMBOL = None  # type: NumberFormat.Field
-        FRACTION = None  # type: NumberFormat.Field
-        GROUPING_SEPARATOR = None  # type: NumberFormat.Field
-        INTEGER = None  # type: NumberFormat.Field
-        PERCENT = None  # type: NumberFormat.Field
-        PERMILLE = None  # type: NumberFormat.Field
-        SIGN = None  # type: NumberFormat.Field
 
 
 class ParsePosition(Object):

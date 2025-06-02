@@ -521,6 +521,16 @@ class QualifiedPath(Object):
 
 
 class StringPath(Object, Path, Comparable):
+
+    class CaseSensitiveStringPath(Object, Comparable):
+        def compareTo(self, o):
+            # type: (Any) -> int
+            pass
+
+        def isAncestorOf(self, child):
+            # type: (Path) -> bool
+            return True
+
     PATH_RELATIVE = None  # type: AnyStr
     PATH_RELATIVE_UP = None  # type: AnyStr
     PATH_SEPARATOR = None  # type: AnyStr
@@ -600,17 +610,14 @@ class StringPath(Object, Path, Comparable):
         # type: (Optional[int], Optional[int]) -> StringPath
         pass
 
-    class CaseSensitiveStringPath(Object, Comparable):
-        def compareTo(self, o):
-            # type: (Any) -> int
-            pass
-
-        def isAncestorOf(self, child):
-            # type: (Path) -> bool
-            return True
-
 
 class TypeUtilities(Object):
+
+    class ClassInitializer(object):
+        def createNew(self, claz):
+            # type: (Class) -> Object
+            pass
+
     DATE_FORMAT_STRING = "yyyyMMdd.HHmmssSSSZ"  # type: AnyStr
     NULL_SAFE_CASE_INSENSITIVE_ORDER = None  # type: Comparator
 
@@ -912,8 +919,3 @@ class TypeUtilities(Object):
     def toUUID(barr):
         # type: (bytearray) -> UUID
         pass
-
-    class ClassInitializer(object):
-        def createNew(self, claz):
-            # type: (Class) -> Object
-            pass

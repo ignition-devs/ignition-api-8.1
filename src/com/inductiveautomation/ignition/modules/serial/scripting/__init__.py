@@ -10,14 +10,6 @@ from org.python.core import PyObject
 
 
 class SerialScriptModule(Object):
-    def __init__(self):
-        # type: () -> None
-        super(SerialScriptModule, self).__init__()
-
-    @staticmethod
-    def setTrialExpired(trialExpired):
-        # type: (bool) -> None
-        pass
 
     class PortManager(object):
         def __init__(self, *args):
@@ -97,3 +89,12 @@ class SerialScriptModule(Object):
         def writeBytes(self, port, toWrite, timeout=5000):
             # type: (AnyStr, bytearray, int) -> None
             pass
+
+    def __init__(self):
+        # type: () -> None
+        super(SerialScriptModule, self).__init__()
+
+    @staticmethod
+    def setTrialExpired(trialExpired):
+        # type: (bool) -> None
+        pass

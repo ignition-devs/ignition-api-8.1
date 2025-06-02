@@ -38,10 +38,6 @@ class AlarmQueryResultImpl(AlarmQueryResult, ArrayList):
         super(AlarmQueryResultImpl, self).__init__()
         print(args)
 
-    def __iter__(self):
-        # type: () -> Iterator[PyAlarmEvent]
-        yield PyAlarmEvent()
-
     @staticmethod
     def buildFrom(results):
         # type: (List[AlarmQueryResult]) -> AlarmQueryResult
@@ -58,3 +54,7 @@ class AlarmQueryResultImpl(AlarmQueryResult, ArrayList):
     def getEvent(self, uuid):
         # type: (AnyStr) -> AlarmEvent
         pass
+
+    def __iter__(self):
+        # type: () -> Iterator[PyAlarmEvent]
+        yield PyAlarmEvent()

@@ -147,6 +147,16 @@ class BasicProperty(Property, Object):
 
 
 class BasicPropertySet(Object):
+
+    class Builder(Object):
+        def build(self):
+            # type: () -> BasicPropertySet
+            pass
+
+        def set(self, prop, value):
+            # type: (Property, Any) -> BasicPropertySet.Builder
+            pass
+
     def __init__(self, *args):
         # type: (*Any) -> None
         super(BasicPropertySet, self).__init__()
@@ -227,15 +237,6 @@ class BasicPropertySet(Object):
     def setRawValueMap(self, copy):
         # type: (Any) -> None
         pass
-
-    class Builder(Object):
-        def build(self):
-            # type: () -> BasicPropertySet
-            pass
-
-        def set(self, prop, value):
-            # type: (Property, Any) -> BasicPropertySet.Builder
-            pass
 
 
 class PropertyValue(Object):

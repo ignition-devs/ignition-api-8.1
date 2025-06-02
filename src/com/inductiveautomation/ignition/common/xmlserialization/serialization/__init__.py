@@ -14,6 +14,22 @@ from java.lang import Class, Object
 
 
 class Element(Object):
+
+    class Attribute(Object):
+        def __init__(self, name, value):
+            # type: (AnyStr, AttributeEncoder) -> None
+            super(Element.Attribute, self).__init__()
+            self._name = name
+            self._value = value
+
+        def getName(self):
+            # type: () -> AnyStr
+            return self._name
+
+        def getValue(self):
+            # type: () -> AttributeEncoder
+            return self._value
+
     def __init__(self, *args):
         # type: (*Any) -> None
         super(Element, self).__init__()
@@ -66,21 +82,6 @@ class Element(Object):
     def setSkipRefTrack(self, skipRefTracking):
         # type: (bool) -> None
         pass
-
-    class Attribute(Object):
-        def __init__(self, name, value):
-            # type: (AnyStr, AttributeEncoder) -> None
-            super(Element.Attribute, self).__init__()
-            self._name = name
-            self._value = value
-
-        def getName(self):
-            # type: () -> AnyStr
-            return self._name
-
-        def getValue(self):
-            # type: () -> AttributeEncoder
-            return self._value
 
 
 class SerializationDelegate(object):

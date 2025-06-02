@@ -489,17 +489,6 @@ class StandardCopyOption(Enum, CopyOption, OpenOption):
 
 
 class WatchEvent(object):
-    def context(self):
-        # type: () -> Any
-        raise NotImplementedError
-
-    def count(self):
-        # type: () -> int
-        raise NotImplementedError
-
-    def kind(self):
-        # type: () -> WatchEvent.Kind
-        raise NotImplementedError
 
     class Kind(object):
         def name(self):
@@ -514,6 +503,18 @@ class WatchEvent(object):
         def name(self):
             # type: () -> AnyStr
             raise NotImplementedError
+
+    def context(self):
+        # type: () -> Any
+        raise NotImplementedError
+
+    def count(self):
+        # type: () -> int
+        raise NotImplementedError
+
+    def kind(self):
+        # type: () -> WatchEvent.Kind
+        raise NotImplementedError
 
 
 class WatchKey(object):

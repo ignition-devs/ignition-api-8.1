@@ -20,29 +20,6 @@ class Dimension2D(Object):
 
 
 class Point2D(Object):
-    def clone(self):
-        # type: () -> Object
-        pass
-
-    def distance(self, *args):
-        # type: (*Any) -> float
-        pass
-
-    def distanceSq(self, *args):
-        # type: (*Any) -> float
-        pass
-
-    def getX(self):
-        # type: () -> float
-        raise NotImplementedError
-
-    def getY(self):
-        # type: () -> float
-        raise NotImplementedError
-
-    def setLocation(self, *args):
-        # type: (*Any) -> None
-        raise NotImplementedError
 
     class Double(Object):
         x = None  # type: float
@@ -113,3 +90,27 @@ class Point2D(Object):
             # type: (float, float) -> None
             self.x = x
             self.y = y
+
+    def clone(self):
+        # type: () -> Object
+        pass
+
+    def distance(self, *args):
+        # type: (*Any) -> float
+        pass
+
+    def distanceSq(self, *args):
+        # type: (*Any) -> float
+        pass
+
+    def getX(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def getY(self):
+        # type: () -> float
+        raise NotImplementedError
+
+    def setLocation(self, *args):
+        # type: (*Any) -> None
+        raise NotImplementedError

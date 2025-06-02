@@ -71,6 +71,16 @@ class Snapshot(Object):
 
 
 class Timer(Object):
+
+    class Context(Object):
+        def close(self):
+            # type: () -> None
+            pass
+
+        def stop(self):
+            # type: () -> long
+            pass
+
     def __init__(self, *args):
         # type: (*Any) -> None
         super(Timer, self).__init__()
@@ -107,12 +117,3 @@ class Timer(Object):
     def update(self, *args):
         # type: (*Any) -> None
         pass
-
-    class Context(Object):
-        def close(self):
-            # type: () -> None
-            pass
-
-        def stop(self):
-            # type: () -> long
-            pass

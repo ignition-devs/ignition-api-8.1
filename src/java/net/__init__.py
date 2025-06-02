@@ -279,6 +279,17 @@ class InetSocketAddress(SocketAddress):
 
 
 class Proxy(Object):
+
+    class Type(Enum):
+        DIRECT = None  # type: Proxy.Type
+        HTTP = None  # type: Proxy.Type
+        SOCKS = None  # type: Proxy.Type
+
+        @staticmethod
+        def values():
+            # type: () -> List[Proxy.Type]
+            pass
+
     NO_PROXY = None  # type: Proxy
 
     def __init__(self, type_, sa):
@@ -293,16 +304,6 @@ class Proxy(Object):
     def type(self):
         # type: () -> Proxy.Type
         pass
-
-    class Type(Enum):
-        DIRECT = None  # type: Proxy.Type
-        HTTP = None  # type: Proxy.Type
-        SOCKS = None  # type: Proxy.Type
-
-        @staticmethod
-        def values():
-            # type: () -> List[Proxy.Type]
-            pass
 
 
 class Socket(Object, Closeable):

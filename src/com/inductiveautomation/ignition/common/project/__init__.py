@@ -67,59 +67,6 @@ class ProjectResourceListener(object):
 
 
 class ChangeOperation(Object):
-    @staticmethod
-    def changeOpsToIdSet(changes):
-        # type: (List[ChangeOperation]) -> Set[ProjectResourceId]
-        pass
-
-    def getOperationType(self):
-        # type: () -> ChangeOperation.OperationType
-        pass
-
-    def getProjectName(self):
-        # type: () -> AnyStr
-        raise NotImplementedError
-
-    @staticmethod
-    def getResourceFromChange(op):
-        # type: (ChangeOperation) -> ProjectResource
-        pass
-
-    @staticmethod
-    def getResourceIdFromChange(op):
-        # type: (ChangeOperation) -> ProjectResourceId
-        pass
-
-    @staticmethod
-    def newCreateOp(
-        resource,  # type: ProjectResource
-    ):
-        # type: (...) -> ChangeOperation.CreateResourceOperation
-        pass
-
-    @staticmethod
-    def newDeleteOp(
-        resourceSignature,  # type: ResourceSignature
-    ):
-        # type: (...) -> ChangeOperation.DeleteResourceOperation
-        pass
-
-    @staticmethod
-    def newManifestChangeOp(
-        projectName,  # type: AnyStr
-        manifest,  # type: ProjectManifest
-        baseHashCode=None,  # type: Optional[int]
-    ):
-        # type: (...) -> ChangeOperation.ManifestChangeOperation
-        pass
-
-    @staticmethod
-    def newModifyOp(
-        resource,  # type: ProjectResource
-        baseSignature,  # type: ResourceSignature
-    ):
-        # type: (...) -> ModifyResourceOperation
-        pass
 
     class CreateResourceOperation(Object):
         def getResource(self):
@@ -179,6 +126,60 @@ class ChangeOperation(Object):
         def getResourceId(self):
             # type: () -> ProjectResourceId
             raise NotImplementedError
+
+    @staticmethod
+    def changeOpsToIdSet(changes):
+        # type: (List[ChangeOperation]) -> Set[ProjectResourceId]
+        pass
+
+    def getOperationType(self):
+        # type: () -> ChangeOperation.OperationType
+        pass
+
+    def getProjectName(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    @staticmethod
+    def getResourceFromChange(op):
+        # type: (ChangeOperation) -> ProjectResource
+        pass
+
+    @staticmethod
+    def getResourceIdFromChange(op):
+        # type: (ChangeOperation) -> ProjectResourceId
+        pass
+
+    @staticmethod
+    def newCreateOp(
+        resource,  # type: ProjectResource
+    ):
+        # type: (...) -> ChangeOperation.CreateResourceOperation
+        pass
+
+    @staticmethod
+    def newDeleteOp(
+        resourceSignature,  # type: ResourceSignature
+    ):
+        # type: (...) -> ChangeOperation.DeleteResourceOperation
+        pass
+
+    @staticmethod
+    def newManifestChangeOp(
+        projectName,  # type: AnyStr
+        manifest,  # type: ProjectManifest
+        baseHashCode=None,  # type: Optional[int]
+    ):
+        # type: (...) -> ChangeOperation.ManifestChangeOperation
+        pass
+
+    @staticmethod
+    def newModifyOp(
+        resource,  # type: ProjectResource
+        baseSignature,  # type: ResourceSignature
+    ):
+        # type: (...) -> ModifyResourceOperation
+        pass
 
 
 class ProjectManifest(Object):

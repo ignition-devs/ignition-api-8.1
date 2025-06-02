@@ -61,18 +61,6 @@ class Object(object):
         # type: (Object) -> bool
         return True
 
-    def __ge__(self, other):
-        # type: (Object) -> bool
-        return True
-
-    def __gt__(self, other):
-        # type: (Object) -> bool
-        return True
-
-    def __lt__(self, other):
-        # type: (Object) -> bool
-        return True
-
     def equals(self, obj):
         # type: (Object) -> bool
         return True
@@ -100,6 +88,18 @@ class Object(object):
     def wait(self, timeoutMillis=0, nanos=0):
         # type: (long, int) -> None
         pass
+
+    def __lt__(self, other):
+        # type: (Object) -> bool
+        return True
+
+    def __gt__(self, other):
+        # type: (Object) -> bool
+        return True
+
+    def __ge__(self, other):
+        # type: (Object) -> bool
+        return True
 
 
 class Appendable(object):

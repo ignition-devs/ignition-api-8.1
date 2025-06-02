@@ -296,9 +296,6 @@ class Cell(object):
 
 
 class CellRange(object):
-    def __iter__(self):
-        # type: () -> Iterator[Cell]
-        pass
 
     def getCell(self, relativeRowIndex, relativeColumnIndex):
         # type: (int, int) -> Cell
@@ -330,6 +327,10 @@ class CellRange(object):
 
     def size(self):
         # type: () -> int
+        pass
+
+    def __iter__(self):
+        # type: () -> Iterator[Cell]
         pass
 
 
@@ -1948,10 +1949,6 @@ class Row(object):
             # type: () -> List[Row.MissingCellPolicy]
             pass
 
-    def __iter__(self):
-        # type: () -> Iterator[Cell]
-        yield Cell()
-
     def cellIterator(self):
         # type: () -> Iterator[Cell]
         pass
@@ -2040,6 +2037,10 @@ class Row(object):
         # type: (int, int, int) -> None
         pass
 
+    def __iter__(self):
+        # type: () -> Iterator[Cell]
+        yield Cell()
+
 
 class ShapeContainer(object):
     pass
@@ -2110,10 +2111,6 @@ class Sheet(object):
     LeftMargin = None  # type: int
     RightMargin = None  # type: int
     TopMargin = None  # type: int
-
-    def __iter__(self):
-        # type: () -> Iterator[Row]
-        yield Row()
 
     def addMergedRegion(self, region):
         # type: (CellRangeAddress) -> None
@@ -2569,6 +2566,10 @@ class Sheet(object):
         # type: () -> None
         pass
 
+    def __iter__(self):
+        # type: () -> Iterator[Row]
+        yield Row()
+
 
 class SheetConditionalFormatting(object):
     def addConditionalFormatting(self, *args):
@@ -2603,10 +2604,6 @@ class Workbook(Closeable):
     PICTURE_TYPE_PICT = None  # type: int
     PICTURE_TYPE_PNG = None  # type: int
     PICTURE_TYPE_WMF = None  # type: int
-
-    def __iter__(self):
-        # type: () -> Iterator[Sheet]
-        yield Sheet()
 
     def addOlePackage(self, oleData, label, fileName, command):
         # type: (bytearray, AnyStr, AnyStr, AnyStr) -> int
@@ -2819,6 +2816,10 @@ class Workbook(Closeable):
     def write(self, stream):
         # type: (OutputStream) -> None
         pass
+
+    def __iter__(self):
+        # type: () -> Iterator[Sheet]
+        yield Sheet()
 
 
 class BorderStyle(Enum):

@@ -59,20 +59,16 @@ class PyObject(Object):
         super(PyObject, self).__init__()
         print(objtype)
 
-    def __abs__(self):
-        # type: () -> PyObject
+    def __get__(self, obj, type):
+        # type: (PyObject, PyObject) -> PyObject
         pass
 
-    def __add__(self, other):
-        # type: (PyObject) -> PyObject
+    def __set__(self, obj, value):
+        # type: (PyObject, PyObject) -> None
         pass
 
-    def __and__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __call__(self, *args, **kwargs):
-        # type: (*Any, **Any) -> PyObject
+    def __delete__(self, obj):
+        # type: (PyObject) -> None
         pass
 
     def __coerce__(self, pyo):
@@ -83,28 +79,8 @@ class PyObject(Object):
         # type: (PyObject) -> Object
         pass
 
-    def __complex__(self):
-        # type: () -> complex
-        pass
-
-    def __contains__(self, o):
-        # type: (PyObject) -> bool
-        return True
-
-    def __delete__(self, obj):
-        # type: (PyObject) -> None
-        pass
-
-    def __delitem__(self, key):
-        # type: (PyObject) -> None
-        pass
-
     def __delslice__(self, start, stop, step=None):
         # type: (PyObject, PyObject, Optional[PyObject]) -> None
-        pass
-
-    def __dir__(self):
-        # type: () -> PyObject
         pass
 
     def __div__(self, other):
@@ -127,26 +103,6 @@ class PyObject(Object):
         # type: (str) -> PyObject
         pass
 
-    def __float__(self):
-        # type: () -> float
-        pass
-
-    def __floordiv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __get__(self, obj, type):
-        # type: (PyObject, PyObject) -> PyObject
-        pass
-
-    def __getattr__(self, name):
-        # type: (str) -> PyObject
-        pass
-
-    def __getitem__(self, key):
-        # type: (Union[int, PyObject]) -> PyObject
-        pass
-
     def __getnewargs__(self):
         # type: () -> Tuple[Any, ...]
         pass
@@ -159,14 +115,6 @@ class PyObject(Object):
         # type: () -> str
         pass
 
-    def __iadd__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __iand__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
     def __idiv__(self, other):
         # type: (PyObject) -> PyObject
         pass
@@ -175,87 +123,11 @@ class PyObject(Object):
         # type: (PyObject) -> PyObject
         pass
 
-    def __ifloordiv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __ilshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __imod__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __imul__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __index__(self):
-        # type: () -> PyObject
-        pass
-
-    def __int__(self):
-        # type: () -> PyObject
-        pass
-
-    def __invert__(self):
-        # type: () -> PyObject
-        pass
-
-    def __ior__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __ipow__(self, other, dummy=None):
-        # type: (PyObject, Optional[PyObject]) -> PyObject
-        pass
-
-    def __irshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __isub__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __iter__(self):
-        # type: () -> Iterator[Any]
-        pass
-
     def __iternext__(self):
         # type: () -> PyObject
         pass
 
-    def __itruediv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __ixor__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __le__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
     def __long__(self):
-        # type: () -> PyObject
-        pass
-
-    def __lshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __mod__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __mul__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __neg__(self):
         # type: () -> PyObject
         pass
 
@@ -271,112 +143,20 @@ class PyObject(Object):
         # type: () -> PyObject
         pass
 
-    def __or__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __pos__(self):
-        # type: () -> PyObject
-        pass
-
-    def __pow__(self, o2, o3=None):
-        # type: (PyObject, Optional[PyObject]) -> PyObject
-        pass
-
-    def __radd__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rand__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
     def __rdiv__(self, other):
         # type: (PyObject) -> PyObject
-        pass
-
-    def __rdivmod__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rfloordiv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rlshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rmod__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rmul__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __ror__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rpow__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rrshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rshift__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rsub__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rtruediv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __rxor__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __set__(self, obj, value):
-        # type: (PyObject, PyObject) -> None
-        pass
-
-    def __setitem__(self, key, value):
-        # type: (Union[int, PyObject, str], PyObject) -> None
         pass
 
     def __setslice__(self, *args):
         # type: (*Any) -> None
         pass
 
-    def __sub__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
     def __tojava__(self, c):
         # type: (Class) -> Object
         pass
 
-    def __truediv__(self, other):
-        # type: (PyObject) -> PyObject
-        pass
-
-    def __trunc__(self):
-        # type: () -> PyObject
-        pass
-
     def __unicode__(self):
         # type: () -> unicode
-        pass
-
-    def __xor__(self, other):
-        # type: (PyObject) -> PyObject
         pass
 
     def _add(self, o2):
@@ -692,6 +472,226 @@ class PyObject(Object):
         # type: (PyType) -> None
         pass
 
+    def __call__(self, *args, **kwargs):
+        # type: (*Any, **Any) -> PyObject
+        pass
+
+    def __getattr__(self, name):
+        # type: (str) -> PyObject
+        pass
+
+    def __dir__(self):
+        # type: () -> PyObject
+        pass
+
+    def __getitem__(self, key):
+        # type: (Union[int, PyObject]) -> PyObject
+        pass
+
+    def __setitem__(self, key, value):
+        # type: (Union[int, PyObject, str], PyObject) -> None
+        pass
+
+    def __delitem__(self, key):
+        # type: (PyObject) -> None
+        pass
+
+    def __iter__(self):
+        # type: () -> Iterator[Any]
+        pass
+
+    def __contains__(self, o):
+        # type: (PyObject) -> bool
+        return True
+
+    def __add__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __radd__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __iadd__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __sub__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rsub__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __isub__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __mul__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rmul__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __imul__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __truediv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rtruediv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __itruediv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __floordiv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rfloordiv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ifloordiv__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __mod__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rmod__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __imod__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rdivmod__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __pow__(self, o2, o3=None):
+        # type: (PyObject, Optional[PyObject]) -> PyObject
+        pass
+
+    def __rpow__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ipow__(self, other, dummy=None):
+        # type: (PyObject, Optional[PyObject]) -> PyObject
+        pass
+
+    def __lshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rlshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ilshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rrshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __irshift__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __and__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rand__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __iand__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __xor__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __rxor__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ixor__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __or__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ror__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __ior__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __neg__(self):
+        # type: () -> PyObject
+        pass
+
+    def __pos__(self):
+        # type: () -> PyObject
+        pass
+
+    def __abs__(self):
+        # type: () -> PyObject
+        pass
+
+    def __invert__(self):
+        # type: () -> PyObject
+        pass
+
+    def __le__(self, other):
+        # type: (PyObject) -> PyObject
+        pass
+
+    def __complex__(self):
+        # type: () -> complex
+        pass
+
+    def __int__(self):
+        # type: () -> PyObject
+        pass
+
+    def __float__(self):
+        # type: () -> float
+        pass
+
+    def __index__(self):
+        # type: () -> PyObject
+        pass
+
+    def __trunc__(self):
+        # type: () -> PyObject
+        pass
+
 
 class CodeFlag(Enum):
     CO_FUTURE_ABSOLUTE_IMPORT = 16384
@@ -786,6 +786,24 @@ class PyBaseCode(PyCode):
 
 
 class PyBuiltinCallable(PyObject):
+
+    class Info(object):
+        def getMaxargs(self):
+            # type: () -> int
+            raise NotImplementedError
+
+        def getMinargs(self):
+            # type: () -> int
+            raise NotImplementedError
+
+        def getName(self):
+            # type: () -> AnyStr
+            raise NotImplementedError
+
+        def unexpectedCall(self, nargs, keywords):
+            # type: (int, bool) -> PyException
+            raise NotImplementedError
+
     def bind(self, o):
         # type: (PyObject) -> PyBuiltinCallable
         raise NotImplementedError
@@ -813,23 +831,6 @@ class PyBuiltinCallable(PyObject):
     def setInfo(self, info):
         # type: (PyBuiltinCallable.Info) -> None
         pass
-
-    class Info(object):
-        def getMaxargs(self):
-            # type: () -> int
-            raise NotImplementedError
-
-        def getMinargs(self):
-            # type: () -> int
-            raise NotImplementedError
-
-        def getName(self):
-            # type: () -> AnyStr
-            raise NotImplementedError
-
-        def unexpectedCall(self, nargs, keywords):
-            # type: (int, bool) -> PyException
-            raise NotImplementedError
 
 
 class PyBuiltinMethod(PyBuiltinCallable):

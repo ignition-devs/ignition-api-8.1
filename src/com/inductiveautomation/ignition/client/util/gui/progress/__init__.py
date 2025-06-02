@@ -41,6 +41,12 @@ class TaskHandle(object):
 
 
 class ClientProgressManager(Object):
+
+    class ModelListener(object):
+        def progressModelChanged(self):
+            # type: () -> None
+            raise NotImplementedError
+
     def addListener(self, listener):
         # type: (ClientProgressManager.ModelListener) -> None
         pass
@@ -93,8 +99,3 @@ class ClientProgressManager(Object):
     def startup(self):
         # type: () -> None
         pass
-
-    class ModelListener(object):
-        def progressModelChanged(self):
-            # type: () -> None
-            raise NotImplementedError

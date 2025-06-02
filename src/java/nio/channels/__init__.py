@@ -41,6 +41,12 @@ class WriteableByteChannel(Channel):
 
 
 class FileChannel(Object, Channel):
+
+    class MapMode(Object):
+        PRIVATE = None  # type: FileChannel.MapMode
+        READ_ONLY = None  # type: FileChannel.MapMode
+        READ_WRITE = None  # type: FileChannel.MapMode
+
     def force(self, metaData):
         # type: (bool) -> None
         pass
@@ -94,11 +100,6 @@ class FileChannel(Object, Channel):
     def write(self, *args):
         # type: (Any) -> Union[int, long]
         pass
-
-    class MapMode(Object):
-        PRIVATE = None  # type: FileChannel.MapMode
-        READ_ONLY = None  # type: FileChannel.MapMode
-        READ_WRITE = None  # type: FileChannel.MapMode
 
 
 class FileLock(Object, AutoCloseable):

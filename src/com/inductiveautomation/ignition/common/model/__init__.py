@@ -182,14 +182,6 @@ class Version(Object):
         self.beta = beta
         self.rc = rc
 
-    def __eq__(self, other):
-        # type: (Any) -> bool
-        return self._compare(other, True) == 0
-
-    def __str__(self):
-        # type: () -> str
-        return self.toString()
-
     def _compare(self, that, strict=False):
         # type: (Version, bool) -> int
         _this = self.toTuple(strict)
@@ -300,3 +292,11 @@ class Version(Object):
             if strict
             else (self.major, self.minor, self.rev)
         )
+
+    def __eq__(self, other):
+        # type: (Any) -> bool
+        return self._compare(other, True) == 0
+
+    def __str__(self):
+        # type: () -> str
+        return self.toString()

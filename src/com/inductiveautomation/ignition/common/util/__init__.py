@@ -20,6 +20,32 @@ class LoggerEx(Object):
     builder.
     """
 
+    class Builder(Object):
+        def build(self, *args):
+            # type: (*Any) -> LoggerEx
+            pass
+
+        def eventSystem(self, systemId):
+            # type: (str) -> LoggerEx.Builder
+            pass
+
+        def identObject(self, identObj):
+            # type: (Object) -> LoggerEx.Builder
+            pass
+
+        def mdcContext(self, *args):
+            # type: (Object) -> LoggerEx.Builder
+            pass
+
+        def mutableIdentObject(self, identObj):
+            # type: (Object) -> LoggerEx.Builder
+            pass
+
+    class MDCCloseable(Object, AutoCloseable):
+        def close(self):
+            # type: () -> None
+            pass
+
     DEFAULT_TO_STRING_STYLE = None  # type: ToStringStyle
 
     def createSubLogger(self, arg):
@@ -167,34 +193,39 @@ class LoggerEx(Object):
         # type: (AnyStr, Any) -> None
         pass
 
-    class Builder(Object):
-        def build(self, *args):
-            # type: (*Any) -> LoggerEx
-            pass
-
-        def eventSystem(self, systemId):
-            # type: (str) -> LoggerEx.Builder
-            pass
-
-        def identObject(self, identObj):
-            # type: (Object) -> LoggerEx.Builder
-            pass
-
-        def mdcContext(self, *args):
-            # type: (Object) -> LoggerEx.Builder
-            pass
-
-        def mutableIdentObject(self, identObj):
-            # type: (Object) -> LoggerEx.Builder
-            pass
-
-    class MDCCloseable(Object, AutoCloseable):
-        def close(self):
-            # type: () -> None
-            pass
-
 
 class Platform(Object):
+
+    class Architecture(Enum):
+        @staticmethod
+        def fromString(s):
+            # type: (AnyStr) -> Platform.Architecture
+            pass
+
+        def getSignatures(self):
+            # type: () -> Iterable[AnyStr]
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Platform.Architecture]
+            pass
+
+    class OperatingSystem(Enum):
+        @staticmethod
+        def fromString(s):
+            # type: (AnyStr) -> Platform.OperatingSystem
+            pass
+
+        def getSignatures(self):
+            # type: () -> Iterable[AnyStr]
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Platform.OperatingSystem]
+            pass
+
     LINUX_AARCH64 = None  # type: Platform
     LINUX_ARM = None  # type: Platform
     LINUX_X64 = None  # type: Platform
@@ -227,81 +258,8 @@ class Platform(Object):
         # type: () -> Platform.OperatingSystem
         return self._operatingSystem
 
-    class Architecture(Enum):
-        @staticmethod
-        def fromString(s):
-            # type: (AnyStr) -> Platform.Architecture
-            pass
-
-        def getSignatures(self):
-            # type: () -> Iterable[AnyStr]
-            pass
-
-        @staticmethod
-        def values():
-            # type: () -> Iterable[Platform.Architecture]
-            pass
-
-    class OperatingSystem(Enum):
-        @staticmethod
-        def fromString(s):
-            # type: (AnyStr) -> Platform.OperatingSystem
-            pass
-
-        def getSignatures(self):
-            # type: () -> Iterable[AnyStr]
-            pass
-
-        @staticmethod
-        def values():
-            # type: () -> Iterable[Platform.OperatingSystem]
-            pass
-
 
 class TimelineList(Object):
-    def __init__(self):
-        # type: () -> None
-        super(TimelineList, self).__init__()
-
-    def add(self, *args):
-        # type: (*Any) -> None
-        pass
-
-    def covered(self, time):
-        # type: (long) -> bool
-        return True
-
-    def get(self, time):
-        # type: (long) -> Any
-        pass
-
-    def getClosest(self, time):
-        # type: (long) -> Any
-        pass
-
-    def getSegment(self, *args):
-        # type: (*Any) -> TimelineList.TimeSegment
-        pass
-
-    def getSegments(self, *args):
-        # type: (*Any) -> List[TimelineList.TimeSegment]
-        pass
-
-    def mergeSegments(self):
-        # type: () -> None
-        pass
-
-    def nextEvent(self, time, allowRollover=None):
-        # type: (long, Optional[bool]) -> bool
-        return True
-
-    def size(self):
-        # type: () -> int
-        pass
-
-    def sort(self):
-        # type: () -> None
-        pass
 
     class TimeSegment(Object, Comparable):
         def __init__(self, *args):
@@ -349,8 +307,72 @@ class TimelineList(Object):
             # type: (long) -> None
             pass
 
+    def __init__(self):
+        # type: () -> None
+        super(TimelineList, self).__init__()
+
+    def add(self, *args):
+        # type: (*Any) -> None
+        pass
+
+    def covered(self, time):
+        # type: (long) -> bool
+        return True
+
+    def get(self, time):
+        # type: (long) -> Any
+        pass
+
+    def getClosest(self, time):
+        # type: (long) -> Any
+        pass
+
+    def getSegment(self, *args):
+        # type: (*Any) -> TimelineList.TimeSegment
+        pass
+
+    def getSegments(self, *args):
+        # type: (*Any) -> List[TimelineList.TimeSegment]
+        pass
+
+    def mergeSegments(self):
+        # type: () -> None
+        pass
+
+    def nextEvent(self, time, allowRollover=None):
+        # type: (long, Optional[bool]) -> bool
+        return True
+
+    def size(self):
+        # type: () -> int
+        pass
+
+    def sort(self):
+        # type: () -> None
+        pass
+
 
 class Timeline(TimelineList):
+
+    class TimelineParser(object):
+        def parse(self, input):
+            # type: (AnyStr) -> Timeline
+            raise NotImplementedError
+
+    class TimelineStyle(Enum):
+        def toDateForStyle(self, value):
+            # type: (long) -> Date
+            pass
+
+        def toLongForStyle(self, dateMillis):
+            # type: (Union[Date, long]) -> long
+            pass
+
+        @staticmethod
+        def values():
+            # type: () -> Iterable[Timeline.TimelineStyle]
+            pass
+
     def __init__(self, style=None):
         # type: (Optional[Timeline.TimelineStyle]) -> None
         super(Timeline, self).__init__()
@@ -372,22 +394,3 @@ class Timeline(TimelineList):
     def invert(self):
         # type: () -> Timeline
         pass
-
-    class TimelineParser(object):
-        def parse(self, input):
-            # type: (AnyStr) -> Timeline
-            raise NotImplementedError
-
-    class TimelineStyle(Enum):
-        def toDateForStyle(self, value):
-            # type: (long) -> Date
-            pass
-
-        def toLongForStyle(self, dateMillis):
-            # type: (Union[Date, long]) -> long
-            pass
-
-        @staticmethod
-        def values():
-            # type: () -> Iterable[Timeline.TimelineStyle]
-            pass
