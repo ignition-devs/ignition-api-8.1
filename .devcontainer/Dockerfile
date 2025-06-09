@@ -6,6 +6,7 @@ COPY requirements.txt /tmp/requirements.txt
 RUN set -eux; \
     \
     python2 -m pip install --requirement \
-        /tmp/requirements.txt
+        /tmp/requirements.txt; \
+    rm -rf /tmp/*
 
 CMD ["/bin/bash"]

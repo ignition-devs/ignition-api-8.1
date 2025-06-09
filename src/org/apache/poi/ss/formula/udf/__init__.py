@@ -5,4 +5,4 @@ from org.apache.poi.ss.formula.functions import FreeRefFunction
 class UDFFinder(object):
     def findFunction(self, name):
         # type: (AnyStr) -> FreeRefFunction
-        pass
+        raise NotImplementedError

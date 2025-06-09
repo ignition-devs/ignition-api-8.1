@@ -102,6 +102,10 @@ class CellRangeAddressBase(Object, Duplicatable):
         # type: (int) -> bool
         pass
 
+    def copy(self):
+        # type: () -> Duplicatable
+        pass
+
     def getFirstColumn(self):
         # type: () -> int
         pass

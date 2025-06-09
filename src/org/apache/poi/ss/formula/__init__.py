@@ -6,16 +6,6 @@ from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Enum, Object
 from org.apache.poi.ss import SpreadsheetVersion
 from org.apache.poi.ss.formula.eval import ValueEval
-from org.apache.poi.ss.formula.ptg import (
-    Area3DPtg,
-    Area3DPxg,
-    NamePtg,
-    NameXPtg,
-    NameXPxg,
-    Ptg,
-    Ref3DPtg,
-    Ref3DPxg,
-)
 from org.apache.poi.ss.formula.udf import UDFFinder
 from org.apache.poi.ss.usermodel import (
     Cell,
@@ -31,74 +21,84 @@ from org.apache.poi.ss.util import CellRangeAddress, CellRangeAddressBase, CellR
 
 if TYPE_CHECKING:
     from org.apache.poi.ss.formula.functions import FreeRefFunction, Function
+    from org.apache.poi.ss.formula.ptg import (
+        Area3DPtg,
+        Area3DPxg,
+        NamePtg,
+        NameXPtg,
+        NameXPxg,
+        Ptg,
+        Ref3DPtg,
+        Ref3DPxg,
+    )
 
 
 class EvaluationCell(object):
     def getArrayFormulaRange(self):
         # type: () -> CellRangeAddress
-        pass
+        raise NotImplementedError
 
     def getBooleanCellValue(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getCacheFormulaResultType(self):
         # type: () -> CellType
-        pass
+        raise NotImplementedError
 
     def getCellType(self):
         # type: () -> CellType
-        pass
+        raise NotImplementedError
 
     def getColumnIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getErrorCellValue(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getIdentityKey(self):
         # type: () -> Object
-        pass
+        raise NotImplementedError
 
     def getNumericCellValue(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getRowIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getSheet(self):
         # type: () -> EvaluationSheet
-        pass
+        raise NotImplementedError
 
     def getStringCellValue(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def isPartOfArrayFormulaGroup(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
 
 class EvaluationSheet(object):
     def clearAllCachedResultValues(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def getCell(self, rowIndex, columnIndex):
         # type: (int, int) -> EvaluationCell
-        pass
+        raise NotImplementedError
 
     def getLastRowNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def isRowHidden(self, rowIndex):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
 
 class EvaluationWorkbook(object):
@@ -166,51 +166,51 @@ class EvaluationWorkbook(object):
 
     def clearAllCachedResultValues(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def convertFromExternSheetIndex(self, externSheetIndex):
         # type: (int) -> int
-        pass
+        raise NotImplementedError
 
     def getExternalName(self, externSheetIndex, sheetName, externalWorkbookNumber=None):
         # type: (int, int, Optional[int]) -> ExternalName
-        pass
+        raise NotImplementedError
 
     def getExternalSheet(self, *args):
         # type: (*Any) -> ExternalSheet
-        pass
+        raise NotImplementedError
 
     def getFormulaTokens(self, cell):
         # type: (EvaluationCell) -> List[Ptg]
-        pass
+        raise NotImplementedError
 
     def getName(self, name, sheetIndex=None):
         # type: (Union[AnyStr, NamePtg], Optional[int]) -> ExternalName
-        pass
+        raise NotImplementedError
 
     def getSheet(self, sheetIndex):
         # type: (int) -> EvaluationSheet
-        pass
+        raise NotImplementedError
 
     def getSheetIndex(self, arg):
         # type: (Union[AnyStr, EvaluationSheet]) -> int
-        pass
+        raise NotImplementedError
 
     def getSheetName(self, sheetIndex):
         # type: (int) -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getSpreadsheetVersion(self):
         # type: () -> SpreadsheetVersion
-        pass
+        raise NotImplementedError
 
     def getUDFFinder(self):
         # type: () -> UDFFinder
-        pass
+        raise NotImplementedError
 
     def resolveNameXText(self, ptg):
         # type: (NameXPtg) -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class EvaluationCache(Object):
@@ -279,35 +279,35 @@ class IEvaluationListener(object):
     class ICacheEntry(object):
         def getValue(self):
             # type: () -> ValueEval
-            pass
+            raise NotImplementedError
 
     def onCacheHit(self, var1, var2, var3, var4):
         # type: (int, int, int, ValueEval) -> None
-        pass
+        raise NotImplementedError
 
     def onReadPlainValue(self, var1, var2, var3, var4):
         # type: (int, int, int, ICacheEntry) -> None
-        pass
+        raise NotImplementedError
 
     def onStartEvaluate(self, var1, var2):
         # type: (EvaluationCell, ICacheEntry) -> None
-        pass
+        raise NotImplementedError
 
     def onClearWholeCache(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def onClearCachedValue(self, var1):
         # type: (ICacheEntry) -> None
-        pass
+        raise NotImplementedError
 
     def sortDependentCachedValues(self, var1):
         # type: (List[ICacheEntry]) -> None
-        pass
+        raise NotImplementedError
 
     def onClearDependentCachedValues(self, var1, var2):
         # type: (ICacheEntry, int) -> None
-        pass
+        raise NotImplementedError
 
     def onChangeFromBlankValue(self, var1, var2, var3, var4, var5):
         # type: (int, int, int, ValueEval, ICacheEntry) -> None
@@ -317,33 +317,47 @@ class IEvaluationListener(object):
 class CellCacheEntry(Object, IEvaluationListener.ICacheEntry):
     def addConsumingCell(self, cellLoc):
         # type: (FormulaCellCacheEntry) -> None
-        pass
+        raise NotImplementedError
 
     def clearConsumingCell(self, cce):
         # type: (FormulaCellCacheEntry) -> None
-        pass
+        raise NotImplementedError
 
     def getConsumingCells(self):
         # type: () -> List[FormulaCellCacheEntry]
-        pass
+        raise NotImplementedError
 
     def getValue(self):
         # type: () -> ValueEval
-        pass
+        raise NotImplementedError
 
     def recurseClearCachedFormulaResults(self, listener):
         # type: (IEvaluationListener) -> None
-        pass
+        raise NotImplementedError
 
     def updateValue(self, value):
         # type: (ValueEval) -> None
-        pass
+        raise NotImplementedError
+
+
+class ExternSheetReferenceToken(object):
+    def format2DRefAsString(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def getExternSheetIndex(self):
+        # type: () -> int
+        raise NotImplementedError
 
 
 class FormulaCellCacheEntry(CellCacheEntry):
     def __init__(self):
         # type: () -> None
         super(FormulaCellCacheEntry, self).__init__()
+
+    def addConsumingCell(self, cellLoc):
+        # type: (FormulaCellCacheEntry) -> None
+        raise NotImplementedError
 
     def changeConsumingCells(self, usedCells):
         # type: (List[CellCacheEntry]) -> None
@@ -353,6 +367,14 @@ class FormulaCellCacheEntry(CellCacheEntry):
         # type: () -> None
         pass
 
+    def getConsumingCells(self):
+        # type: () -> List[FormulaCellCacheEntry]
+        raise NotImplementedError
+
+    def getValue(self):
+        # type: () -> ValueEval
+        raise NotImplementedError
+
     def isInputSensitive(self):
         # type: () -> bool
         return False
@@ -360,6 +382,10 @@ class FormulaCellCacheEntry(CellCacheEntry):
     def notifyUpdatedBlankCell(self, bsj, rowIndex, columnIndex, evaluationListener):
         # type: (int, int, int, IEvaluationListener) -> None
         pass
+
+    def recurseClearCachedFormulaResults(self, listener):
+        # type: (IEvaluationListener) -> None
+        raise NotImplementedError
 
     def setSensitiveInputCells(self, sensitiveInputCells):
         # type: (List[CellCacheEntry]) -> None
@@ -373,6 +399,10 @@ class FormulaCellCacheEntry(CellCacheEntry):
     ):
         # type: (...) -> None
         pass
+
+    def updateValue(self, value):
+        # type: (ValueEval) -> None
+        raise NotImplementedError
 
 
 class FormulaUsedBlankCellSet(Object):
@@ -455,15 +485,39 @@ class PlainValueCellCacheEntry(CellCacheEntry):
         super(PlainValueCellCacheEntry, self).__init__()
         print(value)
 
+    def addConsumingCell(self, cellLoc):
+        # type: (FormulaCellCacheEntry) -> None
+        raise NotImplementedError
+
+    def clearConsumingCell(self, cce):
+        # type: (FormulaCellCacheEntry) -> None
+        raise NotImplementedError
+
+    def getConsumingCells(self):
+        # type: () -> List[FormulaCellCacheEntry]
+        raise NotImplementedError
+
+    def getValue(self):
+        # type: () -> ValueEval
+        raise NotImplementedError
+
+    def recurseClearCachedFormulaResults(self, listener):
+        # type: (IEvaluationListener) -> None
+        raise NotImplementedError
+
+    def updateValue(self, value):
+        # type: (ValueEval) -> None
+        raise NotImplementedError
+
 
 class SheetRange(object):
     def getFirstSheetIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLastSheetIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class SheetRefEvaluator(Object):
@@ -514,6 +568,14 @@ class SheetRangeEvaluator(Object, SheetRange):
 
     def getEvalForCell(self, sheetIndex, rowIndex, columnIndex):
         # type: (int, int, int) -> ValueEval
+        pass
+
+    def getFirstSheetIndex(self):
+        # type: () -> int
+        pass
+
+    def getLastSheetIndex(self):
+        # type: () -> int
         pass
 
     def getSheetEvaluator(self, sheetIndex):
@@ -640,11 +702,17 @@ class OperationEvaluationContext(Object):
 
 
 class IStabilityClassifier(object):
-    TOTALLY_UNSTABLE = None  # type: IStabilityClassifier
+    TOTALLY_IMMUTABLE = None  # type: IStabilityClassifier
 
     def isCellFinal(self, sheetIndex, rowIndex, columnIndex):
         # type: (int, int, int) -> bool
-        pass
+        raise NotImplementedError
+
+
+class WorkbookDependentFormula(object):
+    def toFormulaString(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
 
 
 class WorkbookEvaluator(Object):
@@ -727,7 +795,7 @@ class WorkbookEvaluator(Object):
 class WorkbookEvaluatorProvider(object):
     def _getWorkbookEvaluator(self):
         # type: () -> WorkbookEvaluator
-        pass
+        raise NotImplementedError
 
 
 class EvaluationConditionalFormatRule(Object, Comparable):

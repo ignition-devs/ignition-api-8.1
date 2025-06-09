@@ -7,23 +7,23 @@ from java.lang import Enum
 class Hyperlink(object):
     def getAddress(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getLabel(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getType(self):
         # type: () -> HyperlinkType
-        pass
+        raise NotImplementedError
 
     def setAddress(self, address):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setLabel(self, label):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
 
 class HyperlinkType(Enum):

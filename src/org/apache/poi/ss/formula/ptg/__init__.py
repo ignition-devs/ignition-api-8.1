@@ -5,16 +5,34 @@ from typing import Any, List, Union
 from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from org.apache.poi.common import Duplicatable
+from org.apache.poi.ss.formula import (
+    ExternSheetReferenceToken,
+    WorkbookDependentFormula,
+)
 from org.apache.poi.util import LittleEndianInput, LittleEndianOutput
 
 
 class AreaI(object):
-
     class OffsetArea(object):
-        def __init__(self, *args):
-            # type: (*int) -> None
+        def __init__(
+            self,
+            baseRow,  # type: int
+            baseColumn,  # type: int
+            relFirstRow,  # type: int
+            relLastRowIx,  # type: int
+            relFirstColIx,  # type: int
+            relLastColIx,  # type: int
+        ):
+            # type: (...) -> None
             super(AreaI.OffsetArea, self).__init__()
-            print(args)
+            print(
+                baseRow,
+                baseColumn,
+                relFirstRow,
+                relLastRowIx,
+                relFirstColIx,
+                relLastColIx,
+            )
 
         def getFirstRow(self):
             # type: () -> int
@@ -34,63 +52,63 @@ class AreaI(object):
 
     def getFirstColumn(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFirstRow(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLastColumn(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLastRow(self):
         # type: () -> int
-        pass
-
-
-class ExternSheetReferenceToken(object):
-    def format2DRefAsString(self):
-        # type: () -> AnyStr
-        pass
-
-    def getExternSheetIndex(self):
-        # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class Pxg(object):
     def getExternalWorkbookNumber(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getSheetName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def setSheetName(self, name):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def toFormulaString(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class Pxg3D(Pxg):
+    def getExternalWorkbookNumber(self):
+        # type: () -> int
+        raise NotImplementedError
+
     def getLastSheetName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
+
+    def getSheetName(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
 
     def setLastSheetName(self, name):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
+    def setSheetName(self, name):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
 
-class WorkbookDependentFormula(object):
     def toFormulaString(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class Ptg(Object, Duplicatable):
@@ -98,6 +116,10 @@ class Ptg(Object, Duplicatable):
     CLASS_REF = None  # type: int
     CLASS_VALUE = None  # type: int
     EMPTY_PTG_ARRAY = None  # type: List[Ptg]
+
+    def copy(self):
+        # type: () -> Duplicatable
+        pass
 
     @staticmethod
     def createPtg(in_):
@@ -179,7 +201,7 @@ class NamePtg(OperandPtg):
         pass
 
 
-class AreaPtgBase(OperandPtg, Duplicatable, AreaI):
+class AreaPtgBase(OperandPtg, AreaI):
     sid = None  # type: int
 
     def __init__(self, *args):
@@ -187,11 +209,27 @@ class AreaPtgBase(OperandPtg, Duplicatable, AreaI):
         super(AreaPtgBase, self).__init__()
         print(args)
 
+    def getFirstColumn(self):
+        # type: () -> int
+        pass
+
     def getFirstColumnRaw(self):
         # type: () -> int
         pass
 
+    def getFirstRow(self):
+        # type: () -> int
+        pass
+
+    def getLastColumn(self):
+        # type: () -> int
+        pass
+
     def getLastColumnRaw(self):
+        # type: () -> int
+        pass
+
+    def getLastRow(self):
         # type: () -> int
         pass
 
@@ -255,6 +293,14 @@ class Area3DPtg(AreaPtgBase, WorkbookDependentFormula, ExternSheetReferenceToken
         super(Area3DPtg, self).__init__()
         print(args)
 
+    def format2DRefAsString(self):
+        # type: () -> AnyStr
+        pass
+
+    def getExternSheetIndex(self):
+        # type: () -> int
+        pass
+
     def setExternSheetIndex(self, index):
         # type: (int) -> None
         pass
@@ -269,6 +315,26 @@ class Area3DPxg(AreaPtgBase, Pxg3D):
 
     def format2DRefAsString(self):
         # type: () -> AnyStr
+        pass
+
+    def getExternalWorkbookNumber(self):
+        # type: () -> int
+        pass
+
+    def getLastSheetName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getSheetName(self):
+        # type: () -> AnyStr
+        pass
+
+    def setLastSheetName(self, name):
+        # type: (AnyStr) -> None
+        pass
+
+    def setSheetName(self, name):
+        # type: (AnyStr) -> None
         pass
 
 
@@ -352,6 +418,14 @@ class Ref3DPtg(RefPtgBase, WorkbookDependentFormula, ExternSheetReferenceToken):
         super(Ref3DPtg, self).__init__()
         print(args)
 
+    def format2DRefAsString(self):
+        # type: () -> AnyStr
+        pass
+
+    def getExternSheetIndex(self):
+        # type: () -> int
+        pass
+
     def setExternSheetIndex(self, index):
         # type: (int) -> None
         pass
@@ -365,4 +439,24 @@ class Ref3DPxg(RefPtgBase, Pxg3D):
 
     def format2DRefAsString(self):
         # type: () -> AnyStr
+        pass
+
+    def getExternalWorkbookNumber(self):
+        # type: () -> int
+        pass
+
+    def getLastSheetName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getSheetName(self):
+        # type: () -> AnyStr
+        pass
+
+    def setLastSheetName(self, name):
+        # type: (AnyStr) -> None
+        pass
+
+    def setSheetName(self, name):
+        # type: (AnyStr) -> None
         pass
