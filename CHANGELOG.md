@@ -32,169 +32,169 @@
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45.post4 (2025-02-26)
+## 8.1.45.post4 (2025-02-26)
 
 ### Feat
 
 - **java**: add missing classes and arguments (#315)
 
-## v8.1.45.post3 (2025-02-24)
+## 8.1.45.post3 (2025-02-24)
 
 ### Fix
 
 - **ia**: add PyDataSet.getUnderlyingDataset function (#314)
 
-## v8.1.45.post2 (2025-01-20)
+## 8.1.45.post2 (2025-01-20)
 
 ### Fix
 
 - **system**: update build version
 
-## v8.1.45.post1 (2025-01-13)
+## 8.1.45.post1 (2025-01-13)
 
 ### Refactor
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45.post4 (2025-02-26)
+## 8.1.45.post4 (2025-02-26)
 
 ### Feat
 
 - **java**: add missing classes and arguments (#315)
 
-## v8.1.45.post3 (2025-02-24)
+## 8.1.45.post3 (2025-02-24)
 
 ### Fix
 
 - **ia**: add PyDataSet.getUnderlyingDataset function (#314)
 
-## v8.1.45.post2 (2025-01-20)
+## 8.1.45.post2 (2025-01-20)
 
 ### Fix
 
 - **system**: update build version
 
-## v8.1.45.post1 (2025-01-13)
+## 8.1.45.post1 (2025-01-13)
 
 ### Refactor
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45.post3 (2025-02-24)
+## 8.1.45.post3 (2025-02-24)
 
 ### Fix
 
 - **ia**: add PyDataSet.getUnderlyingDataset function (#314)
 
-## v8.1.45.post2 (2025-01-20)
+## 8.1.45.post2 (2025-01-20)
 
 ### Fix
 
 - **system**: update build version
 
-## v8.1.45.post1 (2025-01-13)
+## 8.1.45.post1 (2025-01-13)
 
 ### Refactor
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45.post2 (2025-01-20)
+## 8.1.45.post2 (2025-01-20)
 
 ### Fix
 
 - **system**: update build version
 
-## v8.1.45.post1 (2025-01-13)
+## 8.1.45.post1 (2025-01-13)
 
 ### Refactor
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45.post1 (2025-01-13)
+## 8.1.45.post1 (2025-01-13)
 
 ### Refactor
 
 - **ia**: add propertyArrayIndices argument to readRawMultiple (#309)
 
-## v8.1.45 (2025-01-08)
+## 8.1.45 (2025-01-08)
 
-## v8.1.44.post1 (2024-11-06)
+## 8.1.44.post1 (2024-11-06)
 
 ### Fix
 
 - **ia**: fix AlarmQueryResult method names (#307)
 - #306
 
-## v8.1.44.post1 (2024-11-06)
+## 8.1.44.post1 (2024-11-06)
 
 ### Fix
 
 - **ia**: fix AlarmQueryResult method names (#307)
 - #306
 
-## v8.1.44 (2024-10-23)
+## 8.1.44 (2024-10-23)
 
-## v8.1.43 (2024-08-21)
+## 8.1.43 (2024-08-21)
 
-## v8.1.42 (2024-06-24)
+## 8.1.42 (2024-06-24)
 
 ### Fix
 
 - **ia**: inherit from java.util.ArrayList (#286)
 
-## v8.1.41 (2024-05-29)
+## 8.1.41 (2024-05-29)
 
 ### Fix
 
 - fix regression found in 8.1.40 (#280)
 
-## v8.1.40 (2024-05-15)
+## 8.1.40 (2024-05-15)
 
 ### Feat
 
 - bump to 8.1.40 (#277)
 
-## v8.1.39.post1 (2024-04-30)
+## 8.1.39.post1 (2024-04-30)
 
 ### Feat
 
 - **java**: add all Calendar methods (#271)
 
-## v8.1.39.post1 (2024-04-30)
+## 8.1.39.post1 (2024-04-30)
 
 ### Feat
 
 - **java**: add all Calendar methods (#271)
 
-## v8.1.39 (2024-04-12)
+## 8.1.39 (2024-04-12)
 
 ### Refactor
 
 - update default boolean returns (#267)
 
-## v8.1.38 (2024-03-06)
+## 8.1.38 (2024-03-06)
 
-## v8.1.37.post1 (2024-02-21)
-
-### Refactor
-
-- **ia**: import PyStringMap from org.python.core (#262)
-
-## v8.1.37.post1 (2024-02-21)
+## 8.1.37.post1 (2024-02-21)
 
 ### Refactor
 
 - **ia**: import PyStringMap from org.python.core (#262)
 
-## v8.1.37 (2024-02-01)
+## 8.1.37.post1 (2024-02-21)
 
-## v8.1.36.post2 (2024-01-11)
+### Refactor
+
+- **ia**: import PyStringMap from org.python.core (#262)
+
+## 8.1.37 (2024-02-01)
+
+## 8.1.36.post2 (2024-01-11)
 
 ### Fix
 
 - **system**: fix issue when importing system.gui and system.nav (#258)
 
-## v8.1.36.post1 (2024-01-11)
+## 8.1.36.post1 (2024-01-11)
 
 ### Feat
 
@@ -204,13 +204,13 @@
 
 - **system**: change db.runNamedQuery return type to Any (#256)
 
-## v8.1.36.post2 (2024-01-11)
+## 8.1.36.post2 (2024-01-11)
 
 ### Fix
 
 - **system**: fix issue when importing system.gui and system.nav (#258)
 
-## v8.1.36.post1 (2024-01-11)
+## 8.1.36.post1 (2024-01-11)
 
 ### Feat
 
@@ -220,7 +220,7 @@
 
 - **system**: change db.runNamedQuery return type to Any (#256)
 
-## v8.1.36.post1 (2024-01-11)
+## 8.1.36.post1 (2024-01-11)
 
 ### Feat
 
@@ -230,84 +230,84 @@
 
 - **system**: change db.runNamedQuery return type to Any (#256)
 
-## v8.1.36 (2024-01-09)
+## 8.1.36 (2024-01-09)
 
 ### Refactor
 
 - **dev**: rename thecesrom to coatl (#253)
 
-## v8.1.35 (2023-12-07)
+## 8.1.35 (2023-12-07)
 
 ### Fix
 
 - patch remote tag provider issue in 8.1.34 (#249)
 
-## v8.1.34 (2023-11-29)
+## 8.1.34 (2023-11-29)
 
 ### Feat
 
 - **system**: add includeShelved parameter to alarm.queryJournal (#248)
 
-## v8.1.33 (2023-10-20)
+## 8.1.33 (2023-10-20)
 
-## v8.1.32 (2023-09-15)
+## 8.1.32 (2023-09-15)
 
 ### Feat
 
 - **system**: add Ignition 8.1.32 new features (#231)
 
-## v8.1.31.post1 (2023-08-28)
+## 8.1.31.post1 (2023-08-28)
 
 ### Feat
 
 - **system**: add mongodb module (#227)
 
-## v8.1.31.post1 (2023-08-28)
+## 8.1.31.post1 (2023-08-28)
 
 ### Feat
 
 - **system**: add mongodb module (#227)
 
-## v8.1.31 (2023-08-20)
+## 8.1.31 (2023-08-20)
 
 ### Refactor
 
 - **system**: add kwargs to named query functions (#225)
 
-## v8.1.30.post1 (2023-07-29)
+## 8.1.30.post1 (2023-07-29)
 
 ### Fix
 
 - **system**: solve system.tag import error (#223)
 
-## v8.1.30.post1 (2023-07-29)
+## 8.1.30.post1 (2023-07-29)
 
 ### Fix
 
 - **system**: solve system.tag import error (#223)
 
-## v8.1.30 (2023-07-14)
+## 8.1.30 (2023-07-14)
 
 ### Fix
 
 - **system**: prepare for 8.1.30 (#221)
 
-## v8.1.29 (2023-07-07)
+## 8.1.29 (2023-07-07)
 
-## v8.1.28 (2023-06-02)
+## 8.1.28 (2023-06-02)
 
 ### Feat
 
 - **system**: add system.vision.getKeyboardLayouts (#209)
 - **system**: add system.project.requestScan (#208)
 
-## v8.1.27 (2023-04-25)
+## 8.1.27 (2023-04-25)
 
 ### Refactor
 
 - **ia**: set TagPath as an interface (#195)
 
-## v8.1.26.post2 (2023-04-06)
+## 8.1.26.post2 (2023-04-06)
 
 ### Feat
 
@@ -323,7 +323,7 @@
 - **system**: fix types and return types (#189)
 - **system**: return AttributeInfo and ReadResult (#188)
 
-## v8.1.26.post2 (2023-04-06)
+## 8.1.26.post2 (2023-04-06)
 
 ### Feat
 
@@ -339,7 +339,7 @@
 - **system**: fix types and return types (#189)
 - **system**: return AttributeInfo and ReadResult (#188)
 
-## v8.1.26.post1 (2023-04-04)
+## 8.1.26.post1 (2023-04-04)
 
 ### Feat
 
@@ -350,78 +350,33 @@
 - **system**: fix types and return types (#189)
 - **system**: return AttributeInfo and RadResult (#188)
 
-## v8.1.26 (2023-03-26)
+## 8.1.26 (2023-03-26)
 
-## v8.1.25.post5 (2023-03-20)
-
-### Refactor
-
-- **system**: replace BasicDataset with Dataset (#184)
-
-## v8.1.25.post4 (2023-03-09)
-
-### Feat
-
-- **system**: add iec61850 module (#181)
-
-## v8.1.25.post3 (2023-02-23)
-
-## v8.1.24.post4 (2023-02-23)
-
-### Fix
-
-- **javax**: add return type to JPasswordField.getPassword (#176)
-
-## v8.1.25.post2 (2023-02-23)
-
-## v8.1.24.post3 (2023-02-23)
-
-## v8.1.24.post2 (2023-02-23)
-
-### Feat
-
-- **java**: create the String class (#174)
-- **javax**: add JPasswordField getText (#172)
-
-### Refactor
-
-- **java**: call super init from Object (#173)
-- **system**: change how we extract the version (#171)
-
-## v8.1.25.post1 (2023-02-21)
-
-## v8.1.24.post1 (2023-02-21)
-
-### Feat
-
-- **java**: add GridLayout and JPasswordField (#170)
-- **java**: add util.Arrays static class (#167)
-
-## v8.1.25.post5 (2023-03-20)
+## 8.1.25.post5 (2023-03-20)
 
 ### Refactor
 
 - **system**: replace BasicDataset with Dataset (#184)
 
-## v8.1.25.post4 (2023-03-09)
+## 8.1.25.post4 (2023-03-09)
 
 ### Feat
 
 - **system**: add iec61850 module (#181)
 
-## v8.1.25.post3 (2023-02-23)
+## 8.1.25.post3 (2023-02-23)
 
-## v8.1.24.post4 (2023-02-23)
+## 8.1.24.post4 (2023-02-23)
 
 ### Fix
 
 - **javax**: add return type to JPasswordField.getPassword (#176)
 
-## v8.1.25.post2 (2023-02-23)
+## 8.1.25.post2 (2023-02-23)
 
-## v8.1.24.post3 (2023-02-23)
+## 8.1.24.post3 (2023-02-23)
 
-## v8.1.24.post2 (2023-02-23)
+## 8.1.24.post2 (2023-02-23)
 
 ### Feat
 
@@ -433,67 +388,40 @@
 - **java**: call super init from Object (#173)
 - **system**: change how we extract the version (#171)
 
-## v8.1.25.post1 (2023-02-21)
+## 8.1.25.post1 (2023-02-21)
 
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25.post4 (2023-03-09)
+## 8.1.25.post5 (2023-03-20)
+
+### Refactor
+
+- **system**: replace BasicDataset with Dataset (#184)
+
+## 8.1.25.post4 (2023-03-09)
 
 ### Feat
 
 - **system**: add iec61850 module (#181)
 
-## v8.1.25.post3 (2023-02-23)
+## 8.1.25.post3 (2023-02-23)
 
-## v8.1.24.post4 (2023-02-23)
-
-### Fix
-
-- **javax**: add return type to JPasswordField.getPassword (#176)
-
-## v8.1.25.post2 (2023-02-23)
-
-## v8.1.24.post3 (2023-02-23)
-
-## v8.1.24.post2 (2023-02-23)
-
-### Feat
-
-- **java**: create the String class (#174)
-- **javax**: add JPasswordField getText (#172)
-
-### Refactor
-
-- **java**: call super init from Object (#173)
-- **system**: change how we extract the version (#171)
-
-## v8.1.25.post1 (2023-02-21)
-
-## v8.1.24.post1 (2023-02-21)
-
-### Feat
-
-- **java**: add GridLayout and JPasswordField (#170)
-- **java**: add util.Arrays static class (#167)
-
-## v8.1.25.post3 (2023-02-23)
-
-## v8.1.24.post4 (2023-02-23)
+## 8.1.24.post4 (2023-02-23)
 
 ### Fix
 
 - **javax**: add return type to JPasswordField.getPassword (#176)
 
-## v8.1.25.post2 (2023-02-23)
+## 8.1.25.post2 (2023-02-23)
 
-## v8.1.24.post3 (2023-02-23)
+## 8.1.24.post3 (2023-02-23)
 
-## v8.1.24.post2 (2023-02-23)
+## 8.1.24.post2 (2023-02-23)
 
 ### Feat
 
@@ -505,53 +433,34 @@
 - **java**: call super init from Object (#173)
 - **system**: change how we extract the version (#171)
 
-## v8.1.25.post1 (2023-02-21)
+## 8.1.25.post1 (2023-02-21)
 
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25 (2023-02-15)
+## 8.1.25.post4 (2023-03-09)
 
-## v8.1.24.post4 (2023-02-23)
+### Feat
+
+- **system**: add iec61850 module (#181)
+
+## 8.1.25.post3 (2023-02-23)
+
+## 8.1.24.post4 (2023-02-23)
 
 ### Fix
 
 - **javax**: add return type to JPasswordField.getPassword (#176)
 
-## v8.1.25.post2 (2023-02-23)
+## 8.1.25.post2 (2023-02-23)
 
-## v8.1.24.post3 (2023-02-23)
+## 8.1.24.post3 (2023-02-23)
 
-## v8.1.24.post2 (2023-02-23)
-
-### Feat
-
-- **java**: create the String class (#174)
-- **javax**: add JPasswordField getText (#172)
-
-### Refactor
-
-- **java**: call super init from Object (#173)
-- **system**: change how we extract the version (#171)
-
-## v8.1.25.post1 (2023-02-21)
-
-## v8.1.24.post1 (2023-02-21)
-
-### Feat
-
-- **java**: add GridLayout and JPasswordField (#170)
-- **java**: add util.Arrays static class (#167)
-
-## v8.1.25.post2 (2023-02-23)
-
-## v8.1.24.post3 (2023-02-23)
-
-## v8.1.24.post2 (2023-02-23)
+## 8.1.24.post2 (2023-02-23)
 
 ### Feat
 
@@ -563,20 +472,28 @@
 - **java**: call super init from Object (#173)
 - **system**: change how we extract the version (#171)
 
-## v8.1.25.post1 (2023-02-21)
+## 8.1.25.post1 (2023-02-21)
 
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25 (2023-02-15)
+## 8.1.25.post3 (2023-02-23)
 
-## v8.1.24.post3 (2023-02-23)
+## 8.1.24.post4 (2023-02-23)
 
-## v8.1.24.post2 (2023-02-23)
+### Fix
+
+- **javax**: add return type to JPasswordField.getPassword (#176)
+
+## 8.1.25.post2 (2023-02-23)
+
+## 8.1.24.post3 (2023-02-23)
+
+## 8.1.24.post2 (2023-02-23)
 
 ### Feat
 
@@ -588,18 +505,28 @@
 - **java**: call super init from Object (#173)
 - **system**: change how we extract the version (#171)
 
-## v8.1.25.post1 (2023-02-21)
+## 8.1.25.post1 (2023-02-21)
 
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25 (2023-02-15)
+## 8.1.25 (2023-02-15)
 
-## v8.1.24.post2 (2023-02-23)
+## 8.1.24.post4 (2023-02-23)
+
+### Fix
+
+- **javax**: add return type to JPasswordField.getPassword (#176)
+
+## 8.1.25.post2 (2023-02-23)
+
+## 8.1.24.post3 (2023-02-23)
+
+## 8.1.24.post2 (2023-02-23)
 
 ### Feat
 
@@ -611,36 +538,109 @@
 - **java**: call super init from Object (#173)
 - **system**: change how we extract the version (#171)
 
-## v8.1.25.post1 (2023-02-21)
+## 8.1.25.post1 (2023-02-21)
 
-## v8.1.24.post1 (2023-02-21)
-
-### Feat
-
-- **java**: add GridLayout and JPasswordField (#170)
-- **java**: add util.Arrays static class (#167)
-
-## v8.1.25.post1 (2023-02-21)
-
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25 (2023-02-15)
+## 8.1.25.post2 (2023-02-23)
 
-## v8.1.24.post1 (2023-02-21)
+## 8.1.24.post3 (2023-02-23)
+
+## 8.1.24.post2 (2023-02-23)
+
+### Feat
+
+- **java**: create the String class (#174)
+- **javax**: add JPasswordField getText (#172)
+
+### Refactor
+
+- **java**: call super init from Object (#173)
+- **system**: change how we extract the version (#171)
+
+## 8.1.25.post1 (2023-02-21)
+
+## 8.1.24.post1 (2023-02-21)
 
 ### Feat
 
 - **java**: add GridLayout and JPasswordField (#170)
 - **java**: add util.Arrays static class (#167)
 
-## v8.1.25 (2023-02-15)
+## 8.1.25 (2023-02-15)
 
-## v8.1.24 (2023-01-13)
+## 8.1.24.post3 (2023-02-23)
+
+## 8.1.24.post2 (2023-02-23)
+
+### Feat
+
+- **java**: create the String class (#174)
+- **javax**: add JPasswordField getText (#172)
+
+### Refactor
+
+- **java**: call super init from Object (#173)
+- **system**: change how we extract the version (#171)
+
+## 8.1.25.post1 (2023-02-21)
+
+## 8.1.24.post1 (2023-02-21)
+
+### Feat
+
+- **java**: add GridLayout and JPasswordField (#170)
+- **java**: add util.Arrays static class (#167)
+
+## 8.1.25 (2023-02-15)
+
+## 8.1.24.post2 (2023-02-23)
+
+### Feat
+
+- **java**: create the String class (#174)
+- **javax**: add JPasswordField getText (#172)
+
+### Refactor
+
+- **java**: call super init from Object (#173)
+- **system**: change how we extract the version (#171)
+
+## 8.1.25.post1 (2023-02-21)
+
+## 8.1.24.post1 (2023-02-21)
+
+### Feat
+
+- **java**: add GridLayout and JPasswordField (#170)
+- **java**: add util.Arrays static class (#167)
+
+## 8.1.25.post1 (2023-02-21)
+
+## 8.1.24.post1 (2023-02-21)
+
+### Feat
+
+- **java**: add GridLayout and JPasswordField (#170)
+- **java**: add util.Arrays static class (#167)
+
+## 8.1.25 (2023-02-15)
+
+## 8.1.24.post1 (2023-02-21)
+
+### Feat
+
+- **java**: add GridLayout and JPasswordField (#170)
+- **java**: add util.Arrays static class (#167)
+
+## 8.1.25 (2023-02-15)
+
+## 8.1.24 (2023-01-13)
 
 ### Feat
 
@@ -650,13 +650,13 @@
 
 - **ci**: simplify ci workflow (#147)
 
-## v8.1.23 (2022-12-14)
+## 8.1.23 (2022-12-14)
 
 ### Fix
 
 - create Number type alias (#136)
 
-## v8.1.22.post1 (2022-11-29)
+## 8.1.22.post1 (2022-11-29)
 
 ### Fix
 
@@ -666,7 +666,7 @@
 
 - **ci**: run on ubuntu-20.04 (#129)
 
-## v8.1.22 (2022-11-02)
+## 8.1.22 (2022-11-02)
 
 ### Feat
 
@@ -676,13 +676,13 @@
 
 - **org**: update MathIllegalArgumentException __init__ signature (#127)
 
-## v8.1.21.post3 (2022-10-21)
+## 8.1.21.post3 (2022-10-21)
 
 ### Fix
 
 - change type hints on __iter__ methods (#119)
 
-## v8.1.21.post2 (2022-10-19)
+## 8.1.21.post2 (2022-10-19)
 
 ### Refactor
 
@@ -690,14 +690,14 @@
 - **ia**: add type hints to DatasetUtilities and WindowUtilities (#115)
 - **ia**: add type hint to common.script.abc classes (#114)
 
-## v8.1.21.post1 (2022-10-13)
+## 8.1.21.post1 (2022-10-13)
 
 ### Feat
 
 - **ia**: add classes implementing TagPath (#107)
 - **ia**: add TagPathParser class (#105)
 
-## v8.1.21 (2022-09-30)
+## 8.1.21 (2022-09-30)
 
 ### Feat
 
@@ -708,14 +708,14 @@
 
 - use correct typing notation for args and kwargs (#97)
 
-## v8.1.20.post5 (2022-09-21)
+## 8.1.20.post5 (2022-09-21)
 
 ### Feat
 
 - **ia**: add LocaleUtils (#94)
 - **java**: add java.text.SimpleDateFormat class (#93)
 
-## v8.1.20.post4 (2022-09-13)
+## 8.1.20.post4 (2022-09-13)
 
 ### Feat
 
@@ -727,13 +727,13 @@
 
 - **system**: set smtp keyword argument as optional (#86)
 
-## v8.1.20.post3 (2022-08-30)
+## 8.1.20.post3 (2022-08-30)
 
 ### Feat
 
 - **ia**: add ApplicationScope class (#82)
 
-## v8.1.20.post2 (2022-08-30)
+## 8.1.20.post2 (2022-08-30)
 
 ### Feat
 
@@ -747,13 +747,13 @@
 
 - **system**: remove class aliases (#78)
 
-## v8.1.20.post1 (2022-08-26)
+## 8.1.20.post1 (2022-08-26)
 
 ### Fix
 
 - **system**: accept String arguments for popup position (#74)
 
-## v8.1.20 (2022-08-26)
+## 8.1.20 (2022-08-26)
 
 ### Feat
 
@@ -775,7 +775,7 @@
 
 - remove unused imports (#59)
 
-## v8.1.19.post4 (2022-08-05)
+## 8.1.19.post4 (2022-08-05)
 
 ### Feat
 
@@ -785,7 +785,7 @@
 
 - **system**: accept instances of Dataset (#52)
 
-## v8.1.19.post3 (2022-08-02)
+## 8.1.19.post3 (2022-08-02)
 
 ### Fix
 
@@ -795,13 +795,13 @@
 
 - use java.lang.String for continuation/continuationPoint
 
-## v8.1.19.post2 (2022-08-02)
+## 8.1.19.post2 (2022-08-02)
 
 ### Fix
 
 - **system**: fix args and return type of tag.query (#49)
 
-## v8.1.19.post1 (2022-08-01)
+## 8.1.19.post1 (2022-08-01)
 
 ### Fix
 
@@ -811,7 +811,7 @@
 
 - **java**: move classproperty class (#46)
 
-## v8.1.19 (2022-07-29)
+## 8.1.19 (2022-07-29)
 
 ### Feat
 
@@ -831,7 +831,7 @@
 - improve code quality (#32)
 - **org**: add TYPE field to PyObject class (#31)
 
-## v8.1.18.post2 (2022-07-09)
+## 8.1.18.post2 (2022-07-09)
 
 ### Fix
 
@@ -841,20 +841,20 @@
 
 - use java.lang.String (#30)
 
-## v8.1.18.post1 (2022-07-05)
+## 8.1.18.post1 (2022-07-05)
 
 ### Feat
 
 - **ia**: implement all LoggerEx functions (#27)
 
-## v8.1.18 (2022-06-20)
+## 8.1.18 (2022-06-20)
 
 ### Feat
 
 - **system**: add `readRaw`, `writeRaw` to `bacnet` module (#23)
 - **system**: add fields to Results class (#22)
 
-## v8.1.17 (2022-05-13)
+## 8.1.17 (2022-05-13)
 
 ### Fix
 
@@ -864,13 +864,13 @@
 
 - **system**: update type hint for payload arg
 
-## v8.1.16.post1 (2022-04-08)
+## 8.1.16.post1 (2022-04-08)
 
 ### Feat
 
 - **system**: add perspective.authenticationChallenge (#17)
 
-## v8.1.16 (2022-04-06)
+## 8.1.16 (2022-04-06)
 
 ### Feat
 
@@ -886,21 +886,21 @@
 - Sourcery refactored main branch (#1)
 - change parent class to Java `Object`
 
-## v8.1.15 (2022-03-02)
+## 8.1.15 (2022-03-02)
 
 ### Feat
 
 - add `system.user.getUserSources` function
 
-## v8.1.14 (2022-01-27)
+## 8.1.14 (2022-01-27)
 
-## v8.1.13.post1 (2022-01-20)
+## 8.1.13.post1 (2022-01-20)
 
 ### Feat
 
 - **mypy**: update type hinting on `translate`
 
-## v8.1.13 (2021-12-22)
+## 8.1.13 (2021-12-22)
 
 ### BREAKING CHANGE
 
@@ -919,21 +919,21 @@ regardless of platform
 - rename argument from pageID to pageId
 - change return type to `unicode`
 
-## v8.1.12.post3 (2021-11-29)
+## 8.1.12.post3 (2021-11-29)
 
 ### Feat
 
 - add `String` type
 
-## v8.1.12.post2 (2021-11-26)
+## 8.1.12.post2 (2021-11-26)
 
-## v8.1.12.post1 (2021-11-26)
+## 8.1.12.post1 (2021-11-26)
 
 ### Fix
 
 - install now requires `typing`
 
-## v8.1.12 (2021-11-23)
+## 8.1.12 (2021-11-23)
 
 ### BREAKING CHANGE
 
@@ -947,7 +947,7 @@ regardless of platform
 - improve `date.format`
 - add symbols to `format` to cover most cases
 
-## v8.1.11 (2021-10-20)
+## 8.1.11 (2021-10-20)
 
 ### Feat
 
@@ -955,13 +955,13 @@ regardless of platform
 - add org.python.core package
 - add Iterable Java interface
 
-## v8.1.10.post7 (2021-10-11)
+## 8.1.10.post7 (2021-10-11)
 
 ### Feat
 
 - add PrintStream class to java.io package
 
-## v8.1.10.post6 (2021-10-10)
+## 8.1.10.post6 (2021-10-10)
 
 ### Feat
 
@@ -980,25 +980,25 @@ regardless of platform
 - switch to informal interfaces
 - turn fields into properties
 
-## v8.1.10.post5 (2021-09-24)
+## 8.1.10.post5 (2021-09-24)
 
 ### Fix
 
 - remove builtins import statement
 
-## v8.1.10.post4 (2021-09-22)
+## 8.1.10.post4 (2021-09-22)
 
 ### Feat
 
 - make code compatible with Python3
 
-## v8.1.10.post3 (2021-09-21)
+## 8.1.10.post3 (2021-09-21)
 
 ### Feat
 
 - make PyDataSet iterable
 
-## v8.1.10.post2 (2021-09-20)
+## 8.1.10.post2 (2021-09-20)
 
 ### Feat
 
@@ -1015,7 +1015,7 @@ regardless of platform
 - improve code quality
 - add `com` package
 
-## v8.1.10 (2021-09-09)
+## 8.1.10 (2021-09-09)
 
 ### Feat
 
@@ -1027,13 +1027,13 @@ regardless of platform
 - allow any import level for winsound
 - add pylint
 
-## v8.1.9 (2021-08-09)
+## 8.1.9 (2021-08-09)
 
 ### Feat
 
 - add new OPC-UA functions
 
-## v8.1.7 (2021-06-05)
+## 8.1.7 (2021-06-05)
 
 ### Feat
 
@@ -1044,9 +1044,9 @@ regardless of platform
 
 - java.util.Date
 
-## v8.1.6 (2021-05-24)
+## 8.1.6 (2021-05-24)
 
-## v8.1.5-fix (2021-05-11)
+## 8.1.5-fix (2021-05-11)
 
 ### Feat
 
@@ -1059,7 +1059,7 @@ regardless of platform
 - add missing parameter to…
 - correct typo in docstring
 
-## v8.1.5 (2021-04-28)
+## 8.1.5 (2021-04-28)
 
 ### Feat
 
@@ -1071,26 +1071,26 @@ regardless of platform
 - add toParseableString implementation
 - add build number and update all references
 
-## v8.1.4 (2021-04-02)
+## 8.1.4 (2021-04-02)
 
 ### Feat
 
 - **perspective**: add getSessionInfo
 
-## v8.1.3 (2021-03-04)
+## 8.1.3 (2021-03-04)
 
 ### Feat
 
 - add new arguments to Perspective functions
 
-## v8.1.2 (2021-02-12)
+## 8.1.2 (2021-02-12)
 
 ### Feat
 
 - add flake8 and isort pre-commit hooks
 
-## v8.1.1-fix (2021-01-05)
+## 8.1.1-fix (2021-01-05)
 
-## v8.1.1 (2020-12-09)
+## 8.1.1 (2020-12-09)
 
-## v8.1.0 (2020-11-15)
+## 8.1.0 (2020-11-15)
