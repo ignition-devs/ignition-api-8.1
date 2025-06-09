@@ -5,3 +5,6 @@ tag_format = "$version"
 version_scheme = "pep440"
 version = "8.1.48.post2"
 update_changelog_on_bump = true
+version_files = [
+  "setup.cfg:version"
+]
