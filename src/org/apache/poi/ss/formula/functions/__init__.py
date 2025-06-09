@@ -12,10 +12,10 @@ class FreeRefFunction(object):
         ec,  # type: OperationEvaluationContext
     ):
         # type: (...) -> ValueEval
-        pass
+        raise NotImplementedError
 
 
 class Function(object):
     def evaluate(self, args, srcRowIndex, srcColumnIndex):
         # type: (List[ValueEval], int, int) -> ValueEval
-        pass
+        raise NotImplementedError

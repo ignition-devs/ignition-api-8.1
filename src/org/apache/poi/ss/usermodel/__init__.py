@@ -30,304 +30,304 @@ class AutoFilter(object):
 class BorderFormatting(object):
     def getBorderBottom(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderDiagonal(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderHorizontal(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderLeft(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderRight(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderTop(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderVertical(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBottomBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getBottomBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getDiagonalBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDiagonalBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getHorizontalBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getHorizontalBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getLeftBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLeftBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getRightBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRightBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getTopBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getTopBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getVerticalBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getVerticalBorderColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def setBorderBottom(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderDiagonal(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderHorizontal(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderLeft(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderRight(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderTop(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBorderVertical(self, border):
         # type: (BorderStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setBottomBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setDiagonalBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setHorizontalBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setLeftBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setRightBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setTopBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setVerticalBorderColor(self, color):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
 
 class Cell(object):
     def getAddress(self):
         # type: () -> CellAddress
-        pass
+        raise NotImplementedError
 
     def getArrayFormulaRange(self):
         # type: () -> CellRangeAddress
-        pass
+        raise NotImplementedError
 
     def getBooleanCellValue(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getCachedFormulaResultType(self):
         # type: () -> CellType
-        pass
+        raise NotImplementedError
 
     def getCellComment(self):
         # type: () -> Comment
-        pass
+        raise NotImplementedError
 
     def getCellFormula(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getCellStyle(self):
         # type: () -> CellStyle
-        pass
+        raise NotImplementedError
 
     def getCellType(self):
         # type: () -> CellType
-        pass
+        raise NotImplementedError
 
     def getColumnIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDateCellValue(self):
         # type: () -> Date
-        pass
+        raise NotImplementedError
 
     def getErrorCellValue(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getHyperlink(self):
         # type: () -> Hyperlink
-        pass
+        raise NotImplementedError
 
     def getLocalDateTimeCellValue(self):
         # type: () -> LocalDateTime
-        pass
+        raise NotImplementedError
 
     def getNumericCellValue(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getRichStringCellValue(self):
         # type: () -> RichTextString
-        pass
+        raise NotImplementedError
 
     def getRow(self):
         # type: () -> Row
-        pass
+        raise NotImplementedError
 
     def getRowIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getSheet(self):
         # type: () -> Sheet
-        pass
+        raise NotImplementedError
 
     def getStringCellValue(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def isPartOfArrayFormulaGroup(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def removeCellComment(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def removeFormula(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def removeHyperlink(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def setAsActiveCell(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def setBlank(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def setCellComment(self, comment):
         # type: (Comment) -> None
-        pass
+        raise NotImplementedError
 
     def setCellErrorValue(self, value):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setCellFormula(self, formula):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setCellStyle(self, style):
         # type: (CellStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setCellValue(self, value):
         # type: (Any) -> None
-        pass
+        raise NotImplementedError
 
     def setHyperlink(self, link):
         # type: (Hyperlink) -> None
-        pass
+        raise NotImplementedError
 
 
 class CellRange(object):
 
     def getCell(self, relativeRowIndex, relativeColumnIndex):
         # type: (int, int) -> Cell
-        pass
+        raise NotImplementedError
 
     def getCells(self):
         # type: () -> List[List[Cell]]
-        pass
+        raise NotImplementedError
 
     def getFlattenedCells(self):
         # type: () -> List[Cell]
-        pass
+        raise NotImplementedError
 
     def getHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getReferenceText(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getTopLeftCell(self):
         # type: () -> Cell
-        pass
+        raise NotImplementedError
 
     def getWidth(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def size(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def __iter__(self):
         # type: () -> Iterator[Cell]
@@ -337,123 +337,123 @@ class CellRange(object):
 class CellStyle(object):
     def cloneStyleFrom(self, source):
         # type: (CellStyle) -> None
-        pass
+        raise NotImplementedError
 
     def getAlignment(self):
         # type: () -> HorizontalAlignment
-        pass
+        raise NotImplementedError
 
     def getBorderBottom(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderLeft(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderRight(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBorderTop(self):
         # type: () -> BorderStyle
-        pass
+        raise NotImplementedError
 
     def getBottomBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDataFormat(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDataFormatString(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getFillBackgroundColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFillBackgroundColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFillForegroundColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFillForegroundColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFillPattern(self):
         # type: () -> FillPatternType
-        pass
+        raise NotImplementedError
 
     def getFontIndexAsInt(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getHidden(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getIndention(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLeftBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLocked(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getQuotePrefixed(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getRightBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRotation(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getShrinkToFit(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getTopBorderColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getVerticalAlignment(self):
         # type: () -> VerticalAlignment
-        pass
+        raise NotImplementedError
 
     def getWrapText(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setAlignment(self, align):
         # type: (HorizontalAlignment) -> None
-        pass
+        raise NotImplementedError
 
     def setDataFormat(self, formatIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFillBackgroundColor(self, colorIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFillForegroundColor(self, colorIndex):
         # type: (int) -> None
@@ -463,35 +463,35 @@ class CellStyle(object):
 class ChildAnchor(object):
     def getDx1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDx2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDy1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDy2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getCol1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getCol2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRow1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRow2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class ClientAnchor(object):
@@ -515,75 +515,75 @@ class ClientAnchor(object):
 
     def getAnchorType(self):
         # type: () -> ClientAnchor.AnchorType
-        pass
+        raise NotImplementedError
 
     def getCol1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getCol2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDx1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDx2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDy1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDy2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRow1(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRow2(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def setAnchorType(self, anchorType):
         # type: (ClientAnchor.AnchorType) -> None
-        pass
+        raise NotImplementedError
 
     def setCol1(self, col1):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setCol2(self, col2):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDx1(self, dx1):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDx2(self, dx2):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDy1(self, dy1):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDy2(self, dy2):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setRow1(self, row1):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setRow2(self, row2):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class Color(object):
@@ -593,215 +593,215 @@ class Color(object):
 class ColorScaleFormatting(object):
     def createThreshold(self):
         # type: () -> ConditionalFormattingThreshold
-        pass
+        raise NotImplementedError
 
     def getColors(self):
         # type: () -> List[Color]
-        pass
+        raise NotImplementedError
 
     def getNumControlPoints(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getThresholds(self):
         # type: () -> List[ConditionalFormattingThreshold]
-        pass
+        raise NotImplementedError
 
     def setColors(self, colors):
         # type: (List[Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setNumControlPoints(self, num):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setThresholds(self, thresholds):
         # type: (List[ConditionalFormattingThreshold]) -> None
-        pass
+        raise NotImplementedError
 
 
 class Comment(object):
     def getAddress(self):
         # type: () -> CellAddress
-        pass
+        raise NotImplementedError
 
     def getAuthor(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getClientAnchor(self):
         # type: () -> ClientAnchor
-        pass
+        raise NotImplementedError
 
     def getColumn(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRow(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getString(self):
         # type: () -> RichTextString
-        pass
+        raise NotImplementedError
 
     def isVisible(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setAddress(self, *args):
         # type: (*Any) -> None
-        pass
+        raise NotImplementedError
 
     def setAuthor(self, author):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setColumn(self, column):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setRow(self, row):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setString(self, string):
         # type: (RichTextString) -> None
-        pass
+        raise NotImplementedError
 
     def setVisible(self, visible):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
 
 class ConditionFilterData(object):
     def getAboveAverage(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getBottom(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getEqualAverage(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getPercent(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getRank(self):
         # type: () -> long
-        pass
+        raise NotImplementedError
 
     def getStdDev(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class ConditionalFormatting(object):
     def addRule(self, cfRule):
         # type: (ConditionalFormattingRule) -> None
-        pass
+        raise NotImplementedError
 
     def getFormattingRanges(self):
         # type: () -> List[CellRangeAddress]
-        pass
+        raise NotImplementedError
 
     def getNumberOfRules(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRule(self, idx):
         # type: (int) -> ConditionalFormattingRule
-        pass
+        raise NotImplementedError
 
     def setFormattingRanges(self, ranges):
         # type: (List[CellRangeAddress]) -> None
-        pass
+        raise NotImplementedError
 
     def setRule(self, idx, cfRule):
         # type: (int, ConditionalFormattingRule) -> None
-        pass
+        raise NotImplementedError
 
 
 class ConditionalFormattingRule(object):
     def createBorderFormatting(self):
         # type: () -> BorderFormatting
-        pass
+        raise NotImplementedError
 
     def createFontFormatting(self):
         # type: () -> FontFormatting
-        pass
+        raise NotImplementedError
 
     def createPatternFormatting(self):
         # type: () -> PatternFormatting
-        pass
+        raise NotImplementedError
 
     def getBorderFormatting(self):
         # type: () -> BorderFormatting
-        pass
+        raise NotImplementedError
 
     def getColorScaleFormatting(self):
         # type: () -> ColorScaleFormatting
-        pass
+        raise NotImplementedError
 
     def getComparisonOperation(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getConditionFilterType(self):
         # type: () -> ConditionFilterType
-        pass
+        raise NotImplementedError
 
     def getConditionType(self):
         # type: () -> ConditionType
-        pass
+        raise NotImplementedError
 
     def getDataBarFormatting(self):
         # type: () -> DataBarFormatting
-        pass
+        raise NotImplementedError
 
     def getFilterConfiguration(self):
         # type: () -> ConditionFilterData
-        pass
+        raise NotImplementedError
 
     def getFontFormatting(self):
         # type: () -> FontFormatting
-        pass
+        raise NotImplementedError
 
     def getFormula1(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getFormula2(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getMultiStateFormatting(self):
         # type: () -> IconMultiStateFormatting
-        pass
+        raise NotImplementedError
 
     def getNumberFormatting(self):
         # type: () -> ExcelNumberFormat
-        pass
+        raise NotImplementedError
 
     def getPatternFormatting(self):
         # type: () -> PatternFormatting
-        pass
+        raise NotImplementedError
 
     def getPriority(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getStopIfTrue(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getText(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class ConditionalFormattingThreshold(object):
@@ -831,256 +831,261 @@ class ConditionalFormattingThreshold(object):
 
     def getFormula(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getRangeType(self):
         # type: () -> ConditionalFormattingThreshold.RangeType
-        pass
+        raise NotImplementedError
 
     def getValue(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def setFormula(self, formula):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setRangeType(self, rangeType):
         # type: (ConditionalFormattingThreshold.RangeType) -> None
-        pass
+        raise NotImplementedError
 
     def setValue(self, value):
         # type: (float) -> None
-        pass
+        raise NotImplementedError
 
 
 class CreationHelper(object):
     def createAreaReference(self, *args):
         # type: (*Any) -> AreaReference
-        pass
+        raise NotImplementedError
 
     def createClientAnchor(self):
         # type: () -> ClientAnchor
-        pass
+        raise NotImplementedError
 
     def createDataFormat(self):
         # type: () -> DataFormat
-        pass
+        raise NotImplementedError
 
     def createExtendedColor(self):
         # type: () -> ExtendedColor
-        pass
+        raise NotImplementedError
 
     def createFormulaEvaluator(self):
         # type: () -> FormulaEvaluator
-        pass
+        raise NotImplementedError
 
     def createHyperlink(self, type):
         # type: (HyperlinkType) -> Hyperlink
-        pass
+        raise NotImplementedError
 
     def createRichTextString(self, text):
         # type: (AnyStr) -> RichTextString
-        pass
+        raise NotImplementedError
 
 
 class DataBarFormatting(object):
     def getColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getMaxThreshold(self):
         # type: () -> ConditionalFormattingThreshold
-        pass
+        raise NotImplementedError
 
     def getMinThreshold(self):
         # type: () -> ConditionalFormattingThreshold
-        pass
+        raise NotImplementedError
 
     def getWidthMax(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getWidthMin(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def isIconOnly(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isLeftToRight(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setColor(self, color):
         # type: (Color) -> None
-        pass
+        raise NotImplementedError
 
     def setIconOnly(self, only):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setLeftToRight(self, ltr):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setWidthMax(self, width):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setWidthMin(self, width):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class DataFormat(object):
     def getFormat(self, arg):
         # type: (Union[int, AnyStr]) -> int
-        pass
+        raise NotImplementedError
 
 
 class DataValidation(object):
+    class ErrorStyle(object):
+        STOP = 0  # type: int
+        WARNING = 1  # type: int
+        INFO = 2  # type: int
+
     def createErrorBox(self, title, text):
         # type: (AnyStr, AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def createPromptBox(self, title, text):
         # type: (AnyStr, AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def getEmptyCellAllowed(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getErrorBoxText(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getErrorBoxTitle(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getErrorStyle(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPromptBoxText(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getPromptBoxTitle(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getRegions(self):
         # type: () -> CellRangeAddressList
-        pass
+        raise NotImplementedError
 
     def showShowErrorBox(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def showShowPromptBox(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getSuppressDropDownArrow(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getValidationConstraint(self):
         # type: () -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def setEmptyCellAllowed(self, allowed):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setErrorStyle(self, error_style):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setShowErrorBox(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setShowPromptBox(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setSuppressDropDownArrow(self, suppress):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
 
 class DataValidationConstraint(object):
     class OperatorType(Object):
-        BETWEEN = None  # type: int
-        EQUAL = None  # type: int
-        GREATER_OR_EQUAL = None  # type: int
-        GREATER_THAN = None  # type: int
-        IGNORED = None  # type: int
-        LESS_OR_EQUAL = None  # type: int
-        LESS_THAN = None  # type: int
-        NOT_BETWEEN = None  # type: int
-        NOT_EQUAL = None  # type: int
+        BETWEEN = 0  # type: int
+        NOT_BETWEEN = 1  # type: int
+        EQUAL = 2  # type: int
+        NOT_EQUAL = 3  # type: int
+        GREATER_THAN = 4  # type: int
+        LESS_THAN = 5  # type: int
+        GREATER_OR_EQUAL = 6  # type: int
+        LESS_OR_EQUAL = 7  # type: int
+        IGNORED = 0  # type: int
 
         def validateSecondArg(self, comparisonOperator, paramValue):
             # type: (int, AnyStr) -> None
             pass
 
     class ValidationType(Object):
-        ANY = None  # type: int
-        DATE = None  # type: int
-        DECIMAL = None  # type: int
-        FORMULA = None  # type: int
-        INTEGER = None  # type: int
-        LIST = None  # type: int
-        TEXT_LENGTH = None  # type: int
-        TIME = None  # type: int
+        ANY = 0  # type: int
+        INTEGER = 1  # type: int
+        DECIMAL = 2  # type: int
+        LIST = 3  # type: int
+        DATE = 4  # type: int
+        TIME = 5  # type: int
+        TEXT_LENGTH = 6  # type: int
+        FORMULA = 7  # type: int
 
     def getExplicitListValues(self):
         # type: () -> List[AnyStr]
-        pass
+        raise NotImplementedError
 
     def getFormula1(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getFormula2(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getOperator(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getValidationType(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def setExplicitListValues(self, explicitListValues):
         # type: (List[AnyStr]) -> None
-        pass
+        raise NotImplementedError
 
     def setFormula1(self, formula):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setFormula2(self, formula):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setOperator(self, operator):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class DataValidationHelper(object):
     def createCustomConstraint(self, formula):
         # type: (AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createDateConstraint(
         self,
@@ -1090,35 +1095,35 @@ class DataValidationHelper(object):
         dateFormat,  # type: AnyStr
     ):
         # type: (...) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createDecimalConstraint(self, operatorType, formula1, formula2):
         # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createExplicitListConstraint(self, listOfValues):
         # type: (List[AnyStr]) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createFormulaListConstraint(self, listFormula):
         # type: (AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createIntegerConstraint(self, operatorType, formula1, formula2):
         # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createNumericConstraint(self, validationType, operatorType, formula1, formula2):
         # type: (int, int, AnyStr, AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createTextLengthConstraint(self, operatorType, formula1, formula2):
         # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createTimeConstraint(self, operatorType, formula1, formula2):
         # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
-        pass
+        raise NotImplementedError
 
     def createValidation(
         self,
@@ -1126,7 +1131,7 @@ class DataValidationHelper(object):
         cellRangeAddressList,  # type: CellRangeAddressList
     ):
         # type: (...) -> DataValidation
-        pass
+        raise NotImplementedError
 
 
 class DateUtil(Object):
@@ -1232,288 +1237,332 @@ class DateUtil(Object):
 
 
 class Font(object):
-    ANSI_CHARSET = None  # type: int
-    COLOR_NORMAL = None  # type: int
-    COLOR_RED = None  # type: int
-    DEFAULT_CHARSET = None  # type: int
-    SS_NONE = None  # type: int
-    SS_SUB = None  # type: int
-    SS_SUPER = None  # type: int
-    SYMBOL_CHARSET = None  # type: int
-    U_DOUBLE = None  # type: int
-    U_DOUBLE_ACCOUNTING = None  # type: int
-    U_NONE = None  # type: int
-    U_SINGLE = None  # type: int
-    U_SINGLE_ACCOUNTING = None  # type: int
+    COLOR_NORMAL = 32767  # type: int
+    COLOR_RED = 10  # type: int
+    SS_NONE = 0  # type: int
+    SS_SUPER = 1  # type: int
+    SS_SUB = 2  # type: int
+    U_NONE = 0  # type: int
+    U_SINGLE = 1  # type: int
+    U_DOUBLE = 2  # type: int
+    U_SINGLE_ACCOUNTING = 33  # type: int
+    U_DOUBLE_ACCOUNTING = 34  # type: int
+    ANSI_CHARSET = 0  # type: int
+    DEFAULT_CHARSET = 1  # type: int
+    SYMBOL_CHARSET = 2  # type: int
 
     def getBold(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getCharSet(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFontHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFontHeightInPoints(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFontName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getIndexAsInt(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getItalic(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getStrikeout(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getTypeOffset(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getUnderline(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def setBold(self, bold):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setCharSet(self, charset):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setColor(self, color):
         # type: (Color) -> None
-        pass
+        raise NotImplementedError
 
     def setFontHeight(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFontHeightInPoints(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFontName(self, name):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setItalic(self, italic):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setStrikeout(self, strikeout):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setTypeOffset(self, offset):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setUnderline(self, underline):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class FontFormatting(object):
-    SS_NONE = None  # type: int
-    SS_SUB = None  # type: int
-    SS_SUPER = None  # type: int
-    U_DOUBLE = None  # type: int
-    U_DOUBLE_ACCOUNTING = None  # type: int
-    U_NONE = None  # type: int
-    U_SINGLE = None  # type: int
-    U_SINGLE_ACCOUNTING = None  # type: int
+    SS_NONE = 0  # type: int
+    SS_SUPER = 1  # type: int
+    SS_SUB = 2  # type: int
+    U_NONE = 0  # type: int
+    U_SINGLE = 1  # type: int
+    U_DOUBLE = 2  # type: int
+    U_SINGLE_ACCOUNTING = 33  # type: int
+    U_DOUBLE_ACCOUNTING = 34  # type: int
 
     def getEscapementType(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFontColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFontColorIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFontHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getUnderlineType(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def isBold(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isItalic(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isStruckout(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def resetFontStyle(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def setEscapementType(self, escapementType):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFontColor(self, color):
         # type: (Color) -> None
-        pass
+        raise NotImplementedError
 
     def setFontColorIndex(self, color):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFontHeight(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFontStyle(self, italic, bold):
         # type: (bool, bool) -> None
-        pass
+        raise NotImplementedError
 
     def setUnderlineType(self, underlineType):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class HeaderFooter(object):
     def getCenter(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getLeft(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getRight(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def setCenter(self, newCenter):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setLeft(self, newLeft):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setRight(self, newRight):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
 
 class Footer(HeaderFooter):
-    pass
+    def getCenter(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def getLeft(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def getRight(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def setCenter(self, newCenter):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
+
+    def setLeft(self, newLeft):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
+
+    def setRight(self, newRight):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
 
 
 class FormulaEvaluator(object):
     def clearAllCachedResultValues(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def evaluate(self, cell):
         # type: (Cell) -> CellValue
-        pass
+        raise NotImplementedError
 
     def evaluateAll(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def evaluateFormulaCell(self, cell):
         # type: (Cell) -> CellType
-        pass
+        raise NotImplementedError
 
     def evaluateInCell(self, cell):
         # type: (Cell) -> Cell
-        pass
+        raise NotImplementedError
 
     def notifyDeleteCell(self, cell):
         # type: (Cell) -> None
-        pass
+        raise NotImplementedError
 
     def notifyUpdateCell(self, cell):
         # type: (Cell) -> None
-        pass
+        raise NotImplementedError
 
     def notifySetFormula(self, cell):
         # type: (Cell) -> None
-        pass
+        raise NotImplementedError
 
     def setDebugEvaluationOutputForNextEval(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setIgnoreMissingWorkbooks(self, ignore):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setupReferencedWorkbooks(self, workbooks):
         # type: (Dict[AnyStr, FormulaEvaluator]) -> None
-        pass
+        raise NotImplementedError
 
 
 class Header(HeaderFooter):
-    pass
+    def getCenter(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def getLeft(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def getRight(self):
+        # type: () -> AnyStr
+        raise NotImplementedError
+
+    def setCenter(self, newCenter):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
+
+    def setLeft(self, newLeft):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
+
+    def setRight(self, newRight):
+        # type: (AnyStr) -> None
+        raise NotImplementedError
 
 
 class Hyperlink(IHyperlink):
     def getFirstColumn(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFirstRow(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLastColumn(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLastRow(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def setFirstColumn(self, col):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFirstRow(self, row):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setLastColumn(self, col):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setLastRow(self, row):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class IconMultiStateFormatting(object):
@@ -1553,389 +1602,423 @@ class IconMultiStateFormatting(object):
 
     def createThreshold(self):
         # type: () -> ConditionalFormattingThreshold
-        pass
+        raise NotImplementedError
 
     def getIconSet(self):
         # type: () -> IconSet
-        pass
+        raise NotImplementedError
 
     def getThresholds(self):
         # type: () -> List[ConditionalFormattingThreshold]
-        pass
+        raise NotImplementedError
 
     def isIconOnly(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isReversed(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setIconOnly(self, only):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setIconSet(self, set):
         # type: (IconSet) -> None
-        pass
+        raise NotImplementedError
 
     def setReversed(self, reversed):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setThresholds(self, thresholds):
         # type: (List[ConditionalFormattingThreshold]) -> None
-        pass
+        raise NotImplementedError
 
 
 class Name(object):
     def getComment(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getNameName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getRefersToFormula(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getSheetIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getSheetName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def isDeleted(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isFunctionName(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setComment(self, comment):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setFunction(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setNameName(self, name):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setRefersToFormula(self, formulaText):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setSheetIndex(self, sheetId):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class Shape(object):
     def getAnchor(self):
         # type: () -> ChildAnchor
-        pass
+        raise NotImplementedError
 
     def getParent(self):
         # type: () -> Shape
-        pass
+        raise NotImplementedError
 
     def getShapeName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def isNoFill(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def setFillColor(self, red, green, blue):
         # type: (int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def setLineStyleColor(self, red, green, blue):
         # type: (int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def setNoFill(self, noFill):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
 
 class Picture(Shape):
     def getClientAnchor(self):
         # type: () -> ClientAnchor
-        pass
+        raise NotImplementedError
 
     def getImageDimension(self):
         # type: () -> Dimension
-        pass
+        raise NotImplementedError
 
     def getPictureData(self):
         # type: () -> PictureData
-        pass
+        raise NotImplementedError
 
     def getPreferredSize(self, scaleX=1, scaleY=1):
         # type: (int, int) -> ClientAnchor
-        pass
+        raise NotImplementedError
 
     def getSheet(self):
         # type: () -> Sheet
-        pass
+        raise NotImplementedError
 
     def resize(self, *args):
         # type: (*Any) -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class PatternFormatting(object):
-    ALT_BARS = None  # type: int
-    BIG_SPOTS = None  # type: int
-    BRICKS = None  # type: int
-    DIAMONDS = None  # type: int
-    FINE_DOTS = None  # type: int
-    LEAST_DOTS = None  # type: int
-    LESS_DOTS = None  # type: int
-    NO_FILL = None  # type: int
-    SOLID_FOREGROUND = None  # type: int
-    SPARSE_DOTS = None  # type: int
-    SQUARES = None  # type: int
-    THICK_BACKWARD_DIAG = None  # type: int
-    THICK_FORWARD_DIAG = None  # type: int
-    THICK_HORZ_BANDS = None  # type: int
-    THICK_VERT_BANDS = None  # type: int
-    THIN_BACKWARD_DIAG = None  # type: int
-    THIN_FORWARD_DIAG = None  # type: int
-    THIN_HORZ_BANDS = None  # type: int
-    THIN_VERT_BANDS = None  # type: int
+    NO_FILL = 0  # type: int
+    SOLID_FOREGROUND = 1  # type: int
+    FINE_DOTS = 2  # type: int
+    ALT_BARS = 3  # type: int
+    SPARSE_DOTS = 4  # type: int
+    THICK_HORZ_BANDS = 5  # type: int
+    THICK_VERT_BANDS = 6  # type: int
+    THICK_BACKWARD_DIAG = 7  # type: int
+    THICK_FORWARD_DIAG = 8  # type: int
+    BIG_SPOTS = 9  # type: int
+    BRICKS = 10  # type: int
+    THIN_BACKWARD_DIAG = 11  # type: int
+    THIN_VERT_BANDS = 12  # type: int
+    THIN_HORZ_BANDS = 13  # type: int
+    THIN_FORWARD_DIAG = 14  # type: int
+    SQUARES = 15  # type: int
+    DIAMONDS = 16  # type: int
+    LESS_DOTS = 17  # type: int
+    LEAST_DOTS = 18  # type: int
 
     def getFillBackgroundColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFillBackgroundColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFillForegroundColor(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFillForegroundColorColor(self):
         # type: () -> Color
-        pass
+        raise NotImplementedError
 
     def getFillPattern(self):
         # type: () -> FillPatternType
-        pass
+        raise NotImplementedError
 
     def setFillBackgroundColor(self, bg):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setFillForegroundColor(self, bg):
         # type: (Union[int, Color]) -> None
-        pass
+        raise NotImplementedError
 
     def setFillPattern(self, fp):
         # type: (FillPatternType) -> None
-        pass
+        raise NotImplementedError
 
 
 class PictureData(object):
     def getData(self):
         # type: () -> bytearray
-        pass
+        raise NotImplementedError
 
     def getMimeType(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getPictureType(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def suggestFileExtension(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
 
 class PrintSetup(object):
+    PRINTER_DEFAULT_PAPERSIZE = 0
+    LETTER_PAPERSIZE = 1
+    LETTER_SMALL_PAGESIZE = 2
+    TABLOID_PAPERSIZE = 3
+    LEDGER_PAPERSIZE = 4
+    LEGAL_PAPERSIZE = 5
+    STATEMENT_PAPERSIZE = 6
+    EXECUTIVE_PAPERSIZE = 7
+    A3_PAPERSIZE = 8
+    A4_PAPERSIZE = 9
+    A4_SMALL_PAPERSIZE = 10
+    A5_PAPERSIZE = 11
+    B4_PAPERSIZE = 12
+    B5_PAPERSIZE = 13
+    FOLIO8_PAPERSIZE = 14
+    QUARTO_PAPERSIZE = 15
+    TEN_BY_FOURTEEN_PAPERSIZE = 16
+    ELEVEN_BY_SEVENTEEN_PAPERSIZE = 17
+    NOTE8_PAPERSIZE = 18
+    ENVELOPE_9_PAPERSIZE = 19
+    ENVELOPE_10_PAPERSIZE = 20
+    ENVELOPE_DL_PAPERSIZE = 27
+    ENVELOPE_CS_PAPERSIZE = 28
+    ENVELOPE_C5_PAPERSIZE = 28
+    ENVELOPE_C3_PAPERSIZE = 29
+    ENVELOPE_C4_PAPERSIZE = 30
+    ENVELOPE_C6_PAPERSIZE = 31
+    ENVELOPE_MONARCH_PAPERSIZE = 37
+    A4_EXTRA_PAPERSIZE = 53
+    A4_TRANSVERSE_PAPERSIZE = 55
+    A4_PLUS_PAPERSIZE = 60
+    LETTER_ROTATED_PAPERSIZE = 75
+    A4_ROTATED_PAPERSIZE = 77
+
     def getCopies(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDraft(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getFitHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFitWidth(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFooterMargin(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getHeaderMargin(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getHResolution(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLandscape(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getLeftToRight(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getNoColor(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getNoOrientation(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getNotes(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getPageStart(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPaperSize(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getScale(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getUsePage(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getValidSettings(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getVResolution(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def setCopies(self, copies):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDraft(self, d):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setFitHeight(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFitWidth(self, width):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFooterMargin(self, footermargin):
         # type: (float) -> None
-        pass
+        raise NotImplementedError
 
     def setHeaderMargin(self, headermargin):
         # type: (float) -> None
-        pass
+        raise NotImplementedError
 
     def setHResolution(self, resolution):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setLandscape(self, ls):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setLeftToRight(self, ltor):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setNoColor(self, mono):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setNoOrientation(self, orientation):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setNotes(self, printnotes):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setPageStart(self, start):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setPaperSize(self, size):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setScale(self, scale):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setUsePage(self, page):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setValidSettings(self, valid):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setVResolution(self, resolution):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class RichTextString(object):
     def applyFont(self, *args):
         # type: (*Any) -> None
-        pass
+        raise NotImplementedError
 
     def clearFormatting(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def getIndexOfFormattingRun(self, index):
         # type: (int) -> int
-        pass
+        raise NotImplementedError
 
     def getString(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def length(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def numFormattingRuns(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class Row(object):
@@ -1951,91 +2034,91 @@ class Row(object):
 
     def cellIterator(self):
         # type: () -> Iterator[Cell]
-        pass
+        raise NotImplementedError
 
     def createCell(self, column, type_=None):
         # type: (int, Optional[CellType]) -> Cell
-        pass
+        raise NotImplementedError
 
     def getCell(self, cellnum, policy=None):
         # type: (int, Optional[Row.MissingCellPolicy]) -> Cell
-        pass
+        raise NotImplementedError
 
     def getFirstCellNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getHeightInPoints(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getLastCellNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getOutlineLevel(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPhysicalNumberOfCells(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRowNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getRowStyle(self):
         # type: () -> CellStyle
-        pass
+        raise NotImplementedError
 
     def getSheet(self):
         # type: () -> Sheet
-        pass
+        raise NotImplementedError
 
     def getZeroHeight(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isFormatted(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def removeCell(self, cell):
         # type: (Cell) -> None
-        pass
+        raise NotImplementedError
 
     def setHeight(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setHeightInPoints(self, height):
         # type: (float) -> None
-        pass
+        raise NotImplementedError
 
     def setRowNum(self, rowNum):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setRowStyle(self, style):
         # type: (CellStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setZeroHeight(self, zHeight):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def shiftCellsLeft(self, firstShiftColumnIndex, lastShiftColumnIndex, step):
         # type: (int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def shiftCellsRight(self, firstShiftColumnIndex, lastShiftColumnIndex, step):
         # type: (int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def __iter__(self):
         # type: () -> Iterator[Cell]
@@ -2049,522 +2132,522 @@ class ShapeContainer(object):
 class SimpleShape(Shape):
     def getShapeId(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
 
 class ObjectData(SimpleShape):
     def getContentType(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getDirectory(self):
         # type: () -> DirectoryEntry
-        pass
+        raise NotImplementedError
 
     def getFileName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getObjectData(self):
         # type: () -> bytearray
-        pass
+        raise NotImplementedError
 
     def getOLE2ClassName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getPictureData(self):
         # type: () -> PictureData
-        pass
+        raise NotImplementedError
 
     def hasDirectoryEntry(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
 
 class Drawing(ShapeContainer):
     def createAnchor(self, dx1, dy1, dx2, dy2, col1, row1, col2, row2):
         # type: (int, int, int, int, int, int, int, int) -> ClientAnchor
-        pass
+        raise NotImplementedError
 
     def createCellComment(self, anchor):
         # type: (ClientAnchor) -> Comment
-        pass
+        raise NotImplementedError
 
     def createObjectData(self, anchor, storageId, pictureIndex):
         # type: (ClientAnchor, int, int) -> ObjectData
-        pass
+        raise NotImplementedError
 
     def createPicture(self, anchor, pictureIndex):
         # type: (ClientAnchor, int) -> Picture
-        pass
+        raise NotImplementedError
 
 
 class Sheet(object):
-    PANE_LOWER_LEFT = None  # type: int
-    PANE_LOWER_RIGHT = None  # type: int
-    PANE_UPPER_LEFT = None  # type: int
-    PANE_UPPER_RIGHT = None  # type: int
-    BottomMargin = None  # type: int
-    FooterMargin = None  # type: int
-    HeaderMargin = None  # type: int
-    LeftMargin = None  # type: int
-    RightMargin = None  # type: int
-    TopMargin = None  # type: int
+    LeftMargin = 0  # type: int
+    RightMargin = 1  # type: int
+    TopMargin = 2  # type: int
+    BottomMargin = 3  # type: int
+    FooterMargin = 5  # type: int
+    HeaderMargin = 4  # type: int
+    PANE_LOWER_RIGHT = 0  # type: int
+    PANE_UPPER_RIGHT = 1  # type: int
+    PANE_LOWER_LEFT = 2  # type: int
+    PANE_UPPER_LEFT = 3  # type: int
 
     def addMergedRegion(self, region):
         # type: (CellRangeAddress) -> None
-        pass
+        raise NotImplementedError
 
     def addMergedRegionUnsafe(self, region):
         # type: (CellRangeAddress) -> None
-        pass
+        raise NotImplementedError
 
     def addValidationData(self, data):
         # type: (DataValidation) -> None
-        pass
+        raise NotImplementedError
 
     def autoSizeColumn(self, column, useMergedCells=False):
         # type: (int, bool) -> None
-        pass
+        raise NotImplementedError
 
     def createDrawingPatriarch(self):
         # type: () -> Drawing
-        pass
+        raise NotImplementedError
 
     def createFreezePane(self, colSplit, rowSplit, leftmostColumn=0, topRow=0):
         # type: (int, int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def createRow(self, rownum):
         # type: (int) -> Row
-        pass
+        raise NotImplementedError
 
     def createSplitPane(self, xSplitPos, ySplitPos, leftmostColumn, topRow, activePane):
         # type: (int, int, int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def getActiveCell(self):
         # type: () -> CellAddress
-        pass
+        raise NotImplementedError
 
     def getAutobreaks(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getCellComment(self, ref):
         # type: (CellAddress) -> Comment
-        pass
+        raise NotImplementedError
 
     def getCellComments(self):
         # type: () -> Dict[CellAddress, Comment]
-        pass
+        raise NotImplementedError
 
     def getColumnBreaks(self):
         # type: () -> List[int]
-        pass
+        raise NotImplementedError
 
     def getColumnOutlineLevel(self, column):
         # type: (int) -> int
-        pass
+        raise NotImplementedError
 
     def getColumnStyle(self, column):
         # type: (int) -> CellStyle
-        pass
+        raise NotImplementedError
 
     def getColumnWidth(self, column):
         # type: (int) -> int
-        pass
+        raise NotImplementedError
 
     def getColumnWidthInPixels(self, column):
         # type: (int) -> float
-        pass
+        raise NotImplementedError
 
     def getDataValidationHelper(self):
         # type: () -> DataValidationHelper
-        pass
+        raise NotImplementedError
 
     def getDataValidations(self):
         # type: () -> List[DataValidation]
-        pass
+        raise NotImplementedError
 
     def getDefaultColumnWidth(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDefaultRowHeight(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getDefaultRowHeightInPoints(self):
         # type: () -> float
-        pass
+        raise NotImplementedError
 
     def getDisplayGuts(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getDrawingPatriarch(self):
         # type: () -> Drawing
-        pass
+        raise NotImplementedError
 
     def getFirstRowNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFitToPage(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getFooter(self):
         # type: () -> Footer
-        pass
+        raise NotImplementedError
 
     def getForceFormulaRecalculation(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getHeader(self):
         # type: () -> Header
-        pass
+        raise NotImplementedError
 
     def getHorizontallyCenter(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getHyperlink(self, *args):
         # type: (*Any) -> Hyperlink
-        pass
+        raise NotImplementedError
 
     def getHyperlinks(self):
         # type: () -> List[Hyperlink]
-        pass
+        raise NotImplementedError
 
     def getLastRowNum(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getLeftCol(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getMargin(self, margin):
         # type: (int) -> float
-        pass
+        raise NotImplementedError
 
     def getMergedRegions(self):
         # type: () -> List[CellRangeAddress]
-        pass
+        raise NotImplementedError
 
     def getNumMergedRegions(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPaneInformation(self):
         # type: () -> PaneInformation
-        pass
+        raise NotImplementedError
 
     def getPhysicalNumberOfRows(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPrintSetup(self):
         # type: () -> PrintSetup
-        pass
+        raise NotImplementedError
 
     def getProtect(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getRepeatingColumns(self):
         # type: () -> CellRangeAddress
-        pass
+        raise NotImplementedError
 
     def getRepeatingRows(self):
         # type: () -> CellRangeAddress
-        pass
+        raise NotImplementedError
 
     def getRow(self, rownum):
         # type: (int) -> Row
-        pass
+        raise NotImplementedError
 
     def getRowBreaks(self):
         # type: () -> List[int]
-        pass
+        raise NotImplementedError
 
     def getRowSumsBelow(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getRowSumsRight(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getScenarioProtect(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getSheetConditionalFormatting(self):
         # type: () -> SheetConditionalFormatting
-        pass
+        raise NotImplementedError
 
     def getSheetName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getTopRow(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getVerticallyCenter(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getWorkbook(self):
         # type: () -> Workbook
-        pass
+        raise NotImplementedError
 
     def groupColumn(self, fromColumn, toColumn):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def groupRow(self, fromRow, toRow):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def isColumnBroken(self, column):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
     def isColumnHidden(self, column):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
     def isDisplayFormulas(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isDisplayGridlines(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isDisplayRowColHeadings(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isDisplayZeros(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isPrintGridlines(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isPrintRowAndColumnHeadings(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isRightToLeft(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isRowBroken(self, row):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
     def isSelected(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def protectSheet(self, password):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def removeArrayFormula(self, cell):
         # type: (Cell) -> CellRange
-        pass
+        raise NotImplementedError
 
     def removeColumnBreak(self, column):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def removeMergedRegion(self, index):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def removeMergedRegions(self, indices):
         # type: (List[int]) -> None
-        pass
+        raise NotImplementedError
 
     def removeRow(self, row):
         # type: (Row) -> None
-        pass
+        raise NotImplementedError
 
     def removeRowBreak(self, row):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def rowIterator(self):
         # type: () -> Iterator[Row]
-        pass
+        raise NotImplementedError
 
     def setActiveCell(self, address):
         # type: (CellAddress) -> None
-        pass
+        raise NotImplementedError
 
     def setArrayFormula(self, formula, range):
         # type: (AnyStr, CellRangeAddress) -> CellRange
-        pass
+        raise NotImplementedError
 
     def setAutobreaks(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setAutoFilter(self, range):
         # type: (CellRangeAddress) -> AutoFilter
-        pass
+        raise NotImplementedError
 
     def setColumnBreak(self, column):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setColumnGroupCollapsed(self, columnNumber, collapsed):
         # type: (int, bool) -> None
-        pass
+        raise NotImplementedError
 
     def setColumnHidden(self, columnIndex, hidden):
         # type: (int, bool) -> None
-        pass
+        raise NotImplementedError
 
     def setColumnWidth(self, columnIndex, width):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def setDefaultColumnStyle(self, column, style):
         # type: (int, CellStyle) -> None
-        pass
+        raise NotImplementedError
 
     def setDefaultColumnWidth(self, width):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDefaultRowHeight(self, height):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setDefaultRowHeightInPoints(self, height):
         # type: (float) -> None
-        pass
+        raise NotImplementedError
 
     def setDisplayFormulas(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setDisplayGridlines(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setDisplayGuts(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setDisplayRowColHeadings(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setDisplayZeros(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setFitToPage(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setForceFormulaRecalculation(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setHorizontallyCenter(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setMargin(self, margin, size):
         # type: (int, float) -> None
-        pass
+        raise NotImplementedError
 
     def setPrintGridlines(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setPrintRowAndColumnHeadings(self, show):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setRepeatingColumns(self, columnRangeRef):
         # type: (CellRangeAddress) -> None
-        pass
+        raise NotImplementedError
 
     def setRepeatingRows(self, rowRangeRef):
         # type: (CellRangeAddress) -> None
-        pass
+        raise NotImplementedError
 
     def setRightToLeft(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setRowBreak(self, row):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setRowGroupCollapsed(self, row, collapse):
         # type: (int, bool) -> None
-        pass
+        raise NotImplementedError
 
     def setRowSumsBelow(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setRowSumsRight(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setSelected(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setVerticallyCenter(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setZoom(self, scale):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def shiftColumns(self, startColumn, endColumn, n):
         # type: (int, int, int) -> None
-        pass
+        raise NotImplementedError
 
     def shiftRows(
         self, startRow, endRow, n, copyRowHeight=True, resetOriginalRowHeight=True
     ):
         # type: (int, int, int, bool, bool) -> None
-        pass
+        raise NotImplementedError
 
     def showInPane(self, topRow, leftCol):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def ungroupColumn(self, fromColumn, toColumn):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def ungroupRow(self, fromRow, toRow):
         # type: (int, int) -> None
-        pass
+        raise NotImplementedError
 
     def valudateMergedRegions(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def __iter__(self):
         # type: () -> Iterator[Row]
@@ -2574,248 +2657,248 @@ class Sheet(object):
 class SheetConditionalFormatting(object):
     def addConditionalFormatting(self, *args):
         # type: (*Any) -> int
-        pass
+        raise NotImplementedError
 
     def createConditionalFormattingColorScaleRule(self):
         # type: () -> ConditionalFormattingRule
-        pass
+        raise NotImplementedError
 
     def createConditionalFormattingRule(self, *args):
         # type: (*Any) -> ConditionalFormattingRule
-        pass
+        raise NotImplementedError
 
     def getConditionalFormattingAt(self, index):
         # type: (int) -> ConditionalFormatting
-        pass
+        raise NotImplementedError
 
     def getNumConditionalFormattings(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def removeConditionalFormatting(self, index):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
 
 class Workbook(Closeable):
-    PICTURE_TYPE_DIB = None  # type: int
-    PICTURE_TYPE_EMF = None  # type: int
-    PICTURE_TYPE_JPEG = None  # type: int
-    PICTURE_TYPE_PICT = None  # type: int
-    PICTURE_TYPE_PNG = None  # type: int
-    PICTURE_TYPE_WMF = None  # type: int
+    PICTURE_TYPE_EMF = 2  # type: int
+    PICTURE_TYPE_WMF = 3  # type: int
+    PICTURE_TYPE_PICT = 4  # type: int
+    PICTURE_TYPE_JPEG = 5  # type: int
+    PICTURE_TYPE_PNG = 6  # type: int
+    PICTURE_TYPE_DIB = 7  # type: int
 
     def addOlePackage(self, oleData, label, fileName, command):
         # type: (bytearray, AnyStr, AnyStr, AnyStr) -> int
-        pass
+        raise NotImplementedError
 
     def addPicture(self, pictureData, format_):
         # type: (bytearray, int) -> int
-        pass
+        raise NotImplementedError
 
     def addToolPack(self, toolpack):
         # type: (UDFFinder) -> None
-        pass
+        raise NotImplementedError
 
     def cloneSheet(self, sheetNum):
         # type: (int) -> Sheet
-        pass
+        raise NotImplementedError
 
     def close(self):
         # type: () -> None
-        pass
+        raise NotImplementedError
 
     def createCellStyle(self):
         # type: () -> CellStyle
-        pass
+        raise NotImplementedError
 
     def createDataFormat(self):
         # type: () -> DataFormat
-        pass
+        raise NotImplementedError
 
     def createFont(self):
         # type: () -> Font
-        pass
+        raise NotImplementedError
 
     def createName(self):
         # type: () -> Name
-        pass
+        raise NotImplementedError
 
     def createSheet(self, name=None):
         # type: (Optional[AnyStr]) -> Sheet
-        pass
+        raise NotImplementedError
 
     def findFont(self, bold, color, fontHeight, name, italic, strikeout, underline):
         # type: (bool, int, float, AnyStr, bool, bool, int) -> Font
-        pass
+        raise NotImplementedError
 
     def getActiveSheetIndex(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getAllNames(self):
         # type: () -> List[Name]
-        pass
+        raise NotImplementedError
 
     def getAllPictures(self):
         # type: () -> List[PictureData]
-        pass
+        raise NotImplementedError
 
     def getCellStyleAt(self, idx):
         # type: (int) -> CellStyle
-        pass
+        raise NotImplementedError
 
     def getCreationHelper(self):
         # type: () -> CreationHelper
-        pass
+        raise NotImplementedError
 
     def getFirstVisibleTab(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getFontAt(self, idx):
         # type: (int) -> Font
-        pass
+        raise NotImplementedError
 
     def getForceFormulaRecalculation(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getMissingCellPolicy(self):
         # type: () -> Row.MissingCellPolicy
-        pass
+        raise NotImplementedError
 
     def getName(self, name):
         # type: (AnyStr) -> Name
-        pass
+        raise NotImplementedError
 
     def getNames(self):
         # type: () -> List[Name]
-        pass
+        raise NotImplementedError
 
     def getNumberOfFontsAsInt(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getNumberOfNames(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getNumberOfSheets(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getNumCellStyles(self):
         # type: () -> int
-        pass
+        raise NotImplementedError
 
     def getPrintArea(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getSheet(self, name):
         # type: (AnyStr) -> Sheet
-        pass
+        raise NotImplementedError
 
     def getSheetAt(self, index):
         # type: (int) -> Sheet
-        pass
+        raise NotImplementedError
 
     def getSheetIndex(self, arg):
         # type: (Union[AnyStr, Sheet]) -> int
-        pass
+        raise NotImplementedError
 
     def getSheetName(self, sheet):
         # type: (int) -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getSheetVisibility(self, sheetIx):
         # type: (int) -> SheetVisibility
-        pass
+        raise NotImplementedError
 
     def getSpreadsheetVersion(self):
         # type: () -> SpreadsheetVersion
-        pass
+        raise NotImplementedError
 
     def isHidden(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isSheetHidden(self, sheetIx):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
     def isSheetVeryHidden(self, sheetIx):
         # type: (int) -> bool
-        pass
+        raise NotImplementedError
 
     def linkExternalWorkbook(self, name, workbook):
         # type: (AnyStr, Workbook) -> None
-        pass
+        raise NotImplementedError
 
     def removeName(self, name):
         # type: (Name) -> None
-        pass
+        raise NotImplementedError
 
     def removePrintArea(self, sheetIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def removeSheetAt(self, sheetIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setActiveSheet(self, sheetIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setFirstVisibleTab(self, sheetIndex):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setForceFormulaRecalculation(self, value):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setHidden(self, hiddenFlag):
         # type: (bool) -> None
-        pass
+        raise NotImplementedError
 
     def setMissingCellPolicy(self, missingCellPolicy):
         # type: (Row.MissingCellPolicy) -> None
-        pass
+        raise NotImplementedError
 
     def setPrintArea(self, sheetIndex, *args):
         # type: (int, *AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setSelectedTab(self, index):
         # type: (int) -> None
-        pass
+        raise NotImplementedError
 
     def setSheetHidden(self, sheetIx, hidden):
         # type: (int, bool) -> None
-        pass
+        raise NotImplementedError
 
     def setSheetName(self, sheet, name):
         # type: (int, AnyStr) -> None
-        pass
+        raise NotImplementedError
 
     def setSheetOrder(self, sheetName, pos):
         # type: (AnyStr, int) -> None
-        pass
+        raise NotImplementedError
 
     def setSheetVisibility(self, sheetIx, visibility):
         # type: (int, SheetVisibility) -> None
-        pass
+        raise NotImplementedError
 
     def sheetIterator(self):
         # type: () -> Iterator[Sheet]
-        pass
+        raise NotImplementedError
 
     def write(self, stream):
         # type: (OutputStream) -> None
-        pass
+        raise NotImplementedError
 
     def __iter__(self):
         # type: () -> Iterator[Sheet]

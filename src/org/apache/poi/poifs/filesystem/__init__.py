@@ -7,27 +7,27 @@ from org.apache.poi.hpsf import ClassID
 class Entry(object):
     def delete(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def getName(self):
         # type: () -> AnyStr
-        pass
+        raise NotImplementedError
 
     def getParent(self):
         # type: () -> DirectoryEntry
-        pass
+        raise NotImplementedError
 
     def isDirectoryEntry(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def isDocumentEntry(self):
         # type: () -> bool
-        pass
+        raise NotImplementedError
 
     def renameTo(self, newName):
         # type: (AnyStr) -> None
-        pass
+        raise NotImplementedError
 
 
 class DirectoryEntry(Entry):
@@ -37,6 +37,10 @@ class DirectoryEntry(Entry):
 
     def createDocument(self, *args):
         # type: (*Any) -> None
+        pass
+
+    def delete(self):
+        # type: () -> bool
         pass
 
     def getEntries(self):
@@ -55,6 +59,14 @@ class DirectoryEntry(Entry):
         # type: () -> Set[AnyStr]
         pass
 
+    def getName(self):
+        # type: () -> AnyStr
+        pass
+
+    def getParent(self):
+        # type: () -> DirectoryEntry
+        pass
+
     def getStorageClsid(self):
         # type: () -> ClassID
         pass
@@ -63,8 +75,20 @@ class DirectoryEntry(Entry):
         # type: (AnyStr) -> bool
         pass
 
+    def isDirectoryEntry(self):
+        # type: () -> bool
+        pass
+
+    def isDocumentEntry(self):
+        # type: () -> bool
+        pass
+
     def isEmpty(self):
         # type: () -> bool
+        pass
+
+    def renameTo(self, newName):
+        # type: (AnyStr) -> None
         pass
 
     def setStorageClsid(self, clsidStorage):
