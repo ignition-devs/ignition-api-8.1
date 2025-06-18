@@ -1,0 +1,16 @@
+from typing import Any
+
+from java.lang import IllegalArgumentException, Number
+from org.apache.commons.math3.exception.util import ExceptionContext
+
+class MathIllegalArgumentException(IllegalArgumentException):
+    def __init__(self, *args: Any) -> None: ...
+    def getContext(self) -> ExceptionContext: ...
+
+class MathIllegalNumberException(MathIllegalArgumentException):
+    INTEGER_ZERO: int
+    def getArgument(self) -> Number: ...
+
+class DimensionMismatchException(MathIllegalNumberException):
+    def __init__(self, *args: Any) -> None: ...
+    def getDimension(self) -> int: ...

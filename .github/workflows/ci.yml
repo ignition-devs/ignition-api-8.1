@@ -1,11 +1,12 @@
 name: ci
 
 on:
-  workflow_dispatch:
   pull_request:
   push:
     branches:
       - main
+  workflow_call:
+  workflow_dispatch:
 
 jobs:
   pre-commit:
@@ -18,3 +19,4 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pylint.yml@v5
     with:
       path: src
+      working-directory: ignition-api
