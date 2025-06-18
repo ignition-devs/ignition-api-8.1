@@ -1,0 +1,6 @@
+from typing import List
+
+from com.inductiveautomation.ignition.common.i18n.keyboard import KeyboardLayout
+
+def getKeyboardLayouts() -> List[KeyboardLayout]: ...
+def updateProject() -> None: ...

@@ -1,0 +1,6 @@
+from dev.coatl.helper.types import AnyStr
+from java.awt import Container
+
+class JTextComponent(Container):
+    def getText(self, *args: int) -> AnyStr: ...
+    def setText(self, t: AnyStr) -> None: ...

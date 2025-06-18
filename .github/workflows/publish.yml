@@ -6,30 +6,27 @@ on:
       - published
 
 jobs:
-  pre-commit:
-    uses: coatl-dev/workflows/.github/workflows/pre-commit.yml@v5
-    with:
-      skip-hooks: 'pylint'
+  ci:
+    uses: ./.github/workflows/ci.yml
 
-  pylint:
-    needs: pre-commit
-    uses: coatl-dev/workflows/.github/workflows/pylint.yml@v5
-    with:
-      path: src
+  pr-build:
+    needs: ci
+    uses: ./.github/workflows/pr-build.yml
 
-  tox:
-    needs:
-      - pre-commit
-      - pylint
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
-
-  pypi-publish:
-    needs:
-      - pre-commit
-      - pylint
-      - tox
+  publish-ignition-api:
+    needs: pr-build
     uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
     with:
       python-version: '2.7'
+      working-directory: ignition-api
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
+
+  publish-ignition-api-stubs:
+    needs: pr-build
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
+    with:
+      python-version: '3.12'
+      working-directory: ignition-api-stubs
+    secrets:
+      password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_STUBS }}

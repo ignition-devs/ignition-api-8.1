@@ -4,17 +4,21 @@
 root = true
 
 [*]
+charset = utf-8
 end_of_line = lf
 trim_trailing_whitespace = true
 
-[*.{md,toml,yaml,yml}]
-indent_style = space
+[*.{json}]
 indent_size = 2
-insert_final_newline = true
-x-soft-wrap-text = true
+indent_style = space
+insert_final_newline = false
 
-[*.{ini,py}]
-charset = utf-8
+[*.{md,toml,yaml,yml}]
+indent_size = 2
 indent_style = space
 insert_final_newline = true
+
+[*.{py,pyi}]
 indent_size = 4
+indent_style = space
+insert_final_newline = true

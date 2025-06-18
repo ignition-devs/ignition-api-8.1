@@ -1,0 +1,4 @@
+[tool.pip-tools.compile]
+generate-hashes = true
+no-strip-extras = true
+reuse-hashes = true

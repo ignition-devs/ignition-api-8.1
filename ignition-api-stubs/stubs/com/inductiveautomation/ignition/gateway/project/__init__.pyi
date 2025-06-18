@@ -1,0 +1,33 @@
+from typing import List, Union
+
+from com.inductiveautomation.ignition.common.project.resource import (
+    ProjectResource,
+    ProjectResourceId,
+    ResourceType,
+)
+from dev.coatl.helper.types import AnyStr
+from java.lang import Object
+
+class ResourceFilter(Object):
+    class Builder(Object):
+        def addResourceType(
+            self, resourceType: ResourceType
+        ) -> ResourceFilter.Builder: ...
+        def addResourceTypes(
+            self, resourceTypes: List[ResourceType]
+        ) -> ResourceFilter.Builder: ...
+        def build(self) -> ResourceFilter: ...
+        def setApplicationScope(
+            self, applicationScope: Union[AnyStr, int]
+        ) -> ResourceFilter.Builder: ...
+
+    def __init__(
+        self, applicationScope: int, resourceTypes: List[ResourceType]
+    ) -> None: ...
+    def apply(self, arg: Union[ProjectResource, ProjectResourceId]) -> bool: ...
+    @staticmethod
+    def forScope(applicationScope: int) -> ResourceFilter: ...
+    def getApplicationScope(self) -> int: ...
+    def getResourceTypes(self) -> List[ResourceType]: ...
+    @staticmethod
+    def newBuilder() -> ResourceFilter.Builder: ...
