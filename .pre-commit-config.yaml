@@ -1,3 +1,8 @@
+ci:
+  autoupdate_commit_msg: 'build(deps): pre-commit autoupdate'
+  skip:
+    - pylint
+
 repos:
   - repo: https://github.com/aio-libs/sort-all
     rev: v1.3.0
@@ -38,18 +43,18 @@ repos:
       - id: docformatter
         files: ^ignition-api/src/
         args: [--in-place, --wrap-summaries=72, --close-quotes-on-newline]
-  - repo: https://github.com/PyCQA/flake8
+  - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
-        name: flake8-pkg
+        name: flake8-ignition-api
         files: ^ignition-api/src/
         args: [--config=ignition-api/.flake8]
   - repo: https://github.com/PyCQA/flake8
     rev: 7.2.0
     hooks:
       - id: flake8
-        name: flake8-stubs
+        name: flake8-ignition-api-stubs
         types: [file]
         files: \.(pyi)$
         additional_dependencies: [flake8-pyi]
@@ -67,15 +72,6 @@ repos:
       - id: pydoclint-flake8
         files: ^ignition-api/src/
         args: [--config=ignition-api/.pydoclint]
-  - repo: local
-    hooks:
-      - id: pylint
-        name: pylint
-        entry: pylint
-        language: system
-        files: ^ignition-api/src/
-        types: [python]
-        args: [--rcfile=ignition-api/.pylintrc]
   - repo: https://github.com/coatl-dev/hadolint-coatl
     rev: 2.12.1b0
     hooks:
@@ -86,3 +82,12 @@ repos:
       - id: commitizen
       - id: commitizen-branch
         stages: [pre-push]
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        files: ^ignition-api/src/
+        types: [python]
+        args: [--rcfile=ignition-api/.pylintrc]
