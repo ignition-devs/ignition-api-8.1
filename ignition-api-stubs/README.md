@@ -1,9 +1,9 @@
 # ignition-api-stubs
 
 <!--- Badges --->
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ignition-api-8.1-stubs)](https://pypi.org/project/ignition-api-8.1-stubs/)
-[![PyPI - Version](https://img.shields.io/pypi/v/ignition-api-8.1-stubs)](https://pypi.org/project/ignition-api-8.1-stubs/)
-[![PyPI - Downloads](https://pepy.tech/badge/ignition-api-8.1-stubs)](https://pepy.tech/project/ignition-api-8.1-stubs)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ignition-api-stubs)](https://pypi.org/project/ignition-api-stubs/)
+[![PyPI - Version](https://img.shields.io/pypi/v/ignition-api-stubs)](https://pypi.org/project/ignition-api-stubs/)
+[![PyPI - Downloads](https://pepy.tech/badge/ignition-api-stubs)](https://pepy.tech/project/ignition-api-stubs)
 
 This package contains a collection of [stubs] for [`ignition-api-8.1`]. These
 files were generated using `mypy`'s [`stubgen`].
