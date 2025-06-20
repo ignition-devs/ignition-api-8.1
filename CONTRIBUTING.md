@@ -1,35 +1,46 @@
 # Contributing to ignition-api
 
-We follow a simple model to make contributing as straightforward as possible. These guidelines allow us to streamline the development process and achieve greater transparency.
+We follow a simple model to make contributing as straightforward as possible.
+These guidelines allow us to streamline the development process and achieve
+greater transparency.
 
 ## Code of Conduct
 
-Help us keep **ignition-api** open and inclusive. Please read and follow our [Code of Conduct](https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md).
+Help us keep **ignition-api** open and inclusive. Please read and follow our
+[Code of Conduct].
 
 ## Got a question?
 
-Please join us on or [Discussions](https://github.com/orgs/ignition-devs/discussions).
+Please join us on or [Discussions].
 
 ## Found a bug?
 
-If you find a bug or if something is missing in the source code, you can help us by submitting an issue, or even better, you can [submit a Pull Request](#pull-requests) with a fix.
+If you find a bug or if something is missing in the source code, you can help us
+by submitting an issue, or even better, you can [submit a Pull Request] with a
+fix.
 
 ## Getting ready to contribute
 
-For **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 to run tests and style checks with `pre-commit` and `tox`.
+> [!TIP]
+> You may use our devcontainer.
+
+For **ignition-api** we rely on Python 2.7.18 for development, Python 3.12 for
+typechecking and the latest stable release to run tests and style checks with
+[`pre-commit`], [`pylint`] and [`tox`]. Additionally we use [`commitizen`] to
+help us maintain consistent and meaningful commit messages.
 
 ### Setting up your local environment
 
-1. Install Python 2.7.18 and the latest 3.10 release
-1. Install the required packages for development you may run the following command:
+1. Once you've installed Python, install the required packages for development
+  you may run the following command:
 
     ```sh
-    python2 -m pip install --requirement requirements.txt
+    python2 -m pip install --requirement ignition-api/requirements.txt
     ```
 
 1. Install Python 3 tools
 
-    1. [`pre-commit`](https://pre-commit.com/)
+    1. [`pre-commit`]
 
         ```sh
         python3 -m pip install pre-commit
@@ -38,10 +49,10 @@ For **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 t
         1. Install the git hook scripts
 
             ```sh
-            pre-commit install
+            pre-commit install --hook-type  pre-commit --hook-type commit-msg --hook-type pre-push
             ```
 
-    1. [`tox`](https://tox.wiki/)
+    1. [`tox`]
 
         ```sh
         python3 -m pip install tox
@@ -49,32 +60,35 @@ For **ignition-api** we rely on Python 2.7.18 for development, and Python 3.10 t
 
 ## Pull Requests
 
-For **ignition-api** we use the [GitHub flow](https://guides.github.com/introduction/flow/) as main versioning workflow.
+For **ignition-api** we use the [GitHub flow] as main versioning workflow.
 
 1. Fork the repository
-1. Create a new branch from **main** for each feature, fix or improvement, using the following naming convention:
+1. Create a new branch from **main** for each feature, fix or improvement, using
+  the following naming convention:
     1. `feat/scope/feature-name` when introducing a new feature
     1. `fix/scope/fix-name` when fixing an existing issue
     1. `docs/change` for documentation changes
     1. `chore/chore-desc` for miscellaneous changes
 1. Make sure to run `pre-commit` and `tox`
-1. Add your commits to the branch following our [Commit Message Format](#commit-message-format)
+1. Add your commits to the branch following our [Commit Message Format]
 1. Send a pull request from each feature branch to the **main** branch
 
-It is very important to separate new features or improvements into separate feature branches, and to send a pull request for each branch.
+It is very important to separate new features or improvements into separate
+feature branches, and to send a pull request for each branch.
 
 This allows us to review and pull in new features or improvements individually.
 
 ## Coding style
 
-We use the [Black code style](https://github.com/psf/black/blob/main/docs/the_black_code_style/index.rst), but also rely on other tools.
+We use the [Black code style], but also rely on other tools.
 
 ## Commit Message Format
 
 We have very precise rules over how our Git commit messages must be formatted.
 This format leads to **easier to read commit history**.
 
-Each commit message consists of a **header**, a **body**, and a **footer**, trying to adhere to the ["50/72 rule"](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html).
+Each commit message consists of a **header**, a **body**, and a **footer**,
+trying to adhere to the ["50/72 rule"].
 
 ```text
 <header>
@@ -84,13 +98,14 @@ Each commit message consists of a **header**, a **body**, and a **footer**, tryi
 <footer>
 ```
 
-The `header` is mandatory and must conform to the [Conventional Commits specification](https://conventionalcommits.org/).
+The `header` is mandatory and must conform to the [Conventional Commits specification].
 Additionally, we recommend trying to keep the `header` to a maximum of 50 characters.
 
 The `body` is mandatory for all commits except for those of type "docs".
 When the body is present it should be wrapped at 72 characters.
 
-The `footer` is optional. The [Commit Message Footer](#commit-message-footer) format describes what the footer is used for and the structure it must have.
+The `footer` is optional. The [Commit Message Footer] format describes what the
+footer is used for and the structure it must have.
 
 ## Commit message header
 
@@ -104,16 +119,22 @@ The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is opti
 
 Must be one of the following:
 
-* **build**: Changes that affect the build system or external dependencies (example scope: `deps`, `pip`)
-* **chore**: Other changes that don't modify src or test files (example scopes: `release`)
+* **build**: Changes that affect the build system or external dependencies
+  (example scope: `deps`, `pip`)
+* **chore**: Other changes that don't modify src or test files (example scopes:
+  `release`)
 * **ci**: Changes to our CI configuration files and scripts (example scope: `pip`)
 * **docs**: Documentation only changes
-* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`, `system`, `thecesrom`)
+* **feat**: A new feature (example scopes: `ia`, `java`, `javax`, `org`,
+  `system`)
 * **fix**: A bug fix (example scopes: same as **feat**)
-* **perf**: A code change that improves performance (example scopes: same as **feat**)
-* **refactor**: A code change that neither fixes a bug nor adds a feature (example scopes: same as **feat**)
+* **perf**: A code change that improves performance (example scopes: same as
+  **feat**)
+* **refactor**: A code change that neither fixes a bug nor adds a feature
+  (example scopes: same as **feat**)
 * **revert**: Reverts a previous commit
-* **style**: Changes that do not affect the meaning of the code (white-space, formatting, etc.)
+* **style**: Changes that do not affect the meaning of the code (white-space,
+  formatting, etc.)
 * **test**: Adding missing tests or correcting existing tests
 
 ### Scope
@@ -126,16 +147,20 @@ The following is the list of supported scopes:
 * **java**: for changes to the `java` package
 * **javax**: for changes to the `javax` package
 * **org**: for changes to the `org` package
-* **pip**: for changes to Python Packaging files (`pyproject.toml`, `setup.cfg`, `setup.py`)
+* **pip**: for changes to Python Packaging files (`pyproject.toml`, `setup.cfg`,
+  `setup.py`)
 * **system**: for changes to the `system` package
 * **thecesrom**: for changes to the `dev.thecesrom` package
 
 There are currently a few exceptions to the "use package name" rule:
 
-* **deps**: for updating dependencies for our CI scripts. This is mainly used by `dependabot` and `pre-commit.ci`
+* **deps**: for updating dependencies for our CI scripts. This is mainly used by
+  `dependabot` and `pre-commit.ci`
 * **pip**: for changes to `setup.[cfg|py]`, or the package publishing workflow
 * **release**: used for creating a new release
-* none/empty string: useful for changes that are done across all packages (e.g. `style: use black style`) and for docs changes that are not related to a specific package (e.g. `docs: fix typo in README`).
+* none/empty string: useful for changes that are done across all packages (e.g.
+  `style: use black style`) and for docs changes that are not related to a
+  specific package (e.g. `docs: fix typo in README`).
 
 ## Summary
 
@@ -153,8 +178,9 @@ refactor(ia): improve Version comparison logic
 
 ## Commit Message Footer
 
-The footer can contain information about breaking changes and deprecations and is also the place to reference GitHub issues, and other PRs that this commit closes or is related to.
-For example:
+The footer can contain information about breaking changes and deprecations and
+is also the place to reference GitHub issues, and other PRs that this commit
+closes or is related to. For example:
 
 ```text
 BREAKING CHANGE: <breaking change summary>
@@ -176,17 +202,23 @@ DEPRECATED: <what is deprecated>
 Closes #<pr number>
 ```
 
-Breaking Change section should start with the phrase "BREAKING CHANGE: " followed by a summary of the breaking change, a blank line, and a detailed description of the breaking change that also includes migration instructions.
+Breaking Change section should start with the phrase "BREAKING CHANGE: "
+followed by a summary of the breaking change, a blank line, and a detailed
+description of the breaking change that also includes migration instructions.
 
-Similarly, a Deprecation section should start with "DEPRECATED: " followed by a short description of what is deprecated, a blank line, and a detailed description of the deprecation that also mentions the recommended update path.
+Similarly, a Deprecation section should start with "DEPRECATED: " followed by a
+short description of what is deprecated, a blank line, and a detailed
+description of the deprecation that also mentions the recommended update path.
 
 ## Revert commits
 
-If the commit reverts a previous commit, it should begin with `revert:`, followed by the header of the reverted commit.
+If the commit reverts a previous commit, it should begin with `revert:`,
+followed by the header of the reverted commit.
 
 The content of the commit message body should contain:
 
-* information about the SHA of the commit being reverted in the following format: `This reverts commit <SHA>`,
+* information about the SHA of the commit being reverted in the following
+  format: `This reverts commit <SHA>`,
 * a clear description of the reason for reverting the commit message.
 
 Example:
@@ -196,3 +228,18 @@ revert(ci): remove condition from job
 
 Refs: 2a50de4
 ```
+
+<!-- Links -->
+["50/72 rule"]: https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html
+[Black code style]: https://github.com/psf/black/blob/main/docs/the_black_code_style/index.rst
+[Code of Conduct]: https://github.com/ignition-devs/.github/blob/main/CODE_OF_CONDUCT.md
+[Commit Message Footer]: #commit-message-footer
+[Commit Message Format]: #commit-message-format
+[`commitizen`]: https://commitizen-tools.github.io/commitizen/
+[Conventional Commits specification]: https://conventionalcommits.org/
+[Discussions]: https://github.com/orgs/ignition-devs/discussions
+[GitHub flow]: https://guides.github.com/introduction/flow/
+[`pre-commit`]: https://pre-commit.com/
+[`pylint`]: https://pylint.readthedocs.io/en/latest/
+[submit a Pull Request]: #pull-requests
+[`tox`]: https://tox.wiki/
