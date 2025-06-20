@@ -26,7 +26,7 @@ fix.
 
 For **ignition-api** we rely on Python 2.7.18 for development, Python 3.12 for
 typechecking and the latest stable release to run tests and style checks with
-[`pre-commit`], [`pylint`] and [`tox`]. Additionally we use [`commitizen`] to
+[`pre-commit`], [`pylint`] and [`tox`]. Additionally, we use [`commitizen`] to
 help us maintain consistent and meaningful commit messages.
 
 ### Setting up your local environment
