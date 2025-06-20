@@ -190,7 +190,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct].
 <!-- Links -->
 [CONTRIBUTING.md]: ../CONTRIBUTING.md#contributing-to-ignition-api
 [CONTRIBUTORS]: https://github.com/ignition-devs/ignition-api-8.1/graphs/contributors
-[Discussions]: https://github.com/ignition-devs/discussions/discussions
+[Discussions]: https://github.com/orgs/ignition-devs/discussions
 [Ignition System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [LICENSE]: ../LICENSE
 [Microsoft Open Source Code of Conduct]: https://opensource.microsoft.com/codeofconduct/
