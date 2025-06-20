@@ -49,7 +49,7 @@ help us maintain consistent and meaningful commit messages.
         1. Install the git hook scripts
 
             ```sh
-            pre-commit install --hook-type  pre-commit --hook-type commit-msg --hook-type pre-push
+            pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push
             ```
 
     1. [`tox`]
