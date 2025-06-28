@@ -18,12 +18,12 @@ on:
 
 jobs:
   tox-ignition-api:
-    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v5
+    uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
     with:
       working-directory: ignition-api
 
   tox-ignition-api-stubs:
-    uses: coatl-dev/workflows/.github/workflows/tox.yml@v5
+    uses: coatl-dev/workflows/.github/workflows/tox.yml@v6
     with:
       python-versions: |
         3.9
