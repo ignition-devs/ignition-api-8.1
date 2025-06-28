@@ -13,30 +13,27 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Upgrade ignition-api requirements
-        uses: coatl-dev/actions/pip-compile-upgrade@v4
+        uses: coatl-dev/actions/pip-compile-upgrade@v5
         with:
           path: requirements.txt
-          python-version: '2.7'
           working-directory: ignition-api
 
       - name: Upgrade ignition-api-stubs requirements
-        uses: coatl-dev/actions/pip-compile-upgrade@v4
+        uses: coatl-dev/actions/uv-pip-compile-upgrade@v5
         with:
           path: requirements.txt
           python-version: '3.12'
-          use-config: 'yes'
-          config-file: '.pip-tools.toml'
           working-directory: ignition-api-stubs
 
       - name: Detect changes
         id: git-diff
-        uses: coatl-dev/actions/simple-git-diff@v4
+        uses: coatl-dev/actions/simple-git-diff@v5
         with:
           path: ${{ github.workspace }}
 
       - name: Import GPG key
         if: ${{ steps.git-diff.outputs.diff == 'true' }}
-        uses: coatl-dev/actions/gpg-import@v4
+        uses: coatl-dev/actions/gpg-import@v5
         with:
           passphrase: ${{ secrets.COATL_BOT_GPG_PASSPHRASE }}
           private-key: ${{ secrets.COATL_BOT_GPG_PRIVATE_KEY }}
@@ -61,6 +58,6 @@ jobs:
 
       - name: Create pull request
         if: ${{ steps.git-diff.outputs.diff == 'true' }}
-        uses: coatl-dev/actions/pr-create@v4
+        uses: coatl-dev/actions/pr-create@v5
         with:
           gh-token: ${{ secrets.COATL_BOT_GH_TOKEN }}
