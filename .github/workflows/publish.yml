@@ -15,16 +15,15 @@ jobs:
 
   publish-ignition-api:
     needs: pr-build
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
-      python-version: '2.7'
       working-directory: ignition-api
     secrets:
       password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
 
   publish-ignition-api-stubs:
     needs: pr-build
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v5
+    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
     with:
       python-version: '3.12'
       working-directory: ignition-api-stubs
