@@ -13,19 +13,22 @@ jobs:
     needs: ci
     uses: ./.github/workflows/pr-build.yml
 
-  publish-ignition-api:
+  pypi-upload:
     needs: pr-build
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
-    with:
-      working-directory: ignition-api
-    secrets:
-      password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
+    runs-on: blacksmith-2vcpu-ubuntu-2404
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-  publish-ignition-api-stubs:
-    needs: pr-build
-    uses: coatl-dev/workflows/.github/workflows/pypi-upload.yml@v6
-    with:
-      python-version: '3.12'
-      working-directory: ignition-api-stubs
-    secrets:
-      password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_STUBS }}
+      - name: Upload ignition-api to PyPI
+        uses: coatl-dev/actions/pypi-upload@v5
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
+          working-directory: ignition-api
+
+      - name: Upload ignition-api-stubs to PyPI
+        uses: coatl-dev/actions/pypi-upload@v5
+        with:
+          python-version: '3.12'
+          password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_STUBS }}
+          working-directory: ignition-api-stubs
