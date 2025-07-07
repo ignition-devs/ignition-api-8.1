@@ -10,7 +10,7 @@ repos:
       - id: sort-all
         files: ^ignition-api/src/
   - repo: https://github.com/bwhmather/ssort
-    rev: 0.14.0
+    rev: 0.15.0
     hooks:
       - id: ssort
         files: ^ignition-api/src/
