@@ -188,11 +188,11 @@ See the [LICENSE].
 This project has adopted the [Microsoft Open Source Code of Conduct].
 
 <!-- Links -->
-[CONTRIBUTING.md]: ../CONTRIBUTING.md#contributing-to-ignition-api
+[CONTRIBUTING.md]: https://github.com/ignition-devs/ignition-api-8.1/blob/main/CONTRIBUTING.md#contributing-to-ignition-api
 [CONTRIBUTORS]: https://github.com/ignition-devs/ignition-api-8.1/graphs/contributors
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
 [Ignition System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
-[LICENSE]: ../LICENSE
+[LICENSE]: https://github.com/ignition-devs/ignition-api-8.1/blob/main/LICENSE
 [Microsoft Open Source Code of Conduct]: https://opensource.microsoft.com/codeofconduct/
 [Python 2.7.18]: https://www.python.org/downloads/release/python-2718/
 [releases]: https://github.com/ignition-devs/ignition-api-8.1/releases
