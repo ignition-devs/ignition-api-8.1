@@ -64,7 +64,7 @@ repos:
     hooks:
       - id: pydocstyle
         files: ^ignition-api/src/
-        exclude: ^(ignition-api/src/ch/|ignition-api/src/com/|ignition-api/src/dev/|ignition-api/src/java/|ignition-api/src/javax/|ignition-api/src/org/)
+        exclude: ^ignition-api/src/(ch|com|dev|java|javax|org)/
         args: [--config=ignition-api/.pydocstyle]
   - repo: https://github.com/jsh9/pydoclint
     rev: 0.6.7
