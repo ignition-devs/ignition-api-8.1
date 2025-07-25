@@ -1,9 +1,6 @@
 {
   "name": "ignition-api-8.1",
-  "build": {
-    "context": "..",
-    "dockerfile": "Dockerfile"
-  },
+  "image": "quay.io/ignition-devs/devcontainer-base:python",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -15,5 +12,6 @@
       }
     }
   },
-  "onCreateCommand": "pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push"
+  "onCreateCommand": "pre-commit install --hook-type pre-commit --hook-type commit-msg --hook-type pre-push",
+  "postCreateCommand": "python2 -m pip install --requirement ignition-api/requirements.txt"
 }
