@@ -62,8 +62,8 @@ def readRawMultiple(
     propertyArrayIndices=None,  # type: Optional[List[int]]
 ):
     # type: (...) -> List[Any]
-    """This function is the bulk version of system.bacnet.readRaw. Reads
-    properties from objects and returns a list of corresponding
+    """This function is the bulk version of system.bacnet.readRaw.
+    properties from objects and returns a list of corresponding Reads
     Encodable objects provided equal-length lists of object types,
     object instance numbers, property ids, and property array indices.
 
