@@ -1,6 +1,6 @@
 ci:
   autoupdate_commit_msg: 'build(deps): pre-commit autoupdate'
-  autofix_commit_msg: 'stylw: apply auto fixes with pre-commit'
+  autofix_commit_msg: 'style: apply auto fixes with pre-commit'
   skip:
     - pylint
 
