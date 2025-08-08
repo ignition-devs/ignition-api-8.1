@@ -1,6 +1,6 @@
 ci:
   autoupdate_commit_msg: 'build(deps): pre-commit autoupdate'
-  autofix_commit_msg: 'chore: apply auto fixes with pre-commit'
+  autofix_commit_msg: 'stylw: apply auto fixes with pre-commit'
   skip:
     - pylint
 
@@ -52,6 +52,7 @@ repos:
         name: flake8-ignition-api
         files: ^ignition-api/src/
         args: [--config, ignition-api/tox.ini]
+        additional_dependencies: [pydoclint]
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
@@ -68,12 +69,6 @@ repos:
         files: ^ignition-api/src/
         exclude: ^ignition-api/src/(ch|com|dev|java|javax|org)/
         args: [--config, ignition-api/tox.ini]
-  - repo: https://github.com/jsh9/pydoclint
-    rev: 0.6.7
-    hooks:
-      - id: pydoclint-flake8
-        files: ^ignition-api/src/
-        args: [--config=ignition-api/tox.ini, --extend-ignore=F401]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.8.3
     hooks:
