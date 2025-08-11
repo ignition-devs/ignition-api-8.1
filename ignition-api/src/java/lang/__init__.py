@@ -840,8 +840,8 @@ class UnsupportedOperationException(RuntimeException):
 
 
 class Thread(Object):
-    """A thread is a thread of execution in a program. The Java Virtual
-    Machine allows an application to have multiple threads of execution
+    """A thread is a thread of execution in a program. Machine allows an
+    application to have multiple threads of execution The Java Virtual
     running concurrently.
 
     Every thread has a name for identification purposes. More than one
