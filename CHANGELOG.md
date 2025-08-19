@@ -1,3 +1,13 @@
+## 8.1.49 (2025-08-19)
+
+### Feat
+
+- add org.apache.poi (#326)
+
+### Refactor
+
+- **org**: correctly implement interfaces (#329)
+
 ## 8.1.48.post2 (2025-06-09)
 
 ### Feat
