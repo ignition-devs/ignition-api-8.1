@@ -70,7 +70,7 @@ repos:
         exclude: ^ignition-api/src/(ch|com|dev|java|javax|org)/
         args: [--config, ignition-api/tox.ini]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.8.3
+    rev: v4.8.4
     hooks:
       - id: commitizen
       - id: commitizen-branch
