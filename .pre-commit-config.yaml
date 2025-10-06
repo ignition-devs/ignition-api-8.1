@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: ssort
         files: ^ignition-api/src/
-  - repo: https://github.com/psf/black
+  - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 25.9.0
     hooks:
       - id: black
@@ -26,14 +26,14 @@ repos:
         files: ^ignition-api/src/
         language_version: python3.12
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.1
+    rev: 6.1.0
     hooks:
       - id: isort
         name: isort-pkg
         files: ^ignition-api/src/
         args: [--settings-file, ignition-api/tox.ini]
   - repo: https://github.com/PyCQA/isort
-    rev: 6.0.1
+    rev: 6.1.0
     hooks:
       - id: isort
         name: isort-stubs
