@@ -45,6 +45,7 @@ repos:
       - id: docformatter
         files: ^ignition-api/src/
         args: [--config, ignition-api/tox.ini]
+        language_version: python3.12
   - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
@@ -53,6 +54,7 @@ repos:
         files: ^ignition-api/src/
         args: [--config, ignition-api/tox.ini]
         additional_dependencies: [pydoclint]
+        language_version: python3.12
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
