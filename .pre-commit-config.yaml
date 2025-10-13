@@ -26,14 +26,14 @@ repos:
         files: ^ignition-api/src/
         language_version: python3.12
   - repo: https://github.com/PyCQA/isort
-    rev: 6.1.0
+    rev: 7.0.0
     hooks:
       - id: isort
         name: isort-pkg
         files: ^ignition-api/src/
         args: [--settings-file, ignition-api/tox.ini]
   - repo: https://github.com/PyCQA/isort
-    rev: 6.1.0
+    rev: 7.0.0
     hooks:
       - id: isort
         name: isort-stubs
