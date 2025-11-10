@@ -16,7 +16,7 @@ repos:
       - id: ssort
         files: ^ignition-api/src/
   - repo: https://github.com/psf/black-pre-commit-mirror
-    rev: 25.9.0
+    rev: 25.11.0
     hooks:
       - id: black
   - repo: https://github.com/hakancelikdev/unimport
@@ -72,7 +72,7 @@ repos:
         exclude: ^ignition-api/src/(ch|com|dev|java|javax|org)/
         args: [--config, ignition-api/tox.ini]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v4.9.1
+    rev: v4.10.0
     hooks:
       - id: commitizen
       - id: commitizen-branch
