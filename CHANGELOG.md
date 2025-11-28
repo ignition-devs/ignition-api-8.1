@@ -1,3 +1,14 @@
+## 8.1.50.post2 (2025-11-28)
+
+### Fix
+
+- **java**: apply sourcery suggestions (#361)
+
+### Refactor
+
+- **java**: mirror java from ignition-api-8.3 (#362)
+- **java**: add exception classes to java.nio.file (#360)
+
 ## 8.1.50.post1 (2025-11-27)
 
 ### Fix
