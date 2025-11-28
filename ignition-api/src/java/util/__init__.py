@@ -16,6 +16,7 @@ __all__ = [
     "Calendar",
     "Collection",
     "Comparator",
+    "ConcurrentModificationException",
     "Currency",
     "Date",
     "Dictionary",
@@ -48,7 +49,7 @@ from typing import (
 
 from dev.coatl.helper.types import AnyStr
 from dev.coatl.utils.decorators import classproperty
-from java.lang import Class, Object
+from java.lang import Class, Object, RuntimeException, Throwable
 from java.util.function import (
     BiFunction,
     Consumer,
@@ -1021,6 +1022,12 @@ class Calendar(Object):
     def toInstant(self):
         # type: () -> Instant
         pass
+
+
+class ConcurrentModificationException(RuntimeException):
+    def __init__(self, message=None, cause=None):
+        # type: (Optional[str], Optional[Throwable]) -> None
+        super(ConcurrentModificationException, self).__init__(message)
 
 
 class Currency(Object):
