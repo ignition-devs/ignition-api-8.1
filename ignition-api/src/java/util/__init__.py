@@ -1027,7 +1027,7 @@ class Calendar(Object):
 class ConcurrentModificationException(RuntimeException):
     def __init__(self, message=None, cause=None):
         # type: (Optional[str], Optional[Throwable]) -> None
-        super(ConcurrentModificationException, self).__init__(message)
+        super(ConcurrentModificationException, self).__init__(message, cause)
 
 
 class Currency(Object):
