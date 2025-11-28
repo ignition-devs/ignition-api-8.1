@@ -1,11 +1,14 @@
 from typing import Any, List, Optional
 
-from java.lang import Comparable, Enum, Object, Thread
+from java.lang import Comparable, Enum, Object, Runnable, Thread
 from java.time.temporal import ChronoUnit
 
 class Delayed(Comparable):
     def compareTo(self, o: Any) -> int: ...
     def getDelay(self, unit: TimeUnit) -> long: ...
+
+class Executor:
+    def execute(self, command: Runnable) -> None: ...
 
 class Future:
     def cancel(self, mayInterruptIfRunning: bool) -> bool: ...

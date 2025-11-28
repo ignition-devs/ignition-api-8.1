@@ -1,8 +1,15 @@
-__all__ = ["CompletableFuture", "Delayed", "Future", "ScheduledFuture", "TimeUnit"]
+__all__ = [
+    "CompletableFuture",
+    "Delayed",
+    "Executor",
+    "Future",
+    "ScheduledFuture",
+    "TimeUnit",
+]
 
 from typing import Any, List, Optional
 
-from java.lang import Comparable, Enum, Object, Thread
+from java.lang import Comparable, Enum, Object, Runnable, Thread
 from java.time.temporal import ChronoUnit
 
 
@@ -13,6 +20,12 @@ class Delayed(Comparable):
 
     def getDelay(self, unit):
         # type: (TimeUnit) -> long
+        raise NotImplementedError
+
+
+class Executor(object):
+    def execute(self, command):
+        # type: (Runnable) -> None
         raise NotImplementedError
 
 
