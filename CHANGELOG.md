@@ -1,3 +1,13 @@
+## 8.1.50.post1 (2025-11-27)
+
+### Fix
+
+- **java**: apply sourcery suggestions (#361)
+
+### Refactor
+
+- **java**: add exception classes to java.nio.file (#360)
+
 ## 8.1.50 (2025-10-02)
 
 ## 8.1.49 (2025-08-19)
