@@ -2,7 +2,7 @@ from typing import Any, Dict, Iterable, List, Mapping, Optional, Set, Union
 
 from dev.coatl.helper.types import AnyStr
 from java.io import InputStream, OutputStream
-from java.lang import Class, Object
+from java.lang import Class, Object, RuntimeException, Throwable
 from java.nio import ByteBuffer
 from java.time import Instant, ZoneId
 from java.util.function import (
@@ -380,6 +380,11 @@ class Calendar(Object):
     def setTimeZone(self, value: TimeZone) -> None: ...
     def setWeekDate(self, weekYear: int, weekOfYear: int, dayOfWeek: int) -> None: ...
     def toInstant(self) -> Instant: ...
+
+class ConcurrentModificationException(RuntimeException):
+    def __init__(
+        self, message: Optional[str] = ..., cause: Optional[Throwable] = ...
+    ) -> None: ...
 
 class Currency(Object):
     @staticmethod

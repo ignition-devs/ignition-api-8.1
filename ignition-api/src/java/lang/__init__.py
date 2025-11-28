@@ -15,6 +15,7 @@ __all__ = [
     "Enum",
     "Exception",
     "IllegalArgumentException",
+    "IllegalStateException",
     "IndexOutOfBoundsException",
     "Iterable",
     "NullPointerException",
@@ -794,6 +795,16 @@ class IllegalArgumentException(RuntimeException):
     def __init__(self, message=None, cause=None):
         # type: (Optional[str], Optional[Throwable]) -> None
         super(IllegalArgumentException, self).__init__(message, cause)
+
+
+class IllegalStateException(RuntimeException):
+    """Signals that a method has been invoked at an illegal or
+    inappropriate time.
+    """
+
+    def __init__(self, message=None, cause=None):
+        # type: (Optional[str], Optional[Throwable]) -> None
+        super(IllegalStateException, self).__init__(message, cause)
 
 
 class IndexOutOfBoundsException(RuntimeException):

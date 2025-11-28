@@ -1,13 +1,28 @@
 __all__ = [
+    "AccessDeniedException",
+    "AtomicMoveNotSupportedException",
+    "ClosedDirectoryStreamException",
+    "ClosedFileSystemException",
     "CopyOption",
+    "DirectoryIteratorException",
+    "DirectoryNotEmptyException",
     "DirectoryStream",
+    "FileAlreadyExistsException",
     "FileStore",
+    "FileSystemAlreadyExistsException",
+    "FileSystemException",
+    "FileSystemNotFoundException",
     "FileVisitOption",
     "Files",
+    "InvalidPathException",
     "LinkOption",
+    "NoSuchFileException",
+    "NotDirectoryException",
+    "NotLinkException",
     "OpenOption",
     "Path",
     "Paths",
+    "ReadOnlyFileSystemException",
     "StandardCopyOption",
     "WatchEvent",
     "WatchKey",
@@ -17,8 +32,25 @@ __all__ = [
 from typing import Any, Iterator, List, Optional, Set, Union
 
 from dev.coatl.helper.types import AnyStr
-from java.io import BufferedReader, BufferedWriter, InputStream, OutputStream
-from java.lang import AutoCloseable, CharSequence, Class, Enum, Object
+from java.io import (
+    BufferedReader,
+    BufferedWriter,
+    InputStream,
+    IOException,
+    OutputStream,
+)
+from java.lang import (
+    AutoCloseable,
+    CharSequence,
+    Class,
+    Enum,
+    IllegalArgumentException,
+    IllegalStateException,
+    Object,
+    RuntimeException,
+    Throwable,
+    UnsupportedOperationException,
+)
 from java.nio.channels import SeekableByteChannel
 from java.nio.charset import Charset
 from java.nio.file.attribute import (
@@ -30,6 +62,7 @@ from java.nio.file.attribute import (
     PosixFilePermission,
     UserPrincipal,
 )
+from java.util import ConcurrentModificationException
 from java.util.function import BiPredicate
 from java.util.stream import Stream
 
@@ -94,6 +127,105 @@ class FileStore(Object):
     def type(self):
         # type: () -> AnyStr
         raise NotImplementedError
+
+
+class ClosedDirectoryStreamException(IllegalStateException):
+    def __init__(self):
+        # type: () -> None
+        super(ClosedDirectoryStreamException, self).__init__()
+
+
+class ClosedFileSystemException(IllegalStateException):
+    def __init__(self):
+        # type: () -> None
+        super(ClosedFileSystemException, self).__init__()
+
+
+class DirectoryIteratorException(ConcurrentModificationException):
+    def __init__(self, cause):
+        # type: (Throwable) -> None
+        super(DirectoryIteratorException, self).__init__(cause=cause)
+
+
+class FileSystemAlreadyExistsException(RuntimeException):
+    def __init__(self, message=None):
+        # type: (Optional[str]) -> None
+        super(FileSystemAlreadyExistsException, self).__init__(message)
+
+
+class FileSystemException(IOException):
+    def __init__(self, file, other=None, reason=None):
+        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+        super(FileSystemException, self).__init__()
+        self._file = file
+        self._other = other
+        self._reason = reason
+
+    def getFile(self):
+        # type: () -> AnyStr
+        return self._file
+
+    def getOtherFile(self):
+        # type: () -> Optional[AnyStr]
+        return self._other
+
+    def getReason(self):
+        # type: () -> Optional[AnyStr]
+        return self._reason
+
+
+class AccessDeniedException(FileSystemException):
+    def __init__(self, file, other=None, reason=None):
+        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+        super(AccessDeniedException, self).__init__(file, other, reason)
+
+
+class AtomicMoveNotSupportedException(FileSystemException):
+    def __init__(self, source, target, reason):
+        # type: (AnyStr, AnyStr, AnyStr) -> None
+        super(AtomicMoveNotSupportedException, self).__init__(source, target, reason)
+
+
+class DirectoryNotEmptyException(FileSystemException):
+    def __init__(self, dir_):
+        # type: (AnyStr) -> None
+        super(DirectoryNotEmptyException, self).__init__(dir_)
+
+
+class FileAlreadyExistsException(FileSystemException):
+    def __init__(self, file, other=None, reason=None):
+        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+        super(FileAlreadyExistsException, self).__init__(file, other, reason)
+
+
+class FileSystemLoopException(FileSystemException):
+    def __init__(self, file):
+        # type: (AnyStr) -> None
+        super(FileSystemLoopException, self).__init__(file)
+
+
+class FileSystemNotFoundException(RuntimeException):
+    def __init__(self, message=None):
+        # type: (Optional[str]) -> None
+        super(FileSystemNotFoundException, self).__init__(message)
+
+
+class NoSuchFileException(FileSystemException):
+    def __init__(self, file, other=None, reason=None):
+        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+        super(NoSuchFileException, self).__init__(file, other, reason)
+
+
+class NotDirectoryException(FileSystemException):
+    def __init__(self, file):
+        # type: (AnyStr) -> None
+        super(NotDirectoryException, self).__init__(file)
+
+
+class NotLinkException(FileSystemException):
+    def __init__(self, file, other=None, reason=None):
+        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+        super(NotLinkException, self).__init__(file, other, reason)
 
 
 class FileVisitOption(Enum):
@@ -362,6 +494,27 @@ class Files(Object):
         pass
 
 
+class InvalidPathException(IllegalArgumentException):
+    def __init__(self, input, reason, index=None):
+        # type: (str, str, Optional[int]) -> None
+        super(InvalidPathException, self).__init__(reason)
+        self._input = input
+        self._reason = reason
+        self._index = index
+
+    def getIndex(self):
+        # type: () -> Optional[int]
+        return self._index
+
+    def getInput(self):
+        # type: () -> AnyStr
+        return self._input
+
+    def getReason(self):
+        # type: () -> AnyStr
+        return self._reason
+
+
 class LinkOption(Enum, CopyOption, OpenOption):
     NOFOLLOW_LINKS = None  # type: LinkOption
 
@@ -475,6 +628,12 @@ class Paths(Object):
     def get(*args):
         # type: (*Any) -> Path
         pass
+
+
+class ReadOnlyFileSystemException(UnsupportedOperationException):
+    def __init__(self):
+        # type: () -> None
+        super(ReadOnlyFileSystemException, self).__init__()
 
 
 class StandardCopyOption(Enum, CopyOption, OpenOption):
