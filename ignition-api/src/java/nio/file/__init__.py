@@ -11,6 +11,7 @@ __all__ = [
     "FileStore",
     "FileSystemAlreadyExistsException",
     "FileSystemException",
+    "FileSystemLoopException",
     "FileSystemNotFoundException",
     "FileVisitOption",
     "Files",
