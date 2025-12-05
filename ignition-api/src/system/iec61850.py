@@ -16,13 +16,14 @@ __all__ = [
     "writeFile",
 ]
 
-from typing import Any, Dict, List, Optional
-
-from dev.coatl.helper.types import AnyStr
+from typing import Any, Dict, List, Union
 
 
-def cancel(deviceName, mapParams):
-    # type: (AnyStr, Dict[AnyStr, Any]) -> None
+def cancel(
+    deviceName,  # type: Union[str, unicode]
+    mapParams,  # type: Dict[Union[str, unicode], Any]
+):
+    # type: (...) -> None
     """Cancels the selection of an SBO type control on a configured IEC
     81650 device to prevent the operate command from performing.
 
@@ -38,8 +39,10 @@ def cancel(deviceName, mapParams):
     print(deviceName, mapParams)
 
 
-def getControlParams(deviceName):
-    # type: (AnyStr) -> List[Dict[AnyStr, Any]]
+def getControlParams(
+    deviceName,  # type: Union[str, unicode]
+):
+    # type: (...) -> List[Dict[Union[str, unicode], Any]]
     """This function returns a list of report control names and their
     attributes contained in the configured IEC 61850 device.
 
@@ -63,8 +66,11 @@ def getControlParams(deviceName):
     ]
 
 
-def listFiles(deviceName, remoteFilePath=None):
-    # type: (AnyStr, Optional[AnyStr]) -> List[AnyStr]
+def listFiles(
+    deviceName,  # type: Union[str, unicode]
+    remoteFilePath=None,  # type: Union[str, unicode, None]
+):
+    # type: (...) -> List[Union[str, unicode]]
     """This function returns a list of filenames from a remote path for
     the configured IEC 61850 device.
 
@@ -80,8 +86,12 @@ def listFiles(deviceName, remoteFilePath=None):
     return ["COMFEDE.ced"]
 
 
-def operate(deviceName, mapParams, controlValue):
-    # type: (AnyStr, Dict[AnyStr, Any], float) -> None
+def operate(
+    deviceName,  # type: Union[str, unicode]
+    mapParams,  # type: Dict[Union[str, unicode], Any]
+    controlValue,  # type: float
+):
+    # type: (...) -> None
     """This function operates on the IEC 61850 device control
     immediately, such as to change the position of a switch. This can be
     done directly, or following a select command.
@@ -99,8 +109,12 @@ def operate(deviceName, mapParams, controlValue):
     print(deviceName, mapParams, controlValue)
 
 
-def readFile(deviceName, remoteFilePath, localFilePath):
-    # type: (AnyStr, AnyStr, AnyStr) -> None
+def readFile(
+    deviceName,  # type: Union[str, unicode]
+    remoteFilePath,  # type: Union[str, unicode]
+    localFilePath,  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """This function downloads remote files from the configured IEC
     61850 device to an identified local path.
 
@@ -114,8 +128,12 @@ def readFile(deviceName, remoteFilePath, localFilePath):
     print(deviceName, remoteFilePath, localFilePath)
 
 
-def select(deviceName, mapParams, value):
-    # type: (AnyStr, Dict[AnyStr, Any], float) -> None
+def select(
+    deviceName,  # type: Union[str, unicode]
+    mapParams,  # type: Dict[Union[str, unicode], Any]
+    value,  # type: float
+):
+    # type: (...) -> None
     """Select an SBO type control to prepare it for a subsequent operate
     command for a configured IEC 61850 device. These selections can be
     removed by using the cancel function.
@@ -132,8 +150,12 @@ def select(deviceName, mapParams, value):
     print(deviceName, mapParams, value)
 
 
-def writeFile(deviceName, localFilePath, remoteFilePath):
-    # type: (AnyStr, AnyStr, AnyStr) -> None
+def writeFile(
+    deviceName,  # type: Union[str, unicode]
+    localFilePath,  # type: Union[str, unicode]
+    remoteFilePath,  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """This function uploads a file from a  local path to the configured
     IEC 61850 device remote path.
 

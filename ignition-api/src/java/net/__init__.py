@@ -21,9 +21,8 @@ __all__ = [
     "UnknownHostException",
 ]
 
-from typing import Any, List, Mapping, Optional, Set
+from typing import Any, List, Mapping, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.io import Closeable, InputStream, IOException, OutputStream
 from java.lang import Class, Enum, Object
 from java.nio.channels import SocketChannel
@@ -69,7 +68,7 @@ class CookieStore(object):
 
 class FileNameMap(object):
     def getContentTypeFor(self, fileName):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -81,7 +80,7 @@ class SocketImplFactory(object):
 
 class SocketOption(object):
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def type(self):
@@ -97,9 +96,9 @@ class CookieHandler(Object):
     def get(
         self,
         uri,  # type: URI
-        requestHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+        requestHeaders,  # type: Mapping[Union[str, unicode], List[Union[str, unicode]]]
     ):
-        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        # type: (...) -> Mapping[Union[str, unicode], List[Union[str, unicode]]]  # noqa: W505
         raise NotImplementedError
 
     @staticmethod
@@ -110,9 +109,9 @@ class CookieHandler(Object):
     def put(
         self,
         uri,  # type: URI
-        responseHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+        responseHeaders,  # type: Mapping[Union[str, unicode], List[Union[str, unicode]]]
     ):
-        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        # type: (...) -> Mapping[Union[str, unicode], List[Union[str, unicode]]]  # noqa: W505
         raise NotImplementedError
 
     @staticmethod
@@ -130,9 +129,9 @@ class CookieManager(CookieHandler):
     def get(
         self,
         uri,  # type: URI
-        requestHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+        requestHeaders,  # type: Mapping[Union[str, unicode], List[Union[str, unicode]]]
     ):
-        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        # type: (...) -> Mapping[Union[str, unicode], List[Union[str, unicode]]]  # noqa: W505
         pass
 
     def getCookieStore(self):
@@ -142,9 +141,9 @@ class CookieManager(CookieHandler):
     def put(
         self,
         uri,  # type: URI
-        responseHeaders,  # type: Mapping[AnyStr, List[AnyStr]]
+        responseHeaders,  # type: Mapping[Union[str, unicode], List[Union[str, unicode]]]
     ):
-        # type: (...) -> Mapping[AnyStr, List[AnyStr]]
+        # type: (...) -> Mapping[Union[str, unicode], List[Union[str, unicode]]]  # noqa: W505
         pass
 
     def setCookiePolicy(self, cookiePolicy):
@@ -154,7 +153,7 @@ class CookieManager(CookieHandler):
 
 class HttpCookie(Object):
     def __init__(self, name, value):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         super(HttpCookie, self).__init__()
         print(name, value)
 
@@ -166,7 +165,7 @@ class InetAddress(Object):
 
     @staticmethod
     def getAllByName(host):
-        # type: (AnyStr) -> List[InetAddress]
+        # type: (Union[str, unicode]) -> List[InetAddress]
         pass
 
     @staticmethod
@@ -176,19 +175,19 @@ class InetAddress(Object):
 
     @staticmethod
     def getByName(host):
-        # type: (AnyStr) -> InetAddress
+        # type: (Union[str, unicode]) -> InetAddress
         pass
 
     def getCanonicalHostName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getHostAddress(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getHostName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -254,7 +253,7 @@ class InetSocketAddress(SocketAddress):
 
     @staticmethod
     def createUnresolved(host, port):
-        # type: (AnyStr, int) -> InetSocketAddress
+        # type: (Union[str, unicode], int) -> InetSocketAddress
         return InetSocketAddress(host, port)
 
     def getAddress(self):
@@ -262,11 +261,11 @@ class InetSocketAddress(SocketAddress):
         pass
 
     def getHostname(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getHostString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getPort(self):

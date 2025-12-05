@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["ProgressListener", "TaskProgressListener", "TaskProgressState"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -14,7 +13,7 @@ class ProgressListener(object):
         raise NotImplementedError
 
     def setNote(self, note):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setProgress(self, val):
@@ -36,7 +35,7 @@ class TaskProgressListener(ProgressListener):
         raise NotImplementedError
 
     def setNote(self, note):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setProgress(self, val):
@@ -59,7 +58,7 @@ class TaskProgressState(Object, ProgressListener):
         pass
 
     def getNote(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getProgress(self):
@@ -75,7 +74,7 @@ class TaskProgressState(Object, ProgressListener):
         pass
 
     def getTaskUID(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isFinished(self):
@@ -95,7 +94,7 @@ class TaskProgressState(Object, ProgressListener):
         pass
 
     def setNote(self, note):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setProgress(self, val):

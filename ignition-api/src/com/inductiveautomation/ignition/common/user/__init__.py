@@ -19,7 +19,6 @@ from com.inductiveautomation.ignition.common.config import (
     PropertyValue,
 )
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import Date
 
@@ -49,11 +48,11 @@ class User(object):
         raise NotImplementedError
 
     def getProfileName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRoles(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         raise NotImplementedError
 
     def getScheduleAdjustments(self):
@@ -77,11 +76,11 @@ class AuthenticatedUser(User):
         pass
 
     def getProfileName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getRoles(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getScheduleAdjustments(self):
@@ -90,8 +89,8 @@ class AuthenticatedUser(User):
 
 
 class ContactInfo(Object):
-    contactType = ""  # type: AnyStr
-    value = ""  # type: AnyStr
+    contactType = ""  # type: Union[str, unicode]
+    value = ""  # type: Union[str, unicode]
 
     def __init__(self, *args):
         # type: (*Any) -> None
@@ -101,34 +100,34 @@ class ContactInfo(Object):
             self.value = args[1]
 
     def getContactType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.contactType
 
     def getValue(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.value
 
     def setContactType(self, contactType):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self.contactType = contactType
 
     def setValue(self, value):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self.value = value
 
 
 class BasicUser(User):
     contactInfo = None  # type: Optional[List[ContactInfo]]
     id = None  # type: Any
-    profileName = None  # type: AnyStr
-    roles = None  # type: List[AnyStr]
+    profileName = None  # type: Union[str, unicode]
+    roles = None  # type: List[Union[str, unicode]]
     scheduleAdjustments = None  # type: List[ScheduleAdjustment]
 
     def __init__(
         self,
-        profileName,  # type: AnyStr
+        profileName,  # type: Union[str, unicode]
         id_,  # type: Any
-        roles,  # type: List[AnyStr]
+        roles,  # type: List[Union[str, unicode]]
         contactInfo=None,  # type: Optional[List[ContactInfo]]
     ):
         # type: (...) -> None
@@ -150,11 +149,11 @@ class BasicUser(User):
         pass
 
     def getProfileName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getRoles(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getScheduleAdjustments(self):
@@ -178,15 +177,15 @@ class PyUser(User):
         print(self, args)
 
     def addRole(self, role):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         print(self, role)
 
     def addRoles(self, roles):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         print(self, roles)
 
     def addScheduleAdjustment(self, start, end, available, note):
-        # type: (Date, Date, bool, AnyStr) -> None
+        # type: (Date, Date, bool, Union[str, unicode]) -> None
         print(self, start, end, available, note)
 
     def addScheduleAdjustments(self, scheduleAdjustments):
@@ -198,7 +197,7 @@ class PyUser(User):
         return True
 
     def get(self, propertyName):
-        # type: (Union[Property, AnyStr]) -> Any
+        # type: (Union[Property, str, unicode]) -> Any
         pass
 
     def getContactInfo(self):
@@ -230,7 +229,7 @@ class PyUser(User):
         pass
 
     def getProfileName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getProperties(self):
@@ -238,7 +237,7 @@ class PyUser(User):
         pass
 
     def getRoles(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         return ["Administrator", "Developer"]
 
     def getScheduleAdjustments(self):
@@ -270,15 +269,15 @@ class PyUser(User):
         pass
 
     def removeContactInfo(self, contactType, value):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         pass
 
     def removeRole(self, role):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def removeScheduleAdjustment(self, start, end, available, note):
-        # type: (Date, Date, bool, AnyStr) -> None
+        # type: (Date, Date, bool, Union[str, unicode]) -> None
         pass
 
     def set(self, *args):
@@ -290,7 +289,7 @@ class PyUser(User):
         pass
 
     def setRoles(self, roles):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setScheduleAdjustments(self, scheduleAdjustments):
@@ -299,25 +298,30 @@ class PyUser(User):
 
 
 class UserSourceMeta(Object):
-    description = None  # type: AnyStr
-    name = None  # type: AnyStr
-    type = None  # type: AnyStr
+    description = None  # type: Union[str, unicode]
+    name = None  # type: Union[str, unicode]
+    type = None  # type: Union[str, unicode]
 
-    def __init__(self, name, description, type_):
-        # type: (AnyStr, AnyStr, AnyStr) -> None
+    def __init__(
+        self,
+        name,  # type: Union[str, unicode]
+        description,  # type: Union[str, unicode]
+        type_,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> None
         super(UserSourceMeta, self).__init__()
         self.name = name
         self.description = description
         self.type = type_
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.name
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.description
 
     def getType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.type

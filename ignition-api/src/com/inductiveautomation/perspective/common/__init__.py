@@ -1,19 +1,18 @@
 __all__ = ["PerspectiveModule"]
 
-from typing import Optional
+from typing import Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import Gson, JsonObject
 from com.inductiveautomation.ignition.common.jsonschema import JsonSchema
 from com.inductiveautomation.ignition.common.util import LoggerEx
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util.function import Consumer
 
 
 class PerspectiveModule(Object):
-    LOG_PREFIX = None  # type: AnyStr
+    LOG_PREFIX = None  # type: Union[str, unicode]
     META_SCHEMA = None  # type: JsonSchema
-    MODULE_ID = None  # type: AnyStr
+    MODULE_ID = None  # type: Union[str, unicode]
     SESSION_PROPS_SCHEMA = None  # type: JsonSchema
     VIEW_SCHEMA = None  # type: JsonSchema
 
@@ -39,5 +38,5 @@ class PerspectiveModule(Object):
 
     @staticmethod
     def getLogger(name):
-        # type: (AnyStr) -> LoggerEx
+        # type: (Union[str, unicode]) -> LoggerEx
         pass

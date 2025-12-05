@@ -18,15 +18,14 @@ __all__ = [
     "startChart",
 ]
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.sfc.api import PyChartScope
-from dev.coatl.helper.types import AnyStr
 
 
 def cancelChart(instanceId):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Cancels the execution of a running chart instance.
 
     Any running steps will be told to stop, and the chart will enter
@@ -43,7 +42,7 @@ def cancelChart(instanceId):
 
 
 def getRunningCharts(chartPath=None):
-    # type: (Optional[AnyStr]) -> BasicDataset
+    # type: (Union[str, unicode, None]) -> BasicDataset
     """Retrieves information about running charts.
 
     Can search all running charts, or be filtered charts at a specific
@@ -63,7 +62,7 @@ def getRunningCharts(chartPath=None):
 
 
 def getVariables(instanceId):
-    # type: (AnyStr) -> PyChartScope
+    # type: (Union[str, unicode]) -> PyChartScope
     """Get the variables in a chart instance's scope.
 
     Commonly used to check the value of a Chart Parameter, or determine
@@ -81,7 +80,7 @@ def getVariables(instanceId):
 
 
 def pauseChart(instanceId):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Pauses a running chart instance.
 
     Any running steps will be told to pause, and the chart will enter
@@ -98,7 +97,7 @@ def pauseChart(instanceId):
 
 
 def redundantCheckpoint(instanceId):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Synchronizes chart and step variables of the specified chart
     instance across a redundant cluster, allowing the chart instance to
     continue where it left off if a redundant failover occurs.
@@ -110,7 +109,7 @@ def redundantCheckpoint(instanceId):
 
 
 def resumeChart(instanceId):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Resumes a chart that was paused.
 
     Steps which were previously paused will be resumed, and chart will
@@ -126,8 +125,13 @@ def resumeChart(instanceId):
         raise KeyError("Invalid UUID string: {}".format(instanceId))
 
 
-def setVariable(instanceId, stepId, variableName, variableValue):
-    # type: (AnyStr, AnyStr, AnyStr, Any) -> None
+def setVariable(
+    instanceId,  # type: Union[str, unicode]
+    stepId,  # type: Union[str, unicode]
+    variableName,  # type: Union[str, unicode]
+    variableValue,  # type: Any
+):
+    # type: (...) -> None
     """Sets a variable inside a currently running chart.
 
     Args:
@@ -140,8 +144,12 @@ def setVariable(instanceId, stepId, variableName, variableValue):
     print(instanceId, stepId, variableName, variableValue)
 
 
-def setVariables(instanceId, stepId, variableMap):
-    # type: (AnyStr, AnyStr, Dict[AnyStr, Any]) -> None
+def setVariables(
+    instanceId,  # type: Union[str, unicode]
+    stepId,  # type: Union[str, unicode]
+    variableMap,  # type: Dict[Union[str, unicode], Any]
+):
+    # type: (...) -> None
     """Sets any number of variables inside a currently running chart.
 
     Args:
@@ -154,8 +162,12 @@ def setVariables(instanceId, stepId, variableMap):
     print(instanceId, stepId, variableMap)
 
 
-def startChart(projectName, chartPath, arguments):
-    # type: (AnyStr, AnyStr, Dict[AnyStr, Any]) -> AnyStr
+def startChart(
+    projectName,  # type: Union[str, unicode]
+    chartPath,  # type: Union[str, unicode]
+    arguments,  # type: Dict[Union[str, unicode], Any]
+):
+    # type: (...) -> Union[str, unicode]
     """Starts a new instance of a chart.
 
     The chart must be set to "Callable" execution mode.

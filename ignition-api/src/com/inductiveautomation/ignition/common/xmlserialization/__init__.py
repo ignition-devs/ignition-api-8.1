@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["ClassNameResolver", "SerializationException"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Exception, Object
 
 
@@ -14,7 +13,7 @@ class ClassNameResolver(Object):
         super(ClassNameResolver, self).__init__()
 
     def addAlias(self, clazz, alias):
-        # type: (Class, AnyStr) -> None
+        # type: (Class, Union[str, unicode]) -> None
         pass
 
     def addDefaults(self):
@@ -22,11 +21,11 @@ class ClassNameResolver(Object):
         pass
 
     def addSearchPath(self, path):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def classForName(self, name):
-        # type: (AnyStr) -> Class
+        # type: (Union[str, unicode]) -> Class
         pass
 
     def createBasic(self):
@@ -34,7 +33,7 @@ class ClassNameResolver(Object):
         pass
 
     def getName(self, clazz):
-        # type: (Class) -> AnyStr
+        # type: (Class) -> Union[str, unicode]
         pass
 
 

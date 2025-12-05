@@ -48,13 +48,12 @@ __all__ = [
     "warningBox",
 ]
 
-from typing import Any, Callable, List, Optional, Tuple
+from typing import Any, Callable, List, Optional, Tuple, Union
 
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import (
     WindowUtilities,
 )
-from dev.coatl.helper.types import AnyNum, AnyStr
 from java.awt import Color
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject
@@ -79,7 +78,7 @@ COORD_SCREEN = 0
 
 
 def chooseColor(initialColor, dialogTitle="Choose Color"):
-    # type: (Color, AnyStr) -> Color
+    # type: (Color, Union[str, unicode]) -> Color
     """Prompts the user to pick a color using the default color-chooser
     dialog box.
 
@@ -97,7 +96,7 @@ def chooseColor(initialColor, dialogTitle="Choose Color"):
 
 
 def closeDesktop(handle):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Allows you to close any of the open desktops associated with the
     current client.
 
@@ -126,8 +125,12 @@ def color(*args):
     return Color(*args)
 
 
-def confirm(message, title="Confirm", allowCancel=False):
-    # type: (AnyStr, AnyStr, bool) -> Optional[bool]
+def confirm(
+    message,  # type: Union[str, unicode]
+    title="Confirm",  # type: Union[str, unicode]
+    allowCancel=False,  # type: bool
+):
+    # type: (...) -> Optional[bool]
     """Displays a confirmation dialog box to the user with "Yes", "No"
     options, and a custom message.
 
@@ -183,8 +186,11 @@ def convertPointToScreen(x, y, event):
     return x, y
 
 
-def createPopupMenu(itemNames, itemFunctions):
-    # type: (List[AnyStr], List[Callable[..., Any]]) -> JPopupMenu
+def createPopupMenu(
+    itemNames,  # type: List[Union[str, unicode]]
+    itemFunctions,  # type: List[Callable[..., Any]]
+):
+    # type: (...) -> JPopupMenu
     """Creates a new popup menu, which can then be shown over a
     component on a mouse event.
 
@@ -200,7 +206,7 @@ def createPopupMenu(itemNames, itemFunctions):
 
 
 def desktop(handle):
-    # type: (AnyStr) -> WindowUtilities
+    # type: (Union[str, unicode]) -> WindowUtilities
     """Allows for invoking system.gui functions on a specific desktop.
 
     Args:
@@ -219,7 +225,7 @@ def desktop(handle):
 
 
 def errorBox(message, title="Error"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Displays an error-style message box to the user.
 
     Args:
@@ -230,7 +236,7 @@ def errorBox(message, title="Error"):
 
 
 def findWindow(path):
-    # type: (AnyStr) -> List[FPMIWindow]
+    # type: (Union[str, unicode]) -> List[FPMIWindow]
     """Finds and returns a list of windows with the given path.
 
     If the window is not open, an empty list will be returned. Useful
@@ -249,7 +255,7 @@ def findWindow(path):
 
 
 def getCurrentDesktop():
-    # type: () -> AnyStr
+    # type: () -> Union[str, unicode]
     """Returns the handle of the desktop this function was called from.
 
     Commonly used with the system.gui.desktop and system.nav.desktop
@@ -262,7 +268,7 @@ def getCurrentDesktop():
 
 
 def getDesktopHandles():
-    # type: () -> List[AnyStr]
+    # type: () -> List[Union[str, unicode]]
     """Gets a list of all secondary handles of the open desktops
     associated with the current client.
 
@@ -281,7 +287,7 @@ def getDesktopHandles():
 
 
 def getOpenedWindowNames():
-    # type: () -> Tuple[AnyStr, ...]
+    # type: () -> Tuple[Union[str, unicode], ...]
     """Finds all of the currently open windows and returns a tuple of
     their paths.
 
@@ -320,7 +326,7 @@ def getParentWindow(event):
 
 
 def getQuality(component, propertyName):
-    # type: (JComponent, AnyStr) -> int
+    # type: (JComponent, Union[str, unicode]) -> int
     """Returns the data quality for the property of the given component
     as an integer.
 
@@ -352,7 +358,7 @@ def getScreenIndex():
 
 
 def getScreens():
-    # type: () -> List[Tuple[AnyStr, int, int]]
+    # type: () -> List[Tuple[Union[str, unicode], int, int]]
     """Get a list of all the monitors on the computer this client is
     open on.
 
@@ -366,7 +372,7 @@ def getScreens():
 
 
 def getSibling(event, name):
-    # type: (EventObject, AnyStr) -> FPMIWindow
+    # type: (EventObject, Union[str, unicode]) -> FPMIWindow
     """Given a component event object, looks up a sibling component.
 
     Shortcut for event.source.parent.getComponent("siblingName"). If no
@@ -384,7 +390,7 @@ def getSibling(event, name):
 
 
 def getWindow(name):
-    # type: (AnyStr) -> FPMIWindow
+    # type: (Union[str, unicode]) -> FPMIWindow
     """Finds a reference to an open window with the given name.
 
     Throws a ValueError if the named window is not open or not found.
@@ -400,7 +406,7 @@ def getWindow(name):
 
 
 def getWindowNames():
-    # type: () -> Tuple[AnyStr, ...]
+    # type: () -> Tuple[Union[str, unicode], ...]
     """Returns a list of the paths of all windows in the current
     project, sorted alphabetically.
 
@@ -411,8 +417,11 @@ def getWindowNames():
     return "Main Window", "Main Window 1", "Main Window 2"
 
 
-def inputBox(message, defaultText=""):
-    # type: (AnyStr, AnyStr) -> Optional[AnyStr]
+def inputBox(
+    message,  # type: Union[str, unicode]
+    defaultText="",  # type: Union[str, unicode]
+):
+    # type: (...) -> Union[str, unicode, None]
     """Opens up a popup input dialog box.
 
     This dialog box will show a prompt message, and allow the user to
@@ -465,7 +474,7 @@ def isTouchscreenModeEnabled():
 
 
 def messageBox(message, title="Information"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Displays an informational-style message popup box to the user.
 
     Args:
@@ -477,13 +486,13 @@ def messageBox(message, title="Information"):
 
 def openDesktop(
     screen=0,  # type: int
-    handle=None,  # type: Optional[AnyStr]
-    title=None,  # type: Optional[AnyStr]
+    handle=None,  # type: Union[str, unicode, None]
+    title=None,  # type: Union[str, unicode, None]
     width=None,  # type: Optional[int]
     height=None,  # type: Optional[int]
     x=0,  # type: int
     y=0,  # type: int
-    windows=None,  # type: Optional[List[AnyStr]]
+    windows=None,  # type: Optional[List[Union[str, unicode]]]
 ):
     # type: (...) -> JFrame
     """Creates an additional Desktop in a new frame.
@@ -531,11 +540,11 @@ def openDiagnostics():
 
 
 def passwordBox(
-    message,  # type:AnyStr
-    title="Password",  # type: AnyStr
-    echoChar="*",  # type: AnyStr
+    message,  # type:Union[str, unicode]
+    title="Password",  # type: Union[str, unicode]
+    echoChar="*",  # type: Union[str, unicode]
 ):
-    # type: (...) -> Optional[AnyStr]
+    # type: (...) -> Union[str, unicode, None]
     """Pops up a special input box that uses a password field, so the
     text isn't echoed back in clear-text to the user.
 
@@ -580,11 +589,11 @@ def setTouchscreenModeEnabled(enabled):
 
 
 def showNumericKeypad(
-    initialValue,  # type: AnyNum
+    initialValue,  # type: Union[float, int, long]
     fontSize=None,  # type: Optional[int]
     usePasswordMode=False,  # type: bool
 ):
-    # type: (...) -> AnyNum
+    # type: (...) -> Union[float, int, long]
     """Displays a modal on-screen numeric keypad, allowing for arbitrary
     numeric entry using the mouse, or a finger on a touchscreen monitor.
 
@@ -602,8 +611,12 @@ def showNumericKeypad(
     return 43
 
 
-def showTouchscreenKeyboard(initialText, fontSize=None, passwordMode=False):
-    # type: (AnyStr, Optional[int], Optional[bool]) -> AnyStr
+def showTouchscreenKeyboard(
+    initialText,  # type: Union[str, unicode]
+    fontSize=None,  # type: Optional[int]
+    passwordMode=False,  # type: bool
+):
+    # type: (...) -> Union[str, unicode]
     """Displays a modal on-screen keyboard, allowing for arbitrary text
     entry using the mouse, or a finger on a touchscreen monitor.
 
@@ -692,7 +705,7 @@ def transform(
 
 
 def warningBox(message, title="Warning"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Displays a message to the user in a warning style popup dialog.
 
     Args:

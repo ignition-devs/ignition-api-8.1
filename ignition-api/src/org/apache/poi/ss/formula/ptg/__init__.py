@@ -2,7 +2,6 @@ from __future__ import print_function
 
 from typing import Any, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from org.apache.poi.common import Duplicatable
 from org.apache.poi.ss.formula import (
@@ -73,15 +72,15 @@ class Pxg(object):
         raise NotImplementedError
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def setSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def toFormulaString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -91,23 +90,23 @@ class Pxg3D(Pxg):
         raise NotImplementedError
 
     def getLastSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def setLastSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def toFormulaString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -150,7 +149,7 @@ class Ptg(Object, Duplicatable):
         pass
 
     def getRVAType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getSize(self):
@@ -176,7 +175,7 @@ class Ptg(Object, Duplicatable):
         pass
 
     def toFormulaString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def write(self, out):
@@ -294,7 +293,7 @@ class Area3DPtg(AreaPtgBase, WorkbookDependentFormula, ExternSheetReferenceToken
         print(args)
 
     def format2DRefAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getExternSheetIndex(self):
@@ -314,7 +313,7 @@ class Area3DPxg(AreaPtgBase, Pxg3D):
         print(args)
 
     def format2DRefAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getExternalWorkbookNumber(self):
@@ -322,19 +321,19 @@ class Area3DPxg(AreaPtgBase, Pxg3D):
         pass
 
     def getLastSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setLastSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 
@@ -366,15 +365,15 @@ class NameXPxg(OperandPtg):
         pass
 
     def getNameName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setSheetName(self, sheetName):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 
@@ -419,7 +418,7 @@ class Ref3DPtg(RefPtgBase, WorkbookDependentFormula, ExternSheetReferenceToken):
         print(args)
 
     def format2DRefAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getExternSheetIndex(self):
@@ -438,7 +437,7 @@ class Ref3DPxg(RefPtgBase, Pxg3D):
         print(args)
 
     def format2DRefAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getExternalWorkbookNumber(self):
@@ -446,17 +445,17 @@ class Ref3DPxg(RefPtgBase, Pxg3D):
         pass
 
     def getLastSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setLastSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setSheetName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass

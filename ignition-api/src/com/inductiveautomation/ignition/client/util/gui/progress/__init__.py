@@ -1,12 +1,11 @@
 __all__ = ["AsyncClientTask", "ClientProgressManager", "TaskHandle"]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gui.progress import (
     TaskProgressListener,
     TaskProgressState,
 )
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util.concurrent import CompletableFuture
 from java.util.function import Consumer
@@ -18,7 +17,7 @@ class AsyncClientTask(object):
         raise NotImplementedError
 
     def getTaskTitle(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def run(self, progressListener):
@@ -32,7 +31,7 @@ class TaskHandle(object):
         raise NotImplementedError
 
     def getUid(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def waitForResult(self, timeout):
@@ -56,7 +55,7 @@ class ClientProgressManager(Object):
         pass
 
     def cancelTask(self, uid):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     @staticmethod
@@ -69,7 +68,7 @@ class ClientProgressManager(Object):
         pass
 
     def registerGatewayTask(self, taskId):
-        # type: (AnyStr) -> TaskHandle
+        # type: (Union[str, unicode]) -> TaskHandle
         pass
 
     def removeListener(self, listener):

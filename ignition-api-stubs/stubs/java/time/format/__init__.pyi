@@ -1,6 +1,5 @@
-from typing import List
+from typing import List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Appendable, Enum, Object
 from java.time.chrono import Chronology
 from java.time.temporal import TemporalAccessor
@@ -21,7 +20,7 @@ class DateTimeFormatter(Object):
     ISO_WEEK_DATE: DateTimeFormatter
     ISO_ZONED_DATE_TIME: DateTimeFormatter
     RFC_1123_DATE_TIME: DateTimeFormatter
-    def format(self, temporal: TemporalAccessor) -> AnyStr: ...
+    def format(self, temporal: TemporalAccessor) -> Union[str, unicode]: ...
     def formatTo(self, temporal: TemporalAccessor, appendable: Appendable) -> None: ...
     def getChronology(self) -> Chronology: ...
 

@@ -1,6 +1,5 @@
 from typing import TYPE_CHECKING, Any, Dict, Iterator, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.awt import Dimension
 from java.io import Closeable, OutputStream
 from java.lang import Enum, Object
@@ -191,7 +190,7 @@ class Cell(object):
         raise NotImplementedError
 
     def getCellFormula(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getCellStyle(self):
@@ -243,7 +242,7 @@ class Cell(object):
         raise NotImplementedError
 
     def getStringCellValue(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def isPartOfArrayFormulaGroup(self):
@@ -279,7 +278,7 @@ class Cell(object):
         raise NotImplementedError
 
     def setCellFormula(self, formula):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setCellStyle(self, style):
@@ -314,7 +313,7 @@ class CellRange(object):
         raise NotImplementedError
 
     def getReferenceText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getTopLeftCell(self):
@@ -368,7 +367,7 @@ class CellStyle(object):
         raise NotImplementedError
 
     def getDataFormatString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getFillBackgroundColor(self):
@@ -626,7 +625,7 @@ class Comment(object):
         raise NotImplementedError
 
     def getAuthor(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getClientAnchor(self):
@@ -654,7 +653,7 @@ class Comment(object):
         raise NotImplementedError
 
     def setAuthor(self, author):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setColumn(self, column):
@@ -772,11 +771,11 @@ class ConditionalFormattingRule(object):
         raise NotImplementedError
 
     def getFormula1(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getFormula2(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getMultiStateFormatting(self):
@@ -800,7 +799,7 @@ class ConditionalFormattingRule(object):
         raise NotImplementedError
 
     def getText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -820,8 +819,10 @@ class ConditionalFormattingThreshold(object):
             pass
 
         @staticmethod
-        def byName(name):
-            # type: (AnyStr) -> ConditionalFormattingThreshold.RangeType
+        def byName(
+            name,  # type: Union[str, unicode]
+        ):
+            # type: (...) -> ConditionalFormattingThreshold.RangeType
             pass
 
         @staticmethod
@@ -830,7 +831,7 @@ class ConditionalFormattingThreshold(object):
             pass
 
     def getFormula(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRangeType(self):
@@ -842,7 +843,7 @@ class ConditionalFormattingThreshold(object):
         raise NotImplementedError
 
     def setFormula(self, formula):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setRangeType(self, rangeType):
@@ -880,7 +881,7 @@ class CreationHelper(object):
         raise NotImplementedError
 
     def createRichTextString(self, text):
-        # type: (AnyStr) -> RichTextString
+        # type: (Union[str, unicode]) -> RichTextString
         raise NotImplementedError
 
 
@@ -936,7 +937,7 @@ class DataBarFormatting(object):
 
 class DataFormat(object):
     def getFormat(self, arg):
-        # type: (Union[int, AnyStr]) -> int
+        # type: (Union[int, str, unicode]) -> int
         raise NotImplementedError
 
 
@@ -947,11 +948,11 @@ class DataValidation(object):
         INFO = 2  # type: int
 
     def createErrorBox(self, title, text):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         raise NotImplementedError
 
     def createPromptBox(self, title, text):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         raise NotImplementedError
 
     def getEmptyCellAllowed(self):
@@ -959,11 +960,11 @@ class DataValidation(object):
         raise NotImplementedError
 
     def getErrorBoxText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getErrorBoxTitle(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getErrorStyle(self):
@@ -971,11 +972,11 @@ class DataValidation(object):
         raise NotImplementedError
 
     def getPromptBoxText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getPromptBoxTitle(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRegions(self):
@@ -1032,7 +1033,7 @@ class DataValidationConstraint(object):
         IGNORED = 0  # type: int
 
         def validateSecondArg(self, comparisonOperator, paramValue):
-            # type: (int, AnyStr) -> None
+            # type: (int, Union[str, unicode]) -> None
             pass
 
     class ValidationType(Object):
@@ -1046,15 +1047,15 @@ class DataValidationConstraint(object):
         FORMULA = 7  # type: int
 
     def getExplicitListValues(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         raise NotImplementedError
 
     def getFormula1(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getFormula2(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getOperator(self):
@@ -1066,15 +1067,15 @@ class DataValidationConstraint(object):
         raise NotImplementedError
 
     def setExplicitListValues(self, explicitListValues):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         raise NotImplementedError
 
     def setFormula1(self, formula):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setFormula2(self, formula):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setOperator(self, operator):
@@ -1084,45 +1085,71 @@ class DataValidationConstraint(object):
 
 class DataValidationHelper(object):
     def createCustomConstraint(self, formula):
-        # type: (AnyStr) -> DataValidationConstraint
+        # type: (Union[str, unicode]) -> DataValidationConstraint
         raise NotImplementedError
 
     def createDateConstraint(
         self,
         operatorType,  # type: int
-        formula1,  # type: AnyStr
-        formula2,  # type: AnyStr
-        dateFormat,  # type: AnyStr
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+        dateFormat,  # type: Union[str, unicode]
     ):
         # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
-    def createDecimalConstraint(self, operatorType, formula1, formula2):
-        # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
+    def createDecimalConstraint(
+        self,
+        peratorType,  # type: int
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
     def createExplicitListConstraint(self, listOfValues):
-        # type: (List[AnyStr]) -> DataValidationConstraint
+        # type: (List[Union[str, unicode]]) -> DataValidationConstraint
         raise NotImplementedError
 
     def createFormulaListConstraint(self, listFormula):
-        # type: (AnyStr) -> DataValidationConstraint
+        # type: (Union[str, unicode]) -> DataValidationConstraint
         raise NotImplementedError
 
-    def createIntegerConstraint(self, operatorType, formula1, formula2):
-        # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
+    def createIntegerConstraint(
+        self,
+        operatorType,  # type: int
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
-    def createNumericConstraint(self, validationType, operatorType, formula1, formula2):
-        # type: (int, int, AnyStr, AnyStr) -> DataValidationConstraint
+    def createNumericConstraint(
+        self,
+        validationType,  # type: int
+        operatorType,  # type: int
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
-    def createTextLengthConstraint(self, operatorType, formula1, formula2):
-        # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
+    def createTextLengthConstraint(
+        self,
+        operatorType,  # type: int
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
-    def createTimeConstraint(self, operatorType, formula1, formula2):
-        # type: (int, AnyStr, AnyStr) -> DataValidationConstraint
+    def createTimeConstraint(
+        self,
+        operatorType,  # type: int
+        formula1,  # type: Union[str, unicode]
+        formula2,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> DataValidationConstraint
         raise NotImplementedError
 
     def createValidation(
@@ -1143,7 +1170,7 @@ class DateUtil(Object):
 
     @staticmethod
     def convertTime(timeStr):
-        # type: (AnyStr) -> float
+        # type: (Union[str, unicode]) -> float
         pass
 
     @staticmethod
@@ -1215,12 +1242,12 @@ class DateUtil(Object):
 
     @staticmethod
     def parseDateTime(str_):
-        # type: (AnyStr) -> float
+        # type: (Union[str, unicode]) -> float
         pass
 
     @staticmethod
     def parseYYYYMMDDDate(dateStr):
-        # type: (AnyStr) -> float
+        # type: (Union[str, unicode]) -> float
         pass
 
     @staticmethod
@@ -1272,7 +1299,7 @@ class Font(object):
         raise NotImplementedError
 
     def getFontName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getIndexAsInt(self):
@@ -1316,7 +1343,7 @@ class Font(object):
         raise NotImplementedError
 
     def setFontName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setItalic(self, italic):
@@ -1409,53 +1436,53 @@ class FontFormatting(object):
 
 class HeaderFooter(object):
     def getCenter(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLeft(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRight(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def setCenter(self, newCenter):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setLeft(self, newLeft):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setRight(self, newRight):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 
 class Footer(HeaderFooter):
     def getCenter(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLeft(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRight(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def setCenter(self, newCenter):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setLeft(self, newLeft):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setRight(self, newRight):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 
@@ -1501,33 +1528,33 @@ class FormulaEvaluator(object):
         raise NotImplementedError
 
     def setupReferencedWorkbooks(self, workbooks):
-        # type: (Dict[AnyStr, FormulaEvaluator]) -> None
+        # type: (Dict[Union[str, unicode], FormulaEvaluator]) -> None
         raise NotImplementedError
 
 
 class Header(HeaderFooter):
     def getCenter(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLeft(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRight(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def setCenter(self, newCenter):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setLeft(self, newLeft):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setRight(self, newRight):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 
@@ -1591,8 +1618,10 @@ class IconMultiStateFormatting(object):
             pass
 
         @staticmethod
-        def byName(name):
-            # type: (AnyStr) -> IconMultiStateFormatting.IconSet
+        def byName(
+            name,  # type: Union[str, unicode]
+        ):
+            # type: (...) -> IconMultiStateFormatting.IconSet
             pass
 
         @staticmethod
@@ -1639,15 +1668,15 @@ class IconMultiStateFormatting(object):
 
 class Name(object):
     def getComment(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getNameName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getRefersToFormula(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getSheetIndex(self):
@@ -1655,7 +1684,7 @@ class Name(object):
         raise NotImplementedError
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def isDeleted(self):
@@ -1667,7 +1696,7 @@ class Name(object):
         raise NotImplementedError
 
     def setComment(self, comment):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setFunction(self, value):
@@ -1675,11 +1704,11 @@ class Name(object):
         raise NotImplementedError
 
     def setNameName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setRefersToFormula(self, formulaText):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setSheetIndex(self, sheetId):
@@ -1697,7 +1726,7 @@ class Shape(object):
         raise NotImplementedError
 
     def getShapeName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def isNoFill(self):
@@ -1739,7 +1768,7 @@ class Picture(Shape):
         raise NotImplementedError
 
     def resize(self, *args):
-        # type: (*Any) -> AnyStr
+        # type: (*Any) -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -1803,7 +1832,7 @@ class PictureData(object):
         raise NotImplementedError
 
     def getMimeType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getPictureType(self):
@@ -1811,7 +1840,7 @@ class PictureData(object):
         raise NotImplementedError
 
     def suggestFileExtension(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -2009,7 +2038,7 @@ class RichTextString(object):
         raise NotImplementedError
 
     def getString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def length(self):
@@ -2137,7 +2166,7 @@ class SimpleShape(Shape):
 
 class ObjectData(SimpleShape):
     def getContentType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getDirectory(self):
@@ -2145,7 +2174,7 @@ class ObjectData(SimpleShape):
         raise NotImplementedError
 
     def getFileName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getObjectData(self):
@@ -2153,7 +2182,7 @@ class ObjectData(SimpleShape):
         raise NotImplementedError
 
     def getOLE2ClassName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getPictureData(self):
@@ -2392,7 +2421,7 @@ class Sheet(object):
         raise NotImplementedError
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getTopRow(self):
@@ -2460,7 +2489,7 @@ class Sheet(object):
         raise NotImplementedError
 
     def protectSheet(self, password):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def removeArrayFormula(self, cell):
@@ -2496,7 +2525,7 @@ class Sheet(object):
         raise NotImplementedError
 
     def setArrayFormula(self, formula, range):
-        # type: (AnyStr, CellRangeAddress) -> CellRange
+        # type: (Union[str, unicode], CellRangeAddress) -> CellRange
         raise NotImplementedError
 
     def setAutobreaks(self, value):
@@ -2688,8 +2717,14 @@ class Workbook(Closeable):
     PICTURE_TYPE_PNG = 6  # type: int
     PICTURE_TYPE_DIB = 7  # type: int
 
-    def addOlePackage(self, oleData, label, fileName, command):
-        # type: (bytearray, AnyStr, AnyStr, AnyStr) -> int
+    def addOlePackage(
+        self,
+        oleData,  # type: bytearray
+        label,  # type: Union[str, unicode]
+        fileName,  # type: Union[str, unicode]
+        command,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> int
         raise NotImplementedError
 
     def addPicture(self, pictureData, format_):
@@ -2725,11 +2760,20 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def createSheet(self, name=None):
-        # type: (Optional[AnyStr]) -> Sheet
+        # type: (Union[str, unicode, None]) -> Sheet
         raise NotImplementedError
 
-    def findFont(self, bold, color, fontHeight, name, italic, strikeout, underline):
-        # type: (bool, int, float, AnyStr, bool, bool, int) -> Font
+    def findFont(
+        self,
+        bold,  # type: bool
+        color,  # type: int
+        fontHeight,  # type: float
+        name,  # type: Union[str, unicode]
+        italic,  # type: bool
+        strikeout,  # type: bool
+        underline,  # type: int
+    ):
+        # type: (...) -> Font
         raise NotImplementedError
 
     def getActiveSheetIndex(self):
@@ -2769,7 +2813,7 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def getName(self, name):
-        # type: (AnyStr) -> Name
+        # type: (Union[str, unicode]) -> Name
         raise NotImplementedError
 
     def getNames(self):
@@ -2793,11 +2837,11 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def getPrintArea(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getSheet(self, name):
-        # type: (AnyStr) -> Sheet
+        # type: (Union[str, unicode]) -> Sheet
         raise NotImplementedError
 
     def getSheetAt(self, index):
@@ -2805,11 +2849,11 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def getSheetIndex(self, arg):
-        # type: (Union[AnyStr, Sheet]) -> int
+        # type: (Union[str, unicode, Sheet]) -> int
         raise NotImplementedError
 
     def getSheetName(self, sheet):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         raise NotImplementedError
 
     def getSheetVisibility(self, sheetIx):
@@ -2833,7 +2877,7 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def linkExternalWorkbook(self, name, workbook):
-        # type: (AnyStr, Workbook) -> None
+        # type: (Union[str, unicode], Workbook) -> None
         raise NotImplementedError
 
     def removeName(self, name):
@@ -2869,7 +2913,7 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def setPrintArea(self, sheetIndex, *args):
-        # type: (int, *AnyStr) -> None
+        # type: (int, *Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setSelectedTab(self, index):
@@ -2881,11 +2925,11 @@ class Workbook(Closeable):
         raise NotImplementedError
 
     def setSheetName(self, sheet, name):
-        # type: (int, AnyStr) -> None
+        # type: (int, Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setSheetOrder(self, sheetName, pos):
-        # type: (AnyStr, int) -> None
+        # type: (Union[str, unicode], int) -> None
         raise NotImplementedError
 
     def setSheetVisibility(self, sheetIx, visibility):
@@ -2981,7 +3025,7 @@ class ConditionType(Object):
     FORMULA = None  # type: ConditionType
     ICON_SET = None  # type: ConditionType
     id = None  # type: int
-    type = None  # type: AnyStr
+    type = None  # type: Union[str, unicode]
 
     @staticmethod
     def forId(id):
@@ -2991,20 +3035,20 @@ class ConditionType(Object):
 
 class ExcelNumberFormat(Object):
     id = None  # type: int
-    format = None  # type: AnyStr
+    format = None  # type: Union[str, unicode]
 
     def __init__(self, idx, format_):
-        # type: (int, AnyStr) -> None
+        # type: (int, Union[str, unicode]) -> None
         super(ExcelNumberFormat, self).__init__()
         self.id = idx  # type: int
-        self.format = format_  # type: AnyStr
+        self.format = format_  # type: Union[str, unicode]
 
     def getIdx(self):
         # type: () -> int
         return self.id
 
     def getFormat(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.format
 
 
@@ -3018,7 +3062,7 @@ class ExtendedColor(Object, Color):
         pass
 
     def getARGBHex(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getIndex(self):
@@ -3058,7 +3102,7 @@ class ExtendedColor(Object, Color):
         pass
 
     def setARGBHex(self, argb):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setRGB(self, rgb):
@@ -3075,7 +3119,7 @@ class CellValue(Object):
     TRUE = None  # type: CellValue
 
     def formatAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getBooleanValue(self):
@@ -3100,7 +3144,7 @@ class CellValue(Object):
         pass
 
     def getStringValue(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     @staticmethod

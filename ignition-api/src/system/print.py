@@ -15,10 +15,9 @@ __all__ = [
     "printToImage",
 ]
 
-from typing import List, Optional
+from typing import List, Optional, Union
 
 from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
-from dev.coatl.helper.types import AnyStr
 from java.awt import Component
 from java.awt.image import BufferedImage
 
@@ -87,7 +86,7 @@ def getPrinterNames():
 
 
 def printToImage(component, filename=None):
-    # type: (Component, Optional[AnyStr]) -> None
+    # type: (Component, Union[str, unicode, None]) -> None
     """This function prints the given component (such as a graph,
     container, entire window, etc.) to an image file, and saves the file
     where ever the operating system deems appropriate.

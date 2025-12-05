@@ -2,7 +2,6 @@ from __future__ import print_function
 
 from typing import TYPE_CHECKING, Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Enum, Object
 from org.apache.poi.ss import SpreadsheetVersion
 from org.apache.poi.ss.formula.eval import ValueEval
@@ -24,7 +23,6 @@ if TYPE_CHECKING:
     from org.apache.poi.ss.formula.ptg import (
         Area3DPtg,
         Area3DPxg,
-        NamePtg,
         NameXPtg,
         NameXPxg,
         Ptg,
@@ -75,7 +73,7 @@ class EvaluationCell(object):
         raise NotImplementedError
 
     def getStringCellValue(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def isPartOfArrayFormulaGroup(self):
@@ -103,12 +101,12 @@ class EvaluationSheet(object):
 
 class EvaluationWorkbook(object):
     class ExternalName(Object):
-        _nameName = None  # type: AnyStr
+        _nameName = None  # type: Union[str, unicode]
         _nameNumber = None  # type: int
         _ix = None  # type: int
 
         def __init__(self, nameName, nameNumber, ix):
-            # type: (AnyStr, int, int) -> None
+            # type: (Union[str, unicode], int, int) -> None
             super(EvaluationWorkbook.ExternalName, self).__init__()
             self._nameName = nameName
             self._nameNumber = nameNumber
@@ -119,7 +117,7 @@ class EvaluationWorkbook(object):
             return self._ix
 
         def getNameName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._nameName
 
         def getNameNumber(self):
@@ -127,41 +125,46 @@ class EvaluationWorkbook(object):
             return self._nameNumber
 
     class ExternalSheet(Object):
-        _workbookName = None  # type: AnyStr
-        _sheetName = None  # type: AnyStr
+        _workbookName = None  # type: Union[str, unicode]
+        _sheetName = None  # type: Union[str, unicode]
 
         def __init__(self, workbookName, sheetName):
-            # type: (AnyStr, AnyStr) -> None
+            # type: (Union[str, unicode], Union[str, unicode]) -> None
             super(EvaluationWorkbook.ExternalSheet, self).__init__()
             self._workbookName = workbookName
             self._sheetName = sheetName
 
         def getSheetName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._sheetName
 
         def getWorkbookName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._workbookName
 
     class ExternalSheetRange(Object):
-        _workbookName = None  # type: AnyStr
-        _firstSheetName = None  # type: AnyStr
-        _lastSheetName = None  # type: AnyStr
+        _workbookName = None  # type: Union[str, unicode]
+        _firstSheetName = None  # type: Union[str, unicode]
+        _lastSheetName = None  # type: Union[str, unicode]
 
-        def __init__(self, workbookName, firstSheetName, lastSheetName):
-            # type: (AnyStr, AnyStr, AnyStr) -> None
+        def __init__(
+            self,
+            workbookName,  # type: Union[str, unicode]
+            firstSheetName,  # type: Union[str, unicode]
+            lastSheetName,  # type: Union[str, unicode]
+        ):
+            # type: (...) -> None
             super(EvaluationWorkbook.ExternalSheetRange, self).__init__()
             self._workbookName = workbookName
             self._firstSheetName = firstSheetName
             self._lastSheetName = lastSheetName
 
         def getFirstSheetName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._firstSheetName
 
         def getLastSheetName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._lastSheetName
 
     def clearAllCachedResultValues(self):
@@ -184,8 +187,12 @@ class EvaluationWorkbook(object):
         # type: (EvaluationCell) -> List[Ptg]
         raise NotImplementedError
 
-    def getName(self, name, sheetIndex=None):
-        # type: (Union[AnyStr, NamePtg], Optional[int]) -> ExternalName
+    def getName(
+        self,
+        name,  # type: Union[str, unicode]
+        sheetIndex=None,  # type: Optional[int]
+    ):
+        # type: (...) -> ExternalName
         raise NotImplementedError
 
     def getSheet(self, sheetIndex):
@@ -193,11 +200,11 @@ class EvaluationWorkbook(object):
         raise NotImplementedError
 
     def getSheetIndex(self, arg):
-        # type: (Union[AnyStr, EvaluationSheet]) -> int
+        # type: (Union[str, unicode, EvaluationSheet]) -> int
         raise NotImplementedError
 
     def getSheetName(self, sheetIndex):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         raise NotImplementedError
 
     def getSpreadsheetVersion(self):
@@ -209,7 +216,7 @@ class EvaluationWorkbook(object):
         raise NotImplementedError
 
     def resolveNameXText(self, ptg):
-        # type: (NameXPtg) -> AnyStr
+        # type: (NameXPtg) -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -342,7 +349,7 @@ class CellCacheEntry(Object, IEvaluationListener.ICacheEntry):
 
 class ExternSheetReferenceToken(object):
     def format2DRefAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getExternSheetIndex(self):
@@ -542,7 +549,7 @@ class SheetRefEvaluator(Object):
         pass
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isSubTotal(self, rowIndex, columnIndex):
@@ -583,11 +590,11 @@ class SheetRangeEvaluator(Object, SheetRange):
         pass
 
     def getSheetName(self, sheetIndex):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def getSheetNameRange(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
@@ -617,7 +624,7 @@ class OperationEvaluationContext(Object):
         )
 
     def findUserDefinedFunction(self, name):
-        # type: (AnyStr) -> FreeRefFunction
+        # type: (Union[str, unicode]) -> FreeRefFunction
         pass
 
     def getArea3DEval(self, aptg):
@@ -651,10 +658,10 @@ class OperationEvaluationContext(Object):
 
     def getDynamicReference(
         self,
-        workbookName,  # type: AnyStr
-        sheetName,  # type: AnyStr
-        refStrPart1,  # type: AnyStr
-        refStrPart2,  # type: AnyStr
+        workbookName,  # type: Union[str, unicode]
+        sheetName,  # type: Union[str, unicode]
+        refStrPart1,  # type: Union[str, unicode]
+        refStrPart2,  # type: Union[str, unicode]
         isA1Style,  # type: bool
     ):
         # type: (...) -> ValueEval
@@ -711,7 +718,7 @@ class IStabilityClassifier(object):
 
 class WorkbookDependentFormula(object):
     def toFormulaString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -741,7 +748,7 @@ class WorkbookEvaluator(Object):
 
     def evaluateList(
         self,
-        formula,  # type: AnyStr
+        formula,  # type: Union[str, unicode]
         target,  # type: CellReference
         region,  # type: CellRangeAddressBase
     ):
@@ -749,17 +756,17 @@ class WorkbookEvaluator(Object):
         pass
 
     def findUserDefinedFunction(self, name):
-        # type: (AnyStr) -> FreeRefFunction
+        # type: (Union[str, unicode]) -> FreeRefFunction
         pass
 
     @staticmethod
     def getNotSupportedFunctionNames():
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     @staticmethod
     def getSupportedFunctionNames():
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def isDebugEvaluationOutpotForNextEval(self):
@@ -779,8 +786,11 @@ class WorkbookEvaluator(Object):
         pass
 
     @staticmethod
-    def registerFunction(name, func):
-        # type: (AnyStr, Union[FreeRefFunction, Function]) -> None
+    def registerFunction(
+        name,  # type: Union[str, unicode]
+        func,  # type: Union[FreeRefFunction, Function]
+    ):
+        # type: (...) -> None
         pass
 
     def setDebugEvaluationOutputForNextEval(self, value):
@@ -858,11 +868,11 @@ class EvaluationConditionalFormatRule(Object, Comparable):
         pass
 
     def getFormula1(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getFormula2(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getNumberFormat(self):
@@ -894,7 +904,7 @@ class EvaluationConditionalFormatRule(Object, Comparable):
         pass
 
     def getText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getType(self):
@@ -925,7 +935,7 @@ class ConditionalFormattingEvaluator(Object):
 
     def getFormatRulesForSheet(
         self,
-        sheet,  # type: Union[AnyStr, Sheet]
+        sheet,  # type: Union[str, unicode, Sheet]
     ):
         # type: (...) -> List[EvaluationConditionalFormatRule]
         pass

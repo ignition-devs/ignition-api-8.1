@@ -1,11 +1,10 @@
 __all__ = ["ModuleInfo"]
 
-from typing import List, Mapping, Optional
+from typing import List, Mapping, Optional, Union
 
 from com.inductiveautomation.ignition.common.licensing import LicenseState
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.util import Platform
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -32,19 +31,22 @@ class ModuleInfo(Object):
             pass
 
         def setDescription(self, description):
-            # type: (AnyStr) -> ModuleInfo.Builder
+            # type: (Union[str, unicode]) -> ModuleInfo.Builder
             pass
 
         def setExports(self, exports):
             # type: (List[ModuleInfo.JarInfo]) -> ModuleInfo.Builder
             pass
 
-        def setHooks(self, hooks):
-            # type: (Mapping[int, AnyStr]) -> ModuleInfo.Builder
+        def setHooks(
+            self,
+            hooks,  # type: Mapping[int, Union[str, unicode]]
+        ):
+            # type: (...) -> ModuleInfo.Builder
             pass
 
         def setId(self, id_):
-            # type: (AnyStr) -> ModuleInfo.Builder
+            # type: (Union[str, unicode]) -> ModuleInfo.Builder
             pass
 
         def setJars(self, jars):
@@ -52,11 +54,11 @@ class ModuleInfo(Object):
             pass
 
         def setLicenseFile(self, licenseFilename):
-            # type: (AnyStr) -> ModuleInfo.Builder
+            # type: (Union[str, unicode]) -> ModuleInfo.Builder
             pass
 
         def setName(self, name):
-            # type: (AnyStr) -> ModuleInfo.Builder
+            # type: (Union[str, unicode]) -> ModuleInfo.Builder
             pass
 
         def setRequire(self, require):
@@ -75,8 +77,13 @@ class ModuleInfo(Object):
             # type: (bool) -> ModuleInfo.Builder
             pass
 
-        def setVendor(self, id_, name, contactInfo):
-            # type: (int, AnyStr, AnyStr) -> ModuleInfo.Builder
+        def setVendor(
+            self,
+            id_,  # type: int
+            name,  # type: Union[str, unicode]
+            contactInfo,  # type: Union[str, unicode]
+        ):
+            # type: (...) -> ModuleInfo.Builder
             pass
 
         def setVersion(self, version):
@@ -87,9 +94,9 @@ class ModuleInfo(Object):
         def __init__(
             self,
             scope,  # type: int
-            path,  # type: AnyStr
-            requiredOs="",  # type: AnyStr
-            requiredArch="",  # type: AnyStr
+            path,  # type: Union[str, unicode]
+            requiredOs="",  # type: Union[str, unicode]
+            requiredArch="",  # type: Union[str, unicode]
         ):
             # type: (...) -> None
             super(ModuleInfo.JarInfo, self).__init__()
@@ -99,15 +106,15 @@ class ModuleInfo(Object):
             self._requiredArch = requiredArch
 
         def getPath(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._path
 
         def getRequiredArch(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._requiredArch
 
         def getRequiredOS(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._requiredOs
 
         def getScope(self):
@@ -128,7 +135,7 @@ class ModuleInfo(Object):
 
     class LibraryInfo(Object):
         def getName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getScope(self):
@@ -136,7 +143,7 @@ class ModuleInfo(Object):
             pass
 
         def setName(self, name):
-            # type: (AnyStr) -> None
+            # type: (Union[str, unicode]) -> None
             pass
 
         def setScope(self, scope):
@@ -145,7 +152,7 @@ class ModuleInfo(Object):
 
     class ModuleDependency(Object):
         def getModuleId(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getScope(self):
@@ -165,11 +172,11 @@ class ModuleInfo(Object):
         pass
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDocumentationRoot(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getExports(self):
@@ -177,15 +184,15 @@ class ModuleInfo(Object):
         pass
 
     def getHooks(self):
-        # type: () -> Mapping[int, AnyStr]
+        # type: () -> Mapping[int, Union[str, unicode]]
         pass
 
     def getId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getInstallPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getJars(self):
@@ -197,7 +204,7 @@ class ModuleInfo(Object):
         pass
 
     def getLicenseFile(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getLicenseState(self):
@@ -205,7 +212,7 @@ class ModuleInfo(Object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getRequiredFrameworkVersion(self):
@@ -217,7 +224,7 @@ class ModuleInfo(Object):
         pass
 
     def getVendorContactInfo(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getVendorId(self):
@@ -225,7 +232,7 @@ class ModuleInfo(Object):
         pass
 
     def getVendorName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getVersion(self):
@@ -262,7 +269,7 @@ class ModuleInfo(Object):
         pass
 
     def setInstallPath(self, installPath):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setLicenseState(self, newState):
@@ -278,7 +285,7 @@ class ModuleInfo(Object):
         pass
 
     def setVendorInfo(self, vendorId, vendorName, vendorContactInfo):
-        # type: (int, AnyStr, AnyStr) -> None
+        # type: (int, Union[str, unicode], Union[str, unicode]) -> None
         pass
 
     @staticmethod
@@ -287,5 +294,5 @@ class ModuleInfo(Object):
         pass
 
     def toXML(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass

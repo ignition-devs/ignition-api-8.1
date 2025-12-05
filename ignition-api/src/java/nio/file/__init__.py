@@ -32,7 +32,6 @@ __all__ = [
 
 from typing import Any, Iterator, List, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.io import (
     BufferedReader,
     BufferedWriter,
@@ -90,7 +89,7 @@ class Watchable(object):
 
 class FileStore(Object):
     def getAttribute(self, attribute):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         raise NotImplementedError
 
     def getBlockSize(self):
@@ -118,7 +117,7 @@ class FileStore(Object):
         raise NotImplementedError
 
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def supportsFileAttributeView(self, type):
@@ -126,7 +125,7 @@ class FileStore(Object):
         raise NotImplementedError
 
     def type(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -155,53 +154,73 @@ class FileSystemAlreadyExistsException(RuntimeException):
 
 
 class FileSystemException(IOException):
-    def __init__(self, file, other=None, reason=None):
-        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    def __init__(
+        self,
+        file,  # type: Union[str, unicode]
+        other=None,  # type: Union[str, unicode, None]
+        reason=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> None
         super(FileSystemException, self).__init__()
         self._file = file
         self._other = other
         self._reason = reason
 
     def getFile(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._file
 
     def getOtherFile(self):
-        # type: () -> Optional[AnyStr]
+        # type: () -> Union[str, unicode, None]
         return self._other
 
     def getReason(self):
-        # type: () -> Optional[AnyStr]
+        # type: () -> Union[str, unicode, None]
         return self._reason
 
 
 class AccessDeniedException(FileSystemException):
-    def __init__(self, file, other=None, reason=None):
-        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    def __init__(
+        self,
+        file,  # type: Union[str, unicode]
+        other=None,  # type: Union[str, unicode, None]
+        reason=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> None
         super(AccessDeniedException, self).__init__(file, other, reason)
 
 
 class AtomicMoveNotSupportedException(FileSystemException):
-    def __init__(self, source, target, reason):
-        # type: (AnyStr, AnyStr, AnyStr) -> None
+    def __init__(
+        self,
+        source,  # type: Union[str, unicode]
+        target,  # type: Union[str, unicode]
+        reason,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> None
         super(AtomicMoveNotSupportedException, self).__init__(source, target, reason)
 
 
 class DirectoryNotEmptyException(FileSystemException):
     def __init__(self, dir_):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(DirectoryNotEmptyException, self).__init__(dir_)
 
 
 class FileAlreadyExistsException(FileSystemException):
-    def __init__(self, file, other=None, reason=None):
-        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    def __init__(
+        self,
+        file,  # type: Union[str, unicode]
+        other=None,  # type: Union[str, unicode, None]
+        reason=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> None
         super(FileAlreadyExistsException, self).__init__(file, other, reason)
 
 
 class FileSystemLoopException(FileSystemException):
     def __init__(self, file):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(FileSystemLoopException, self).__init__(file)
 
 
@@ -212,20 +231,30 @@ class FileSystemNotFoundException(RuntimeException):
 
 
 class NoSuchFileException(FileSystemException):
-    def __init__(self, file, other=None, reason=None):
-        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    def __init__(
+        self,
+        file,  # type: Union[str, unicode]
+        other=None,  # type: Union[str, unicode, None]
+        reason=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> None
         super(NoSuchFileException, self).__init__(file, other, reason)
 
 
 class NotDirectoryException(FileSystemException):
     def __init__(self, file):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(NotDirectoryException, self).__init__(file)
 
 
 class NotLinkException(FileSystemException):
-    def __init__(self, file, other=None, reason=None):
-        # type: (AnyStr, Optional[AnyStr], Optional[AnyStr]) -> None
+    def __init__(
+        self,
+        file,  # type: Union[str, unicode]
+        other=None,  # type: Union[str, unicode, None]
+        reason=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> None
         super(NotLinkException, self).__init__(file, other, reason)
 
 
@@ -301,7 +330,7 @@ class Files(Object):
 
     @staticmethod
     def getAttribute(path, attribute, *options):
-        # type: (Path, AnyStr, *LinkOption) -> Object
+        # type: (Path, Union[str, unicode], *LinkOption) -> Object
         pass
 
     @staticmethod
@@ -421,7 +450,7 @@ class Files(Object):
 
     @staticmethod
     def probeContentType(path):
-        # type: (Path) -> AnyStr
+        # type: (Path) -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -431,7 +460,7 @@ class Files(Object):
 
     @staticmethod
     def readAllLines(path, cs=None):
-        # type: (Path, Optional[Charset]) -> List[AnyStr]
+        # type: (Path, Optional[Charset]) -> List[Union[str, unicode]]
         pass
 
     @staticmethod
@@ -441,7 +470,7 @@ class Files(Object):
 
     @staticmethod
     def readString(path, cs=None):
-        # type: (Path, Optional[Charset]) -> AnyStr
+        # type: (Path, Optional[Charset]) -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -451,7 +480,7 @@ class Files(Object):
 
     @staticmethod
     def setAttribute(path, attribute, value, *options):
-        # type: (Path, AnyStr, Object, *LinkOption) -> Path
+        # type: (Path, Union[str, unicode], Object, *LinkOption) -> Path
         pass
 
     @staticmethod
@@ -508,11 +537,11 @@ class InvalidPathException(IllegalArgumentException):
         return self._index
 
     def getInput(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._input
 
     def getReason(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._reason
 
 
@@ -531,7 +560,7 @@ class Path(Watchable):
         pass
 
     def endsWith(self, other):
-        # type: (Union[Object, Path, AnyStr]) -> bool
+        # type: (Union[Object, Path, str, unicode]) -> bool
         return True
 
     def equals(self, other):
@@ -588,7 +617,7 @@ class Path(Watchable):
         pass
 
     def resolve(self, other):
-        # type: (Union[Path, AnyStr]) -> Path
+        # type: (Union[Path, str, unicode]) -> Path
         pass
 
     def resolveSibling(self, other):
@@ -616,7 +645,7 @@ class Path(Watchable):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def toUri(self):
@@ -652,7 +681,7 @@ class WatchEvent(object):
 
     class Kind(object):
         def name(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             raise NotImplementedError
 
         def type(self):
@@ -661,7 +690,7 @@ class WatchEvent(object):
 
     class Modifier(object):
         def name(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             raise NotImplementedError
 
     def context(self):

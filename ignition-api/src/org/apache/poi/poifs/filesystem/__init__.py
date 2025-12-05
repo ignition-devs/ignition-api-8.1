@@ -1,6 +1,5 @@
-from typing import Any, List, Set
+from typing import Any, List, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from org.apache.poi.hpsf import ClassID
 
 
@@ -10,7 +9,7 @@ class Entry(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getParent(self):
@@ -26,13 +25,13 @@ class Entry(object):
         raise NotImplementedError
 
     def renameTo(self, newName):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 
 class DirectoryEntry(Entry):
     def createDirectory(self, name):
-        # type: (AnyStr) -> DirectoryEntry
+        # type: (Union[str, unicode]) -> DirectoryEntry
         pass
 
     def createDocument(self, *args):
@@ -48,7 +47,7 @@ class DirectoryEntry(Entry):
         pass
 
     def getEntry(self, name):
-        # type: (AnyStr) -> Entry
+        # type: (Union[str, unicode]) -> Entry
         pass
 
     def getEntryCount(self):
@@ -56,11 +55,11 @@ class DirectoryEntry(Entry):
         pass
 
     def getEntryNames(self):
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParent(self):
@@ -72,7 +71,7 @@ class DirectoryEntry(Entry):
         pass
 
     def hasEntry(self, name):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         pass
 
     def isDirectoryEntry(self):
@@ -88,7 +87,7 @@ class DirectoryEntry(Entry):
         pass
 
     def renameTo(self, newName):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setStorageClsid(self, clsidStorage):

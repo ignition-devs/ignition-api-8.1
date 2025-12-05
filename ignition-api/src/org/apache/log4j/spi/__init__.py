@@ -10,9 +10,8 @@ __all__ = [
     "OptionHandler",
 ]
 
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Exception, Object
 from java.util import Enumeration
 
@@ -30,7 +29,7 @@ class ErrorHandler(OptionHandler):
 
     def error(
         self,
-        message,  # type: AnyStr
+        message,  # type: Union[str, unicode]
         e=None,  # type: Optional[Exception]
         errorCode=None,  # type: Optional[int]
         event=None,  # type: Optional[LoggingEvent]
@@ -63,7 +62,7 @@ class HierarchyEventListener(object):
 
 class LoggerFactory(object):
     def makeNewLoggerInstance(self, name):
-        # type: (AnyStr) -> Any
+        # type: (Union[str, unicode]) -> Any
         raise NotImplementedError
 
 
@@ -77,7 +76,7 @@ class LoggerRepository(object):
         raise NotImplementedError
 
     def exists(self, name):
-        # type: (AnyStr) -> Any
+        # type: (Union[str, unicode]) -> Any
         raise NotImplementedError
 
     def fireAddAppenderEvent(self, logger, appender):
@@ -89,7 +88,7 @@ class LoggerRepository(object):
         raise NotImplementedError
 
     def getLogger(self, name, factory=None):
-        # type: (AnyStr, Optional[LoggerFactory]) -> Any
+        # type: (Union[str, unicode], Optional[LoggerFactory]) -> Any
         raise NotImplementedError
 
     def getRootLogger(self):
@@ -136,8 +135,8 @@ class Filter(Object, OptionHandler):
 
 
 class LoggingEvent(Object):
-    categoryName = None  # type: AnyStr
-    fqnOfCategoryClass = None  # type: AnyStr
+    categoryName = None  # type: Union[str, unicode]
+    fqnOfCategoryClass = None  # type: Union[str, unicode]
     level = None  # type: Any
     timeStamp = None  # type: long
 

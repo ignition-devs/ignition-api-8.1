@@ -2,11 +2,10 @@ from __future__ import print_function
 
 __all__ = ["AlarmEvent", "EventData", "PyAlarmEvent", "PyAlarmEventImpl"]
 
-from typing import Any, Iterator
+from typing import Any, Iterator, Union
 
 from com.inductiveautomation.ignition.common import QualifiedPath, StringPath
 from com.inductiveautomation.ignition.common.config import BasicPropertySet
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import UUID
 from org.python.core import PyObject
@@ -43,7 +42,7 @@ class AlarmEvent(object):
         raise NotImplementedError
 
     def getDisplayPathOrSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getId(self):
@@ -51,7 +50,7 @@ class AlarmEvent(object):
         raise NotImplementedError
 
     def getLabel(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLastEventState(self):
@@ -59,11 +58,11 @@ class AlarmEvent(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getNotes(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getPriority(self):
@@ -124,11 +123,11 @@ class PyAlarmEvent(AlarmEvent):
         pass
 
     def contains(self, property):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         raise NotImplementedError
 
     def get(self, property):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         raise NotImplementedError
 
     def getAckData(self):
@@ -148,7 +147,7 @@ class PyAlarmEvent(AlarmEvent):
         pass
 
     def getDisplayPathOrSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getId(self):
@@ -156,7 +155,7 @@ class PyAlarmEvent(AlarmEvent):
         pass
 
     def getLabel(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getLastEventState(self):
@@ -164,19 +163,19 @@ class PyAlarmEvent(AlarmEvent):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getNotes(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getOrDefault(self, property):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         raise NotImplementedError
 
     def getOrElse(self, property, defaultValue):
-        # type: (AnyStr, Object) -> Object
+        # type: (Union[str, unicode], Object) -> Object
         raise NotImplementedError
 
     def getPriority(self):
@@ -204,11 +203,11 @@ class PyAlarmEvent(AlarmEvent):
         return True
 
     def set(self, property, value):
-        # type: (AnyStr, Object) -> None
+        # type: (Union[str, unicode], Object) -> None
         raise NotImplementedError
 
     def setGlobal(self, property, value):
-        # type: (AnyStr, Object) -> None
+        # type: (Union[str, unicode], Object) -> None
         raise NotImplementedError
 
     def sourceEvent(self):
@@ -227,27 +226,27 @@ class PyAlarmEventImpl(PyAlarmEvent, PyObject):
         super(PyAlarmEventImpl, self).__init__()
 
     def contains(self, property):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def get(self, property):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def getOrDefault(self, property):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def getOrElse(self, property, defaultValue):
-        # type: (AnyStr, Object) -> Object
+        # type: (Union[str, unicode], Object) -> Object
         pass
 
     def set(self, property, value):
-        # type: (AnyStr, Object) -> None
+        # type: (Union[str, unicode], Object) -> None
         pass
 
     def setGlobal(self, property, value):
-        # type: (AnyStr, Object) -> None
+        # type: (Union[str, unicode], Object) -> None
         pass
 
     def sourceEvent(self):

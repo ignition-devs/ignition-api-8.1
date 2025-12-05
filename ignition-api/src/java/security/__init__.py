@@ -1,6 +1,6 @@
 __all__ = ["Principal"]
+from typing import Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from javax.security.auth import Subject
 
@@ -11,7 +11,7 @@ class Principal(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def hashCode(self):
@@ -23,5 +23,5 @@ class Principal(object):
         return True
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError

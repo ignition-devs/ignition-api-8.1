@@ -1,8 +1,7 @@
 __all__ = ["ToStringStyle"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object, StringBuffer
 
 
@@ -16,7 +15,7 @@ class ToStringStyle(Object):
     SIMPLE_STYLE = None  # type: ToStringStyle
 
     def append(self, buffer, fieldName, *args):
-        # type: (StringBuffer, AnyStr, Any) -> None
+        # type: (StringBuffer, Union[str, unicode], Any) -> None
         pass
 
     def appendEnd(self, buffer, obj):
@@ -28,9 +27,9 @@ class ToStringStyle(Object):
         pass
 
     def appendSuper(self, buffer, superToString):
-        # type: (StringBuffer, AnyStr) -> None
+        # type: (StringBuffer, Union[str, unicode]) -> None
         pass
 
     def appendToString(self, buffer, toString):
-        # type: (StringBuffer, AnyStr) -> None
+        # type: (StringBuffer, Union[str, unicode]) -> None
         pass

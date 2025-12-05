@@ -1,73 +1,78 @@
 from typing import Any, Dict, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from org.python.core import PyObject
 
 def aggregate(
-    connector: AnyStr,
-    collection: AnyStr,
-    aggregate: List[Dict[AnyStr, Any]],
-    collation: Optional[Dict[AnyStr, Any]] = ...,
-) -> List[Dict[AnyStr, Any]]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    aggregate: List[Dict[Union[str, unicode], Any]],
+    collation: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> List[Dict[Union[str, unicode], Any]]: ...
 def deleteMany(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    options: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...
 def deleteOne(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    options: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...
 def find(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    project: Optional[Dict[AnyStr, Any]] = ...,
-    sort: Optional[Dict[AnyStr, Any]] = ...,
-    collation: Optional[Dict[AnyStr, Any]] = ...,
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    project: Optional[Dict[Union[str, unicode], Any]] = ...,
+    sort: Optional[Dict[Union[str, unicode], Any]] = ...,
+    collation: Optional[Dict[Union[str, unicode], Any]] = ...,
     limit: Optional[int] = ...,
     skip: Optional[int] = ...,
-) -> List[Dict[AnyStr, Any]]: ...
+) -> List[Dict[Union[str, unicode], Any]]: ...
 def findOne(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    project: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    project: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...
 def insertMany(
-    connector: AnyStr,
-    collection: AnyStr,
-    document: List[Dict[AnyStr, Any]],
-    options: Optional[Dict[AnyStr, Any]] = ...,
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    document: List[Dict[Union[str, unicode], Any]],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
 ) -> List[PyObject]: ...
 def insertOne(
-    connector: AnyStr,
-    collection: AnyStr,
-    document: Dict[AnyStr, Any],
-    options: Optional[Dict[AnyStr, Any]] = ...,
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    document: Dict[Union[str, unicode], Any],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
 ) -> PyObject: ...
-def listCollectionNames(connector: AnyStr) -> List[AnyStr]: ...
-def listConnectorInfo() -> List[Dict[AnyStr, Any]]: ...
+def listCollectionNames(
+    connector: Union[str, unicode],
+) -> List[Union[str, unicode]]: ...
+def listConnectorInfo() -> List[Dict[Union[str, unicode], Any]]: ...
 def replaceOne(
-    connector: AnyStr,
-    collection: AnyStr,
-    replacement: Dict[AnyStr, Any],
-    options: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    replacement: Dict[Union[str, unicode], Any],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...
 def updateMany(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    updates: Union[Dict[AnyStr, Any], List[Dict[AnyStr, Any]]],
-    options: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    updates: Union[
+        Dict[Union[str, unicode], Any], List[Dict[Union[str, unicode], Any]]
+    ],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...
 def updateOne(
-    connector: AnyStr,
-    collection: AnyStr,
-    filter: Dict[AnyStr, Any],
-    updates: Union[Dict[AnyStr, Any], List[Dict[AnyStr, Any]]],
-    options: Optional[Dict[AnyStr, Any]] = ...,
-) -> Dict[AnyStr, Any]: ...
+    connector: Union[str, unicode],
+    collection: Union[str, unicode],
+    filter: Dict[Union[str, unicode], Any],
+    updates: Union[
+        Dict[Union[str, unicode], Any], List[Dict[Union[str, unicode], Any]]
+    ],
+    options: Optional[Dict[Union[str, unicode], Any]] = ...,
+) -> Dict[Union[str, unicode], Any]: ...

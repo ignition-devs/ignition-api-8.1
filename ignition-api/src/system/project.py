@@ -8,13 +8,11 @@ from __future__ import print_function
 
 __all__ = ["getProjectName", "getProjectNames", "requestScan"]
 
-from typing import List
-
-from dev.coatl.helper.types import AnyStr
+from typing import List, Union
 
 
 def getProjectName():
-    # type: () -> AnyStr
+    # type: () -> Union[str, unicode]
     """Returns the name of the project where the function was called
     from.
 
@@ -37,7 +35,7 @@ def getProjectName():
 
 
 def getProjectNames():
-    # type: () -> List[AnyStr]
+    # type: () -> List[Union[str, unicode]]
     """Returns an unsorted collection of strings, where each string
     represents the name of a project on the Gateway.
 

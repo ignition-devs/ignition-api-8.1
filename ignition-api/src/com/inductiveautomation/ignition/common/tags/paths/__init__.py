@@ -11,7 +11,6 @@ from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -26,11 +25,11 @@ class AbstractTagPath(Object, TagPath):
         pass
 
     def getChildPath(self, nextId):
-        # type: (AnyStr) -> TagPath
+        # type: (Union[str, unicode]) -> TagPath
         pass
 
     def getItemName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParentPath(self):
@@ -42,23 +41,23 @@ class AbstractTagPath(Object, TagPath):
         pass
 
     def getSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def toStringFull(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def toStringPartial(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
 class BasicTagPath(AbstractTagPath):
     def __init__(
         self,
-        source,  # type: AnyStr
-        pathParts=None,  # type: Optional[List[AnyStr]]
+        source,  # type: Union[str, unicode]
+        pathParts=None,  # type: Optional[List[Union[str, unicode]]]
         prop=None,  # type: Optional[Property]
     ):
         # type: (...) -> None
@@ -67,7 +66,7 @@ class BasicTagPath(AbstractTagPath):
 
     @staticmethod
     def append(root, arg):
-        # type: (TagPath, Union[AnyStr, TagPath]) -> TagPath
+        # type: (TagPath, Union[str, unicode, TagPath]) -> TagPath
         pass
 
     @staticmethod
@@ -95,6 +94,6 @@ class PropertyAlteredTagPath(AbstractTagPath):
 
 class SourceAlteredTagPath(AbstractTagPath):
     def __init__(self, path, source):
-        # type: (TagPath, AnyStr) -> None
+        # type: (TagPath, Union[str, unicode]) -> None
         super(SourceAlteredTagPath, self).__init__()
         print(path, source)

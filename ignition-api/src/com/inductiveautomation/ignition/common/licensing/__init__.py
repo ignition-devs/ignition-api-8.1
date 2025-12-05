@@ -6,16 +6,15 @@ __all__ = [
     "ModuleLicense",
 ]
 
-from typing import Iterable, List
+from typing import Iterable, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 from java.util import Date
 
 
 class LicenseDetails(object):
     def checkFlag(self, key):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def getExpirationDate(self):
@@ -23,15 +22,15 @@ class LicenseDetails(object):
         pass
 
     def getLicenseDetail(self, key):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         raise NotImplementedError
 
     def getLicenseDetails(self, key):
-        # type: (AnyStr) -> List[LicenseRestriction]
+        # type: (Union[str, unicode]) -> List[LicenseRestriction]
         raise NotImplementedError
 
     def getModuleId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getVersion(self):
@@ -74,31 +73,31 @@ class LicenseMode(Enum):
 
 class LicenseRestriction(Object):
     def __init__(self, restrictionName, restrictionValue):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         super(LicenseRestriction, self).__init__()
         self._restrictionName = restrictionName
         self._restrictionValue = restrictionValue
 
     def getrestrictionName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._restrictionName
 
     def getrestrictionValue(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._restrictionValue
 
 
 class ModuleLicense(LicenseDetails):
     def getLicenseDetail(self, key):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         raise NotImplementedError
 
     def getLicenseDetails(self, key):
-        # type: (AnyStr) -> List[LicenseRestriction]
+        # type: (Union[str, unicode]) -> List[LicenseRestriction]
         raise NotImplementedError
 
     def getModuleId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getVersion(self):

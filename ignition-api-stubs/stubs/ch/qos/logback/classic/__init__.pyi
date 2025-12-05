@@ -1,7 +1,6 @@
-from typing import Any
+from typing import Any, Union
 
 import org.slf4j.event
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 class Level(Object):
@@ -17,4 +16,4 @@ class Level(Object):
     @staticmethod
     def toLocationAwareLoggerInteger(level: Level) -> int: ...
     @staticmethod
-    def valueOf(sArg: AnyStr) -> Level: ...
+    def valueOf(sArg: Union[str, unicode]) -> Level: ...

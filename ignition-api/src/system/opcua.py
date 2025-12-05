@@ -8,19 +8,17 @@ from __future__ import print_function
 
 __all__ = ["addConnection", "callMethod", "removeConnection"]
 
-from typing import Any, Dict, List, Tuple
-
-from dev.coatl.helper.types import AnyStr
+from typing import Any, Dict, List, Tuple, Union
 
 
 def addConnection(
-    name,  # type: AnyStr
-    description,  # type: AnyStr
-    discoveryUrl,  # type: AnyStr
-    endpointUrl,  # type: AnyStr
-    securityPolicy,  # type: AnyStr
-    securityMode,  # type: AnyStr
-    settings,  # type: Dict[AnyStr, Any]
+    name,  # type: Union[str, unicode]
+    description,  # type: Union[str, unicode]
+    discoveryUrl,  # type: Union[str, unicode]
+    endpointUrl,  # type: Union[str, unicode]
+    securityPolicy,  # type: Union[str, unicode]
+    securityMode,  # type: Union[str, unicode]
+    settings,  # type: Dict[Union[str, unicode], Any]
 ):
     # type: (...) -> None
     """Adds a new OPC UA connection.
@@ -47,9 +45,9 @@ def addConnection(
 
 
 def callMethod(
-    connectionName,  # type: AnyStr
-    objectId,  # type: AnyStr
-    methodId,  # type: AnyStr
+    connectionName,  # type: Union[str, unicode]
+    objectId,  # type: Union[str, unicode]
+    methodId,  # type: Union[str, unicode]
     inputs,  # type: List[Any]
 ):
     # type: (...) -> Tuple[Any, Any, Any]
@@ -78,7 +76,7 @@ def callMethod(
 
 
 def removeConnection(name):
-    # type: (AnyStr) -> bool
+    # type: (Union[str, unicode]) -> bool
     """Removes an OPC UA Connection.
 
     Args:

@@ -1,13 +1,14 @@
 __all__ = ["PropertyChangeEvent", "PropertyChangeListener"]
 
-from dev.coatl.helper.types import AnyStr
+from typing import Union
+
 from java.lang import Object
 from java.util import EventObject
 
 
 class PropertyChangeEvent(EventObject):
     def __init__(self, source, propertyName, oldValue, newValue):
-        # type: (Object, AnyStr, Object, Object) -> None
+        # type: (Object, Union[str, unicode], Object, Object) -> None
         super(PropertyChangeEvent, self).__init__(source)
         self._newValue = newValue
         self._oldValue = oldValue

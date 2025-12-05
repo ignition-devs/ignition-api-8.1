@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["ChangeOperation", "Project", "ProjectManifest", "ProjectResourceListener"]
 
-from typing import Iterable, List, Optional, Set
+from typing import Iterable, List, Optional, Set, Union
 
 from com.inductiveautomation.ignition.common.project.resource import (
     ProjectResource,
@@ -10,7 +10,6 @@ from com.inductiveautomation.ignition.common.project.resource import (
     ResourceSignature,
 )
 from com.inductiveautomation.ignition.gateway.project import ResourceFilter
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 
 
@@ -27,7 +26,7 @@ class ProjectResourceListener(object):
 
     def manifestChanged(
         self,
-        projectName,  # type: AnyStr
+        projectName,  # type: Union[str, unicode]
         operation,  # type: List[ChangeOperation.ManifestChangeOperation]
     ):
         # type: (...) -> None
@@ -43,7 +42,7 @@ class ProjectResourceListener(object):
 
     def resourcesCreated(
         self,
-        projectName,  # type: AnyStr
+        projectName,  # type: Union[str, unicode]
         resources,  # type: List[ChangeOperation.CreateResourceOperation]
     ):
         # type: (...) -> None
@@ -51,7 +50,7 @@ class ProjectResourceListener(object):
 
     def resourcesDeleted(
         self,
-        projectName,  # type: AnyStr
+        projectName,  # type: Union[str, unicode]
         resources,  # type: List[ChangeOperation.DeleteResourceOperation]
     ):
         # type: (...) -> None
@@ -59,7 +58,7 @@ class ProjectResourceListener(object):
 
     def resourcesModified(
         self,
-        projectName,  # type: AnyStr
+        projectName,  # type: Union[str, unicode]
         resources,  # type: List[ChangeOperation.ModifyResourceOperation]
     ):
         # type: (...) -> None
@@ -96,7 +95,7 @@ class ChangeOperation(Object):
             pass
 
         def getProjectName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
     class ModifyResourceOperation(Object):
@@ -120,7 +119,7 @@ class ChangeOperation(Object):
 
     class ResourceChangeOperation(Object):
         def getProjectName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getResourceId(self):
@@ -137,7 +136,7 @@ class ChangeOperation(Object):
         pass
 
     def getProjectName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     @staticmethod
@@ -166,7 +165,7 @@ class ChangeOperation(Object):
 
     @staticmethod
     def newManifestChangeOp(
-        projectName,  # type: AnyStr
+        projectName,  # type: Union[str, unicode]
         manifest,  # type: ProjectManifest
         baseHashCode=None,  # type: Optional[int]
     ):
@@ -185,11 +184,11 @@ class ChangeOperation(Object):
 class ProjectManifest(Object):
     def __init__(
         self,
-        title,  # type: AnyStr
-        description,  # type: AnyStr
+        title,  # type: Union[str, unicode]
+        description,  # type: Union[str, unicode]
         enabled,  # type: bool
         inheritable,  # type: bool
-        parent,  # type: AnyStr
+        parent,  # type: Union[str, unicode]
     ):
         # type: (...) -> None
         super(ProjectManifest, self).__init__()

@@ -17,17 +17,16 @@ __all__ = [
     "setDeviceHostname",
 ]
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from dev.coatl.helper.types import AnyStr
 
 
 def addDevice(
-    deviceType,  # type: AnyStr
-    deviceName,  # type: AnyStr
-    deviceProps,  # type: Dict[AnyStr, Any]
-    description=None,  # type: Optional[AnyStr]
+    deviceType,  # type: Union[str, unicode]
+    deviceName,  # type: Union[str, unicode]
+    deviceProps,  # type: Dict[Union[str, unicode], Any]
+    description=None,  # type: Union[str, unicode, None]
 ):
     # type: (...) -> None
     """Adds a new device connection in Ignition.
@@ -55,7 +54,7 @@ def addDevice(
 
 
 def getDeviceHostname(deviceName):
-    # type: (AnyStr) -> AnyStr
+    # type: (Union[str, unicode]) -> Union[str, unicode]
     """Gets the hostname of a device.
 
     Args:
@@ -83,7 +82,7 @@ def listDevices():
 
 
 def refreshBrowse(deviceName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Forces Ignition to browse the controller.
 
     Only works for Allen-Bradley controllers.
@@ -95,7 +94,7 @@ def refreshBrowse(deviceName):
 
 
 def removeDevice(deviceName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Removes a given device from Ignition.
 
     Args:
@@ -105,7 +104,7 @@ def removeDevice(deviceName):
 
 
 def restart(deviceName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Restarts the named device connection.
 
     Args:
@@ -117,7 +116,7 @@ def restart(deviceName):
 
 
 def setDeviceEnabled(deviceName, enabled):
-    # type: (AnyStr, bool) -> None
+    # type: (Union[str, unicode], bool) -> None
     """Enables/disables a device in Ignition.
 
     Args:
@@ -129,7 +128,7 @@ def setDeviceEnabled(deviceName, enabled):
 
 
 def setDeviceHostname(deviceName, hostname):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Changes the hostname of a device.
 
     Used for all Ethernet based drivers.

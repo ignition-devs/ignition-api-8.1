@@ -23,12 +23,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from com.inductiveautomation.ignition.common.alarming.evaluation import ShelvedPath
 from com.inductiveautomation.ignition.common.alarming.query import AlarmQueryResultImpl
-from dev.coatl.helper.types import AnyStr
 from java.util import Date
 
 
-def acknowledge(alarmIds, notes, username=None):
-    # type: (List[AnyStr], AnyStr, Optional[AnyStr]) -> List[AnyStr]
+def acknowledge(
+    alarmIds,  # type: List[Union[str, unicode]]
+    notes,  # type: Union[str, unicode]
+    username=None,  # type: Union[str, unicode, None]
+):
+    # type: (...) -> List[Union[str, unicode]]
     """Acknowledges any number of alarms, specified by their event ids.
 
     The event id is generated for an alarm when it becomes active, and
@@ -58,7 +61,7 @@ def acknowledge(alarmIds, notes, username=None):
 
 
 def cancel(alarmIds):
-    # type: (List[AnyStr]) -> None
+    # type: (List[Union[str, unicode]]) -> None
     """Cancels any number of alarms, specified by their event ids.
 
     Event ids can be obtained from the system.alarm.queryStatus
@@ -73,7 +76,7 @@ def cancel(alarmIds):
 
 
 def createRoster(name, description):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """This function creates a new roster.
 
     Users may be added to the roster through the Gateway or the Roster
@@ -88,7 +91,7 @@ def createRoster(name, description):
 
 
 def getRosters():
-    # type: () -> Dict[AnyStr, List[AnyStr]]
+    # type: () -> Dict[Union[str, unicode], List[Union[str, unicode]]]
     """This function returns a mapping of roster names to a list of
     usernames contained in the roster.
 
@@ -112,7 +115,7 @@ def getShelvedPaths():
 
 
 def listPipelines(projectName="alarm-pipelines"):
-    # type: (AnyStr) -> List[AnyStr]
+    # type: (Union[str, unicode]) -> List[Union[str, unicode]]
     """Will return a list of the available Alarm Notification Pipelines.
 
     Args:
@@ -131,20 +134,20 @@ def listPipelines(projectName="alarm-pipelines"):
 def queryJournal(
     startDate=None,  # type: Optional[Date]
     endDate=None,  # type: Optional[Date]
-    journalName=None,  # type: Optional[AnyStr]
-    priority=None,  # type: Optional[List[Union[AnyStr, int]]]
-    state=None,  # type: Optional[List[Union[AnyStr, int]]]
-    path=None,  # type: Optional[List[AnyStr]]
-    source=None,  # type: Optional[List[AnyStr]]
-    displaypath=None,  # type: Optional[List[AnyStr]]
-    all_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
-    any_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
-    defined=None,  # type: Optional[List[AnyStr]]
+    journalName=None,  # type: Union[str, unicode, None]
+    priority=None,  # type: Optional[List[Union[str, unicode, int]]]
+    state=None,  # type: Optional[List[Union[str, unicode, int]]]
+    path=None,  # type: Optional[List[Union[str, unicode]]]
+    source=None,  # type: Optional[List[Union[str, unicode]]]
+    displaypath=None,  # type: Optional[List[Union[str, unicode]]]
+    all_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
+    any_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
+    defined=None,  # type: Optional[List[Union[str, unicode]]]
     includeData=None,  # type: Optional[bool]
     includeSystem=None,  # type: Optional[bool]
     includeShelved=None,  # type: Optional[bool]
     isSystem=None,  # type: Optional[bool]
-    provider=None,  # type: Optional[List[AnyStr]]
+    provider=None,  # type: Optional[List[Union[str, unicode]]]
 ):
     # type: (...) -> AlarmQueryResultImpl
     """Queries the specified journal for historical alarm events.
@@ -234,14 +237,14 @@ def queryJournal(
 
 
 def queryStatus(
-    priority=None,  # type: Optional[List[Union[AnyStr, int]]]
-    state=None,  # type: Optional[List[Union[AnyStr, int]]]
-    path=None,  # type: Optional[List[AnyStr]]
-    source=None,  # type: Optional[List[AnyStr]]
-    displaypath=None,  # type: Optional[List[AnyStr]]
-    all_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
-    any_properties=None,  # type: Optional[List[Tuple[AnyStr, AnyStr, Any]]]
-    defined=None,  # type: Optional[List[AnyStr]]
+    priority=None,  # type: Optional[List[Union[str, unicode, int]]]
+    state=None,  # type: Optional[List[Union[str, unicode, int]]]
+    path=None,  # type: Optional[List[Union[str, unicode]]]
+    source=None,  # type: Optional[List[Union[str, unicode]]]
+    displaypath=None,  # type: Optional[List[Union[str, unicode]]]
+    all_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
+    any_properties=None,  # type: Optional[List[Tuple[Union[str, unicode], Union[str, unicode], Any]]]
+    defined=None,  # type: Optional[List[Union[str, unicode]]]
     includeShelved=False,  # type: bool
 ):
     # type: (...) -> AlarmQueryResultImpl
@@ -312,7 +315,7 @@ def queryStatus(
 
 
 def shelve(path, timeoutSeconds=0, timeoutMinutes=15):
-    # type: (List[AnyStr], int, int) -> None
+    # type: (List[Union[str, unicode]], int, int) -> None
     """This function shelves the specified alarms for the specified
     amount of time.
 
@@ -336,7 +339,7 @@ def shelve(path, timeoutSeconds=0, timeoutMinutes=15):
 
 
 def unshelve(path):
-    # type: (List[AnyStr]) -> None
+    # type: (List[Union[str, unicode]]) -> None
     """Unshelves a list of alarms based on the source paths provided.
 
     Args:

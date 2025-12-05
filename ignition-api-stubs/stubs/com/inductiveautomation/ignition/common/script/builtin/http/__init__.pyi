@@ -1,7 +1,6 @@
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import Gson
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.net import CookieManager as JCookieManager
 from java.net.http import HttpClient, HttpRequest, HttpResponse
@@ -13,175 +12,177 @@ class CookieManager(JCookieManager):
     def __init__(self, *args: Any) -> None: ...
 
 class JythonHttpClient(Object):
-    def delete(self, *args: PyObject, **kwargs: AnyStr) -> Response: ...
-    def deleteAsync(self, *args: PyObject, **kwargs: AnyStr) -> Promise: ...
-    def get(self, *args: PyObject, **kwargs: AnyStr) -> Response: ...
-    def getAsync(self, *args: PyObject, **kwargs: AnyStr) -> Promise: ...
+    def delete(self, *args: PyObject, **kwargs: Union[str, unicode]) -> Response: ...
+    def deleteAsync(
+        self, *args: PyObject, **kwargs: Union[str, unicode]
+    ) -> Promise: ...
+    def get(self, *args: PyObject, **kwargs: Union[str, unicode]) -> Response: ...
+    def getAsync(self, *args: PyObject, **kwargs: Union[str, unicode]) -> Promise: ...
     def getConnectTimeout(self) -> long: ...
     def getCookieManager(self) -> CookieManager: ...
     def getJavaClient(self) -> HttpClient: ...
-    def getRedirectPolicy(self) -> AnyStr: ...
-    def getVersion(self) -> AnyStr: ...
+    def getRedirectPolicy(self) -> Union[str, unicode]: ...
+    def getVersion(self) -> Union[str, unicode]: ...
     def head(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def headAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
     def options(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def optionsAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
-    def parseChart(self, contentType: AnyStr) -> Optional[Charset]: ...
+    def parseChart(self, contentType: Union[str, unicode]) -> Optional[Charset]: ...
     def patch(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def patchAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
     def post(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def postAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
     def put(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def putAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
     def request(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def requestAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
     def setGson(self, gson: Gson) -> None: ...
     def trace(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Response: ...
     def traceAsync(
         self,
-        url: AnyStr,
-        params: Optional[Dict[AnyStr, Any]] = ...,
+        url: Union[str, unicode],
+        params: Optional[Dict[Union[str, unicode], Any]] = ...,
         data: Optional[Any] = ...,
-        file: Optional[AnyStr] = ...,
-        headers: Optional[Dict[AnyStr, Any]] = ...,
-        username: Optional[AnyStr] = ...,
-        password: Optional[AnyStr] = ...,
+        file: Union[str, unicode, None] = ...,
+        headers: Optional[Dict[Union[str, unicode], Any]] = ...,
+        username: Union[str, unicode, None] = ...,
+        password: Union[str, unicode, None] = ...,
         timeout: Optional[long] = ...,
     ) -> Promise: ...
 
 class Promise(Object):
     def cancel(self) -> bool: ...
-    def get(self, *args: PyObject, **kwargs: AnyStr) -> Any: ...
+    def get(self, *args: PyObject, **kwargs: Union[str, unicode]) -> Any: ...
     def getFuture(self) -> CompletableFuture: ...
     def handleException(self, callback: PyObject) -> Promise: ...
     def isDone(self) -> bool: ...
@@ -193,10 +194,10 @@ class Response(Object):
         def __init__(self, *args: Any) -> None: ...
         def getHeaders(self) -> Any: ...
         def getJavaRequest(self) -> HttpRequest: ...
-        def getMethod(self) -> AnyStr: ...
+        def getMethod(self) -> Union[str, unicode]: ...
         def getTimeout(self) -> long: ...
-        def getUrl(self) -> AnyStr: ...
-        def getVersion(self) -> AnyStr: ...
+        def getUrl(self) -> Union[str, unicode]: ...
+        def getVersion(self) -> Union[str, unicode]: ...
 
     def __init__(
         self, httpResponse: HttpResponse, client: JythonHttpClient
@@ -210,11 +211,11 @@ class Response(Object):
     @property
     def good(self) -> bool: ...
     @property
-    def headers(self) -> Dict[AnyStr, Any]: ...
+    def headers(self) -> Dict[Union[str, unicode], Any]: ...
     @property
     def javaResponse(self) -> HttpResponse: ...
     @property
-    def json(self) -> Dict[AnyStr, Any]: ...
+    def json(self) -> Dict[Union[str, unicode], Any]: ...
     @property
     def request(self) -> Response.RequestWrapper: ...
     @property
@@ -222,18 +223,18 @@ class Response(Object):
     @property
     def statusCode(self) -> int: ...
     @property
-    def text(self) -> AnyStr: ...
+    def text(self) -> Union[str, unicode]: ...
     @property
-    def url(self) -> AnyStr: ...
+    def url(self) -> Union[str, unicode]: ...
     def getBody(self) -> Any: ...
     def getCookieManager(self) -> CookieManager: ...
-    def getHeaders(self) -> Dict[AnyStr, Any]: ...
+    def getHeaders(self) -> Dict[Union[str, unicode], Any]: ...
     def getJavaResponse(self) -> HttpResponse: ...
-    def getJson(self, *args: Any, **kwargs: Any) -> Dict[AnyStr, Any]: ...
+    def getJson(self, *args: Any, **kwargs: Any) -> Dict[Union[str, unicode], Any]: ...
     def getRequest(self) -> Response.RequestWrapper: ...
     def getStatusCode(self) -> int: ...
-    def getText(self, *args: Any, **kwargs: Any) -> AnyStr: ...
-    def getUrl(self) -> AnyStr: ...
+    def getText(self, *args: Any, **kwargs: Any) -> Union[str, unicode]: ...
+    def getUrl(self) -> Union[str, unicode]: ...
     def isClientError(self) -> bool: ...
     def isGood(self) -> bool: ...
     def isServerError(self) -> bool: ...

@@ -19,13 +19,11 @@ __all__ = [
 import io
 import os.path
 import tempfile
-from typing import Any, List, Optional
-
-from dev.coatl.helper.types import AnyStr
+from typing import Any, List, Optional, Union
 
 
 def fileExists(filepath):
-    # type: (AnyStr) -> bool
+    # type: (Union[str, unicode]) -> bool
     """Checks to see if a file or folder at a given path exists.
 
     Note:
@@ -43,7 +41,7 @@ def fileExists(filepath):
 
 
 def getTempFile(extension):
-    # type: (AnyStr) -> AnyStr
+    # type: (Union[str, unicode]) -> Union[str, unicode]
     """Creates a new temp file on the host machine with a certain
     extension, returning the path to the file.
 
@@ -66,8 +64,11 @@ def getTempFile(extension):
         return unicode(temp.name)
 
 
-def openFile(extension=None, defaultLocation=None):
-    # type: (Optional[AnyStr], Optional[AnyStr]) -> Optional[AnyStr]
+def openFile(
+    extension=None,  # type: Union[str, unicode, None]
+    defaultLocation=None,  # type: Union[str, unicode, None]
+):
+    # type: (...) -> Union[str, unicode, None]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file to open.
 
@@ -89,10 +90,10 @@ def openFile(extension=None, defaultLocation=None):
 
 
 def openFiles(
-    extension=None,  # type: Optional[AnyStr]
-    defaultLocation=None,  # type: Optional[AnyStr]
+    extension=None,  # type: Union[str, unicode, None]
+    defaultLocation=None,  # type: Union[str, unicode, None]
 ):
-    # type: (...) -> Optional[List[AnyStr]]
+    # type: (...) -> Optional[List[Union[str, unicode]]]
     r"""Shows an "Open File" dialog box, prompting the user to choose a
     file or files to open.
 
@@ -114,7 +115,7 @@ def openFiles(
 
 
 def readFileAsBytes(filepath):
-    # type: (AnyStr) -> Any
+    # type: (Union[str, unicode]) -> Any
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as an array of bytes. Commonly this array of bytes
@@ -140,8 +141,11 @@ def readFileAsBytes(filepath):
         return f.read()
 
 
-def readFileAsString(filepath, encoding="UTF-8"):
-    # type: (AnyStr, Optional[AnyStr]) -> AnyStr
+def readFileAsString(
+    filepath,  # type: Union[str, unicode]
+    encoding="UTF-8",  # type: Union[str, unicode]
+):
+    # type: (...) -> Union[str, unicode]
     """Opens the file found at path filename, and reads the entire file.
 
     Returns the file as a string. Common things to do with this string
@@ -169,11 +173,11 @@ def readFileAsString(filepath, encoding="UTF-8"):
 
 
 def saveFile(
-    filename,  # type: AnyStr
-    extension=None,  # type: Optional[AnyStr]
-    typeDesc=None,  # type: Optional[AnyStr]
+    filename,  # type: Union[str, unicode]
+    extension=None,  # type: Union[str, unicode, None]
+    typeDesc=None,  # type: Union[str, unicode, None]
 ):
-    # type: (...) -> Optional[AnyStr]
+    # type: (...) -> Union[str, unicode, None]
     """Prompts the user to save a new file named filename.
 
     The optional extension and typeDesc arguments can be added to be
@@ -197,10 +201,10 @@ def saveFile(
 
 
 def writeFile(
-    filepath,  # type: AnyStr
+    filepath,  # type: Union[str, unicode]
     data,  # type: Any
     append=False,  # type: bool
-    encoding="UTF-8",  # type: AnyStr
+    encoding="UTF-8",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Writes the given data to the file at file path filename.

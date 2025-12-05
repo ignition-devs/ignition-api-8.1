@@ -2,8 +2,6 @@ __all__ = ["Logger", "Marker"]
 
 from typing import Any, Iterable, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
-
 
 class Logger(object):
     ROOT_LOGGER_NAME = "ROOT"
@@ -17,7 +15,7 @@ class Logger(object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def info(self, *args):
@@ -58,7 +56,7 @@ class Marker(object):
         raise NotImplementedError
 
     def contains(self, arg):
-        # type: (Union[Marker, AnyStr]) -> bool
+        # type: (Union[Marker, str, unicode]) -> bool
         raise NotImplementedError
 
     def equals(self, o):
@@ -66,7 +64,7 @@ class Marker(object):
         return True
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def hashCode(self):

@@ -1,22 +1,23 @@
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from dev.coatl.helper.types import AnyStr
 
 def executeAndDistribute(
-    path: AnyStr,
-    project: AnyStr = ...,
-    parameters: Optional[Dict[AnyStr, int]] = ...,
-    action: Optional[AnyStr] = ...,
-    actionSettings: Optional[Dict[AnyStr, Any]] = ...,
+    path: Union[str, unicode],
+    project: Union[str, unicode] = ...,
+    parameters: Optional[Dict[Union[str, unicode], int]] = ...,
+    action: Union[str, unicode, None] = ...,
+    actionSettings: Optional[Dict[Union[str, unicode], Any]] = ...,
 ) -> None: ...
 def executeReport(
-    path: AnyStr,
-    project: AnyStr = ...,
-    parameters: Optional[Dict[AnyStr, int]] = ...,
-    fileType: AnyStr = ...,
+    path: Union[str, unicode],
+    project: Union[str, unicode] = ...,
+    parameters: Optional[Dict[Union[str, unicode], int]] = ...,
+    fileType: Union[str, unicode] = ...,
 ) -> Any: ...
 def getReportNamesAsDataset(
-    project: Optional[AnyStr] = ..., includeReportName: bool = ...
+    project: Union[str, unicode, None] = ..., includeReportName: bool = ...
 ) -> BasicDataset: ...
-def getReportNamesAsList(project: Optional[AnyStr] = ...) -> List[AnyStr]: ...
+def getReportNamesAsList(
+    project: Union[str, unicode, None] = ...,
+) -> List[Union[str, unicode]]: ...

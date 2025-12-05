@@ -2,7 +2,6 @@ __all__ = ["MatchResult", "Matcher", "Pattern"]
 
 from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import CharSequence, Object, StringBuffer, StringBuilder
 from java.util.function import Function, Predicate
 
@@ -13,7 +12,7 @@ class MatchResult(object):
         raise NotImplementedError
 
     def group(self, group=None):
-        # type: (Optional[int]) -> AnyStr
+        # type: (Optional[int]) -> Union[str, unicode]
         raise NotImplementedError
 
     def groupCount(self):
@@ -26,8 +25,12 @@ class MatchResult(object):
 
 
 class Matcher(Object, MatchResult):
-    def appendReplacement(self, sb, replacement):
-        # type: (Union[StringBuffer, StringBuilder], AnyStr) -> Matcher
+    def appendReplacement(
+        self,
+        sb,  # type: Union[StringBuffer, StringBuilder]
+        replacement,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> Matcher
         pass
 
     def appendTail(
@@ -46,7 +49,7 @@ class Matcher(Object, MatchResult):
         return True
 
     def group(self, group=None):
-        # type: (Optional[Union[int, AnyStr]]) -> AnyStr
+        # type: (Union[int, str, unicode, None]) -> Union[str, unicode]
         pass
 
     def groupCount(self):
@@ -79,7 +82,7 @@ class Matcher(Object, MatchResult):
 
     @staticmethod
     def quoteReplacement(s):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
     def region(self, start, end):
@@ -95,11 +98,11 @@ class Matcher(Object, MatchResult):
         pass
 
     def replaceAll(self, arg):
-        # type: (Union[Function, AnyStr]) -> AnyStr
+        # type: (Union[Function, str, unicode]) -> Union[str, unicode]
         pass
 
     def replaceFirst(self, arg):
-        # type: (Union[Function, AnyStr]) -> AnyStr
+        # type: (Union[Function, str, unicode]) -> Union[str, unicode]
         pass
 
     def requireEnd(self):
@@ -156,7 +159,7 @@ class Pattern(Object):
 
     @staticmethod
     def compile(regex, flags=None):
-        # type: (AnyStr, Optional[int]) -> Pattern
+        # type: (Union[str, unicode], Optional[int]) -> Pattern
         pass
 
     def flags(self):
@@ -169,20 +172,24 @@ class Pattern(Object):
 
     @staticmethod
     def matches(regex, input):
-        # type: (AnyStr, CharSequence) -> bool
+        # type: (Union[str, unicode], CharSequence) -> bool
         return True
 
     def pattern(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     @staticmethod
     def quote(s):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
-    def split(self, input, limit=None):
-        # type: (CharSequence, Optional[int]) -> List[AnyStr]
+    def split(
+        self,
+        input,  # type: CharSequence
+        limit=None,  # type: Optional[int]
+    ):
+        # type: (...) -> List[Union[str, unicode]]
         pass
 
     def splitAsStream(self, input):

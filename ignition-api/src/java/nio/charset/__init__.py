@@ -2,7 +2,6 @@ __all__ = ["Charset", "CharsetDecoder", "CharsetEncoder", "CoderResult"]
 
 from typing import Dict, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.nio import ByteBuffer, CharBuffer
 from java.util import Locale
@@ -10,12 +9,12 @@ from java.util import Locale
 
 class Charset(Object):
     def aliases(self):
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         pass
 
     @staticmethod
     def availableCharsets():
-        # type: () -> Dict[AnyStr, Charset]
+        # type: () -> Dict[Union[str, unicode], Charset]
         pass
 
     def canEncode(self):
@@ -40,16 +39,16 @@ class Charset(Object):
         pass
 
     def displayName(self, locale):
-        # type: (Optional[Locale]) -> AnyStr
+        # type: (Optional[Locale]) -> Union[str, unicode]
         pass
 
     def encode(self, arg):
-        # type: (Union[Charset, AnyStr]) -> ByteBuffer
+        # type: (Union[Charset, str, unicode]) -> ByteBuffer
         pass
 
     @staticmethod
     def forName(charsetName):
-        # type: (AnyStr) -> Charset
+        # type: (Union[str, unicode]) -> Charset
         pass
 
     def isRegistered(self):
@@ -58,11 +57,11 @@ class Charset(Object):
 
     @staticmethod
     def isSupported(charsetName):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def newDecoder(self):

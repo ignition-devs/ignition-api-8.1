@@ -2,16 +2,15 @@ from __future__ import print_function
 
 __all__ = ["BasicContainer"]
 
-from typing import Optional
+from typing import Union
 
 from com.inductiveautomation.vision.api.client.components.model import (
     AbstractVisionPanel,
 )
-from dev.coatl.helper.types import AnyStr
 
 
 class BasicContainer(AbstractVisionPanel):
     def __init__(self, name=None):
-        # type: (Optional[AnyStr]) -> None
+        # type: (Union[str, unicode, None]) -> None
         super(BasicContainer, self).__init__()
         print(name)

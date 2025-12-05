@@ -1,8 +1,7 @@
 __all__ = ["DateTimeFormatter", "ResolverStyle", "TextStyle"]
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Appendable, Enum, Object
 
 if TYPE_CHECKING:
@@ -28,7 +27,7 @@ class DateTimeFormatter(Object):
     RFC_1123_DATE_TIME = None  # type: DateTimeFormatter
 
     def format(self, temporal):
-        # type: (TemporalAccessor) -> AnyStr
+        # type: (TemporalAccessor) -> Union[str, unicode]
         pass
 
     def formatTo(self, temporal, appendable):

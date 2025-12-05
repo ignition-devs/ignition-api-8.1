@@ -1,8 +1,7 @@
 __all__ = ["Appender", "Category", "Layout", "Level", "Logger", "Priority"]
 
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object, Throwable
 from java.util import Enumeration
 from org.apache.log4j.spi import ErrorHandler, Filter, LoggerRepository, LoggingEvent
@@ -38,7 +37,7 @@ class Appender(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def requiresLayout(self):
@@ -54,7 +53,7 @@ class Appender(object):
         raise NotImplementedError
 
     def setName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 
@@ -64,7 +63,7 @@ class Category(Object):
         pass
 
     def assertLog(self, assertion, msg):
-        # type: (bool, AnyStr) -> None
+        # type: (bool, Union[str, unicode]) -> None
         pass
 
     def callAppenders(self, event):
@@ -72,15 +71,15 @@ class Category(Object):
         pass
 
     def debug(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def error(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def fatal(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def getAdditivity(self):
@@ -92,7 +91,7 @@ class Category(Object):
         pass
 
     def getAppender(self, name):
-        # type: (AnyStr) -> Appender
+        # type: (Union[str, unicode]) -> Appender
         pass
 
     def getLevel(self):
@@ -104,11 +103,11 @@ class Category(Object):
         pass
 
     def info(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def warn(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
 
@@ -118,19 +117,19 @@ class Layout(Object):
         super(Layout, self).__init__()
 
     def format(self, event):
-        # type: (LoggingEvent) -> AnyStr
+        # type: (LoggingEvent) -> Union[str, unicode]
         raise NotImplementedError
 
     def getContentType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getFooter(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getHeader(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def ignoresThrowable(self):
@@ -170,5 +169,5 @@ class Logger(Category):
         return True
 
     def trace(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass

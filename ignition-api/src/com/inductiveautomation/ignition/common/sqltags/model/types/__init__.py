@@ -1,10 +1,9 @@
 __all__ = ["DataQuality", "DataType", "DataTypeClass"]
 
-from typing import Iterable, List, Optional
+from typing import Iterable, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.i18n import LocalizedString
 from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object
 from java.util import Locale
 
@@ -57,7 +56,7 @@ class DataQuality(Object):
         return False
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> AnyStr
+        # type: (Optional[Locale]) -> Union[str, unicode]
         pass
 
     @staticmethod

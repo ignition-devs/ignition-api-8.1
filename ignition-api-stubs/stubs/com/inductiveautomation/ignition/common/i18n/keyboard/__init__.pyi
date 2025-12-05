@@ -1,29 +1,28 @@
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr as AnyStr
 from java.lang import Object
 
 class KeyboardLayout(Object):
-    alias: AnyStr
+    alias: Union[str, unicode]
     id: Any
     labels: Optional[Any]
-    name: AnyStr
+    name: Union[str, unicode]
     rows: Optional[List[Any]]
-    title: AnyStr
-    supportedLanguages: Optional[List[AnyStr]]
+    title: Union[str, unicode]
+    supportedLanguages: Optional[List[Union[str, unicode]]]
     def __init__(
         self,
         id: Any,
-        name: AnyStr,
-        title: AnyStr,
-        alias: AnyStr,
+        name: Union[str, unicode],
+        title: Union[str, unicode],
+        alias: Union[str, unicode],
         rows: Optional[List[Any]] = ...,
-        supportedLanguages: Optional[List[AnyStr]] = ...,
+        supportedLanguages: Optional[List[Union[str, unicode]]] = ...,
         labels: Optional[Any] = ...,
     ) -> None: ...
-    def getAlias(self) -> AnyStr: ...
+    def getAlias(self) -> Union[str, unicode]: ...
     def getId(self) -> Any: ...
     def getLabels(self) -> Optional[Any]: ...
-    def getName(self) -> AnyStr: ...
+    def getName(self) -> Union[str, unicode]: ...
     def getRows(self) -> Optional[List[Any]]: ...
-    def getSupportedLanguages(self) -> Optional[List[AnyStr]]: ...
+    def getSupportedLanguages(self) -> Optional[List[Union[str, unicode]]]: ...

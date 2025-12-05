@@ -1,10 +1,9 @@
 __all__ = ["RosterModel"]
 
-from typing import List
+from typing import List, Union
 
 from com.inductiveautomation.ignition.common.user import User
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from dev.coatl.helper.types import AnyStr
 
 
 class RosterModel(DefaultBindableModel):
@@ -13,11 +12,11 @@ class RosterModel(DefaultBindableModel):
         super(RosterModel, self).__init__()
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getUsers(self):
@@ -29,11 +28,11 @@ class RosterModel(DefaultBindableModel):
         pass
 
     def setDescription(self, description):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setUsers(self, users):

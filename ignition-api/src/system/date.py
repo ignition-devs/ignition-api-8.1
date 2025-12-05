@@ -55,7 +55,6 @@ from datetime import datetime
 from time import localtime, mktime
 from typing import Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.util import Date, Locale
 
 
@@ -270,7 +269,7 @@ def getTimezoneOffset(date=None):
 
 
 def format(date, format="yyyy-MM-dd HH:mm:ss"):
-    # type: (Date, AnyStr) -> unicode
+    # type: (Date, Union[str, unicode]) -> unicode
     """Returns the given date as a string, formatted according to a
     pattern.
 
@@ -542,7 +541,7 @@ def getSecond(date):
 
 
 def getTimezone():
-    # type: () -> AnyStr
+    # type: () -> Union[str, unicode]
     """Returns the ID of the current timezone.
 
     Returns:
@@ -717,8 +716,12 @@ def now():
     return Date()
 
 
-def parse(dateString, formatString="yyyy-MM-dd HH:mm:ss", locale=Locale.ENGLISH):
-    # type: (AnyStr, AnyStr, Union[AnyStr, Locale, None]) -> Date
+def parse(
+    dateString,  # type: Union[str, unicode]
+    formatString="yyyy-MM-dd HH:mm:ss",  # type: Union[str, unicode]
+    locale=Locale.ENGLISH,  # type: Union[str, unicode, Locale]
+):
+    # type: (...) -> Date
     """Attempts to parse a string and create a Date.
 
     Causes ParseException if the date dateString parameter is in an

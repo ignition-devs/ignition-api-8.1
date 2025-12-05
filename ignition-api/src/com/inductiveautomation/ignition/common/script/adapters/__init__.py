@@ -2,10 +2,9 @@ from __future__ import print_function
 
 __all__ = ["PyJsonObjectAdapter"]
 
-from typing import Any, Iterator, List, Optional
+from typing import Any, Iterator, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from org.python.core import PyObject
 
@@ -17,7 +16,7 @@ class PyJsonObjectAdapter(Object):
         print(self, obj)
 
     def __findattr_ex__(self, name):
-        # type: (AnyStr) -> PyObject
+        # type: (Union[str, unicode]) -> PyObject
         pass
 
     def __finditem__(self, key):
@@ -69,7 +68,7 @@ class PyJsonObjectAdapter(Object):
         pass
 
     def update(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> None
+        # type: (*PyObject, **Union[str, unicode]) -> None
         pass
 
     def values(self):

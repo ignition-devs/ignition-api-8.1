@@ -1,4 +1,4 @@
-from dev.coatl.helper.types import AnyStr
+from typing import Union
 
 
 class LittleEndianInput(object):
@@ -65,5 +65,5 @@ class LittleEndianOutput(object):
         raise NotImplementedError
 
     def writeUTF(self, value):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError

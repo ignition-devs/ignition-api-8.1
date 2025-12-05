@@ -9,9 +9,8 @@ __all__ = [
     "UserPrincipal",
 ]
 
-from typing import Any, List
+from typing import Any, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 from java.security import Principal
 from java.time import Instant
@@ -20,7 +19,7 @@ from java.util.concurrent import TimeUnit
 
 class AttributeView(object):
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -64,7 +63,7 @@ class BasicFileAttributes(object):
 
 class FileAttribute(object):
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def value(self):
@@ -74,7 +73,7 @@ class FileAttribute(object):
 
 class FileAttributeView(AttributeView):
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
@@ -124,7 +123,7 @@ class UserPrincipal(Principal):
         return True
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def hashCode(self):
@@ -132,11 +131,11 @@ class UserPrincipal(Principal):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
 class FileStoreAttributeView(AttributeView):
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass

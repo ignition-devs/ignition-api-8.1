@@ -1,10 +1,15 @@
-from dev.coatl.helper.types import AnyStr
+from typing import Union
+
 from java.lang import Object
 from java.util import EventObject
 
 class PropertyChangeEvent(EventObject):
     def __init__(
-        self, source: Object, propertyName: AnyStr, oldValue: Object, newValue: Object
+        self,
+        source: Object,
+        propertyName: Union[str, unicode],
+        oldValue: Object,
+        newValue: Object,
     ) -> None: ...
     def getNewValue(self) -> Object: ...
     def getOldValue(self) -> Object: ...

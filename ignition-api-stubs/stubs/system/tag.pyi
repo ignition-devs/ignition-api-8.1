@@ -1,4 +1,4 @@
-from typing import Any, Callable, Dict, List, Optional
+from typing import Any, Callable, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
@@ -9,88 +9,97 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
     Annotation,
 )
-from dev.coatl.helper.types import AnyStr
 from java.util import Date
 
 DEFAULT_TIMEOUT_MILLIS: int
 LEGACY_DEFAULT_TIMEOUT_MILLIS: int
 TAG_PATH: Any
 
-def browse(path: AnyStr, filter: Optional[Dict[AnyStr, Any]] = ...) -> Results: ...
+def browse(
+    path: Union[str, unicode], filter: Optional[Dict[Union[str, unicode], Any]] = ...
+) -> Results: ...
 def browseHistoricalTags(
-    path: AnyStr,
-    nameFilters: Optional[List[AnyStr]] = ...,
+    path: Union[str, unicode],
+    nameFilters: Optional[List[Union[str, unicode]]] = ...,
     maxSize: Optional[int] = ...,
     continuationPoint: Optional[Any] = ...,
 ) -> Results: ...
 def configure(
-    basePath: AnyStr, tags: List[Dict[AnyStr, Any]], collisionPolicy: AnyStr = ...
+    basePath: Union[str, unicode],
+    tags: List[Dict[Union[str, unicode], Any]],
+    collisionPolicy: Union[str, unicode] = ...,
 ) -> List[QualityCode]: ...
 def copy(
-    tags: List[AnyStr], destination: AnyStr, collisionPolicy: AnyStr = ...
+    tags: List[Union[str, unicode]],
+    destination: Union[str, unicode],
+    collisionPolicy: Union[str, unicode] = ...,
 ) -> List[QualityCode]: ...
 def deleteAnnotations(
-    paths: List[AnyStr], storageIds: List[AnyStr]
+    paths: List[Union[str, unicode]], storageIds: List[Union[str, unicode]]
 ) -> List[BasicQualifiedValue]: ...
-def deleteTags(tagPaths: List[AnyStr]) -> List[QualityCode]: ...
-def exists(tagPath: AnyStr) -> bool: ...
+def deleteTags(tagPaths: List[Union[str, unicode]]) -> List[QualityCode]: ...
+def exists(tagPath: Union[str, unicode]) -> bool: ...
 def exportTags(
-    filePath: Optional[AnyStr] = ...,
-    tagPaths: Optional[List[AnyStr]] = ...,
+    filePath: Union[str, unicode, None] = ...,
+    tagPaths: Optional[List[Union[str, unicode]]] = ...,
     recursive: bool = ...,
-    exportType: AnyStr = ...,
-) -> Optional[AnyStr]: ...
+    exportType: Union[str, unicode] = ...,
+) -> Union[str, unicode, None]: ...
 def getConfiguration(
-    basePath: AnyStr, recursive: bool = ...
-) -> List[Dict[AnyStr, Any]]: ...
+    basePath: Union[str, unicode], recursive: bool = ...
+) -> List[Dict[Union[str, unicode], Any]]: ...
 def importTags(
-    filePath: AnyStr, basePath: AnyStr, collisionPolicy: AnyStr = ...
+    filePath: Union[str, unicode],
+    basePath: Union[str, unicode],
+    collisionPolicy: Union[str, unicode] = ...,
 ) -> List[QualityCode]: ...
 def isOverlaysEnabled() -> bool: ...
 def move(
-    tags: List[AnyStr], destination: AnyStr, collisionPolicy: AnyStr = ...
+    tags: List[Union[str, unicode]],
+    destination: Union[str, unicode],
+    collisionPolicy: Union[str, unicode] = ...,
 ) -> List[QualityCode]: ...
 def query(
-    provider: Optional[AnyStr] = ...,
-    query: Optional[Dict[AnyStr, Any]] = ...,
+    provider: Union[str, unicode, None] = ...,
+    query: Optional[Dict[Union[str, unicode], Any]] = ...,
     limit: Optional[int] = ...,
-    continuation: Optional[AnyStr] = ...,
+    continuation: Union[str, unicode, None] = ...,
 ) -> Results: ...
 def queryAnnotations(
-    paths: List[AnyStr],
+    paths: List[Union[str, unicode]],
     startTime: Optional[Date] = ...,
     endTime: Optional[Date] = ...,
-    types: Optional[List[AnyStr]] = ...,
+    types: Optional[List[Union[str, unicode]]] = ...,
 ) -> List[Annotation]: ...
 def queryTagCalculations(
-    paths: List[AnyStr],
-    calculations: List[AnyStr],
+    paths: List[Union[str, unicode]],
+    calculations: List[Union[str, unicode]],
     startDate: Optional[Date] = ...,
     endDate: Optional[Date] = ...,
     rangeHours: Optional[int] = ...,
     rangeMinutes: Optional[int] = ...,
-    aliases: Optional[List[AnyStr]] = ...,
+    aliases: Optional[List[Union[str, unicode]]] = ...,
     includeBoundingValues: bool = ...,
     validatesSCExec: bool = ...,
     noInterpolation: bool = ...,
     ignoreBadQuality: bool = ...,
 ) -> BasicDataset: ...
 def queryTagDensity(
-    paths: List[AnyStr], startDate: Date, endDate: Date
+    paths: List[Union[str, unicode]], startDate: Date, endDate: Date
 ) -> BasicDataset: ...
 def queryTagHistory(
-    paths: List[AnyStr],
+    paths: List[Union[str, unicode]],
     startDate: Optional[Date] = ...,
     endDate: Optional[Date] = ...,
     returnSize: int = ...,
-    aggregationMode: AnyStr = ...,
-    returnFormat: AnyStr = ...,
-    columnNames: Optional[List[AnyStr]] = ...,
+    aggregationMode: Union[str, unicode] = ...,
+    returnFormat: Union[str, unicode] = ...,
+    columnNames: Optional[List[Union[str, unicode]]] = ...,
     intervalHours: Optional[int] = ...,
     intervalMinutes: Optional[int] = ...,
     rangeHours: Optional[int] = ...,
     rangeMinutes: Optional[int] = ...,
-    aggregationModes: Optional[List[AnyStr]] = ...,
+    aggregationModes: Optional[List[Union[str, unicode]]] = ...,
     includeBoundingValues: Optional[bool] = ...,
     validateSCExec: Optional[bool] = ...,
     noInterpolation: Optional[bool] = ...,
@@ -99,37 +108,43 @@ def queryTagHistory(
     intervalSeconds: Optional[int] = ...,
     rangeSeconds: Optional[int] = ...,
 ) -> BasicDataset: ...
-def readAsync(tagPaths: List[AnyStr], callback: Callable[..., Any]) -> None: ...
+def readAsync(
+    tagPaths: List[Union[str, unicode]], callback: Callable[..., Any]
+) -> None: ...
 def readBlocking(
-    tagPaths: List[AnyStr], timeout: int = ...
+    tagPaths: List[Union[str, unicode]], timeout: int = ...
 ) -> List[BasicQualifiedValue]: ...
 def rename(
-    tag: AnyStr, newName: AnyStr, collisionPollicy: AnyStr = ...
+    tag: Union[str, unicode],
+    newName: Union[str, unicode],
+    collisionPollicy: Union[str, unicode] = ...,
 ) -> QualityCode: ...
-def requestGroupExecution(provider: AnyStr, tagGroup: AnyStr) -> None: ...
+def requestGroupExecution(
+    provider: Union[str, unicode], tagGroup: Union[str, unicode]
+) -> None: ...
 def setOverlaysEnabled(enabled: bool) -> None: ...
 def storeAnnotations(
-    paths: List[AnyStr],
+    paths: List[Union[str, unicode]],
     startTimes: Optional[List[Date]] = ...,
     endTimes: Optional[List[Date]] = ...,
     types: Optional[List[Annotation]] = ...,
-    data: Optional[List[AnyStr]] = ...,
+    data: Optional[List[Union[str, unicode]]] = ...,
     storageIds: Optional[List[int]] = ...,
     deleted: Optional[List[bool]] = ...,
 ) -> List[BasicQualifiedValue]: ...
 def storeTagHistory(
-    historyprovider: AnyStr,
-    tagprovider: AnyStr,
-    paths: List[AnyStr],
+    historyprovider: Union[str, unicode],
+    tagprovider: Union[str, unicode],
+    paths: List[Union[str, unicode]],
     values: List[Any],
     qualities: Optional[List[int]] = ...,
     timestamps: Optional[List[Date]] = ...,
 ) -> None: ...
 def writeAsync(
-    tagPaths: List[AnyStr],
+    tagPaths: List[Union[str, unicode]],
     values: List[Any],
     callback: Optional[Callable[..., Any]] = ...,
 ) -> None: ...
 def writeBlocking(
-    tagPaths: List[AnyStr], values: List[Any], timeout: int = ...
+    tagPaths: List[Union[str, unicode]], values: List[Any], timeout: int = ...
 ) -> List[QualityCode]: ...

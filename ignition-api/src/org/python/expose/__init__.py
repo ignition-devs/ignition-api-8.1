@@ -1,8 +1,7 @@
 __all__ = ["TypeBuilder"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class
 
 
@@ -16,7 +15,7 @@ class TypeBuilder(object):
         raise NotImplementedError
 
     def getDoc(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getIsBaseType(self):
@@ -24,7 +23,7 @@ class TypeBuilder(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getTypeClass(self):

@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["SerialScriptModule"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from org.python.core import PyObject
 
@@ -55,39 +54,60 @@ class SerialScriptModule(Object):
 
     class SerialPortWrapper(PyObject):
         def __init__(self, port, serialPort):
-            # type: (AnyStr, Any) -> None
+            # type: (Union[str, unicode], Any) -> None
             super(SerialScriptModule.SerialPortWrapper, self).__init__()
             self._port = port
             self._serialPort = serialPort
 
         def readBytes(self, port, numberOfBytes, timeout=5000):
-            # type: (AnyStr, int, int) -> bytearray
+            # type: (Union[str, unicode], int, int) -> bytearray
             pass
 
         def readBytesAsString(
-            self, port, numberOfBytes, timeout=5000, encoding="utf-8"
+            self,
+            port,  # type: Union[str, unicode]
+            numberOfBytes,  # type: int
+            timeout=5000,  # type: int
+            encoding="utf-8",  # type: Union[str, unicode]
         ):
-            # type: (AnyStr, int, int, AnyStr) -> AnyStr
+            # type: (...) -> Union[str, unicode]
             pass
 
-        def readLine(self, port, timeout=5000, encoding="utf-8", crlfRequired=False):
-            # type: (AnyStr, int, AnyStr, bool) -> AnyStr
+        def readLine(
+            self,
+            port,  # type: Union[str, unicode]
+            timeout=5000,  # type: int
+            encoding="utf-8",  # type: Union[str, unicode]
+            crlfRequired=False,  # type: bool
+        ):
+            # type: (...) -> Union[str, unicode]
             pass
 
-        def readUntil(self, port, delimiter, includeDelimiter, timeout=5000):
-            # type: (AnyStr, str, bool, int) -> AnyStr
+        def readUntil(
+            self,
+            port,  # type: Union[str, unicode]
+            delimiter,  # type: Union[str, unicode]
+            includeDelimiter,  # type: bool
+            timeout=5000,  # type: int
+        ):
+            # type: (...) -> Union[str, unicode]
             pass
 
         def sendBreak(self, port, millis):
-            # type: (AnyStr, long) -> None
+            # type: (Union[str, unicode], long) -> None
             pass
 
-        def write(self, port, toWrite, encoding="utf-8"):
-            # type: (AnyStr, bytearray, AnyStr) -> None
+        def write(
+            self,
+            port,  # type: Union[str, unicode]
+            toWrite,  # type: bytearray
+            encoding="utf-8",  # type: Union[str, unicode]
+        ):
+            # type: (...) -> None
             pass
 
         def writeBytes(self, port, toWrite, timeout=5000):
-            # type: (AnyStr, bytearray, int) -> None
+            # type: (Union[str, unicode], bytearray, int) -> None
             pass
 
     def __init__(self):

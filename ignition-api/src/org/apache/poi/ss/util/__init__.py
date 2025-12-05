@@ -1,6 +1,5 @@
 from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Enum, Object
 from org.apache.poi.common import Duplicatable
 from org.apache.poi.ss import SpreadsheetVersion
@@ -14,12 +13,15 @@ class AreaReference(Object):
         print(args)
 
     def formatAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     @staticmethod
-    def generateContiguous(version, reference):
-        # type: (SpreadsheetVersion, AnyStr) -> List[AreaReference]
+    def generateContiguous(
+        version,  # type: SpreadsheetVersion
+        reference,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> List[AreaReference]
         pass
 
     def getAllReferencedCells(self):
@@ -35,13 +37,21 @@ class AreaReference(Object):
         pass
 
     @staticmethod
-    def getWholeColumn(version, start, end):
-        # type: (SpreadsheetVersion, AnyStr, AnyStr) -> AreaReference
+    def getWholeColumn(
+        version,  # type: SpreadsheetVersion
+        start,  # type: Union[str, unicode]
+        end,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> AreaReference
         pass
 
     @staticmethod
-    def getWholeRow(version, start, end):
-        # type: (SpreadsheetVersion, AnyStr, AnyStr) -> AreaReference
+    def getWholeRow(
+        version,  # type: SpreadsheetVersion
+        start,  # type: Union[str, unicode]
+        end,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> AreaReference
         pass
 
     def isSingleCell(self):
@@ -69,7 +79,7 @@ class CellAddress(Object, Comparable):
         pass
 
     def formatAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getColumn(self):
@@ -180,7 +190,7 @@ class CellRangeAddress(CellRangeAddressBase):
         print(args)
 
     def formatAsString(self, sheetName=None, useAbsoluteAddress=False):
-        # type: (Optional[AnyStr], bool) -> AnyStr
+        # type: (Union[str, unicode, None], bool) -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -194,7 +204,7 @@ class CellRangeAddress(CellRangeAddressBase):
 
     @staticmethod
     def valueOf(ref):
-        # type: (AnyStr) -> CellRangeAddress
+        # type: (Union[str, unicode]) -> CellRangeAddress
         pass
 
 
@@ -262,31 +272,38 @@ class CellReference(Object):
         print(args)
 
     @staticmethod
-    def cellReferenceIsWithinRange(colStr, rowStr, ssVersion):
-        # type: (AnyStr, AnyStr, SpreadsheetVersion) -> bool
+    def cellReferenceIsWithinRange(
+        colStr,  # type: Union[str, unicode]
+        rowStr,  # type: Union[str, unicode]
+        ssVersion,  # type: SpreadsheetVersion
+    ):
+        # type: (...) -> bool
         pass
 
     @staticmethod
-    def classifyCellReference(str_, ssVersion):
-        # type: (AnyStr, SpreadsheetVersion) -> CellReference.NameType
+    def classifyCellReference(
+        str_,  # type: Union[str, unicode]
+        ssVersion,  # type: SpreadsheetVersion
+    ):
+        # type: (...) -> CellReference.NameType
         pass
 
     @staticmethod
     def convertColStringToIndex(ref):
-        # type: (AnyStr) -> int
+        # type: (Union[str, unicode]) -> int
         pass
 
     @staticmethod
     def converNumToColString(col):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def formatAsString(self, includeSheetName=False):
-        # type: (bool) -> AnyStr
+        # type: (bool) -> Union[str, unicode]
         pass
 
     def getCellRefParts(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getCol(self):
@@ -298,7 +315,7 @@ class CellReference(Object):
         pass
 
     def getSheetName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isColAbsolute(self):
@@ -307,12 +324,12 @@ class CellReference(Object):
 
     @staticmethod
     def isColumnWithinRange(colStr, ssVersion):
-        # type: (AnyStr, SpreadsheetVersion) -> bool
+        # type: (Union[str, unicode], SpreadsheetVersion) -> bool
         pass
 
     @staticmethod
     def isPartAbsolute(part):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         pass
 
     def isRowAbsolute(self):
@@ -321,7 +338,7 @@ class CellReference(Object):
 
     @staticmethod
     def isRowWithinRange(rowNumOrStr, ssVersion):
-        # type: (Union[int, AnyStr], SpreadsheetVersion) -> bool
+        # type: (Union[int, str, unicode], SpreadsheetVersion) -> bool
         pass
 
 

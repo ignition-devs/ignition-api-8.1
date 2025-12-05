@@ -1,40 +1,9 @@
 __all__ = ["Level", "LogFilterSettings"]
 
-from typing import Iterable, Mapping
+from typing import Iterable, Mapping, Union
 
 import ch.qos.logback.classic
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
-
-
-class LogFilterSettings(object):
-    def addPropertyFilter(self, key, value):
-        # type: (AnyStr, AnyStr) -> None
-        raise NotImplementedError
-
-    def clearPropertyLevel(self, key, value):
-        # type: (AnyStr, AnyStr) -> None
-        raise NotImplementedError
-
-    def clearPropertyLevels(self):
-        # type: () -> None
-        raise NotImplementedError
-
-    def propertyFilterSettings(self):
-        # type: () -> Mapping[AnyStr, Mapping[AnyStr, Level]]
-        raise NotImplementedError
-
-    def removePropertyFilter(self, key, value):
-        # type: (AnyStr, AnyStr) -> None
-        raise NotImplementedError
-
-    def setLevel(self, logger, level):
-        # type: (AnyStr, Level) -> None
-        raise NotImplementedError
-
-    def setPropertyLevel(self, key, value, level):
-        # type: (AnyStr, AnyStr, Level) -> None
-        raise NotImplementedError
 
 
 class Level(Enum):
@@ -50,3 +19,38 @@ class Level(Enum):
     def values():
         # type: () -> Iterable[Level]
         pass
+
+
+class LogFilterSettings(object):
+    def addPropertyFilter(self, key, value):
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
+        raise NotImplementedError
+
+    def clearPropertyLevel(self, key, value):
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
+        raise NotImplementedError
+
+    def clearPropertyLevels(self):
+        # type: () -> None
+        raise NotImplementedError
+
+    def propertyFilterSettings(self):
+        # type: () -> Mapping[Union[str, unicode], Mapping[Union[str, unicode], Level]] # noqa: W505
+        raise NotImplementedError
+
+    def removePropertyFilter(self, key, value):
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
+        raise NotImplementedError
+
+    def setLevel(self, logger, level):
+        # type: (Union[str, unicode], Level) -> None
+        raise NotImplementedError
+
+    def setPropertyLevel(
+        self,
+        key,  # type: Union[str, unicode]
+        value,  # type: Union[str, unicode]
+        level,  # type: Level
+    ):
+        # type: (...) -> None
+        raise NotImplementedError

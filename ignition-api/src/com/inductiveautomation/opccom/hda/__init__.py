@@ -2,7 +2,7 @@ from __future__ import print_function
 
 __all__ = ["AttributeInfo", "ReadResult"]
 
-from typing import Any, Iterator, List, Optional
+from typing import Any, Iterator, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.model.values import (
     QualifiedValue,
@@ -12,7 +12,6 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
     DataType,
     DataTypeClass,
 )
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -23,7 +22,7 @@ class AttributeInfo(Object):
         print(args)
 
     def getDesc(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getId(self):
@@ -31,7 +30,7 @@ class AttributeInfo(Object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getType(self):

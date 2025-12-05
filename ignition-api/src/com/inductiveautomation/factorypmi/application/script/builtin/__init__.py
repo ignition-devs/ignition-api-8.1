@@ -14,7 +14,6 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from com.inductiveautomation.factorypmi.application import FPMIApp, FPMIWindow
 from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from dev.coatl.helper.types import AnyStr
 from java.awt import Color, Component, Graphics
 from java.awt.event import ActionEvent, ComponentEvent, MouseEvent
 from java.awt.image import BufferedImage
@@ -31,7 +30,7 @@ class INavUtilities(object):
     """
 
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, AnyStr]) -> None
+        # type: (Union[FPMIWindow, str, unicode]) -> None
         raise NotImplementedError
 
     def closeParentWindow(self, event):
@@ -39,11 +38,11 @@ class INavUtilities(object):
         raise NotImplementedError
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, AnyStr]) -> None
+        # type: (Union[FPMIWindow, str, unicode]) -> None
         raise NotImplementedError
 
     def getCurrentWindow(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def goBack(self):
@@ -58,20 +57,37 @@ class INavUtilities(object):
         # type: () -> PyObject
         raise NotImplementedError
 
-    def openWindow(self, path, params=None):
-        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
+    def openWindow(
+        self,
+        path,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    ):
+        # type: (...) -> PyObject
         raise NotImplementedError
 
-    def openWindowImpl(self, path, params, openAdditional):
-        # type: (AnyStr, Dict[AnyStr, Any], bool) -> PyObject
+    def openWindowImpl(
+        self,
+        path,  # type: Union[str, unicode]
+        params,  # type: Dict[Union[str, unicode], Any]
+        openAdditional,  # type: bool
+    ):
+        # type: (...) -> PyObject
         raise NotImplementedError
 
-    def openWindowInstance(self, path, params=None):
-        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
+    def openWindowInstance(
+        self,
+        path,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    ):
+        # type: (...) -> PyObject
         raise NotImplementedError
 
-    def swapTo(self, name, params):
-        # type: (AnyStr, Dict[AnyStr, Any]) -> PyObject
+    def swapTo(
+        self,
+        name,  # type: Union[str, unicode]
+        params,  # type: Dict[Union[str, unicode], Any]
+    ):
+        # type: (...) -> PyObject
         raise NotImplementedError
 
     def swapWindow(self, *args):
@@ -94,7 +110,7 @@ class ClientSystemUtilities(Object):
 
 class NavUtilities(INavUtilities):
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, AnyStr]) -> None
+        # type: (Union[FPMIWindow, str, unicode]) -> None
         pass
 
     def closeParentWindow(self, event):
@@ -102,11 +118,11 @@ class NavUtilities(INavUtilities):
         pass
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, AnyStr]) -> None
+        # type: (Union[FPMIWindow, str, unicode]) -> None
         pass
 
     def getCurrentWindow(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def goBack(self):
@@ -121,20 +137,37 @@ class NavUtilities(INavUtilities):
         # type: () -> PyObject
         pass
 
-    def openWindow(self, path, params=None):
-        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
+    def openWindow(
+        self,
+        path,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    ):
+        # type: (...) -> PyObject
         pass
 
-    def openWindowImpl(self, path, params, openAdditional):
-        # type: (AnyStr, Dict[AnyStr, Any], bool) -> PyObject
+    def openWindowImpl(
+        self,
+        path,  # type: Union[str, unicode]
+        params,  # type: Dict[Union[str, unicode], Any]
+        openAdditional,  # type: bool
+    ):
+        # type: (...) -> PyObject
         pass
 
-    def openWindowInstance(self, path, params=None):
-        # type: (AnyStr, Optional[Dict[AnyStr, Any]]) -> PyObject
+    def openWindowInstance(
+        self,
+        path,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    ):
+        # type: (...) -> PyObject
         pass
 
-    def swapTo(self, name, params):
-        # type: (AnyStr, Dict[AnyStr, Any]) -> PyObject
+    def swapTo(
+        self,
+        name,  # type: Union[str, unicode]
+        params,  # type: Dict[Union[str, unicode], Any]
+    ):
+        # type: (...) -> PyObject
         pass
 
     def swapWindow(self, *args):
@@ -181,7 +214,7 @@ class PrintUtilities(Object):
             pass
 
         def getPrinterName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getRightMargin(self):
@@ -233,7 +266,7 @@ class PrintUtilities(Object):
             pass
 
         def setPrinterName(self, printerName):
-            # type: (AnyStr) -> None
+            # type: (Union[str, unicode]) -> None
             pass
 
         def setRightMargin(self, rightMargin):
@@ -282,7 +315,7 @@ class WindowUtilities(Object):
             pass
 
         def addJyFunction(self, name, fun):
-            # type: (AnyStr, PyObject) -> None
+            # type: (Union[str, unicode], PyObject) -> None
             pass
 
         def show(self, me, *args):
@@ -307,11 +340,11 @@ class WindowUtilities(Object):
     COORD_SCREEN = 0
 
     def chooseColor(self, initialColor, dialogTitle="Choose Color"):
-        # type: (Color, Optional[AnyStr]) -> Color
+        # type: (Color, Union[str, unicode, None]) -> Color
         pass
 
     def closeDesktop(self, handle):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     @staticmethod
@@ -321,8 +354,8 @@ class WindowUtilities(Object):
 
     def confirm(
         self,
-        message,  # type: AnyStr
-        title="Confirm",  # type: AnyStr
+        message,  # type: Union[str, unicode]
+        title="Confirm",  # type: Union[str, unicode]
         allowCancel=False,  # type: bool
     ):
         # type: (...) -> Optional[bool]
@@ -344,11 +377,11 @@ class WindowUtilities(Object):
         pass
 
     def desktop(self, arg):
-        # type: (Union[int, AnyStr]) -> WindowUtilities
+        # type: (Union[int, str, unicode]) -> WindowUtilities
         pass
 
     def errorBox(self, message, title="Error"):
-        # type: (AnyStr, Optional[AnyStr]) -> None
+        # type: (Union[str, unicode], Union[str, unicode, None]) -> None
         pass
 
     @staticmethod
@@ -357,11 +390,11 @@ class WindowUtilities(Object):
         pass
 
     def findWindow(self, path):
-        # type: (AnyStr) -> List[PyComponentWrapper]
+        # type: (Union[str, unicode]) -> List[PyComponentWrapper]
         pass
 
     def getCurrentDesktop(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDesktopHandles(self):
@@ -382,7 +415,7 @@ class WindowUtilities(Object):
         pass
 
     def getQuality(self, comp, propertyName):
-        # type: (JComponent, AnyStr) -> QualityCode
+        # type: (JComponent, Union[str, unicode]) -> QualityCode
         pass
 
     def getScreenIndex(self):
@@ -396,19 +429,23 @@ class WindowUtilities(Object):
 
     @staticmethod
     def getSibling(event, name):
-        # type: (EventObject, AnyStr) -> PyObject
+        # type: (EventObject, Union[str, unicode]) -> PyObject
         pass
 
     def getWindow(self, name):
-        # type: (AnyStr) -> PyObject
+        # type: (Union[str, unicode]) -> PyObject
         pass
 
     def getWindowNames(self):
         # type: () -> PyTuple
         pass
 
-    def inputBox(self, message, defaultTxt=""):
-        # type: (AnyStr, AnyStr) -> Optional[AnyStr]
+    def inputBox(
+        self,
+        message,  # type: Union[str, unicode]
+        defaultTxt="",  # type: Union[str, unicode]
+    ):
+        # type: (...) -> Union[str, unicode, None]
         pass
 
     def isTouchscreenModeEnabled(self):
@@ -416,11 +453,11 @@ class WindowUtilities(Object):
         return True
 
     def messageBox(self, message, title="Information"):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         pass
 
     def openDesktop(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> JFrame
+        # type: (*PyObject, **Union[str, unicode]) -> JFrame
         pass
 
     def openDiagnostics(self):
@@ -429,11 +466,11 @@ class WindowUtilities(Object):
 
     def passwordBox(
         self,
-        message,  # type:AnyStr
-        title="Password",  # type: AnyStr
-        echoChar="*",  # type: AnyStr
+        message,  # type:Union[str, unicode]
+        title="Password",  # type: Union[str, unicode]
+        echoChar="*",  # type: Union[str, unicode]
     ):
-        # type: (...) -> Optional[AnyStr]
+        # type: (...) -> Union[str, unicode, None]
         pass
 
     def setTouchScreenModeEnabled(self, b):
@@ -449,14 +486,19 @@ class WindowUtilities(Object):
         # type: (...) -> Number
         pass
 
-    def showTouchscreenKeyboard(self, initialText, fontSize=None, password=None):
-        # type: (AnyStr, Optional[int], Optional[bool]) -> AnyStr
+    def showTouchscreenKeyboard(
+        self,
+        initialText,  # type: Union[str, unicode]
+        fontSize=None,  # type: Optional[int]
+        password=None,  # type: Optional[bool]
+    ):
+        # type: (...) -> Union[str, unicode]
         pass
 
     def transform(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> PyObject
+        # type: (*PyObject, **Union[str, unicode]) -> PyObject
         pass
 
     def warningBox(self, message, title="Warning"):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         pass

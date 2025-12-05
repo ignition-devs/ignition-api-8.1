@@ -15,7 +15,6 @@ __all__ = [
 
 from typing import TYPE_CHECKING, Any, Dict, List, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import CharSequence, Comparable, Enum, Object
 from java.time.chrono import ChronoLocalDateTime, ChronoZonedDateTime
 from java.time.format import DateTimeFormatter, TextStyle
@@ -312,7 +311,7 @@ class Month(Enum, TemporalAccessor, TemporalAdjuster):
         pass
 
     def getDisplayName(self, style, locale):
-        # type: (TextStyle, Locale) -> AnyStr
+        # type: (TextStyle, Locale) -> Union[str, unicode]
         pass
 
     def getValue(self):
@@ -376,21 +375,24 @@ class OffsetDateTime(Object, Temporal, TemporalAdjuster, Comparable):
 
 
 class ZoneId(Object):
-    SHORT_IDS = None  # type: Dict[AnyStr, AnyStr]
+    SHORT_IDS = None  # type: Dict[Union[str, unicode], Union[str, unicode]]
 
     @staticmethod
     def getAvailableZoneIds():
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         pass
 
     @staticmethod
-    def of(zoneId, aliasMap=None):
-        # type: (AnyStr, Optional[Dict[AnyStr, AnyStr]]) -> ZoneId
+    def of(
+        zoneId,  # type: Union[str, unicode]
+        aliasMap=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    ):
+        # type: (...) -> ZoneId
         pass
 
     @staticmethod
     def ofOffset(prefix, offset):
-        # type: (AnyStr, ZoneOffset) -> ZoneId
+        # type: (Union[str, unicode], ZoneOffset) -> ZoneId
         pass
 
     @staticmethod
@@ -406,7 +408,7 @@ class ZoneOffset(Object):
 
     @staticmethod
     def of(offsetId):
-        # type: (AnyStr) -> ZoneOffset
+        # type: (Union[str, unicode]) -> ZoneOffset
         pass
 
     @staticmethod

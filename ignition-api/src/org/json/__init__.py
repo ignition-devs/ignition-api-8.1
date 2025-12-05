@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["JSONArray", "JSONObject"]
 
-from typing import Any, Iterator, List, Optional
+from typing import Any, Iterator, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.io import Writer
 from java.lang import Number, Object
 
@@ -44,7 +43,7 @@ class JSONArray(Object):
         pass
 
     def getString(self, index):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def isNull(self, index):
@@ -52,7 +51,7 @@ class JSONArray(Object):
         return True
 
     def join(self, separator):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
     def length(self):
@@ -88,7 +87,7 @@ class JSONArray(Object):
         pass
 
     def optString(self, index, defaultValue=None):
-        # type: (int, Optional[AnyStr]) -> AnyStr
+        # type: (int, Union[str, unicode, None]) -> Union[str, unicode]
         pass
 
     def put(self, index, value):
@@ -104,7 +103,7 @@ class JSONArray(Object):
         pass
 
     def toString(self, indentFactor=None):
-        # type: (Optional[int]) -> AnyStr
+        # type: (Optional[int]) -> Union[str, unicode]
         pass
 
     def write(self, writer):
@@ -121,69 +120,69 @@ class JSONObject(Object):
         print(args)
 
     def accumulate(self, key, value):
-        # type: (AnyStr, Object) -> JSONObject
+        # type: (Union[str, unicode], Object) -> JSONObject
         pass
 
     def append(self, key, value):
-        # type: (AnyStr, Object) -> JSONObject
+        # type: (Union[str, unicode], Object) -> JSONObject
         pass
 
     @staticmethod
     def doubleToString(d):
-        # type: (float) -> AnyStr
+        # type: (float) -> Union[str, unicode]
         pass
 
     def get(self, key):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def getBoolean(self, key):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def getDouble(self, key):
-        # type: (AnyStr) -> float
+        # type: (Union[str, unicode]) -> float
         pass
 
     def getInt(self, key):
-        # type: (AnyStr) -> int
+        # type: (Union[str, unicode]) -> int
         pass
 
     def getJSONArray(self, key):
-        # type: (AnyStr) -> JSONArray
+        # type: (Union[str, unicode]) -> JSONArray
         pass
 
     def getJSONObject(self, key):
-        # type: (AnyStr) -> JSONObject
+        # type: (Union[str, unicode]) -> JSONObject
         pass
 
     def getLong(self, key):
-        # type: (AnyStr) -> long
+        # type: (Union[str, unicode]) -> long
         pass
 
     @staticmethod
     def getNames(arg):
-        # type: (JSONObject) -> List[AnyStr]
+        # type: (JSONObject) -> List[Union[str, unicode]]
         pass
 
     def getString(self, key):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
     def has(self, key):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def increment(self, key):
-        # type: (AnyStr) -> JSONObject
+        # type: (Union[str, unicode]) -> JSONObject
         pass
 
     def isNull(self, key):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def keys(self):
-        # type: () -> Iterator[AnyStr]
+        # type: () -> Iterator[Union[str, unicode]]
         pass
 
     def length(self):
@@ -196,69 +195,73 @@ class JSONObject(Object):
 
     @staticmethod
     def numberToString(n):
-        # type: (Number) -> AnyStr
+        # type: (Number) -> Union[str, unicode]
         pass
 
     def opt(self, key):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def optBoolean(self, key, defaultValue=None):
-        # type: (AnyStr, Optional[bool]) -> bool
+        # type: (Union[str, unicode], Optional[bool]) -> bool
         return True
 
     def optDouble(self, key, defaultValue=None):
-        # type: (AnyStr, Optional[float]) -> float
+        # type: (Union[str, unicode], Optional[float]) -> float
         pass
 
     def optInt(self, key, defaultValue=None):
-        # type: (AnyStr, Optional[int]) -> int
+        # type: (Union[str, unicode], Optional[int]) -> int
         pass
 
     def optJSONArray(self, key):
-        # type: (AnyStr) -> JSONArray
+        # type: (Union[str, unicode]) -> JSONArray
         pass
 
     def optJSONObject(self, key):
-        # type: (AnyStr) -> JSONObject
+        # type: (Union[str, unicode]) -> JSONObject
         pass
 
     def optLong(self, key, defaultValue=None):
-        # type: (AnyStr, Optional[long]) -> long
+        # type: (Union[str, unicode], Optional[long]) -> long
         pass
 
-    def optString(self, key, defaultValue=None):
-        # type: (AnyStr, Optional[AnyStr]) -> AnyStr
+    def optString(
+        self,
+        key,  # type: Union[str, unicode]
+        defaultValue=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> Union[str, unicode]
         pass
 
     def put(self, key, value):
-        # type: (AnyStr, Any) -> JSONObject
+        # type: (Union[str, unicode], Any) -> JSONObject
         pass
 
     def putOnce(self, key, value):
-        # type: (AnyStr, Object) -> JSONObject
+        # type: (Union[str, unicode], Object) -> JSONObject
         pass
 
     def putOpt(self, key, value):
-        # type: (AnyStr, Object) -> JSONObject
+        # type: (Union[str, unicode], Object) -> JSONObject
         pass
 
     @staticmethod
     def quote(string):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
     def remove(self, key):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def sortedKeys(self):
-        # type: () -> Iterator[AnyStr]
+        # type: () -> Iterator[Union[str, unicode]]
         pass
 
     @staticmethod
     def stringToValue(s):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         pass
 
     def toJSONArray(self, names):
@@ -266,12 +269,12 @@ class JSONObject(Object):
         pass
 
     def toString(self, indentFactor=None):
-        # type: (Optional[int]) -> AnyStr
+        # type: (Optional[int]) -> Union[str, unicode]
         pass
 
     @staticmethod
     def valueToString(value):
-        # type: (Object) -> AnyStr
+        # type: (Object) -> Union[str, unicode]
         pass
 
     @staticmethod

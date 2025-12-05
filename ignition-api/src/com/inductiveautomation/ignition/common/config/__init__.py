@@ -11,7 +11,6 @@ __all__ = [
 
 from typing import Any, Iterable, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.beans import PropertyChangeListener
 from java.lang import Class, Object
 from java.util import Collection
@@ -23,7 +22,7 @@ class Property(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getType(self):
@@ -85,7 +84,7 @@ class PropertyValueSource(object):
 
 
 class BasicProperty(Property, Object):
-    _name = None  # type: AnyStr
+    _name = None  # type: Union[str, unicode]
     _clazz = None  # type: Any
     _defaultValue = None  # type: Any
     _hcode = None  # type: int
@@ -114,7 +113,7 @@ class BasicProperty(Property, Object):
         return self._defaultValue
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._name
 
     def getType(self):
@@ -138,11 +137,11 @@ class BasicProperty(Property, Object):
         pass
 
     def setName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setName_(self, name):
-        # type: (AnyStr) -> BasicProperty
+        # type: (Union[str, unicode]) -> BasicProperty
         pass
 
 
