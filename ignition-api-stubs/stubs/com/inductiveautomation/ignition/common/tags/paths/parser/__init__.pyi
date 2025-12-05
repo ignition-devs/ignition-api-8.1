@@ -1,17 +1,16 @@
-from typing import Any, List
+from typing import Any, List, Union
 
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 class TagPathParser(Object):
-    PARENT_RELATIVE: AnyStr
-    PATH_SEPARATOR: AnyStr
-    PROPERTY_SEPARATOR: AnyStr
-    RELATIVE_DIR_UP: AnyStr
-    ROOT_RELATIVE: AnyStr
+    PARENT_RELATIVE: Union[str, unicode]
+    PATH_SEPARATOR: Union[str, unicode]
+    PROPERTY_SEPARATOR: Union[str, unicode]
+    RELATIVE_DIR_UP: Union[str, unicode]
+    ROOT_RELATIVE: Union[str, unicode]
     @staticmethod
-    def chopPath(string: AnyStr) -> List[AnyStr]: ...
+    def chopPath(string: Union[str, unicode]) -> List[Union[str, unicode]]: ...
     @staticmethod
     def derelativize(tagPath: TagPath, relativeRoot: TagPath) -> TagPath: ...
     @staticmethod

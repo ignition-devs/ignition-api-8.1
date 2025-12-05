@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["LocaleUtils", "LocalizedString"]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util import Locale
 
@@ -17,7 +16,7 @@ class LocaleUtils(Object):
 
     @staticmethod
     def parseLocale(locale):
-        # type: (AnyStr) -> Optional[Locale]
+        # type: (Union[str, unicode]) -> Optional[Locale]
         pass
 
 
@@ -33,15 +32,15 @@ class LocalizedString(Object):
 
     @staticmethod
     def createRaw(stringVal):
-        # type: (AnyStr) -> LocalizedString
+        # type: (Union[str, unicode]) -> LocalizedString
         pass
 
     def getDefaultVal(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getKey(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParams(self):
@@ -49,11 +48,11 @@ class LocalizedString(Object):
         pass
 
     def setDefaultVal(self, defaultVal):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setKey(self, key):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setParams(self, params):
@@ -61,5 +60,5 @@ class LocalizedString(Object):
         pass
 
     def toString(self, locale=None):
-        # type: (Optional[Locale]) -> AnyStr
+        # type: (Optional[Locale]) -> Union[str, unicode]
         pass

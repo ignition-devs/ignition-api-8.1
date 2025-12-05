@@ -19,7 +19,6 @@ from com.inductiveautomation.ignition.common.gson import (
     JsonObject,
     JsonSerializationContext,
 )
-from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Object
 from java.lang.reflect import Type
 from java.util.function import Consumer
@@ -40,11 +39,11 @@ class ProjectResource(object):
         raise NotImplementedError
 
     def getAttribute(self, key):
-        # type: (AnyStr) -> JsonElement
+        # type: (Union[str, unicode]) -> JsonElement
         pass
 
     def getAttributes(self):
-        # type: () -> Mapping[AnyStr, JsonElement]
+        # type: () -> Mapping[Union[str, unicode], JsonElement]
         raise NotImplementedError
 
     def getContentDigest(self):
@@ -60,15 +59,15 @@ class ProjectResource(object):
         raise NotImplementedError
 
     def getDocumentation(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getFolderPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getProjectName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getResourceId(self):
@@ -76,7 +75,7 @@ class ProjectResource(object):
         pass
 
     def getResourceName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getResourcePath(self):
@@ -151,7 +150,7 @@ class ProjectResourceBuilder(Object):
         pass
 
     def putAttribute(self, key, value):
-        # type: (AnyStr, Any) -> ProjectResourceBuilder
+        # type: (Union[str, unicode], Any) -> ProjectResourceBuilder
         pass
 
     def putData(self, *args):
@@ -159,27 +158,33 @@ class ProjectResourceBuilder(Object):
         pass
 
     def removeAttribute(self, key):
-        # type: (AnyStr) -> ProjectResourceBuilder
+        # type: (Union[str, unicode]) -> ProjectResourceBuilder
         pass
 
     def removeData(self, name):
-        # type: (AnyStr) -> ProjectResourceBuilder
+        # type: (Union[str, unicode]) -> ProjectResourceBuilder
         pass
 
     def setApplicationScope(self, scope):
-        # type: (Union[AnyStr, int]) -> ProjectResourceBuilder
+        # type: (Union[str, unicode, int]) -> ProjectResourceBuilder
         pass
 
-    def setAttributes(self, attributes):
-        # type: (Mapping[AnyStr, JsonElement]) -> ProjectResourceBuilder
+    def setAttributes(
+        self,
+        attributes,  # type: Mapping[Union[str, unicode], JsonElement]
+    ):
+        # type: (...) -> ProjectResourceBuilder
         pass
 
-    def setData(self, data):
-        # type: (Mapping[AnyStr, bytearray]) -> ProjectResourceBuilder
+    def setData(
+        self,
+        data,  # type: Mapping[Union[str, unicode], bytearray]
+    ):
+        # type: (...) -> ProjectResourceBuilder
         pass
 
     def setDocumentation(self, documentation):
-        # type: (AnyStr) -> ProjectResourceBuilder
+        # type: (Union[str, unicode]) -> ProjectResourceBuilder
         pass
 
     def setFolder(self, folder):
@@ -195,7 +200,7 @@ class ProjectResourceBuilder(Object):
         pass
 
     def setProjectName(self, projectName):
-        # type: (AnyStr) -> ProjectResourceBuilder
+        # type: (Union[str, unicode]) -> ProjectResourceBuilder
         pass
 
     def setResourceId(self, id_):
@@ -227,11 +232,11 @@ class ProjectResourceId(Object):
         pass
 
     def getFolderPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getProjectName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getResourcePath(self):
@@ -249,7 +254,7 @@ class ProjectResourceId(Object):
 
 class ResourcePath(Object, Comparable):
     def __init__(self, type_, path):
-        # type: (ResourceType, Union[AnyStr, StringPath]) -> None
+        # type: (ResourceType, Union[str, unicode, StringPath]) -> None
         super(ResourcePath, self).__init__()
         self._type = type_
         self._path = path
@@ -260,23 +265,23 @@ class ResourcePath(Object, Comparable):
 
     @staticmethod
     def createModuleRoot(moduleId):
-        # type: (AnyStr) -> ResourcePath
+        # type: (Union[str, unicode]) -> ResourcePath
         pass
 
     def getChild(self, *pathParts):
-        # type: (*AnyStr) -> ResourcePath
+        # type: (*Union[str, unicode]) -> ResourcePath
         pass
 
     def getFolderPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getModuleId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParent(self):
@@ -284,7 +289,7 @@ class ResourcePath(Object, Comparable):
         pass
 
     def getParentPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getPath(self):
@@ -350,21 +355,21 @@ class ResourceSignature(Object):
 
 class ResourceType(Object):
     def __init__(self, moduleId, typeId):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         super(ResourceType, self).__init__()
         self._moduleId = moduleId
         self._typeId = typeId
 
     def childOrSubPath(self, potentialFolder, path):
-        # type: (ResourcePath, AnyStr) -> ResourcePath
+        # type: (ResourcePath, Union[str, unicode]) -> ResourcePath
         pass
 
     def getModuleId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._moduleId
 
     def getTypeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._typeId
 
     def matches(self, op):
@@ -376,5 +381,5 @@ class ResourceType(Object):
         pass
 
     def subPath(self, path):
-        # type: (AnyStr) -> ResourcePath
+        # type: (Union[str, unicode]) -> ResourcePath
         pass

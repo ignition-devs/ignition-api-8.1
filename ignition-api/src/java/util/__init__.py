@@ -48,8 +48,6 @@ from typing import (
     Union,
 )
 
-from dev.coatl.helper.types import AnyStr
-from dev.coatl.utils.decorators import classproperty
 from java.lang import Class, Object, RuntimeException, Throwable
 from java.util.function import (
     BiFunction,
@@ -66,6 +64,11 @@ if TYPE_CHECKING:
     from java.io import InputStream, OutputStream
     from java.nio import ByteBuffer
     from java.time import Instant, ZonedDateTime, ZoneId
+
+
+class classproperty(property):  # pylint: disable=invalid-name
+    def __get__(self, cls, owner):  # type: ignore[no-untyped-def]
+        return classmethod(self.fget).__get__(None, owner)()
 
 
 class Collection(object):
@@ -751,7 +754,7 @@ class Base64(Object):
     class Decoder(Object):
         def decode(
             self,
-            arg,  # type: Union[AnyStr, ByteBuffer, List[int]]
+            arg,  # type: Union[str, unicode, ByteBuffer, List[int]]
             dst=None,  # type: Optional[List[int]]
         ):
             # type: (...) -> Union[ByteBuffer, int, List[int]]
@@ -771,7 +774,7 @@ class Base64(Object):
             pass
 
         def encodeToString(self, src):
-            # type: (List[int]) -> AnyStr
+            # type: (List[int]) -> Union[str, unicode]
             pass
 
         def withoutPadding(self):
@@ -903,7 +906,7 @@ class Calendar(Object):
 
     @staticmethod
     def getAvailableCalendarTypes():
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         pass
 
     @staticmethod
@@ -912,15 +915,15 @@ class Calendar(Object):
         pass
 
     def getCalendarType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDisplayName(self, field, style, locale):
-        # type: (int, int, Locale) -> AnyStr
+        # type: (int, int, Locale) -> Union[str, unicode]
         pass
 
     def getDisplayNames(self, field, style, locale):
-        # type: (int, int, Locale) -> Dict[AnyStr, int]
+        # type: (int, int, Locale) -> Dict[Union[str, unicode], int]
         pass
 
     def getFirstDayOfWeek(self):
@@ -1038,16 +1041,16 @@ class Currency(Object):
         pass
 
     def getCurrencyCode(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDisplayName(self, locale=None):
-        # type: (Optional[Locale]) -> AnyStr
+        # type: (Optional[Locale]) -> Union[str, unicode]
         pass
 
     @staticmethod
     def getInstance(arg):
-        # type: (Union[Locale, AnyStr]) -> Currency
+        # type: (Union[Locale, str, unicode]) -> Currency
         pass
 
     def getNumericCode(self):
@@ -1055,11 +1058,11 @@ class Currency(Object):
         pass
 
     def getNumericCodeAsString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getSymbol(self, locale=None):
-        # type: (Optional[Locale]) -> AnyStr
+        # type: (Optional[Locale]) -> Union[str, unicode]
         pass
 
 
@@ -1418,7 +1421,7 @@ class TimeZone(Object):
 
     @staticmethod
     def getAvailableIDs(rawOffset=None):
-        # type: (Optional[int]) -> List[AnyStr]
+        # type: (Optional[int]) -> List[Union[str, unicode]]
         pass
 
     @staticmethod
@@ -1427,7 +1430,7 @@ class TimeZone(Object):
         pass
 
     def getDisplayName(self, *args):
-        # type: (*Any) -> AnyStr
+        # type: (*Any) -> Union[str, unicode]
         pass
 
     def getDSTSavings(self):
@@ -1435,7 +1438,7 @@ class TimeZone(Object):
         pass
 
     def getID(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getOffset(self, *args):
@@ -1448,7 +1451,7 @@ class TimeZone(Object):
 
     @staticmethod
     def getTimeZone(arg):
-        # type: (Union[AnyStr, ZoneId]) -> TimeZone
+        # type: (Union[str, unicode, ZoneId]) -> TimeZone
         pass
 
     def hasSameRules(self, other):
@@ -1469,7 +1472,7 @@ class TimeZone(Object):
         pass
 
     def setID(self, ID):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setRawOffset(self, offsetMillis):
@@ -1502,7 +1505,7 @@ class UUID(Object):
 
     @staticmethod
     def fromString(name):
-        # type: (AnyStr) -> UUID
+        # type: (Union[str, unicode]) -> UUID
         pass
 
     def getLeastSignificantBits(self):

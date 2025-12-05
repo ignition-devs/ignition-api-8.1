@@ -29,13 +29,17 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BasicOPCBrowseElement
 from com.inductiveautomation.ignition.common.script.builtin import AbstractOPCUtilities
 from com.inductiveautomation.ignition.common.script.builtin.ialabs import OPCBrowseTag
-from dev.coatl.helper.types import AnyStr
 
 BrowseServerResult = List[Union[BasicOPCBrowseElement, AbstractOPCUtilities.PyOPCTag]]
 
 
-def browse(opcServer, device, folderPath, opcItemPath):
-    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> List[OPCBrowseTag]
+def browse(
+    opcServer,  # type: Union[str, unicode]
+    device,  # type: Union[str, unicode]
+    folderPath,  # type: Union[str, unicode]
+    opcItemPath,  # type: Union[str, unicode]
+):
+    # type: (...) -> List[OPCBrowseTag]
     """Allows browsing of the OPC Servers in the runtime, returning a
     list of Tags.
 
@@ -55,8 +59,8 @@ def browse(opcServer, device, folderPath, opcItemPath):
 
 
 def browseServer(
-    opcServer,  # type: AnyStr
-    nodeId,  # type: AnyStr
+    opcServer,  # type: Union[str, unicode]
+    nodeId,  # type: Union[str, unicode]
 ):
     # type: (...) -> BrowseServerResult
     """When called from a Vision Client, returns a list of
@@ -74,8 +78,13 @@ def browseServer(
     return [BasicOPCBrowseElement()]
 
 
-def browseSimple(opcServer, device, folderPath, opcItemPath):
-    # type: (AnyStr, AnyStr, AnyStr, AnyStr) -> List[OPCBrowseTag]
+def browseSimple(
+    opcServer,  # type: Union[str, unicode]
+    device,  # type: Union[str, unicode]
+    folderPath,  # type: Union[str, unicode]
+    opcItemPath,  # type: Union[str, unicode]
+):
+    # type: (...) -> List[OPCBrowseTag]
     """Allows browsing of OPC servers in the runtime returning a list of
     tags.
 
@@ -102,7 +111,7 @@ def browseSimple(opcServer, device, folderPath, opcItemPath):
 
 
 def getServerState(opcServer):
-    # type: (AnyStr) -> Optional[AnyStr]
+    # type: (Union[str, unicode]) -> Union[str, unicode, None]
     """Retrieves the current state of the given OPC Server connection.
 
     If the given Server is not found, the return value will be None.
@@ -126,7 +135,7 @@ def getServerState(opcServer):
 
 
 def getServers(includeDisabled=False):
-    # type: (Optional[bool]) -> List[AnyStr]
+    # type: (Optional[bool]) -> List[Union[str, unicode]]
     """Returns a list of Server names.
 
     Args:
@@ -143,7 +152,7 @@ def getServers(includeDisabled=False):
 
 
 def isServerEnabled(serverName):
-    # type: (AnyStr) -> bool
+    # type: (Union[str, unicode]) -> bool
     """Checks if an OPC Server connection is enabled or disabled.
 
     Args:
@@ -157,8 +166,11 @@ def isServerEnabled(serverName):
     return True
 
 
-def readValue(opcServer, itemPath):
-    # type: (AnyStr, AnyStr) -> BasicQualifiedValue
+def readValue(
+    opcServer,  # type: Union[str, unicode]
+    itemPath,  # type: Union[str, unicode]
+):
+    # type: (...) -> BasicQualifiedValue
     """Reads a single value directly from an OPC Server connection.
 
     The address is specified as a string, for example,
@@ -184,8 +196,11 @@ def readValue(opcServer, itemPath):
     return BasicQualifiedValue()
 
 
-def readValues(opcServer, itemPaths):
-    # type: (AnyStr, List[AnyStr]) -> List[BasicQualifiedValue]
+def readValues(
+    opcServer,  # type: Union[str, unicode]
+    itemPaths,  # type: List[Union[str, unicode]]
+):
+    # type: (...) -> List[BasicQualifiedValue]
     """This function is equivalent to the system.opc.readValue function,
     except that it can operate in bulk.
 
@@ -209,7 +224,7 @@ def readValues(opcServer, itemPaths):
 
 
 def setServerEnabled(serverName, enabled):
-    # type: (AnyStr, bool) -> None
+    # type: (Union[str, unicode], bool) -> None
     """Enables or disables an OPC Server connection.
 
     Args:
@@ -220,8 +235,12 @@ def setServerEnabled(serverName, enabled):
     print(serverName, enabled)
 
 
-def writeValue(opcServer, itemPath, value):
-    # type: (AnyStr, AnyStr, Any) -> QualityCode
+def writeValue(
+    opcServer,  # type: Union[str, unicode]
+    itemPath,  # type: Union[str, unicode]
+    value,  # type: Any
+):
+    # type: (...) -> QualityCode
     """Writes a value directly through an OPC Server connection
     synchronously.
 
@@ -243,8 +262,12 @@ def writeValue(opcServer, itemPath, value):
     return QualityCode()
 
 
-def writeValues(opcServer, itemPaths, values):
-    # type: (AnyStr, List[AnyStr], List[Any]) -> List[QualityCode]
+def writeValues(
+    opcServer,  # type: Union[str, unicode]
+    itemPaths,  # type: List[Union[str, unicode]]
+    values,  # type: List[Any]
+):
+    # type: (...) -> List[QualityCode]
     """This function is a bulk version of system.opc.writeValue.
 
     It takes a list of addresses and a list of objects, which must be

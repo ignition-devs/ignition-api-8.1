@@ -1,6 +1,5 @@
-from typing import List
+from typing import List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
 
 
@@ -10,7 +9,7 @@ class SpreadsheetVersion(Enum):
         pass
 
     def getLastColumnName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getLastRowIndex(self):
@@ -43,7 +42,7 @@ class SpreadsheetVersion(Enum):
 
     @staticmethod
     def getValueOf(name):
-        # type: (AnyStr) -> SpreadsheetVersion
+        # type: (Union[str, unicode]) -> SpreadsheetVersion
         pass
 
     @staticmethod

@@ -10,18 +10,19 @@ __all__ = [
     "ValidationMessage",
 ]
 
-from typing import Any, Dict, List, Optional, Set, Tuple
+from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from com.inductiveautomation.ignition.common import JsonPath
 from com.inductiveautomation.ignition.common.gson import JsonArray, JsonElement
-from dev.coatl.helper.types import AnyStr
 from java.io import InputStream
 from java.lang import Enum, Object
 from java.util.regex import Pattern
 
+VisibleWhenCondition = Tuple[Union[str, unicode], List[JsonElement]]
+
 
 class JsonValidator(object):
-    AT_ROOT = None  # type: AnyStr
+    AT_ROOT = None  # type: Union[str, unicode]
 
     def validate(self, *args):
         # type: (Any) -> Set[ValidationMessage]
@@ -43,7 +44,7 @@ class BaseJsonValidator(Object, JsonValidator):
 
 
 class ItemsValidator(BaseJsonValidator):
-    PROPERTY = None  # type: AnyStr
+    PROPERTY = None  # type: Union[str, unicode]
 
     def __init__(self, *args):
         # type: (Any) -> None
@@ -74,7 +75,7 @@ class ItemsValidator(BaseJsonValidator):
 
 class JsonSchema(BaseJsonValidator):
     IGNITION_SCHEMA_PATTERN = None  # type: Pattern
-    IGNITION_SCHEMA_URN = None  # type: AnyStr
+    IGNITION_SCHEMA_URN = None  # type: Union[str, unicode]
 
     def __init__(self, *args):
         # type: (Any) -> None
@@ -89,7 +90,7 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def findAncestorMatchingPath(self, matchingPath):
-        # type: (AnyStr) -> Optional[JsonSchema]
+        # type: (Union[str, unicode]) -> Optional[JsonSchema]
         pass
 
     def findSchemaForPath(self, path):
@@ -101,7 +102,7 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getDeclaredProperties(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getDefaultValue(self, includeExamples=None):
@@ -109,15 +110,15 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDynamicSuggestionPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getEnumChoices(self):
-        # type: () -> Dict[AnyStr, JsonElement]
+        # type: () -> Dict[Union[str, unicode], JsonElement]
         pass
 
     def getExamples(self):
@@ -129,11 +130,11 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getExtension(self, key):
-        # type: (AnyStr) -> Optional[JsonElement]
+        # type: (Union[str, unicode]) -> Optional[JsonElement]
         pass
 
     def getFormat(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getItemsValidator(self):
@@ -141,7 +142,7 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getRefSchemaNode(self, ref=None):
-        # type: (Optional[AnyStr]) -> JsonElement
+        # type: (Union[str, unicode, None]) -> JsonElement
         pass
 
     def getSchemasForItems(self):
@@ -149,15 +150,15 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getSchemasForProperties(self):
-        # type: () -> Dict[AnyStr, JsonSchema]
+        # type: () -> Dict[Union[str, unicode], JsonSchema]
         pass
 
     def getSuggestions(self):
-        # type: () -> Dict[AnyStr, JsonElement]
+        # type: () -> Dict[Union[str, unicode], JsonElement]
         pass
 
     def getTitle(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getTypeValidator(self):
@@ -165,7 +166,7 @@ class JsonSchema(BaseJsonValidator):
         pass
 
     def getVisibleWhenCondition(self):
-        # type: () -> Optional[Tuple[AnyStr, List[JsonElement]]]
+        # type: () -> Optional[VisibleWhenCondition]
         pass
 
     def hasChildren(self):
@@ -213,7 +214,7 @@ class ValidationMessage(Object):
 
     class Builder(Object):
         def arguments(self, *args):
-            # type: (AnyStr) -> ValidationMessage.Builder
+            # type: (Union[str, unicode]) -> ValidationMessage.Builder
             pass
 
         def build(self):
@@ -221,43 +222,43 @@ class ValidationMessage(Object):
             pass
 
         def code(self, code):
-            # type: (AnyStr) -> ValidationMessage.Builder
+            # type: (Union[str, unicode]) -> ValidationMessage.Builder
             pass
 
         def format(self, format):
-            # type: (AnyStr) -> ValidationMessage.Builder
+            # type: (Union[str, unicode]) -> ValidationMessage.Builder
             pass
 
         def path(self, path):
-            # type: (AnyStr) -> ValidationMessage.Builder
+            # type: (Union[str, unicode]) -> ValidationMessage.Builder
             pass
 
         def type(self, type):
-            # type: (AnyStr) -> ValidationMessage.Builder
+            # type: (Union[str, unicode]) -> ValidationMessage.Builder
             pass
 
     def getCode(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getMessage(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setArguments(self, *args):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setType(self, type):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 

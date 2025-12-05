@@ -28,14 +28,13 @@ __all__ = [
 ]
 
 import __builtin__ as builtins
-from typing import List
+from typing import List, Union
 
-from dev.coatl.helper.types import AnyNum
 from org.apache.commons.math3.exception import DimensionMismatchException
 
 
 def geometricMean(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Calculates the geometric mean.
 
     Geometric Mean is a type of average which indicates a typical value
@@ -59,7 +58,7 @@ def geometricMean(values):
 
 
 def kurtosis(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Calculates the kurtosis of a sequence of values.
 
     Kurtosis measures if data is peaked or flat relative to normal
@@ -88,7 +87,7 @@ def kurtosis(values):
 
 
 def max(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, returns the greatest value in the
     sequence, also known as the "max" value.
 
@@ -108,7 +107,7 @@ def max(values):
 
 
 def mean(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the arithmetic mean
     (average).
 
@@ -127,8 +126,11 @@ def mean(values):
     return float(43)
 
 
-def meanDifference(values1, values2):
-    # type: (List[AnyNum], List[AnyNum]) -> float
+def meanDifference(
+    values1,  # type: List[Union[float, int, long]]
+    values2,  # type: List[Union[float, int, long]]
+):
+    # type: (...) -> float
     """Given two sequences of values, calculates the mean of the signed
     difference between both sequences.
 
@@ -159,7 +161,7 @@ def meanDifference(values1, values2):
 
 
 def median(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Takes a sequence of values, and returns the median.
 
     The Median represents the middle value in a set of data.
@@ -180,7 +182,7 @@ def median(values):
 
 
 def min(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a Sequence of numerical values, returns the minimum value,
     also known as the "min" value.
 
@@ -200,7 +202,7 @@ def min(values):
 
 
 def mode(values):
-    # type: (List[AnyNum]) -> List[float]
+    # type: (List[Union[float, int, long]]) -> List[float]
     """Given a sequence of values, returns the 'mode', or most frequent
     values.
 
@@ -221,7 +223,7 @@ def mode(values):
 
 
 def normalize(values):
-    # type: (List[AnyNum]) -> List[float]
+    # type: (List[Union[float, int, long]]) -> List[float]
     """Given a sequence of values, normalizes the values.
 
     Normalizing data refers to adjusting values measured on different
@@ -248,7 +250,7 @@ def normalize(values):
 
 
 def percentile(values, percentile):
-    # type: (List[AnyNum], float) -> float
+    # type: (List[Union[float, int, long]], float) -> float
     """Given a sequence of numerical values, estimates the percentile of
     input.
 
@@ -280,7 +282,7 @@ def percentile(values, percentile):
 
 
 def populationVariance(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, returns the Population Variance.
 
     Population variance calculates how values in a dataset are spread
@@ -302,7 +304,7 @@ def populationVariance(values):
 
 
 def product(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the product of the
     sequence: the result of multiplying of all values in the sequence
     together.
@@ -324,7 +326,7 @@ def product(values):
 
 
 def skewness(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Calculates the skewness given a sequence of values.
 
     Skewness is a measure of the degree of asymmetry of a distribution
@@ -349,7 +351,7 @@ def skewness(values):
 
 
 def standardDeviation(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a Sequence of numerical values, calculates the standard
     deviation.
 
@@ -373,7 +375,7 @@ def standardDeviation(values):
 
 
 def sum(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the sum of all values.
 
     The sum is the number returned by addition.
@@ -393,8 +395,11 @@ def sum(values):
     return builtins.sum(values)
 
 
-def sumDifference(values1, values2):
-    # type: (List[AnyNum], List[AnyNum]) -> float
+def sumDifference(
+    values1,  # type: List[Union[float, int, long]]
+    values2,  # type: List[Union[float, int, long]]
+):
+    # type: (...) -> float
     """Given two sequences of values, calculates the sum of the signed
     difference between both sequences.
 
@@ -424,7 +429,7 @@ def sumDifference(values1, values2):
 
 
 def sumLog(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the sum of the natural
     logs.
 
@@ -445,7 +450,7 @@ def sumLog(values):
 
 
 def sumSquares(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the sum of the squares of
     all values.
 
@@ -468,7 +473,7 @@ def sumSquares(values):
 
 
 def variance(values):
-    # type: (List[AnyNum]) -> float
+    # type: (List[Union[float, int, long]]) -> float
     """Given a sequence of values, calculates the variance of all
     values.
 

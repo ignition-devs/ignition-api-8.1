@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["ExceptionContext"]
 
-from typing import Any, Optional, Set
+from typing import Any, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object, Throwable
 from java.util import Locale
 
@@ -16,19 +15,23 @@ class ExceptionContext(Object):
         print(throwable)
 
     def addMessage(self, pattern, *args):
-        # type: (AnyStr, *Any) -> None
+        # type: (Union[str, unicode], *Any) -> None
         pass
 
     def getKeys(self):
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         pass
 
     def getLocalizedMessage(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
-    def getMessage(self, locale=None, separator=None):
-        # type: (Optional[Locale], Optional[AnyStr]) -> AnyStr
+    def getMessage(
+        self,
+        locale=None,  # type: Optional[Locale]
+        separator=None,  # type: Union[str, unicode, None]
+    ):
+        # type: (...) -> Union[str, unicode]
         pass
 
     def getThrowable(self):
@@ -36,9 +39,9 @@ class ExceptionContext(Object):
         pass
 
     def getValue(self, key):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setValue(self, key, value):
-        # type: (AnyStr, Object) -> None
+        # type: (Union[str, unicode], Object) -> None
         pass

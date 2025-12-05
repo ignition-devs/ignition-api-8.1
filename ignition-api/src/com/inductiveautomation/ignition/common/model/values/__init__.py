@@ -5,10 +5,13 @@ __all__ = ["BasicQualifiedValue", "QualifiedValue", "Quality", "QualityCode"]
 from typing import Any, Iterable, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
-from dev.coatl.helper.types import AnyStr
-from dev.coatl.utils.decorators import classproperty
 from java.lang import Enum, Object
 from java.util import Date
+
+
+class classproperty(property):  # pylint: disable=invalid-name
+    def __get__(self, cls, owner):  # type: ignore[no-untyped-def]
+        return classmethod(self.fget).__get__(None, owner)()
 
 
 class QualifiedValue(object):
@@ -16,8 +19,11 @@ class QualifiedValue(object):
     it.
     """
 
-    def derive(self, arg=None):
-        # type: (Union[None, QualityCode, AnyStr]) -> QualifiedValue
+    def derive(
+        self,
+        arg=None,  # type: Union[str, unicode, None, QualityCode]
+    ):
+        # type: (...) -> QualifiedValue
         raise NotImplementedError
 
     def getQuality(self):
@@ -49,7 +55,7 @@ class Quality(object):
             pass
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLevel(self):
@@ -57,7 +63,7 @@ class Quality(object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getQualityCode(self):
@@ -134,7 +140,7 @@ class QualityCode(Object):
         print(args)
 
     def derive(self, diagnosticMessage):
-        # type: (AnyStr) -> QualityCode
+        # type: (Union[str, unicode]) -> QualityCode
         pass
 
     def getCode(self):
@@ -143,7 +149,7 @@ class QualityCode(Object):
 
     @staticmethod
     def getCodeName(code):
-        # type: (Union[int, QualityCode]) -> AnyStr
+        # type: (Union[int, QualityCode]) -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -152,7 +158,7 @@ class QualityCode(Object):
         pass
 
     def getDiagnosticMessage(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getLevel(self):
@@ -160,7 +166,7 @@ class QualityCode(Object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isBad(self):
@@ -272,8 +278,11 @@ class BasicQualifiedValue(QualifiedValue, Object):
         # type: () -> BasicQualifiedValue
         pass
 
-    def derive(self, arg=None):
-        # type: (Union[None, QualityCode, AnyStr]) -> QualifiedValue
+    def derive(
+        self,
+        arg=None,  # type: Union[str, unicode, None, QualityCode]
+    ):
+        # type: (...) -> QualifiedValue
         pass
 
     @staticmethod

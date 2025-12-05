@@ -1,11 +1,10 @@
 __all__ = ["Expression", "FunctionFactory"]
 
-from typing import Any, Iterable, Set
+from typing import Any, Iterable, Set, Union
 
 from com.inductiveautomation.ignition.common.binding import InteractionListener
 from com.inductiveautomation.ignition.common.expressions.functions import Function
 from com.inductiveautomation.ignition.common.model.values import QualifiedValue
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class
 
 
@@ -27,7 +26,7 @@ class Expression(object):
         raise NotImplementedError
 
     def getOpName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getType(self):
@@ -45,17 +44,17 @@ class Expression(object):
 
 class FunctionFactory(object):
     def getCategories(self):
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         raise NotImplementedError
 
     def getFunction(self, name):
-        # type: (AnyStr) -> Function
+        # type: (Union[str, unicode]) -> Function
         raise NotImplementedError
 
     def getFunctionNames(self):
-        # type: () -> Set[AnyStr]
+        # type: () -> Set[Union[str, unicode]]
         raise NotImplementedError
 
     def getFunctionsInCategory(self, name):
-        # type: (AnyStr) -> Set[AnyStr]
+        # type: (Union[str, unicode]) -> Set[Union[str, unicode]]
         raise NotImplementedError

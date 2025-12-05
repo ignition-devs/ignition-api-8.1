@@ -11,9 +11,8 @@ __all__ = [
     "ValueRange",
 ]
 
-from typing import TYPE_CHECKING, Any, Dict, List, Optional
+from typing import TYPE_CHECKING, Any, Dict, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 from java.time.format import ResolverStyle
 from java.util import Locale
@@ -78,7 +77,7 @@ class TemporalField(object):
         raise NotImplementedError
 
     def getDisplayName(self, locale):
-        # type: (Locale) -> AnyStr
+        # type: (Locale) -> Union[str, unicode]
         pass
 
     def getFrom(self, temporal):
@@ -119,7 +118,7 @@ class TemporalField(object):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -159,7 +158,7 @@ class TemporalUnit(object):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 

@@ -7,9 +7,8 @@ __all__ = [
     "Era",
 ]
 
-from typing import TYPE_CHECKING, Any, Dict, List
+from typing import TYPE_CHECKING, Any, Dict, List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Object
 from java.time.format import DateTimeFormatter, ResolverStyle, TextStyle
 from java.time.temporal import (
@@ -46,7 +45,7 @@ class ChronoLocalDate(Temporal, TemporalAdjuster, Comparable):
         raise NotImplementedError
 
     def format(self, formatter):
-        # type: (DateTimeFormatter) -> AnyStr
+        # type: (DateTimeFormatter) -> Union[str, unicode]
         pass
 
     def getChronology(self):
@@ -95,7 +94,7 @@ class ChronoLocalDate(Temporal, TemporalAdjuster, Comparable):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def until(self, endExclusive, unit):
@@ -117,7 +116,7 @@ class ChronoLocalDateTime(Temporal, TemporalAdjuster, Comparable):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
@@ -168,14 +167,14 @@ class ChronoPeriod(TemporalAmount):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
 class ChronoZonedDateTime(Temporal, Comparable):
 
     def format(self, formatter):
-        # type: (DateTimeFormatter) -> AnyStr
+        # type: (DateTimeFormatter) -> Union[str, unicode]
         pass
 
     def getChronology(self):
@@ -270,11 +269,11 @@ class Chronology(Comparable):
         raise NotImplementedError
 
     def getCalendarType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def hashCode(self):
@@ -302,7 +301,7 @@ class Chronology(Comparable):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 

@@ -39,14 +39,13 @@ from typing import Any, Dict, List, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import JsonObject
 from com.inductiveautomation.ignition.common.script.adapters import PyJsonObjectAdapter
-from dev.coatl.helper.types import AnyStr
 
 
 def alterDock(
-    dockId,  # type: AnyStr
-    config=None,  # type: Optional[Dict[AnyStr, Any]]
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    dockId,  # type: Union[str, unicode]
+    config=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Changes configuration of a specified dock on a Perspective Page.
@@ -70,10 +69,10 @@ def alterDock(
 
 def alterLogging(
     remoteLoggingEnabled=False,  # type: bool
-    level="info",  # type: AnyStr
-    remoteLoggingLevel="warn",  # type: AnyStr
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    level="info",  # type: Union[str, unicode]
+    remoteLoggingLevel="warn",  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Changes Perspective Session logging attributes and levels.
@@ -103,13 +102,13 @@ def alterLogging(
 
 
 def authenticationChallenge(
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
-    idp="",  # type: AnyStr
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+    idp="",  # type: Union[str, unicode]
     forceAuth=False,  # type: bool
     timeout=2,  # type: int
-    payload=None,  # type: Optional[Dict[AnyStr, Any]]
-    framing="self",  # type: AnyStr
+    payload=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    framing="self",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Triggers an authentication challenge action.
@@ -152,8 +151,12 @@ def authenticationChallenge(
     builtins.print(sessionId, pageId, idp, forceAuth, timeout, payload, framing)
 
 
-def closeDock(id, sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr, AnyStr) -> None
+def closeDock(
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """Closes a docked view.
 
     Args:
@@ -171,9 +174,9 @@ def closeDock(id, sessionId="current_session", pageId="current_page"):
 
 
 def closePage(
-    message=None,  # type: Optional[AnyStr]
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    message=None,  # type: Union[str, unicode, None]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Closes the page with the given page id or the current page if no
@@ -197,8 +200,12 @@ def closePage(
     builtins.print(message, sessionId, pageId)
 
 
-def closePopup(id, sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr, AnyStr) -> None
+def closePopup(
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """Closes a popup View.
 
     Args:
@@ -216,7 +223,7 @@ def closePopup(id, sessionId="current_session", pageId="current_page"):
 
 
 def closeSession(message=None, sessionId="current_session"):
-    # type: (Optional[AnyStr], AnyStr) -> None
+    # type: (Union[str, unicode, None], Union[str, unicode]) -> None
     """Closes the Perspective Session with the given Session ID or the
     current Session if no ID is provided.
 
@@ -235,11 +242,11 @@ def closeSession(message=None, sessionId="current_session"):
 
 
 def download(
-    filename,  # type: AnyStr
+    filename,  # type: Union[str, unicode]
     data,  # type: Any
-    contentType=None,  # type: Optional[AnyStr]
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    contentType=None,  # type: Union[str, unicode, None]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Downloads data from the gateway to a device running a Session.
@@ -262,7 +269,7 @@ def download(
 
 
 def getProjectInfo():
-    # type: () -> Dict[AnyStr, Any]
+    # type: () -> Dict[Union[str, unicode], Any]
     """Returns a dictionary of meta data from a Perspective Project.
 
     Returns:
@@ -280,8 +287,8 @@ def getProjectInfo():
 
 
 def getSessionInfo(
-    usernameFilter=None,  # type: Optional[AnyStr]
-    projectFilter=None,  # type: Optional[AnyStr]
+    usernameFilter=None,  # type: Union[str, unicode, None]
+    projectFilter=None,  # type: Union[str, unicode, None]
 ):
     # type: (...) -> List[PyJsonObjectAdapter]
     """Returns information about one or more Perspective Sessions.
@@ -301,8 +308,12 @@ def getSessionInfo(
     return [PyJsonObjectAdapter(JsonObject())]
 
 
-def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
-    # type: (bool, List[AnyStr], AnyStr) -> bool
+def isAuthorized(
+    isAllOf,  # type: bool
+    securityLevels,  # type: List[Union[str, unicode]]
+    sessionId="current_session",  # type: Union[str, unicode]
+):
+    # type: (...) -> bool
     """Checks if the user in the current Session is authorized against a
     target collection of security levels.
 
@@ -327,7 +338,7 @@ def isAuthorized(isAllOf, securityLevels, sessionId="current_session"):
 
 
 def login(sessionId="current_session", pageId="current_page", forceAuth=False):
-    # type: (AnyStr, AnyStr, bool) -> None
+    # type: (Union[str, unicode], Union[str, unicode], bool) -> None
     """Triggers a login event that will allow the user to login with the
     project's configured Identity Provider (IdP).
 
@@ -361,9 +372,9 @@ def login(sessionId="current_session", pageId="current_page", forceAuth=False):
 
 
 def logout(
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
-    message="default message",  # type: AnyStr
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+    message="default message",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Triggers a logout event, which will log the user out.
@@ -387,12 +398,12 @@ def logout(
 
 
 def navigate(
-    page,  # type: AnyStr
-    url=None,  # type: Optional[AnyStr]
-    view=None,  # type: Optional[AnyStr]
-    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    page,  # type: Union[str, unicode]
+    url=None,  # type: Union[str, unicode, None]
+    view=None,  # type: Union[str, unicode, None]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
     newTab=False,  # type: bool
 ):
     # type: (...) -> None
@@ -436,7 +447,7 @@ def navigate(
 
 
 def navigateBack(sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "back" function.
@@ -451,7 +462,7 @@ def navigateBack(sessionId="current_session", pageId="current_page"):
 
 
 def navigateForward(sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Navigate the Session to a specified view or mounted page.
 
     This is similar to a browser's "forward" function.
@@ -468,10 +479,10 @@ def navigateForward(sessionId="current_session", pageId="current_page"):
 
 
 def openDock(
-    id,  # type: AnyStr
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
-    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
 ):
     # type: (...) -> None
     """Opens a docked View.
@@ -495,18 +506,18 @@ def openDock(
 
 
 def openPopup(
-    id,  # type: AnyStr
-    view,  # type: AnyStr
-    params=None,  # type: Optional[Dict[AnyStr, Any]]
-    title="",  # type: AnyStr
-    position=None,  # type: Optional[Dict[AnyStr, Union[int, AnyStr]]]
+    id,  # type: Union[str, unicode]
+    view,  # type: Union[str, unicode]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    title="",  # type: Union[str, unicode]
+    position=None,  # type: Optional[Dict[Union[str, unicode], Union[int, str, unicode]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
     modal=False,  # type: bool
     overlayDismiss=False,  # type: bool
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
     viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
@@ -565,10 +576,10 @@ def openPopup(
 
 
 def print(
-    message,  # type: AnyStr
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
-    destination="client",  # type: AnyStr
+    message,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+    destination="client",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Sends print statements to the scripting console when in the
@@ -594,7 +605,7 @@ def print(
 
 
 def refresh(sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Triggers a refresh of the page.
 
     Note:
@@ -614,11 +625,11 @@ def refresh(sessionId="current_session", pageId="current_page"):
 
 
 def sendMessage(
-    messageType,  # type: AnyStr
-    payload,  # type: Dict[AnyStr, AnyStr]
-    scope="page",  # type: AnyStr
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    messageType,  # type: Union[str, unicode]
+    payload,  # type: Dict[Union[str, unicode], Union[str, unicode]]
+    scope="page",  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
 ):
     # type: (...) -> None
     """Send a message to a message handler within the same Session.
@@ -642,8 +653,12 @@ def sendMessage(
     builtins.print(messageType, payload, scope, sessionId, pageId)
 
 
-def setTheme(name, sessionId="current_session", pageId="current_page"):
-    # type: (AnyStr, AnyStr, AnyStr) -> None
+def setTheme(
+    name,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """Changes the theme in a page to the specified theme.
 
     Note that this function only changes the theme for a single page,
@@ -664,10 +679,10 @@ def setTheme(name, sessionId="current_session", pageId="current_page"):
 
 
 def toggleDock(
-    id,  # type: AnyStr
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
-    params=None,  # type: Optional[Dict[AnyStr, AnyStr]]
+    id,  # type: Union[str, unicode]
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
+    params=None,  # type: Optional[Dict[Union[str, unicode], Union[str, unicode]]]
 ):
     # type: (...) -> None
     """Toggles a docked View.
@@ -689,18 +704,18 @@ def toggleDock(
 
 
 def togglePopup(
-    id,  # type: AnyStr
-    view,  # type: AnyStr
-    params,  # type: Optional[Dict[AnyStr, Any]]
-    title="",  # type: AnyStr
-    position=None,  # type: Optional[Dict[AnyStr, Union[int, AnyStr]]]
+    id,  # type: Union[str, unicode]
+    view,  # type: Union[str, unicode]
+    params,  # type: Optional[Dict[Union[str, unicode], Any]]
+    title="",  # type: Union[str, unicode]
+    position=None,  # type: Optional[Dict[Union[str, unicode], Union[int, str, unicode]]]
     showCloseIcon=True,  # type: bool
     draggable=True,  # type: bool
     resizable=False,  # type: bool
     modal=False,  # type: bool
     overlayDismiss=False,  # type: bool
-    sessionId="current_session",  # type: AnyStr
-    pageId="current_page",  # type: AnyStr
+    sessionId="current_session",  # type: Union[str, unicode]
+    pageId="current_page",  # type: Union[str, unicode]
     viewPortBound=False,  # type: bool
 ):
     # type: (...) -> None
@@ -762,7 +777,7 @@ def togglePopup(
 
 
 def vibrateDevice(duration, sessionId="current_session"):
-    # type: (int, AnyStr) -> None
+    # type: (int, Union[str, unicode]) -> None
     """When called from the Perspective App, will cause the device to
     vibrate for the specified number of milliseconds.
 

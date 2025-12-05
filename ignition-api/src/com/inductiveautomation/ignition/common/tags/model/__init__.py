@@ -1,6 +1,6 @@
 __all__ = ["SecurityContext", "TagManager", "TagPath"]
 
-from typing import TYPE_CHECKING, Any, Optional
+from typing import TYPE_CHECKING, Any, Optional, Union
 
 from com.inductiveautomation.ignition.common import Path
 from com.inductiveautomation.ignition.common.config import Property
@@ -10,7 +10,6 @@ from com.inductiveautomation.ignition.common.gson import (
     JsonSerializationContext,
 )
 from com.inductiveautomation.ignition.common.user import AuthenticatedUser
-from dev.coatl.helper.types import AnyStr
 from java.lang import Comparable, Object
 from java.lang.reflect import Type
 
@@ -71,15 +70,15 @@ class TagPath(Path, Comparable):
         pass
 
     def getChildPath(self, nextId):
-        # type: (AnyStr) -> TagPath
+        # type: (Union[str, unicode]) -> TagPath
         raise NotImplementedError
 
     def getItemName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLastPathComponent(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParentPath(self):
@@ -87,7 +86,7 @@ class TagPath(Path, Comparable):
         raise NotImplementedError
 
     def getPathComponent(self, i):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def getPathLength(self):
@@ -99,7 +98,7 @@ class TagPath(Path, Comparable):
         raise NotImplementedError
 
     def getSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def isAncestorOf(self, path):
@@ -107,9 +106,9 @@ class TagPath(Path, Comparable):
         return True
 
     def toStringFull(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def toStringPartial(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError

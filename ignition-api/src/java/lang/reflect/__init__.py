@@ -1,9 +1,9 @@
 __all__ = ["Type"]
 
-from dev.coatl.helper.types import AnyStr
+from typing import Union
 
 
 class Type(object):
     def getTypeName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError

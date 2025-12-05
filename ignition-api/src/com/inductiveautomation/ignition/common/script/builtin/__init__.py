@@ -12,7 +12,6 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from dev.coatl.helper.types import AnyStr
 from java.io import OutputStream, Writer
 from java.lang import ArrayIndexOutOfBoundsException, Class
 from java.lang import Exception as JavaException
@@ -22,17 +21,25 @@ from org.json import JSONObject
 from org.python.core import PyFunction, PyList, PyObject, PySequence
 from org.slf4j import Logger
 
+Triple = Tuple[Union[str, unicode], Union[str, unicode], bool]
+
 
 class AbstractOPCUtilities(Object):
 
     class PyOPCTag(PyObject):
-        displayName = None  # type: AnyStr
+        displayName = None  # type: Union[str, unicode]
         elementType = None  # type: BrowseElementType
-        nodeId = None  # type: AnyStr
-        serverName = None  # type: AnyStr
+        nodeId = None  # type: Union[str, unicode]
+        serverName = None  # type: Union[str, unicode]
 
-        def __init__(self, serverName, nodeId, displayName, elementType):
-            # type: (AnyStr, AnyStr, AnyStr, BrowseElementType) -> None
+        def __init__(
+            self,
+            serverName,  # type: Union[str, unicode]
+            nodeId,  # type: Union[str, unicode]
+            displayName,  # type: Union[str, unicode]
+            elementType,  # type: BrowseElementType
+        ):
+            # type: (...) -> None
             self.serverName = serverName
             self.nodeId = nodeId
             self.displayName = displayName
@@ -40,11 +47,11 @@ class AbstractOPCUtilities(Object):
             super(AbstractOPCUtilities.PyOPCTag, self).__init__()
 
         def __findattr_ex__(self, name):
-            # type: (AnyStr) -> PyObject
+            # type: (Union[str, unicode]) -> PyObject
             pass
 
         def getDisplayName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self.displayName
 
         def getElementType(self):
@@ -52,49 +59,61 @@ class AbstractOPCUtilities(Object):
             return self.elementType
 
         def getNodeId(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self.nodeId
 
         def getServerName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self.serverName
 
-    def browseServer(self, opcServer, nodeId):
-        # type: (AnyStr, AnyStr) -> List[AbstractOPCUtilities.PyOPCTag]
+    def browseServer(
+        self,
+        opcServer,  # type: Union[str, unicode]
+        nodeId,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> List[AbstractOPCUtilities.PyOPCTag]
         return [
             AbstractOPCUtilities.PyOPCTag(opcServer, nodeId, "", BrowseElementType())
         ]
 
     def getServers(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> List[AnyStr]
+        # type: (*PyObject, **Union[str, unicode]) -> List[Union[str, unicode]]  # noqa: W505
         pass
 
     def getServerState(self, opcServer):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         pass
 
     def isServerEnabled(self, serverName):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
-    def readValue(self, opcServer, itemPath):
-        # type: (AnyStr, AnyStr) -> QualifiedValue
+    def readValue(
+        self,
+        opcServer,  # type: Union[str, unicode]
+        itemPath,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> QualifiedValue
         pass
 
-    def readValues(self, opcServer, itemPaths):
-        # type: (AnyStr, List[AnyStr]) -> QualifiedValue
+    def readValues(
+        self,
+        opcServer,  # type: Union[str, unicode]
+        itemPaths,  # type: List[Union[str, unicode]]
+    ):
+        # type: (...) -> QualifiedValue
         pass
 
     def setServerEnabled(self, serverName, enabled):
-        # type: (AnyStr, bool) -> None
+        # type: (Union[str, unicode], bool) -> None
         pass
 
     def writeValue(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> QualityCode
+        # type: (*PyObject, **Union[str, unicode]) -> QualityCode
         pass
 
     def writeValues(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> List[QualityCode]
+        # type: (*PyObject, **Union[str, unicode]) -> List[QualityCode]
         pass
 
 
@@ -116,7 +135,7 @@ class DatasetUtilities(Object):
             pass
 
         def getColumnIndex(self, colName):
-            # type: (AnyStr) -> int
+            # type: (Union[str, unicode]) -> int
             """Returns the index of the column with the name colName.
 
             Args:
@@ -134,7 +153,7 @@ class DatasetUtilities(Object):
             return 0
 
         def getColumnName(self, col):
-            # type: (int) -> AnyStr
+            # type: (int) -> Union[str, unicode]
             """Returns the name of the column at the index colIndex.
 
             Args:
@@ -152,7 +171,7 @@ class DatasetUtilities(Object):
             return "column_name"
 
         def getColumnNames(self):
-            # type: () -> List[AnyStr]
+            # type: () -> List[Union[str, unicode]]
             """Returns a list with the names of all the columns.
 
             Returns:
@@ -251,7 +270,7 @@ class DatasetUtilities(Object):
             return Dataset()
 
         def getValueAt(self, row, col):
-            # type: (int, Union[int, AnyStr]) -> Any
+            # type: (int, Union[int, str, unicode]) -> Any
             """Returns the value at the specified row index and column
             name or index.
 
@@ -307,12 +326,17 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def dataSetToExcel(headerRow, datasets):
-        # type: (bool, List[Object]) -> AnyStr
+        # type: (bool, List[Object]) -> Union[str, unicode]
         pass
 
     @staticmethod
-    def dataSetToExcelBytes(headerRow, objects, nullsEmpty, sheetNames):
-        # type: (bool, List[Object], bool, List[AnyStr]) -> bytearray
+    def dataSetToExcelBytes(
+        headerRow,  # type: bool
+        objects,  # type: List[Object]
+        nullsEmpty,  # type: bool
+        sheetNames,  # type: List[Union[str, unicode]]
+    ):
+        # type: (...) -> bytearray
         pass
 
     @staticmethod
@@ -321,13 +345,17 @@ class DatasetUtilities(Object):
         pass
 
     @staticmethod
-    def dataSetToHTML(headerRow, ds, title):
-        # type: (bool, Dataset, AnyStr) -> AnyStr
+    def dataSetToHTML(
+        headerRow,  # type: bool
+        ds,  # type: Dataset
+        title,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> Union[str, unicode]
         pass
 
     @staticmethod
     def dataSetToHTMLStreaming(headerRow, ds, title, fw):
-        # type: (bool, Dataset, AnyStr, Writer) -> None
+        # type: (bool, Dataset, Union[str, unicode], Writer) -> None
         pass
 
     @staticmethod
@@ -347,17 +375,17 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def formatDates(dataset, format, locale=Locale.US):
-        # type: (Dataset, AnyStr, Locale) -> Dataset
+        # type: (Dataset, Union[str, unicode], Locale) -> Dataset
         pass
 
     @staticmethod
     def fromCSV(csv):
-        # type: (AnyStr) -> Dataset
+        # type: (Union[str, unicode]) -> Dataset
         pass
 
     @staticmethod
     def fromCSVJava(csv):
-        # type: (AnyStr) -> Dataset
+        # type: (Union[str, unicode]) -> Dataset
         pass
 
     @staticmethod
@@ -379,7 +407,7 @@ class DatasetUtilities(Object):
     def setValue(
         ds,  # type: Dataset
         row,  # type: int
-        col,  # type: Union[int, AnyStr]
+        col,  # type: Union[int, str, unicode]
         value,  # type: Union[Object, PyObject]
     ):
         # type: (...) -> Dataset
@@ -388,7 +416,7 @@ class DatasetUtilities(Object):
     @staticmethod
     def sort(
         ds,  # type: Dataset
-        keyColumn,  # type: Union[int, AnyStr]
+        keyColumn,  # type: Union[int, str, unicode]
         ascending=None,  # type: Optional[bool]
         naturalOrdering=None,  # type: Optional[bool]
     ):
@@ -397,12 +425,12 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def toCSV(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> AnyStr
+        # type: (*PyObject, **Union[str, unicode]) -> Union[str, unicode]  # noqa: W505
         pass
 
     @staticmethod
     def toCSVJava(ds, showHeaders, forExport, localized=False):
-        # type: (Dataset, bool, bool, bool) -> AnyStr
+        # type: (Dataset, bool, bool, bool) -> Union[str, unicode]
         pass
 
     @staticmethod
@@ -417,7 +445,7 @@ class DatasetUtilities(Object):
 
     @staticmethod
     def toExcel(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> bytearray
+        # type: (*PyObject, **Union[str, unicode]) -> bytearray
         pass
 
     @staticmethod
@@ -431,8 +459,12 @@ class DatasetUtilities(Object):
         pass
 
     @staticmethod
-    def updateRow(ds, row, changes):
-        # type: (Dataset, int, Dict[AnyStr, Any]) -> Dataset
+    def updateRow(
+        ds,  # type: Dataset
+        row,  # type: int
+        changes,  # type: Dict[Union[str, unicode], Any]
+    ):
+        # type: (...) -> Dataset
         pass
 
 
@@ -470,14 +502,14 @@ class SProcCall(Object):
 
     class SProcArgKey(Object):
         index = -1  # type: int
-        name = None  # type: AnyStr
+        name = None  # type: Union[str, unicode]
 
         def getParamIndex(self):
             # type: () -> int
             pass
 
         def getParamName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def isNamedParam(self):
@@ -485,26 +517,26 @@ class SProcCall(Object):
             return True
 
     callFinished = False  # type: bool
-    datasource = ""  # type: AnyStr
+    datasource = ""  # type: Union[str, unicode]
     params = None  # type: Dict[SProcCall.SProcArgKey, SProcCall.SProcArg]
-    procedureName = None  # type: AnyStr
+    procedureName = None  # type: Union[str, unicode]
     resultset = None  # type: Dataset
     returnParam = None  # type: SProcCall.SProcArg
     skipAudit = None  # type: bool
-    txId = None  # type: AnyStr
+    txId = None  # type: Union[str, unicode]
     updateCount = None  # type: int
 
     def getDataSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getOutParamValue(self, param):
-        # type: (Union[int, AnyStr]) -> Any
+        # type: (Union[int, str, unicode]) -> Any
         print(self, param)
         return 0
 
     def getProcedureName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getResultSet(self):
@@ -518,7 +550,7 @@ class SProcCall(Object):
         return 0
 
     def getTxId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return "transaction_id"
 
     def getUpdateCount(self):
@@ -532,11 +564,11 @@ class SProcCall(Object):
         return False
 
     def registerInParam(self, param, typeCode, value):
-        # type: (Union[int, AnyStr], int, Any) -> None
+        # type: (Union[int, str, unicode], int, Any) -> None
         print(self, param, typeCode, value)
 
     def registerOutParam(self, param, typeCode):
-        # type: (Union[int, AnyStr], int) -> None
+        # type: (Union[int, str, unicode], int) -> None
         print(self, param, typeCode)
 
     def registerReturnParam(self, typeCode):
@@ -548,7 +580,7 @@ class SProcCall(Object):
         pass
 
     def setTxId(self, txId):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 
@@ -600,10 +632,10 @@ class SystemUtilities(Object):
 
     @staticmethod
     def logger(loggerName):
-        # type: (AnyStr) -> Logger
+        # type: (Union[str, unicode]) -> Logger
         pass
 
     @staticmethod
     def parseTranslateArguments(*args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Tuple[AnyStr, AnyStr, bool]
+        # type: (*PyObject, **Union[str, unicode]) -> Triple
         pass

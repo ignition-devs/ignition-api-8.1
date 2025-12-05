@@ -2,7 +2,6 @@ __all__ = ["ExecutionManager"]
 
 from typing import Any, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Runnable
 from java.util.concurrent import ScheduledFuture, TimeUnit
 
@@ -23,8 +22,8 @@ class ExecutionManager(object):
 
     def registerAtFixedRate(
         self,
-        owner,  # type: AnyStr
-        name,  # type: AnyStr
+        owner,  # type: Union[str, unicode]
+        name,  # type: Union[str, unicode]
         command,  # type: Runnable
         rate,  # type: int
         unit,  # type: TimeUnit
@@ -34,8 +33,8 @@ class ExecutionManager(object):
 
     def registerAtFixedRateWithInitialDelay(
         self,
-        owner,  # type: AnyStr
-        name,  # type: AnyStr
+        owner,  # type: Union[str, unicode]
+        name,  # type: Union[str, unicode]
         command,  # type: Runnable
         rate,  # type: int
         unit,  # type: TimeUnit
@@ -63,9 +62,9 @@ class ExecutionManager(object):
         raise NotImplementedError
 
     def unregister(self, owner, name, interrupt):
-        # type: (AnyStr, AnyStr, bool) -> None
+        # type: (Union[str, unicode], Union[str, unicode], bool) -> None
         pass
 
     def unregisterAll(self, owner):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass

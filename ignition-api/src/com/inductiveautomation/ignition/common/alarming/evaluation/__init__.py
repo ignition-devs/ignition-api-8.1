@@ -2,11 +2,10 @@ from __future__ import print_function
 
 __all__ = ["EventProperty", "EventPropertyType", "ShelvedPath"]
 
-from typing import Any, List
+from typing import Any, List, Union
 
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object
 from java.util import Date
 
@@ -32,7 +31,7 @@ class EventProperty(Object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getPropertyType(self):

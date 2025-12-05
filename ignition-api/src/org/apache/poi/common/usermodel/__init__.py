@@ -1,16 +1,15 @@
-from typing import List
+from typing import List, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
 
 
 class Hyperlink(object):
     def getAddress(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getLabel(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getType(self):
@@ -18,11 +17,11 @@ class Hyperlink(object):
         raise NotImplementedError
 
     def setAddress(self, address):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def setLabel(self, label):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
 

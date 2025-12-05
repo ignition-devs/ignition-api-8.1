@@ -8,7 +8,6 @@ from com.inductiveautomation.factorypmi.application.components import BasicConta
 from com.inductiveautomation.ignition.client.model import ClientContext, DesktopListener
 from com.inductiveautomation.ignition.common.project.resource import ResourcePath
 from com.inductiveautomation.ignition.common.script import ScriptManager
-from dev.coatl.helper.types import AnyStr
 from java.util import TimeZone
 from javax.swing import JDesktopPane, JInternalFrame
 
@@ -17,7 +16,7 @@ class VisionDesktop(JDesktopPane):
     PRIMARY_DESKTOP_HANDLE = "Primary"
 
     def __init__(self, clientContext, handle=""):
-        # type: (ClientContext, AnyStr) -> None
+        # type: (ClientContext, Union[str, unicode]) -> None
         super(VisionDesktop, self).__init__()
         print(clientContext, handle)
 
@@ -30,7 +29,7 @@ class VisionDesktop(JDesktopPane):
         pass
 
     def getHandle(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getOpenedWindows(self):
@@ -38,7 +37,7 @@ class VisionDesktop(JDesktopPane):
         pass
 
     def getPath(self, window):
-        # type: (FPMIWindow) -> AnyStr
+        # type: (FPMIWindow) -> Union[str, unicode]
         pass
 
     def getScriptManager(self):
@@ -46,7 +45,7 @@ class VisionDesktop(JDesktopPane):
         pass
 
     def getWindow(self, arg):
-        # type: (Union[AnyStr, ResourcePath]) -> FPMIWindow
+        # type: (Union[str, unicode, ResourcePath]) -> FPMIWindow
         pass
 
 
@@ -55,7 +54,7 @@ class FPMIApp(VisionDesktop):
     TIMEZONE_GATEWAY = "America/Tijuana"
 
     def getDefaultTimeZone(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getLastActivity(self):
@@ -85,16 +84,16 @@ class FPMIWindow(JInternalFrame):
     SHOW_NEVER = 1
     SHOW_MAXIMIZED = 2
 
-    name = ""  # type: AnyStr
+    name = ""  # type: Union[str, unicode]
     _path = "Path/To/Window"
 
     def __init__(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(FPMIWindow, self).__init__()
         self.name = name
 
     def getPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._path
 
     def getRootContainer(self):

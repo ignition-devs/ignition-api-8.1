@@ -20,11 +20,10 @@ from typing import Dict, List, Union
 
 from com.inductiveautomation.ignition.alarming.common.rosters import RosterModel
 from com.inductiveautomation.ignition.common.user import PyUser
-from dev.coatl.helper.types import AnyStr
 
 
 def addUsers(rosterName, users):
-    # type: (AnyStr, List[PyUser]) -> None
+    # type: (Union[str, unicode], List[PyUser]) -> None
     """Adds a list of users to an existing roster.
 
     Users are always appended to the end of the roster.
@@ -42,7 +41,7 @@ def addUsers(rosterName, users):
 
 
 def createRoster(name, description):
-    # type: (AnyStr, Union[AnyStr, None]) -> None
+    # type: (Union[str, unicode], Union[str, unicode, None]) -> None
     """Creates a roster with the given name and description, if it does
     not already exist.
 
@@ -59,7 +58,7 @@ def createRoster(name, description):
 
 
 def deleteRoster(rosterName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Deletes a roster with the given name.
 
     Args:
@@ -69,7 +68,7 @@ def deleteRoster(rosterName):
 
 
 def getRoster(name):
-    # type: (AnyStr) -> RosterModel
+    # type: (Union[str, unicode]) -> RosterModel
     """Returns the roster corresponding to the given name.
 
     Args:
@@ -84,7 +83,7 @@ def getRoster(name):
 
 
 def getRosterNames():
-    # type: () -> List[AnyStr]
+    # type: () -> List[Union[str, unicode]]
     """Returns a list of roster names.
 
     Returns:
@@ -94,7 +93,7 @@ def getRosterNames():
 
 
 def getRosters():
-    # type: () -> Dict[AnyStr, List[AnyStr]]
+    # type: () -> Dict[Union[str, unicode], List[Union[str, unicode]]]
     """Returns a dictionary of rosters, where the key is the name of the
     roster, and the value is an array list of string user names.
 
@@ -111,7 +110,7 @@ def getRosters():
 
 
 def removeUsers(rosterName, users):
-    # type: (AnyStr, List[PyUser]) -> None
+    # type: (Union[str, unicode], List[PyUser]) -> None
     """Removes one or more users from an existing roster.
 
     Args:

@@ -33,7 +33,6 @@ __all__ = [
 
 from typing import Any, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import (
     Appendable,
     AutoCloseable,
@@ -60,10 +59,10 @@ class Flushable(object):
 
 
 class File(Object):
-    pathSeparator = None  # type: AnyStr
-    pathSeparatorChar = None  # type: AnyStr
-    separator = None  # type: AnyStr
-    separatorChar = None  # type: AnyStr
+    pathSeparator = None  # type: Union[str, unicode]
+    pathSeparatorChar = None  # type: Union[str, unicode]
+    separator = None  # type: Union[str, unicode]
+    separatorChar = None  # type: Union[str, unicode]
 
     def __init__(self, *args):
         # type: (*Any) -> None
@@ -168,7 +167,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeBytes(self, s):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def writeChar(self, v):
@@ -176,7 +175,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeChars(self, s):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def writeDouble(self, v):
@@ -200,7 +199,7 @@ class DataOutputStream(FilterOutputStream):
         pass
 
     def writeUTF(self, s):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 
@@ -367,14 +366,14 @@ class InputStreamReader(Reader):
     def __init__(
         self,
         in_,  # type: InputStream
-        arg=None,  # type: Optional[Union[AnyStr, Charset, CharsetDecoder]]
+        arg=None,  # type: Optional[Union[str, unicode, Charset, CharsetDecoder]]
     ):
         # type: (...) -> None
         super(InputStreamReader, self).__init__()
         print(in_, arg)
 
     def getEncoding(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 

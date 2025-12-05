@@ -5,7 +5,6 @@ from com.inductiveautomation.ignition.common.project.resource import (
     ProjectResourceId,
     ResourceType,
 )
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 class ResourceFilter(Object):
@@ -18,7 +17,7 @@ class ResourceFilter(Object):
         ) -> ResourceFilter.Builder: ...
         def build(self) -> ResourceFilter: ...
         def setApplicationScope(
-            self, applicationScope: Union[AnyStr, int]
+            self, applicationScope: Union[str, unicode, int]
         ) -> ResourceFilter.Builder: ...
 
     def __init__(

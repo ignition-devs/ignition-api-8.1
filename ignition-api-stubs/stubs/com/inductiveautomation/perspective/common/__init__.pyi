@@ -1,16 +1,15 @@
-from typing import Optional
+from typing import Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import Gson, JsonObject
 from com.inductiveautomation.ignition.common.jsonschema import JsonSchema
 from com.inductiveautomation.ignition.common.util import LoggerEx
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.util.function import Consumer
 
 class PerspectiveModule(Object):
-    LOG_PREFIX: AnyStr
+    LOG_PREFIX: Union[str, unicode]
     META_SCHEMA: JsonSchema
-    MODULE_ID: AnyStr
+    MODULE_ID: Union[str, unicode]
     SESSION_PROPS_SCHEMA: JsonSchema
     VIEW_SCHEMA: JsonSchema
     @staticmethod
@@ -24,4 +23,4 @@ class PerspectiveModule(Object):
     @staticmethod
     def defaultViewProps() -> JsonObject: ...
     @staticmethod
-    def getLogger(name: AnyStr) -> LoggerEx: ...
+    def getLogger(name: Union[str, unicode]) -> LoggerEx: ...

@@ -21,24 +21,23 @@ __all__ = [
     "toTreeDataSet",
 ]
 
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Tuple, Union
 
 from com.inductiveautomation.ignition.common import BasicDataset
-from dev.coatl.helper.types import AnyStr
 from java.util import Date
 
 
 def copyEquipment(
-    equipmentSource,  # type: AnyStr
-    newEquipmentName,  # type: AnyStr
+    equipmentSource,  # type: Union[str, unicode]
+    newEquipmentName,  # type: Union[str, unicode]
     enabled,  # type: bool
-    activeAddress,  # type: AnyStr
+    activeAddress,  # type: Union[str, unicode]
     activePort,  # type: int
-    passiveAddress,  # type: AnyStr
+    passiveAddress,  # type: Union[str, unicode]
     passivePort,  # type: int
     deviceId,  # type: int
-    dbTablePrefix=None,  # type: Optional[AnyStr]
-    description=None,  # type: Optional[AnyStr]
+    dbTablePrefix=None,  # type: Union[str, unicode, None]
+    description=None,  # type: Union[str, unicode, None]
 ):
     # type: (...) -> None
     """Creates a copy of an equipment connection.
@@ -92,7 +91,7 @@ def copyEquipment(
 
 
 def deleteToolProgram(ppid):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Deletes a process program from the Gateway.
 
     Args:
@@ -103,7 +102,7 @@ def deleteToolProgram(ppid):
 
 
 def enableDisableEquipment(enable, names):
-    # type: (bool, Tuple[AnyStr, ...]) -> List[unicode]
+    # type: (bool, Tuple[Union[str, unicode], ...]) -> List[unicode]
     """Enables or disables a Tuple of equipment connections from a
     script.
 
@@ -129,7 +128,7 @@ def enableDisableEquipment(enable, names):
 
 
 def getResponse(transactionID, equipment, timeout=5, poll=150):
-    # type: (int, AnyStr, int, int) -> Any
+    # type: (int, Union[str, unicode], int, int) -> Any
     """Attempts to retrieve a response message from the Gateway.
 
     The transaction id from the sent message is used to retrieve the
@@ -158,7 +157,7 @@ def getResponse(transactionID, equipment, timeout=5, poll=150):
 
 
 def getToolProgram(ppid):
-    # type: (AnyStr) -> Dict[AnyStr, Any]
+    # type: (Union[str, unicode]) -> Dict[Union[str, unicode], Any]
     """Returns a process program from the Gateway that was previously
     sent by a a tool in an S7F3 message.
 
@@ -192,7 +191,7 @@ def getToolProgramDataset():
 
 
 def sendRequest(streamFunction, reply, body, equipment):
-    # type: (AnyStr, bool, Any, AnyStr) -> int
+    # type: (Union[str, unicode], bool, Any, Union[str, unicode]) -> int
     """Sends a JSON-formatted SECS message to a tool.
 
     An equipment connection must be configured for the tool in the
@@ -216,8 +215,14 @@ def sendRequest(streamFunction, reply, body, equipment):
     return 0
 
 
-def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
-    # type: (int, int, AnyStr, Any, AnyStr) -> None
+def sendResponse(
+    transactionID,  # type: int
+    systemBytes,  # type: int
+    streamFunction,  # type: Union[str, unicode]
+    body,  # type: Any
+    equipment,  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """Sends a JSON-formatted SECS response message to a message sent by
     a tool.
 
@@ -245,7 +250,7 @@ def sendResponse(transactionID, systemBytes, streamFunction, body, equipment):
 
 
 def startSimEventRun(simulatorName, eventRunName):
-    # type: (AnyStr, AnyStr) -> None
+    # type: (Union[str, unicode], Union[str, unicode]) -> None
     """Starts a configured simulator event run in the Gateway.
 
     Note, that this function only works with the simulators that come

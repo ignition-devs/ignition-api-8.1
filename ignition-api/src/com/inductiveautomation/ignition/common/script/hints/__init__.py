@@ -1,27 +1,25 @@
 __all__ = ["ScriptFunctionHint"]
 
-from typing import Mapping
-
-from dev.coatl.helper.types import AnyStr
+from typing import Mapping, Union
 
 
 class ScriptFunctionHint(object):
     def getAutocompleteText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getMethodDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getMethodSignature(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getParameterDescriptions(self):
-        # type: () -> Mapping[AnyStr, AnyStr]
+        # type: () -> Mapping[Union[str, unicode], Union[str, unicode]]
         pass
 
     def getReturnValueDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass

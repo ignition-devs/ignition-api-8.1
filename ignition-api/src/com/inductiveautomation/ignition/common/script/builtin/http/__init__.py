@@ -2,10 +2,9 @@ from __future__ import print_function
 
 __all__ = ["CookieManager", "JythonHttpClient", "Promise", "Response"]
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 from com.inductiveautomation.ignition.common.gson import Gson
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.net import CookieManager as JCookieManager
 from java.net.http import HttpClient, HttpRequest, HttpResponse
@@ -30,19 +29,19 @@ class JythonHttpClient(Object):
     """
 
     def delete(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Response
+        # type: (*PyObject, **Union[str, unicode]) -> Response
         pass
 
     def deleteAsync(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Promise
+        # type: (*PyObject, **Union[str, unicode]) -> Promise
         pass
 
     def get(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Response
+        # type: (*PyObject, **Union[str, unicode]) -> Response
         pass
 
     def getAsync(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Promise
+        # type: (*PyObject, **Union[str, unicode]) -> Promise
         pass
 
     def getConnectTimeout(self):
@@ -58,22 +57,22 @@ class JythonHttpClient(Object):
         pass
 
     def getRedirectPolicy(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getVersion(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def head(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -81,13 +80,13 @@ class JythonHttpClient(Object):
 
     def headAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -95,13 +94,13 @@ class JythonHttpClient(Object):
 
     def options(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -109,31 +108,31 @@ class JythonHttpClient(Object):
 
     def optionsAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
         pass
 
     def parseChart(self, contentType):
-        # type: (AnyStr) -> Optional[Charset]
+        # type: (Union[str, unicode]) -> Optional[Charset]
         pass
 
     def patch(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -141,13 +140,13 @@ class JythonHttpClient(Object):
 
     def patchAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -155,13 +154,13 @@ class JythonHttpClient(Object):
 
     def post(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -169,13 +168,13 @@ class JythonHttpClient(Object):
 
     def postAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -183,13 +182,13 @@ class JythonHttpClient(Object):
 
     def put(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -197,13 +196,13 @@ class JythonHttpClient(Object):
 
     def putAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -211,13 +210,13 @@ class JythonHttpClient(Object):
 
     def request(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -225,13 +224,13 @@ class JythonHttpClient(Object):
 
     def requestAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -243,13 +242,13 @@ class JythonHttpClient(Object):
 
     def trace(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Response
@@ -257,13 +256,13 @@ class JythonHttpClient(Object):
 
     def traceAsync(
         self,
-        url,  # type: AnyStr
-        params=None,  # type: Optional[Dict[AnyStr, Any]]
+        url,  # type: Union[str, unicode]
+        params=None,  # type: Optional[Dict[Union[str, unicode], Any]]
         data=None,  # type: Optional[Any]
-        file=None,  # type: Optional[AnyStr]
-        headers=None,  # type: Optional[Dict[AnyStr, Any]]
-        username=None,  # type: Optional[AnyStr]
-        password=None,  # type: Optional[AnyStr]
+        file=None,  # type: Union[str, unicode, None]
+        headers=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+        username=None,  # type: Union[str, unicode, None]
+        password=None,  # type: Union[str, unicode, None]
         timeout=None,  # type: Optional[long]
     ):
         # type: (...) -> Promise
@@ -276,7 +275,7 @@ class Promise(Object):
         return True
 
     def get(self, *args, **kwargs):
-        # type: (*PyObject, **AnyStr) -> Any
+        # type: (*PyObject, **Union[str, unicode]) -> Any
         pass
 
     def getFuture(self):
@@ -316,7 +315,7 @@ class Response(Object):
             pass
 
         def getMethod(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getTimeout(self):
@@ -324,11 +323,11 @@ class Response(Object):
             pass
 
         def getUrl(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
         def getVersion(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             pass
 
     def __init__(self, httpResponse, client):
@@ -358,7 +357,7 @@ class Response(Object):
 
     @property
     def headers(self):
-        # type: () -> Dict[AnyStr, Any]
+        # type: () -> Dict[Union[str, unicode], Any]
         return self.getHeaders()
 
     @property
@@ -368,7 +367,7 @@ class Response(Object):
 
     @property
     def json(self):
-        # type: () -> Dict[AnyStr, Any]
+        # type: () -> Dict[Union[str, unicode], Any]
         return self.getJson()
 
     @property
@@ -388,12 +387,12 @@ class Response(Object):
 
     @property
     def text(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.getText()
 
     @property
     def url(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.getUrl()
 
     def getBody(self):
@@ -405,7 +404,7 @@ class Response(Object):
         pass
 
     def getHeaders(self):
-        # type: () -> Dict[AnyStr, Any]
+        # type: () -> Dict[Union[str, unicode], Any]
         pass
 
     def getJavaResponse(self):
@@ -413,7 +412,7 @@ class Response(Object):
         pass
 
     def getJson(self, *args, **kwargs):
-        # type: (*Any, **Any) -> Dict[AnyStr, Any]
+        # type: (*Any, **Any) -> Dict[Union[str, unicode], Any]
         pass
 
     def getRequest(self):
@@ -425,11 +424,11 @@ class Response(Object):
         pass
 
     def getText(self, *args, **kwargs):
-        # type: (*Any, **Any) -> AnyStr
+        # type: (*Any, **Any) -> Union[str, unicode]
         pass
 
     def getUrl(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isClientError(self):

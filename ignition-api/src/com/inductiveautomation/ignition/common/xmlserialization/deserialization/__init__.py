@@ -7,7 +7,7 @@ __all__ = [
     "XMLDeserializer",
 ]
 
-from typing import Any, Iterable, List, Mapping, Optional
+from typing import Any, Iterable, List, Mapping, Optional, Union
 
 from com.inductiveautomation.ignition.common.xmlserialization import (
     ClassNameResolver,
@@ -16,22 +16,21 @@ from com.inductiveautomation.ignition.common.xmlserialization import (
 from com.inductiveautomation.ignition.common.xmlserialization.serialization import (
     XMLSerializer,
 )
-from dev.coatl.helper.types import AnyStr
 from java.io import InputStream, Reader
 from java.lang import Class, Object
 
 
 class AttributesMap(object):
     def getClass(self, name):
-        # type: (AnyStr) -> Class
+        # type: (Union[str, unicode]) -> Class
         raise NotImplementedError
 
     def getDecoder(self, name):
-        # type: (AnyStr) -> Any
+        # type: (Union[str, unicode]) -> Any
         raise NotImplementedError
 
     def getInt(self, name):
-        # type: (AnyStr) -> int
+        # type: (Union[str, unicode]) -> int
         raise NotImplementedError
 
     def getLength(self):
@@ -39,19 +38,19 @@ class AttributesMap(object):
         raise NotImplementedError
 
     def getName(self, index):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         raise NotImplementedError
 
     def getSignature(self, name):
-        # type: (AnyStr) -> Iterable[Class]
+        # type: (Union[str, unicode]) -> Iterable[Class]
         raise NotImplementedError
 
     def getAnyStr(self, name):
-        # type: (AnyStr) -> AnyStr
+        # type: (Union[str, unicode]) -> Union[str, unicode]
         raise NotImplementedError
 
     def getValue(self, name, decoder):
-        # type: (AnyStr, Any) -> Any
+        # type: (Union[str, unicode], Any) -> Any
         raise NotImplementedError
 
 
@@ -61,7 +60,7 @@ class DeserializationContext(object):
         raise NotImplementedError
 
     def getRootAttributes(self):
-        # type: () -> Mapping[AnyStr, AnyStr]
+        # type: () -> Mapping[Union[str, unicode], Union[str, unicode]]
         raise NotImplementedError
 
     def getRootObjects(self):
@@ -87,7 +86,7 @@ class DeserializationHandler(object):
         raise NotImplementedError
 
     def endSubElement(self, name, context):
-        # type: (AnyStr, DeserializationContext) -> None
+        # type: (Union[str, unicode], DeserializationContext) -> None
         raise NotImplementedError
 
     def getBodyDecoder(self):
@@ -95,7 +94,7 @@ class DeserializationHandler(object):
         raise NotImplementedError
 
     def getElementName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getObject(self):
@@ -114,12 +113,22 @@ class DeserializationHandler(object):
         # type: (int) -> None
         raise NotImplementedError
 
-    def startElement(self, name, attributes, context):
-        # type: (AnyStr, AttributesMap, DeserializationContext) -> None
+    def startElement(
+        self,
+        name,  # type: Union[str, unicode]
+        attributes,  # type: AttributesMap
+        context,  # type: DeserializationContext
+    ):
+        # type: (...) -> None
         raise NotImplementedError
 
-    def startSubElement(self, name, attributes, context):
-        # type: (AnyStr, AttributesMap, DeserializationContext) -> None
+    def startSubElement(
+        self,
+        name,  # type: Union[str, unicode]
+        attributes,  # type: AttributesMap
+        context,  # type: DeserializationContext
+    ):
+        # type: (...) -> None
         raise NotImplementedError
 
     def supportsNestedElements(self):
@@ -162,9 +171,9 @@ class XMLDeserializer(Object):
         pass
 
     def readRootAttributes(self, arg):
-        # type: (Any) -> Mapping[AnyStr, AnyStr]
+        # type: (Any) -> Mapping[Union[str, unicode], Union[str, unicode]]  # noqa: W505
         pass
 
     def transcodeToXML(self, binary, serializer):
-        # type: (InputStream, XMLSerializer) -> AnyStr
+        # type: (InputStream, XMLSerializer) -> Union[str, unicode]
         pass

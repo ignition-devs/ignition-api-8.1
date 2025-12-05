@@ -7,11 +7,10 @@ __all__ = [
     "ScheduleRepeatStyle",
 ]
 
-from typing import Iterable, List
+from typing import Iterable, List, Union
 
 from com.inductiveautomation.ignition.common.util import Timeline
 from com.palantir.ptoss.cinch.core import DefaultBindableModel
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
 from java.util import Calendar, Date
 
@@ -22,11 +21,11 @@ class AbstractScheduleModel(DefaultBindableModel):
         super(AbstractScheduleModel, self).__init__()
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getScheduleForDay(self, cal):
@@ -34,7 +33,7 @@ class AbstractScheduleModel(DefaultBindableModel):
         raise NotImplementedError
 
     def getType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isObserveHolidays(self):
@@ -42,11 +41,11 @@ class AbstractScheduleModel(DefaultBindableModel):
         raise NotImplementedError
 
     def setDescription(self, description):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setObserveHolidays(self, observeHolidays):
@@ -60,15 +59,15 @@ class BasicScheduleModel(AbstractScheduleModel):
         super(BasicScheduleModel, self).__init__()
 
     def getAllDayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getFridayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getMondayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getRepeat(self):
@@ -84,7 +83,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def getSaturdayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getScheduleForDay(self, cal):
@@ -96,23 +95,23 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def getSundayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getThursdayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getTuesdayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getWednesdayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getWeekDayTime(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def isAllDays(self):
@@ -172,7 +171,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setAllDayTime(self, allDayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setFriday(self, friday):
@@ -180,7 +179,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setFridayTime(self, fridayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setMonday(self, monday):
@@ -188,7 +187,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setMondayTime(self, mondayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setObserveHolidays(self, observeHolidays):
@@ -212,7 +211,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setSaturdayTime(self, saturdayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setStartingAt(self, startingAt):
@@ -224,7 +223,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setSundayTime(self, sundayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setThursday(self, thursday):
@@ -232,7 +231,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setThursdayTime(self, thursdayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setTuesday(self, tuesday):
@@ -240,7 +239,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setTuesdayTime(self, tuesdayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setWednesday(self, wednesday):
@@ -248,7 +247,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setWednesdayTime(self, wednesdayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setWeekDays(self, weekDays):
@@ -256,7 +255,7 @@ class BasicScheduleModel(AbstractScheduleModel):
         pass
 
     def setWeekDayTime(self, weekDayTime):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
 
@@ -285,11 +284,11 @@ class CompositeScheduleModel(AbstractScheduleModel):
 
 class HolidayModel(DefaultBindableModel):
     date = None  # type: Date
-    name = None  # type: AnyStr
+    name = None  # type: Union[str, unicode]
     repeatAnnually = None  # type: bool
 
     def __init__(self, name, date, repeatAnnually):
-        # type: (AnyStr, Date, bool) -> None
+        # type: (Union[str, unicode], Date, bool) -> None
         super(HolidayModel, self).__init__()
         self.name = name
         self.date = date
@@ -300,7 +299,7 @@ class HolidayModel(DefaultBindableModel):
         return self.date
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.name
 
     def isRepeatAnnually(self):
@@ -316,7 +315,7 @@ class HolidayModel(DefaultBindableModel):
         self.date = date
 
     def setName(self, name):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self.name = name
 
     def setRepeatAnnually(self, repeatAnnually):
@@ -328,10 +327,10 @@ class ScheduleAdjustment(DefaultBindableModel):
     start = None  # type: Date
     end = None  # type: Date
     available = None  # type: bool
-    note = None  # type: AnyStr
+    note = None  # type: Union[str, unicode]
 
     def __init__(self, start, end, available, note):
-        # type: (Date, Date, bool, AnyStr) -> None
+        # type: (Date, Date, bool, Union[str, unicode]) -> None
         super(ScheduleAdjustment, self).__init__()
         self.start = start
         self.end = end
@@ -347,7 +346,7 @@ class ScheduleAdjustment(DefaultBindableModel):
         return self.end
 
     def getNote(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.note
 
     def getStart(self):
@@ -367,7 +366,7 @@ class ScheduleAdjustment(DefaultBindableModel):
         self.end = end
 
     def setNote(self, note):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self.note = note
 
     def setStart(self, start):

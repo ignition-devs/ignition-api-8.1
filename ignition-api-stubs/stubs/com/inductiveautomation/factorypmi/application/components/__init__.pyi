@@ -1,9 +1,8 @@
-from typing import Optional
+from typing import Union
 
 from com.inductiveautomation.vision.api.client.components.model import (
     AbstractVisionPanel,
 )
-from dev.coatl.helper.types import AnyStr
 
 class BasicContainer(AbstractVisionPanel):
-    def __init__(self, name: Optional[AnyStr] = ...) -> None: ...
+    def __init__(self, name: Union[str, unicode, None] = ...) -> None: ...

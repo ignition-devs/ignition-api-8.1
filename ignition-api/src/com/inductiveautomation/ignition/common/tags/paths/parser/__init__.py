@@ -1,22 +1,21 @@
 __all__ = ["TagPathParser"]
 
-from typing import Any, List
+from typing import Any, List, Union
 
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
 class TagPathParser(Object):
-    PARENT_RELATIVE = None  # type: AnyStr
-    PATH_SEPARATOR = None  # type: AnyStr
-    PROPERTY_SEPARATOR = None  # type: AnyStr
-    RELATIVE_DIR_UP = None  # type: AnyStr
-    ROOT_RELATIVE = None  # type: AnyStr
+    PARENT_RELATIVE = None  # type: Union[str, unicode]
+    PATH_SEPARATOR = None  # type: Union[str, unicode]
+    PROPERTY_SEPARATOR = None  # type: Union[str, unicode]
+    RELATIVE_DIR_UP = None  # type: Union[str, unicode]
+    ROOT_RELATIVE = None  # type: Union[str, unicode]
 
     @staticmethod
     def chopPath(string):
-        # type: (AnyStr) -> List[AnyStr]
+        # type: (Union[str, unicode]) -> List[Union[str, unicode]]
         pass
 
     @staticmethod

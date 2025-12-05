@@ -2,22 +2,21 @@ from __future__ import print_function
 
 __all__ = ["BrowseTag", "OPCBrowseTag"]
 
-from typing import Optional
+from typing import Optional, Union
 
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.sqltags.model.types import DataType
 from com.inductiveautomation.ignition.common.tags.config.types import TagObjectType
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Object
 
 
 class BrowseTag(Object):
     dataType = None  # type: DataType
-    name = None  # type: AnyStr
-    fullPath = None  # type: AnyStr
-    path = None  # type: AnyStr
+    name = None  # type: Union[str, unicode]
+    fullPath = None  # type: Union[str, unicode]
+    path = None  # type: Union[str, unicode]
     type = None  # type: TagObjectType
-    valueSource = None  # type: AnyStr
+    valueSource = None  # type: Union[str, unicode]
 
     def __init__(
         self,
@@ -41,11 +40,11 @@ class BrowseTag(Object):
         return self.dataType
 
     def getFullPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.fullPath
 
     def getPath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.path
 
     def getTagType(self):
@@ -53,7 +52,7 @@ class BrowseTag(Object):
         return self.type
 
     def getValueSource(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.valueSource
 
     def isDB(self):

@@ -10,9 +10,8 @@ __all__ = [
     "ServerNodeId",
 ]
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Class, Enum, Object, StringBuilder
 
 
@@ -22,11 +21,11 @@ class OPCBrowseElement(object):
         raise NotImplementedError
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getDisplayName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getElementType(self):
@@ -34,7 +33,7 @@ class OPCBrowseElement(object):
         raise NotImplementedError
 
     def getNodeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getServerNodeId(self):
@@ -44,11 +43,11 @@ class OPCBrowseElement(object):
 
 class ServerNodeId(object):
     def getNodeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getServerName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -63,11 +62,11 @@ class BasicOPCBrowseElement(Object, OPCBrowseElement):
         pass
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getDisplayName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getElementType(self):
@@ -75,7 +74,7 @@ class BasicOPCBrowseElement(Object, OPCBrowseElement):
         pass
 
     def getNodeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getServerNodeId(self):
@@ -84,21 +83,21 @@ class BasicOPCBrowseElement(Object, OPCBrowseElement):
 
 
 class BasicServerNodeId(Object, ServerNodeId):
-    nodeId = None  # type: AnyStr
-    serverName = None  # type: AnyStr
+    nodeId = None  # type: Union[str, unicode]
+    serverName = None  # type: Union[str, unicode]
 
     def __init__(self, serverName, nodeId):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         super(BasicServerNodeId, self).__init__()
         self.serverName = serverName
         self.nodeId = nodeId
 
     def getNodeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.nodeId
 
     def getServerName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.serverName
 
 
@@ -106,11 +105,16 @@ class BrowseElement(Object):
 
     class PropertyElement(Object):
         id = None  # type: int
-        name = None  # type: AnyStr
-        value = None  # type: AnyStr
+        name = None  # type: Union[str, unicode]
+        value = None  # type: Union[str, unicode]
 
-        def __init__(self, id_, name, value):
-            # type: (int, AnyStr, AnyStr) -> None
+        def __init__(
+            self,
+            id_,  # type: int
+            name,  # type: Union[str, unicode]
+            value,  # type: Union[str, unicode]
+        ):
+            # type: (...) -> None
             super(BrowseElement.PropertyElement, self).__init__()
             self.id = id_
             self.name = name
@@ -121,19 +125,19 @@ class BrowseElement(Object):
             return self.id
 
         def getName(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self.name
 
         def getValue(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self.value
 
     PROP_PROVIDER = 500  # type: int
     PROP_DRIVER = 501  # type: int
-    _server = None  # type: AnyStr
-    _browsePath = None  # type: AnyStr
-    _itemName = None  # type: AnyStr
-    _itemId = None  # type: AnyStr
+    _server = None  # type: Union[str, unicode]
+    _browsePath = None  # type: Union[str, unicode]
+    _itemName = None  # type: Union[str, unicode]
+    _itemId = None  # type: Union[str, unicode]
     _itemType = None  # type: Optional[int]
     _properties = None  # type: Dict[int, BrowseElement.PropertyElement]
     _complete = False  # type: bool
@@ -145,7 +149,7 @@ class BrowseElement(Object):
         self._properties = {0: BrowseElement.PropertyElement(0, "", "")}
 
     def addProperty(self, id_, name, value):
-        # type: (int, AnyStr, AnyStr) -> None
+        # type: (int, Union[str, unicode], Union[str, unicode]) -> None
         pass
 
     def asServerNodeId(self):
@@ -161,15 +165,15 @@ class BrowseElement(Object):
         pass
 
     def getBrowsePath(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._browsePath
 
     def getItemId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._itemId
 
     def getItemName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._itemName
 
     def getItemType(self):
@@ -185,7 +189,7 @@ class BrowseElement(Object):
         return self._properties[id_]
 
     def getServer(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._server
 
     def isComplete(self):
@@ -193,7 +197,7 @@ class BrowseElement(Object):
         return self._complete
 
     def setBrowsePath(self, browsePath):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self._browsePath = browsePath
 
     def setComplete(self, value):
@@ -201,11 +205,11 @@ class BrowseElement(Object):
         self._complete = value
 
     def setItemId(self, itemId):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self._itemId = itemId
 
     def setItemName(self, itemName):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self._itemName = itemName
 
     def setItemType(self, itemType):
@@ -213,7 +217,7 @@ class BrowseElement(Object):
         self._itemType = itemType
 
     def setServer(self, server):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self._server = server
 
     @staticmethod
@@ -260,7 +264,7 @@ class ServerBrowseElement(Object, OPCBrowseElement):
     nodeId = None  # type: ServerNodeId
 
     def __init__(self, serverName):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(ServerBrowseElement, self).__init__()
         self.nodeId = BasicServerNodeId(serverName, "")
 
@@ -269,11 +273,11 @@ class ServerBrowseElement(Object, OPCBrowseElement):
         pass
 
     def getDescription(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return ""
 
     def getDisplayName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getElementType(self):
@@ -281,7 +285,7 @@ class ServerBrowseElement(Object, OPCBrowseElement):
         return BrowseElementType.SERVER
 
     def getNodeId(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.getServerNodeId().getNodeId()
 
     def getServerNodeId(self):

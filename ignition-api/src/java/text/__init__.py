@@ -14,7 +14,6 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Number, Object, StringBuffer
 from java.math import RoundingMode
 from java.util import Calendar, Currency, Date, Locale, TimeZone
@@ -169,7 +168,7 @@ class Format(Object):
         pass
 
     def parseObject(self, source, pos=None):
-        # type: (AnyStr, Optional[ParsePosition]) -> Object
+        # type: (Union[str, unicode], Optional[ParsePosition]) -> Object
         pass
 
 
@@ -202,7 +201,7 @@ class DateFormat(Format):
         date,  # type: Union[Date, Object]
         toAppendTo=None,  # type: Optional[StringBuffer]
         pos=None,  # type: Optional[FieldPosition]
-    ):  # type: (...) -> Union[AnyStr, StringBuffer]
+    ):  # type: (...) -> Union[str, unicode, StringBuffer]
         pass
 
     @staticmethod
@@ -247,7 +246,7 @@ class DateFormat(Format):
         return True
 
     def parse(self, source):
-        # type: (AnyStr) -> Date
+        # type: (Union[str, unicode]) -> Date
         pass
 
     def setCalendar(self, newCalendar):
@@ -278,7 +277,7 @@ class DateFormatSymbols(Object):
         pass
 
     def getAmPmStrings(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     @staticmethod
@@ -287,7 +286,7 @@ class DateFormatSymbols(Object):
         pass
 
     def getEras(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     @staticmethod
@@ -296,59 +295,59 @@ class DateFormatSymbols(Object):
         pass
 
     def getLocalPatternChars(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getMonths(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getShortMonths(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getShortWeekdays(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getWeekdays(self):
-        # type: () -> List[AnyStr]
+        # type: () -> List[Union[str, unicode]]
         pass
 
     def getZoneStrings(self):
-        # type: () -> List[List[AnyStr]]
+        # type: () -> List[List[Union[str, unicode]]]
         pass
 
     def setAmPmStrings(self, newAmpms):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setEras(self, newEras):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setLocalPatternChars(self, newLocalPatternChars):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def setMonths(self, newMonths):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setShortMonths(self, newShortMonths):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setShortWeekdays(self, newShortWeekdays):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setWeekdays(self, newWeekdays):
-        # type: (List[AnyStr]) -> None
+        # type: (List[Union[str, unicode]]) -> None
         pass
 
     def setZoneStrings(self, newZoneStrings):
-        # type: (List[List[AnyStr]]) -> None
+        # type: (List[List[Union[str, unicode]]]) -> None
         pass
 
 
@@ -376,7 +375,7 @@ class NumberFormat(Format):
         toAppendTo=None,  # type: Optional[StringBuffer]
         pos=None,  # type: Optional[FieldPosition]
     ):
-        # type: (...) -> Union[AnyStr, StringBuffer]
+        # type: (...) -> Union[str, unicode, StringBuffer]
         raise NotImplementedError
 
     @staticmethod
@@ -442,7 +441,7 @@ class NumberFormat(Format):
         return True
 
     def parse(self, source):
-        # type: (AnyStr) -> Number
+        # type: (Union[str, unicode]) -> Number
         pass
 
     def setCurrency(self, currency):
@@ -504,7 +503,7 @@ class ParsePosition(Object):
 class SimpleDateFormat(DateFormat):
     def __init__(
         self,
-        pattern=None,  # type: Optional[AnyStr]
+        pattern=None,  # type: Union[str, unicode, None]
         arg=None,  # type: Union[DateFormatSymbols, Locale, None]
     ):
         # type: (...) -> None
@@ -512,11 +511,11 @@ class SimpleDateFormat(DateFormat):
         print(pattern, arg)
 
     def applyLocalizedPattern(self, pattern):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def applyPattern(self, pattern):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def get2DigitYearStart(self):
@@ -536,9 +535,9 @@ class SimpleDateFormat(DateFormat):
         pass
 
     def toLocalizedPattern(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def toPattern(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass

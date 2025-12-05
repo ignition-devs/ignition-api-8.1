@@ -1,6 +1,8 @@
-from typing import List
+from typing import List, Union
 
-from dev.coatl.helper.types import AnyStr
-
-def loadFromFile(filePath: AnyStr, projectName: AnyStr, mode: int) -> None: ...
-def removeGroups(projectName: AnyStr, paths: List[AnyStr]) -> None: ...
+def loadFromFile(
+    filePath: Union[str, unicode], projectName: Union[str, unicode], mode: int
+) -> None: ...
+def removeGroups(
+    projectName: Union[str, unicode], paths: List[Union[str, unicode]]
+) -> None: ...

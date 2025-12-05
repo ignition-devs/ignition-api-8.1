@@ -56,10 +56,9 @@ __all__ = [
     "writeBytes",
 ]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
 from com.inductiveautomation.ignition.modules.serial.scripting import SerialScriptModule
-from dev.coatl.helper.types import AnyStr
 
 # Bit rate constants.
 BIT_RATE_110 = 110
@@ -109,7 +108,7 @@ STOP_BITS_2 = 3
 
 
 def closeSerialPort(port):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Closes a previously opened serial port.
 
     Returns without doing anything if the named serial port is not
@@ -123,7 +122,7 @@ def closeSerialPort(port):
 
 
 def configureSerialPort(
-    port,  # type: AnyStr
+    port,  # type: Union[str, unicode]
     bitRate=None,  # type: Optional[int]
     dataBits=None,  # type: Optional[int]
     handshake=None,  # type: Optional[int]
@@ -181,7 +180,7 @@ def configureSerialPort(
 
 
 def openSerialPort(port):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Opens a previously configured serial port for use.
 
     Will throw an exception if the serial port cannot be opened.
@@ -193,7 +192,7 @@ def openSerialPort(port):
 
 
 def port(
-    port,  # type: AnyStr
+    port,  # type: Union[str, unicode]
     bitRate=None,  # type: Optional[int]
     dataBits=None,  # type: Optional[int]
     handshake=None,  # type: Optional[int]
@@ -263,7 +262,7 @@ def port(
 
 
 def readBytes(port, numberOfBytes, timeout=5000):
-    # type: (AnyStr, int, Optional[int]) -> List[Any]
+    # type: (Union[str, unicode], int, Optional[int]) -> List[Any]
     """Read numberOfBytes bytes from a serial port.
 
     Args:
@@ -280,12 +279,12 @@ def readBytes(port, numberOfBytes, timeout=5000):
 
 
 def readBytesAsString(
-    port,  # type: AnyStr
+    port,  # type: Union[str, unicode]
     numberOfBytes,  # type: int
     timeout=5000,  # type: int
-    encoding="utf-8",  # type: AnyStr
+    encoding="utf-8",  # type: Union[str, unicode]
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> Union[str, unicode]
     """Read numberOfBytes bytes from a serial port and convert them to a
     String.
 
@@ -309,12 +308,12 @@ def readBytesAsString(
 
 
 def readLine(
-    port,  # type: AnyStr
+    port,  # type: Union[str, unicode]
     timeout=5000,  # type: int
-    encoding="utf-8",  # type: AnyStr
+    encoding="utf-8",  # type: Union[str, unicode]
     crlfRequired=False,  # type: bool
 ):
-    # type: (...) -> AnyStr
+    # type: (...) -> Union[str, unicode]
     r"""Attempts to read a line from a serial port.
 
     A "line" is considered to be terminated by either a line feed
@@ -340,8 +339,13 @@ def readLine(
     return ""
 
 
-def readUntil(port, delimiter, includeDelimiter, timeout=5000):
-    # type: (AnyStr, AnyStr, bool, Optional[int]) -> AnyStr
+def readUntil(
+    port,  # type: Union[str, unicode]
+    delimiter,  # type: Union[str, unicode]
+    includeDelimiter,  # type: bool
+    timeout=5000,  # type: int
+):
+    # type: (...) -> Union[str, unicode]
     """Reads a byte at a time from a serial port until a delimiter
     character is encountered.
 
@@ -367,7 +371,7 @@ def readUntil(port, delimiter, includeDelimiter, timeout=5000):
 
 
 def sendBreak(port, millis):
-    # type: (AnyStr, int) -> None
+    # type: (Union[str, unicode], int) -> None
     """Sends a break signal for approximately millis milliseconds.
 
     Args:
@@ -377,8 +381,13 @@ def sendBreak(port, millis):
     print(port, millis)
 
 
-def write(port, toWrite, timeout=5000, encoding="utf-8"):
-    # type: (AnyStr, AnyStr, int, Optional[AnyStr]) -> None
+def write(
+    port,  # type: Union[str, unicode]
+    toWrite,  # type: Union[str, unicode]
+    timeout=5000,  # type: int
+    encoding="utf-8",  # type: Union[str, unicode]
+):
+    # type: (...) -> None
     """Write a string to a serial port using the platforms default
     character encoding.
 
@@ -393,7 +402,7 @@ def write(port, toWrite, timeout=5000, encoding="utf-8"):
 
 
 def writeBytes(port, toWrite, timeout=5000):
-    # type: (AnyStr, Any, Optional[int]) -> None
+    # type: (Union[str, unicode], Any, Optional[int]) -> None
     """Write a byte array to a serial port.
 
     Args:

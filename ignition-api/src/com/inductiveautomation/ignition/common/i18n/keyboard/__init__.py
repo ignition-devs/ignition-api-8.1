@@ -1,28 +1,27 @@
 from __future__ import print_function
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
 class KeyboardLayout(Object):
-    alias = None  # type: AnyStr
+    alias = None  # type: Union[str, unicode]
     id = None  # type: Any
     labels = None  # type: Optional[Any]
-    name = None  # type: AnyStr
+    name = None  # type: Union[str, unicode]
     rows = None  # type: Optional[List[Any]]
-    title = None  # type: AnyStr
-    supportedLanguages = None  # type: Optional[List[AnyStr]]
+    title = None  # type: Union[str, unicode]
+    supportedLanguages = None  # type: Optional[List[Union[str, unicode]]]
 
     def __init__(
         self,
         id,  # type: Any
-        name,  # type: AnyStr
-        title,  # type: AnyStr
-        alias,  # type: AnyStr
+        name,  # type: Union[str, unicode]
+        title,  # type: Union[str, unicode]
+        alias,  # type: Union[str, unicode]
         rows=None,  # type: Optional[List[Any]]
-        supportedLanguages=None,  # type: Optional[List[AnyStr]]
+        supportedLanguages=None,  # type: Optional[List[Union[str, unicode]]]
         labels=None,  # type: Optional[Any]
     ):
         super(KeyboardLayout, self).__init__()
@@ -35,7 +34,7 @@ class KeyboardLayout(Object):
         self.labels = labels
 
     def getAlias(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.alias
 
     def getId(self):
@@ -47,7 +46,7 @@ class KeyboardLayout(Object):
         return self.labels
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self.name
 
     def getRows(self):
@@ -55,5 +54,5 @@ class KeyboardLayout(Object):
         return self.rows
 
     def getSupportedLanguages(self):
-        # type: () -> Optional[List[AnyStr]]
+        # type: () -> Optional[List[Union[str, unicode]]]
         return self.supportedLanguages

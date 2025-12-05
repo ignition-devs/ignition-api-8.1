@@ -1,34 +1,44 @@
 __all__ = ["NamedQuery", "NamedQueryManager"]
 
-from typing import Any, Mapping, Optional, Set
+from typing import Any, Mapping, Optional, Set, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
 class NamedQueryManager(object):
-    def beginTransaction(self, project, datasource, isolationLevel, timeout):
-        # type: (AnyStr, AnyStr, int, long) -> AnyStr
+    def beginTransaction(
+        self,
+        project,  # type: Union[str, unicode]
+        datasource,  # type: Union[str, unicode]
+        isolationLevel,  # type: int
+        timeout,  # type: long
+    ):
+        # type: (...) -> Union[str, unicode]
         raise NotImplementedError
 
     def clearAllCaches(self, project):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         raise NotImplementedError
 
     def clearCache(self, project, queryPaths):
-        # type: (AnyStr, Set[AnyStr]) -> None
+        # type: (Union[str, unicode], Set[Union[str, unicode]]) -> None
         raise NotImplementedError
 
     def execute(self, *args):
         # type: (*Any) -> Object
         raise NotImplementedError
 
-    def executeSFquery(self, project, path, parameters):
-        # type: (AnyStr, AnyStr, Mapping[AnyStr, Object]) -> Object
+    def executeSFquery(
+        self,
+        project,  # type: Union[str, unicode]
+        path,  # type: Union[str, unicode]
+        parameters,  # type: Mapping[Union[str, unicode], Object]
+    ):
+        # type: (...) -> Object
         raise NotImplementedError
 
     def getQueryFromPath(self, project, queryPath):
-        # type: (AnyStr, AnyStr) -> NamedQuery
+        # type: (Union[str, unicode], Union[str, unicode]) -> NamedQuery
         raise NotImplementedError
 
 

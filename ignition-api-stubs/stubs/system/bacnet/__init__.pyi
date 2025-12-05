@@ -1,26 +1,25 @@
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from system.bacnet.enumerated import ObjectType, PropertyIdentifier
 
 def readRaw(
-    deviceName: AnyStr,
+    deviceName: Union[str, unicode],
     objectType: ObjectType,
     objectId: int,
     propertyId: PropertyIdentifier,
     propertyArrayIndex: Optional[int] = ...,
 ) -> Any: ...
 def readRawMultiple(
-    deviceName: AnyStr,
+    deviceName: Union[str, unicode],
     objectTypes: List[ObjectType],
     objectIds: List[int],
     propertyIds: List[PropertyIdentifier],
     propertyArrayIndices: Optional[List[int]] = ...,
 ) -> List[Any]: ...
-def synchronizeTime(deviceName: AnyStr) -> None: ...
-def synchronizeTimeUtc(deviceName: AnyStr) -> None: ...
+def synchronizeTime(deviceName: Union[str, unicode]) -> None: ...
+def synchronizeTimeUtc(deviceName: Union[str, unicode]) -> None: ...
 def writeRaw(
-    deviceName: AnyStr,
+    deviceName: Union[str, unicode],
     objectType: ObjectType,
     objectId: int,
     propertyId: PropertyIdentifier,
@@ -29,7 +28,7 @@ def writeRaw(
     propertyArrayIndex: Optional[int] = ...,
 ) -> None: ...
 def writeRawMultiple(
-    deviceName: AnyStr,
+    deviceName: Union[str, unicode],
     objectTypes: List[ObjectType],
     objectIds: List[int],
     propertyIds: List[PropertyIdentifier],
@@ -38,7 +37,11 @@ def writeRawMultiple(
     propertyArrayIndices: Optional[List[int]] = ...,
 ) -> None: ...
 def writeWithPriority(
-    deviceName: AnyStr, objectType: int, objectId: int, value: Any, priority: int
+    deviceName: Union[str, unicode],
+    objectType: int,
+    objectId: int,
+    value: Any,
+    priority: int,
 ) -> None: ...
 
 # Names in __all__ with no definition:

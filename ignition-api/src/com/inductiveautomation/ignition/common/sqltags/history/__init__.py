@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["Aggregate", "AggregateInfo"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -27,7 +26,7 @@ class Aggregate(object):
     """
 
     def getDesc(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def getId(self):
@@ -35,7 +34,7 @@ class Aggregate(object):
         raise NotImplementedError
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -46,7 +45,7 @@ class AggregateInfo(Object, Aggregate):
         print(args)
 
     def getDesc(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getId(self):
@@ -54,5 +53,5 @@ class AggregateInfo(Object, Aggregate):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass

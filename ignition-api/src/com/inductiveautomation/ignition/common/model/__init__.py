@@ -11,7 +11,6 @@ from com.inductiveautomation.ignition.common.tags.model import TagManager
 from com.inductiveautomation.ignition.common.xmlserialization.deserialization import (
     XMLDeserializer,
 )
-from dev.coatl.helper.types import AnyStr
 from java.io import InputStream
 from java.lang import Enum, IllegalArgumentException, Object, String
 
@@ -37,7 +36,7 @@ class CommonContext(object):
         raise NotImplementedError
 
     def getLicenseState(self, moduleId):
-        # type: (AnyStr) -> LicenseState
+        # type: (Union[str, unicode]) -> LicenseState
         raise NotImplementedError
 
     def getLoggingManager(self):
@@ -45,7 +44,7 @@ class CommonContext(object):
         raise NotImplementedError
 
     def getModule(self, id_):
-        # type: (AnyStr) -> Object
+        # type: (Union[str, unicode]) -> Object
         raise NotImplementedError
 
     def getScriptManager(self):
@@ -76,7 +75,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def getScopePrefix():
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         """Returns the current jvm's scope prefix, for use in thread
         names.
 
@@ -107,7 +106,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def parseScope(s):
-        # type: (AnyStr) -> int
+        # type: (Union[str, unicode]) -> int
         """Returns a bitmask representing application scope for strings
         like:
 
@@ -127,7 +126,7 @@ class ApplicationScope(Object):
 
     @staticmethod
     def toCode(scope):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         """Turns a scope int into the various scope codes:
 
             "C"= client
@@ -242,14 +241,16 @@ class Version(Object):
         return self.dev
 
     def isFutureVersion(self, arg):
-        # type: (Union[Version, AnyStr]) -> bool
+        # type: (Union[Version, str, unicode]) -> bool
         cls = type(self)
         if isinstance(arg, basestring):
             that = self.parse(arg)
         elif isinstance(arg, cls):
             that = arg
         else:
-            raise TypeError("isFutureVersion(): 1st arg can't be coerced to AnyStr.")
+            raise TypeError(
+                "isFutureVersion(): 1st arg can't be coerced to Union[str, unicode]."
+            )
 
         return self._compare(that) == -1
 
@@ -259,7 +260,7 @@ class Version(Object):
 
     @staticmethod
     def parse(s):
-        # type: (AnyStr) -> Version
+        # type: (Union[str, unicode]) -> Version
         sem_ver = [int(i) for i in re.findall(r"-?\d+", s)]
         if len(sem_ver) < 3:
             raise IllegalArgumentException('Invalid version: "{}"'.format(s))

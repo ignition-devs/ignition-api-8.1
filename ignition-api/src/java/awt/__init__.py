@@ -16,9 +16,8 @@ __all__ = [
     "Window",
 ]
 
-from typing import Any, Optional
+from typing import Any, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.awt.geom import Dimension2D, Point2D
 from java.lang import Object
 from java.util import EventObject
@@ -26,7 +25,7 @@ from java.util import EventObject
 
 class LayoutManager(object):
     def addLayoutComponent(self, name, comp):
-        # type: (AnyStr, Component) -> None
+        # type: (Union[str, unicode], Component) -> None
         raise NotImplementedError
 
     def layoutContainer(self, parent):
@@ -59,7 +58,7 @@ class AWTEvent(EventObject):
         return self._id
 
     def paramString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setSource(self, newSource):
@@ -214,7 +213,7 @@ class GridLayout(Object, LayoutManager):
         print(rows, cols, hgap, vgap)
 
     def addLayoutComponent(self, name, comp):
-        # type: (AnyStr, Component) -> None
+        # type: (Union[str, unicode], Component) -> None
         pass
 
     def getColumns(self):

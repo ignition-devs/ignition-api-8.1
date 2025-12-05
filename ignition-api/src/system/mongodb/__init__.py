@@ -23,17 +23,16 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from org.python.core import PyObject
 
 
 def aggregate(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    aggregate,  # type: List[Dict[AnyStr, Any]]
-    collation=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    aggregate,  # type: List[Dict[Union[str, unicode], Any]]
+    collation=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> List[Dict[AnyStr, Any]]
+    # type: (...) -> List[Dict[Union[str, unicode], Any]]
     """Returns a list of aggregate results.
 
     Args:
@@ -52,12 +51,12 @@ def aggregate(
 
 
 def deleteMany(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Removes documents from the collection that match the filter.
 
     Args:
@@ -77,12 +76,12 @@ def deleteMany(
 
 
 def deleteOne(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Removes a document from the collection that matches the filter.
 
     Args:
@@ -102,16 +101,16 @@ def deleteOne(
 
 
 def find(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    project=None,  # type: Optional[Dict[AnyStr, Any]]
-    sort=None,  # type: Optional[Dict[AnyStr, Any]]
-    collation=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    project=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    sort=None,  # type: Optional[Dict[Union[str, unicode], Any]]
+    collation=None,  # type: Optional[Dict[Union[str, unicode], Any]]
     limit=None,  # type: Optional[int]
     skip=None,  # type: Optional[int]
 ):
-    # type: (...) -> List[Dict[AnyStr, Any]]
+    # type: (...) -> List[Dict[Union[str, unicode], Any]]
     """Returns a list of PyDictionaries that matches the criteria
     specified on the filter parameter.
 
@@ -139,12 +138,12 @@ def find(
 
 
 def findOne(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    project=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    project=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Returns a single PyDictionary that matches the criteria specified
     on the filter parameter.
 
@@ -164,10 +163,10 @@ def findOne(
 
 
 def insertMany(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    document,  # type: List[Dict[AnyStr, Any]]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    document,  # type: List[Dict[Union[str, unicode], Any]]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
     # type: (...) -> List[PyObject]
     """Inserts a list of PyDictionaries into a specified collection.
@@ -190,10 +189,10 @@ def insertMany(
 
 
 def insertOne(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    document,  # type: Dict[AnyStr, Any]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    document,  # type: Dict[Union[str, unicode], Any]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
     # type: (...) -> PyObject
     """Inserts a single PyDictionary into a specified collection.
@@ -215,7 +214,7 @@ def insertOne(
 
 
 def listCollectionNames(connector):
-    # type: (AnyStr) -> List[AnyStr]
+    # type: (Union[str, unicode]) -> List[Union[str, unicode]]
     """Returns a list of all collection names.
 
     Args:
@@ -229,7 +228,7 @@ def listCollectionNames(connector):
 
 
 def listConnectorInfo():
-    # type: () -> List[Dict[AnyStr, Any]]
+    # type: () -> List[Dict[Union[str, unicode], Any]]
     """Returns a list of PyDictionary descriptors of all MongoDB
     Connectors.
 
@@ -249,12 +248,12 @@ def listConnectorInfo():
 
 
 def replaceOne(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    replacement,  # type: Dict[AnyStr, Any]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    replacement,  # type: Dict[Union[str, unicode], Any]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Replaces a document in the collection that matches the filter.
 
     Args:
@@ -280,13 +279,13 @@ def replaceOne(
 
 
 def updateMany(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    updates,  # type: Union[Dict[AnyStr, Any], List[Dict[AnyStr, Any]]]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    updates,  # type: Union[Dict[Union[str, unicode], Any], List[Dict[Union[str, unicode], Any]]]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Updates all documents in the collection that match the filter.
 
     Args:
@@ -313,13 +312,13 @@ def updateMany(
 
 
 def updateOne(
-    connector,  # type: AnyStr
-    collection,  # type: AnyStr
-    filter,  # type: Dict[AnyStr, Any]
-    updates,  # type: Union[Dict[AnyStr, Any], List[Dict[AnyStr, Any]]]
-    options=None,  # type: Optional[Dict[AnyStr, Any]]
+    connector,  # type: Union[str, unicode]
+    collection,  # type: Union[str, unicode]
+    filter,  # type: Dict[Union[str, unicode], Any]
+    updates,  # type: Union[Dict[Union[str, unicode], Any], List[Dict[Union[str, unicode], Any]]]
+    options=None,  # type: Optional[Dict[Union[str, unicode], Any]]
 ):
-    # type: (...) -> Dict[AnyStr, Any]
+    # type: (...) -> Dict[Union[str, unicode], Any]
     """Updates a document in the collection that matches the filter.
 
     Args:

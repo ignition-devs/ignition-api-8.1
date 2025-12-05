@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["EventBus"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -15,7 +14,7 @@ class EventBus(Object):
         print(args)
 
     def identifier(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def post(self, event):

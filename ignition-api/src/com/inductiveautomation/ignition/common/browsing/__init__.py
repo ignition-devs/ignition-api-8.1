@@ -2,12 +2,11 @@ from __future__ import print_function
 
 __all__ = ["BrowseFilter", "Result", "Results"]
 
-from typing import Any, Iterable, List, Mapping, Optional, Sequence
+from typing import Any, Iterable, List, Mapping, Sequence, Union
 
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property, PropertyValueSource
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 
 
@@ -21,7 +20,7 @@ class Result(object):
         raise NotImplementedError
 
     def getType(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
     def hasChildren(self):
@@ -51,21 +50,21 @@ class BrowseFilter(Object):
 
     class NameFilter(Object):
         def __init__(self, typeId, *filters):
-            # type: (AnyStr, *AnyStr) -> None
+            # type: (Union[str, unicode], *Union[str, unicode]) -> None
             super(BrowseFilter.NameFilter, self).__init__()
             self._typeId = typeId
             self._filters = filters
 
         def getFilters(self):
-            # type: () -> Iterable[AnyStr]
+            # type: () -> Iterable[Union[str, unicode]]
             return self._filters
 
         def getTypeId(self):
-            # type: () -> AnyStr
+            # type: () -> Union[str, unicode]
             return self._typeId
 
         def passes(self, value):
-            # type: (AnyStr) -> bool
+            # type: (Union[str, unicode]) -> bool
             return True
 
     def addExcludeProperty(self, property, value):
@@ -73,7 +72,7 @@ class BrowseFilter(Object):
         pass
 
     def addNameFilter(self, typeId, *filters):
-        # type: (AnyStr, *AnyStr) -> BrowseFilter
+        # type: (Union[str, unicode], *Union[str, unicode]) -> BrowseFilter  # noqa: W505
         pass
 
     def addProperty(self, property, value):
@@ -89,11 +88,11 @@ class BrowseFilter(Object):
         return True
 
     def getAllowedTypes(self):
-        # type: () -> Iterable[AnyStr]
+        # type: () -> Iterable[Union[str, unicode]]
         pass
 
     def getContinuationPoint(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getFilterExcludeProperty(self, property):
@@ -117,7 +116,7 @@ class BrowseFilter(Object):
         pass
 
     def getNameFiltersAsMap(self):
-        # type: () -> Mapping[AnyStr, BrowseFilter.NameFilter]
+        # type: () -> Mapping[Union[str, unicode], BrowseFilter.NameFilter]  # noqa: W505
         pass
 
     def getOffset(self):
@@ -133,11 +132,11 @@ class BrowseFilter(Object):
         return True
 
     def setAllowedTypes(self, allowedTypes):
-        # type: (Iterable[AnyStr]) -> BrowseFilter
+        # type: (Iterable[Union[str, unicode]]) -> BrowseFilter
         pass
 
     def setContinuationPoint(self, continuationPoint):
-        # type: (AnyStr) -> BrowseFilter
+        # type: (Union[str, unicode]) -> BrowseFilter
         pass
 
     def setMaxResults(self, maxResults):
@@ -171,7 +170,7 @@ class Results(Object):
     browse.
     """
 
-    continuationPoint = None  # type: Optional[AnyStr]
+    continuationPoint = None  # type: Union[str, unicode, None]
     resultQuality = None  # type: QualityCode
     results = None  # type: Sequence[Any]
     totalAvailableResults = None  # type: int
@@ -191,7 +190,7 @@ class Results(Object):
         return Results(result)
 
     def getContinuationPoint(self):
-        # type: () -> Optional[AnyStr]
+        # type: () -> Union[str, unicode, None]
         return self.continuationPoint
 
     def getResultQuality(self):
@@ -216,7 +215,7 @@ class Results(Object):
         return Results(results)
 
     def setContinuationPoint(self, continuationPoint=None):
-        # type: (Optional[AnyStr]) -> None
+        # type: (Union[str, unicode, None]) -> None
         self.continuationPoint = continuationPoint
 
     def setResultQuality(self, value):

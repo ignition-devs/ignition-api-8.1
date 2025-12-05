@@ -38,7 +38,6 @@ import array
 import time
 from typing import TYPE_CHECKING, Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang.reflect import Type
 
 if TYPE_CHECKING:
@@ -83,7 +82,7 @@ class Object(object):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return repr(self)
 
     def wait(self, timeoutMillis=0, nanos=0):
@@ -140,7 +139,7 @@ class CharSequence(object):
         raise NotImplementedError
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         raise NotImplementedError
 
 
@@ -186,7 +185,7 @@ class Class(Object, Type):
         pass
 
     def getTypeName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
@@ -200,7 +199,7 @@ class Enum(Object):
         pass
 
     def name(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def ordinal(self):
@@ -209,7 +208,7 @@ class Enum(Object):
 
     @staticmethod
     def valueOf(enumType, name):
-        # type: (Class, AnyStr) -> Enum
+        # type: (Class, Union[str, unicode]) -> Enum
         pass
 
 
@@ -629,7 +628,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def indexOf(self, str_, fromIndex=0):
-        # type: (AnyStr, int) -> int
+        # type: (Union[str, unicode], int) -> int
         pass
 
     def insert(self, *args):
@@ -637,7 +636,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def lastIndexOf(self, str_, fromIndex=0):
-        # type: (AnyStr, int) -> int
+        # type: (Union[str, unicode], int) -> int
         pass
 
     def length(self):
@@ -669,7 +668,7 @@ class StringBuilder(Object, CharSequence):
         pass
 
     def substring(self, start, end=-1):
-        # type: (int, int) -> AnyStr
+        # type: (int, int) -> Union[str, unicode]
         pass
 
     def trimToSize(self):
@@ -740,7 +739,7 @@ class Throwable(Object, builtins.Exception):
         pass
 
     def toString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return "A short description of this throwable."
 
 
@@ -813,7 +812,7 @@ class IndexOutOfBoundsException(RuntimeException):
     """
 
     def __init__(self, arg=None):
-        # type: (Optional[Union[int, AnyStr]]) -> None
+        # type: (Optional[Union[int, str, unicode]]) -> None
         super(IndexOutOfBoundsException, self).__init__()
 
 
@@ -826,7 +825,7 @@ class ArrayIndexOutOfBoundsException(IndexOutOfBoundsException):
     """
 
     def __init__(self, arg=None):
-        # type: (Optional[Union[int, AnyStr]]) -> None
+        # type: (Optional[Union[int, str, unicode]]) -> None
         super(ArrayIndexOutOfBoundsException, self).__init__(arg)
 
 

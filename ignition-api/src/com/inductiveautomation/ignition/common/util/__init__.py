@@ -4,7 +4,6 @@ __all__ = ["LoggerEx", "Platform", "Timeline", "TimelineList"]
 
 from typing import Any, Iterable, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.io import Closeable
 from java.lang import AutoCloseable, Class, Comparable, Enum, Object, Throwable
 from java.util import Date
@@ -49,39 +48,39 @@ class LoggerEx(Object):
     DEFAULT_TO_STRING_STYLE = None  # type: ToStringStyle
 
     def createSubLogger(self, arg):
-        # type: (Union[Class, AnyStr]) -> LoggerEx
+        # type: (Union[Class, str, unicode]) -> LoggerEx
         pass
 
     def debug(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def debugDuration(self, message):
-        # type: (AnyStr) -> Closeable
+        # type: (Union[str, unicode]) -> Closeable
         pass
 
     def debugEvent(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def debugf(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def error(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def errorEvent(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def errorf(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def fatal(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def getIdentObject(self):
@@ -93,7 +92,7 @@ class LoggerEx(Object):
         pass
 
     def getName(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getToStringStyle(self):
@@ -101,19 +100,19 @@ class LoggerEx(Object):
         pass
 
     def info(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def infoDuration(self, message):
-        # type: (AnyStr) -> Closeable
+        # type: (Union[str, unicode]) -> Closeable
         pass
 
     def infoEvent(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def infof(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def isDebugEnabled(self):
@@ -137,15 +136,19 @@ class LoggerEx(Object):
         pass
 
     def mdcPut(self, key, value):
-        # type: (AnyStr, AnyStr) -> None
+        # type: (Union[str, unicode], Union[str, unicode]) -> None
         pass
 
-    def mdcPutCloseable(self, key, value):
-        # type: (AnyStr, AnyStr) -> LoggerEx.MDCCloseable
+    def mdcPutCloseable(
+        self,
+        key,  # type: Union[str, unicode]
+        value,  # type: Union[str, unicode]
+    ):
+        # type: (...) -> LoggerEx.MDCCloseable
         pass
 
     def mdcRemove(self, key):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def mdcSet(self):
@@ -166,31 +169,31 @@ class LoggerEx(Object):
         pass
 
     def trace(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def traceDuration(self, message):
-        # type: (AnyStr) -> Closeable
+        # type: (Union[str, unicode]) -> Closeable
         pass
 
     def traceEvent(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def tracef(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def warn(self, message, t=None):
-        # type: (AnyStr, Optional[Throwable]) -> None
+        # type: (Union[str, unicode], Optional[Throwable]) -> None
         pass
 
     def warnEvent(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
     def warnf(self, message, *args):
-        # type: (AnyStr, Any) -> None
+        # type: (Union[str, unicode], Any) -> None
         pass
 
 
@@ -199,11 +202,11 @@ class Platform(Object):
     class Architecture(Enum):
         @staticmethod
         def fromString(s):
-            # type: (AnyStr) -> Platform.Architecture
+            # type: (Union[str, unicode]) -> Platform.Architecture
             pass
 
         def getSignatures(self):
-            # type: () -> Iterable[AnyStr]
+            # type: () -> Iterable[Union[str, unicode]]
             pass
 
         @staticmethod
@@ -214,11 +217,11 @@ class Platform(Object):
     class OperatingSystem(Enum):
         @staticmethod
         def fromString(s):
-            # type: (AnyStr) -> Platform.OperatingSystem
+            # type: (Union[str, unicode]) -> Platform.OperatingSystem
             pass
 
         def getSignatures(self):
-            # type: () -> Iterable[AnyStr]
+            # type: () -> Iterable[Union[str, unicode]]
             pass
 
         @staticmethod
@@ -356,7 +359,7 @@ class Timeline(TimelineList):
 
     class TimelineParser(object):
         def parse(self, input):
-            # type: (AnyStr) -> Timeline
+            # type: (Union[str, unicode]) -> Timeline
             raise NotImplementedError
 
     class TimelineStyle(Enum):

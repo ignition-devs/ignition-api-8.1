@@ -18,14 +18,13 @@ __all__ = [
     "writeWithPriority",
 ]
 
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from system.bacnet.enumerated import ObjectType, PropertyIdentifier
 
 
 def readRaw(
-    deviceName,  # type: AnyStr
+    deviceName,  # type: Union[str, unicode]
     objectType,  # type: ObjectType
     objectId,  # type: int
     propertyId,  # type: PropertyIdentifier
@@ -55,7 +54,7 @@ def readRaw(
 
 
 def readRawMultiple(
-    deviceName,  # type: AnyStr
+    deviceName,  # type: Union[str, unicode]
     objectTypes,  # type: List[ObjectType]
     objectIds,  # type: List[int]
     propertyIds,  # type: List[PropertyIdentifier]
@@ -90,7 +89,7 @@ def readRawMultiple(
 
 
 def synchronizeTime(deviceName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Notifies the remote device of the correct current time, which is
     the system time (factoring in timezone and DST) of the server
     Ignition is running on.
@@ -103,7 +102,7 @@ def synchronizeTime(deviceName):
 
 
 def synchronizeTimeUtc(deviceName):
-    # type: (AnyStr) -> None
+    # type: (Union[str, unicode]) -> None
     """Notifies the remote device of the correct current time in UTC.
 
     Args:
@@ -114,7 +113,7 @@ def synchronizeTimeUtc(deviceName):
 
 
 def writeRaw(
-    deviceName,  # type: AnyStr
+    deviceName,  # type: Union[str, unicode]
     objectType,  # type: ObjectType
     objectId,  # type: int
     propertyId,  # type: PropertyIdentifier
@@ -158,7 +157,7 @@ def writeRaw(
 
 
 def writeRawMultiple(
-    deviceName,  # type: AnyStr
+    deviceName,  # type: Union[str, unicode]
     objectTypes,  # type: List[ObjectType]
     objectIds,  # type: List[int]
     propertyIds,  # type: List[PropertyIdentifier]
@@ -203,7 +202,7 @@ def writeRawMultiple(
 
 
 def writeWithPriority(deviceName, objectType, objectId, value, priority):
-    # type: (AnyStr, int, int, Any, int) -> None
+    # type: (Union[str, unicode], int, int, Any, int) -> None
     """Write to the Present_Value attribute of an object with a custom
     priority level.
 

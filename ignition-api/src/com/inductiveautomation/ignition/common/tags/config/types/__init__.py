@@ -1,15 +1,14 @@
 __all__ = ["TagObjectType"]
 
-from typing import Iterable
+from typing import Iterable, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum
 
 
 class TagObjectType(Enum):
     @staticmethod
     def fromString(value):
-        # type: (AnyStr) -> TagObjectType
+        # type: (Union[str, unicode]) -> TagObjectType
         pass
 
     def isComplexTag(self):

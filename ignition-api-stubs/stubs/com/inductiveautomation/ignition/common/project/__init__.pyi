@@ -1,4 +1,4 @@
-from typing import Iterable, List, Optional, Set
+from typing import Iterable, List, Optional, Set, Union
 
 from com.inductiveautomation.ignition.common.project.resource import (
     ProjectResource,
@@ -6,7 +6,6 @@ from com.inductiveautomation.ignition.common.project.resource import (
     ResourceSignature,
 )
 from com.inductiveautomation.ignition.gateway.project import ResourceFilter
-from dev.coatl.helper.types import AnyStr
 from java.lang import Enum, Object
 
 class Project:
@@ -16,24 +15,24 @@ class ProjectResourceListener:
     def getResourceFilter(self) -> ResourceFilter: ...
     def manifestChanged(
         self,
-        projectName: AnyStr,
+        projectName: Union[str, unicode],
         operation: List[ChangeOperation.ManifestChangeOperation],
     ) -> None: ...
     def onAfterChanges(self) -> None: ...
     def onBeforeChanges(self) -> None: ...
     def resourcesCreated(
         self,
-        projectName: AnyStr,
+        projectName: Union[str, unicode],
         resources: List[ChangeOperation.CreateResourceOperation],
     ) -> None: ...
     def resourcesDeleted(
         self,
-        projectName: AnyStr,
+        projectName: Union[str, unicode],
         resources: List[ChangeOperation.DeleteResourceOperation],
     ) -> None: ...
     def resourcesModified(
         self,
-        projectName: AnyStr,
+        projectName: Union[str, unicode],
         resources: List[ChangeOperation.ModifyResourceOperation],
     ) -> None: ...
 
@@ -49,7 +48,7 @@ class ChangeOperation(Object):
     class ManifestChangeOperation(Object):
         def getBaseHashCode(self) -> int: ...
         def getManifest(self) -> ProjectManifest: ...
-        def getProjectName(self) -> AnyStr: ...
+        def getProjectName(self) -> Union[str, unicode]: ...
 
     class ModifyResourceOperation(Object):
         def getBaseSignature(self) -> ResourceSignature: ...
@@ -61,13 +60,13 @@ class ChangeOperation(Object):
         def values() -> Iterable[ChangeOperation.OperationType]: ...
 
     class ResourceChangeOperation(Object):
-        def getProjectName(self) -> AnyStr: ...
+        def getProjectName(self) -> Union[str, unicode]: ...
         def getResourceId(self) -> ProjectResourceId: ...
 
     @staticmethod
     def changeOpsToIdSet(changes: List[ChangeOperation]) -> Set[ProjectResourceId]: ...
     def getOperationType(self) -> ChangeOperation.OperationType: ...
-    def getProjectName(self) -> AnyStr: ...
+    def getProjectName(self) -> Union[str, unicode]: ...
     @staticmethod
     def getResourceFromChange(op: ChangeOperation) -> ProjectResource: ...
     @staticmethod
@@ -82,7 +81,7 @@ class ChangeOperation(Object):
     ) -> ChangeOperation.DeleteResourceOperation: ...
     @staticmethod
     def newManifestChangeOp(
-        projectName: AnyStr,
+        projectName: Union[str, unicode],
         manifest: ProjectManifest,
         baseHashCode: Optional[int] = ...,
     ) -> ChangeOperation.ManifestChangeOperation: ...
@@ -94,9 +93,9 @@ class ChangeOperation(Object):
 class ProjectManifest(Object):
     def __init__(
         self,
-        title: AnyStr,
-        description: AnyStr,
+        title: Union[str, unicode],
+        description: Union[str, unicode],
         enabled: bool,
         inheritable: bool,
-        parent: AnyStr,
+        parent: Union[str, unicode],
     ) -> None: ...

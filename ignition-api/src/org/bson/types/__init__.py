@@ -17,7 +17,6 @@ __all__ = [
 
 from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.lang import Object
 from java.math import BigDecimal
 from java.nio import ByteBuffer
@@ -66,18 +65,18 @@ class BSONTimestamp(Object):
 
 class Code(Object):
     def __init__(self, code):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         self._code = code
         super(Code, self).__init__()
 
     def getCode(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._code
 
 
 class CodeWScope(Code):
     def __init__(self, code, scope):
-        # type: (AnyStr, BSONObject) -> None
+        # type: (Union[str, unicode], BSONObject) -> None
         super(CodeWScope, self).__init__(code)
         self._scope = scope
 
@@ -88,7 +87,7 @@ class CodeWScope(Code):
 
 class CodeWithScope(Code):
     def __init__(self, code, scope):
-        # type: (AnyStr, Document) -> None
+        # type: (Union[str, unicode], Document) -> None
         super(CodeWithScope, self).__init__(code)
         self._scope = scope
 
@@ -145,7 +144,7 @@ class Decimal128(Object):
 
     @staticmethod
     def parse(value):
-        # type: (AnyStr) -> Decimal128
+        # type: (Union[str, unicode]) -> Decimal128
         pass
 
 
@@ -204,7 +203,7 @@ class ObjectId(Object):
 
     @staticmethod
     def isValid(hexString):
-        # type: (AnyStr) -> bool
+        # type: (Union[str, unicode]) -> bool
         return True
 
     def putToByteBuffer(self, buffer):
@@ -212,16 +211,16 @@ class ObjectId(Object):
         pass
 
     def toHexString(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
 class Symbol(Object):
     def __init__(self, symbol):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         super(Symbol, self).__init__()
         self._symbol = symbol
 
     def getSymbol(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         return self._symbol

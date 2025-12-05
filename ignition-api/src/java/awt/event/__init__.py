@@ -2,9 +2,8 @@ from __future__ import print_function
 
 __all__ = ["ActionEvent", "ComponentEvent", "InputEvent", "MouseEvent"]
 
-from typing import Any
+from typing import Any, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.awt import AWTEvent, Component, Point
 from java.lang import Object
 
@@ -24,7 +23,7 @@ class ActionEvent(AWTEvent):
         super(ActionEvent, self).__init__(source, id)
 
     def getActionCommand(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getModifiers(self):
@@ -86,7 +85,7 @@ class InputEvent(ComponentEvent):
 
     @staticmethod
     def getModifiersExText(modifiers):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def getWhen(self):
@@ -153,7 +152,7 @@ class MouseEvent(InputEvent):
 
     @staticmethod
     def getMouseModifiersText(modifiers):
-        # type: (int) -> AnyStr
+        # type: (int) -> Union[str, unicode]
         pass
 
     def getPoint(self):

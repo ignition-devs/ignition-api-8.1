@@ -21,9 +21,8 @@ __all__ = [
 
 import array
 import warnings
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Union
 
-from dev.coatl.helper.types import AnyStr
 from java.awt import Component, Container, Frame, Graphics
 from java.util import Locale
 from javax.swing.event import AncestorListener
@@ -138,7 +137,7 @@ class RootPaneContainer(object):
 
 
 class JComponent(Container):
-    TOOL_TIP_TEXT_KEY = None  # type: AnyStr
+    TOOL_TIP_TEXT_KEY = None  # type: Union[str, unicode]
     UNDEFINED_CONDITION = None  # type: int
     WHEN_ANCESTOR_OF_FOCUSED_COMPONENT = None  # type: int
     WHEN_FOCUSED = None  # type: int
@@ -185,7 +184,7 @@ class JFrame(Frame):
 class JInternalFrame(JComponent):
     def __init__(
         self,
-        title=None,  # type: Optional[AnyStr]
+        title=None,  # type: Union[str, unicode, None]
         resizable=None,  # type: Optional[bool]
         closable=None,  # type: Optional[bool]
         maximizable=None,  # type: Optional[bool]
@@ -272,7 +271,7 @@ class JDesktopPane(JLayeredPane):
         pass
 
     def getUIClassID(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def updateUI(self):
@@ -313,7 +312,7 @@ class JOptionPane(JComponent):
     def showConfirmDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[AnyStr]
+        title=None,  # type: Union[str, unicode, None]
         optionType=None,  # type: Optional[int]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
@@ -326,13 +325,13 @@ class JOptionPane(JComponent):
     def showInputDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[AnyStr]
+        title=None,  # type: Union[str, unicode, None]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
         selectionValues=None,  # type: Optional[List[Any]]
         initialSelectionValue=None,  # type: Optional[Any]
     ):
-        # type: (...) -> AnyStr
+        # type: (...) -> Union[str, unicode]
         print(
             parentComponent,
             message,
@@ -348,7 +347,7 @@ class JOptionPane(JComponent):
     def showMessageDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[AnyStr]
+        title=None,  # type: Union[str, unicode, None]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
     ):
@@ -359,7 +358,7 @@ class JOptionPane(JComponent):
     def showOptionDialog(
         parentComponent,  # type: Optional[Any]
         message,  # type: Any
-        title=None,  # type: Optional[AnyStr]
+        title=None,  # type: Union[str, unicode, None]
         optionType=None,  # type: Optional[int]
         messageType=None,  # type: Optional[int]
         icon=None,  # type: Optional[Icon]
@@ -397,7 +396,7 @@ class JToolTip(JComponent):
         pass
 
     def getTipText(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
 
@@ -413,7 +412,7 @@ class JPopupMenu(JComponent):
     """
 
     def __init__(self, label=None):
-        # type: (Optional[AnyStr]) -> None
+        # type: (Union[str, unicode, None]) -> None
         super(JPopupMenu, self).__init__()
         print(label)
 
@@ -456,7 +455,7 @@ class JPasswordField(JTextField):
         return True
 
     def getEchoChar(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def getPassword(self):
@@ -472,11 +471,11 @@ class JPasswordField(JTextField):
         return unicode("password")
 
     def getUIClassID(self):
-        # type: () -> AnyStr
+        # type: () -> Union[str, unicode]
         pass
 
     def setEchoChar(self, c):
-        # type: (AnyStr) -> None
+        # type: (Union[str, unicode]) -> None
         pass
 
     def updateUI(self):
