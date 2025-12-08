@@ -4,6 +4,7 @@ __all__ = ["PyComponentWrapper"]
 from typing import Union
 
 from java.lang import Object
+
 from org.python.core import PyObject
 
 

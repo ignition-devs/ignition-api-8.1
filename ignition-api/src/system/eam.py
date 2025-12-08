@@ -10,9 +10,10 @@ __all__ = ["getGroups", "queryAgentHistory", "queryAgentStatus", "runTask"]
 
 from typing import List, Optional, Union
 
+from java.util import Date, Locale
+
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.messages import UIResponse
-from java.util import Date, Locale
 
 
 def getGroups():

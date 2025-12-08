@@ -2,9 +2,10 @@ __all__ = ["Function"]
 
 from typing import Any, Iterable
 
+from java.lang import Class
+
 from com.inductiveautomation.ignition.common.binding import InteractionListener
 from com.inductiveautomation.ignition.common.model.values import QualifiedValue
-from java.lang import Class
 
 
 class Function(object):

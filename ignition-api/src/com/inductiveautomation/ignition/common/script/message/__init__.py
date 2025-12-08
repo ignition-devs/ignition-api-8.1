@@ -2,6 +2,7 @@ __all__ = ["Request", "RequestWatcher"]
 
 from java.lang import Exception as JavaException
 from java.lang import Object
+
 from org.python.core import PyFunction
 
 

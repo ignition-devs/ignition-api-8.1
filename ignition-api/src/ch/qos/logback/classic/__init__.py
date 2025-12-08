@@ -2,8 +2,9 @@ __all__ = ["Level"]
 
 from typing import Any, Union
 
-import org.slf4j.event
 from java.lang import Object
+
+import org.slf4j.event
 
 
 class Level(Object):

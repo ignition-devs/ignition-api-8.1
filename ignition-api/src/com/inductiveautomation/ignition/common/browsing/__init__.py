@@ -4,10 +4,11 @@ __all__ = ["BrowseFilter", "Result", "Results"]
 
 from typing import Any, Iterable, List, Mapping, Sequence, Union
 
+from java.lang import Object
+
 from com.inductiveautomation.ignition.common import Path, QualifiedPath
 from com.inductiveautomation.ignition.common.config import Property, PropertyValueSource
 from com.inductiveautomation.ignition.common.model.values import QualityCode
-from java.lang import Object
 
 
 class Result(object):

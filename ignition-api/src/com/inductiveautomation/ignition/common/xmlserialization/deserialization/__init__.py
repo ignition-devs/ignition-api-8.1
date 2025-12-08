@@ -9,6 +9,9 @@ __all__ = [
 
 from typing import Any, Iterable, List, Mapping, Optional, Union
 
+from java.io import InputStream, Reader
+from java.lang import Class, Object
+
 from com.inductiveautomation.ignition.common.xmlserialization import (
     ClassNameResolver,
     SerializationException,
@@ -16,8 +19,6 @@ from com.inductiveautomation.ignition.common.xmlserialization import (
 from com.inductiveautomation.ignition.common.xmlserialization.serialization import (
     XMLSerializer,
 )
-from java.io import InputStream, Reader
-from java.lang import Class, Object
 
 
 class AttributesMap(object):

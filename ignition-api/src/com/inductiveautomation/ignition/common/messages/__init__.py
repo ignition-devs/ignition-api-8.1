@@ -2,10 +2,11 @@ __all__ = ["MessageInterface", "MessageReceiver", "UIResponse"]
 
 from typing import Any, List, Union
 
-from com.inductiveautomation.ignition.common.functional import FragileRunnable
 from java.lang import Object
 from java.util import Locale
 from java.util.function import Consumer
+
+from com.inductiveautomation.ignition.common.functional import FragileRunnable
 
 
 class MessageInterface(object):

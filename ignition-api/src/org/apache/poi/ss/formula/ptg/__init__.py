@@ -3,6 +3,7 @@ from __future__ import print_function
 from typing import Any, List, Union
 
 from java.lang import Object
+
 from org.apache.poi.common import Duplicatable
 from org.apache.poi.ss.formula import (
     ExternSheetReferenceToken,

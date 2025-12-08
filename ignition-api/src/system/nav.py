@@ -23,9 +23,10 @@ __all__ = [
 
 from typing import Any, Dict, Optional, Union
 
+from java.util import EventObject
+
 from com.inductiveautomation.factorypmi.application import FPMIWindow
 from com.inductiveautomation.factorypmi.application.script.builtin import NavUtilities
-from java.util import EventObject
 
 
 def centerWindow(arg):

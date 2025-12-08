@@ -5,6 +5,7 @@ from java.io import Closeable, OutputStream
 from java.lang import Enum, Object
 from java.time import LocalDate, LocalDateTime
 from java.util import Calendar, Date, TimeZone
+
 from org.apache.poi.common.usermodel import Hyperlink as IHyperlink
 from org.apache.poi.common.usermodel import HyperlinkType
 from org.apache.poi.poifs.filesystem import DirectoryEntry

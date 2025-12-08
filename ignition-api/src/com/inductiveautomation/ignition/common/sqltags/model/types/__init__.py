@@ -2,10 +2,11 @@ __all__ = ["DataQuality", "DataType", "DataTypeClass"]
 
 from typing import Iterable, List, Optional, Union
 
-from com.inductiveautomation.ignition.common.i18n import LocalizedString
-from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
 from java.lang import Class, Enum, Object
 from java.util import Locale
+
+from com.inductiveautomation.ignition.common.i18n import LocalizedString
+from com.inductiveautomation.ignition.common.model.values import Quality, QualityCode
 
 
 class DataQuality(Object):

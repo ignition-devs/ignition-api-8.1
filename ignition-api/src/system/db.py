@@ -80,13 +80,14 @@ __all__ = [
 
 from typing import Any, List, Optional, Union
 
+from java.util import Date
+from javax.swing import JComponent
+
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.script.builtin import (
     DatasetUtilities,
     SProcCall,
 )
-from java.util import Date
-from javax.swing import JComponent
 
 # Type codes
 # These are codes defined by the JDBC specification.

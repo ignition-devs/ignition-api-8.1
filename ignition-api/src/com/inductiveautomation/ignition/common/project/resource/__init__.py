@@ -11,6 +11,10 @@ __all__ = [
 
 from typing import Any, Mapping, Optional, Union
 
+from java.lang import Comparable, Object
+from java.lang.reflect import Type
+from java.util.function import Consumer
+
 from com.google.common.collect import ImmutableSet
 from com.inductiveautomation.ignition.common import StringPath
 from com.inductiveautomation.ignition.common.gson import (
@@ -19,9 +23,6 @@ from com.inductiveautomation.ignition.common.gson import (
     JsonObject,
     JsonSerializationContext,
 )
-from java.lang import Comparable, Object
-from java.lang.reflect import Type
-from java.util.function import Consumer
 
 
 class ProjectResource(object):

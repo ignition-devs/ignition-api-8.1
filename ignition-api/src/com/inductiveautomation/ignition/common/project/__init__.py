@@ -4,13 +4,14 @@ __all__ = ["ChangeOperation", "Project", "ProjectManifest", "ProjectResourceList
 
 from typing import Iterable, List, Optional, Set, Union
 
+from java.lang import Enum, Object
+
 from com.inductiveautomation.ignition.common.project.resource import (
     ProjectResource,
     ProjectResourceId,
     ResourceSignature,
 )
 from com.inductiveautomation.ignition.gateway.project import ResourceFilter
-from java.lang import Enum, Object
 
 
 class Project(object):

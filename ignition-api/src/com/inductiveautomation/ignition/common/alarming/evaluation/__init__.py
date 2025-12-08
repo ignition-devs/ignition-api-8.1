@@ -4,10 +4,11 @@ __all__ = ["EventProperty", "EventPropertyType", "ShelvedPath"]
 
 from typing import Any, List, Union
 
-from com.inductiveautomation.ignition.common import Path, QualifiedPath
-from com.inductiveautomation.ignition.common.config import Property
 from java.lang import Class, Enum, Object
 from java.util import Date
+
+from com.inductiveautomation.ignition.common import Path, QualifiedPath
+from com.inductiveautomation.ignition.common.config import Property
 
 
 class EventProperty(Object):

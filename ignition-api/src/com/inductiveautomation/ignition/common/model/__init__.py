@@ -3,6 +3,9 @@ __all__ = ["ApplicationScope", "CommonContext", "EdgeEdition", "Version"]
 import re
 from typing import TYPE_CHECKING, Any, Iterable, List, Optional, Tuple, Union
 
+from java.io import InputStream
+from java.lang import Enum, IllegalArgumentException, Object, String
+
 from com.google.common.eventbus import EventBus
 from com.inductiveautomation.ignition.common.licensing import LicenseState
 from com.inductiveautomation.ignition.common.logging import LogFilterSettings
@@ -11,8 +14,6 @@ from com.inductiveautomation.ignition.common.tags.model import TagManager
 from com.inductiveautomation.ignition.common.xmlserialization.deserialization import (
     XMLDeserializer,
 )
-from java.io import InputStream
-from java.lang import Enum, IllegalArgumentException, Object, String
 
 if TYPE_CHECKING:
     from com.inductiveautomation.ignition.common.expressions import FunctionFactory
@@ -241,7 +242,7 @@ class Version(Object):
         return self.dev
 
     def isFutureVersion(self, arg):
-        # type: (Union[Version, str, unicode]) -> bool
+        # type: (Union[str, unicode, Version]) -> bool
         cls = type(self)
         if isinstance(arg, basestring):
             that = self.parse(arg)

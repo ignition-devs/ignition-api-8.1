@@ -21,11 +21,12 @@ __all__ = [
 
 from typing import Any, Iterable, Optional, Union
 
-from com.inductiveautomation.ignition.common.gson.reflect import TypeToken
-from com.inductiveautomation.ignition.common.gson.stream import JsonReader, JsonWriter
 from java.io import Reader, Writer
 from java.lang import Class, Enum, Object
 from java.lang.reflect import Type
+
+from com.inductiveautomation.ignition.common.gson.reflect import TypeToken
+from com.inductiveautomation.ignition.common.gson.stream import JsonReader, JsonWriter
 
 
 class ExclusionStrategy(object):
@@ -633,7 +634,7 @@ class LongSerializationPolicy(object):
 
 class TypeAdapter(object):
     def fromJson(self, arg):
-        # type: (Union[Reader, str, unicode]) -> Any
+        # type: (Union[str, unicode, Reader]) -> Any
         pass
 
     def fromJsonTree(self, jsonTree):

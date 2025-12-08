@@ -9,6 +9,7 @@ __all__ = [
 from typing import Any
 
 from java.lang import IllegalArgumentException, Number
+
 from org.apache.commons.math3.exception.util import ExceptionContext
 
 

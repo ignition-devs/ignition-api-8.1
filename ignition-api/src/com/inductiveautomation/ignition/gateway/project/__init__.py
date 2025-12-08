@@ -2,12 +2,13 @@ __all__ = ["ResourceFilter"]
 
 from typing import List, Union
 
+from java.lang import Object
+
 from com.inductiveautomation.ignition.common.project.resource import (
     ProjectResource,
     ProjectResourceId,
     ResourceType,
 )
-from java.lang import Object
 
 
 class ResourceFilter(Object):

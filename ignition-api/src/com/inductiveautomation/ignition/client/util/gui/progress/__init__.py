@@ -2,13 +2,14 @@ __all__ = ["AsyncClientTask", "ClientProgressManager", "TaskHandle"]
 
 from typing import Any, List, Optional, Union
 
+from java.lang import Object
+from java.util.concurrent import CompletableFuture
+from java.util.function import Consumer
+
 from com.inductiveautomation.ignition.common.gui.progress import (
     TaskProgressListener,
     TaskProgressState,
 )
-from java.lang import Object
-from java.util.concurrent import CompletableFuture
-from java.util.function import Consumer
 
 
 class AsyncClientTask(object):

@@ -4,10 +4,11 @@ __all__ = ["Annotation", "AnnotationType"]
 
 from typing import Any, Union
 
-from com.inductiveautomation.ignition.common import QualifiedPath
-from com.inductiveautomation.ignition.common.gson import JsonElement
 from java.lang import Object
 from java.util import Date
+
+from com.inductiveautomation.ignition.common import QualifiedPath
+from com.inductiveautomation.ignition.common.gson import JsonElement
 
 
 class Annotation(Object):

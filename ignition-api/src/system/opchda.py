@@ -22,11 +22,12 @@ __all__ = [
 
 from typing import Any, List, Union
 
+from java.util import Date
+
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import QualityCode
 from com.inductiveautomation.ignition.common.sqltags.history import AggregateInfo
 from com.inductiveautomation.opccom.hda import AttributeInfo, ReadResult
-from java.util import Date
 
 
 def browse(root):

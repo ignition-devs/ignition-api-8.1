@@ -2,6 +2,8 @@ from __future__ import print_function
 
 from typing import Any, List, Union
 
+from java.lang import Class, Object
+
 from com.inductiveautomation.ignition.common.xmlserialization import ClassNameResolver
 from com.inductiveautomation.ignition.common.xmlserialization.encoding import (
     AttributeEncoder,
@@ -9,7 +11,6 @@ from com.inductiveautomation.ignition.common.xmlserialization.encoding import (
 from com.inductiveautomation.ignition.common.xmlserialization.serialization.equalitydelegates import (
     EqualityDelegate,
 )
-from java.lang import Class, Object
 
 
 class Element(Object):

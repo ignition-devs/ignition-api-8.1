@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, Set, Union
 
 from java.lang import Class, Object
 from java.util import Collection, Date, Map
+
 from org.bson.codecs.configuration import CodecRegistry
 
 if TYPE_CHECKING:

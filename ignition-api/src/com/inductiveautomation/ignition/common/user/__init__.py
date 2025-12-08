@@ -11,6 +11,9 @@ __all__ = [
 
 from typing import Any, Iterable, List, Optional, Union
 
+from java.lang import Object
+from java.util import Date
+
 from com.inductiveautomation.ignition.common import QualifiedPath
 from com.inductiveautomation.ignition.common.config import (
     BasicProperty,
@@ -19,8 +22,6 @@ from com.inductiveautomation.ignition.common.config import (
     PropertyValue,
 )
 from com.inductiveautomation.ignition.common.user.schedule import ScheduleAdjustment
-from java.lang import Object
-from java.util import Date
 
 
 class User(object):
@@ -197,7 +198,7 @@ class PyUser(User):
         return True
 
     def get(self, propertyName):
-        # type: (Union[Property, str, unicode]) -> Any
+        # type: (Union[str, unicode, Property]) -> Any
         pass
 
     def getContactInfo(self):

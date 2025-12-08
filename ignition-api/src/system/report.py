@@ -15,8 +15,9 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Union
 
-from com.inductiveautomation.ignition.common import BasicDataset
 from java.lang import IllegalArgumentException
+
+from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def executeAndDistribute(

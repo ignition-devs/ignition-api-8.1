@@ -65,6 +65,10 @@ import os
 import platform
 from typing import Any, Callable, Dict, Iterable, List, Optional, Union
 
+from java.awt import Toolkit
+from java.lang import IllegalArgumentException, Thread
+from java.util import Date, Locale
+
 import system.__version__ as version
 import system.security
 from com.inductiveautomation.ignition.common import BasicDataset
@@ -74,9 +78,6 @@ from com.inductiveautomation.ignition.common.script.builtin import (
     SystemUtilities,
 )
 from com.inductiveautomation.ignition.common.util import LoggerEx
-from java.awt import Toolkit
-from java.lang import IllegalArgumentException, Thread
-from java.util import Date, Locale
 
 APPLET_FLAG = 16
 CLIENT_FLAG = 4

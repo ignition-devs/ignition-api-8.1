@@ -2,8 +2,9 @@ __all__ = ["Level", "LogFilterSettings"]
 
 from typing import Iterable, Mapping, Union
 
-import ch.qos.logback.classic
 from java.lang import Enum
+
+import ch.qos.logback.classic
 
 
 class Level(Enum):
