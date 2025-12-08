@@ -6,7 +6,7 @@ requires = [
 
 [project]
 name = "ignition-api-stubs"
-version = "8.1.50.post2"
+version = "8.1.50.post3"
 description = "Ignition Scripting API Stubs"
 readme = "README.md"
 keywords = [

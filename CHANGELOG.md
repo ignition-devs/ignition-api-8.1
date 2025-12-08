@@ -1,3 +1,16 @@
+## 8.1.50.post3 (2025-12-08)
+
+### Fix
+
+- **java**: apply sourcery suggestions (#361)
+
+### Refactor
+
+- decouple java[x] into standalone package (#365)
+- change AnyStr for Union[str, unicode] (#363)
+- **java**: mirror java from ignition-api-8.3 (#362)
+- **java**: add exception classes to java.nio.file (#360)
+
 ## 8.1.50.post2 (2025-11-28)
 
 ### Fix
