@@ -29,14 +29,14 @@ repos:
     rev: 7.0.0
     hooks:
       - id: isort
-        name: isort-pkg
+        name: isort-ignition-api
         files: ^ignition-api/src/
         args: [--settings-file, ignition-api/tox.ini]
   - repo: https://github.com/PyCQA/isort
     rev: 7.0.0
     hooks:
       - id: isort
-        name: isort-stubs
+        name: isort-ignition-api-stubs
         files: ^ignition-api-stubs/stubs/
         args: [--settings-file, ignition-api-stubs/tox.ini]
   - repo: https://github.com/PyCQA/docformatter

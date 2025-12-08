@@ -17,8 +17,6 @@ from org.json import JSONObject
 from org.python.core import PyFunction, PyList, PyObject, PySequence
 from org.slf4j import Logger
 
-Triple = Tuple[Union[str, unicode], Union[str, unicode], bool]
-
 class AbstractOPCUtilities(Object):
     class PyOPCTag(PyObject):
         displayName: Union[str, unicode]
@@ -237,4 +235,4 @@ class SystemUtilities(Object):
     @staticmethod
     def parseTranslateArguments(
         *args: PyObject, **kwargs: Union[str, unicode]
-    ) -> Triple: ...
+    ) -> Tuple[Union[str, unicode], Union[str, unicode], bool]: ...

@@ -5,6 +5,7 @@ __all__ = ["SerialScriptModule"]
 from typing import Any, Union
 
 from java.lang import Object
+
 from org.python.core import PyObject
 
 

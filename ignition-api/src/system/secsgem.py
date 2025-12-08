@@ -23,8 +23,9 @@ __all__ = [
 
 from typing import Any, Dict, List, Tuple, Union
 
-from com.inductiveautomation.ignition.common import BasicDataset
 from java.util import Date
+
+from com.inductiveautomation.ignition.common import BasicDataset
 
 
 def copyEquipment(

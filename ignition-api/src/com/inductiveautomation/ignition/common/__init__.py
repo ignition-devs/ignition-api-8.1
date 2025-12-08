@@ -13,8 +13,6 @@ __all__ = [
 
 from typing import Any, Iterable, List, Optional, Set, Union
 
-from com.inductiveautomation.ignition.common.document import DocumentElement
-from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
 from java.awt import Color
 from java.lang import (
     ArrayIndexOutOfBoundsException,
@@ -27,6 +25,9 @@ from java.lang import (
     UnsupportedOperationException,
 )
 from java.util import UUID, Comparator, Date, Locale
+
+from com.inductiveautomation.ignition.common.document import DocumentElement
+from com.inductiveautomation.ignition.common.gson import Gson, JsonElement
 from org.json import JSONObject
 from org.python.core import PyObject
 
@@ -445,7 +446,7 @@ class JsonPath(Object):
     ROOT = None  # type: JsonPath
 
     def createChildPath(self, arg):
-        # type: (Union[JsonPath, int, str, unicode]) -> JsonPath
+        # type: (Union[int, str, unicode, JsonPath]) -> JsonPath
         pass
 
     def getAsLinkedList(self):

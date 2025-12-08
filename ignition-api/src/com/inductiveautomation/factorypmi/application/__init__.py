@@ -4,12 +4,13 @@ __all__ = ["FPMIApp", "FPMIWindow", "VisionDesktop"]
 
 from typing import Any, List, Union
 
+from java.util import TimeZone
+from javax.swing import JDesktopPane, JInternalFrame
+
 from com.inductiveautomation.factorypmi.application.components import BasicContainer
 from com.inductiveautomation.ignition.client.model import ClientContext, DesktopListener
 from com.inductiveautomation.ignition.common.project.resource import ResourcePath
 from com.inductiveautomation.ignition.common.script import ScriptManager
-from java.util import TimeZone
-from javax.swing import JDesktopPane, JInternalFrame
 
 
 class VisionDesktop(JDesktopPane):

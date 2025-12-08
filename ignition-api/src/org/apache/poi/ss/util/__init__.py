@@ -1,6 +1,7 @@
 from typing import Any, List, Optional, Union
 
 from java.lang import Comparable, Enum, Object
+
 from org.apache.poi.common import Duplicatable
 from org.apache.poi.ss import SpreadsheetVersion
 from org.apache.poi.util import LittleEndianOutput

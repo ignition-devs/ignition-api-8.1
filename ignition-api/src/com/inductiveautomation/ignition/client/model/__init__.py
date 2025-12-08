@@ -7,6 +7,11 @@ __all__ = [
 
 from typing import Any, List, Union
 
+from java.beans import PropertyChangeListener
+from java.lang import Object
+from java.util import Locale
+from javax.swing import RootPaneContainer
+
 from com.google.common.eventbus import EventBus
 from com.inductiveautomation.ignition.client.launch import LaunchContext
 from com.inductiveautomation.ignition.client.util.gui.progress import (
@@ -26,10 +31,6 @@ from com.inductiveautomation.ignition.common.tags.model import TagManager
 from com.inductiveautomation.ignition.common.xmlserialization.deserialization import (
     XMLDeserializer,
 )
-from java.beans import PropertyChangeListener
-from java.lang import Object
-from java.util import Locale
-from javax.swing import RootPaneContainer
 from org.apache.log4j import Logger
 
 

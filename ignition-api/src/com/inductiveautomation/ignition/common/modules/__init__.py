@@ -2,10 +2,11 @@ __all__ = ["ModuleInfo"]
 
 from typing import List, Mapping, Optional, Union
 
+from java.lang import Object
+
 from com.inductiveautomation.ignition.common.licensing import LicenseState
 from com.inductiveautomation.ignition.common.model import Version
 from com.inductiveautomation.ignition.common.util import Platform
-from java.lang import Object
 
 
 class ModuleInfo(Object):

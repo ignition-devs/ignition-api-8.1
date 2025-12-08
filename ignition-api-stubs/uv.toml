@@ -1,5 +1,4 @@
 [pip]
-generate-hashes = true
 no-strip-extras = true
 output-file = "requirements.txt"
 python = "3.12"

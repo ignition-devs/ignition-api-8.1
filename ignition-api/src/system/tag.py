@@ -39,6 +39,8 @@ __all__ = [
 
 from typing import Any, Callable, Dict, List, Optional, Union
 
+from java.util import Date
+
 from com.inductiveautomation.ignition.common import BasicDataset
 from com.inductiveautomation.ignition.common.browsing import Results
 from com.inductiveautomation.ignition.common.model.values import (
@@ -48,7 +50,6 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.sqltags.history.annotations import (
     Annotation,
 )
-from java.util import Date
 
 DEFAULT_TIMEOUT_MILLIS = 45000
 LEGACY_DEFAULT_TIMEOUT_MILLIS = 45000

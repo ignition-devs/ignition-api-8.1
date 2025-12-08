@@ -17,9 +17,10 @@ __all__ = [
 
 from typing import List, Optional, Union
 
-from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 from java.awt import Component
 from java.awt.image import BufferedImage
+
+from com.inductiveautomation.factorypmi.application.script.builtin import PrintUtilities
 
 LANDSCAPE = 0
 PORTRAIT = 1

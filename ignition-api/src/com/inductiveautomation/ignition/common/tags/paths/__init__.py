@@ -9,9 +9,10 @@ __all__ = [
 
 from typing import Any, List, Optional, Union
 
+from java.lang import Object
+
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.tags.model import TagPath
-from java.lang import Object
 
 
 class AbstractTagPath(Object, TagPath):

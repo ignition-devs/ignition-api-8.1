@@ -38,6 +38,8 @@ __all__ = [
 
 from typing import List, Optional, Union
 
+from java.util import Date, Locale
+
 from com.inductiveautomation.ignition.common.messages import UIResponse
 from com.inductiveautomation.ignition.common.user import PyUser, UserSourceMeta
 from com.inductiveautomation.ignition.common.user.schedule import (
@@ -46,7 +48,6 @@ from com.inductiveautomation.ignition.common.user.schedule import (
     HolidayModel,
     ScheduleAdjustment,
 )
-from java.util import Date, Locale
 
 
 def addCompositeSchedule(

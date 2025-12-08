@@ -7,7 +7,8 @@ from com.inductiveautomation.ignition.common.xmlserialization.encoding import (
 from com.inductiveautomation.ignition.common.xmlserialization.serialization.equalitydelegates import (
     EqualityDelegate,
 )
-from java.lang import Class, Object
+from java.lang import Class as Class
+from java.lang import Object
 
 class Element(Object):
     class Attribute(Object):

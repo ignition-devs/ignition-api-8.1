@@ -4,6 +4,7 @@ from typing import Any, Optional, Union
 
 from java.lang import Object, Throwable
 from java.util import Enumeration
+
 from org.apache.log4j.spi import ErrorHandler, Filter, LoggerRepository, LoggingEvent
 
 

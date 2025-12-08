@@ -1,4 +1,4 @@
-from java.lang import Class
+from java.lang import Class as Class
 from org.bson.codecs import Codec
 
 class CodecRegistry:

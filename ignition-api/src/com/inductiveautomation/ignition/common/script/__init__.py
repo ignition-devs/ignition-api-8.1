@@ -4,11 +4,12 @@ __all__ = ["ScriptFunction", "ScriptManager"]
 
 from typing import Any, List, Mapping, Set, Union
 
-from com.codahale.metrics import Timer
-from com.inductiveautomation.ignition.common.script.hints import ScriptFunctionHint
 from java.io import OutputStream
 from java.lang import Class, Object
 from java.util import UUID
+
+from com.codahale.metrics import Timer
+from com.inductiveautomation.ignition.common.script.hints import ScriptFunctionHint
 from org.python.core import PyObject, PyStringMap, PySystemState
 
 HintsMap = Mapping[Union[str, unicode], List[ScriptFunctionHint]]

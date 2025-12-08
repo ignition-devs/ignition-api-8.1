@@ -7,6 +7,7 @@ from typing import Any, Iterable, List, Optional, Union
 from java.io import Closeable
 from java.lang import AutoCloseable, Class, Comparable, Enum, Object, Throwable
 from java.util import Date
+
 from org.apache.commons.lang3.builder import ToStringStyle
 from org.slf4j import Logger
 
@@ -48,7 +49,7 @@ class LoggerEx(Object):
     DEFAULT_TO_STRING_STYLE = None  # type: ToStringStyle
 
     def createSubLogger(self, arg):
-        # type: (Union[Class, str, unicode]) -> LoggerEx
+        # type: (Union[str, unicode, Class]) -> LoggerEx
         pass
 
     def debug(self, message, t=None):

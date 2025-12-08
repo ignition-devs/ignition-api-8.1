@@ -4,9 +4,10 @@ __all__ = ["AlarmQueryResult", "AlarmQueryResultImpl"]
 
 from typing import Any, Iterator, List, Union
 
+from java.util import ArrayList
+
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.alarming import AlarmEvent, PyAlarmEvent
-from java.util import ArrayList
 
 
 class AlarmQueryResult(object):

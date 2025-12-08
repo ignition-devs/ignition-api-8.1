@@ -4,10 +4,11 @@ __all__ = ["AlarmEvent", "EventData", "PyAlarmEvent", "PyAlarmEventImpl"]
 
 from typing import Any, Iterator, Union
 
-from com.inductiveautomation.ignition.common import QualifiedPath, StringPath
-from com.inductiveautomation.ignition.common.config import BasicPropertySet
 from java.lang import Object
 from java.util import UUID
+
+from com.inductiveautomation.ignition.common import QualifiedPath, StringPath
+from com.inductiveautomation.ignition.common.config import BasicPropertySet
 from org.python.core import PyObject
 
 

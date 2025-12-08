@@ -9,10 +9,11 @@ __all__ = [
 
 from typing import Iterable, List, Union
 
-from com.inductiveautomation.ignition.common.util import Timeline
-from com.palantir.ptoss.cinch.core import DefaultBindableModel
 from java.lang import Enum
 from java.util import Calendar, Date
+
+from com.inductiveautomation.ignition.common.util import Timeline
+from com.palantir.ptoss.cinch.core import DefaultBindableModel
 
 
 class AbstractScheduleModel(DefaultBindableModel):

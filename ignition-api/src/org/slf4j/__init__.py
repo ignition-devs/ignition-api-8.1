@@ -56,7 +56,7 @@ class Marker(object):
         raise NotImplementedError
 
     def contains(self, arg):
-        # type: (Union[Marker, str, unicode]) -> bool
+        # type: (Union[str, unicode, Marker]) -> bool
         raise NotImplementedError
 
     def equals(self, o):

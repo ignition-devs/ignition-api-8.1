@@ -2,6 +2,9 @@ __all__ = ["SecurityContext", "TagManager", "TagPath"]
 
 from typing import TYPE_CHECKING, Any, Optional, Union
 
+from java.lang import Comparable, Object
+from java.lang.reflect import Type
+
 from com.inductiveautomation.ignition.common import Path
 from com.inductiveautomation.ignition.common.config import Property
 from com.inductiveautomation.ignition.common.gson import (
@@ -10,8 +13,6 @@ from com.inductiveautomation.ignition.common.gson import (
     JsonSerializationContext,
 )
 from com.inductiveautomation.ignition.common.user import AuthenticatedUser
-from java.lang import Comparable, Object
-from java.lang.reflect import Type
 
 if TYPE_CHECKING:
     from com.inductiveautomation.ignition.common.browsing import BrowseFilter

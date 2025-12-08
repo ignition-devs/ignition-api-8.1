@@ -12,11 +12,12 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
-from com.inductiveautomation.ignition.common import JsonPath
-from com.inductiveautomation.ignition.common.gson import JsonArray, JsonElement
 from java.io import InputStream
 from java.lang import Enum, Object
 from java.util.regex import Pattern
+
+from com.inductiveautomation.ignition.common import JsonPath
+from com.inductiveautomation.ignition.common.gson import JsonArray, JsonElement
 
 VisibleWhenCondition = Tuple[Union[str, unicode], List[JsonElement]]
 

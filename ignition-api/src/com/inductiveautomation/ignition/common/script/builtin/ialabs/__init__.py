@@ -4,10 +4,11 @@ __all__ = ["BrowseTag", "OPCBrowseTag"]
 
 from typing import Optional, Union
 
+from java.lang import Class, Object
+
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.sqltags.model.types import DataType
 from com.inductiveautomation.ignition.common.tags.config.types import TagObjectType
-from java.lang import Class, Object
 
 
 class BrowseTag(Object):

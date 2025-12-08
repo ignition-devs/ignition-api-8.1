@@ -5,7 +5,6 @@ __all__ = ["JsonReader", "JsonToken", "JsonWriter"]
 from typing import Any, Union
 
 from enum import Enum
-
 from java.io import Closeable, Flushable, Reader, Writer
 from java.lang import Object
 

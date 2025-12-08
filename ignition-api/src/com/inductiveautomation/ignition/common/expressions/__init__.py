@@ -2,10 +2,11 @@ __all__ = ["Expression", "FunctionFactory"]
 
 from typing import Any, Iterable, Set, Union
 
+from java.lang import Class
+
 from com.inductiveautomation.ignition.common.binding import InteractionListener
 from com.inductiveautomation.ignition.common.expressions.functions import Function
 from com.inductiveautomation.ignition.common.model.values import QualifiedValue
-from java.lang import Class
 
 
 class Expression(object):

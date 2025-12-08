@@ -50,10 +50,6 @@ __all__ = [
 
 from typing import Any, Callable, List, Optional, Tuple, Union
 
-from com.inductiveautomation.factorypmi.application import FPMIWindow
-from com.inductiveautomation.factorypmi.application.script.builtin import (
-    WindowUtilities,
-)
 from java.awt import Color
 from java.org.jdesktop.core.animation.timing import Animator
 from java.util import EventObject
@@ -65,6 +61,11 @@ from javax.swing import (
     JPanel,
     JPopupMenu,
     JTextField,
+)
+
+from com.inductiveautomation.factorypmi.application import FPMIWindow
+from com.inductiveautomation.factorypmi.application.script.builtin import (
+    WindowUtilities,
 )
 
 # Constants

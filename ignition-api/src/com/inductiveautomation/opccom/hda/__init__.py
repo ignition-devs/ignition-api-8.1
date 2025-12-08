@@ -4,6 +4,8 @@ __all__ = ["AttributeInfo", "ReadResult"]
 
 from typing import Any, Iterator, List, Optional, Union
 
+from java.lang import Object
+
 from com.inductiveautomation.ignition.common.model.values import (
     QualifiedValue,
     QualityCode,
@@ -12,7 +14,6 @@ from com.inductiveautomation.ignition.common.sqltags.model.types import (
     DataType,
     DataTypeClass,
 )
-from java.lang import Object
 
 
 class AttributeInfo(Object):

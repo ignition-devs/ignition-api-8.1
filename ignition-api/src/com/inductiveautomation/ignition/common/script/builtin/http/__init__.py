@@ -4,12 +4,13 @@ __all__ = ["CookieManager", "JythonHttpClient", "Promise", "Response"]
 
 from typing import Any, Dict, Optional, Union
 
-from com.inductiveautomation.ignition.common.gson import Gson
 from java.lang import Object
 from java.net import CookieManager as JCookieManager
 from java.net.http import HttpClient, HttpRequest, HttpResponse
 from java.nio.charset import Charset
 from java.util.concurrent import CompletableFuture
+
+from com.inductiveautomation.ignition.common.gson import Gson
 from org.python.core import PyObject
 
 

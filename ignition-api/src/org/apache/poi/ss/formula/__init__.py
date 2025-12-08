@@ -3,6 +3,7 @@ from __future__ import print_function
 from typing import TYPE_CHECKING, Any, List, Optional, Union
 
 from java.lang import Comparable, Enum, Object
+
 from org.apache.poi.ss import SpreadsheetVersion
 from org.apache.poi.ss.formula.eval import ValueEval
 from org.apache.poi.ss.formula.udf import UDFFinder

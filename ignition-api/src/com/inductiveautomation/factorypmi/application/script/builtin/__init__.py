@@ -11,9 +11,6 @@ __all__ = [
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
-from com.inductiveautomation.factorypmi.application import FPMIApp, FPMIWindow
-from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
-from com.inductiveautomation.ignition.common.model.values import QualityCode
 from java.awt import Color, Component, Graphics
 from java.awt.event import ActionEvent, ComponentEvent, MouseEvent
 from java.awt.image import BufferedImage
@@ -21,6 +18,10 @@ from java.awt.print import PageFormat
 from java.lang import Number, Object
 from java.util import EventObject
 from javax.swing import JComponent, JFrame, JPopupMenu
+
+from com.inductiveautomation.factorypmi.application import FPMIApp, FPMIWindow
+from com.inductiveautomation.factorypmi.application.script import PyComponentWrapper
+from com.inductiveautomation.ignition.common.model.values import QualityCode
 from org.python.core import PyObject, PySequence, PyTuple
 
 
@@ -30,7 +31,7 @@ class INavUtilities(object):
     """
 
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, str, unicode]) -> None
+        # type: (Union[str, unicode, FPMIWindow]) -> None
         raise NotImplementedError
 
     def closeParentWindow(self, event):
@@ -38,7 +39,7 @@ class INavUtilities(object):
         raise NotImplementedError
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, str, unicode]) -> None
+        # type: (Union[str, unicode, FPMIWindow]) -> None
         raise NotImplementedError
 
     def getCurrentWindow(self):
@@ -110,7 +111,7 @@ class ClientSystemUtilities(Object):
 
 class NavUtilities(INavUtilities):
     def centerWindow(self, arg):
-        # type: (Union[FPMIWindow, str, unicode]) -> None
+        # type: (Union[str, unicode, FPMIWindow]) -> None
         pass
 
     def closeParentWindow(self, event):
@@ -118,7 +119,7 @@ class NavUtilities(INavUtilities):
         pass
 
     def closeWindow(self, arg):
-        # type: (Union[FPMIWindow, str, unicode]) -> None
+        # type: (Union[str, unicode, FPMIWindow]) -> None
         pass
 
     def getCurrentWindow(self):

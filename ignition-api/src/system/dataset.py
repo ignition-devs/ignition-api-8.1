@@ -34,9 +34,10 @@ __all__ = [
 import os.path
 from typing import Any, Dict, List, Optional, Type, Union
 
+from java.util import Date, Locale
+
 from com.inductiveautomation.ignition.common import Dataset
 from com.inductiveautomation.ignition.common.script.builtin import DatasetUtilities
-from java.util import Date, Locale
 
 ColType = Union[float, long, int, str, unicode, Date]
 

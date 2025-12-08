@@ -4,8 +4,9 @@ __all__ = ["PyJsonObjectAdapter"]
 
 from typing import Any, Iterator, List, Optional, Union
 
-from com.inductiveautomation.ignition.common.gson import JsonObject
 from java.lang import Object
+
+from com.inductiveautomation.ignition.common.gson import JsonObject
 from org.python.core import PyObject
 
 

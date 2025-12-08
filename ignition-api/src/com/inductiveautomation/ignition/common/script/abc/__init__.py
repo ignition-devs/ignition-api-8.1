@@ -14,13 +14,14 @@ __all__ = [
 from typing import Any, Iterator, Optional, Union
 
 from java.lang import Class
+
 from org.python.core import PyInteger, PyList, PyObject, PySequence
 
 
 class JythonMap(object):
 
     def __finditem__(self, key):
-        # type: (Union[int, PyObject, str, unicode]) -> PyObject
+        # type: (Union[int, str, unicode, PyObject]) -> PyObject
         raise NotImplementedError
 
     def get(self, pyKey, def_=None):
@@ -196,7 +197,7 @@ class MutableJythonSequence(JythonSequence):
 class AbstractJythonMap(JythonMap):
 
     def __finditem__(self, key):
-        # type: (Union[int, PyObject, str, unicode]) -> PyObject
+        # type: (Union[int, str, unicode, PyObject]) -> PyObject
         pass
 
     def get(self, pyKey, def_=None):

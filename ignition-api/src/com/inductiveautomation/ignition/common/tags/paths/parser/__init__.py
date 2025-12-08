@@ -2,8 +2,9 @@ __all__ = ["TagPathParser"]
 
 from typing import Any, List, Union
 
-from com.inductiveautomation.ignition.common.tags.model import TagPath
 from java.lang import Object
+
+from com.inductiveautomation.ignition.common.tags.model import TagPath
 
 
 class TagPathParser(Object):

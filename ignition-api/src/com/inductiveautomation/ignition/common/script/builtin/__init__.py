@@ -4,6 +4,12 @@ __all__ = ["AbstractOPCUtilities", "DatasetUtilities", "SProcCall", "SystemUtili
 
 from typing import Any, Dict, List, Optional, Tuple, Union
 
+from java.io import OutputStream, Writer
+from java.lang import ArrayIndexOutOfBoundsException, Class
+from java.lang import Exception as JavaException
+from java.lang import IllegalArgumentException, Object, UnsupportedOperationException
+from java.util import Locale
+
 from com.inductiveautomation.ignition.common import BasicDataset, Dataset
 from com.inductiveautomation.ignition.common.model.values import (
     QualifiedValue,
@@ -12,16 +18,9 @@ from com.inductiveautomation.ignition.common.model.values import (
 from com.inductiveautomation.ignition.common.opc import BrowseElementType
 from com.inductiveautomation.ignition.common.script.abc import AbstractJythonSequence
 from com.inductiveautomation.ignition.common.script.message import Request
-from java.io import OutputStream, Writer
-from java.lang import ArrayIndexOutOfBoundsException, Class
-from java.lang import Exception as JavaException
-from java.lang import IllegalArgumentException, Object, UnsupportedOperationException
-from java.util import Locale
 from org.json import JSONObject
 from org.python.core import PyFunction, PyList, PyObject, PySequence
 from org.slf4j import Logger
-
-Triple = Tuple[Union[str, unicode], Union[str, unicode], bool]
 
 
 class AbstractOPCUtilities(Object):
@@ -637,5 +636,5 @@ class SystemUtilities(Object):
 
     @staticmethod
     def parseTranslateArguments(*args, **kwargs):
-        # type: (*PyObject, **Union[str, unicode]) -> Triple
+        # type: (*PyObject, **Union[str, unicode]) -> Tuple[Union[str, unicode], Union[str, unicode], bool]  # noqa: E501, W505  # pylint: disable=line-too-long
         pass

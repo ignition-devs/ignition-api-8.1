@@ -1,10 +1,14 @@
 from typing import Any, Dict, Iterator, List, Optional, Union
 
-from java.awt import Dimension
-from java.io import Closeable, OutputStream
+from java.awt import Dimension as Dimension
+from java.io import Closeable
+from java.io import OutputStream as OutputStream
 from java.lang import Enum, Object
-from java.time import LocalDate, LocalDateTime
-from java.util import Calendar, Date, TimeZone
+from java.time import LocalDate as LocalDate
+from java.time import LocalDateTime as LocalDateTime
+from java.util import Calendar as Calendar
+from java.util import Date as Date
+from java.util import TimeZone as TimeZone
 from org.apache.poi.common.usermodel import Hyperlink as IHyperlink
 from org.apache.poi.common.usermodel import HyperlinkType
 from org.apache.poi.poifs.filesystem import DirectoryEntry

@@ -2,8 +2,9 @@ __all__ = ["ScheduleModel"]
 
 from typing import Iterable, Union
 
-from com.palantir.ptoss.cinch.core import DefaultBindableModel
 from java.lang import Enum
+
+from com.palantir.ptoss.cinch.core import DefaultBindableModel
 
 
 class ScheduleModel(DefaultBindableModel):
