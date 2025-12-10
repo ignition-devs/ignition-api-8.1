@@ -9,12 +9,12 @@ repos:
     rev: v1.3.0
     hooks:
       - id: sort-all
-        files: ^ignition-api/src/
+        files: ^src/
   - repo: https://github.com/bwhmather/ssort
     rev: 0.16.0
     hooks:
       - id: ssort
-        files: ^ignition-api/src/
+        files: ^src/
   - repo: https://github.com/psf/black-pre-commit-mirror
     rev: 25.12.0
     hooks:
@@ -23,54 +23,54 @@ repos:
     rev: 1.3.0
     hooks:
       - id: unimport
-        files: ^ignition-api/src/
+        files: ^src/
         language_version: python3.12
   - repo: https://github.com/PyCQA/isort
     rev: 7.0.0
     hooks:
       - id: isort
-        name: isort-ignition-api
-        files: ^ignition-api/src/
-        args: [--settings-file, ignition-api/tox.ini]
+        name: isort-package
+        files: ^src/
+        args: [--settings-file, tox.ini]
   - repo: https://github.com/PyCQA/isort
     rev: 7.0.0
     hooks:
       - id: isort
-        name: isort-ignition-api-stubs
-        files: ^ignition-api-stubs/stubs/
-        args: [--settings-file, ignition-api-stubs/tox.ini]
+        name: isort-stubs
+        files: ^stubs/stubs/
+        args: [--settings-file, stubs/tox.ini]
   - repo: https://github.com/PyCQA/docformatter
     rev: v1.7.7
     hooks:
       - id: docformatter
-        files: ^ignition-api/src/
-        args: [--config, ignition-api/tox.ini]
+        files: ^src/
+        args: [--config, tox.ini]
         language_version: python3.12
   - repo: https://github.com/coatl-dev/flake8
     rev: 5.0.4
     hooks:
       - id: flake8
-        name: flake8-ignition-api
-        files: ^ignition-api/src/
-        args: [--config, ignition-api/tox.ini]
+        name: flake8-package
+        files: ^src/
+        args: [--config, tox.ini]
         additional_dependencies: [pydoclint]
         language_version: python3.12
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
       - id: flake8
-        name: flake8-ignition-api-stubs
+        name: flake8-stubs
         types: [file]
         files: \.(pyi)$
         additional_dependencies: [flake8-pyi]
-        args: [--config, ignition-api-stubs/tox.ini]
+        args: [--config, stubs/tox.ini]
   - repo: https://github.com/PyCQA/pydocstyle
     rev: 6.3.0
     hooks:
       - id: pydocstyle
-        files: ^ignition-api/src/
-        exclude: ^ignition-api/src/(ch|com|dev|java|javax|org)/
-        args: [--config, ignition-api/tox.ini]
+        files: ^src/
+        exclude: ^src/(ch|com|dev|java|javax|org)/
+        args: [--config, tox.ini]
   - repo: https://github.com/commitizen-tools/commitizen
     rev: v4.10.0
     hooks:
@@ -83,6 +83,5 @@ repos:
         name: pylint
         entry: pylint
         language: system
-        files: ^ignition-api/src/
+        files: ^src/
         types: [python]
-        args: [--rcfile, ignition-api/.pylintrc]

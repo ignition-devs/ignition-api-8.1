@@ -9,20 +9,18 @@ on:
       - '**/pyproject.toml'
       - '**/requirements.txt'
       - '**/tox.ini'
-      - ignition-api/src/**
-      - ignition-api/setup.cfg
-      - ignition-api/setup.py
-      - ignition-api/tests/**
-      - ignition-api-stubs/stubs/**
+      - src/**
+      - stubs/stubs/**
+      - setup.cfg
+      - setup.py
+      - tests/**
   workflow_call:
 
 jobs:
-  tox-ignition-api:
+  tox-package:
     uses: coatl-dev/workflows/.github/workflows/tox-docker.yml@v6
-    with:
-      working-directory: ignition-api
 
-  tox-ignition-api-stubs:
+  tox-stubs:
     uses: coatl-dev/workflows/.github/workflows/tox.yml@v6
     with:
       python-versions: |
@@ -30,4 +28,4 @@ jobs:
         3.10
         3.11
         3.12
-      working-directory: ignition-api-stubs
+      working-directory: stubs
