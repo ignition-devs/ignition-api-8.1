@@ -20,15 +20,14 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Upload ignition-api to PyPI
+      - name: Upload pacakge to PyPI
         uses: coatl-dev/actions/pypi-upload@v5
         with:
           password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_PKG }}
-          working-directory: ignition-api
 
-      - name: Upload ignition-api-stubs to PyPI
+      - name: Upload stubs to PyPI
         uses: coatl-dev/actions/pypi-upload@v5
         with:
           python-version: '3.12'
           password: ${{ secrets.PYPI_API_TOKEN_IGNITION_API_STUBS }}
-          working-directory: ignition-api-stubs
+          working-directory: stubs

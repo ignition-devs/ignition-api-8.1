@@ -12,18 +12,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v6
 
-      - name: Upgrade ignition-api requirements
+      - name: Upgrade package requirements
         uses: coatl-dev/actions/pip-compile-upgrade@v5
         with:
           path: requirements.txt
-          working-directory: ignition-api
 
-      - name: Upgrade ignition-api-stubs requirements
+      - name: Upgrade stubs requirements
         uses: coatl-dev/actions/uv-pip-compile-upgrade@v5
         with:
           path: requirements.txt
           python-version: '3.12'
-          working-directory: ignition-api-stubs
+          working-directory: stubs
 
       - name: Detect changes
         id: git-diff

@@ -13,4 +13,3 @@ jobs:
     uses: coatl-dev/workflows/.github/workflows/pylint.yml@v6
     with:
       path: src
-      working-directory: ignition-api
