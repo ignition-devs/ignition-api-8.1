@@ -110,16 +110,22 @@ This project consists of the following packages:
 
 - com
   - codahale
-  - google
+  - [google](#comgoogle)
   - [inductiveautomation](#cominductiveautomation)
   - palantir
 - org
   - [apache](#orgapache)
-  - bson
-  - json
+  - [bson](#orgbson)
+  - [json](#orgjson)
   - [python](#orgpython)
-  - slf4j
+  - [slf4j](#orgslf4j)
 - [system](#system)
+
+#### com.google
+
+This package includes supporting classes and interfaces from Guava: Google Core
+Libraries for Java 32.0.1-jre API. For more information, see documentation here:
+<https://javadoc.io/doc/com.google.guava/guava/32.0.1-jre/index.html>
 
 #### com.inductiveautomation
 
@@ -146,6 +152,12 @@ This package includes supporting classes and interfaces from Apache Commons Math
 This package includes supporting classes and interfaces from Apache POI 4.1.2
 API. For more information, see documentation here:
 <https://www.javadoc.io/doc/org.apache.poi/poi/4.1.2/index.html>
+
+#### org.bson
+
+This package includes supporting classes and interfaces from Mongo Java driver
+4.8.1, see documentation here:
+<https://javadoc.io/doc/org.mongodb/bson/4.8.1/index.html>
 
 #### org.json
 
@@ -197,7 +209,7 @@ This project has adopted the [Microsoft Open Source Code of Conduct].
 [CONTRIBUTING.md]: https://github.com/ignition-devs/ignition-api-8.1/blob/main/CONTRIBUTING.md#contributing-to-ignition-api
 [CONTRIBUTORS]: https://github.com/ignition-devs/ignition-api-8.1/graphs/contributors
 [Discussions]: https://github.com/orgs/ignition-devs/discussions
-[`ignition-api-stubs`]: https://github.com/ignition-devs/ignition-api-stubs
+[`ignition-api-stubs`]: https://pypi.org/project/ignition-api-stubs
 [Ignition System Functions]: https://docs.inductiveautomation.com/docs/8.1/appendix/scripting-functions
 [LICENSE]: https://github.com/ignition-devs/ignition-api-8.1/blob/main/LICENSE
 [Microsoft Open Source Code of Conduct]: https://opensource.microsoft.com/codeofconduct/
