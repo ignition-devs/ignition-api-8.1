@@ -9,9 +9,9 @@ enum34==1.1.10 \
     --hash=sha256:c3858660960c984d6ab0ebad691265180da2b43f07e061c0f8dca9ef3cffd328 \
     --hash=sha256:cce6a7477ed816bd2542d03d53db9f0db935dd013b70f336a95c73979289f248
     # via -r requirements.in
-java-api==17.25.0b5 \
-    --hash=sha256:3c07bab29021aa4edce678656a3c30444c807d40e0c934ec28a5f9bcfc2756f5 \
-    --hash=sha256:b5145b6db05568460586f176fbba853227a84bf550fe03763d16900e68ea6772
+java-api==17.25.0b6 \
+    --hash=sha256:26e0a89871ca29a1118baa2ba046dd1bbb9dbfe04966b59138560af1d0c35260 \
+    --hash=sha256:2d484386f8d2315aba349481caafc06de840368f286363a554db6650ae574f2c
     # via -r requirements.in
 typing==3.10.0.0 \
     --hash=sha256:12fbdfbe7d6cca1a42e485229afcb0b0c8259258cfb919b8a5e2a5c953742f89 \
